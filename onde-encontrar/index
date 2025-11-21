@@ -1,9 +1,10 @@
----json
-{
-  "layout": "base.njk",
-  "permalink": "/onde-encontrar/",
-  "title": "Onde Encontrar ChefBrico no DF - Mapa, Lojas, Feiras e Eventos",
-  "description": "Encontre todos os pontos de referência, feiras semanais, eventos sazonais e áreas de entrega da ChefBrico no Distrito Federal.",
+---
+layout: base.njk
+title: Onde Encontrar ChefBrico no DF - Mapa, Lojas, Feiras e Eventos
+description: Encontre todos os pontos de referência, feiras semanais, eventos sazonais e áreas de entrega da ChefBrico no Distrito Federal.
+---
+
+  
   "schema": {
     "@context": "https://schema.org",
     "@graph": [
