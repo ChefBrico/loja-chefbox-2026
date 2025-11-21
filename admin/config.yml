@@ -1,0 +1,68 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "imagens"
+public_folder: "/imagens"
+
+# O "GUARDIÃO": Isso impede que você publique rascunhos sem querer
+publish_mode: editorial_workflow
+
+collections:
+  # COLEÇÃO 1: DADOS GLOBAIS (EEAT & GEO - Só mexe uma vez)
+  - name: "settings"
+    label: "Fundação EEAT (Não Mexer)"
+    files:
+      - name: "author"
+        label: "Autora (Maria Conceição)"
+        file: "_data/author.json"
+        fields:
+          - {label: "Nome", name: "name", widget: "string", default: "Maria Conceição"}
+          - {label: "Bio", name: "bio", widget: "text"}
+          - {label: "Prêmios", name: "award", widget: "string", default: "Prêmio Sebrae Mulher de Negócios"}
+          - {label: "ID Canônico", name: "id", widget: "hidden", default: "https://gourmetpratico.com.br/#person-maria-conceicao"}
+      
+      - name: "organization"
+        label: "Marca (ChefBrico/NAP)"
+        file: "_data/organization.json"
+        fields:
+          - {label: "Nome da Marca", name: "name", widget: "string", default: "ChefBrico"}
+          - {label: "Telefone (NAP)", name: "telephone", widget: "string"}
+          - {label: "Endereço (NAP)", name: "address", widget: "string", default: "Brasília, DF"}
+          - {label: "ID Canônico", name: "id", widget: "hidden", default: "https://gourmetpratico.com.br/#organization"}
+
+  # COLEÇÃO 3: RECEITAS/PRODUTOS (As 24 Variantes)
+  - name: "receitas"
+    label: "Receitas & Produtos"
+    folder: "receitas"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Título da Receita", name: "title", widget: "string"}
+      - {label: "Imagem Principal", name: "image", widget: "image"}
+      - {label: "Descrição Curta (SEO)", name: "description", widget: "text"}
+      
+      # DADOS TRANSACIONAIS (ZERO-CLICK)
+      - {label: "Preço (Ex: 34.90)", name: "price", widget: "number", value_type: "float"}
+      - {label: "SKU", name: "sku", widget: "string"}
+      
+      # AUTORIDADE (EEAT)
+      - {label: "Dica de Ouro (Citable Fact)", name: "citable_fact", widget: "text"}
+      - {label: "História e Modo de Preparo", name: "body", widget: "markdown"}
+      
+      # CAMPOS OCULTOS (A FÁBRICA PREENCHE)
+      - {label: "Layout", name: "layout", widget: "hidden", default: "receita.njk"}
+      - {label: "Autor ID", name: "author_id", widget: "hidden", default: "https://gourmetpratico.com.br/#person-maria-conceicao"}
+
+  # COLEÇÃO 4: CHEFBOX (O Produto Mãe)
+  - name: "chefbox"
+    label: "Página ChefBox (A Verdade)"
+    files:
+      - name: "index"
+        label: "Conteúdo ChefBox"
+        file: "chefbox/index.md"
+        fields:
+          - {label: "Título", name: "title", widget: "string", default: "A Verdade sobre a ChefBox"}
+          - {label: "Preço do Pacote (4 Unidades)", name: "price_bundle", widget: "number", value_type: "float"}
+          - {label: "Texto Filosófico", name: "body", widget: "markdown"}
+          - {label: "Layout", name: "layout", widget: "hidden", default: "chefbox.njk"}
