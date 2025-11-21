@@ -1,40 +1,16 @@
-<div class="top-slogan-bar">
-    <p>COMIDA DE VERDADE, SEM TODA AQUELA CONFUSÃO NA COZINHA!</p>
-</div>
 <header>
     <div class="container header-flex">
         <a href="/" class="logo">
-            <img src="/imagens/logomarca-chefbrico-escrita-dourada.png" alt="Logo ChefBrico">
+            <!-- Certifique-se de ter um arquivo logo.png na pasta imagens -->
+            <img src="/imagens/logo.png" alt="Logo Gourmet Prático" style="max-height: 50px;">
         </a>
         <nav class="main-nav">
             <div class="main-nav-links">
-                <a href="/comida-de-verdade/">Comida de Verdade</a>
-                <div class="dropdown">
-                    <a href="/receitas/" class="dropbtn">Receitas</a>
-                    <div class="dropdown-content">
-                        <span class="dropdown-title">NAVEGUE POR SOLUÇÃO</span>
-                        <a href="/receitas/solucoes/jantar-rapido">Jantar Rápido para a Semana</a>
-                        <a href="/receitas/solucoes/marmita-saudavel">Marmita Saudável</a>
-                        <a href="/receitas/solucoes/momento-a-dois">Para um Momento a Dois</a>
-                        <a href="/receitas/solucoes/para-criancas">Opções para Crianças</a>
-                        <a href="/receitas/solucoes/dieta-performance">Cardápio para sua Dieta</a>
-                        <a href="/receitas/solucoes/trilha-viagem">Para Levar na Trilha ou Viagem</a>
-                        <hr>
-                        <span class="dropdown-title">NAVEGUE POR CATEGORIA</span>
-                        <a href="/receitas/risotos/">Risotos</a>
-                        <a href="/receitas/sopas-funcionais/">Sopas Funcionais</a>
-                        <a href="/receitas/refeicoes-integrais/">Refeições Integrais</a>
-                        <a href="/receitas/emporio-da-chef/">Empório da Chef</a>
-                    </div>
-                </div>
-                 <a href="/chefbox/">ChefBox</a>
-                <a href="/onde-encontrar/">Onde Encontrar</a>
-                <a href="/clube/">ChefBrico Club</a>
-                <a href="/faq/">FAQ</a>
+                {% for item in navigation %}
+                <a href="{{ item.url }}">{{ item.text }}</a>
+                {% endfor %}
             </div>
-            <a href="https://www.chefbrico.com" target="_blank" rel="noopener noreferrer" class="cta-button">Ir para a Loja</a>
+            <a href="/chefbox/" class="cta-button">MONTAR CAIXA</a>
         </nav>
-        <button class="mobile-nav-toggle" aria-label="Abrir menu">☰</button>
     </div>
 </header>
-
