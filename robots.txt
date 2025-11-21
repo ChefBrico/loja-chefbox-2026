@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gourmetpratico.com.br/sitemap.xml
