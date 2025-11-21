@@ -1,16 +1,278 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Gourmet Prático - Em Breve</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f4f4; }
-        h1 { color: #27ae60; }
-    </style>
-</head>
-<body>
-    <h1>Gourmet Prático</h1>
-    <p>A evolução do A-Commerce está chegando.</p>
-    <p>ChefBox Experience em construção.</p>
-</body>
-</html>
+---
+layout: base.njk
+title: Gourmet Prático | Comida de Verdade em 18 Minutos
+description: O Hub de A-Commerce da Chef Maria Conceição. Receitas gourmet, ingredientes naturais e a exclusiva ChefBox. Monte sua caixa e ganhe presentes.
+---
+
+<!-- ============================================ -->
+<!-- 1. CÉREBRO DO ROBÔ (SCHEMA DA HOME)          -->
+<!-- ============================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Gourmet Prático",
+  "url": "https://gourmetpratico.com.br",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://gourmetpratico.com.br/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gourmet Prático",
+    "founder": {
+      "@type": "Person",
+      "name": "Maria Conceição",
+      "award": "Prêmio Sebrae Mulher de Negócios"
+    }
+  }
+}
+</script>
+
+<!-- ============================================ -->
+<!-- 2. ESTILO EXCLUSIVO DA HOME (MAGAZINE)       -->
+<!-- ============================================ -->
+<style>
+    /* Fontes de Revista */
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300&family=Lato:wght@300;400;700&display=swap');
+
+    :root {
+        --gold: #D4AF37;
+        --green: #27ae60;
+        --dark: #1a1a1a;
+        --cream: #f9f7f2;
+    }
+
+    /* HERO SECTION (A CAPA) */
+    .hero {
+        position: relative;
+        height: 85vh; /* Ocupa quase toda a altura da tela */
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+        background-color: var(--dark); /* Cor de fundo se a imagem falhar */
+    }
+
+    .hero-bg {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        object-fit: cover;
+        opacity: 0.6; /* Escurece a foto para ler o texto */
+        z-index: 0;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        padding: 20px;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    h1.hero-title {
+        font-family: 'Merriweather', serif;
+        font-size: 3.5rem;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        font-weight: 300;
+        letter-spacing: -1px;
+        color: white;
+    }
+    
+    h1.hero-title strong { font-weight: 700; color: var(--gold); }
+
+    p.hero-subtitle {
+        font-family: 'Lato', sans-serif;
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        font-weight: 300;
+        letter-spacing: 1px;
+    }
+
+    /* BOTÕES DE AÇÃO */
+    .btn-hero {
+        display: inline-block;
+        padding: 18px 45px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        margin: 10px;
+        font-family: 'Lato', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        background-color: var(--gold);
+        color: white;
+        border: 2px solid var(--gold);
+    }
+    .btn-primary:hover { background-color: white; color: var(--gold); }
+
+    .btn-outline {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+    .btn-outline:hover { background-color: white; color: var(--dark); }
+
+    /* SEÇÃO DE AUTORIDADE (MARIA) */
+    .authority-section {
+        background-color: var(--cream);
+        padding: 80px 20px;
+        text-align: center;
+    }
+    .auth-container {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .auth-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--gold);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .auth-text {
+        max-width: 500px;
+        text-align: left;
+    }
+    .auth-text h2 { font-family: 'Merriweather', serif; color: var(--dark); margin-top: 0; }
+    .quote { font-style: italic; color: #555; font-size: 1.1rem; line-height: 1.6; }
+
+    /* CATEGORIAS (VISUAL CLEAN) */
+    .categories-section { padding: 80px 20px; background: white; }
+    .section-title { text-align: center; font-family: 'Merriweather', serif; color: var(--dark); font-size: 2.5rem; margin-bottom: 50px; }
+    
+    .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .cat-card {
+        position: relative;
+        height: 350px;
+        border-radius: 15px;
+        overflow: hidden;
+        text-decoration: none;
+        color: white;
+        transition: transform 0.3s;
+    }
+    .cat-card:hover { transform: translateY(-10px); }
+    
+    .cat-bg { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .cat-card:hover .cat-bg { transform: scale(1.1); }
+    
+    .cat-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        display: flex; flex-direction: column; justify-content: flex-end;
+        padding: 30px;
+    }
+    .cat-title { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+    .cat-link { font-size: 0.9rem; margin-top: 10px; color: var(--gold); text-transform: uppercase; font-weight: bold; }
+
+    /* ANIMAÇÕES */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* MOBILE */
+    @media(max-width: 768px) {
+        h1.hero-title { font-size: 2.5rem; }
+        .auth-container { text-align: center; flex-direction: column; }
+        .auth-text { text-align: center; }
+    }
+</style>
+
+<!-- ============================================ -->
+<!-- 3. CONTEÚDO VISUAL (HTML)                    -->
+<!-- ============================================ -->
+
+<!-- HERO SECTION (CAPA) -->
+<section class="hero">
+    <!-- FOTO DE FUNDO (Use a sua melhor foto aqui) -->
+    <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" alt="Mesa Gourmet" class="hero-bg">
+    
+    <div class="hero-content">
+        <h1 class="hero-title">Comida de Verdade.<br><strong>Sem a Bagunça.</strong></h1>
+        <p class="hero-subtitle">O sabor da Itália na sua mesa em 18 minutos. Artesanal, Natural e Prático.</p>
+        
+        <div class="cta-group">
+            <!-- O Botão Dourado leva para o JOGO -->
+            <a href="/chefbox/" class="btn-hero btn-primary">MONTAR MINHA CAIXA</a>
+            
+            <!-- O Botão Transparente leva para a REVISTA -->
+            <a href="/receitas/" class="btn-hero btn-outline">EXPLORAR O CARDÁPIO</a>
+        </div>
+    </div>
+</section>
+
+<!-- AUTORIDADE (MARIA) -->
+<section class="authority-section">
+    <div class="auth-container">
+        <!-- FOTO DA MARIA -->
+        <img src="/imagens/maria-conceicao.jpg" alt="Chef Maria Conceição" class="auth-img">
+        
+        <div class="auth-text">
+            <h2>A Alma da Cozinha</h2>
+            <p class="quote">"Criei o Método Gourmet Prático para que você não tenha que escolher entre saúde e tempo. Minha missão é devolver o prazer de comer bem, sem a escravidão do fogão."</p>
+            <p><strong>— Maria Conceição</strong><br><small>Vencedora do Prêmio Sebrae Mulher de Negócios</small></p>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORIAS (VITRINE MAGAZINE) -->
+<section class="categories-section">
+    <h2 class="section-title">Escolha sua Experiência</h2>
+    
+    <div class="cat-grid">
+        <!-- Card 1 -->
+        <a href="/chefbox/" class="cat-card">
+            <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" class="cat-bg" alt="Risotos">
+            <div class="cat-overlay">
+                <h3 class="cat-title">Risotos</h3>
+                <span class="cat-link">Ver Coleção →</span>
+            </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="/chefbox/" class="cat-card">
+            <img src="/imagens/cardapio-chefbrico-sopa-detox-ora-pro-nobis.png" class="cat-bg" alt="Sopas">
+            <div class="cat-overlay">
+                <h3 class="cat-title">Sopas Funcionais</h3>
+                <span class="cat-link">Ver Coleção →</span>
+            </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="/chefbox/" class="cat-card">
+            <img src="/imagens/baiao-de-2-refeicao-pratica-chefbrico.png" class="cat-bg" alt="Refeições">
+            <div class="cat-overlay">
+                <h3 class="cat-title">Refeições Integrais</h3>
+                <span class="cat-link">Ver Coleção →</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- FAIXA DE CONFIANÇA -->
+<div style="background: var(--dark); color: white; padding: 40px; text-align: center;">
+    <p style="font-family: 'Lato'; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;">
+        🌱 100% Natural &nbsp;&bull;&nbsp; 🚫 Sem Conservantes &nbsp;&bull;&nbsp; 👩‍🍳 Feito à Mão em Brasília
+    </p>
+</div>
