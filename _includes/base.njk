@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | ChefBrico</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Injeção de Schema Específico da Página -->
+    {% if schema %}
+    <script type="application/ld+json">
+        {{ schema | safe }}
+    </script>
+    {% endif %}
+</head>
+<body>
+    {% include "header.njk" %}
+    
+    {{ content | safe }}
+    
+    {% include "footer.njk" %}
+    
+    <script src="/js/script.js"></script>
+</body>
+</html>
