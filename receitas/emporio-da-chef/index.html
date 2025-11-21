@@ -1,0 +1,86 @@
+---
+layout: base.njk
+permalink: /receitas/emporio-da-chef/
+title: "Empório da Chef: Antepastos e Confits | ChefBrico"
+description: "O toque final de sabor. Descubra nossos antepastos, confits e pestos artesanais. O segredo gourmet para suas refeições."
+---
+
+<!-- SCHEMA DA COLEÇÃO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "mainEntityOfPage": { "@id": "https://gourmetpratico.com.br/receitas/emporio-da-chef/" },
+  "name": "Empório da Chef ChefBrico",
+  "description": "Coleção de antepastos e produtos gourmet.",
+  "publisher": { "@id": "https://gourmetpratico.com.br/#organization" },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "url": "https://gourmetpratico.com.br/receitas/emporio-da-chef/caponata-shiitake/" },
+      { "@type": "ListItem", "position": 2, "url": "https://gourmetpratico.com.br/receitas/emporio-da-chef/funghi-confit/" },
+      { "@type": "ListItem", "position": 3, "url": "https://gourmetpratico.com.br/receitas/emporio-da-chef/pesto-manjericao/" }
+    ]
+  }
+}
+</script>
+
+<!-- ESTILO LOCAL -->
+<style>
+    .page-header-cat { text-align: center; margin: 40px 20px; }
+    .page-header-cat h1 { color: #2c3e50; font-family: 'Merriweather', serif; }
+    .page-header-cat p { color: #7f8c8d; max-width: 700px; margin: 0 auto; font-family: 'Lato', sans-serif; }
+    
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+    
+    .product-card { display: flex; flex-direction: column; border: 1px solid #eee; border-radius: 15px; overflow: hidden; background-color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s; text-decoration: none; color: #333; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    
+    .product-card-image { width: 100%; height: 200px; object-fit: cover; }
+    .product-card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+    .product-card-content h3 { margin: 0 0 10px; color: #27ae60; font-size: 1.2em; }
+    .product-card-content span { font-size: 0.8em; text-transform: uppercase; color: #999; letter-spacing: 1px; }
+    
+    .cta-link { margin-top: auto; color: #27ae60; font-weight: bold; text-transform: uppercase; font-size: 0.9em; }
+</style>
+
+<main>
+    <div class="page-header-cat">
+        <h1>Empório da Chef</h1>
+        <p>Pequenos detalhes, grandes sabores. Produtos autorais para finalizar seus pratos com toque de mestre.</p>
+    </div>
+    
+    <div class="product-grid">
+        
+        <!-- Card 1 -->
+        <a href="/receitas/emporio-da-chef/caponata-shiitake/" class="product-card">
+            <img src="/imagens/icone-caponata-shiitake-chefbrico.png" alt="Caponata com Shiitake" class="product-card-image">
+            <div class="product-card-content">
+                <span>Antepasto</span>
+                <h3>Caponata com Shiitake</h3>
+                <div class="cta-link">Ver Detalhes →</div>
+            </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="/receitas/emporio-da-chef/funghi-confit/" class="product-card">
+            <img src="/imagens/icone-confit-funghi-chefbrico.png" alt="Funghi Confitado" class="product-card-image">
+            <div class="product-card-content">
+                <span>Gourmet</span>
+                <h3>Funghi Confitado no Azeite</h3>
+                <div class="cta-link">Ver Detalhes →</div>
+            </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="/receitas/emporio-da-chef/pesto-manjericao/" class="product-card">
+            <img src="/imagens/icone-pesto-manjericao-chefbrico.png" alt="Pesto de Manjericão" class="product-card-image">
+            <div class="product-card-content">
+                <span>Clássico</span>
+                <h3>Pesto de Manjericão</h3>
+                <div class="cta-link">Ver Detalhes →</div>
+            </div>
+        </a>
+
+    </div>
+</main>
