@@ -1,0 +1,21 @@
+{
+  "domain": "https://gourmetpratico.com.br",
+  "organization": {
+    "name": "Gourmet Prático",
+    "legalName": "ChefBrico",
+    "url": "https://gourmetpratico.com.br",
+    "logo": "/imagens/logo.png",
+    "telephone": "+5561996659880",
+    "whatsapp": "https://wa.me/5561996659880",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Brasília",
+      "addressRegion": "DF",
+      "addressCountry": "BR"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Maria Conceição"
+    }
+  }
+}
