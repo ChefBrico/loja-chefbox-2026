@@ -1,0 +1,34 @@
+---
+layout: base.njk
+title: Risoto Pomodori & Pesto em 18 Minutos
+description: Receita autêntica italiana, vegana e prática. Aprenda a fazer com o Método ChefBrico.
+---
+
+<!-- SCHEMA DA RECEITA (COPIE O SEU JSON DE RECEITA AQUI DENTRO) -->
+<!-- Importante: No campo "offers.url", coloque: "https://gourmetpratico.com.br/chefbox/" -->
+
+<main class="container">
+    <div class="article-hero-image-container">
+        <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" alt="Risoto Pomodori">
+    </div>
+
+    <div class="post-content">
+        <h1>Risoto Pomodori & Pesto</h1>
+        <p>Teletransporte-se para uma cantina ensolarada na Toscana...</p>
+        
+        <!-- BOTÃO A-COMMERCE -->
+        <div style="text-align:center; margin: 40px 0; padding: 30px; background: #fdfcf7; border: 2px dashed #27ae60; border-radius: 15px;">
+            <h3>Quer provar esta receita?</h3>
+            <p>Adicione este Risoto na sua ChefBox e ganhe um presente.</p>
+            <a href="/chefbox/" class="cta-button">MONTAR CAIXA 🎁</a>
+        </div>
+
+        <h2>Ingredientes</h2>
+        <ul>
+            <li>1 Pacote ChefBrico Pomodori</li>
+            <li>Água, Azeite e Sal</li>
+        </ul>
+        
+        <!-- ... RESTO DO TEXTO DA RECEITA ... -->
+    </div>
+</main>
