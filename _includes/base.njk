@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} | Gourmet Prático</title>
+    <title>{{ title }} | ChefBrico</title>
     <meta name="description" content="{{ description }}">
     <link rel="stylesheet" href="/css/style.css">
-    <!-- Espaço para Schema Específico -->
+    
+    <!-- Schema Global -->
     {% if schema %}
     <script type="application/ld+json">
         {{ schema | safe }}
@@ -14,10 +15,13 @@
     {% endif %}
 </head>
 <body>
+    <!-- Puxa o Cabeçalho -->
     {% include "header.njk" %}
     
+    <!-- Aqui entra o conteúdo de cada página -->
     {{ content | safe }}
     
+    <!-- Puxa o Rodapé -->
     {% include "footer.njk" %}
     
     <script src="/js/script.js"></script>
