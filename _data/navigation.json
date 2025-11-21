@@ -1,0 +1,8 @@
+[
+  { "text": "Início", "url": "/" },
+  { "text": "Receitas", "url": "/receitas/" },
+  { "text": "ChefBox (Loja)", "url": "/chefbox/" },
+  { "text": "Onde Encontrar", "url": "/onde-encontrar/" },
+  { "text": "Clube", "url": "/clube/" },
+  { "text": "FAQ", "url": "/faq/" }
+]
