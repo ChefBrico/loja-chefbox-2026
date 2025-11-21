@@ -1,0 +1,19 @@
+{
+  "name": "ChefBrico",
+  "legalName": "ChefBrico Alimentos Ltda",
+  "url": "https://gourmetpratico.com.br",
+  "logo": "/imagens/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+5561996659880",
+    "contactType": "customer service"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua 5, Chácara 122, Lote 17",
+    "addressLocality": "Brasília",
+    "addressRegion": "DF",
+    "postalCode": "72006-060",
+    "addressCountry": "BR"
+  }
+}
