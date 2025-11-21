@@ -1,0 +1,33 @@
+# === REGRA DE OURO: URLs LIMPAS ===
+# Se alguém digitar /receitas.html, vai para /receitas/ (mais bonito)
+/*.html  /:splat  301
+
+# === REDIRECIONAMENTOS ESTRATÉGICOS (Legado -> Novo) ===
+
+# Home e Institucional
+/nossa-filosofia.html               /comida-de-verdade/         301
+/onde-encontrar.html                /onde-encontrar/            301
+/chefbrico-club.html                /clube/                     301
+/faq.html                           /faq/                       301
+
+# A ChefBox (O Motor)
+/a-verdade-sobre-a-chefbox.html     /chefbox/                   301
+/montar-chefbox.html                /chefbox/                   301
+
+# Fusão de Cardápios
+/cardapio.html                      /receitas/                  301
+/receitas.html                      /receitas/                  301
+
+# Categorias
+/risotos.html                       /receitas/#risotos                301
+/sopas-funcionais.html              /receitas/#sopas                  301
+/refeicoes-praticas.html            /receitas/#refeicoes              301
+/emporio-da-chef.html               /receitas/#emporio                301
+
+# Receitas Individuais (Exemplos Críticos)
+# Adicione aqui todas as suas URLs antigas importantes apontando para as novas
+/receita-risoto-pomodori.html       /receitas/risotos/pomodori/       301
+/receita-sopa-ervilha.html          /receitas/sopas-funcionais/sopa-ervilha/ 301
+
+# === NETLIFY IDENTITY (Para o CMS funcionar) ===
+/api/*  https://api.netlify.com/*  200
