@@ -1,171 +1,77 @@
 ---
 layout: base.njk
-title: Gourmet Prático | A Revista da Comida de Verdade
-description: O Hub de A-Commerce da Chef Maria Conceição. Receitas gourmet, ingredientes naturais e a exclusiva ChefBox.
+title: Gourmet Prático | A Arte de Comer Bem
+description: Onde a alta gastronomia encontra a praticidade. Receitas da Chef Maria Conceição.
 ---
 
-<!-- SCHEMA (Para o Robô - Mantido e Otimizado) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Gourmet Prático",
-  "url": "https://gourmetpratico.com.br",
-  "publisher": {
-    "@type": "Organization",
-    "name": "ChefBrico",
-    "logo": { "@type": "ImageObject", "url": "https://gourmetpratico.com.br/imagens/logo.png" }
-  }
-}
-</script>
+<!-- HERO SECTION (CAPA) -->
+<section style="position: relative; height: 90vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+    <!-- FOTO DE FUNDO (Estilo Editorial) -->
+    <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" 
+         style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 1;" 
+         alt="Mesa Posta ChefBrico">
+    
+    <!-- DEGRADÊ PARA O TEXTO APARECER -->
+    <div style="position: absolute; width: 100%; height: 100%; background: linear-gradient(to right, rgba(1,64,57,0.9), transparent);"></div>
 
-<!-- O NOVO VISUAL (Para o Humano) -->
-<style>
-    /* Fontes de Revista */
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+    <div class="container" style="position: relative; z-index: 2; text-align: left; color: white; width: 100%;">
+        <div style="max-width: 600px;">
+            <p style="font-family: 'Lato'; letter-spacing: 3px; text-transform: uppercase; color: #bfb084; margin-bottom: 20px;">Método Gourmet Prático</p>
+            
+            <h1 style="color: white; font-size: 4.5rem; margin-bottom: 30px;">Comida de Verdade.<br>Sem Bagunça.</h1>
+            
+            <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 40px; opacity: 0.9;">
+                Descubra o prazer de cozinhar um risoto de restaurante em 18 minutos. 
+                Ingredientes 100% naturais, zero desperdício e muito afeto.
+            </p>
+            
+            <div style="display: flex; gap: 20px;">
+                <a href="/chefbox/" class="btn-nav-cta" style="background-color: #bfb084; color: #014039 !important; padding: 15px 40px; font-size: 1rem;">
+                    MONTAR MINHA CAIXA
+                </a>
+                <a href="/receitas/" style="border: 1px solid white; color: white; padding: 15px 40px; text-decoration: none; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">
+                    LER A REVISTA
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-    :root {
-        --cor-fundo: #FAFAF5; /* Creme suave (Purely Style) */
-        --cor-texto: #333;
-        --verde-chef: #2F4F4F;
-        --dourado: #C5A059;
-    }
+<!-- CATEGORIAS (VITRINE EDITORIAL) -->
+<section class="container" style="padding: 80px 20px;">
+    <div style="text-align: center; margin-bottom: 60px;">
+        <h2 style="color: #014039;">Explore Nossos Mundos</h2>
+        <div style="width: 50px; height: 2px; background: #bfb084; margin: 20px auto;"></div>
+    </div>
 
-    /* HERO SECTION - A CAPA DA REVISTA */
-    .hero-magazine {
-        text-align: center;
-        padding: 80px 20px;
-        background-color: var(--cor-fundo);
-        background-image: url('/imagens/fundo-textura-papel.png'); /* Opcional */
-    }
+    <div class="product-grid">
+        
+        <!-- Card 1: Risotos -->
+        <a href="/receitas/risotos/" class="card-editorial">
+            <div class="card-img-container">
+                <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" class="card-img">
+            </div>
+            <p class="card-meta">Clássicos Italianos</p>
+            <h3 class="card-title">Risotos do Mundo</h3>
+        </a>
 
-    .hero-super-title {
-        font-family: 'Playfair Display', serif; /* Fonte de Revista */
-        font-size: 4rem;
-        line-height: 1.1;
-        margin-bottom: 20px;
-        color: var(--verde-chef);
-    }
+        <!-- Card 2: Sopas -->
+        <a href="/receitas/sopas-funcionais/" class="card-editorial">
+            <div class="card-img-container">
+                <img src="/imagens/sopinha-detox-chefbrico.png" class="card-img">
+            </div>
+            <p class="card-meta">Saúde & Leveza</p>
+            <h3 class="card-title">Sopas Funcionais</h3>
+        </a>
 
-    .hero-subtitle {
-        font-family: 'Lato', sans-serif;
-        font-size: 1.2rem;
-        color: #666;
-        max-width: 600px;
-        margin: 0 auto 40px auto;
-        letter-spacing: 1px;
-    }
+        <!-- Card 3: ChefBox -->
+        <a href="/chefbox/" class="card-editorial">
+            <div class="card-img-container">
+                <img src="/imagens/uma-mazinha-icone-chefbrico.png" class="card-img" style="object-fit: contain; padding: 20px; background: #f4f4f4;">
+            </div>
+            <p class="card-meta">Gameficação</p>
+            <h3 class="card-title">Jogue ChefBox (4+1)</h3>
+        </a>
 
-    .btn-magazine {
-        background-color: var(--dourado);
-        color: white;
-        padding: 15px 40px;
-        text-decoration: none;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        border-radius: 0px; /* Botão quadrado é mais chique */
-        transition: all 0.3s;
-        border: 1px solid var(--dourado);
-    }
-
-    .btn-magazine:hover {
-        background-color: white;
-        color: var(--dourado);
-    }
-
-    /* GRID DE CATEGORIAS (Estilo Editorial) */
-    .editorial-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 40px;
-        max-width: 1200px;
-        margin: 60px auto;
-        padding: 0 20px;
-    }
-
-    .editorial-card {
-        text-align: center;
-        text-decoration: none;
-        color: var(--cor-texto);
-        transition: transform 0.3s;
-    }
-    .editorial-card:hover { transform: translateY(-5px); }
-
-    .editorial-img {
-        width: 100%;
-        height: 350px;
-        object-fit: cover;
-        margin-bottom: 20px;
-        /* A Purely usa fotos 'cortadas' sem borda */
-    }
-
-    .editorial-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.8rem;
-        margin: 10px 0;
-        color: var(--verde-chef);
-    }
-
-    .editorial-link {
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        border-bottom: 1px solid var(--dourado);
-        padding-bottom: 3px;
-    }
-
-    /* SEÇÃO CHEFBOX (O Destaque) */
-    .chefbox-promo {
-        background-color: var(--verde-chef);
-        color: white;
-        padding: 80px 20px;
-        text-align: center;
-        margin-top: 60px;
-    }
-    .chefbox-promo h2 {
-        font-family: 'Playfair Display', serif;
-        font-size: 3rem;
-        color: white;
-    }
-</style>
-
-<!-- CONTEÚDO VISUAL -->
-<div class="hero-magazine">
-    <h1 class="hero-super-title">Comida de Verdade.<br>Sem a Bagunça.</h1>
-    <p class="hero-subtitle">O sabor da Itália na sua mesa em 18 minutos. Método artesanal, ingredientes naturais e zero desperdício.</p>
-    <a href="/chefbox/" class="btn-magazine">MONTAR MINHA CAIXA</a>
-</div>
-
-<!-- GRID EDITORIAL (As Categorias como Artigos) -->
-<div class="editorial-grid">
-    <!-- Card 1 -->
-    <a href="/receitas/risotos/" class="editorial-card">
-        <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" class="editorial-img">
-        <h3 class="editorial-title">Os Risotos</h3>
-        <span class="editorial-link">Ler & Comprar</span>
-    </a>
-
-    <!-- Card 2 -->
-    <a href="/receitas/sopas-funcionais/" class="editorial-card">
-        <img src="/imagens/sopinha-detox-chefbrico.png" class="editorial-img">
-        <h3 class="editorial-title">Sopas Funcionais</h3>
-        <span class="editorial-link">Ler & Comprar</span>
-    </a>
-
-    <!-- Card 3 -->
-    <a href="/receitas/emporio-da-chef/" class="editorial-card">
-        <img src="/imagens/icone-confit-funghi-chefbrico.png" class="editorial-img">
-        <h3 class="editorial-title">Empório da Chef</h3>
-        <span class="editorial-link">Ler & Comprar</span>
-    </a>
-</div>
-
-<!-- CHAMADA PARA AÇÃO (ChefBox) -->
-<div class="chefbox-promo">
-    <h2>Conheça a ChefBox</h2>
-    <p style="font-size: 1.2rem; margin-bottom: 30px;">A experiência de compra gamificada. Escolha 4 sabores e ganhe o 5º de presente.</p>
-    <a href="/chefbox/" class="btn-magazine" style="background: white; color: var(--verde-chef); border-color: white;">JOGAR AGORA</a>
-</div>
+    </div>
+</section>
