@@ -1,55 +1,26 @@
-<div class="top-slogan-bar">
-    <p>COMIDA DE VERDADE, SEM TODA AQUELA CONFUSÃO NA COZINHA!</p>
+<div class="top-slogan-bar" style="background-color: #bfb084; color: white; text-align: center; padding: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+    COMIDA DE VERDADE, SEM TODA AQUELA CONFUSÃO NA COZINHA!
 </div>
 
-<header>
-    <div class="container header-flex">
+<header style="background-color: #014039; padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
         <!-- LOGO -->
         <a href="/" class="logo">
-            <img src="/imagens/logo.png" alt="Logo ChefBrico" style="max-height: 60px;">
+            <img src="/imagens/logo.png" alt="ChefBrico" style="height: 50px; filter: brightness(0) invert(1);">
         </a>
 
-        <!-- NAVEGAÇÃO DESKTOP -->
-        <nav class="main-nav">
-            <div class="main-nav-links">
-                <!-- 1. Autoridade -->
-                <a href="/comida-de-verdade/">Comida de Verdade</a>
-                
-                <!-- 2. Catálogo (Dropdown) -->
-                <div class="dropdown">
-                    <a href="/receitas/" class="dropbtn">Receitas ▾</a>
-                    <div class="dropdown-content">
-                        <span class="dropdown-title">POR CATEGORIA</span>
-                        <a href="/receitas/risotos/">Risotos do Mundo</a>
-                        <a href="/receitas/sopas-funcionais/">Sopas Funcionais</a>
-                        <a href="/receitas/refeicoes-integrais/">Refeições Integrais</a>
-                        <a href="/receitas/emporio-da-chef/">Empório da Chef</a>
-                        <hr>
-                        <span class="dropdown-title">POR OBJETIVO</span>
-                        <a href="/receitas/solucoes/jantar-rapido/">Jantar Rápido</a>
-                        <a href="/receitas/solucoes/marmita-saudavel/">Marmita Saudável</a>
-                        <a href="/receitas/solucoes/dieta-performance/">Fit & Detox</a>
-                    </div>
-                </div>
-
-                <!-- 3. O Motor A-Commerce -->
-                <a href="/chefbox/" style="color: var(--cor-laranja-cta);">ChefBox (4+1)</a>
-
-                <!-- 4. Geo Localização -->
-                <a href="/onde-encontrar/">Onde Encontrar</a>
-
-                <!-- 5. Comunidade -->
-                <a href="/clube/">Clube</a>
-                
-                <!-- 6. Suporte -->
-                <a href="/faq/">FAQ</a>
-            </div>
-            
-            <!-- 7. CTA FINAL (Conversão) -->
-            <a href="/chefbox/" class="cta-button-nav">IR PARA A LOJA</a>
+        <!-- NAVEGAÇÃO -->
+        <nav class="main-nav" style="display: flex; align-items: center; gap: 30px;">
+            <a href="/comida-de-verdade/" style="color: #bfb084; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">A Marca</a>
+            <a href="/receitas/" style="color: #bfb084; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">Receitas</a>
+            <a href="/chefbox/" style="color: #F2811d; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">ChefBox (Loja)</a>
+            <a href="/onde-encontrar/" style="color: #bfb084; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">Onde Encontrar</a>
+            <a href="/clube/" style="color: #bfb084; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">Clube</a>
         </nav>
 
-        <!-- MENU MOBILE (Hambúrguer) -->
-        <button class="mobile-nav-toggle" aria-label="Abrir menu">☰</button>
+        <!-- BOTÃO DE AÇÃO -->
+        <a href="/chefbox/" class="cta-button" style="background-color: #F2811d; color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.85rem;">
+            IR PARA A LOJA
+        </a>
     </div>
 </header>
