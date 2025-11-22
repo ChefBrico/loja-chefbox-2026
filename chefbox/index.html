@@ -1,395 +1,189 @@
 ---
 layout: base.njk
-title: ChefBox Experience | Monte a Sua e Ganhe um Presente
-description: Escolha 4 sabores gourmet e ganhe o 5º de presente. Risotos, Sopas e Refeições Integrais.
+title: Monte sua ChefBox | Jogo 4+1
+description: Escolha 4 sabores e ganhe o 5º de presente.
 ---
 
-<!-- ============================================ -->
-<!-- 1. CÉREBRO DO ROBÔ (SCHEMA.ORG)              -->
-<!-- ============================================ -->
+<!-- SCHEMA PRODUTO (ROBÔ) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "ChefBox Experience (4+1)",
-  "description": "Monte sua caixa personalizada com 4 itens e ganhe o 5º de presente.",
-  "image": "/imagens/uma-mazinha-icone-chefbrico.png",
-  "offers": {
-    "@type": "AggregateOffer",
-    "lowPrice": "29.60",
-    "highPrice": "34.80",
-    "priceCurrency": "BRL",
-    "offerCount": "24"
-  }
+  "name": "ChefBox 4+1",
+  "offers": { "@type": "Offer", "price": "149.90", "priceCurrency": "BRL" }
 }
 </script>
 
-<!-- ============================================ -->
-<!-- 2. ESTILO DO JOGO (CSS)                      -->
-<!-- ============================================ -->
 <style>
-    :root { --gold: #D4AF37; --green: #27ae60; --dark: #2c3e50; --bg: #fafafa; }
-    
-    /* Header Fixo */
+    /* DESIGN GAMIFICADO */
     .game-header {
-        position: sticky; top: 0; z-index: 999;
-        background: white; padding: 15px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        border-bottom: 4px solid var(--green);
-        transition: all 0.5s ease;
+        background: white;
+        padding: 20px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        border-bottom: 5px solid #27ae60;
     }
-    .game-header.gift-mode { border-color: var(--gold); background: #fffcf5; }
-
-    .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .brand { font-weight: 800; color: var(--dark); font-size: 1rem; text-transform: uppercase; }
     
-    /* Slots (Bolinhas) */
-    .slots-container { display: flex; justify-content: center; gap: 8px; }
-    .slot {
-        width: 45px; height: 45px; border-radius: 50%;
-        background: #eee; border: 2px solid #ddd;
+    .slots-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 15px 0;
+    }
+
+    .slot-circle {
+        width: 50px; height: 50px;
+        border-radius: 50%;
+        background: #eee;
+        border: 2px dashed #ccc;
         display: flex; align-items: center; justify-content: center;
-        font-weight: bold; color: #bbb; transition: 0.4s; font-size: 1.1rem;
+        font-weight: bold; color: #aaa; font-size: 1.2rem;
+        transition: 0.3s;
     }
-    .slot.filled { background: var(--green); color: white; border-color: var(--green); transform: scale(1.1); }
-    .slot.gift-slot { border: 2px dashed var(--gold); background: transparent; color: var(--gold); }
-    .slot.gift-slot.active { animation: pulse 1s infinite; background: white; border-style: solid; }
-    .slot.gift-slot.filled { background: var(--gold); color: white; border-style: solid; animation: none; transform: scale(1.2); box-shadow: 0 0 10px rgba(212, 175, 55, 0.6); }
 
-    @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.1);} 100% {transform: scale(1);} }
-
-    .status-text { text-align: center; font-size: 0.9rem; margin-top: 10px; color: #666; font-weight: 600; }
-    .gift-mode .status-text { color: var(--gold); font-weight: 800; }
-
-    /* Vitrine */
-    .game-container { max-width: 1000px; margin: 20px auto; padding: 0 15px; padding-bottom: 150px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    @media(min-width: 768px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-
-    .card {
-        background: white; border-radius: 15px; overflow: hidden;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-        border: 2px solid transparent; cursor: pointer; position: relative;
-        transition: transform 0.2s;
+    .slot-circle.filled {
+        background: #27ae60; color: white; border-style: solid; border-color: #27ae60;
+        transform: scale(1.1);
     }
-    .card:active { transform: scale(0.95); }
-    .card.selected { border-color: var(--green); background: #f0fff4; }
-    .card.is-gift { border-color: var(--gold); background: #fffdf0; }
 
-    .card-img { height: 140px; overflow: hidden; background: #eee; }
-    .card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .slot-gift {
+        border-color: #D4AF37; color: #D4AF37;
+    }
+    .slot-gift.active {
+        background: #D4AF37; color: white; transform: scale(1.2);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    }
+
+    /* CARD DE PRODUTO (Vitrine) */
+    .game-grid {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px; padding: 20px; max-width: 1000px; margin: 0 auto;
+    }
     
-    .card-body { padding: 12px; }
-    .price { font-weight: 800; color: var(--dark); font-size: 1.1rem; }
-    .name { font-size: 0.9rem; margin: 5px 0 0 0; color: #555; line-height: 1.3; }
-
-    /* Títulos das Categorias */
-    .category-header {
-        grid-column: 1 / -1;
-        margin-top: 30px; margin-bottom: 10px;
-        padding-bottom: 10px; border-bottom: 2px solid #eee;
-        color: var(--dark); font-size: 1.3rem; font-weight: 800;
+    .game-card {
+        background: white; border: 1px solid #eee; border-radius: 10px;
+        overflow: hidden; cursor: pointer; transition: 0.2s;
+        position: relative;
     }
+    .game-card:hover { transform: translateY(-3px); border-color: #27ae60; }
+    .game-card.selected { border: 3px solid #27ae60; }
+    .game-card.gift-selected { border: 3px solid #D4AF37; }
 
-    /* Checkout Flutuante */
-    .checkout-panel {
-        position: fixed; bottom: 0; left: 0; right: 0;
-        background: white; padding: 25px;
-        border-radius: 25px 25px 0 0;
-        box-shadow: 0 -5px 40px rgba(0,0,0,0.15);
-        display: none; flex-direction: column; gap: 10px;
-        z-index: 9999; animation: slideUp 0.4s ease;
+    .game-img { height: 120px; background: #f9f9f9; }
+    .game-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .game-info { padding: 10px; text-align: center; }
+    .game-title { font-size: 0.9rem; font-weight: bold; margin: 0; }
+    .game-price { color: #27ae60; font-size: 0.9rem; }
+
+    /* CHECKOUT FLUTUANTE */
+    .float-checkout {
+        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+        background: #333; color: white; padding: 15px 30px;
+        border-radius: 50px; display: none; align-items: center; gap: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 200;
+        white-space: nowrap;
     }
-    @keyframes slideUp { from {transform: translateY(100%);} to {transform: translateY(0);} }
-
-    .row { display: flex; justify-content: space-between; font-size: 1rem; }
-    .gift-row { color: var(--gold); font-weight: bold; }
-    .total-row { font-size: 1.4rem; font-weight: 800; color: var(--dark); border-top: 1px solid #eee; padding-top: 15px; margin-top: 5px; }
-
-    .btn-whatsapp {
-        background: var(--green); color: white; border: none;
-        padding: 18px; border-radius: 50px;
-        font-size: 1.1rem; font-weight: 800; cursor: pointer; margin-top: 10px;
-        display: flex; justify-content: center; gap: 10px; align-items: center;
-        box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3); width: 100%; text-transform: uppercase;
+    .btn-zap {
+        background: #25D366; color: white; padding: 10px 20px; border-radius: 30px;
+        text-decoration: none; font-weight: bold; border: none; cursor: pointer;
     }
 </style>
 
-<!-- ============================================ -->
-<!-- 3. ESTRUTURA VISUAL (HTML)                   -->
-<!-- ============================================ -->
-
-<div class="game-header" id="header">
-    <div class="header-top">
-        <span class="brand">ChefBox • Gourmet Prático</span>
-        <small style="color:#999;">Passo <span id="step">1</span>/2</small>
+<!-- HEADER DO JOGO -->
+<div class="game-header">
+    <h2 style="margin:0; font-family: 'Playfair Display', serif;">Monte sua ChefBox</h2>
+    <div class="slots-wrapper">
+        <div class="slot-circle" id="s1">1</div>
+        <div class="slot-circle" id="s2">2</div>
+        <div class="slot-circle" id="s3">3</div>
+        <div class="slot-circle" id="s4">4</div>
+        <div class="slot-circle slot-gift" id="s5">🎁</div>
     </div>
-    <div class="slots-container">
-        <div class="slot" id="s0">1</div>
-        <div class="slot" id="s1">2</div>
-        <div class="slot" id="s2">3</div>
-        <div class="slot" id="s3">4</div>
-        <div class="slot gift-slot" id="gift-slot">🎁</div>
-    </div>
-    <p class="status-text" id="status">Escolha 4 sabores para encher a caixa</p>
+    <p id="status-msg">Escolha 4 sabores para ganhar o presente</p>
 </div>
 
-<div class="game-container">
-    <div class="grid">
-
-        <!-- 1. RISOTOS (R$ 34,80) -->
-        <h3 class="category-header">Risotos (18 min)</h3>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Pomodori & Pesto" data-price="34.80">
-            <div class="card-img"><img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" alt="Pomodori"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Risoto Pomodori</h3></div>
+<!-- VITRINE -->
+<div class="game-grid">
+    <!-- COPIE E COLE ESTE BLOCO PARA CADA PRODUTO (24 VEZES) -->
+    <div class="game-card" onclick="clickItem(this)" data-name="Risoto Funghi" data-price="34.80">
+        <div class="game-img"><img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png"></div>
+        <div class="game-info">
+            <p class="game-title">Risoto Funghi</p>
+            <p class="game-price">R$ 34,80</p>
         </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Funghi Secchi" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" alt="Funghi"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Risoto Funghi Secchi</h3></div>
+    </div>
+    <!-- FIM DO BLOCO -->
+    
+    <!-- Exemplo 2 -->
+    <div class="game-card" onclick="clickItem(this)" data-name="Sopa Detox" data-price="29.60">
+        <div class="game-img"><img src="/imagens/sopinha-detox-chefbrico.png"></div>
+        <div class="game-info">
+            <p class="game-title">Sopa Detox</p>
+            <p class="game-price">R$ 29,60</p>
         </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Zucchini" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-risoto-zucchini.png" alt="Zucchini"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Risoto Zucchini</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Paella Veg" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-risoto-espanhol-paella.png" alt="Paella"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Risoto Paella Veg</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Pêra e Gorgonzola" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-risoto-pera-e-lima%CC%83o-siciliano.png" alt="Pêra"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Risoto Pêra</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Morango Agridoce" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-risoto-morango-agridoce.png" alt="Morango"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Risoto Morango</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Mix Funghi" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-risoto-mix-funghi.png" alt="Mix Funghi"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Mix Funghi</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Shiimeji" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-risoto-shiimeji-na%20tijela.png" alt="Shiimeji"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Risoto Shiimeji</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Pesto e Alho-Poró" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-risoto-alho-poro.png" alt="Pesto Alho"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Risoto Pesto e Alho</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Mediterrâneo" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-risoto-mediterraneo-tijela.png" alt="Mediterrâneo"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Risoto Mediterrâneo</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Risoto Tomate e Manjericão" data-price="34.80">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-risoto-tomate-tijela.png" alt="Tomate Manjericão"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Tomate e Manjericão</h3></div>
-        </div>
-
-        <!-- 2. SOPAS FUNCIONAIS (R$ 29,60) -->
-        <h3 class="category-header">Sopas Funcionais (15 min)</h3>
-
-        <div class="card" onclick="selectItem(this)" data-name="Sopa Jeitinho de Vó" data-price="29.60">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-jeitinho-vo-lentilha-macarrao.png" alt="Vó"></div>
-            <div class="card-body"><div class="price">R$ 29,60</div><h3 class="name">Jeitinho de Vó</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Sopinha Biza Vó" data-price="29.60">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-sopinha-da-biza-vo.png" alt="Biza"></div>
-            <div class="card-body"><div class="price">R$ 29,60</div><h3 class="name">Sopinha Biza Vó</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Sopa Low Carb Funghi" data-price="29.60">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-low-carb-funghi.png" alt="LC Funghi"></div>
-            <div class="card-body"><div class="price">R$ 29,60</div><h3 class="name">Low Carb Funghi</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Sopa Low Carb Horta" data-price="29.60">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-low-carb-lentilha-vermelha.png" alt="LC Horta"></div>
-            <div class="card-body"><div class="price">R$ 29,60</div><h3 class="name">Low Carb Horta</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Sopa Detox" data-price="29.60">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-sopa-detox-ora-pro-nobis.png" alt="Detox"></div>
-            <div class="card-body"><div class="price">R$ 29,60</div><h3 class="name">Sopa Detox</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Sopa Creme Fit" data-price="29.60">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-sopa-creme-fit.png" alt="Fit"></div>
-            <div class="card-body"><div class="price">R$ 29,60</div><h3 class="name">Sopa Creme Fit</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Canja Vegana" data-price="29.60">
-            <div class="card-img"><img src="/imagens/cardapio-chefbrico-canja-veg.png" alt="Canja"></div>
-            <div class="card-body"><div class="price">R$ 29,60</div><h3 class="name">Canja Vegana</h3></div>
-        </div>
-
-        <!-- 3. REFEIÇÕES INTEGRAIS (R$ 34,80) -->
-        <h3 class="category-header">Refeições Integrais</h3>
-
-        <div class="card" onclick="selectItem(this)" data-name="Baião de Dois Integral" data-price="34.80">
-            <div class="card-img"><img src="/imagens/baiao-de-2-refeicao-pratica-chefbrico.png" alt="Baião"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Baião de Dois Integral</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Refeição Mediterrânea" data-price="34.80">
-            <div class="card-img"><img src="/imagens/Refeic%CC%A7a%CC%83o-gra%CC%83o-de-bico-arroz-vermelho-integral-chefbrico.png" alt="Mediterrânea"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Refeição Mediterrânea</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Arroz Negro com Funghi" data-price="34.80">
-            <div class="card-img"><img src="/imagens/Refeicao-arroz-negro-integral-funghi-chefbrico.png" alt="Arroz Negro"></div>
-            <div class="card-body"><div class="price">R$ 34,80</div><h3 class="name">Arroz Negro com Funghi</h3></div>
-        </div>
-
-        <!-- 4. EMPÓRIO DA CHEF (R$ 29,80) -->
-        <h3 class="category-header">Empório da Chef</h3>
-
-        <div class="card" onclick="selectItem(this)" data-name="Funghi Confitado" data-price="29.80">
-            <div class="card-img"><img src="/imagens/icone-confit-funghi-chefbrico.png" alt="Confit"></div>
-            <div class="card-body"><div class="price">R$ 29,80</div><h3 class="name">Funghi Confitado</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Pesto Manjericão" data-price="29.80">
-            <div class="card-img"><img src="/imagens/icone-pesto-manjericao-chefbrico.png" alt="Pesto"></div>
-            <div class="card-body"><div class="price">R$ 29,80</div><h3 class="name">Pesto Manjericão</h3></div>
-        </div>
-
-        <div class="card" onclick="selectItem(this)" data-name="Caponata Shiitake" data-price="29.80">
-            <div class="card-img"><img src="/imagens/icone-caponata-shiitake-chefbrico.png" alt="Caponata"></div>
-            <div class="card-body"><div class="price">R$ 29,80</div><h3 class="name">Caponata Shiitake</h3></div>
-        </div>
-
     </div>
 </div>
 
-<!-- Checkout Panel -->
-<div class="checkout-panel" id="checkout">
-    <div class="row">
-        <span>Itens da Caixa (4)</span>
-        <span id="val-box">R$ 0,00</span>
-    </div>
-    <div class="row gift-row">
-        <span>🎁 Seu Presente</span>
-        <span>GRÁTIS</span>
-    </div>
-    <div class="total-row row">
-        <span>Total Final</span>
-        <span id="val-total">R$ 0,00</span>
-    </div>
-    <button class="btn-whatsapp" onclick="finalizeOrder()">
-        ENVIAR PEDIDO NO WHATSAPP
-    </button>
+<!-- CHECKOUT -->
+<div class="float-checkout" id="checkout-bar">
+    <div>Total: <strong id="total-val">R$ 0,00</strong></div>
+    <button class="btn-zap" onclick="sendZap()">PEDIR NO WHATSAPP</button>
 </div>
 
-<!-- ============================================ -->
-<!-- 4. LÓGICA DO JOGO (JAVASCRIPT)               -->
-<!-- ============================================ -->
 <script>
-    const ZAP_NUMBER = "5561996659880"; 
     let cart = [];
-    let giftItem = null;
+    let gift = null;
+    const MAX = 4;
 
-    function selectItem(el) {
+    function clickItem(el) {
         let name = el.getAttribute('data-name');
         let price = parseFloat(el.getAttribute('data-price'));
 
-        // 1. FASE PAGOS (4 itens)
-        if (cart.length < 4) {
-            let exists = cart.findIndex(i => i.name === name);
-            if (exists > -1) {
-                cart.splice(exists, 1);
-                el.classList.remove('selected');
-            } else {
-                cart.push({name, price});
-                el.classList.add('selected');
-            }
-            render();
+        // MODO COMPRA
+        if (cart.length < MAX) {
+            cart.push({name, price});
+            el.classList.add('selected');
+            updateUI();
         } 
-        // 2. FASE PRESENTE (5º item)
-        else if (cart.length === 4 && !giftItem) {
-            if (cart.find(i => i.name === name)) {
-                alert("Este item já está na caixa. Escolha outro para ser o presente!");
-                return;
-            }
-            giftItem = {name, price};
-            el.classList.add('is-gift');
-            render();
-        }
-        // 3. TROCA DE PRESENTE
-        else if (giftItem && giftItem.name === name) {
-            giftItem = null;
-            el.classList.remove('is-gift');
-            render();
+        // MODO PRESENTE
+        else if (!gift) {
+            gift = {name, price};
+            el.classList.add('gift-selected');
+            updateUI();
         }
     }
 
-    function render() {
-        // Atualiza Slots
-        for(let i=0; i<4; i++) {
-            let s = document.getElementById('s'+i);
-            if(cart[i]) {
-                s.classList.add('filled');
-                s.innerText = "✓";
-            } else {
-                s.classList.remove('filled');
-                s.innerText = (i+1);
-            }
+    function updateUI() {
+        // Atualiza Bolinhas
+        for(let i=0; i<MAX; i++) {
+            let s = document.getElementById('s'+(i+1));
+            if(cart[i]) s.classList.add('filled');
         }
+        if(gift) document.getElementById('s5').classList.add('active');
 
-        // Atualiza Estado
-        let giftSlot = document.getElementById('gift-slot');
-        let header = document.getElementById('header');
-        let status = document.getElementById('status');
-        
-        if (cart.length === 4 && !giftItem) {
-            giftSlot.classList.add('active');
-            header.classList.add('gift-mode');
-            status.innerText = "AGORA: TOQUE NO SEU PRESENTE PRECIOSO! 🎁";
-            document.getElementById('step').innerText = "2";
-            document.getElementById('checkout').style.display = 'none';
-        } 
-        else if (giftItem) {
-            giftSlot.classList.remove('active');
-            giftSlot.classList.add('filled');
-            status.innerText = "Caixa Completa! Finalize abaixo.";
-            showCheckout();
-        } 
+        // Atualiza Status
+        let msg = document.getElementById('status-msg');
+        if(cart.length < MAX) msg.innerText = `Faltam ${MAX - cart.length} itens`;
+        else if (!gift) msg.innerText = "AGORA ESCOLHA SEU PRESENTE! 🎁";
         else {
-            giftSlot.classList.remove('active', 'filled');
-            header.classList.remove('gift-mode');
-            status.innerText = `Faltam ${4-cart.length} sabores para encher a caixa`;
-            document.getElementById('step').innerText = "1";
-            document.getElementById('checkout').style.display = 'none';
+            msg.innerText = "Caixa Completa!";
+            document.getElementById('checkout-bar').style.display = 'flex';
+            calcTotal();
         }
     }
 
-    function showCheckout() {
-        // Soma apenas os 4 itens pagos
-        let total = cart.reduce((acc, item) => acc + item.price, 0);
-        
-        document.getElementById('val-box').innerText = money(total);
-        document.getElementById('val-total').innerText = money(total);
-        document.getElementById('checkout').style.display = 'flex';
+    function calcTotal() {
+        let total = cart.reduce((sum, i) => sum + i.price, 0);
+        document.getElementById('total-val').innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
     }
 
-    function money(val) { return val.toLocaleString('pt-BR', {style:'currency', currency:'BRL'}); }
-
-    function finalizeOrder() {
-        let total = cart.reduce((acc, item) => acc + item.price, 0);
-        let listaPagos = cart.map(i => `🔸 ${i.name}`).join('\n');
-        
-        let msg = `*OLÁ! NOVO PEDIDO CHEFBOX* 👩‍🍳\n\n*ITENS DA CAIXA:*\n${listaPagos}\n\n*PRESENTE ESCOLHIDO:* 🎁\n✨ ${giftItem.name} (CORTESIA)\n\n-------------------\n*TOTAL: ${money(total)}*\n-------------------\n\nAguardo a chave PIX!`;
-        
-        window.location.href = `https://wa.me/${ZAP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    function sendZap() {
+        let itens = cart.map(i => `• ${i.name}`).join('\n');
+        let texto = `Olá! Montei minha ChefBox:\n${itens}\n\n🎁 PRESENTE: ${gift.name}\n\nAguardo o Pix!`;
+        window.location.href = `https://wa.me/5561996659880?text=${encodeURIComponent(texto)}`;
     }
 </script>
