@@ -1,116 +1,134 @@
-/* ======================================================= */
-/* === ARQUIVO CSS MESTRE v2.1 - RESTAURAÇÃO === */
-/* ======================================================= */
+/* =================================================== */
+/* === CHEFBRICO - DESIGN SYSTEM "PURELY" V5.0 === */
+/* =================================================== */
 
-/* --- 1. FONTES E VARIÁVEIS DE COR (SUA IDENTIDADE) --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
+
 :root {
-    --cor-verde-principal: #014039;
-    --cor-verde-cabecalho: #01403a;
-    --cor-bordo-secundaria: #73022c;
-    --cor-dourado-slogan: #bfb084;
-    --cor-laranja-cta: #F2811d;
-    --cor-texto-claro: #ffffff;
-    --cor-texto-escuro: #333333;
-    --cor-fundo-card: #ffffff;
-    --cor-fundo-pagina: #fdfcfb;
-    --cor-borda-suave: #f0e9df;
-    --fonte-titulos: 'Merriweather', serif;
-    --fonte-texto: 'Lato', sans-serif;
-    --fonte-cursiva: 'Dancing Script', cursive;
+    --verde-nobre: #014039;
+    --dourado: #bfb084;
+    --preto-suave: #222222;
+    --fundo-creme: #FAFAF8; /* A cor de papel de revista */
+    --branco: #ffffff;
 }
 
-/* --- 2. ESTILOS GERAIS E BASE --- */
-body { font-family: var(--fonte-texto); color: var(--cor-texto-escuro); background-color: var(--cor-fundo-pagina); margin: 0; line-height: 1.7; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
-h1, h2, h3, h4 { font-family: var(--fonte-titulos); color: var(--cor-verde-principal); }
-a { color: var(--cor-bordo-secundaria); text-decoration: none; font-weight: bold; }
-a:hover { text-decoration: underline; }
-
-/* --- 3. CABEÇALHO E NAVEGAÇÃO --- */
-.top-slogan-bar { background-color: var(--cor-dourado-slogan); padding: 6px 10px; text-align: center; }
-.top-slogan-bar p { margin: 0; font-size: 0.85em; font-weight: 500; color: white; }
-header { background-color: var(--cor-verde-cabecalho); padding: 10px 0; position: sticky; top: 0; z-index: 100; }
-.header-flex { display: flex; justify-content: space-between; align-items: center; }
-.logo img { max-height: 45px; }
-.main-nav { display: flex; align-items: center; gap: 25px; }
-.main-nav-links { display: flex; align-items: center; gap: 30px; }
-.main-nav-links a { color: var(--cor-texto-claro); }
-.header-flex .cta-button { background-color: var(--cor-laranja-cta); color: var(--cor-texto-claro) !important; padding: 10px 20px; border-radius: 8px; font-weight: bold; margin-left: 20px; }
-.mobile-nav-toggle { display: none; }
-
-/* Dropdown */
-.dropdown { position: relative; }
-.dropdown-content { display: none; position: absolute; background-color: #fdfcf7; min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); z-index: 101; border-radius: 8px; border: 1px solid var(--cor-borda-suave); padding: 8px 0; }
-.dropdown:hover .dropdown-content { display: block; }
-.dropdown-content a { color: var(--cor-verde-principal); padding: 8px 18px; display: block; font-size: 0.9em; }
-.dropdown-content a:hover { background-color: var(--cor-borda-suave); }
-
-/* --- 4. CARDS E CARROSSÉIS --- */
-.post-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-    gap: 30px; 
-    margin: 40px 0; 
-}
-.card { 
-    background-color: var(--cor-fundo-card); 
-    border: 1px solid var(--cor-borda-suave); 
-    border-radius: 16px; 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.07); 
-    text-decoration: none; 
-    color: var(--cor-texto-escuro); 
-    display: flex; 
-    flex-direction: column; 
-    overflow: hidden; 
-    transition: transform 0.3s, box-shadow 0.3s; 
-}
-.card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-.card-image { width: 100%; height: 200px; object-fit: cover; }
-.card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-.card-content h3 { margin-top: 0; margin-bottom: 10px; font-size: 1.2em; }
-
-/* --- 5. MOLDURAS E HERO (RECEITAS) --- */
-.article-hero-image-container, .hero-card {
-    max-width: 800px; 
-    margin: 30px auto; 
-    background-color: #ffffff; 
-    border: 1px solid var(--cor-borda-suave); 
-    border-radius: 16px; 
-    padding: 20px; 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.07); 
-}
-.article-hero-image-container img, .hero-card img { 
-    width: 100%; height: auto; border-radius: 8px; display: block; 
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--preto-suave);
+    background-color: var(--fundo-creme);
+    margin: 0;
+    line-height: 1.6;
 }
 
-.recipe-title-container { text-align: center; margin: 40px 0; }
-.recipe-title-container h1 { font-size: 2.5rem; margin-bottom: 10px; }
-.recipe-subtitle { font-family: var(--fonte-cursiva); font-size: 1.5rem; color: var(--cor-dourado-slogan); }
-
-/* --- 6. COMPONENTES ESPECIAIS --- */
-.direct-answer-box {
-    background-color: #f9f7f3; border-left: 4px solid var(--cor-verde-principal);
-    padding: 1.5em; margin: 2em auto; border-radius: 8px;
-    max-width: 800px;
+/* --- HEADER EDITORIAL (Branco e Fixo) --- */
+.top-slogan-bar {
+    background-color: var(--dourado);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-.testimonial-box { 
-    text-align: center; margin: 50px auto; max-width: 80%; 
-    padding: 20px; border-top: 1px solid var(--cor-borda-suave); border-bottom: 1px solid var(--cor-borda-suave);
+header {
+    background-color: rgba(255, 255, 255, 0.95); /* Branco levemente transparente */
+    backdrop-filter: blur(5px);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #eee;
 }
-.testimonial-box blockquote p { font-family: var(--fonte-cursiva); font-size: 1.4em; color: var(--cor-verde-principal); }
 
-/* FAQ Acordeão */
-.faq-item-accordion { border-bottom: 1px solid var(--cor-borda-suave); }
-.accordion-header { width: 100%; text-align: left; padding: 15px 0; background: none; border: none; font-weight: bold; cursor: pointer; }
-.accordion-content { display: none; padding-bottom: 15px; }
-.accordion-header.active + .accordion-content { display: block; }
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-/* --- 7. JOGO CHEFBOX --- */
-.game-header { border-bottom: 4px solid var(--cor-dourado-slogan) !important; background: white; padding: 20px; text-align: center; }
-.slot.filled { background: var(--cor-verde-principal) !important; color: white; }
-.slot.gift-slot { color: var(--cor-laranja-cta) !important; border-color: var(--cor-laranja-cta) !important; }
+.logo-center img { height: 60px; }
 
-/* --- 8. RODAPÉ --- */
-footer { padding: 30px 20px; margin-top: 40px; border-top: 1px solid var(--cor-borda-suave); background: var(--cor-verde-principal); color: white; }
-.footer-grid a { color: #ddd; }
+.nav-link {
+    color: var(--verde-nobre);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover { color: var(--dourado); }
+.nav-link.highlight { color: var(--dourado); border-bottom: 2px solid var(--dourado); }
+
+.cart-icon { font-size: 1.2rem; text-decoration: none; margin-left: 15px; }
+
+/* --- RODAPÉ LIMPO --- */
+footer {
+    background-color: white;
+    border-top: 1px solid #e5e5e5;
+    padding: 80px 0 40px;
+    margin-top: 80px;
+}
+
+.footer-grid-clean {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    text-align: left;
+}
+
+.footer-col-clean h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--verde-nobre);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.footer-col-clean a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+.footer-col-clean a:hover { color: var(--dourado); }
+
+.btn-newsletter {
+    display: inline-block;
+    background: var(--verde-nobre);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* --- AJUSTES GERAIS --- */
+h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--verde-nobre); }
+
+/* Responsivo */
+@media(max-width: 768px) {
+    .desktop-only { display: none; }
+    .header-flex { justify-content: space-between; }
+    .nav-left, .nav-right { display: none; } /* Em mobile precisa do JS do menu */
+    .mobile-nav-toggle { display: block; font-size: 1.5rem; background: none; border: none; }
+}
+@media(min-width: 769px) {
+    .mobile-nav-toggle { display: none; }
+}
