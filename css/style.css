@@ -666,3 +666,171 @@ footer { padding: 30px 20px; margin-top: 40px; border-top: 1px solid var(--cor-b
     color: var(--cor-primaria); /* Cor principal ao passar o mouse */
 }
 
+/* ======================================================= */
+/* === ESTILO MESTRE V3.0 - IDENTIDADE CHEFBRICO REAL === */
+/* ======================================================= */
+
+/* 1. VARIÁVEIS DE COR (A SUA PALETA OFICIAL) */
+:root {
+    /* Cores Principais */
+    --verde-chef: #014039;   /* Fundo do Menu e Rodapé */
+    --dourado-chef: #bfb084; /* Detalhes, Botões Secundários */
+    
+    /* Cores Secundárias */
+    --vinho-chef: #73022c;   /* Destaques, Preço Promocional */
+    --laranja-chef: #F2811d; /* Botão de Ação Principal (CTA) */
+    
+    /* Cores de Base */
+    --fundo-creme: #f9f7f2;  /* Fundo do site (mais suave que branco) */
+    --texto-escuro: #333333; /* Texto padrão */
+    --branco: #ffffff;
+}
+
+/* 2. ESTRUTURA GERAL */
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--texto-escuro);
+    background-color: var(--fundo-creme);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* 3. O NOVO CABEÇALHO (VERDE CHEFBRICO) */
+header {
+    background-color: var(--verde-chef);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Logo (Ajuste para ficar bom no fundo verde) */
+.logo img {
+    height: 50px;
+    filter: brightness(0) invert(1); /* Torna o logo branco se for preto */
+}
+
+/* Links do Menu */
+.main-nav-links a {
+    color: var(--dourado-chef); /* Texto Dourado */
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 25px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.main-nav-links a:hover {
+    color: var(--branco);
+}
+
+/* Botão do Menu (Ir para Loja) */
+.cta-button-nav {
+    background-color: var(--laranja-chef);
+    color: white !important;
+    padding: 10px 25px;
+    border-radius: 4px; /* Borda mais quadrada estilo ChefBrico */
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+.cta-button-nav:hover {
+    transform: scale(1.05);
+    background-color: #d97216;
+}
+
+/* 4. RODAPÉ (VERDE CHEFBRICO) */
+footer {
+    background-color: var(--verde-chef);
+    color: white;
+    padding: 60px 20px;
+    margin-top: 60px;
+}
+
+footer h3 {
+    color: var(--dourado-chef);
+    border-bottom: 2px solid var(--vinho-chef);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+footer a {
+    color: #ccc;
+    text-decoration: none;
+}
+footer a:hover {
+    color: var(--laranja-chef);
+}
+
+/* 5. AJUSTES NOS CARDS E BOTÕES DO SITE */
+.product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+}
+
+.product-card:hover {
+    border-color: var(--dourado-chef);
+    box-shadow: 0 10px 20px rgba(1, 64, 57, 0.1);
+}
+
+.product-card h3 {
+    color: var(--verde-chef);
+    font-family: 'Merriweather', serif;
+}
+
+.cta-link {
+    color: var(--vinho-chef);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+/* Botões Principais nas Páginas */
+.cta-button {
+    background-color: var(--verde-chef);
+    color: white;
+    border-radius: 50px;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+.cta-button:hover {
+    background-color: var(--vinho-chef);
+}
+
+/* Preço */
+.price-highlight {
+    color: var(--verde-chef);
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
+/* JOGO CHEFBOX (Ajuste de Cores) */
+.game-header {
+    border-bottom: 4px solid var(--dourado-chef) !important;
+}
+.slot.filled {
+    background: var(--verde-chef) !important;
+    border-color: var(--verde-chef) !important;
+}
+.slot.gift-slot {
+    color: var(--laranja-chef) !important;
+    border-color: var(--laranja-chef) !important;
+}
+.slot.gift-slot.filled {
+    background: var(--laranja-chef) !important;
+}
