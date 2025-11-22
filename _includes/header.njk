@@ -1,26 +1,33 @@
-<div class="top-slogan-bar" style="background-color: #bfb084; color: white; text-align: center; padding: 8px; font-size: 0.85rem; letter-spacing: 1px;">
-    COMIDA DE VERDADE, SEM TODA AQUELA CONFUSÃO NA COZINHA!
+<!-- BARRA DE AVISO FINA (Dourada) -->
+<div class="top-slogan-bar">
+    <p>FRETE GRÁTIS ACIMA DE R$ 132,00 (DF) | USE O CÓDIGO: CHEF10</p>
 </div>
 
-<header style="background-color: #014039; padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
-        <!-- LOGO -->
-        <a href="/" class="logo">
-            <img src="/imagens/logo.png" alt="ChefBrico" style="height: 50px; filter: brightness(0) invert(1);">
-        </a>
-
-        <!-- NAVEGAÇÃO -->
-        <nav class="main-nav" style="display: flex; align-items: center; gap: 30px;">
-            <a href="/comida-de-verdade/" style="color: #bfb084; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">A Marca</a>
-            <a href="/receitas/" style="color: #bfb084; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">Receitas</a>
-            <a href="/chefbox/" style="color: #F2811d; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">ChefBox (Loja)</a>
-            <a href="/onde-encontrar/" style="color: #bfb084; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">Onde Encontrar</a>
-            <a href="/clube/" style="color: #bfb084; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; font-weight: bold;">Clube</a>
+<!-- CABEÇALHO BRANCO EDITORIAL -->
+<header>
+    <div class="container header-flex">
+        
+        <!-- MENU ESQUERDA (EDITORIAL) -->
+        <nav class="nav-left desktop-only">
+            <a href="/receitas/" class="nav-link">RECEITAS</a>
+            <a href="/comida-de-verdade/" class="nav-link">A CHEF</a>
+            <a href="/onde-encontrar/" class="nav-link">ONDE ENCONTRAR</a>
         </nav>
 
-        <!-- BOTÃO DE AÇÃO -->
-        <a href="/chefbox/" class="cta-button" style="background-color: #F2811d; color: white; padding: 10px 25px; border-radius: 4px; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.85rem;">
-            IR PARA A LOJA
+        <!-- LOGO CENTRAL (O Coração) -->
+        <a href="/" class="logo-center">
+            <!-- Certifique-se que a imagem do logo existe! -->
+            <img src="/imagens/logo.png" alt="ChefBrico">
         </a>
+
+        <!-- MENU DIREITA (LOJA) -->
+        <nav class="nav-right">
+            <a href="/chefbox/" class="nav-link highlight">CHEFBOX (LOJA)</a>
+            <a href="/clube/" class="nav-link desktop-only">CLUBE</a>
+            <a href="/chefbox/" class="cart-icon">🛒</a>
+        </nav>
+
+        <!-- MENU MOBILE (Hambúrguer) -->
+        <button class="mobile-nav-toggle" aria-label="Menu">☰</button>
     </div>
 </header>
