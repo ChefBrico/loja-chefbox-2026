@@ -1,21 +1,20 @@
 {
   "domain": "https://gourmetpratico.com.br",
   "organization": {
-    "name": "Gourmet Prático",
-    "legalName": "ChefBrico",
+    "name": "ChefBrico",
+    "legalName": "ChefBrico Alimentos Ltda",
+    "slogan": "Simples como precisa ser, delicioso como você merece.",
+    "description": "Culinária saudável e artesanal, sem desperdício de tempo e ingredientes. Vencedora do Prêmio Sebrae Mulher de Negócios.",
     "url": "https://gourmetpratico.com.br",
     "logo": "/imagens/logo.png",
-    "telephone": "+5561996659880",
-    "whatsapp": "https://wa.me/5561996659880",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Brasília",
-      "addressRegion": "DF",
-      "addressCountry": "BR"
-    },
     "founder": {
       "@type": "Person",
       "name": "Maria Conceição"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+5561996659880",
+      "contactType": "customer service"
     }
   }
 }
