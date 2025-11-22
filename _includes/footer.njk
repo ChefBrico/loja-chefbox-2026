@@ -1,24 +1,46 @@
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div>
-                <h3>Gourmet Prático</h3>
-                <p>Comida de verdade, sem bagunça.</p>
+            
+            <!-- COLUNA 1: A MARCA -->
+            <div class="footer-col">
+                <img src="/imagens/logo.png" alt="ChefBrico" style="height: 40px; filter: brightness(0) invert(1); margin-bottom: 15px;">
+                <p>A revolução afetiva na sua cozinha. Método Gourmet Prático por Maria Conceição.</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/chefbrico" target="_blank">Instagram</a> |
+                    <a href="https://wa.me/5561996659880" target="_blank">WhatsApp</a>
+                </div>
             </div>
-            <div>
-                <h3>Links Rápidos</h3>
-                {% for item in navigation %}
-                <a href="{{ item.url }}" style="display:block; margin-bottom:5px;">{{ item.text }}</a>
-                {% endfor %}
+
+            <!-- COLUNA 2: EXPLORE -->
+            <div class="footer-col">
+                <h3>Explore</h3>
+                <a href="/receitas/">Cardápio Completo</a>
+                <a href="/chefbox/">Monte sua Caixa</a>
+                <a href="/comida-de-verdade/">Nossa História</a>
+                <a href="/clube/">Seja Membro do Clube</a>
             </div>
-            <div>
-                <h3>Contato</h3>
+
+            <!-- COLUNA 3: AJUDA -->
+            <div class="footer-col">
+                <h3>Suporte</h3>
+                <a href="/faq/">Perguntas Frequentes</a>
+                <a href="/onde-encontrar/">Pontos de Venda</a>
+                <a href="https://wa.me/5561996659880">Fale com a Chef</a>
+            </div>
+
+            <!-- COLUNA 4: LEGAL & CONFIANÇA -->
+            <div class="footer-col">
+                <h3>Segurança</h3>
+                <p>CNPJ: 36.014.833/0001-59</p>
                 <p>Brasília - DF</p>
-                <p>WhatsApp: (61) 99665-9880</p>
+                <p style="margin-top: 10px; color: var(--cor-dourado-slogan);">★ Prêmio Sebrae Mulher de Negócios</p>
             </div>
+
         </div>
+
         <div class="footer-credit">
-            <p>&copy; 2025 ChefBrico. Todos os direitos reservados.</p>
+            <p>&copy; 2025 ChefBrico - Gourmet Prático. Todos os direitos reservados.</p>
         </div>
     </div>
 </footer>
