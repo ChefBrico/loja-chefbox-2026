@@ -1,12 +1,10 @@
 ---
 layout: base.njk
-title: Gourmet Prático | Comida de Verdade, Afeto e Praticidade
-description: A revolução afetiva na sua cozinha. Método Gourmet Prático por Maria Conceição: refeições saudáveis, 100% naturais e sem desperdício. Monte sua ChefBox.
+title: Gourmet Prático | A Revista da Comida de Verdade
+description: O Hub de A-Commerce da Chef Maria Conceição. Receitas gourmet, ingredientes naturais e a exclusiva ChefBox.
 ---
 
-<!-- ============================================ -->
-<!-- 1. CÉREBRO DO ROBÔ (SCHEMA EEAT MÁXIMO)      -->
-<!-- ============================================ -->
+<!-- SCHEMA (Para o Robô - Mantido e Otimizado) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -16,230 +14,158 @@ description: A revolução afetiva na sua cozinha. Método Gourmet Prático por 
   "publisher": {
     "@type": "Organization",
     "name": "ChefBrico",
-    "slogan": "Simples como precisa ser, delicioso como você merece.",
-    "founder": {
-      "@type": "Person",
-      "name": "Maria Conceição",
-      "jobTitle": "Psicóloga e Chef de Criação",
-      "award": "Vencedora do Prêmio Sebrae Mulher de Negócios DF",
-      "description": "Criadora do Método Gourmet Prático, unindo psicologia, nutrição e zero desperdício."
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+5561996659880",
-      "contactType": "customer service"
-    }
+    "logo": { "@type": "ImageObject", "url": "https://gourmetpratico.com.br/imagens/logo.png" }
   }
 }
 </script>
 
-<!-- ============================================ -->
-<!-- 2. ESTILO (A ALMA DA MARCA)                  -->
-<!-- ============================================ -->
+<!-- O NOVO VISUAL (Para o Humano) -->
 <style>
-    /* Fontes e Cores da Marca */
-    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@700&display=swap');
+    /* Fontes de Revista */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
 
     :root {
-        --verde-chef: #014039;
-        --dourado-chef: #bfb084;
-        --vinho-chef: #73022c;
-        --laranja-chef: #F2811d;
-        --creme: #fdfcf7;
+        --cor-fundo: #FAFAF5; /* Creme suave (Purely Style) */
+        --cor-texto: #333;
+        --verde-chef: #2F4F4F;
+        --dourado: #C5A059;
     }
 
-    /* HERO SECTION (A Promessa) */
-    .hero {
-        position: relative;
-        min-height: 85vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    /* HERO SECTION - A CAPA DA REVISTA */
+    .hero-magazine {
         text-align: center;
-        background-color: var(--verde-chef);
+        padding: 80px 20px;
+        background-color: var(--cor-fundo);
+        background-image: url('/imagens/fundo-textura-papel.png'); /* Opcional */
+    }
+
+    .hero-super-title {
+        font-family: 'Playfair Display', serif; /* Fonte de Revista */
+        font-size: 4rem;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        color: var(--verde-chef);
+    }
+
+    .hero-subtitle {
+        font-family: 'Lato', sans-serif;
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto 40px auto;
+        letter-spacing: 1px;
+    }
+
+    .btn-magazine {
+        background-color: var(--dourado);
         color: white;
-        overflow: hidden;
+        padding: 15px 40px;
+        text-decoration: none;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-radius: 0px; /* Botão quadrado é mais chique */
+        transition: all 0.3s;
+        border: 1px solid var(--dourado);
+    }
+
+    .btn-magazine:hover {
+        background-color: white;
+        color: var(--dourado);
+    }
+
+    /* GRID DE CATEGORIAS (Estilo Editorial) */
+    .editorial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 60px auto;
         padding: 0 20px;
     }
-    .hero-bg {
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        object-fit: cover; opacity: 0.35; z-index: 0;
-    }
-    .hero-content { position: relative; z-index: 1; max-width: 900px; animation: fadeInUp 1s ease-out; }
 
-    h1.hero-title {
-        font-family: 'Merriweather', serif;
-        font-size: 3.5rem;
-        line-height: 1.2;
-        margin-bottom: 15px;
-        color: white;
-    }
-    
-    p.hero-tagline {
-        font-family: 'Dancing Script', cursive;
-        font-size: 2rem;
-        color: var(--dourado-chef);
-        margin-bottom: 30px;
-    }
-
-    /* BOTÕES */
-    .btn-hero {
-        display: inline-block;
-        padding: 18px 40px;
-        border-radius: 50px;
+    .editorial-card {
+        text-align: center;
         text-decoration: none;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: all 0.3s;
-        margin: 10px;
-        font-size: 0.9rem;
-    }
-    .btn-primary { background-color: var(--dourado-chef); color: var(--verde-chef); }
-    .btn-primary:hover { background-color: white; transform: translateY(-3px); }
-    .btn-outline { border: 2px solid white; color: white; background: transparent; }
-    .btn-outline:hover { background: white; color: var(--verde-chef); }
-
-    /* SEÇÃO MANIFESTO (O Coração) */
-    .manifesto-section { padding: 80px 20px; background-color: var(--creme); text-align: center; }
-    .manifesto-box { max-width: 800px; margin: 0 auto; }
-    .manifesto-title { font-family: 'Merriweather', serif; color: var(--verde-chef); font-size: 2.2rem; margin-bottom: 30px; }
-    .manifesto-text { font-family: 'Lato', sans-serif; font-size: 1.15rem; color: #555; line-height: 1.8; margin-bottom: 20px; }
-    
-    .maria-avatar {
-        width: 160px; height: 160px; border-radius: 50%; 
-        border: 4px solid var(--dourado-chef); object-fit: cover;
-        margin-top: -120px; position: relative; z-index: 2;
-        background: white; padding: 5px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    /* PERSONAS (Quem é você?) */
-    .personas-section { padding: 60px 20px; background: white; }
-    .grid-personas { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 40px auto 0; }
-    
-    .persona-card {
-        background: var(--creme); border: 1px solid #eee;
-        padding: 30px; border-radius: 15px; text-align: center;
+        color: var(--cor-texto);
         transition: transform 0.3s;
     }
-    .persona-card:hover { transform: translateY(-5px); border-color: var(--dourado-chef); }
-    .persona-icon { font-size: 2.5rem; display: block; margin-bottom: 15px; }
-    .persona-title { color: var(--vinho-chef); font-weight: bold; font-size: 1.3rem; margin-bottom: 10px; font-family: 'Merriweather', serif; }
-    .persona-desc { font-size: 0.95rem; color: #666; margin-bottom: 20px; }
-    .persona-link { color: var(--laranja-chef); font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; }
+    .editorial-card:hover { transform: translateY(-5px); }
 
-    /* CHEFBOX BANNER (Venda) */
-    .chefbox-banner {
-        background: var(--verde-chef); color: white;
-        padding: 80px 20px; text-align: center;
+    .editorial-img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        margin-bottom: 20px;
+        /* A Purely usa fotos 'cortadas' sem borda */
+    }
+
+    .editorial-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        margin: 10px 0;
+        color: var(--verde-chef);
+    }
+
+    .editorial-link {
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        border-bottom: 1px solid var(--dourado);
+        padding-bottom: 3px;
+    }
+
+    /* SEÇÃO CHEFBOX (O Destaque) */
+    .chefbox-promo {
+        background-color: var(--verde-chef);
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
         margin-top: 60px;
-        background-image: url('/imagens/fundo-textura.png'); /* Opcional */
     }
-    .chefbox-tag {
-        background: var(--vinho-chef); color: white; padding: 5px 15px;
-        border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
-        display: inline-block; margin-bottom: 15px;
+    .chefbox-promo h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        color: white;
     }
-
-    /* RODAPÉ DE AUTORIDADE */
-    .trust-footer { text-align: center; padding: 40px; background: #f4f4f4; color: #777; font-size: 0.9rem; }
-
-    /* RESPONSIVO */
-    @media(max-width: 768px) {
-        h1.hero-title { font-size: 2.5rem; }
-        .hero-tagline { font-size: 1.5rem; }
-    }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 
-<!-- 1. HERO SECTION -->
-<section class="hero">
-    <!-- FOTO DE IMPACTO (Produto em uso) -->
-    <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" class="hero-bg" alt="Mesa Gourmet ChefBrico">
-    
-    <div class="hero-content">
-        <h1 class="hero-title">Transforme a Pressa<br>em <strong>Presença.</strong></h1>
-        <p class="hero-tagline">"Simples como precisa ser, delicioso como você merece."</p>
-        
-        <div style="margin-top: 30px;">
-            <a href="/chefbox/" class="btn-hero btn-primary">MONTAR MINHA CAIXA</a>
-            <a href="/receitas/" class="btn-hero btn-outline">VER O CARDÁPIO</a>
-        </div>
-    </div>
-</section>
+<!-- CONTEÚDO VISUAL -->
+<div class="hero-magazine">
+    <h1 class="hero-super-title">Comida de Verdade.<br>Sem a Bagunça.</h1>
+    <p class="hero-subtitle">O sabor da Itália na sua mesa em 18 minutos. Método artesanal, ingredientes naturais e zero desperdício.</p>
+    <a href="/chefbox/" class="btn-magazine">MONTAR MINHA CAIXA</a>
+</div>
 
-<!-- 2. O MANIFESTO (Maria Conceição) -->
-<section class="manifesto-section">
-    <img src="/imagens/maria-conceicao.jpg" alt="Chef Maria Conceição" class="maria-avatar">
-    
-    <div class="manifesto-box">
-        <p style="text-transform:uppercase; color:var(--dourado-chef); font-weight:bold; letter-spacing:2px; margin-top:20px;">Sobre Nós</p>
-        <h2 class="manifesto-title">Aqui tem força feminina, afeto e sabor.</h2>
-        
-        <div class="manifesto-text">
-            <p>"Somos feitas de ancestralidade. Acreditamos no poder da pausa. No compasso apressado da humanidade, valorizamos o instante em que as pessoas se encontram e a panela aquece."</p>
-            <p>O <strong>Método Gourmet Prático</strong> é a minha promessa: uma culinária saudável, sem desperdício de tempo e ingredientes na cozinha. Do meu coração para a sua mesa.</p>
-        </div>
-        
-        <a href="/comida-de-verdade/" style="color:var(--vinho-chef); font-weight:bold; text-decoration:none; border-bottom:2px solid var(--vinho-chef);">Ler Minha História Completa →</a>
-    </div>
-</section>
+<!-- GRID EDITORIAL (As Categorias como Artigos) -->
+<div class="editorial-grid">
+    <!-- Card 1 -->
+    <a href="/receitas/risotos/" class="editorial-card">
+        <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" class="editorial-img">
+        <h3 class="editorial-title">Os Risotos</h3>
+        <span class="editorial-link">Ler & Comprar</span>
+    </a>
 
-<!-- 3. QUEM É VOCÊ NA COZINHA? (Personas) -->
-<section class="personas-section">
-    <div style="text-align:center;">
-        <h2 style="color:var(--verde-chef); font-family:'Merriweather', serif;">Criado para o Seu Momento</h2>
-        <p style="color:#777;">Descubra a solução perfeita para o seu estilo de vida.</p>
-    </div>
+    <!-- Card 2 -->
+    <a href="/receitas/sopas-funcionais/" class="editorial-card">
+        <img src="/imagens/sopinha-detox-chefbrico.png" class="editorial-img">
+        <h3 class="editorial-title">Sopas Funcionais</h3>
+        <span class="editorial-link">Ler & Comprar</span>
+    </a>
 
-    <div class="grid-personas">
-        <!-- Solteiro Prático -->
-        <div class="persona-card">
-            <span class="persona-icon">⚡</span>
-            <h3 class="persona-title">Rotina Intensa?</h3>
-            <p class="persona-desc">Para você que vive correndo mas não abre mão de comer bem. Soluções que otimizam seu tempo com propósito.</p>
-            <a href="/receitas/solucoes/jantar-rapido/" class="persona-link">Ver Jantares Rápidos →</a>
-        </div>
+    <!-- Card 3 -->
+    <a href="/receitas/emporio-da-chef/" class="editorial-card">
+        <img src="/imagens/icone-confit-funghi-chefbrico.png" class="editorial-img">
+        <h3 class="editorial-title">Empório da Chef</h3>
+        <span class="editorial-link">Ler & Comprar</span>
+    </a>
+</div>
 
-        <!-- Casal -->
-        <div class="persona-card">
-            <span class="persona-icon">🍷</span>
-            <h3 class="persona-title">Jantar a Dois?</h3>
-            <p class="persona-desc">Cozinhar juntos é um gesto de amor. Ingredientes gourmet para transformar a cozinha em cenário de romance.</p>
-            <a href="/receitas/solucoes/momento-a-dois/" class="persona-link">Ver Opções Românticas →</a>
-        </div>
-
-        <!-- Vida Funcional -->
-        <div class="persona-card">
-            <span class="persona-icon">💪</span>
-            <h3 class="persona-title">Foco na Saúde?</h3>
-            <p class="persona-desc">Para quem organiza a vida ao redor do bem-estar. Rótulos limpos, proteína vegetal e nutrição real.</p>
-            <a href="/receitas/solucoes/dieta-performance/" class="persona-link">Ver Linha Fit/Detox →</a>
-        </div>
-
-        <!-- Trilheiro/Viajante -->
-        <div class="persona-card">
-            <span class="persona-icon">🎒</span>
-            <h3 class="persona-title">Pé na Estrada?</h3>
-            <p class="persona-desc">Leveza na mochila e sabor de casa no acampamento. Comida desidratada que não pesa e nutre a aventura.</p>
-            <a href="/receitas/solucoes/trilha-viagem/" class="persona-link">Ver Kit Viagem →</a>
-        </div>
-    </div>
-</section>
-
-<!-- 4. O JOGO CHEFBOX (A-Commerce) -->
-<section class="chefbox-banner">
-    <span class="chefbox-tag">Exclusivo Online</span>
-    <h2 style="font-family:'Merriweather', serif; font-size:2.5rem; margin-bottom:20px;">Conheça a ChefBox</h2>
-    <p style="font-size:1.3rem; max-width:600px; margin:0 auto 40px; font-weight:300;">Não é apenas um kit. É um convite à sua criatividade culinária. Escolha 4 sabores e nós te damos o 5º de presente.</p>
-    
-    <a href="/chefbox/" class="btn-hero" style="background:white; color:var(--verde-chef);">JOGAR E COMPRAR 🎁</a>
-</section>
-
-<!-- 5. SELOS DE CONFIANÇA -->
-<div class="trust-footer">
-    <p style="text-transform:uppercase; letter-spacing:2px; font-weight:bold; margin-bottom:10px;">ChefBrico • Gourmet Prático</p>
-    <p>Vencedora do Prêmio Sebrae Mulher de Negócios DF</p>
-    <p>CNPJ: 36.014.833/0001-59 • Brasília - DF</p>
+<!-- CHAMADA PARA AÇÃO (ChefBox) -->
+<div class="chefbox-promo">
+    <h2>Conheça a ChefBox</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 30px;">A experiência de compra gamificada. Escolha 4 sabores e ganhe o 5º de presente.</p>
+    <a href="/chefbox/" class="btn-magazine" style="background: white; color: var(--verde-chef); border-color: white;">JOGAR AGORA</a>
 </div>
