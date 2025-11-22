@@ -1,100 +1,76 @@
 ---
 layout: base.njk
 title: Gourmet Prático | A Revista da Comida de Verdade
-description: O Hub de A-Commerce da Chef Maria Conceição. Receitas gourmet, ingredientes naturais e a exclusiva ChefBox. Monte sua caixa e ganhe presentes.
+description: O Hub de A-Commerce da Chef Maria Conceição. Receitas gourmet, ingredientes naturais e a exclusiva ChefBox.
 ---
 
-<!-- SCHEMA (CÉREBRO) -->
+<!-- SCHEMA DO SITE -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Gourmet Prático",
   "url": "https://gourmetpratico.com.br",
-  "publisher": { "@type": "Organization", "name": "ChefBrico" }
+  "publisher": {
+    "@type": "Organization",
+    "name": "ChefBrico",
+    "logo": { "@type": "ImageObject", "url": "https://gourmetpratico.com.br/imagens/logo.png" }
+  }
 }
 </script>
 
-<!-- HERO SECTION (A CAPA) -->
-<section style="position: relative; height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden;">
-    
-    <!-- FOTO DE FUNDO -->
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
-        <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Mesa Gourmet">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(1,64,57,0.8), rgba(1,64,57,0.6));"></div>
+<!-- CONTEÚDO VISUAL -->
+<div class="hero-magazine">
+    <h1 class="hero-super-title">Comida de Verdade.<br>Sem a Bagunça.</h1>
+    <p class="hero-subtitle">O sabor da Itália na sua mesa em 18 minutos. Método artesanal, ingredientes naturais e zero desperdício.</p>
+    <a href="/chefbox/" class="cta-button">MONTAR MINHA CAIXA</a>
+</div>
+
+<!-- GRID EDITORIAL (As Categorias como Artigos) -->
+<div class="container">
+    <div class="post-grid">
+        <!-- Card 1 -->
+        <a href="/receitas/risotos/" class="card">
+            <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" class="card-image">
+            <div class="card-content">
+                <h3 class="editorial-title">Os Risotos</h3>
+                <span class="cta-link">Ver Receitas →</span>
+            </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="/receitas/sopas-funcionais/" class="card">
+            <img src="/imagens/sopinha-detox-chefbrico.png" class="card-image">
+            <div class="card-content">
+                <h3 class="editorial-title">Sopas Funcionais</h3>
+                <span class="cta-link">Ver Receitas →</span>
+            </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="/receitas/emporio-da-chef/" class="card">
+            <img src="/imagens/icone-confit-funghi-chefbrico.png" class="card-image">
+            <div class="card-content">
+                <h3 class="editorial-title">Empório da Chef</h3>
+                <span class="cta-link">Ver Produtos →</span>
+            </div>
+        </a>
     </div>
+</div>
 
-    <!-- CONTEÚDO -->
-    <div class="container" style="max-width: 800px; position: relative; z-index: 2; padding: 20px;">
-        <p style="font-family: 'Lato', sans-serif; letter-spacing: 3px; color: #bfb084; text-transform: uppercase; margin-bottom: 20px; font-weight: bold;">Método Gourmet Prático</p>
-        
-        <h1 style="font-family: 'Merriweather', serif; font-size: 4rem; line-height: 1.1; margin-bottom: 30px; text-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-            Comida de Verdade.<br>
-            <span style="color: #bfb084;">Sem a Bagunça.</span>
-        </h1>
-        
-        <p style="font-family: 'Lato', sans-serif; font-size: 1.3rem; line-height: 1.6; margin-bottom: 40px; color: #f9f7f2;">
-            O sabor da Itália na sua mesa em 18 minutos. Método artesanal, ingredientes naturais e zero desperdício.
-        </p>
-        
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <a href="/chefbox/" style="background-color: #bfb084; color: #014039; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: transform 0.2s;">
-                MONTAR MINHA CAIXA
-            </a>
-            <a href="/receitas/" style="border: 2px solid white; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
-                EXPLORAR O CARDÁPIO
-            </a>
-        </div>
+<!-- CHAMADA PARA AÇÃO (ChefBox) -->
+<div style="background-color: var(--cor-verde-principal); color: white; padding: 80px 20px; text-align: center; margin-top: 60px;">
+    <h2 style="color: white; font-family: 'Merriweather', serif; font-size: 2.5rem;">Conheça a ChefBox</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin: 0 auto 30px;">A experiência de compra gamificada. Escolha 4 sabores e ganhe o 5º de presente.</p>
+    <a href="/chefbox/" class="cta-button" style="background: white; color: var(--cor-verde-principal);">JOGAR AGORA</a>
+</div>
+
+<!-- SOBRE A CHEF -->
+<div class="author-box container">
+    <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" class="author-image">
+    <div class="author-info">
+        <h3>Chef Maria Conceição</h3>
+        <p>"Acredito que cozinhar deve ser um ato de amor, não de sacrifício. O Método Gourmet Prático foi criado para libertar você da cozinha."</p>
+        <p style="color: var(--cor-dourado-slogan); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; margin-top: 10px;">Vencedora do Prêmio Sebrae Mulher de Negócios</p>
     </div>
-</section>
-
-<!-- VITRINE EDITORIAL -->
-<section style="padding: 80px 20px; background-color: #f9f7f2;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="text-align: center; color: #014039; font-family: 'Merriweather', serif; font-size: 2.5rem; margin-bottom: 60px;">Explore Nossos Mundos</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
-            
-            <!-- Card 1 -->
-            <a href="/receitas/risotos/" style="text-decoration: none; color: #333; text-align: center;">
-                <div style="height: 300px; overflow: hidden; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
-                    <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-                <h3 style="font-family: 'Merriweather', serif; color: #014039; margin-bottom: 5px;">Clássicos Italianos</h3>
-                <p style="color: #bfb084; font-weight: bold; text-transform: uppercase; font-size: 0.9rem;">Risotos do Mundo &rarr;</p>
-            </a>
-
-            <!-- Card 2 -->
-            <a href="/receitas/sopas-funcionais/" style="text-decoration: none; color: #333; text-align: center;">
-                <div style="height: 300px; overflow: hidden; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
-                    <img src="/imagens/sopinha-detox-chefbrico.png" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-                <h3 style="font-family: 'Merriweather', serif; color: #014039; margin-bottom: 5px;">Saúde & Leveza</h3>
-                <p style="color: #bfb084; font-weight: bold; text-transform: uppercase; font-size: 0.9rem;">Sopas Funcionais &rarr;</p>
-            </a>
-
-            <!-- Card 3 -->
-            <a href="/chefbox/" style="text-decoration: none; color: #333; text-align: center;">
-                <div style="height: 300px; overflow: hidden; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white; display: flex; align-items: center; justify-content: center;">
-                    <img src="/imagens/uma-mazinha-icone-chefbrico.png" style="width: 60%; height: auto;">
-                </div>
-                <h3 style="font-family: 'Merriweather', serif; color: #014039; margin-bottom: 5px;">Gameficação</h3>
-                <p style="color: #73022c; font-weight: bold; text-transform: uppercase; font-size: 0.9rem;">Jogue ChefBox (4+1) &rarr;</p>
-            </a>
-
-        </div>
-    </div>
-</section>
-
-<!-- DEPOIMENTO E AUTORIDADE -->
-<section style="background-color: white; padding: 80px 20px; text-align: center;">
-    <div class="container" style="max-width: 800px; margin: 0 auto;">
-        <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #bfb084; margin-bottom: 30px;">
-        
-        <h2 style="font-family: 'Merriweather', serif; color: #014039; font-size: 2rem; margin-bottom: 20px;">Chef Maria Conceição</h2>
-        <p style="font-style: italic; color: #555; font-size: 1.2rem; margin-bottom: 30px;">
-            "Acredito que cozinhar deve ser um ato de amor, não de sacrifício. O Método Gourmet Prático foi criado para libertar você da cozinha, sem abrir mão do sabor e da saúde."
-        </p>
-        <p style="color: #bfb084; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Vencedora do Prêmio Sebrae Mulher de Negócios</p>
-    </div>
-</section>
+</div>
