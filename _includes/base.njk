@@ -14,8 +14,8 @@
     </script>
     {% endif %}
 
-<!-- O Porteiro do Netlify Identity -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- O Porteiro do Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 </head>
 <body>
@@ -29,5 +29,18 @@
     {% include "footer.njk" %}
     
     <script src="/js/script.js"></script>
+
+    <!-- Lógica de Redirecionamento do Login -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
 </body>
 </html>
