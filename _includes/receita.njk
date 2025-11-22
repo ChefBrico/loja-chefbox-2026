@@ -1,0 +1,11 @@
+---
+layout: base.njk
+---
+
+<!-- O Schema específico da receita é injetado aqui automaticamente se estiver no arquivo -->
+<script type="application/ld+json">
+  {{ schema | safe }}
+</script>
+
+<!-- AQUI ENTRA O CONTEÚDO DA SUA RECEITA -->
+{{ content | safe }}
