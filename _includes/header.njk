@@ -1,15 +1,55 @@
+<div class="top-slogan-bar">
+    <p>COMIDA DE VERDADE, SEM TODA AQUELA CONFUSÃO NA COZINHA!</p>
+</div>
+
 <header>
-    <div class="header-container">
-        <!-- LOGO CENTRALIZADA (Estilo Revista) -->
+    <div class="container header-flex">
+        <!-- LOGO -->
         <a href="/" class="logo">
-            <img src="/imagens/logo.png" alt="Gourmet Prático">
+            <img src="/imagens/logo.png" alt="Logo ChefBrico" style="max-height: 60px;">
         </a>
 
-        <!-- NAVEGAÇÃO LIMPA -->
-        <nav class="nav-menu">
-            <a href="/comida-de-verdade/" class="nav-link">Nossa Filosofia</a>
-            <a href="/receitas/" class="nav-link">Receitas & Dicas</a>
-            <a href="/chefbox/" class="nav-link btn-nav-cta">MONTE SUA CAIXA</a>
+        <!-- NAVEGAÇÃO DESKTOP -->
+        <nav class="main-nav">
+            <div class="main-nav-links">
+                <!-- 1. Autoridade -->
+                <a href="/comida-de-verdade/">Comida de Verdade</a>
+                
+                <!-- 2. Catálogo (Dropdown) -->
+                <div class="dropdown">
+                    <a href="/receitas/" class="dropbtn">Receitas ▾</a>
+                    <div class="dropdown-content">
+                        <span class="dropdown-title">POR CATEGORIA</span>
+                        <a href="/receitas/risotos/">Risotos do Mundo</a>
+                        <a href="/receitas/sopas-funcionais/">Sopas Funcionais</a>
+                        <a href="/receitas/refeicoes-integrais/">Refeições Integrais</a>
+                        <a href="/receitas/emporio-da-chef/">Empório da Chef</a>
+                        <hr>
+                        <span class="dropdown-title">POR OBJETIVO</span>
+                        <a href="/receitas/solucoes/jantar-rapido/">Jantar Rápido</a>
+                        <a href="/receitas/solucoes/marmita-saudavel/">Marmita Saudável</a>
+                        <a href="/receitas/solucoes/dieta-performance/">Fit & Detox</a>
+                    </div>
+                </div>
+
+                <!-- 3. O Motor A-Commerce -->
+                <a href="/chefbox/" style="color: var(--cor-laranja-cta);">ChefBox (4+1)</a>
+
+                <!-- 4. Geo Localização -->
+                <a href="/onde-encontrar/">Onde Encontrar</a>
+
+                <!-- 5. Comunidade -->
+                <a href="/clube/">Clube</a>
+                
+                <!-- 6. Suporte -->
+                <a href="/faq/">FAQ</a>
+            </div>
+            
+            <!-- 7. CTA FINAL (Conversão) -->
+            <a href="/chefbox/" class="cta-button-nav">IR PARA A LOJA</a>
         </nav>
+
+        <!-- MENU MOBILE (Hambúrguer) -->
+        <button class="mobile-nav-toggle" aria-label="Abrir menu">☰</button>
     </div>
 </header>
