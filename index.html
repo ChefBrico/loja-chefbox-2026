@@ -1,76 +1,71 @@
 ---
 layout: base.njk
-title: Gourmet Prático | A Revista da Comida de Verdade
-description: O Hub de A-Commerce da Chef Maria Conceição. Receitas gourmet, ingredientes naturais e a exclusiva ChefBox.
+title: Gourmet Prático | Comida de Verdade
+description: O Hub de A-Commerce da Chef Maria Conceição.
 ---
 
-<!-- SCHEMA DO SITE -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Gourmet Prático",
-  "url": "https://gourmetpratico.com.br",
-  "publisher": {
-    "@type": "Organization",
-    "name": "ChefBrico",
-    "logo": { "@type": "ImageObject", "url": "https://gourmetpratico.com.br/imagens/logo.png" }
-  }
-}
-</script>
-
-<!-- CONTEÚDO VISUAL -->
+<!-- HERO SECTION (CAPA DE REVISTA) -->
 <div class="hero-magazine">
-    <h1 class="hero-super-title">Comida de Verdade.<br>Sem a Bagunça.</h1>
-    <p class="hero-subtitle">O sabor da Itália na sua mesa em 18 minutos. Método artesanal, ingredientes naturais e zero desperdício.</p>
-    <a href="/chefbox/" class="cta-button">MONTAR MINHA CAIXA</a>
+    <!-- FOTO DE FUNDO -->
+    <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" class="hero-bg" alt="Mesa Posta ChefBrico">
+    
+    <!-- CONTEÚDO DESTAQUE -->
+    <div class="hero-content">
+        <p style="text-transform: uppercase; letter-spacing: 3px; color: #bfb084; font-weight: bold; margin-bottom: 20px;">Método Gourmet Prático</p>
+        
+        <h1 class="hero-super-title">Comida de Verdade.<br>Sem a Bagunça.</h1>
+        
+        <p class="hero-subtitle">
+            O sabor da Itália na sua mesa em 18 minutos. Método artesanal, ingredientes naturais e zero desperdício.
+        </p>
+        
+        <div style="margin-top: 30px;">
+            <a href="/chefbox/" class="cta-button">MONTAR MINHA CAIXA</a>
+            <a href="/receitas/" class="cta-button btn-outline">LER A REVISTA</a>
+        </div>
+    </div>
 </div>
 
-<!-- GRID EDITORIAL (As Categorias como Artigos) -->
-<div class="container">
-    <div class="post-grid">
+<!-- VITRINE EDITORIAL -->
+<section class="container" style="padding: 80px 20px;">
+    <div style="text-align: center; margin-bottom: 60px;">
+        <h2 style="color: var(--verde-nobre); font-family: 'Merriweather', serif; font-size: 2.5rem;">Explore Nossos Mundos</h2>
+        <div style="width: 60px; height: 3px; background: var(--dourado); margin: 20px auto;"></div>
+    </div>
+
+    <div class="product-grid">
+        
         <!-- Card 1 -->
         <a href="/receitas/risotos/" class="card">
-            <img src="/imagens/risoto-alho-poro-pesto-chefbrico.png" class="card-image">
+            <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" class="card-image">
             <div class="card-content">
-                <h3 class="editorial-title">Os Risotos</h3>
-                <span class="cta-link">Ver Receitas →</span>
+                <p style="color: #999; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Clássicos</p>
+                <h3>Risotos do Mundo</h3>
+                <span style="color: var(--laranja-cta); font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">Ver Coleção →</span>
             </div>
         </a>
 
         <!-- Card 2 -->
         <a href="/receitas/sopas-funcionais/" class="card">
-            <img src="/imagens/risoto-alho-poro-pesto-chefbrico.png" class="card-image">
+            <img src="/imagens/sopinha-detox-chefbrico.png" class="card-image">
             <div class="card-content">
-                <h3 class="editorial-title">Sopas Funcionais</h3>
-                <span class="cta-link">Ver Receitas →</span>
+                <p style="color: #999; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Saúde</p>
+                <h3>Sopas Funcionais</h3>
+                <span style="color: var(--laranja-cta); font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">Ver Coleção →</span>
             </div>
         </a>
 
         <!-- Card 3 -->
-        <a href="/receitas/emporio-da-chef/" class="card">
-            <img src="/imagens/risoto-alho-poro-pesto-chefbrico.png" class="card-image">
+        <a href="/chefbox/" class="card">
+            <div style="height: 280px; display: flex; align-items: center; justify-content: center; background: #f9f9f9;">
+                <img src="/imagens/uma-mazinha-icone-chefbrico.png" style="width: 60%;">
+            </div>
             <div class="card-content">
-                <h3 class="editorial-title">Empório da Chef</h3>
-                <span class="cta-link">Ver Produtos →</span>
+                <p style="color: var(--dourado); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;">Gameficação</p>
+                <h3>Jogue ChefBox (4+1)</h3>
+                <span style="color: var(--laranja-cta); font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">Montar Caixa →</span>
             </div>
         </a>
-    </div>
-</div>
 
-<!-- CHAMADA PARA AÇÃO (ChefBox) -->
-<div style="background-color: var(--cor-verde-principal); color: white; padding: 80px 20px; text-align: center; margin-top: 60px;">
-    <h2 style="color: white; font-family: 'Merriweather', serif; font-size: 2.5rem;">Conheça a ChefBox</h2>
-    <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin: 0 auto 30px;">A experiência de compra gamificada. Escolha 4 sabores e ganhe o 5º de presente.</p>
-    <a href="/chefbox/" class="cta-button" style="background: white; color: var(--cor-verde-principal);">JOGAR AGORA</a>
-</div>
-
-<!-- SOBRE A CHEF -->
-<div class="author-box container">
-    <img src="/imagens/maria-conceicao-chefbrico-1.png" alt="Maria Conceição" class="author-image">
-    <div class="author-info">
-        <h3>Chef Maria Conceição</h3>
-        <p>"Acredito que cozinhar deve ser um ato de amor, não de sacrifício. O Método Gourmet Prático foi criado para libertar você da cozinha."</p>
-        <p style="color: var(--cor-dourado-slogan); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; margin-top: 10px;">Vencedora do Prêmio Sebrae Mulher de Negócios</p>
     </div>
-</div>
+</section>
