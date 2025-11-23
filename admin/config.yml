@@ -1,68 +1,81 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main # Confirme se seu branch principal é 'main' ou 'master'
 
-media_folder: "imagens"
-public_folder: "/imagens"
+media_folder: "imagens"    # Pasta onde as fotos ficam guardadas
+public_folder: "/imagens"  # Como o site acessa as fotos
+locale: 'pt'               # Interface em Português
 
-# O "GUARDIÃO": Isso impede que você publique rascunhos sem querer
+# O "GUARDIÃO": Impede publicação acidental. Cria fluxo Rascunho -> Revisão -> Publicar
 publish_mode: editorial_workflow
 
 collections:
-  # COLEÇÃO 1: DADOS GLOBAIS (EEAT & GEO - Só mexe uma vez)
+  # --- 1. FUNDAÇÃO (DADOS QUE A IA LÊ) ---
   - name: "settings"
-    label: "Fundação EEAT (Não Mexer)"
+    label: "⚙️ Dados Globais (EEAT)"
     files:
       - name: "author"
         label: "Autora (Maria Conceição)"
         file: "_data/author.json"
+        description: "Dados para o Google saber quem é a autoridade por trás das receitas."
+        format: "json"  # <--- CRÍTICO: Garante que salve como JSON válido
         fields:
-          - {label: "Nome", name: "name", widget: "string", default: "Maria Conceição"}
-          - {label: "Bio", name: "bio", widget: "text"}
-          - {label: "Prêmios", name: "award", widget: "string", default: "Prêmio Sebrae Mulher de Negócios"}
-          - {label: "ID Canônico", name: "id", widget: "hidden", default: "https://gourmetpratico.com.br/#person-maria-conceicao"}
+          - {label: "Nome Completo", name: "name", widget: "string", default: "Maria Conceição"}
+          - {label: "Biografia Curta", name: "bio", widget: "text"}
+          - {label: "Prêmios (Autoridade)", name: "award", widget: "string", default: "Prêmio Sebrae Mulher de Negócios"}
+          - {label: "Link ID (Não Mexer)", name: "id", widget: "hidden", default: "https://gourmetpratico.com.br/#person-maria-conceicao"}
       
       - name: "organization"
-        label: "Marca (ChefBrico/NAP)"
+        label: "Marca (ChefBrico)"
         file: "_data/organization.json"
+        format: "json"  # <--- CRÍTICO
         fields:
           - {label: "Nome da Marca", name: "name", widget: "string", default: "ChefBrico"}
-          - {label: "Telefone (NAP)", name: "telephone", widget: "string"}
-          - {label: "Endereço (NAP)", name: "address", widget: "string", default: "Brasília, DF"}
-          - {label: "ID Canônico", name: "id", widget: "hidden", default: "https://gourmetpratico.com.br/#organization"}
+          - {label: "WhatsApp de Venda", name: "whatsapp", widget: "string", hint: "Apenas números (Ex: 5561996659880)"}
+          - {label: "CNPJ", name: "cnpj", widget: "string"}
+          - {label: "Endereço", name: "address", widget: "string", default: "Brasília, DF"}
 
-  # COLEÇÃO 3: RECEITAS/PRODUTOS (As 24 Variantes)
+  # --- 2. RECEITAS = PRODUTOS (A-COMMERCE) ---
   - name: "receitas"
-    label: "Receitas & Produtos"
-    folder: "receitas"
+    label: "🍳 Receitas & Produtos"
+    folder: "receitas"  # Pasta na raiz onde ficam os arquivos .md
     create: true
     slug: "{{slug}}"
+    extension: "md"     # <--- SEGURANÇA: Força arquivo Markdown
+    format: "yaml-frontmatter" # <--- SEGURANÇA: Separa Dados do Texto
     fields:
+      # DADOS VITAIS (ROBÔ)
+      - {label: "SKU (Código)", name: "sku", widget: "string", hint: "Ex: RIS-FUNGHI"}
+      - {label: "Preço (R$)", name: "price", widget: "number", value_type: "float", default: 34.90}
+      - {label: "Estoque", name: "stock", widget: "number", default: 50}
+      
+      # CONTEÚDO (HUMANO)
       - {label: "Título da Receita", name: "title", widget: "string"}
-      - {label: "Imagem Principal", name: "image", widget: "image"}
-      - {label: "Descrição Curta (SEO)", name: "description", widget: "text"}
+      - {label: "Descrição SEO (Google)", name: "description", widget: "text"}
+      - {label: "Foto do Prato", name: "image", widget: "image"}
       
-      # DADOS TRANSACIONAIS (ZERO-CLICK)
-      - {label: "Preço (Ex: 34.90)", name: "price", widget: "number", value_type: "float"}
-      - {label: "SKU", name: "sku", widget: "string"}
+      # DADOS TÉCNICOS
+      - {label: "Tempo (Ex: 18 min)", name: "tempo_preparo", widget: "string", default: "18 min"}
+      - {label: "Tempo ISO (Ex: PT18M)", name: "tempo_iso", widget: "string", default: "PT18M", hint: "Formato para IA ler (PT + Minutos + M)"}
+      - {label: "Rendimento", name: "rendimento", widget: "string", default: "2 pessoas"}
+      - {label: "Dificuldade", name: "dificuldade", widget: "select", options: ["Muito Fácil", "Fácil", "Médio"]}
       
-      # AUTORIDADE (EEAT)
-      - {label: "Dica de Ouro (Citable Fact)", name: "citable_fact", widget: "text"}
-      - {label: "História e Modo de Preparo", name: "body", widget: "markdown"}
+      # CORPO DO TEXTO
+      - {label: "Dica de Ouro (Citação)", name: "citable_fact", widget: "text"}
+      - {label: "História e Passo a Passo", name: "body", widget: "markdown"}
       
-      # CAMPOS OCULTOS (A FÁBRICA PREENCHE)
+      # INVISÍVEIS (LAYOUT)
       - {label: "Layout", name: "layout", widget: "hidden", default: "receita.njk"}
-      - {label: "Autor ID", name: "author_id", widget: "hidden", default: "https://gourmetpratico.com.br/#person-maria-conceicao"}
 
-  # COLEÇÃO 4: CHEFBOX (O Produto Mãe)
+  # --- 3. PÁGINA ESPECIAL (CHEFBOX) ---
   - name: "chefbox"
-    label: "Página ChefBox (A Verdade)"
+    label: "🎁 Página ChefBox"
     files:
       - name: "index"
-        label: "Conteúdo ChefBox"
+        label: "Conteúdo da Landing Page"
         file: "chefbox/index.md"
+        format: "yaml-frontmatter"
         fields:
           - {label: "Título", name: "title", widget: "string", default: "A Verdade sobre a ChefBox"}
-          - {label: "Preço do Pacote (4 Unidades)", name: "price_bundle", widget: "number", value_type: "float"}
-          - {label: "Texto Filosófico", name: "body", widget: "markdown"}
+          - {label: "Texto Manifesto", name: "body", widget: "markdown"}
           - {label: "Layout", name: "layout", widget: "hidden", default: "chefbox.njk"}
