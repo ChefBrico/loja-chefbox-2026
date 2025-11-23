@@ -2,12 +2,17 @@
   "name": "loja-chefbox-2026",
   "version": "2.0.0",
   "description": "Plataforma A-Commerce Híbrida: Revista + Loja Gamificada",
+  "private": true,
   "scripts": {
+    "start": "eleventy --serve",
     "build": "eleventy",
-    "start": "eleventy --serve"
+    "debug": "DEBUG=* eleventy"
   },
   "author": "Maria Conceição",
   "license": "MIT",
+  "dependencies": {
+    "luxon": "^3.4.4"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
   }
