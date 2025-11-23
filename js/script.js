@@ -1,114 +1,129 @@
 // ================================================================= //
-// ===== ARQUIVO SCRIPT.JS MESTRE E DEFINITIVO - CHEFBRICO V6.1 ==== //
+// ===== ARQUIVO SCRIPT.JS MESTRE - CHEFBRICO A-COMMERCE V7.0 ==== //
 // ================================================================= //
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- MOTOR 1: ACORDEÃO (VERSÃO Padrão Ouro - fecha os outros automaticamente) ---
-const accordionHeaders = document.querySelectorAll('.accordion-header');
-if (accordionHeaders.length > 0) {
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const wasActive = this.classList.contains('active');
+    // --- MOTOR 1: MENU MOBILE & DROPDOWNS (CORRIGIDO) ---
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navList = document.querySelector('.nav-list');
 
-            // PRIMEIRO: Fecha todos os itens abertos
-            accordionHeaders.forEach(otherHeader => {
-                otherHeader.classList.remove('active');
-                otherHeader.nextElementSibling.style.maxHeight = null;
-            });
+    if (mobileBtn && navList) {
+        // 1. Abrir/Fechar Menu Principal
+        mobileBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita fechar logo em seguida
+            navList.classList.toggle('active');
+            mobileBtn.textContent = navList.classList.contains('active') ? '✕' : '☰';
+        });
 
-            // SEGUNDO: Se o item clicado não estava ativo, abre-o
-            if (!wasActive) {
-                this.classList.add('active');
-                const content = this.nextElementSibling;
-                content.style.maxHeight = content.scrollHeight + 'px';
+        // 2. Fechar ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!navList.contains(e.target) && !mobileBtn.contains(e.target)) {
+                navList.classList.remove('active');
+                mobileBtn.textContent = '☰';
             }
+        });
+
+        // 3. Lógica para Dropdown no Mobile (Toque)
+        const dropdowns = document.querySelectorAll('.has-dropdown > a');
+        dropdowns.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Se estiver no mobile (tela pequena)
+                if (window.innerWidth <= 768) {
+                    e.preventDefault(); // Não vai para o link, abre o menu
+                    const parent = link.parentElement;
+                    parent.classList.toggle('open');
+                }
+            });
+        });
+    }
+
+    // --- MOTOR 2: ACORDEÃO (FAQ e Detalhes) ---
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    if (accordionHeaders.length > 0) {
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const wasActive = this.classList.contains('active');
+
+                // Fecha outros (Comportamento exclusivo)
+                accordionHeaders.forEach(other => {
+                    if (other !== this) {
+                        other.classList.remove('active');
+                        if(other.nextElementSibling) other.nextElementSibling.style.display = 'none';
+                    }
+                });
+
+                // Abre/Fecha o atual
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content) {
+                    content.style.display = this.classList.contains('active') ? 'block' : 'none';
+                }
+            });
+        });
+    }
+
+    // --- MOTOR 3: CARROSSEL (Arrastar com Mouse) ---
+    const carousels = document.querySelectorAll('.carousel-container, .post-carousel');
+    carousels.forEach(slider => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active'); // Opcional: mudar cursor no CSS
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('active'); });
+        slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('active'); });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // Velocidade do scroll
+            slider.scrollLeft = scrollLeft - walk;
         });
     });
-}
 
-    // --- MOTOR 2: CARROSSEL DE CARDS HORIZONTAIS ---
-    const postCarousels = document.querySelectorAll('.post-carousel, .carousel-container .carousel-track');
-    if (postCarousels.length > 0) {
-        postCarousels.forEach(carousel => {
-            let isDown = false; let startX; let scrollLeft;
-            carousel.style.cursor = 'grab';
-            carousel.addEventListener('mousedown', (e) => { isDown = true; carousel.style.cursor = 'grabbing'; startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft; });
-            carousel.addEventListener('mouseleave', () => { isDown = false; carousel.style.cursor = 'grab'; });
-            carousel.addEventListener('mouseup', () => { isDown = false; carousel.style.cursor = 'grab'; });
-            carousel.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - carousel.offsetLeft; const walk = (x - startX) * 2; carousel.scrollLeft = scrollLeft - walk; });
-        });
-    }
+    // --- MOTOR 4: FILTROS INTELIGENTES (A-Commerce Context) ---
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.card'); // Ajustado para sua classe .card
 
-    // --- MOTOR 3: FILTROS DO CARDÁPIO INTELIGENTE (VERSÃO FINAL E ROBUSTA) ---
-    const productGrid = document.querySelector('.product-grid');
-    if (productGrid) {
-        const allFilterButtons = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.product-grid .product-card');
-        const curatorshipBox = document.getElementById('curatorship-box');
-
-        // Verificação de segurança: só continua se os elementos essenciais da curadoria existirem
-        if (curatorshipBox) {
-            const curatorshipTitle = document.getElementById('curatorship-title');
-            const curatorshipText = document.getElementById('curatorship-text');
-
-            const curatorshipContent = {
-                'jantar-rapido': { title: "Para um Jantar Rápido e Delicioso", text: "Selecionei aqui os pratos que resolvem sua noite em menos de 20 minutos, com muito sabor e zero complicação." },
-                'marmita-saudavel': { title: "Para uma Marmita Saudável e Prática", text: "Estas são as minhas soluções favoritas para um almoço nutritivo no trabalho. Fáceis de preparar e deliciosas para reaquecer." },
-                'momento-a-dois': { title: "Para um Momento Especial a Dois", text: "Crie uma noite inesquecível com estes pratos gourmet. A praticidade fica por minha conta, o romance por conta de vocês!" },
-                'para-criancas': { title: "Aprovados pela Família (e pelas Crianças!)", text: "Estes são os pratos que fazem sucesso com todos em casa, unindo o sabor que as crianças amam com a nutrição que os pais procuram." },
-                'dieta-performance': { title: "Para sua Performance e Dieta", text: "Comida como combustível. Aqui estão as opções com foco em proteína, leveza e baixo carboidrato para te ajudar a alcançar seus objetivos." },
-                'trilha-viagem': { title: "O Sabor que Te Acompanha em Qualquer Aventura", text: "Para o Trilheiro do Cerrado ou o Viajante Airbnb: comida de verdade que não pesa na mochila, não precisa de refrigeração e garante sua nutrição longe de casa." }
-            };
-
-            const applyFilter = (filterValue) => {
-                allFilterButtons.forEach(btn => {
-                    btn.classList.toggle('active', btn.getAttribute('data-filter') === filterValue);
-                });
-
-                if (curatorshipContent[filterValue] && curatorshipTitle && curatorshipText) {
-                    curatorshipTitle.textContent = curatorshipContent[filterValue].title;
-                    curatorshipText.textContent = curatorshipContent[filterValue].text;
-                    curatorshipBox.style.display = 'block';
-                } else {
-                    curatorshipBox.style.display = 'none';
-                }
-
-                productCards.forEach(card => {
-                    const cardCategories = card.getAttribute('data-category') || '';
-                    const shouldShow = filterValue === 'all' || cardCategories.includes(filterValue);
-                    // Abordagem mais direta para mostrar/esconder
-                    card.style.display = shouldShow ? 'flex' : 'none';
-                });
-            };
-
-            allFilterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    applyFilter(this.getAttribute('data-filter'));
-                });
+    if (filterButtons.length > 0 && productCards.length > 0) {
+        
+        function filterProducts(category) {
+            // 1. Atualiza botões
+            filterButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === category);
             });
-            
-            const urlParams = new URLSearchParams(window.location.search);
-            const filterFromURL = urlParams.get('filtro');
 
-            if (filterFromURL && document.querySelector(`.filter-btn[data-filter="${filterFromURL}"]`)) {
-                applyFilter(filterFromURL);
-            } else {
-                const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-                if (allButton) {
-                    applyFilter('all');
+            // 2. Filtra cards
+            productCards.forEach(card => {
+                // Verifica se o card tem a categoria (classe ou data-attr)
+                // Assumindo que você usará classes como "cat-risotos" nos cards
+                const cardCats = card.className; 
+                
+                if (category === 'all' || cardCats.includes(category)) {
+                    card.style.display = 'block'; // Ou 'flex'
+                    // Animação suave (opcional)
+                    setTimeout(() => card.style.opacity = '1', 50);
+                } else {
+                    card.style.display = 'none';
+                    card.style.opacity = '0';
                 }
-            }
+            });
         }
-    }
 
-    // --- MOTOR 4: MENU HAMBÚRGUER MOBILE ---
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mainNav = document.querySelector('header .main-nav');
-    if (mobileNavToggle && mainNav) {
-        mobileNavToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
+        // Event Listeners
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => filterProducts(btn.dataset.filter));
         });
+
+        // Verifica URL (Ex: ?filtro=risotos)
+        const params = new URLSearchParams(window.location.search);
+        const filterParam = params.get('filtro');
+        if (filterParam) filterProducts(filterParam);
     }
 });
-
