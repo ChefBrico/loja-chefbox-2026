@@ -1,51 +1,227 @@
 ---
 layout: base.njk
-title: Gourmet Prático | A Revista da Comida de Verdade
-description: O Hub de A-Commerce da Chef Maria Conceição.
+permalink: "/"
+title: "Revista Digital ChefBrico | Comida de Verdade, Sem Confusão"
+description: "A união perfeita entre Revista Digital e Loja Gourmet. Receitas prontas em 18 minutos, ingredientes 100% naturais e a filosofia 'Comida de Verdade'."
 ---
 
-<!-- HERO SECTION -->
-<div class="hero-magazine">
-    <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" class="hero-bg" alt="Mesa Posta">
-    <div class="hero-content">
-        <h1 class="hero-super-title">Comida de Verdade.<br>Sem a Bagunça.</h1>
-        <p class="hero-subtitle">O sabor da Itália na sua mesa em 18 minutos. Método artesanal, ingredientes naturais e zero desperdício.</p>
-        <a href="/chefbox/" class="cta-button">MONTAR MINHA CAIXA</a>
+<!-- 1. O CÉREBRO DO GOOGLE (SCHEMA ATUALIZADO PARA A-COMMERCE) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Store",
+      "name": "ChefBrico Gourmet Prático",
+      "url": "https://receitas.chefbrico.com/",
+      "description": "Loja de refeições gourmet 100% naturais e método de cozinha prática.",
+      "department": [
+        { "@type": "DepartmentStore", "name": "Risotos Gourmet", "url": "https://receitas.chefbrico.com/receitas/risotos/" },
+        { "@type": "DepartmentStore", "name": "Sopas Funcionais", "url": "https://receitas.chefbrico.com/receitas/sopas-funcionais/" },
+        { "@type": "DepartmentStore", "name": "ChefBox (Kits)", "url": "https://receitas.chefbrico.com/chefbox/" }
+      ],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://receitas.chefbrico.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "name": "Revista Digital ChefBrico",
+      "about": { "@type": "Thing", "name": "Comida de Verdade" }
+    }
+  ]
+}
+</script>
+
+<!-- 2. ESTILOS EXTRAS PARA A HOME (VISUAL DE VENDA) -->
+<style>
+    /* Botões de Ação na Hero */
+    .hero-buttons-grid {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    .btn-pill {
+        padding: 10px 20px;
+        border-radius: 50px;
+        background: rgba(255,255,255,0.9);
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9rem;
+        border: 1px solid #ddd;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .btn-pill:hover { transform: translateY(-2px); background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .btn-pill.highlight { background: #27ae60; color: white; border: none; }
+    
+    /* Etiqueta de Preço nos Cards */
+    .card-price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+    .price-tag { font-weight: bold; color: #27ae60; font-size: 1.1rem; }
+    .prep-time { font-size: 0.8rem; color: #666; display: flex; align-items: center; gap: 4px; }
+    .btn-mini-buy { background: #f4f4f4; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
+</style>
+
+<main>
+    
+    <!-- HERO SECTION: A CAPA QUE CONVERSA -->
+    <section class="hero-section-with-image-and-text">
+         <div class="hero-image-container-circular">
+             <img src="/imagens/maria-conceicao-empreendedora-feira-tematica.png" 
+                  alt="Maria Conceição, fundadora da ChefBrico" 
+                  class="circular-image imagem-interativa-premium">
+         </div>
+         <div class="hero-content-text">
+             <h1 class="hero-title">Comida de Verdade.<br>Sem bagunça na cozinha.</h1>
+             <p class="hero-subtitle">Transforme seu jantar em 18 minutos com ingredientes 100% naturais. O que você deseja comer hoje?</p>
+             
+             <!-- NOVOS BOTÕES DE AÇÃO RÁPIDA (ZERO-CLICK) -->
+             <div class="hero-buttons-grid">
+                 <a href="/receitas/risotos/" class="btn-pill">🇮🇹 Jantar Italiano</a>
+                 <a href="/receitas/sopas-funcionais/" class="btn-pill">🥣 Leve & Detox</a>
+                 <a href="/chefbox/" class="btn-pill highlight">🎁 Jogo da ChefBox (Ganhe 1)</a>
+             </div>
+         </div>
+    </section>
+
+    <div class="container">
+        
+        <!-- SEÇÃO 1: AUTORIDADE E MÉTODO (EEAT) -->
+        <h2 style="margin-top: 60px;">Comece por Aqui: O Método ChefBrico</h2>
+        <div class="carousel-container">
+            <a href="/comida-de-verdade/" class="card">
+                <img src="/imagens/icone-maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Filosofia" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Filosofia</span>
+                    <h3>Da Psicologia ao Prato</h3>
+                    <p>Como a paixão pela comida de verdade se tornou a alma da ChefBrico.</p>
+                </div>
+            </a>
+            <a href="/comida-de-verdade/despensa-inteligente/" class="card">
+                <img src="/imagens/icone-despensa-inteligente-chefbrico.png" alt="Despensa" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Método</span>
+                    <h3>A Despensa Inteligente</h3>
+                    <p>Compras inteligentes, zero desperdício e refeições sempre à mão.</p>
+                </div>
+            </a>
+            <a href="/comida-de-verdade/panela-unica/" class="card">
+                <img src="/imagens/icone-panela-unica-chefbrico.png" alt="Panela Única" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Técnica</span>
+                    <h3>Panela Única</h3>
+                    <p>Menos louça, mais sabor. O segredo da nossa praticidade.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- SEÇÃO 2: LOJA / PRODUTOS (AGORA COM PREÇO) -->
+        <h2 style="margin-top: 50px;">Explore Nossos Universos de Sabor</h2>
+        <div class="carousel-container">
+            
+            <!-- Card 1: Risotos -->
+            <a href="/receitas/risotos/" class="card">
+                <img src="/imagens/risoto-pomodori-pesto-chefbrico-580px.png" alt="Risoto Pomodori" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Campeão de Vendas</span>
+                    <h3>Risoto Pomodori & Pesto</h3>
+                    
+                    <!-- BLOCO DE VENDA -->
+                    <div class="card-price-row">
+                        <span class="price-tag">R$ 34,80</span>
+                        <span class="prep-time">🕒 18 min</span>
+                        <div class="btn-mini-buy">➜</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 2: Sopas -->
+            <a href="/receitas/sopas-funcionais/" class="card">
+                <img src="/imagens/chefbrico-creme-fit-sopinha-chefbrico-580%20px.png" alt="Creme Fit" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Detox & Leveza</span>
+                    <h3>Sopa Creme Fit</h3>
+                    
+                    <div class="card-price-row">
+                        <span class="price-tag">R$ 29,60</span>
+                        <span class="prep-time">🕒 15 min</span>
+                        <div class="btn-mini-buy">➜</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 3: Integrais -->
+            <a href="/receitas/refeicoes-integrais/" class="card">
+                <img src="/imagens/refeicao-nutritiva-integral-arroz-negro-chefbrico-80%20px.png" alt="Arroz Negro" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Alta Gastronomia</span>
+                    <h3>Arroz Negro com Funghi</h3>
+                    
+                    <div class="card-price-row">
+                        <span class="price-tag">R$ 42,90</span>
+                        <span class="prep-time">🕒 25 min</span>
+                        <div class="btn-mini-buy">➜</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 4: Empório -->
+            <a href="/receitas/emporio-da-chef/" class="card">
+                <img src="/imagens/confitado-shiitake-chefbrico.png" alt="Confit Shiitake" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Para Finalizar</span>
+                    <h3>Confit de Shiitake</h3>
+                    
+                    <div class="card-price-row">
+                        <span class="price-tag">R$ 38,50</span>
+                        <span class="prep-time">Pronto</span>
+                        <div class="btn-mini-buy">➜</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- SEÇÃO 3: BLOG & NOVIDADES (Mantido simples) -->
+        <h2 style="margin-top: 50px;">Dicas da Chef & Estilo de Vida</h2>
+        <div class="carousel-container" id="novidades-carousel-final">
+            <a href="/blog/gourmet-pratico-segredo-uma-vida-com-mais-sabor-e-tempo/" class="card">
+                <img src="/imagens/maria-conceicao-gratidao-evento-tematico-chefbrico.png" alt="Dicas" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Segredos</span>
+                    <h3>Como ter mais tempo livre?</h3>
+                    <p>Acabe com o desperdício de tempo na cozinha.</p>
+                </div>
+            </a>
+            
+            <a href="/blog/o-que-levar-para-comer-na-trilha/" class="card">
+                <img src="/imagens/trilha-e-viagen-mochileira.png" alt="Trilha" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Aventura</span>
+                    <h3>O que comer na trilha?</h3>
+                    <p>Soluções leves e nutritivas para levar na mochila.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- BOTÃO FINAL DE CHAMADA -->
+        <div class="cta-section-article" style="text-align: center; margin: 60px 0; padding: 30px; background-color: #fdf6e3; border-radius: 12px; border: 1px solid #d4af37;">
+            <h3 style="margin-top:0;">Ainda não decidiu?</h3>
+            <p style="margin-bottom: 20px;">Que tal montar sua caixa personalizada e ganhar um presente?</p>
+            <a href="/chefbox/" class="btn-pill highlight" style="display:inline-block; width:auto;">🎮 Jogar Jogo da ChefBox</a> 
+        </div>
+
     </div>
-</div>
-
-<!-- VITRINE -->
-<div class="container">
-    <div class="recipe-title-container">
-        <h1>Explore Nossos Mundos</h1>
-        <div style="width: 60px; height: 3px; background: var(--dourado); margin: 20px auto;"></div>
-    </div>
-
-    <div class="product-grid">
-        <a href="/receitas/risotos/" class="card">
-            <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" class="card-image">
-            <div class="card-content">
-                <h3>Risotos do Mundo</h3>
-                <span style="color: var(--laranja); font-weight: bold;">VER COLEÇÃO →</span>
-            </div>
-        </a>
-
-        <a href="/receitas/sopas-funcionais/" class="card">
-            <img src="/imagens/sopinha-detox-chefbrico.png" class="card-image">
-            <div class="card-content">
-                <h3>Sopas Funcionais</h3>
-                <span style="color: var(--laranja); font-weight: bold;">VER COLEÇÃO →</span>
-            </div>
-        </a>
-
-        <a href="/chefbox/" class="card">
-            <div style="height: 220px; display: flex; align-items: center; justify-content: center; background: #f9f9f9;">
-                <img src="/imagens/uma-mazinha-icone-chefbrico.png" style="width: 60%;">
-            </div>
-            <div class="card-content">
-                <h3>Jogue ChefBox (4+1)</h3>
-                <span style="color: var(--laranja); font-weight: bold;">MONTAR CAIXA →</span>
-            </div>
-        </a>
-    </div>
-</div>
+</main>
