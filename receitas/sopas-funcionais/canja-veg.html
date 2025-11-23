@@ -1,243 +1,93 @@
 ---
-layout: base.njk
-permalink: /receitas/sopas-funcionais/canja-veg/
+layout: receita.njk
 title: "Canja Vegana Funcional em 16 Minutos | ChefBrico"
-description: "Receita de Canja Vegana Funcional. Leve, proteica e reconfortante. Com arroz basmati, lentilha vermelha e funghi."
+description: "O abraço nutritivo que cuida de você. Canja com lentilha vermelha, arroz basmati e funghi. 100% natural, vegana e rica em proteínas."
+permalink: "/receitas/sopas-funcionais/canja-veg/"
+date: 2025-08-20
+
+# --- DADOS OFICIAIS (LEGADO MERCHANT CENTER) ---
+sku: "SP-03"
+gtin: "619205574201"
+price: 29.60
+price_currency: "BRL"
+stock: 35
+availability: "https://schema.org/InStock"
+category: "Sopa"
+
+# --- DADOS TÉCNICOS ---
+tempo_preparo: "16 min"
+tempo_iso: "PT16M"
+rendimento: "3 porções (1 litro)"
+dificuldade: "Muito Fácil"
+calorias: "190 kcal"
+
+# --- IMAGENS ---
+image: "/imagens/canja-vegana.png"
+image_alt: "Prato de Canja Vegana Funcional com lentilha vermelha - ChefBrico"
+
+# --- AUTORIDADE (EEAT) ---
+author_name: "Maria Conceição"
+citable_fact: "Substituímos o frango pela lentilha vermelha e quinoa, garantindo proteína vegetal de alta qualidade e fácil digestão."
+
+# --- FAQ (PERGUNTAS E RESPOSTAS) ---
+faq:
+  - question: "Tem gosto de canja tradicional?"
+    answer: "Tem a mesma alma reconfortante! O funghi e a levedura nutricional criam um caldo rico e saboroso, lembrando a canja de avó."
+  - question: "É boa para pós-treino?"
+    answer: "Excelente! Rica em proteína vegetal e carboidratos de qualidade, ajuda na recuperação muscular sem pesar no estômago."
 ---
 
-<!-- ====================================================================
-     SCHEMA HIPER-AVANÇADO (A-COMMERCE READY)
-===================================================================== -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://gourmetpratico.com.br/receitas/sopas-funcionais/canja-veg/",
-      "url": "https://gourmetpratico.com.br/receitas/sopas-funcionais/canja-veg/",
-      "name": "Canja Vegana: Receita e Compra",
-      "isPartOf": { "@id": "https://gourmetpratico.com.br/#website" },
-      "primaryImageOfPage": { "@id": "https://gourmetpratico.com.br/receitas/sopas-funcionais/canja-veg/#primaryimage" },
-      "image": { "@id": "https://gourmetpratico.com.br/receitas/sopas-funcionais/canja-veg/#primaryimage" },
-      "thumbnailUrl": "/imagens/canja-vegana.png",
-      "description": "Aprenda a fazer a Canja Vegana Funcional: o abraço que nutre em 16 minutos."
-    },
-    {
-      "@type": "Recipe",
-      "mainEntityOfPage": { "@id": "https://gourmetpratico.com.br/receitas/sopas-funcionais/canja-veg/" },
-      "name": "Canja Vegana Funcional (Método Gourmet Prático)",
-      "headline": "Como Fazer Canja Vegana Funcional em 16 Minutos",
-      "image": "/imagens/canja-vegana.png",
-      "author": { "@id": "https://gourmetpratico.com.br/#person-maria-conceicao" },
-      "publisher": { "@id": "https://gourmetpratico.com.br/#organization" },
-      "datePublished": "2025-08-20",
-      "description": "Receita autoral de Maria Conceição. Uma releitura da canja tradicional, feita com lentilha vermelha e arroz basmati. Rica em proteína e sem glúten.",
-      "keywords": "canja, vegano, sem glúten, chefbox, sopa, funcional, conforto",
-      "prepTime": "PT1M",
-      "cookTime": "PT15M",
-      "totalTime": "PT16M",
-      "recipeYield": "3 porções (1 litro)",
-      "recipeCuisine": "Brasileira Funcional",
-      "suitableForDiet": [
-        "https://schema.org/GlutenFreeDiet",
-        "https://schema.org/VeganDiet",
-        "https://schema.org/LowCalorieDiet"
-      ],
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "190 kcal",
-        "servingSize": "47 g",
-        "proteinContent": "10 g"
-      },
-      "recipeIngredient": [
-        "1 Pacote Mistura Canja Vegana ChefBrico (140g)",
-        "1000 ml (1 litro) de água fria",
-        "Sal a gosto",
-        "1 fio de azeite (opcional)"
-      ],
-      "recipeInstructions": [
-        {
-          "@type": "HowToStep",
-          "name": "Preparar",
-          "text": "Em uma panela, coloque o conteúdo do pacote, 1 litro de água fria e sal.",
-          "image": "/imagens/passos/cozinhar-generico.png"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Cozinhar",
-          "text": "Leve ao fogo médio. Assim que ferver, abaixe o fogo e cozinhe com a panela semi-tampada por 15 minutos.",
-          "image": "/imagens/passos/cozinhar-generico.png"
-        },
-        {
-          "@type": "HowToStep",
-          "name": "Finalizar",
-          "text": "Sirva bem quentinha, finalizada com cheiro-verde fresco.",
-          "image": "/imagens/passos/finalizar-generico.png"
-        }
-      ],
-      "video": {
-        "@type": "VideoObject",
-        "name": "Preparo Canja Vegana",
-        "description": "Veja como é fácil preparar a Canja Vegana ChefBrico.",
-        "thumbnailUrl": "/imagens/canja-vegana.png",
-        "contentUrl": "https://www.youtube.com/watch?v=SEU_VIDEO_ID_CANJA",
-        "uploadDate": "2025-09-11"
-      },
-      "about": {
-        "@type": "Product",
-        "name": "Mistura para Canja Vegana Funcional",
-        "description": "Mistura funcional para canja com arroz basmati e lentilha vermelha. Leve e proteica.",
-        "sku": "SOP-CAN-007",
-        "brand": { "@type": "Brand", "name": "ChefBrico" },
-        "image": "/imagens/canja-vegana.png",
-        "offers": {
-          "@type": "Offer",
-          "price": "29.60",
-          "priceCurrency": "BRL",
-          "availability": "https://schema.org/InStock",
-          "url": "https://gourmetpratico.com.br/chefbox/",
-          "priceValidUntil": "2026-12-31",
-          "seller": { "@id": "https://gourmetpratico.com.br/#organization" },
-          "description": "Compre na ChefBox: Leve 5 e Pague 4. Ganhe um presente."
-        },
-        "potentialAction": {
-          "@type": "BuyAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://gourmetpratico.com.br/chefbox/",
-            "actionPlatform": "http://schema.org/DesktopWebPlatform"
-          }
-        }
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Tem gosto de canja tradicional?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sim! O funghi silvestre e a levedura criam um caldo rico e umami que traz a mesma sensação de conforto, mas de forma vegetal."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "É boa para pós-treino?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Excelente! Rica em proteína vegetal da lentilha e quinoa, ajuda na recuperação muscular sendo leve na digestão."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://gourmetpratico.com.br/" },
-        { "@type": "ListItem", "position": 2, "name": "Receitas", "item": "https://gourmetpratico.com.br/receitas/" },
-        { "@type": "ListItem", "position": 3, "name": "Canja Vegana", "item": "https://gourmetpratico.com.br/receitas/sopas-funcionais/canja-veg/" }
-      ]
-    }
-  ]
-}
-</script>
+<!-- AQUI COMEÇA O CONTEÚDO EDITÁVEL (MARKDOWN) -->
 
-<!-- ====================================================================
-     CONTEÚDO VISUAL PARA HUMANOS (A Revista Digital)
-===================================================================== -->
+<div class="recipe-intro">
+  Reinventamos o abraço mais querido da nossa culinária. A Canja Vegana da ChefBrico resgata toda a memória afetiva de uma canja tradicional, mas eleva-a a um novo patamar de sabor e nutrição. Feita com a surpreendente base de lentilha vermelha e o aromático arroz Basmati.
+</div>
 
-<main class="container">
+## Por que Você Vai Amar este Abraço na Cumbuca
+*   ✅ **Leveza Nutritiva:** Todo o sabor afetivo da canja, em uma versão de fácil digestão, com super-ingredientes como o gengibre e o funghi silvestre.
+*   ✅ **Surpresa Proteica:** A lentilha vermelha e a quinoa, ricas em proteína vegetal e fibras, garantem a sustância sem pesar.
+*   ✅ **Toque Gourmet:** O uso do aromático Arroz Basmati eleva a experiência, tornando-a mais sofisticada que uma canja comum.
+
+> "Essa canja é simplesmente perfeita. Leve, saborosa e me sinto super bem depois de comer. Ótima para um jantar leve ou depois de um treino."
+> <cite>— Sofia M., Cliente ChefBrico</cite>
+
+<!-- BLOCO DE VENDA VISUAL (ATUALIZADO) -->
+<div class="card-modelo-autora" style="border: 2px solid #27ae60; background: #f9fff9;">
+    <img class="card-modelo-autora-image" src="/imagens/cardapio-chefbrico-canja-veg.png" alt="Pacote da Canja Vegana ChefBrico" loading="lazy">
     
-    <!-- FOTO HERO -->
-    <div class="article-hero-image-container">
-        <img src="/imagens/Canja-Veg-bowl-marrom.png" alt="Canja Vegana Funcional na cumbuca">
+    <div class="card-modelo-autora-content">
+        <h3 style="color: #27ae60; margin-top: 0;">Conforto em Minutos</h3>
+        
+        <div style="margin: 15px 0;">
+            <span style="font-size: 0.9rem; color: #666; text-decoration: line-through;">De R$ 38,00</span><br>
+            <span style="font-size: 2.2rem; font-weight: bold; color: #2c3e50;">R$ 29,60</span>
+            <span style="font-size: 0.9rem; color: #666;">/unidade</span>
+        </div>
+
+        <p style="font-size: 0.95rem; margin-bottom: 20px;">
+            <strong>🎁 DICA DE OURO:</strong> Na <a href="/chefbox/" style="color:#27ae60; font-weight:bold;">ChefBox</a>, você escolhe 5 sabores e paga apenas 4. <span style="background:#ffeb3b; padding:2px 5px; border-radius:4px;">Ganhe R$ 29,60 de desconto!</span>
+        </p>
+
+        <a href="https://wa.me/5561996659880?text=Olá, quero encomendar a Canja Vegana (SKU: SP-03)" target="_blank" rel="noopener noreferrer" class="cta-button" style="width: 100%; text-align: center;">
+            PEDIR NO WHATSAPP ➜
+        </a>
     </div>
+</div>
 
-    <div class="post-content">
-        <div class="recipe-title-container" style="text-align:center;">
-            <h1>Canja Vegana Funcional</h1>
-            <p class="recipe-subtitle">O Abraço Nutritivo que Cuida de Você!</p>
-            <p class="author-byline">Por <strong>Maria Conceição</strong>, Fundadora e Chef de Criação da ChefBrico</p>
-        </div>
+## Ingredientes (O que vem na caixa)
+*   Arroz Basmati aromático.
+*   Lentilha vermelha e quinoa em flocos.
+*   Cenoura e batata desidratadas.
+*   Gengibre em pó e funghi silvestre (*Boletus luteris*).
+*   Levedura nutricional (sabor umami).
 
-        <!-- BOX DE RESPOSTA DIRETA (AEO) -->
-        <div class="direct-answer-box">
-            <p><strong>O Segredo:</strong> Reinventamos a canja substituindo o frango por uma base proteica poderosa de lentilha vermelha e quinoa, cozidas junto com o aromático arroz Basmati. O toque de gengibre e funghi silvestre cria um caldo dourado, anti-inflamatório e profundamente reconfortante.</p>
-        </div>
+**Você só vai precisar de:** Água e sal a gosto.
 
-        <div class="recipe-meta-icons">
-            <span>🕒 <strong>Tempo:</strong> 16 min</span>
-            <span>🍳 <strong>Nível:</strong> Muito Fácil</span>
-            <span>👨‍👩‍👧‍👦 <strong>Serve:</strong> 3 porções</span>
-        </div>
+## Modo de Preparo (O Método 16 Minutos)
 
-        <p>Reinventamos o abraço mais querido da nossa culinária. A Canja Vegana da ChefBrico resgata toda a memória afetiva e o conforto de uma canja tradicional, mas eleva-a a um novo patamar de sabor e nutrição. Feita com a surpreendente base de lentilha vermelha e o aromático arroz Basmati.</p>
+1.  **Tudo na Panela:** Coloque o conteúdo do pacote, 1 litro de água fria e sal a gosto na panela.
+2.  **Cozinhe:** Leve ao fogo médio. Assim que ferver, abaixe o fogo e cozinhe com a panela semi-tampada por 15 minutos.
+3.  **Finalize:** Sirva bem quentinha. Fica incrível com cheiro-verde fresco por cima.
 
-        <!-- === A GRANDE CONVERSÃO (JOGO CHEFBOX) === -->
-        <div style="background-color: #fdfcf7; border: 2px dashed #27ae60; border-radius: 15px; padding: 30px; text-align: center; margin: 40px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            <h3 style="margin-top:0; color: #2c3e50;">Que tal provar este conforto?</h3>
-            <p style="font-size: 1.1em;">Adicione a <strong>Canja Vegana</strong> na sua ChefBox e escolha um <strong>Presente Precioso</strong>.</p>
-            
-            <div style="display:flex; justify-content:center; align-items:center; gap:15px; margin: 20px 0;">
-                <span style="font-size: 1.8em; font-weight: bold; color: #27ae60;">R$ 29,60</span>
-                <span style="text-decoration: line-through; color: #aaa; font-size: 1.2em;">R$ 38,00</span>
-            </div>
-
-            <a href="/chefbox/" class="cta-button" style="font-size: 1.2em; padding: 15px 40px;">
-                MONTAR MINHA CAIXA 🎁
-            </a>
-            <p style="font-size:0.8em; margin-top:10px; color:#777;">*Na compra de 4 itens, o 5º é presente.</p>
-        </div>
-        <!-- =========================================== -->
-
-        <h2>O Método Gourmet Prático</h2>
-        <div class="metodo-pilares">
-            <div class="pilar">
-                <div class="pilar-texto">
-                    <h3>Despensa Inteligente</h3>
-                    <p>Um remédio natural e saboroso sempre à mão na sua cozinha.</p>
-                </div>
-            </div>
-            <div class="pilar">
-                <div class="pilar-texto">
-                    <h3>Panela Única</h3>
-                    <p>Basta ferver tudo junto. A sopa fica pronta quase sozinha.</p>
-                </div>
-            </div>
-        </div>
-
-        <h2>Ingredientes Necessários</h2>
-        <ul>
-            <li>1 Pacote <strong>Canja Vegana ChefBrico</strong> (140g)</li>
-            <li>1 litro de água fria</li>
-            <li>Sal a gosto</li>
-            <li><em>Opcional: Um fio de azeite e cheiro-verde fresco.</em></li>
-        </ul>
-
-        <h2>Modo de Preparo Simplificado</h2>
-        <ol class="modo-preparo-lista">
-            <li><strong>Tudo na Panela:</strong> Coloque o conteúdo do pacote, a água e o sal na panela.</li>
-            <li><strong>Cozinhe:</strong> Leve ao fogo médio. Quando ferver, abaixe o fogo e cozinhe semi-tampado por 15 minutos.</li>
-            <li><strong>Sirva:</strong> Está pronta! Finalize com cheiro-verde.</li>
-        </ol>
-        <p class="modo-preparo-final">simples assim!!</p>
-
-        <div class="testimonial-box">
-            <blockquote><p>"Essa canja é simplesmente perfeita. Leve, saborosa e me sinto super bem depois de comer. Recomendo muito!"</p></blockquote>
-            <cite>&mdash; Sofia M., Cliente ChefBrico</cite>
-        </div>
-
-        <hr style="margin: 40px 0; border-top: 1px solid #eee;">
-
-        <div class="author-box">
-            <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" class="author-image">
-            <div class="author-info">
-                <h4>Dica da Chef</h4>
-                <p>"Canja é a comida do coração. Para um toque extra de frescor e imunidade, adicione algumas gotas de limão espremido no prato antes de servir."</p>
-            </div>
-        </div>
-
-    </div>
-</main>
+## Dica da Chef Maria
+*"Canja é a comida do coração. O segredo desta versão está na lentilha vermelha, que cozinha rápido e dá a sustância, e no toque do funghi, que traz um sabor umami surpreendente. Para um toque extra de frescor, adicione algumas gotas de limão espremido no prato."*
