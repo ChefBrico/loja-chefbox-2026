@@ -1,20 +1,45 @@
 {
-  "domain": "https://gourmetpratico.com.br",
+  "url": "https://gourmetpratico.com.br",
+  "whatsapp": "5561996659880",
+  "whatsapp_display": "(61) 99665-9880",
+  "title": "Gourmet Prático | ChefBrico",
+  "description": "Culinária saudável e artesanal em 18 minutos. O método da Chef Maria Conceição.",
   "organization": {
+    "@type": "Organization",
+    "@id": "https://gourmetpratico.com.br/#organization",
     "name": "ChefBrico",
-    "legalName": "ChefBrico Alimentos Ltda",
+    "legalName": "ChefBrico Alimentos Artesanais Ltda",
     "slogan": "Simples como precisa ser, delicioso como você merece.",
-    "description": "Culinária saudável e artesanal, sem desperdício de tempo e ingredientes. Vencedora do Prêmio Sebrae Mulher de Negócios.",
+    "description": "Vencedora do Prêmio Sebrae Mulher de Negócios. Produzimos refeições 100% naturais e sem desperdício.",
     "url": "https://gourmetpratico.com.br",
-    "logo": "/imagens/logo.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Maria Conceição"
+    "logo": "https://gourmetpratico.com.br/imagens/logo.png",
+    "foundingDate": "2018",
+    "founders": [
+      {
+        "@type": "Person",
+        "@id": "https://gourmetpratico.com.br/#person-maria-conceicao",
+        "name": "Maria Conceição"
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Norte (Asa Norte)",
+      "addressLocality": "Brasília",
+      "addressRegion": "DF",
+      "postalCode": "70000-000",
+      "addressCountry": "BR"
     },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+5561996659880",
-      "contactType": "customer service"
-    }
+      "contactType": "sales",
+      "areaServed": "BR",
+      "availableLanguage": "Portuguese"
+    },
+    "sameAs": [
+      "https://www.instagram.com/chefbrico",
+      "https://www.facebook.com/chefbrico",
+      "https://www.linkedin.com/in/mariaconceicao"
+    ]
   }
 }
