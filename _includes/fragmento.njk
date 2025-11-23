@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 
-<!-- 1. SCHEMA QAPage (MANTIDO E OTIMIZADO) -->
+<!-- 1. O SCHEMA QAPage (O "Petisco" para a IA) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -26,15 +26,19 @@ layout: base.njk
 </script>
 
 <style>
-    .fragmento-container { max-width: 700px; margin: 60px auto; padding: 20px; }
+    /* Design de "Cartão de Definição" (Dicionário) */
+    .fragmento-container {
+        max-width: 700px;
+        margin: 60px auto;
+        padding: 20px;
+    }
     
     .fragmento-card {
         background: #fff;
-        border-left: 6px solid #d4af37;
+        border-left: 6px solid #d4af37; /* Dourado */
         padding: 40px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         border-radius: 8px;
-        position: relative;
     }
 
     .fragmento-question {
@@ -53,82 +57,60 @@ layout: base.njk
     }
 
     .fragmento-meta {
-        display: flex; align-items: center; gap: 15px; margin-top: 30px;
-        border-top: 1px solid #eee; padding-top: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
     }
 
-    .author-avatar { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
-
-    /* ESTILO DO BANNER DINÂMICO (NETLIFY FUNCTION) */
-    #live-offer-box {
-        margin-top: 30px;
-        padding: 15px;
-        border-radius: 8px;
-        color: white;
-        font-weight: bold;
-        text-align: center;
-        display: none; /* Escondido até carregar */
-        animation: fadeIn 0.5s ease;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    .author-avatar {
+        width: 60px; height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
     }
 
     .cta-box {
-        margin-top: 40px; text-align: center; background: #fdf6e3;
-        padding: 20px; border-radius: 8px;
+        margin-top: 40px;
+        text-align: center;
+        background: #fdf6e3;
+        padding: 20px;
+        border-radius: 8px;
     }
     
-    .cta-link { color: #27ae60; font-weight: bold; text-decoration: none; font-size: 1.1rem; }
+    .cta-link {
+        color: #27ae60;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
     .cta-link:hover { text-decoration: underline; }
-
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 
 <main class="fragmento-container">
     <article class="fragmento-card">
+        <!-- A Pergunta -->
         <h1 class="fragmento-question">{{ title }}</h1>
         
+        <!-- A Resposta Oficial (Fragmento) -->
         <div class="fragmento-answer">
             {{ fragmento_texto }}
         </div>
 
+        <!-- Autoridade -->
         <div class="fragmento-meta">
             <img src="{{ author_avatar }}" alt="{{ author_name }}" class="author-avatar">
             <div>
-                <strong>Verificado por {{ author_name }}</strong><br>
+                <strong>Resposta verificada por {{ author_name }}</strong><br>
                 <span style="font-size:0.9rem; color:#777;">{{ author_title }}</span>
             </div>
         </div>
-
-        <!-- O ESPAÇO PARA A IA FALAR (Preenchido pela Netlify Function) -->
-        <div id="live-offer-box"></div>
-
     </article>
 
+    <!-- O Funil (Leva para o artigo completo) -->
     <div class="cta-box">
         <p>{{ sale_signature }}</p>
         <a href="{{ cta_link }}" class="cta-link">{{ cta_texto }} ➜</a>
     </div>
 </main>
-
-<!-- SCRIPT DE CONEXÃO COM A NETLIFY FUNCTION -->
-<script>
-    document.addEventListener("DOMContentLoaded", async () => {
-        const offerBox = document.getElementById('live-offer-box');
-        
-        try {
-            // Chama a função serverless que criamos
-            const response = await fetch('/.netlify/functions/oferta-contextual');
-            
-            if (response.ok) {
-                const data = await response.json();
-                
-                // Atualiza o HTML com a inteligência do servidor
-                offerBox.innerText = data.texto;
-                offerBox.style.backgroundColor = data.cor;
-                offerBox.style.display = 'block';
-            }
-        } catch (error) {
-            console.log("Modo offline: Nenhuma oferta dinâmica carregada.");
-        }
-    });
-</script>
