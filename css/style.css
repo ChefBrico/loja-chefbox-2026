@@ -1,8 +1,7 @@
 /* ======================================================= */
-/* === CHEFBRICO - DESIGN SYSTEM "GOLD STANDARD" V6.0 === */
+/* === CHEFBRICO - ARQUIVO DE RESGATE VISUAL V7.0 === */
 /* ======================================================= */
 
-/* 1. TIPOGRAFIA E CORES (A Base) */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Lato:wght@300;400;700&family=Dancing+Script:wght@700&display=swap');
 
 :root {
@@ -12,206 +11,90 @@
     --laranja: #F2811d;
     --branco: #ffffff;
     --creme: #FAFAF8;
-    --texto: #222222;
-    --cinza-claro: #f4f4f4;
+    --texto: #333;
+    --borda-suave: #e0e0e0;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    font-family: 'Lato', sans-serif;
-    background-color: var(--creme);
-    color: var(--texto);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-}
-
+body { font-family: 'Lato', sans-serif; color: var(--texto); background-color: var(--creme); margin: 0; line-height: 1.6; }
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 img { max-width: 100%; display: block; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- 2. CABEÇALHO E MENU (Decente e Fixo) --- */
-.top-bar {
-    background-color: var(--dourado);
-    color: white;
-    text-align: center;
-    padding: 8px 0;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+/* --- HEADER E MENU (Puro e Elegante) --- */
+.top-slogan-bar { background-color: var(--dourado); color: white; text-align: center; padding: 8px; font-size: 0.75rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+header { background-color: white; padding: 15px 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #eee; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo img { height: 55px; }
+.nav-menu { display: flex; gap: 25px; align-items: center; }
 
-header {
-    background-color: white;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 15px 0;
-}
-
-.header-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img { height: 60px; width: auto; }
-
-.nav-menu { display: flex; align-items: center; gap: 30px; }
-
-.nav-link {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--verde-nobre);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
-}
-
+.nav-link { color: var(--verde-nobre); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 .nav-link:hover { color: var(--dourado); }
-.nav-link::after {
-    content: ''; position: absolute; width: 0; height: 2px;
-    bottom: -5px; left: 0; background-color: var(--dourado);
-    transition: width 0.3s;
-}
-.nav-link:hover::after { width: 100%; }
+.btn-nav { background-color: var(--verde-nobre); color: white !important; padding: 10px 25px; border-radius: 4px; font-weight: bold; text-transform: uppercase; }
+.btn-nav:hover { background-color: var(--dourado); }
+.mobile-nav-toggle { display: none; font-size: 1.5rem; border: none; background: none; }
 
-/* Botão do Menu */
-.btn-nav {
-    background-color: var(--verde-nobre);
-    color: white !important;
-    padding: 12px 25px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-.btn-nav:hover { background-color: var(--dourado); transform: translateY(-2px); }
+/* --- HOME: CAPA DE REVISTA --- */
+.hero-magazine { position: relative; height: 85vh; min-height: 600px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-color: var(--verde-nobre); overflow: hidden; }
+.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; z-index: 0; }
+.hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+.hero-super-title { font-family: 'Merriweather', serif; font-size: 4rem; line-height: 1.1; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.hero-subtitle { font-size: 1.3rem; margin-bottom: 40px; font-weight: 300; color: #f0f0f0; }
+.cta-button { display: inline-block; background-color: var(--dourado); color: white; padding: 15px 40px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; border-radius: 50px; }
 
-/* --- 3. RODAPÉ (Profissional e Organizado) --- */
-footer {
-    background-color: white;
-    border-top: 1px solid #e0e0e0;
-    padding: 80px 0 30px;
-    margin-top: 100px;
-}
+/* --- RECEITAS: O RESGATE DO SEU TRABALHO (Classes Antigas) --- */
+/* Isso garante que suas 24 páginas fiquem lindas de novo */
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr; /* Coluna da logo maior */
-    gap: 40px;
+.article-hero-image-container, .hero-card {
+    max-width: 900px; margin: 40px auto; border: 1px solid var(--borda-suave);
+    padding: 15px; background: white; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-radius: 8px;
 }
+.article-hero-image-container img, .hero-card img { width: 100%; border-radius: 4px; }
 
-.footer-brand p { font-size: 0.9rem; color: #666; margin-top: 15px; }
-
-.footer-col h4 {
-    color: var(--verde-nobre);
-    font-family: 'Merriweather', serif;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-.footer-col a {
-    display: block;
-    color: #555;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-}
-.footer-col a:hover { color: var(--dourado); padding-left: 5px; }
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid #f0f0f0;
-    font-size: 0.8rem;
-    color: #999;
-}
-
-/* --- 4. HERO SECTION (Home Revista) --- */
-.hero-cover {
-    position: relative;
-    height: 85vh;
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    overflow: hidden;
-}
-.hero-img {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    object-fit: cover; z-index: -1;
-}
-.hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(1,64,57,0.3), rgba(1,64,57,0.7));
-    z-index: 0;
-}
-.hero-text { position: relative; z-index: 1; max-width: 800px; padding: 20px; }
-
-.hero-title {
-    font-family: 'Merriweather', serif;
-    font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-.hero-tag {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2rem; color: var(--dourado);
-    margin-bottom: 30px;
-}
-
-/* --- 5. ESTRUTURA DAS RECEITAS (Resgate do seu Trabalho) --- */
-.article-hero-image-container {
-    width: 100%; max-width: 900px; margin: 40px auto;
-    border: 1px solid #eee; padding: 15px; background: white;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-}
-.article-hero-image-container img { width: 100%; border-radius: 4px; }
-
-.post-content { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: #444; }
 .recipe-title-container { text-align: center; margin: 50px 0; }
-.recipe-title-container h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--verde-nobre); }
+.recipe-title-container h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--verde-nobre); }
+.recipe-subtitle { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--dourado); }
+.author-byline { color: #777; font-style: italic; margin-top: 10px; }
 
-/* Elementos Ricos */
-.direct-answer-box {
-    background: #f0fff4; border-left: 4px solid var(--verde-nobre);
-    padding: 25px; margin: 40px 0; border-radius: 0 10px 10px 0;
-}
-.testimonial-box {
-    text-align: center; padding: 40px; margin: 60px 0;
-    border-top: 1px solid var(--dourado); border-bottom: 1px solid var(--dourado);
-}
+.recipe-meta-icons { display: flex; justify-content: center; gap: 20px; margin: 20px 0; color: #555; font-weight: bold; }
+
+.direct-answer-box { background: #f0fff4; border-left: 4px solid var(--verde-nobre); padding: 25px; margin: 30px 0; font-size: 1.1rem; }
+
+.metodo-pilares { display: flex; gap: 20px; margin: 40px 0; }
+.pilar { flex: 1; background: white; padding: 20px; border: 1px solid #eee; text-align: center; border-radius: 8px; }
+.pilar h3 { color: var(--verde-nobre); font-size: 1rem; margin-top: 10px; }
+
+.testimonial-box { text-align: center; padding: 40px; margin: 50px 0; border-top: 1px solid var(--dourado); border-bottom: 1px solid var(--dourado); }
 .testimonial-box p { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.3rem; color: var(--verde-nobre); }
 
-/* --- 6. BOTÕES E CARDS --- */
-.cta-button {
-    display: inline-block;
-    background-color: var(--laranja);
-    color: white;
-    padding: 15px 40px;
-    border-radius: 50px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(242, 129, 29, 0.4);
-}
-.cta-button:hover { transform: translateY(-3px); background-color: #d97216; }
+/* FAQ */
+.faq-item-accordion { border-bottom: 1px solid #eee; }
+.accordion-header { width: 100%; text-align: left; padding: 15px 0; background: none; border: none; font-weight: bold; cursor: pointer; font-size: 1rem; color: var(--verde-nobre); display: flex; justify-content: space-between; }
+.accordion-content { display: none; padding-bottom: 20px; }
+.accordion-header.active + .accordion-content { display: block; }
 
-.btn-outline { background: transparent; border: 2px solid white; box-shadow: none; margin-left: 15px; }
-.btn-outline:hover { background: white; color: var(--verde-nobre); }
+.author-box { display: flex; align-items: center; gap: 20px; background: white; padding: 30px; border: 1px solid #eee; border-radius: 10px; margin: 50px 0; }
+.author-image { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--dourado); }
 
-/* --- MOBILE --- */
+/* --- VITRINE E JOGO --- */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin: 50px 0; }
+.card { background: white; border: 1px solid #eee; transition: transform 0.3s; display: flex; flex-direction: column; text-align: center; border-radius: 8px; overflow: hidden; }
+.card:hover { transform: translateY(-5px); border-color: var(--dourado); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+.card-image { width: 100%; height: 220px; object-fit: cover; }
+.card-content { padding: 20px; }
+.card h3 { font-family: 'Merriweather', serif; font-size: 1.2rem; color: var(--verde-nobre); margin: 10px 0; }
+
+/* RODAPÉ */
+footer { background-color: white; border-top: 1px solid #eee; padding: 80px 0 30px; margin-top: 100px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+.footer-col h4 { color: var(--verde-nobre); font-family: 'Merriweather', serif; margin-bottom: 20px; }
+.footer-col a { display: block; color: #666; margin-bottom: 8px; }
+.footer-col a:hover { color: var(--dourado); }
+
+/* MOBILE */
 @media(max-width: 768px) {
-    .nav-menu { display: none; } /* Menu hambúrguer viria aqui */
-    .mobile-nav-toggle { display: block; font-size: 1.5rem; border: none; background: none; }
-    .hero-title { font-size: 2.5rem; }
-    .footer-grid { grid-template-columns: 1fr; text-align: center; }
+    .nav-menu { display: none; } .mobile-nav-toggle { display: block; }
+    .header-flex { justify-content: space-between; }
+    .metodo-pilares { flex-direction: column; }
+    .hero-super-title { font-size: 2.5rem; }
+    .author-box { flex-direction: column; text-align: center; }
 }
