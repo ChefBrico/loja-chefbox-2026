@@ -1,189 +1,291 @@
 ---
 layout: base.njk
 title: Monte sua ChefBox | Jogo 4+1
-description: Escolha 4 sabores e ganhe o 5º de presente.
+description: A experiência gamificada da ChefBrico.
 ---
 
-<!-- SCHEMA PRODUTO (ROBÔ) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "ChefBox 4+1",
-  "offers": { "@type": "Offer", "price": "149.90", "priceCurrency": "BRL" }
-}
-</script>
-
 <style>
-    /* DESIGN GAMIFICADO */
+    /* 1. CABEÇALHO FIXO GAMIFICADO */
     .game-header {
         background: white;
-        padding: 20px;
+        padding: 15px;
         text-align: center;
         position: sticky;
         top: 0;
-        z-index: 100;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        border-bottom: 5px solid #27ae60;
+        z-index: 999;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        border-bottom: 5px solid #e0e0e0;
+        transition: border-color 0.3s;
     }
     
-    .slots-wrapper {
+    /* Muda de cor quando completa a missão */
+    .game-header.mission-complete { border-color: #D4AF37; }
+
+    .progress-bar {
         display: flex;
         justify-content: center;
-        gap: 10px;
-        margin: 15px 0;
+        gap: 8px;
+        margin: 10px 0;
     }
 
-    .slot-circle {
-        width: 50px; height: 50px;
+    .slot {
+        width: 45px; height: 45px;
         border-radius: 50%;
-        background: #eee;
+        background: #f4f4f4;
         border: 2px dashed #ccc;
         display: flex; align-items: center; justify-content: center;
-        font-weight: bold; color: #aaa; font-size: 1.2rem;
-        transition: 0.3s;
+        font-weight: bold; color: #ccc;
+        font-size: 1.1rem;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito Bouncy */
     }
 
-    .slot-circle.filled {
-        background: #27ae60; color: white; border-style: solid; border-color: #27ae60;
+    .slot.filled {
+        background: #27ae60; color: white; border-style: solid; border-color: #219150;
         transform: scale(1.1);
+        box-shadow: 0 2px 5px rgba(39, 174, 96, 0.4);
     }
 
-    .slot-gift {
-        border-color: #D4AF37; color: #D4AF37;
-    }
+    .slot-gift { border-color: #D4AF37; color: #D4AF37; }
+    
     .slot-gift.active {
         background: #D4AF37; color: white; transform: scale(1.2);
-        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        animation: pulse 1.5s infinite;
     }
 
-    /* CARD DE PRODUTO (Vitrine) */
+    /* 2. FILTROS DE CATEGORIA (UX) */
+    .category-filters {
+        display: flex; gap: 10px; justify-content: center; padding: 15px; overflow-x: auto;
+    }
+    .filter-btn {
+        padding: 8px 16px; border: 1px solid #ddd; border-radius: 20px; background: white; cursor: pointer;
+        font-size: 0.9rem; white-space: nowrap;
+    }
+    .filter-btn.active { background: #2c3e50; color: white; border-color: #2c3e50; }
+
+    /* 3. GRID DE PRODUTOS */
     .game-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 15px; padding: 20px; max-width: 1000px; margin: 0 auto;
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px; padding: 0 15px 100px 15px; max-width: 1000px; margin: 0 auto;
     }
-    
+
     .game-card {
-        background: white; border: 1px solid #eee; border-radius: 10px;
-        overflow: hidden; cursor: pointer; transition: 0.2s;
-        position: relative;
+        background: white; border: 1px solid #eee; border-radius: 12px;
+        overflow: hidden; cursor: pointer; position: relative;
+        transition: transform 0.2s;
     }
-    .game-card:hover { transform: translateY(-3px); border-color: #27ae60; }
-    .game-card.selected { border: 3px solid #27ae60; }
-    .game-card.gift-selected { border: 3px solid #D4AF37; }
-
-    .game-img { height: 120px; background: #f9f9f9; }
-    .game-img img { width: 100%; height: 100%; object-fit: cover; }
     
-    .game-info { padding: 10px; text-align: center; }
-    .game-title { font-size: 0.9rem; font-weight: bold; margin: 0; }
-    .game-price { color: #27ae60; font-size: 0.9rem; }
+    .game-card:active { transform: scale(0.95); }
+    
+    /* Feedback visual de seleção */
+    .game-card.selected { border: 3px solid #27ae60; }
+    .game-card.selected::after {
+        content: '✔'; position: absolute; top: 5px; right: 5px;
+        background: #27ae60; color: white; width: 25px; height: 25px;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+    }
 
-    /* CHECKOUT FLUTUANTE */
-    .float-checkout {
-        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-        background: #333; color: white; padding: 15px 30px;
-        border-radius: 50px; display: none; align-items: center; gap: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 200;
-        white-space: nowrap;
+    .game-card.gift-selected { border: 3px solid #D4AF37; }
+    .game-card.gift-selected::after {
+        content: '🎁'; position: absolute; top: 5px; right: 5px;
+        background: #D4AF37; width: 30px; height: 30px;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
     }
+
+    .game-card img { width: 100%; height: 120px; object-fit: cover; background: #f9f9f9; }
+    .card-info { padding: 10px; text-align: center; }
+    .card-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; line-height: 1.2; }
+    .card-price { font-size: 0.9rem; color: #666; }
+
+    /* 4. CHECKOUT FLUTUANTE */
+    .checkout-bar {
+        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(150%);
+        background: #2c3e50; color: white; padding: 12px 25px;
+        border-radius: 50px; display: flex; align-items: center; gap: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1000;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        width: 90%; max-width: 400px; justify-content: space-between;
+    }
+    .checkout-bar.visible { transform: translateX(-50%) translateY(0); }
+
     .btn-zap {
-        background: #25D366; color: white; padding: 10px 20px; border-radius: 30px;
-        text-decoration: none; font-weight: bold; border: none; cursor: pointer;
+        background: #25D366; color: white; border: none; padding: 10px 20px;
+        border-radius: 25px; font-weight: bold; cursor: pointer;
+        text-transform: uppercase; font-size: 0.9rem;
     }
+
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
 </style>
 
-<!-- HEADER DO JOGO -->
-<div class="game-header">
-    <h2 style="margin:0; font-family: 'Playfair Display', serif;">Monte sua ChefBox</h2>
-    <div class="slots-wrapper">
-        <div class="slot-circle" id="s1">1</div>
-        <div class="slot-circle" id="s2">2</div>
-        <div class="slot-circle" id="s3">3</div>
-        <div class="slot-circle" id="s4">4</div>
-        <div class="slot-circle slot-gift" id="s5">🎁</div>
+<!-- O JOGO -->
+<div class="game-header" id="header-box">
+    <h3>Monte sua ChefBox</h3>
+    <div class="progress-bar">
+        <div class="slot" id="s0">1</div>
+        <div class="slot" id="s1">2</div>
+        <div class="slot" id="s2">3</div>
+        <div class="slot" id="s3">4</div>
+        <div class="slot slot-gift" id="sGift">🎁</div>
     </div>
-    <p id="status-msg">Escolha 4 sabores para ganhar o presente</p>
+    <p id="status-text" style="font-size: 0.9rem; color: #666;">Escolha 4 pratos para desbloquear o presente.</p>
 </div>
 
-<!-- VITRINE -->
+<!-- FILTROS (Opcional - melhora UX) -->
+<div class="category-filters">
+    <button class="filter-btn active" onclick="filter('all')">Todos</button>
+    <button class="filter-btn" onclick="filter('risotos')">Risotos</button>
+    <button class="filter-btn" onclick="filter('sopas')">Sopas</button>
+</div>
+
+<!-- VITRINE DINÂMICA (Conectada ao CMS) -->
 <div class="game-grid">
-    <!-- COPIE E COLE ESTE BLOCO PARA CADA PRODUTO (24 VEZES) -->
-    <div class="game-card" onclick="clickItem(this)" data-name="Risoto Funghi" data-price="34.80">
-        <div class="game-img"><img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png"></div>
-        <div class="game-info">
-            <p class="game-title">Risoto Funghi</p>
-            <p class="game-price">R$ 34,80</p>
-        </div>
-    </div>
-    <!-- FIM DO BLOCO -->
+    {# AQUI ESTÁ A MÁGICA: Loop automático nos produtos reais #}
+    {# Estamos combinando Risotos e Sopas numa lista só #}
     
-    <!-- Exemplo 2 -->
-    <div class="game-card" onclick="clickItem(this)" data-name="Sopa Detox" data-price="29.60">
-        <div class="game-img"><img src="/imagens/sopinha-detox-chefbrico.png"></div>
-        <div class="game-info">
-            <p class="game-title">Sopa Detox</p>
-            <p class="game-price">R$ 29,60</p>
+    {% for item in collections.risotos %}
+        <div class="game-card cat-risotos" 
+             onclick="toggleItem(this)" 
+             data-id="{{ item.data.sku }}" 
+             data-name="{{ item.data.title }}" 
+             data-price="{{ item.data.price }}">
+            <img src="{{ item.data.image }}" alt="{{ item.data.title }}">
+            <div class="card-info">
+                <div class="card-title">{{ item.data.title }}</div>
+                <div class="card-price">R$ {{ item.data.price }}</div>
+            </div>
         </div>
-    </div>
+    {% endfor %}
+
+    {% for item in collections.sopas %}
+        <div class="game-card cat-sopas" 
+             onclick="toggleItem(this)" 
+             data-id="{{ item.data.sku }}" 
+             data-name="{{ item.data.title }}" 
+             data-price="{{ item.data.price }}">
+            <img src="{{ item.data.image }}" alt="{{ item.data.title }}">
+            <div class="card-info">
+                <div class="card-title">{{ item.data.title }}</div>
+                <div class="card-price">R$ {{ item.data.price }}</div>
+            </div>
+        </div>
+    {% endfor %}
 </div>
 
-<!-- CHECKOUT -->
-<div class="float-checkout" id="checkout-bar">
-    <div>Total: <strong id="total-val">R$ 0,00</strong></div>
-    <button class="btn-zap" onclick="sendZap()">PEDIR NO WHATSAPP</button>
+<!-- BARRA DE CHECKOUT -->
+<div class="checkout-bar" id="checkout">
+    <div style="display:flex; flex-direction:column;">
+        <span style="font-size:0.7rem; opacity:0.8;">TOTAL DA CAIXA</span>
+        <strong id="total-display" style="font-size:1.1rem;">R$ 0,00</strong>
+    </div>
+    <button class="btn-zap" onclick="finalizarPedido()">PEDIR NO WHATSAPP ➜</button>
 </div>
 
 <script>
+    // LÓGICA DO JOGO
     let cart = [];
-    let gift = null;
-    const MAX = 4;
+    let giftItem = null;
+    const MAX_ITENS = 4;
 
-    function clickItem(el) {
-        let name = el.getAttribute('data-name');
-        let price = parseFloat(el.getAttribute('data-price'));
+    function toggleItem(card) {
+        const id = card.dataset.id;
+        const name = card.dataset.name;
+        const price = parseFloat(card.dataset.price);
 
-        // MODO COMPRA
-        if (cart.length < MAX) {
-            cart.push({name, price});
-            el.classList.add('selected');
-            updateUI();
-        } 
-        // MODO PRESENTE
-        else if (!gift) {
-            gift = {name, price};
-            el.classList.add('gift-selected');
-            updateUI();
+        // 1. Verifica se já está no carrinho (para remover)
+        const index = cart.findIndex(i => i.id === id);
+        
+        if (index > -1) {
+            // REMOVER ITEM
+            cart.splice(index, 1);
+            card.classList.remove('selected');
+        } else if (giftItem && giftItem.id === id) {
+            // REMOVER PRESENTE
+            giftItem = null;
+            card.classList.remove('gift-selected');
+        } else {
+            // ADICIONAR ITEM
+            if (cart.length < MAX_ITENS) {
+                cart.push({id, name, price});
+                card.classList.add('selected');
+            } else if (!giftItem) {
+                // ADICIONAR COMO PRESENTE
+                giftItem = {id, name, price};
+                card.classList.add('gift-selected');
+            } else {
+                // TUDO CHEIO (Feedback visual de erro?)
+                alert("Sua caixa já está cheia! Remova um item para trocar.");
+                return;
+            }
         }
+        updateInterface();
     }
 
-    function updateUI() {
-        // Atualiza Bolinhas
-        for(let i=0; i<MAX; i++) {
-            let s = document.getElementById('s'+(i+1));
-            if(cart[i]) s.classList.add('filled');
+    function updateInterface() {
+        // Atualiza Slots 1-4
+        for (let i = 0; i < MAX_ITENS; i++) {
+            const slot = document.getElementById('s' + i);
+            if (cart[i]) {
+                slot.classList.add('filled');
+                slot.innerText = "✓";
+            } else {
+                slot.classList.remove('filled');
+                slot.innerText = i + 1;
+            }
         }
-        if(gift) document.getElementById('s5').classList.add('active');
 
-        // Atualiza Status
-        let msg = document.getElementById('status-msg');
-        if(cart.length < MAX) msg.innerText = `Faltam ${MAX - cart.length} itens`;
-        else if (!gift) msg.innerText = "AGORA ESCOLHA SEU PRESENTE! 🎁";
-        else {
-            msg.innerText = "Caixa Completa!";
-            document.getElementById('checkout-bar').style.display = 'flex';
-            calcTotal();
+        // Atualiza Slot Presente
+        const slotGift = document.getElementById('sGift');
+        const header = document.getElementById('header-box');
+        const status = document.getElementById('status-text');
+
+        if (giftItem) {
+            slotGift.classList.add('active');
+            slotGift.innerText = "🎁";
+            header.classList.add('mission-complete');
+            status.innerText = "Parabéns! Caixa completa.";
+            document.getElementById('checkout').classList.add('visible');
+        } else {
+            slotGift.classList.remove('active');
+            slotGift.innerText = "🎁";
+            header.classList.remove('mission-complete');
+            document.getElementById('checkout').classList.remove('visible');
+            
+            // Texto de ajuda
+            if (cart.length < MAX_ITENS) {
+                status.innerText = `Escolha mais ${MAX_ITENS - cart.length} sabores.`;
+            } else {
+                status.innerText = "AGORA CLIQUE NO SEU PRESENTE! (Item Grátis)";
+            }
         }
+
+        // Calcula Total (Soma os 4 itens, ignora o presente)
+        const total = cart.reduce((acc, item) => acc + item.price, 0);
+        document.getElementById('total-display').innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
     }
 
-    function calcTotal() {
-        let total = cart.reduce((sum, i) => sum + i.price, 0);
-        document.getElementById('total-val').innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+    function finalizarPedido() {
+        if (cart.length < MAX_ITENS || !giftItem) return;
+
+        let msg = "*🍳 PEDIDO CHEFBOX (5 Itens)*\n\n";
+        msg += "*Itens da Caixa:*\n";
+        cart.forEach(item => msg += `✅ ${item.name}\n`);
+        
+        msg += `\n🎁 *PRESENTE ESCOLHIDO:* ${giftItem.name}\n`;
+        msg += `\n💰 *Valor Total:* ${document.getElementById('total-display').innerText}`;
+        msg += "\n\nPor favor, me envie a chave Pix!";
+
+        const link = `https://wa.me/5561996659880?text=${encodeURIComponent(msg)}`;
+        window.open(link, '_blank');
     }
 
-    function sendZap() {
-        let itens = cart.map(i => `• ${i.name}`).join('\n');
-        let texto = `Olá! Montei minha ChefBox:\n${itens}\n\n🎁 PRESENTE: ${gift.name}\n\nAguardo o Pix!`;
-        window.location.href = `https://wa.me/5561996659880?text=${encodeURIComponent(texto)}`;
+    // Filtro Simples
+    function filter(cat) {
+        document.querySelectorAll('.game-card').forEach(el => {
+            if(cat === 'all' || el.classList.contains('cat-'+cat)) el.style.display = 'block';
+            else el.style.display = 'none';
+        });
+        // Atualiza botões
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
     }
 </script>
