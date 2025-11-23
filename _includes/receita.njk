@@ -2,10 +2,175 @@
 layout: base.njk
 ---
 
-<!-- O Schema específico da receita é injetado aqui automaticamente se estiver no arquivo -->
-<script type="application/ld+json">
-  {{ schema | safe }}
-</script>
+<!-- 1. ESTRUTURA VISUAL (O que o Humano vê) -->
+<article class="receita-container" itemscope itemtype="https://schema.org/Recipe">
 
-<!-- AQUI ENTRA O CONTEÚDO DA SUA RECEITA -->
-{{ content | safe }}
+    <!-- Cabeçalho da Receita -->
+    <header class="receita-header text-center">
+        <span class="badge-categoria">{{ page.fileSlug }}</span> <!-- Ex: risotos -->
+        <h1 class="receita-title" itemprop="name">{{ title }}</h1>
+        <p class="receita-subtitle">{{ description }}</p>
+        
+        <div class="receita-meta">
+            <span>⏱ {{ tempo_preparo }}</span>
+            <span>👥 Serve: {{ rendimento }}</span>
+            <span>🔥 {{ dificuldade }}</span>
+        </div>
+    </header>
+
+    <!-- BLOCO DE VENDA (A-COMMERCE / CHEFBOX) -->
+    <!-- Este é o gatilho visual para a compra -->
+    <div class="chefbox-cta-card">
+        <div class="cta-info">
+            <span class="cta-label">Prepare em casa em {{ tempo_preparo }}:</span>
+            <div class="cta-price-group">
+                {% if price_old %}
+                <span class="price-old">R$ {{ price_old }}</span>
+                {% endif %}
+                <span class="price-current" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    R$ <span itemprop="price">{{ price }}</span>
+                    <meta itemprop="priceCurrency" content="{{ price_currency }}">
+                </span>
+            </div>
+        </div>
+        <!-- Botão que leva para o WhatsApp ou Checkout -->
+        <a href="https://wa.me/{{ meta.whatsapp }}?text=Olá, quero o kit {{ title }} (SKU: {{ sku }})" class="btn-comprar">
+            MONTAR MINHA CAIXA 🎁
+        </a>
+        <p class="estoque-aviso">Restam apenas {{ stock }} unidades do lote atual.</p>
+    </div>
+
+    <!-- Imagem Principal -->
+    <figure class="receita-hero">
+        <img src="{{ image }}" alt="{{ image_alt }}" itemprop="image">
+        <figcaption>Foto: {{ image_alt }}</figcaption>
+    </figure>
+
+    <!-- Conteúdo da Receita (Texto vindo do Markdown) -->
+    <div class="receita-content e-content">
+        {{ content | safe }}
+    </div>
+
+    <!-- FAQ Automática (Vem do Frontmatter) -->
+    {% if faq %}
+    <section class="faq-section">
+        <h3>Dúvidas Frequentes sobre este Prato</h3>
+        <div class="faq-grid">
+            {% for item in faq %}
+            <details class="faq-item">
+                <summary>{{ item.question }}</summary>
+                <p>{{ item.answer }}</p>
+            </details>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Assinatura de Autoridade (EEAT) -->
+    <footer class="receita-footer">
+        <div class="author-box">
+            <p><strong>Chef {{ author_name }}</strong> explica:</p>
+            <blockquote>"{{ citable_fact }}"</blockquote>
+        </div>
+    </footer>
+
+</article>
+
+<!-- 2. A MÁGICA DO ROBÔ (Schema.org JSON-LD) -->
+<!-- Isso é invisível na tela, mas é o que faz a Venda Zero-Click -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@graph": [
+    {
+      "@type": "Recipe",
+      "name": "{{ title }}",
+      "image": [
+        "{{ meta.url }}{{ image }}"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "{{ author_name }}"
+      },
+      "datePublished": "{{ date | date('yyyy-MM-dd') }}",
+      "description": "{{ description }}",
+      "prepTime": "PT5M",
+      "cookTime": "{{ tempo_iso }}", 
+      "totalTime": "{{ tempo_iso }}",
+      "keywords": "risoto, gourmet prático, chefbox, jantar rápido, {{ sku }}",
+      "recipeYield": "{{ rendimento }}",
+      "recipeCategory": "Prato Principal",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "{{ calorias }}"
+      },
+      "isBasedOn": {
+        "@type": "Product",
+        "@id": "{{ meta.url }}{{ page.url }}#produto"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "{{ meta.url }}{{ page.url }}#produto",
+      "name": "Kit ChefBox: {{ title }}",
+      "image": "{{ meta.url }}{{ image }}",
+      "description": "Todos os ingredientes medidos e pesados para preparar {{ title }} em casa.",
+      "sku": "{{ sku }}",
+      "brand": {
+        "@type": "Brand",
+        "name": "{{ meta.name }}"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ meta.url }}{{ page.url }}",
+        "priceCurrency": "{{ price_currency }}",
+        "price": "{{ price }}",
+        "availability": "{{ availability }}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "BRL"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "BR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 5,
+              "unitCode": "DAY"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for item in faq %}
+        {
+          "@type": "Question",
+          "name": "{{ item.question }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ item.answer }}"
+          }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  ]
+}
+</script>
