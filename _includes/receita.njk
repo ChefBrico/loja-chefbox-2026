@@ -127,6 +127,18 @@ layout: base.njk
         "price": "{{ price }}",
         "availability": "{{ availability }}",
         "itemCondition": "https://schema.org/NewCondition",
+        
+        /* --- ATUALIZAÇÃO CRÍTICA PARA GOOGLE MERCHANT CENTER --- */
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "BR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 7,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn",
+          "url": "{{ meta.url }}/politicas/trocas/"
+        },
+        
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingRate": {
