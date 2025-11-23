@@ -1,9 +1,8 @@
 /* ======================================================= */
-/* === CHEFBRICO - DESIGN SYSTEM INTEGRADO V5.0 === */
+/* === CHEFBRICO - VISUAL REVISTA PREMIUM V FINAL === */
 /* ======================================================= */
 
-/* 1. FONTES E CORES */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Lato:wght@300;400;700&family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300&family=Lato:wght@300;400;700&family=Dancing+Script:wght@700&display=swap');
 
 :root {
     --verde-nobre: #014039;
@@ -12,6 +11,7 @@
     --texto-escuro: #222;
     --branco: #ffffff;
     --laranja-cta: #F2811d;
+    --borda-suave: #e5e5e5;
 }
 
 * { box-sizing: border-box; }
@@ -27,15 +27,15 @@ body {
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 img { max-width: 100%; display: block; }
 
-/* 2. O MENU (HEADER) - ESTILO PURELY */
+/* --- HEADER E MENU --- */
 .top-slogan-bar {
     background-color: var(--dourado);
     color: white;
     text-align: center;
     padding: 8px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
@@ -57,8 +57,6 @@ header {
     align-items: center;
 }
 
-.logo img { height: 55px; }
-
 .nav-link {
     color: var(--verde-nobre);
     font-size: 0.85rem;
@@ -66,7 +64,6 @@ header {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0 15px;
-    padding-bottom: 5px;
 }
 .nav-link:hover { color: var(--dourado); border-bottom: 2px solid var(--dourado); }
 
@@ -76,135 +73,121 @@ header {
     padding: 10px 25px;
     font-size: 0.8rem;
     font-weight: bold;
+    border-radius: 4px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: transform 0.2s;
 }
-.cta-button-nav:hover { transform: scale(1.05); background-color: var(--dourado); }
+.cta-button-nav:hover { background-color: var(--dourado); }
 
-.mobile-nav-toggle { display: none; font-size: 1.5rem; background: none; border: none; cursor: pointer; }
-
-/* 3. A HOME (CAPA DE REVISTA) */
+/* --- HOME: CAPA DE REVISTA --- */
 .hero-magazine {
     position: relative;
-    height: 80vh;
-    min-height: 500px;
+    height: 85vh;
+    min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: var(--verde-nobre);
+    background-color: var(--verde-nobre); /* Cor de fallback */
     overflow: hidden;
 }
+
+/* A Foto de Fundo */
 .hero-bg {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    object-fit: cover; opacity: 0.4;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.5; /* Transparência para o texto aparecer */
+    z-index: 0;
 }
-.hero-content { position: relative; z-index: 2; color: white; padding: 20px; }
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 20px;
+    max-width: 900px;
+}
 
 .hero-super-title {
     font-family: 'Merriweather', serif;
-    font-size: 3.5rem;
+    font-size: 4rem;
     line-height: 1.1;
     margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
+
 .hero-subtitle {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 30px;
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
     font-weight: 300;
+    color: #f0f0f0;
 }
 
 .cta-button {
     display: inline-block;
     background-color: var(--dourado);
     color: white;
-    padding: 15px 40px;
+    padding: 18px 45px;
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
     border-radius: 50px;
+    border: 2px solid var(--dourado);
+    font-size: 1rem;
 }
-.cta-button:hover { background-color: white; color: var(--verde-nobre); }
+.cta-button:hover { background-color: white; color: var(--verde-nobre); border-color: white; }
 
-/* 4. AS RECEITAS (SEU CONTEÚDO RICO) */
+.btn-outline {
+    background: transparent; border: 2px solid white; color: white; margin-left: 15px;
+}
+.btn-outline:hover { background: white; color: var(--verde-nobre); }
+
+
+/* --- AS RECEITAS (MOLDURAS E LAYOUT) --- */
 .article-hero-image-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 40px auto;
     border: 1px solid #e0e0e0;
-    padding: 15px;
+    padding: 20px;
     background: white;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 4px;
 }
 .article-hero-image-container img { width: 100%; height: auto; display: block; }
 
 .post-content { max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #444; }
-.recipe-title-container { text-align: center; margin: 40px 0; }
-.recipe-title-container h1 { font-family: 'Merriweather', serif; font-size: 2.5rem; color: var(--verde-nobre); }
-.recipe-subtitle { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--dourado); }
+.recipe-title-container { text-align: center; margin: 50px 0; }
+.recipe-title-container h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--verde-nobre); line-height: 1.2;}
 
-.recipe-meta-icons { display: flex; justify-content: center; gap: 20px; margin: 20px 0; color: #666; font-size: 0.9rem; }
-
-/* Pilares e FAQ */
-.metodo-pilares { display: flex; gap: 20px; margin: 40px 0; }
-.pilar { flex: 1; background: white; padding: 20px; border: 1px solid #eee; text-align: center; }
-.pilar h3 { color: var(--verde-nobre); font-size: 1rem; margin-top: 10px; }
-
-.faq-item-accordion { border-bottom: 1px solid #eee; }
-.accordion-header { width: 100%; text-align: left; padding: 15px 0; background: none; border: none; font-weight: bold; cursor: pointer; font-size: 1rem; color: var(--verde-nobre); }
-
-/* Box de Venda nas Receitas */
-.direct-answer-box {
-    background-color: #f0fff4; border-left: 4px solid var(--verde-nobre);
-    padding: 20px; margin: 30px 0; font-size: 1rem;
-}
-
-/* 5. O JOGO CHEFBOX */
-.game-header { 
-    background: white; padding: 20px; text-align: center; 
-    position: sticky; top: 0; z-index: 900;
-    border-bottom: 4px solid var(--dourado);
-}
-.slots-container { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-.slot { width: 40px; height: 40px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-.slot.filled { background: var(--verde-nobre); color: white; }
-.slot.gift-slot { border: 2px dashed var(--dourado); color: var(--dourado); background: white; }
-.slot.gift-slot.filled { background: var(--dourado); color: white; border-style: solid; }
-
-/* Vitrine de Produtos (Grid) */
-.product-grid, .post-grid {
+/* --- VITRINE DE PRODUTOS --- */
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-    margin: 40px 0;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+    margin: 60px 0;
 }
-.card, .product-card {
+.card {
     background: white; border: 1px solid #eee;
     transition: transform 0.3s; display: flex; flex-direction: column;
 }
-.card:hover { transform: translateY(-5px); border-color: var(--dourado); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.card-image, .product-card-image, .game-img img { width: 100%; height: 200px; object-fit: cover; }
-.card-content, .game-info { padding: 15px; text-align: center; }
-.card h3, .game-title { font-family: 'Merriweather', serif; font-size: 1.1rem; margin: 5px 0; color: var(--verde-nobre); }
+.card:hover { transform: translateY(-5px); border-color: var(--dourado); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+.card-image { width: 100%; height: 280px; object-fit: cover; }
+.card-content { padding: 25px; text-align: center; }
+.card h3 { font-family: 'Merriweather', serif; font-size: 1.2rem; color: var(--verde-nobre); margin: 10px 0; }
 
-/* 6. RODAPÉ (FOOTER) */
-footer {
-    background-color: var(--verde-nobre);
-    color: white;
-    padding: 60px 0 30px;
-    margin-top: 80px;
-}
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+/* --- RODAPÉ --- */
+footer { background-color: var(--verde-nobre); color: white; padding: 80px 0; margin-top: 100px; }
 .footer-col h3 { color: var(--dourado); font-family: 'Merriweather', serif; margin-bottom: 20px; }
-.footer-col a { color: #ccc; display: block; margin-bottom: 8px; font-size: 0.9rem; }
+.footer-col a { color: #ccc; display: block; margin-bottom: 10px; }
 .footer-col a:hover { color: white; }
 
-/* RESPONSIVO */
+/* --- MOBILE --- */
 @media(max-width: 768px) {
     .header-flex { flex-wrap: wrap; }
-    .main-nav { display: none; width: 100%; flex-direction: column; gap: 10px; padding: 20px 0; }
-    .main-nav.active { display: flex; }
-    .mobile-nav-toggle { display: block; }
-    .metodo-pilares { flex-direction: column; }
-    h1.hero-title { font-size: 2.5rem; }
+    .main-nav { display: none; width: 100%; } /* Precisa do JS para abrir */
+    .hero-super-title { font-size: 2.5rem; }
+    .mobile-nav-toggle { display: block; font-size: 1.5rem; background: none; border: none; color: var(--verde-nobre); }
 }
