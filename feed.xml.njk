@@ -1,0 +1,56 @@
+---
+permalink: /feed_merchant.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+<channel>
+<title>ChefBrico - Gourmet Prático</title>
+<link>{{ meta.url }}</link>
+<description>Refeições gourmet desidratadas 100% naturais.</description>
+
+{# LOOP: Pega todas as receitas que têm preço (Produtos) #}
+{% for item in collections.receitas %}
+{% if item.data.price %}
+<item>
+    {# 1. IDENTIDADE BÁSICA #}
+    <g:id>{{ item.data.sku }}</g:id>
+    <g:title>{{ item.data.title }} | ChefBrico</g:title>
+    <g:description>{{ item.data.description }} Ingredientes 100% naturais, sem conservantes. Método Panela Única, pronto em {{ item.data.tempo_preparo }}.</g:description>
+    <g:link>{{ meta.url }}{{ item.url }}</g:link>
+    <g:image_link>{{ meta.url }}{{ item.data.image }}</g:image_link>
+    <g:brand>ChefBrico</g:brand>
+    
+    {# 2. DISPONIBILIDADE E PREÇO #}
+    <g:condition>new</g:condition>
+    <g:availability>in_stock</g:availability>
+    <g:price>{{ item.data.price }} BRL</g:price>
+    {% if item.data.price_old %}
+    <g:sale_price>{{ item.data.price }} BRL</g:sale_price>
+    <g:price>{{ item.data.price_old }} BRL</g:price>
+    {% endif %}
+
+    {# 3. CATEGORIZAÇÃO GOOGLE (Taxonomia Oficial de Alimentos) #}
+    <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items &gt; Prepared Meals &gt; Freeze-Dried &amp; Dehydrated Prepared Meals</g:google_product_category>
+    <g:product_type>Alimentos > Refeições Práticas > {{ item.data.category }}</g:product_type>
+
+    {# 4. DADOS PARA A IA (O PULO DO GATO 2026) #}
+    {# Rótulos para filtros de voz #}
+    <g:custom_label_0>Sem Glúten</g:custom_label_0> {# Ajuste conforme a receita real #}
+    <g:custom_label_1>{{ item.data.tempo_preparo }}</g:custom_label_1>
+    <g:custom_label_2>Jantar Rápido</g:custom_label_2>
+    
+    {# 5. ENTREGA (Conversa com suas regras do Knowledge Graph) #}
+    <g:shipping>
+        <g:country>BR</g:country>
+        <g:service>Correios/Motoboy</g:service>
+        <g:price>0.00 BRL</g:price> {# O valor real é calculado no checkout #}
+    </g:shipping>
+    
+    <g:identifier_exists>no</g:identifier_exists> {# Produtos artesanais não têm EAN/GTIN #}
+</item>
+{% endif %}
+{% endfor %}
+
+</channel>
+</rss>
