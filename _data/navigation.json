@@ -1,8 +1,29 @@
 [
-  { "text": "Início", "url": "/" },
-  { "text": "Receitas", "url": "/receitas/" },
-  { "text": "ChefBox (Loja)", "url": "/chefbox/" },
-  { "text": "Onde Encontrar", "url": "/onde-encontrar/" },
-  { "text": "Clube", "url": "/clube/" },
-  { "text": "FAQ", "url": "/faq/" }
+  {
+    "text": "Início",
+    "url": "/"
+  },
+  {
+    "text": "O Método",
+    "url": "/comida-de-verdade/"
+  },
+  {
+    "text": "Cardápio Completo ▾",
+    "url": "/receitas/",
+    "children": [
+      { "text": "Risotos & Arrozes", "url": "/receitas/risotos/" },
+      { "text": "Sopas Funcionais", "url": "/receitas/sopas-funcionais/" },
+      { "text": "Refeições Integrais", "url": "/receitas/refeicoes-integrais/" },
+      { "text": "Empório da Chef", "url": "/receitas/emporio-da-chef/" }
+    ]
+  },
+  {
+    "text": "Monte sua ChefBox 🎁",
+    "url": "/chefbox/",
+    "type": "cta"
+  },
+  {
+    "text": "Onde Encontrar",
+    "url": "/onde-encontrar/"
+  }
 ]
