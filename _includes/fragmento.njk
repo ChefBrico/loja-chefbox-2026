@@ -1,0 +1,116 @@
+---
+layout: base.njk
+---
+
+<!-- 1. O SCHEMA QAPage (O "Petisco" para a IA) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "QAPage",
+  "mainEntity": {
+    "@type": "Question",
+    "name": "{{ title }}",
+    "text": "{{ title }}",
+    "answerCount": 1,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ fragmento_texto }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ author_name }}"
+      },
+      "url": "{{ meta.url }}{{ page.url }}"
+    }
+  }
+}
+</script>
+
+<style>
+    /* Design de "Cartão de Definição" (Dicionário) */
+    .fragmento-container {
+        max-width: 700px;
+        margin: 60px auto;
+        padding: 20px;
+    }
+    
+    .fragmento-card {
+        background: #fff;
+        border-left: 6px solid #d4af37; /* Dourado */
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border-radius: 8px;
+    }
+
+    .fragmento-question {
+        font-family: 'Playfair Display', serif;
+        color: #2c3e50;
+        font-size: 2rem;
+        margin-top: 0;
+        line-height: 1.2;
+    }
+
+    .fragmento-answer {
+        font-size: 1.3rem;
+        color: #444;
+        line-height: 1.6;
+        margin: 20px 0;
+    }
+
+    .fragmento-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+
+    .author-avatar {
+        width: 60px; height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .cta-box {
+        margin-top: 40px;
+        text-align: center;
+        background: #fdf6e3;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    
+    .cta-link {
+        color: #27ae60;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
+    .cta-link:hover { text-decoration: underline; }
+</style>
+
+<main class="fragmento-container">
+    <article class="fragmento-card">
+        <!-- A Pergunta -->
+        <h1 class="fragmento-question">{{ title }}</h1>
+        
+        <!-- A Resposta Oficial (Fragmento) -->
+        <div class="fragmento-answer">
+            {{ fragmento_texto }}
+        </div>
+
+        <!-- Autoridade -->
+        <div class="fragmento-meta">
+            <img src="{{ author_avatar }}" alt="{{ author_name }}" class="author-avatar">
+            <div>
+                <strong>Resposta verificada por {{ author_name }}</strong><br>
+                <span style="font-size:0.9rem; color:#777;">{{ author_title }}</span>
+            </div>
+        </div>
+    </article>
+
+    <!-- O Funil (Leva para o artigo completo) -->
+    <div class="cta-box">
+        <p>{{ sale_signature }}</p>
+        <a href="{{ cta_link }}" class="cta-link">{{ cta_texto }} ➜</a>
+    </div>
+</main>
