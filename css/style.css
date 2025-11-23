@@ -761,3 +761,79 @@ footer { padding: 30px 20px; margin-top: 40px; border-top: 1px solid var(--cor-b
 .faq-item[open] summary::after {
     content: '-';
 }
+
+/* --- NAVEGAÇÃO A-COMMERCE --- */
+.nav-list {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    list-style: none;
+    margin: 0; padding: 0;
+}
+
+.nav-item { position: relative; }
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 10px;
+    transition: color 0.2s;
+}
+
+.nav-link:hover { color: #27ae60; }
+
+/* Botão de Destaque (ChefBox) */
+.btn-cta-nav {
+    background: #27ae60;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+.btn-cta-nav:hover {
+    background: #219150;
+    transform: translateY(-2px);
+}
+
+/* Dropdown (O Menu que desce) */
+.dropdown-menu {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    z-index: 1000;
+    list-style: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #555;
+    text-decoration: none;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.dropdown-menu a:hover {
+    background: #f4f4f4;
+    color: #27ae60;
+    padding-left: 25px; /* Efeitinho de movimento */
+}
+
+/* Mostrar Dropdown ao passar o mouse */
+.nav-item:hover .dropdown-menu {
+    display: block;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
