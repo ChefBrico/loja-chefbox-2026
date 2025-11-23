@@ -1,307 +1,51 @@
 ---
-layout: null
+layout: base.njk
+title: Gourmet Prático | A Revista da Comida de Verdade
+description: O Hub de A-Commerce da Chef Maria Conceição.
 ---
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gourmet Prático | A Revista da Comida de Verdade</title>
-    <meta name="description" content="O Hub de A-Commerce da Chef Maria Conceição. Receitas gourmet, ingredientes naturais e a exclusiva ChefBox.">
-    
-    <!-- FONTES DE REVISTA (GOOGLE FONTS) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
-    <!-- ESTILO CSS (EMBUTIDO PARA NÃO FALHAR) -->
-    <style>
-        :root {
-            --verde-nobre: #014039;
-            --dourado: #bfb084;
-            --texto: #222222;
-            --fundo-creme: #FAFAF8;
-            --branco: #ffffff;
-        }
+<!-- HERO SECTION -->
+<div class="hero-magazine">
+    <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" class="hero-bg" alt="Mesa Posta">
+    <div class="hero-content">
+        <h1 class="hero-super-title">Comida de Verdade.<br>Sem a Bagunça.</h1>
+        <p class="hero-subtitle">O sabor da Itália na sua mesa em 18 minutos. Método artesanal, ingredientes naturais e zero desperdício.</p>
+        <a href="/chefbox/" class="cta-button">MONTAR MINHA CAIXA</a>
+    </div>
+</div>
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+<!-- VITRINE -->
+<div class="container">
+    <div class="recipe-title-container">
+        <h1>Explore Nossos Mundos</h1>
+        <div style="width: 60px; height: 3px; background: var(--dourado); margin: 20px auto;"></div>
+    </div>
 
-        body {
-            font-family: 'Lato', sans-serif;
-            color: var(--texto);
-            background-color: var(--fundo-creme);
-            line-height: 1.6;
-        }
-
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        img { max-width: 100%; display: block; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* --- 1. MENU DE TOPO (PURELY STYLE) --- */
-        .top-bar {
-            background-color: var(--dourado);
-            color: white;
-            text-align: center;
-            padding: 8px 0;
-            font-size: 0.75rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        header {
-            background-color: rgba(255,255,255,0.98);
-            border-bottom: 1px solid #eee;
-            position: sticky; top: 0; z-index: 1000;
-            padding: 15px 0;
-        }
-
-        .nav-flex {
-            display: flex; justify-content: space-between; align-items: center;
-        }
-
-        .logo img { height: 55px; }
-
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--verde-nobre);
-            padding-bottom: 5px;
-        }
-        .nav-links a:hover { color: var(--dourado); border-bottom: 2px solid var(--dourado); }
-
-        .btn-header {
-            background-color: var(--verde-nobre);
-            color: white !important;
-            padding: 10px 25px;
-            border-radius: 0px; /* Quadrado elegante */
-        }
-        .btn-header:hover { background-color: var(--dourado); }
-
-        /* --- 2. HERO SECTION (CAPA) --- */
-        .hero {
-            position: relative;
-            height: 85vh;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-            background-color: var(--verde-nobre);
-        }
-        .hero img.bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0.6;
-        }
-        .hero-content {
-            position: relative; z-index: 2; max-width: 800px; padding: 20px;
-        }
-        .hero-tag {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem; color: var(--dourado); margin-bottom: 10px;
-        }
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem; margin-bottom: 30px; line-height: 1.1;
-        }
-        
-        .btn-hero-cta {
-            display: inline-block;
-            background-color: var(--dourado);
-            color: white;
-            padding: 18px 45px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border: 1px solid var(--dourado);
-            margin: 10px;
-        }
-        .btn-hero-outline {
-            display: inline-block;
-            background-color: transparent;
-            color: white;
-            padding: 18px 45px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border: 1px solid white;
-            margin: 10px;
-        }
-        .btn-hero-cta:hover, .btn-hero-outline:hover { background-color: white; color: var(--verde-nobre); }
-
-        /* --- 3. VITRINE EDITORIAL --- */
-        .section-title {
-            text-align: center; margin: 80px 0 60px;
-            font-family: 'Playfair Display', serif; color: var(--verde-nobre); font-size: 2.5rem;
-        }
-
-        .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px; margin-bottom: 80px;
-        }
-
-        .card {
-            background: white; border: 1px solid #eee;
-            transition: 0.3s; text-align: center;
-        }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        
-        .card-img { width: 100%; height: 350px; object-fit: cover; }
-        .card-body { padding: 30px; }
-        .card h3 { font-family: 'Playfair Display', serif; margin: 10px 0; color: var(--verde-nobre); font-size: 1.5rem; }
-        .card-link { color: var(--dourado); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-
-        /* --- 4. RODAPÉ --- */
-        footer {
-            background-color: white; border-top: 1px solid #eee;
-            padding: 80px 0 30px; margin-top: 60px;
-        }
-        .footer-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;
-        }
-        .footer-col h4 {
-            color: var(--verde-nobre); font-family: 'Playfair Display', serif; margin-bottom: 20px;
-        }
-        .footer-col a { display: block; color: #666; margin-bottom: 10px; font-size: 0.9rem; }
-        .footer-col a:hover { color: var(--dourado); }
-
-        /* MOBILE */
-        @media(max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .nav-links { display: none; } /* Simplificado para mobile agora */
-            .logo img { height: 45px; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- 1. BARRA DE TOPO -->
-    <div class="top-bar">FRETE GRÁTIS ACIMA DE R$ 132,00 (DF) | USE: CHEF10</div>
-
-    <!-- 2. MENU -->
-    <header>
-        <div class="container nav-flex">
-            <!-- Esquerda -->
-            <div class="nav-links">
-                <a href="/receitas/">Receitas</a>
-                <a href="/comida-de-verdade/">A Chef</a>
+    <div class="product-grid">
+        <a href="/receitas/risotos/" class="card">
+            <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" class="card-image">
+            <div class="card-content">
+                <h3>Risotos do Mundo</h3>
+                <span style="color: var(--laranja); font-weight: bold;">VER COLEÇÃO →</span>
             </div>
+        </a>
 
-            <!-- Logo Centro -->
-            <a href="/" class="logo">
-                <img src="/imagens/logo.png" alt="ChefBrico">
-            </a>
-
-            <!-- Direita -->
-            <div class="nav-links">
-                <a href="/chefbox/">Loja</a>
-                <a href="/chefbox/" class="btn-header">MONTAR CAIXA</a>
+        <a href="/receitas/sopas-funcionais/" class="card">
+            <img src="/imagens/sopinha-detox-chefbrico.png" class="card-image">
+            <div class="card-content">
+                <h3>Sopas Funcionais</h3>
+                <span style="color: var(--laranja); font-weight: bold;">VER COLEÇÃO →</span>
             </div>
-        </div>
-    </header>
+        </a>
 
-    <!-- 3. CAPA DE REVISTA -->
-    <section class="hero">
-        <img src="/imagens/risoto-pomodori-pesto-tijela-chefbrico.png" class="bg" alt="Fundo">
-        
-        <div class="hero-content">
-            <p class="hero-tag">Comida de Verdade</p>
-            <h1>Sem Bagunça.<br>Pura Arte.</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">
-                Descubra o Método Gourmet Prático. Refeições de chef em 18 minutos.
-            </p>
-            <div>
-                <a href="/chefbox/" class="btn-hero-cta">MONTAR CAIXA</a>
-                <a href="/receitas/" class="btn-hero-outline">LER REVISTA</a>
+        <a href="/chefbox/" class="card">
+            <div style="height: 220px; display: flex; align-items: center; justify-content: center; background: #f9f9f9;">
+                <img src="/imagens/uma-mazinha-icone-chefbrico.png" style="width: 60%;">
             </div>
-        </div>
-    </section>
-
-    <!-- 4. VITRINE EDITORIAL -->
-    <section class="container">
-        <h2 class="section-title">Explore Nossos Mundos</h2>
-
-        <div class="grid">
-            <!-- Card 1 -->
-            <a href="/receitas/risotos/" class="card">
-                <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" class="card-img">
-                <div class="card-body">
-                    <h3>Risotos do Mundo</h3>
-                    <span class="card-link">Ver Coleção &rarr;</span>
-                </div>
-            </a>
-
-            <!-- Card 2 -->
-            <a href="/receitas/sopas-funcionais/" class="card">
-                <img src="/imagens/sopinha-detox-chefbrico.png" class="card-img">
-                <div class="card-body">
-                    <h3>Sopas Funcionais</h3>
-                    <span class="card-link">Ver Coleção &rarr;</span>
-                </div>
-            </a>
-
-            <!-- Card 3 -->
-            <a href="/chefbox/" class="card">
-                <div style="height: 350px; display: flex; align-items: center; justify-content: center; background: #fbfbfb;">
-                    <img src="/imagens/uma-mazinha-icone-chefbrico.png" style="width: 60%; height: auto;">
-                </div>
-                <div class="card-body">
-                    <h3>Jogue ChefBox (4+1)</h3>
-                    <span class="card-link">Montar Agora &rarr;</span>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- 5. RODAPÉ -->
-    <footer>
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <img src="/imagens/logo.png" style="height: 40px; filter: grayscale(100%); opacity: 0.5; margin-bottom: 20px;">
-                <p style="font-size: 0.9rem; color: #888;">A revolução afetiva na sua cozinha. Método Gourmet Prático por Maria Conceição.</p>
+            <div class="card-content">
+                <h3>Jogue ChefBox (4+1)</h3>
+                <span style="color: var(--laranja); font-weight: bold;">MONTAR CAIXA →</span>
             </div>
-            <div class="footer-col">
-                <h4>EXPLORE</h4>
-                <a href="/receitas/">Cardápio</a>
-                <a href="/chefbox/">Loja</a>
-                <a href="/comida-de-verdade/">Sobre Nós</a>
-            </div>
-            <div class="footer-col">
-                <h4>SUPORTE</h4>
-                <a href="/faq/">Dúvidas</a>
-                <a href="/onde-encontrar/">Onde Encontrar</a>
-                <a href="https://wa.me/5561996659880">WhatsApp</a>
-            </div>
-            <div class="footer-col">
-                <h4>SEGURANÇA</h4>
-                <a href="#">CNPJ: 36.014.833/0001-59</a>
-                <a href="#">Brasília - DF</a>
-                <span style="color: var(--dourado); font-weight: bold;">★ Prêmio Sebrae</span>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 60px; font-size: 0.8rem; color: #aaa;">
-            &copy; 2025 ChefBrico. Todos os direitos reservados.
-        </div>
-    </footer>
-
-    <!-- Script do Netlify Identity para o Admin funcionar -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
-
-</body>
-</html>
+        </a>
+    </div>
+</div>
