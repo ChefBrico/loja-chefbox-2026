@@ -1,0 +1,107 @@
+---
+layout: base.njk
+permalink: /sucesso-clube/
+title: Bem-vindo(a) ao Clube! | ChefBrico
+# O SEGREDO: "noindex" impede que o Google mostre essa página na busca.
+# Assim, só quem se inscreve ganha o cupom.
+robots: noindex
+---
+
+<style>
+    /* Estilo do Cupom Dourado */
+    .success-container {
+        text-align: center;
+        max-width: 600px;
+        margin: 60px auto;
+        padding: 20px;
+    }
+
+    .check-icon {
+        font-size: 4rem;
+        color: #27ae60;
+        margin-bottom: 10px;
+        animation: popIn 0.5s ease;
+    }
+
+    .coupon-ticket {
+        background: #fdf6e3; /* Bege ChefBrico */
+        border: 2px dashed #d4af37; /* Dourado */
+        padding: 30px;
+        margin: 30px 0;
+        border-radius: 12px;
+        position: relative;
+    }
+
+    .coupon-code {
+        display: block;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #27ae60;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        letter-spacing: 2px;
+        border: 1px solid #ddd;
+        user-select: all; /* Facilita copiar */
+    }
+
+    .copy-hint {
+        font-size: 0.8rem;
+        color: #888;
+        margin-bottom: 20px;
+    }
+
+    .cta-big {
+        background: #27ae60;
+        color: white;
+        text-decoration: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        display: inline-block;
+        transition: 0.2s;
+        box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+    }
+
+    .cta-big:hover {
+        transform: scale(1.05);
+        background: #219150;
+    }
+
+    @keyframes popIn {
+        0% { transform: scale(0); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+</style>
+
+<main class="success-container">
+    
+    <div class="check-icon">🎉</div>
+    
+    <h1>Inscrição Confirmada!</h1>
+    <p>Que alegria ter você aqui. Você já faz parte do ChefBrico Club.</p>
+    <p>Enviamos um e-mail de confirmação, mas você não precisa esperar para aproveitar.</p>
+
+    <!-- O PRÊMIO IMEDIATO -->
+    <div class="coupon-ticket">
+        <h3>Seu Presente de Boas-Vindas 🎁</h3>
+        <p>Use este cupom para ganhar <strong>10% OFF</strong> agora:</p>
+        
+        <code class="coupon-code">PRIMEIRA10</code>
+        <p class="copy-hint">(Toque no código para copiar)</p>
+
+        <p>Válido para Risotos, Sopas e para a ChefBox!</p>
+    </div>
+
+    <!-- AÇÃO IMEDIATA (CONVERSÃO) -->
+    <a href="/chefbox/" class="cta-big">
+        USAR MEU CUPOM AGORA ➜
+    </a>
+
+    <p style="margin-top: 40px; font-size: 0.9rem;">
+        <a href="/">Voltar para a Página Inicial</a>
+    </p>
+
+</main>
