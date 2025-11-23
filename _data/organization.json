@@ -1,19 +1,33 @@
 {
   "name": "ChefBrico",
-  "legalName": "ChefBrico Alimentos Ltda",
+  "legalName": "ChefBrico Alimentos Artesanais Ltda",
+  "slogan": "Simples como precisa ser, delicioso como você merece.",
+  "description": "Especialista em refeições gourmet 100% naturais, prontas em 18 minutos. Vencedora do Prêmio Sebrae Mulher de Negócios.",
   "url": "https://gourmetpratico.com.br",
-  "logo": "/imagens/logo.png",
+  "logo": "https://gourmetpratico.com.br/imagens/logo.png",
+  "foundingDate": "2018",
+  "founders": [
+    {
+      "name": "Maria Conceição",
+      "jobTitle": "Fundadora e Chef de Criação"
+    }
+  ],
   "contactPoint": {
-    "@type": "ContactPoint",
     "telephone": "+5561996659880",
-    "contactType": "customer service"
+    "contactType": "customer service",
+    "areaServed": "BR",
+    "availableLanguage": "Portuguese"
   },
   "address": {
-    "@type": "PostalAddress",
     "streetAddress": "Rua 5, Chácara 122, Lote 17",
     "addressLocality": "Brasília",
     "addressRegion": "DF",
     "postalCode": "72006-060",
     "addressCountry": "BR"
-  }
+  },
+  "sameAs": [
+    "https://www.instagram.com/chefbrico",
+    "https://www.facebook.com/chefbrico",
+    "https://www.linkedin.com/in/mariaconceicao"
+  ]
 }
