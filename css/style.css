@@ -1,55 +1,55 @@
 /* ======================================================= */
-/* === CHEFBRICO - VISUAL REVISTA PREMIUM V FINAL === */
+/* === CHEFBRICO - DESIGN SYSTEM "GOLD STANDARD" V6.0 === */
 /* ======================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300&family=Lato:wght@300;400;700&family=Dancing+Script:wght@700&display=swap');
+/* 1. TIPOGRAFIA E CORES (A Base) */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Lato:wght@300;400;700&family=Dancing+Script:wght@700&display=swap');
 
 :root {
     --verde-nobre: #014039;
     --dourado: #bfb084;
-    --creme-fundo: #FAFAF8;
-    --texto-escuro: #222;
+    --vinho: #73022c;
+    --laranja: #F2811d;
     --branco: #ffffff;
-    --laranja-cta: #F2811d;
-    --borda-suave: #e5e5e5;
+    --creme: #FAFAF8;
+    --texto: #222222;
+    --cinza-claro: #f4f4f4;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: 'Lato', sans-serif;
-    background-color: var(--creme-fundo);
-    color: var(--texto-escuro);
-    margin: 0;
+    background-color: var(--creme);
+    color: var(--texto);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 img { max-width: 100%; display: block; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- HEADER E MENU --- */
-.top-slogan-bar {
+/* --- 2. CABEÇALHO E MENU (Decente e Fixo) --- */
+.top-bar {
     background-color: var(--dourado);
     color: white;
     text-align: center;
-    padding: 8px;
+    padding: 8px 0;
     font-size: 0.75rem;
+    letter-spacing: 1px;
     font-weight: bold;
-    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 header {
     background-color: white;
-    padding: 15px 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid #eee;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px 0;
 }
-
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 .header-flex {
     display: flex;
@@ -57,30 +57,83 @@ header {
     align-items: center;
 }
 
+.logo img { height: 60px; width: auto; }
+
+.nav-menu { display: flex; align-items: center; gap: 30px; }
+
 .nav-link {
-    color: var(--verde-nobre);
+    font-family: 'Lato', sans-serif;
     font-size: 0.85rem;
     font-weight: 700;
+    color: var(--verde-nobre);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 0 15px;
+    position: relative;
 }
-.nav-link:hover { color: var(--dourado); border-bottom: 2px solid var(--dourado); }
 
-.cta-button-nav {
+.nav-link:hover { color: var(--dourado); }
+.nav-link::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -5px; left: 0; background-color: var(--dourado);
+    transition: width 0.3s;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* Botão do Menu */
+.btn-nav {
     background-color: var(--verde-nobre);
     color: white !important;
-    padding: 10px 25px;
+    padding: 12px 25px;
+    border-radius: 4px;
     font-size: 0.8rem;
     font-weight: bold;
-    border-radius: 4px;
-    letter-spacing: 1px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
-.cta-button-nav:hover { background-color: var(--dourado); }
+.btn-nav:hover { background-color: var(--dourado); transform: translateY(-2px); }
 
-/* --- HOME: CAPA DE REVISTA --- */
-.hero-magazine {
+/* --- 3. RODAPÉ (Profissional e Organizado) --- */
+footer {
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+    padding: 80px 0 30px;
+    margin-top: 100px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr; /* Coluna da logo maior */
+    gap: 40px;
+}
+
+.footer-brand p { font-size: 0.9rem; color: #666; margin-top: 15px; }
+
+.footer-col h4 {
+    color: var(--verde-nobre);
+    font-family: 'Merriweather', serif;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.footer-col a {
+    display: block;
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+.footer-col a:hover { color: var(--dourado); padding-left: 5px; }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* --- 4. HERO SECTION (Home Revista) --- */
+.hero-cover {
     position: relative;
     height: 85vh;
     min-height: 600px;
@@ -88,106 +141,77 @@ header {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: var(--verde-nobre); /* Cor de fallback */
+    color: white;
     overflow: hidden;
 }
-
-/* A Foto de Fundo */
-.hero-bg {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    opacity: 0.5; /* Transparência para o texto aparecer */
+.hero-img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: -1;
+}
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(1,64,57,0.3), rgba(1,64,57,0.7));
     z-index: 0;
 }
+.hero-text { position: relative; z-index: 1; max-width: 800px; padding: 20px; }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    color: white;
-    padding: 20px;
-    max-width: 900px;
-}
-
-.hero-super-title {
+.hero-title {
     font-family: 'Merriweather', serif;
     font-size: 4rem;
     line-height: 1.1;
     margin-bottom: 20px;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.hero-tag {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem; color: var(--dourado);
+    margin-bottom: 30px;
 }
 
-.hero-subtitle {
-    font-size: 1.4rem;
-    max-width: 700px;
-    margin: 0 auto 40px;
-    font-weight: 300;
-    color: #f0f0f0;
+/* --- 5. ESTRUTURA DAS RECEITAS (Resgate do seu Trabalho) --- */
+.article-hero-image-container {
+    width: 100%; max-width: 900px; margin: 40px auto;
+    border: 1px solid #eee; padding: 15px; background: white;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
+.article-hero-image-container img { width: 100%; border-radius: 4px; }
 
+.post-content { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: #444; }
+.recipe-title-container { text-align: center; margin: 50px 0; }
+.recipe-title-container h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--verde-nobre); }
+
+/* Elementos Ricos */
+.direct-answer-box {
+    background: #f0fff4; border-left: 4px solid var(--verde-nobre);
+    padding: 25px; margin: 40px 0; border-radius: 0 10px 10px 0;
+}
+.testimonial-box {
+    text-align: center; padding: 40px; margin: 60px 0;
+    border-top: 1px solid var(--dourado); border-bottom: 1px solid var(--dourado);
+}
+.testimonial-box p { font-family: 'Merriweather', serif; font-style: italic; font-size: 1.3rem; color: var(--verde-nobre); }
+
+/* --- 6. BOTÕES E CARDS --- */
 .cta-button {
     display: inline-block;
-    background-color: var(--dourado);
+    background-color: var(--laranja);
     color: white;
-    padding: 18px 45px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    padding: 15px 40px;
     border-radius: 50px;
-    border: 2px solid var(--dourado);
-    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(242, 129, 29, 0.4);
 }
-.cta-button:hover { background-color: white; color: var(--verde-nobre); border-color: white; }
+.cta-button:hover { transform: translateY(-3px); background-color: #d97216; }
 
-.btn-outline {
-    background: transparent; border: 2px solid white; color: white; margin-left: 15px;
-}
+.btn-outline { background: transparent; border: 2px solid white; box-shadow: none; margin-left: 15px; }
 .btn-outline:hover { background: white; color: var(--verde-nobre); }
-
-
-/* --- AS RECEITAS (MOLDURAS E LAYOUT) --- */
-.article-hero-image-container {
-    max-width: 900px;
-    margin: 40px auto;
-    border: 1px solid #e0e0e0;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-radius: 4px;
-}
-.article-hero-image-container img { width: 100%; height: auto; display: block; }
-
-.post-content { max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #444; }
-.recipe-title-container { text-align: center; margin: 50px 0; }
-.recipe-title-container h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--verde-nobre); line-height: 1.2;}
-
-/* --- VITRINE DE PRODUTOS --- */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 40px;
-    margin: 60px 0;
-}
-.card {
-    background: white; border: 1px solid #eee;
-    transition: transform 0.3s; display: flex; flex-direction: column;
-}
-.card:hover { transform: translateY(-5px); border-color: var(--dourado); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
-.card-image { width: 100%; height: 280px; object-fit: cover; }
-.card-content { padding: 25px; text-align: center; }
-.card h3 { font-family: 'Merriweather', serif; font-size: 1.2rem; color: var(--verde-nobre); margin: 10px 0; }
-
-/* --- RODAPÉ --- */
-footer { background-color: var(--verde-nobre); color: white; padding: 80px 0; margin-top: 100px; }
-.footer-col h3 { color: var(--dourado); font-family: 'Merriweather', serif; margin-bottom: 20px; }
-.footer-col a { color: #ccc; display: block; margin-bottom: 10px; }
-.footer-col a:hover { color: white; }
 
 /* --- MOBILE --- */
 @media(max-width: 768px) {
-    .header-flex { flex-wrap: wrap; }
-    .main-nav { display: none; width: 100%; } /* Precisa do JS para abrir */
-    .hero-super-title { font-size: 2.5rem; }
-    .mobile-nav-toggle { display: block; font-size: 1.5rem; background: none; border: none; color: var(--verde-nobre); }
+    .nav-menu { display: none; } /* Menu hambúrguer viria aqui */
+    .mobile-nav-toggle { display: block; font-size: 1.5rem; border: none; background: none; }
+    .hero-title { font-size: 2.5rem; }
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
 }
