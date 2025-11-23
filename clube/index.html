@@ -1,189 +1,145 @@
 ---
-{
-  "layout": "base.njk",
-  "permalink": "/clube/",
-  "title": "ChefBrico Club | Cupons, Novidades e Comunidade #ChefBricoEmCasa",
-  "description": "Entre para o ChefBrico Club e receba cupons exclusivos! Faça parte da nossa comunidade #ChefBricoEmCasa, veja pratos reais de clientes e inspire-se.",
-  "schema": {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://receitas.chefbrico.com/clube/"
-        },
-        "name": "ChefBrico Club: Vantagens Exclusivas e Comunidade #ChefBricoEmCasa",
-        "description": "Página de inscrição para o ChefBrico Club. Membros recebem cupons, novidades e podem participar da galeria da comunidade #ChefBricoEmCasa.",
-        "image": "https://receitas.chefbrico.com/imagens/chefbrico-fullbanner-Pinterest1.png",
-        "publisher": {
-          "@id": "https://www.chefbrico.com/#organization"
-        },
-        "mainEntity": {
-          "@type": "Offer",
-          "name": "Cupons de Boas-Vindas ao ChefBrico Club",
-          "description": "Inscreva-se e receba 10% de desconto na sua primeira compra (PRIMEIRA10) e 10% de desconto em toda a linha vegana (VEG10).",
-          "offeredBy": {
-            "@id": "https://www.chefbrico.com/#organization"
-          }
-        },
-        "potentialAction": {
-          "@type": "RegisterAction",
-          "name": "Inscrever-se no ChefBrico Club",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "[URL_DA_SUA_FERRAMENTA_DE_EMAIL_AQUI]",
-            "description": "Formulário de inscrição no ChefBrico Club para receber cupons e novidades."
-          }
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Início",
-            "item": "https://receitas.chefbrico.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "ChefBrico Club",
-            "item": "https://receitas.chefbrico.com/clube/"
-          }
-        ]
-      }
-    ]
-  }
-}
+layout: base.njk
+permalink: "/clube/"
+title: "ChefBrico Club | Cupons e Comunidade VIP"
+description: "Entre para o clube exclusivo da ChefBrico. Ganhe 10% OFF na primeira compra e participe da nossa comunidade #ChefBricoEmCasa."
 ---
 
-{% block head %}
+<!-- 1. SCHEMA PARA COMUNIDADE (ROBÔ) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "ChefBrico Club",
+      "description": "Comunidade exclusiva de clientes ChefBrico.",
+      "url": "https://gourmetpratico.com.br/clube/"
+    },
+    {
+      "@type": "Offer",
+      "name": "Cupom de Boas-Vindas",
+      "description": "10% de desconto (Cupom: PRIMEIRA10) ao se inscrever.",
+      "price": "0.00",
+      "priceCurrency": "BRL",
+      "offeredBy": {
+        "@type": "Organization",
+        "name": "ChefBrico",
+        "url": "https://gourmetpratico.com.br"
+      }
+    }
+  ]
+}
+</script>
+
 <style>
-    .hero-card {
-        max-width: 900px;
-        max-height: 450px;
-        margin: 0 auto 40px auto;
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
-    .hero-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-    }
-    .capture-block {
-        background-color: #fdfaf2;
-        border: 1px solid #f0ead6;
-        border-radius: 8px;
-        padding: 40px 30px;
+    /* CSS ESPECÍFICO DESTA PÁGINA */
+    .hero-club {
+        position: relative;
         text-align: center;
-        max-width: 700px;
-        margin: 40px auto;
+        background: #fdf6e3; /* Bege ChefBrico */
+        padding: 60px 20px;
+        margin-bottom: 40px;
+        border-radius: 0 0 50% 50% / 20px;
     }
-    .capture-block h2 {
-        margin-top: 0;
-        color: var(--cor-primaria);
+
+    .capture-block {
+        background-color: white;
+        border: 2px dashed #d4af37; /* Dourado */
+        border-radius: 12px;
+        padding: 40px;
+        text-align: center;
+        max-width: 600px;
+        margin: -60px auto 40px; /* Sobe por cima do Hero */
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
+
     .capture-form {
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        margin-top: 25px;
-        margin-bottom: 25px;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
     }
-    .capture-form input[type="email"] {
-        flex-grow: 1;
-        min-width: 250px;
+
+    .input-field {
         padding: 15px;
-        font-size: 1em;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
     }
-    .capture-form .cta-button {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        font-size: 1em;
-        height: auto;
-        white-space: nowrap;
+
+    .btn-club {
+        background: #27ae60;
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: 0.3s;
     }
+
+    .btn-club:hover { background: #219150; transform: translateY(-2px); }
+
     .lista-vantagens {
-        list-style: none;
-        padding: 0;
-        margin: 25px auto 0 auto;
         text-align: left;
-        max-width: 450px;
-        color: #555;
-        line-height: 1.7;
+        margin: 20px 0;
+        padding: 0 20px;
+        list-style: none;
     }
+    .lista-vantagens li { margin-bottom: 10px; font-size: 0.95rem; }
 </style>
-{% endblock %}
 
-<main class="container">
-    <div class="recipe-title-container" style="text-align:center;">
-        <h1>Bem-vindo ao ChefBrico Club!</h1>
-        <p class="recipe-subtitle">O seu espaço exclusivo para vantagens, novidades e para celebrar o amor pela comida de verdade.</p>
+<main>
+    
+    <!-- HERO SECTION -->
+    <div class="hero-club">
+        <h1>Bem-vindo ao ChefBrico Club! 🥗</h1>
+        <p>A comunidade de quem ama comer bem sem perder tempo.</p>
     </div>
 
-    <div class="hero-card">
-        <img src="/imagens/chefbrico-fullbanner-Pinterest1.png" alt="Pessoas felizes celebrando em volta de uma mesa com pratos deliciosos da ChefBrico, simbolizando o ChefBrico Club.">
-    </div>
-
+    <!-- FORMULÁRIO REAL (NETLIFY FORMS) -->
     <section class="capture-block">
-        <h2>Entre para o Clube e Ganhe um Presente!</h2>
-        <p>Deixe seu e-mail para se juntar à nossa comunidade e receba imediatamente seus cupons de boas-vindas para usar na nossa loja online.</p>
+        <h2>Ganhe um Presente Agora!</h2>
+        <p>Inscreva-se e receba o cupom <strong>PRIMEIRA10</strong> (10% OFF) imediatamente no seu e-mail.</p>
         
-        <form action="[URL_DA_SUA_FERRAMENTA_DE_EMAIL_AQUI]" method="post" target="_blank" class="capture-form">
-            <input type="email" name="EMAIL" placeholder="Seu melhor e-mail" required>
-            <button type="submit" class="cta-button">QUERO MEUS CUPONS!</button>
+        <!-- ATENÇÃO: O atributo 'netlify' faz o formulário funcionar sem backend -->
+        <form name="clube-chefbrico" method="POST" data-netlify="true" action="/sucesso-clube/" class="capture-form">
+            <input type="hidden" name="form-name" value="clube-chefbrico">
+            
+            <input type="text" name="nome" class="input-field" placeholder="Seu Nome" required>
+            <input type="email" name="email" class="input-field" placeholder="Seu Melhor E-mail" required>
+            
+            <button type="submit" class="btn-club">QUERO MEUS CUPONS! 🎟️</button>
         </form>
 
         <ul class="lista-vantagens">
-            <li>✅ <strong>10% OFF</strong> na sua primeira compra (Cupom: <strong>PRIMEIRA10</strong>)</li>
-            <li>✅ <strong>10% OFF</strong> em toda a nossa linha vegana (Cupom: <strong>VEG10</strong>)</li>
-            <li>✅ Novidades e promoções secretas em primeira mão!</li>
+            <li>✅ <strong>10% OFF</strong> na primeira compra</li>
+            <li>✅ Acesso antecipado à Black Friday ChefBrico</li>
+            <li>✅ Dicas exclusivas da Chef Maria Conceição</li>
         </ul>
     </section>
 
-    <div class="post-content">
-        <h2 style="text-align: center; margin-top: 60px;">Inspire-se: O Mural dos Membros do Clube</h2>
+    <!-- CONTEÚDO COMUNITÁRIO -->
+    <div class="container text-center">
+        <h2>Mural da Fama #ChefBricoEmCasa</h2>
+        <p>Poste sua foto no Instagram e marque a gente!</p>
         
-        <div class="participation-box">
-            <h3>Como ter sua foto aqui? É fácil!</h3>
-            <ol class="lista-passos">
-                <li>1. Cozinhe seu prato ChefBrico</li>
-                <li>2. Tire uma foto com carinho</li>
-                <li>3. Poste no Instagram com <strong>#ChefBricoEmCasa</strong></li>
-            </ol>
-            <p class="prize-text">✨ A foto mais inspiradora de cada mês ganha uma ChefBox de presente! ✨</p>
+        <div class="participation-box" style="background:#f9f9f9; padding:20px; margin:30px 0; border-radius:10px;">
+            <h3>Como aparecer aqui?</h3>
+            <p>1. Cozinhe seu prato ChefBrico<br>
+               2. Tire uma foto linda<br>
+               3. Marque <strong>@chefbrico</strong> no Instagram</p>
+            <p style="color:#d4af37; font-weight:bold;">✨ A melhor foto do mês ganha uma ChefBox! ✨</p>
         </div>
-        
-         <section class="depoimentos-section py-5" style="background-color: #fff; padding-top: 50px; margin-top: 40px; border-top: 1px solid #eee;">
-    <div class="container">
-        <h2 class="text-center mb-4">O que nossas fãs da região dizem</h2>
-        <div class="carousel-container" style="justify-content: center;">
-            
-            <div class="carousel-card depoimento-card" style="border: 2px dashed var(--cor-primaria); background-color: #fdfcf7;">
-                <h3 style="font-size: 1.5em; color: var(--cor-titulos); margin-top: 0;">Seja o Próximo Destaque!</h3>
-                <p class="quote" style="min-height: auto; margin-bottom: 25px;">A sua experiência com a ChefBrico pode inspirar outras pessoas na sua vizinhança. Adoraríamos ouvir a sua história ou sugestão!</p>
-                <a href="https://wa.me/5561996659880?text=Ol%C3%A1%2C%20gostaria%20de%20deixar%20um%20depoimento%20sobre%20a%20ChefBrico%21" target="_blank" rel="noopener noreferrer" class="cta-button"><strong>Fale Comigo no WhatsApp</strong></a>
-            </div>
 
-            </div>
-    </div>
-</section>
-        <div class="author-box" style="margin-top: 60px;">
-            <img src="/imagens/maria-conceicao-pra-voce.png" alt="Retrato de Maria Conceição, fundadora da ChefBrico" class="author-image">
-            <div class="author-info">
-                <h4>Uma mensagem da Maria Conceição</h4>
-                <p>Ver os pratos que vocês criam é a maior recompensa do meu trabalho. Este clube é o nosso espaço para celebrar a alegria da comida de verdade. Agradeço por fazer parte desta comunidade!</p>
-            </div>
+        <!-- MENSAGEM DA FUNDADORA -->
+        <div class="author-box" style="margin-top: 50px;">
+            <img src="/imagens/maria-conceicao-pra-voce.png" alt="Maria Conceição" class="author-image" style="width:80px; height:80px; border-radius:50%;">
+            <blockquote>"Ver os pratos que vocês criam é a maior recompensa do meu trabalho. Obrigada por fazer parte!"</blockquote>
+            <cite>- Maria Conceição</cite>
         </div>
     </div>
 </main>
-
