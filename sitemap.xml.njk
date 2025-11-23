@@ -3,33 +3,50 @@ permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {# 1. PÁGINAS MANUAIS IMPORTANTES #}
-    <url>
-        <loc>https://gourmetpratico.com.br/</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://gourmetpratico.com.br/chefbox/</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://gourmetpratico.com.br/receitas/</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
+<!-- Adicionamos o namespace de IMAGEM, essencial para Food Porn e Google Shopping -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-    {# 2. TODAS AS RECEITAS E PÁGINAS AUTOMÁTICAS #}
+    {# LOOP AUTOMÁTICO PARA TODO O SITE #}
     {% for page in collections.all %}
-    {% if not page.data.eleventyExcludeFromCollections and page.url %}
-    <url>
-        <loc>https://gourmetpratico.com.br{{ page.url | url }}</loc>
-        <lastmod>{{ page.date.toISOString() }}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    {% endif %}
+        {# Filtra páginas que não devem aparecer (ex: rascunhos, páginas de erro) #}
+        {% if not page.data.eleventyExcludeFromCollections and page.url %}
+        <url>
+            {# 1. A URL DA PÁGINA (Puxando do meta.json para não quebrar) #}
+            <loc>{{ meta.url }}{{ page.url | url }}</loc>
+
+            {# 2. DATA DA ÚLTIMA ATUALIZAÇÃO #}
+            <lastmod>{{ page.date.toISOString() }}</lastmod>
+
+            {# 3. FREQUÊNCIA E PRIORIDADE INTELIGENTES #}
+            {# Se for a Home (/), o Google deve visitar todo dia #}
+            {% if page.url == '/' %}
+                <changefreq>daily</changefreq>
+                <priority>1.0</priority>
+            
+            {# Se for a ChefBox ou Landing Page de Venda #}
+            {% elseif '/chefbox/' in page.url %}
+                <changefreq>weekly</changefreq>
+                <priority>0.9</priority>
+            
+            {# Receitas normais #}
+            {% else %}
+                <changefreq>monthly</changefreq>
+                <priority>0.8</priority>
+            {% endif %}
+
+            {# 4. O SEGREDO DO A-COMMERCE: MAPA DE IMAGENS #}
+            {# Se a página tiver uma imagem de capa (definida no Markdown), mostre ao Google #}
+            {% if page.data.image %}
+            <image:image>
+                <image:loc>{{ meta.url }}{{ page.data.image }}</image:loc>
+                <image:title>{{ page.data.title }}</image:title>
+                {% if page.data.description %}
+                <image:caption>{{ page.data.description }}</image:caption>
+                {% endif %}
+            </image:image>
+            {% endif %}
+        </url>
+        {% endif %}
     {% endfor %}
 </urlset>
