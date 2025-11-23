@@ -1,93 +1,232 @@
 ---
 layout: base.njk
 permalink: /comida-de-verdade/
-title: "Comida de Verdade e Propósito | O Manifesto ChefBrico"
-description: "Aqui tem força feminina, afeto e sabor. Conheça o Método Gourmet Prático e nossa missão de transformar a pressa em presença."
+title: "Comida de Verdade e Propósito | O Método Maria Conceição"
+description: "Conheça a Chef Maria Conceição, vencedora do Prêmio Sebrae, e seu Método Gourmet Prático. Transformando ingredientes do Cerrado em rituais de afeto."
 ---
 
+<!-- 1. O SUPER SCHEMA (EEAT MÁXIMO PARA ROBÔS) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "mainEntity": {
-    "@type": "Organization",
-    "name": "ChefBrico",
-    "founder": "Maria Conceição",
-    "slogan": "Simples como precisa ser, delicioso como você merece.",
-    "description": "Inspiramos pessoas a viverem o ato de cozinhar como um ritual de expressão, autonomia e afeto."
-  }
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://gourmetpratico.com.br/#person-maria-conceicao",
+        "name": "Maria Conceição",
+        "jobTitle": "Fundadora e Chef de Criação",
+        "description": "Empreendedora premiada que revolucionou a culinária prática com o método 'Gourmet Prático'.",
+        "image": "https://gourmetpratico.com.br/imagens/maria-conceicao.jpg",
+        "award": "Prêmio Sebrae Mulher de Negócios (Ouro)",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "ChefBrico",
+          "location": {
+            "@type": "Place",
+            "name": "Brasília - Cerrado Brasileiro"
+          }
+        },
+        "knowsAbout": [
+          "Despensa Inteligente",
+          "Panela Única",
+          "Cozinha Criativa",
+          "Desidratação de Vegetais",
+          "Empreendedorismo Feminino"
+        ]
+      }
+    },
+    {
+      "@type": "Article",
+      "headline": "O Método Gourmet Prático",
+      "author": { "@id": "https://gourmetpratico.com.br/#person-maria-conceicao" },
+      "publisher": { "@id": "https://gourmetpratico.com.br/#organization" }
+    }
+  ]
 }
 </script>
 
 <style>
-    .manifesto-header { text-align: center; padding: 60px 20px; background-color: #fdfcf7; }
-    .manifesto-title { font-family: 'Merriweather', serif; color: #014039; font-size: 2.5rem; margin-bottom: 20px; }
-    .manifesto-text { font-family: 'Lato', sans-serif; font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto; line-height: 1.8; }
+    /* DESIGN PREMIUM E AUTORAL */
+    .hero-auth {
+        text-align: center;
+        padding: 80px 20px;
+        background: radial-gradient(circle at center, #fdfcf7 0%, #f4f1ea 100%);
+        border-bottom: 5px solid #d4af37;
+    }
     
-    .personas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; }
-    .persona-card { background: white; padding: 30px; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-    .persona-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
-    .persona-title { color: #73022c; font-weight: bold; font-size: 1.3rem; margin-bottom: 10px; }
+    .chef-avatar {
+        width: 180px; height: 180px;
+        border-radius: 50%;
+        border: 4px solid #d4af37;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    .badge-award {
+        display: inline-block;
+        background: #014039;
+        color: #d4af37;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(1, 64, 57, 0.3);
+    }
+
+    .manifesto-title {
+        font-family: 'Playfair Display', serif;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .manifesto-text {
+        font-size: 1.25rem;
+        color: #555;
+        max-width: 750px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+
+    /* OS 3 PILARES (METODOLOGIA) */
+    .method-section {
+        padding: 60px 20px;
+        background: white;
+    }
+
+    .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    .pillar-card {
+        text-align: center;
+        padding: 30px;
+        border: 1px dashed #ccc;
+        border-radius: 12px;
+        transition: 0.3s;
+    }
+    .pillar-card:hover { transform: translateY(-5px); border-color: #27ae60; background: #fcffff; }
+
+    .pillar-icon { font-size: 2.5rem; display: block; margin-bottom: 15px; }
+    .pillar-title { font-weight: bold; color: #014039; margin-bottom: 10px; font-size: 1.2rem; }
+
+    /* PERSONAS A-COMMERCE */
+    .personas-section {
+        background: #fdf6e3;
+        padding: 60px 20px;
+        text-align: center;
+    }
     
-    .highlight-box { background-color: #014039; color: white; padding: 40px; text-align: center; margin: 60px 0; border-radius: 10px; }
-    .tagline { font-family: 'Merriweather', serif; font-size: 1.8rem; font-style: italic; color: #bfb084; }
+    .persona-btn {
+        display: inline-block;
+        margin-top: 15px;
+        color: #fff;
+        background: #27ae60;
+        padding: 10px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9rem;
+        transition: 0.2s;
+    }
+    .persona-btn:hover { background: #219150; }
 </style>
 
-<main class="container">
+<main>
     
-    <!-- MANIFESTO -->
-    <div class="manifesto-header">
-        <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" style="width:150px; height:150px; border-radius:50%; border:4px solid #bfb084; margin-bottom:30px;">
-        <h1 class="manifesto-title">Aqui tem força feminina,<br>afeto e sabor.</h1>
+    <!-- 1. HERO DE AUTORIDADE (O ROSTO DA MARCA) -->
+    <div class="hero-auth">
+        <img src="/imagens/maria-conceicao.jpg" alt="Chef Maria Conceição" class="chef-avatar">
+        
+        <br>
+        <span class="badge-award">🏆 Prêmio Sebrae Mulher de Negócios</span>
+        
+        <h1 class="manifesto-title">Transformo a pressa em presença<br>através da panela única.</h1>
+        
         <div class="manifesto-text">
-            <p>Somos feitas de ancestralidade. Ecoamos a sabedoria das mulheres que vieram antes de nós e revolucionaram o simples ato de cozinhar em gestos de coragem, criatividade e ousadia.</p>
-            <p><strong>Acreditamos no poder da pausa.</strong> No compasso apressado da humanidade, valorizamos o instante em que as pessoas se encontram, a panela aquece e as relações se fortalecem. Transformar a pressa em presença é o nosso convite diário.</p>
+            <p>Eu sou Maria Conceição. Nascida no Cerrado, psicóloga de formação e cozinheira de alma. Criei a ChefBrico porque acredito que <strong>comer comida de verdade não deveria ser um luxo de quem tem tempo</strong>, mas um direito de quem busca qualidade de vida.</p>
         </div>
     </div>
 
-    <!-- A TAGLINE -->
-    <div class="highlight-box">
-        <p class="tagline">"Simples como precisa ser,<br>delicioso como você merece."</p>
-    </div>
+    <!-- 2. O MÉTODO GOURMET PRÁTICO (OS 3 PILARES) -->
+    <section class="method-section">
+        <div class="container text-center">
+            <h2 style="color:#014039;">O Método Gourmet Prático</h2>
+            <p>Desenvolvi uma metodologia baseada em 3 pilares para garantir sabor de chef em 18 minutos.</p>
+            
+            <div class="pillars-grid">
+                <!-- Pilar 1 -->
+                <div class="pillar-card">
+                    <span class="pillar-icon">🥫</span>
+                    <h3 class="pillar-title">1. Despensa Inteligente</h3>
+                    <p>Ingredientes desidratados naturalmente que duram meses fora da geladeira. Zero desperdício, sempre à mão.</p>
+                </div>
 
-    <!-- QUEM É VOCÊ? (PERSONAS) -->
-    <div style="text-align:center; margin-top:60px;">
-        <h2 style="color:#014039;">Quem faz parte da nossa mesa?</h2>
-        <p>Criamos soluções pensadas para cada momento da sua vida.</p>
-    </div>
+                <!-- Pilar 2 -->
+                <div class="pillar-card">
+                    <span class="pillar-icon">🥘</span>
+                    <h3 class="pillar-title">2. Panela Única</h3>
+                    <p>A arquitetura do sabor pensada para sujar apenas uma panela. Do refogado à finalização, tudo acontece junto.</p>
+                </div>
 
-    <div class="personas-grid">
-        <!-- Persona 1 -->
-        <div class="persona-card">
-            <span class="persona-icon">⚡</span>
-            <h3 class="persona-title">Solteiro Prático</h3>
-            <p>Para você que tem rotina intensa, mas não abre mão de comer bem. Nossas soluções otimizam seu tempo com propósito e sabor real.</p>
-            <a href="/receitas/solucoes/jantar-rapido/" style="color:#F2811d; font-weight:bold; text-decoration:none;">Ver Soluções Práticas →</a>
+                <!-- Pilar 3 -->
+                <div class="pillar-card">
+                    <span class="pillar-icon">✨</span>
+                    <h3 class="pillar-title">3. Cozinha Criativa</h3>
+                    <p>Bases neutras e sofisticadas que permitem você dar o seu toque final. A técnica é minha, o show é seu.</p>
+                </div>
+            </div>
+            
+            <p style="font-style:italic; color:#777;">"Ecoamos a sabedoria das mulheres que vieram antes de nós."</p>
         </div>
+    </section>
 
-        <!-- Persona 2 -->
-        <div class="persona-card">
-            <span class="persona-icon">🍷</span>
-            <h3 class="persona-title">Casal que Cozinha Junto</h3>
-            <p>O jantar é o momento de conexão. Ingredientes gourmet para transformar a cozinha em um cenário de romance e afeto.</p>
-            <a href="/receitas/solucoes/momento-a-dois/" style="color:#F2811d; font-weight:bold; text-decoration:none;">Ver Soluções a Dois →</a>
-        </div>
+    <!-- 3. PERSONAS (DIRECIONAMENTO A-COMMERCE) -->
+    <section class="personas-section">
+        <div class="container">
+            <h2 style="margin-bottom:40px;">Qual é o seu momento hoje?</h2>
+            
+            <div class="personas-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
+                
+                <div class="persona-card" style="background:white; padding:30px; border-radius:10px;">
+                    <span style="font-size:2rem;">⚡</span>
+                    <h3>Rotina Agitada</h3>
+                    <p>Para quem quer comer bem em 15 minutos sem pedir delivery.</p>
+                    <a href="/receitas/solucoes/" class="persona-btn">Ver Soluções Rápidas</a>
+                </div>
 
-        <!-- Persona 3 -->
-        <div class="persona-card">
-            <span class="persona-icon">💪</span>
-            <h3 class="persona-title">Vida Funcional</h3>
-            <p>Você organiza a rotina ao redor do bem-estar. Rótulos limpos, proteína vegetal e nutrição para quem não para.</p>
-            <a href="/receitas/solucoes/dieta-performance/" style="color:#F2811d; font-weight:bold; text-decoration:none;">Ver Soluções Fit →</a>
-        </div>
+                <div class="persona-card" style="background:white; padding:30px; border-radius:10px;">
+                    <span style="font-size:2rem;">🍷</span>
+                    <h3>Jantar a Dois</h3>
+                    <p>Risotos cremosos para impressionar quem você ama.</p>
+                    <a href="/receitas/risotos/" class="persona-btn">Ver Risotos</a>
+                </div>
 
-        <!-- Persona 4 -->
-        <div class="persona-card">
-            <span class="persona-icon">🎒</span>
-            <h3 class="persona-title">Trilheiro do Cerrado</h3>
-            <p>Leveza na mochila e sabor de casa no acampamento. Comida desidratada que não pesa e nutre a aventura.</p>
-            <a href="/receitas/solucoes/trilha-viagem/" style="color:#F2811d; font-weight:bold; text-decoration:none;">Ver Soluções de Trilha →</a>
+                <div class="persona-card" style="background:white; padding:30px; border-radius:10px;">
+                    <span style="font-size:2rem;">🎒</span>
+                    <h3>Trilha & Cerrado</h3>
+                    <p>Leveza e nutrição para sua aventura na natureza.</p>
+                    <a href="/blog/o-que-levar-para-comer-na-trilha/" class="persona-btn">Kit Aventura</a>
+                </div>
+
+            </div>
         </div>
+    </section>
+    
+    <!-- 4. LOCAL SEO (GEO) -->
+    <div style="text-align:center; padding:40px; color:#666; font-size:0.9rem;">
+        <p>🌱 Produzido artesanalmente em <strong>Brasília</strong>, com orgulho e ingredientes do Cerrado.</p>
     </div>
 
 </main>
