@@ -1,39 +1,43 @@
 <header class="site-header">
     <div class="header-container">
         
-        <!-- LOGO -->
-        <a href="/" class="logo" aria-label="Gourmet Prático Home">
-            <img src="{{ meta.organization.logo }}" alt="{{ meta.title }}">
+        <!-- 1. IDENTIDADE -->
+        <a href="/" class="logo" aria-label="Home ChefBrico">
+            <img src="/imagens/logo.png" alt="ChefBrico">
         </a>
 
-        <!-- MENU DE NAVEGAÇÃO -->
+        <!-- 2. MENU DE NAVEGAÇÃO -->
         <nav class="main-nav">
             <ul class="nav-list">
-                {% for item in navigation %}
-                    <li class="nav-item {% if item.children %}has-dropdown{% endif %}">
-                        
-                        <!-- Link Principal -->
-                        <a href="{{ item.url }}" class="nav-link {% if item.type == 'cta' %}btn-cta-nav{% endif %}">
-                            {{ item.text }}
-                        </a>
+                <!-- EEAT / Conteúdo -->
+                <li><a href="/comida-de-verdade/" class="nav-link">Comida de Verdade</a></li>
+                
+                <!-- Dropdown Loja -->
+                <li class="has-dropdown">
+                    <a href="/receitas/" class="nav-link">Receitas & Loja ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/receitas/risotos/">Risotos</a></li>
+                        <li><a href="/receitas/sopas-funcionais/">Sopas</a></li>
+                        <li><a href="/receitas/refeicoes-integrais/">Refeições</a></li>
+                        <li><a href="/receitas/emporio-da-chef/">Empório</a></li>
+                    </ul>
+                </li>
 
-                        <!-- Submenu (Dropdown) -->
-                        {% if item.children %}
-                        <ul class="dropdown-menu">
-                            {% for child in item.children %}
-                            <li>
-                                <a href="{{ child.url }}">{{ child.text }}</a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
+                <!-- Comunidade -->
+                <li><a href="/clube/" class="nav-link">ChefBrico Club</a></li>
+                
+                <!-- Suporte -->
+                <li><a href="/faq/" class="nav-link">FAQ</a></li>
 
-                    </li>
-                {% endfor %}
+                <!-- PRODUTO (CTA) -->
+                <li><a href="/chefbox/" class="nav-link btn-chefbox">CHEFBOX 🎁</a></li>
+                
+                <!-- CARRINHO (Visual) -->
+                <li><a href="/chefbox/" class="cart-icon">🛒</a></li>
             </ul>
         </nav>
 
-        <!-- BOTÃO MOBILE (HAMBÚRGUER) -->
-        <button class="mobile-menu-btn" aria-label="Abrir Menu">☰</button>
+        <!-- Mobile Toggle -->
+        <button class="mobile-menu-btn" style="color:var(--cor-dourado);">☰</button>
     </div>
 </header>
