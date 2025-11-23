@@ -1,33 +1,24 @@
-<!-- BARRA DE AVISO FINA (Dourada) -->
 <div class="top-slogan-bar">
-    <p>FRETE GRÁTIS ACIMA DE R$ 132,00 (DF) | USE O CÓDIGO: CHEF10</p>
+    FRETE GRÁTIS ACIMA DE R$ 132,00 (DF) | CUPOM: CHEF10
 </div>
 
-<!-- CABEÇALHO BRANCO EDITORIAL -->
 <header>
     <div class="container header-flex">
-        
-        <!-- MENU ESQUERDA (EDITORIAL) -->
-        <nav class="nav-left desktop-only">
-            <a href="/receitas/" class="nav-link">RECEITAS</a>
-            <a href="/comida-de-verdade/" class="nav-link">A CHEF</a>
-            <a href="/onde-encontrar/" class="nav-link">ONDE ENCONTRAR</a>
-        </nav>
-
-        <!-- LOGO CENTRAL (O Coração) -->
-        <a href="/" class="logo-center">
-            <!-- Certifique-se que a imagem do logo existe! -->
+        <!-- LOGO -->
+        <a href="/" class="logo">
             <img src="/imagens/logo.png" alt="ChefBrico">
         </a>
 
-        <!-- MENU DIREITA (LOJA) -->
-        <nav class="nav-right">
-            <a href="/chefbox/" class="nav-link highlight">CHEFBOX (LOJA)</a>
-            <a href="/clube/" class="nav-link desktop-only">CLUBE</a>
-            <a href="/chefbox/" class="cart-icon">🛒</a>
-        </nav>
+        <!-- BOTÃO MOBILE -->
+        <button class="mobile-nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('active')">☰</button>
 
-        <!-- MENU MOBILE (Hambúrguer) -->
-        <button class="mobile-nav-toggle" aria-label="Menu">☰</button>
+        <!-- MENU -->
+        <nav class="main-nav">
+            <a href="/comida-de-verdade/" class="nav-link">NOSSA HISTÓRIA</a>
+            <a href="/receitas/" class="nav-link">RECEITAS</a>
+            <a href="/chefbox/" class="nav-link" style="color: var(--laranja-cta);">LOJA CHEFBOX</a>
+            <a href="/onde-encontrar/" class="nav-link">ONDE ENCONTRAR</a>
+            <a href="/chefbox/" class="cta-button-nav">MONTAR CAIXA</a>
+        </nav>
     </div>
 </header>
