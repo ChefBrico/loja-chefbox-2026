@@ -1,40 +1,60 @@
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            
-            <!-- MARCA -->
-            <div class="footer-brand">
-                <img src="/imagens/logo.png" style="height: 45px; filter: grayscale(100%); opacity: 0.6; margin-bottom: 15px;">
-                <p>Comida de verdade, sem bagunça. Método Gourmet Prático por Maria Conceição.</p>
-            </div>
-
-            <!-- EXPLORE -->
-            <div class="footer-col">
-                <h4>EXPLORE</h4>
-                <a href="/receitas/">Cardápio Completo</a>
-                <a href="/chefbox/">Monte sua Caixa</a>
-                <a href="/comida-de-verdade/">Manifesto</a>
-            </div>
-
-            <!-- SUPORTE -->
-            <div class="footer-col">
-                <h4>SUPORTE</h4>
-                <a href="/faq/">Perguntas Frequentes</a>
-                <a href="/onde-encontrar/">Pontos de Venda</a>
-                <a href="https://wa.me/5561996659880">Fale Conosco</a>
-            </div>
-
-            <!-- LEGAL -->
-            <div class="footer-col">
-                <h4>SEGURANÇA</h4>
-                <p style="font-size:0.85rem; color:#666;">CNPJ: 36.014.833/0001-59<br>Brasília - DF</p>
-                <p style="color: var(--dourado); font-weight: bold; margin-top: 10px;">★ Prêmio Sebrae</p>
-            </div>
-
+<footer class="site-footer">
+    <div class="container footer-grid">
+        
+        <!-- 1. NAVEGAÇÃO -->
+        <div class="footer-col">
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="/comida-de-verdade/">O Método</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/clube/">Clube ChefBrico</a></li>
+            </ul>
         </div>
 
-        <div class="footer-bottom">
-            &copy; 2025 ChefBrico. Todos os direitos reservados.
+        <!-- 2. NOSSOS PRODUTOS -->
+        <div class="footer-col">
+            <h4>Nossos Produtos</h4>
+            <ul>
+                <li><a href="/receitas/risotos/">Risotos</a></li>
+                <li><a href="/receitas/sopas-funcionais/">Sopas Funcionais</a></li>
+                <li><a href="/receitas/refeicoes-integrais/">Refeições Integrais</a></li>
+                <li><a href="/receitas/emporio-da-chef/">Empório da Chef</a></li>
+            </ul>
+        </div>
+
+        <!-- 3. ONDE COMPRAR -->
+        <div class="footer-col">
+            <h4>Onde Comprar</h4>
+            <ul>
+                <li><a href="/chefbox/">Loja Online (ChefBox)</a></li>
+                <li><a href="/onde-encontrar/">Lojas Parceiras</a></li>
+                <li><a href="/onde-encontrar/">Feiras no DF</a></li>
+            </ul>
+        </div>
+
+        <!-- 4. AJUDA & SUPORTE -->
+        <div class="footer-col">
+            <h4>Ajuda & Suporte</h4>
+            <ul>
+                <li><a href="/faq/">Perguntas Frequentes</a></li>
+                <li><a href="/politicas/trocas/">Trocas e Devoluções</a></li>
+                <li><a href="/politicas/entrega/">Política de Frete</a></li>
+                <li><a href="https://wa.me/5561996659880">Fale no WhatsApp</a></li>
+            </ul>
+        </div>
+
+        <!-- 5. REDES SOCIAIS -->
+        <div class="footer-col">
+            <h4>Siga a Chef</h4>
+            <ul>
+                <li><a href="https://instagram.com/chefbrico" target="_blank">Instagram</a></li>
+                <li><a href="https://facebook.com/chefbrico" target="_blank">Facebook</a></li>
+                <li><a href="https://linkedin.com/in/mariaconceicao" target="_blank">LinkedIn</a></li>
+            </ul>
+            <p style="font-size:0.8rem; margin-top:20px; color:#aaa;">
+                ChefBrico Alimentos Ltda<br>CNPJ: {{ meta.organization.cnpj }}
+            </p>
         </div>
     </div>
 </footer>
