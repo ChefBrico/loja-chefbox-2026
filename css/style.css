@@ -837,3 +837,47 @@ footer { padding: 30px 20px; margin-top: 40px; border-top: 1px solid var(--cor-b
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* AJUSTES MOBILE JS */
+@media (max-width: 768px) {
+    .nav-list {
+        display: none; /* Escondido por padrão */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 20px;
+    }
+
+    .nav-list.active {
+        display: flex; /* Aparece quando JS adiciona .active */
+    }
+
+    /* Submenu no Mobile */
+    .dropdown-menu {
+        position: static; /* Não flutua no mobile */
+        box-shadow: none;
+        padding-left: 20px;
+        display: none;
+        border-left: 2px solid #eee;
+    }
+
+    .has-dropdown.open .dropdown-menu {
+        display: block; /* Abre quando JS adiciona .open */
+    }
+    
+    .mobile-menu-btn {
+        display: block; /* Garante que o botão apareça */
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu-btn { display: none; } /* Esconde botão em PC */
+}
