@@ -1,27 +1,39 @@
-<!-- BARRA DE TOPO -->
-<div class="top-bar">
-    FRETE GRÁTIS ACIMA DE R$ 132,00 (DF) | CUPOM: <strong>CHEF10</strong>
-</div>
-
-<!-- MENU PRINCIPAL -->
-<header>
-    <div class="container header-flex">
+<header class="site-header">
+    <div class="header-container">
+        
         <!-- LOGO -->
-        <a href="/" class="logo">
-            <img src="/imagens/logo.png" alt="ChefBrico">
+        <a href="/" class="logo" aria-label="Gourmet Prático Home">
+            <img src="{{ meta.organization.logo }}" alt="{{ meta.title }}">
         </a>
 
-        <!-- LINKS -->
-        <nav class="nav-menu">
-            <a href="/comida-de-verdade/" class="nav-link">NOSSA HISTÓRIA</a>
-            <a href="/receitas/" class="nav-link">RECEITAS</a>
-            <a href="/chefbox/" class="nav-link" style="color: var(--laranja);">LOJA</a>
-            <a href="/onde-encontrar/" class="nav-link">ONDE ENCONTRAR</a>
-            <a href="/clube/" class="nav-link">CLUBE</a>
-            <a href="/chefbox/" class="btn-nav">MONTAR CAIXA</a>
+        <!-- MENU DE NAVEGAÇÃO -->
+        <nav class="main-nav">
+            <ul class="nav-list">
+                {% for item in navigation %}
+                    <li class="nav-item {% if item.children %}has-dropdown{% endif %}">
+                        
+                        <!-- Link Principal -->
+                        <a href="{{ item.url }}" class="nav-link {% if item.type == 'cta' %}btn-cta-nav{% endif %}">
+                            {{ item.text }}
+                        </a>
+
+                        <!-- Submenu (Dropdown) -->
+                        {% if item.children %}
+                        <ul class="dropdown-menu">
+                            {% for child in item.children %}
+                            <li>
+                                <a href="{{ child.url }}">{{ child.text }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                    </li>
+                {% endfor %}
+            </ul>
         </nav>
 
-        <!-- MOBILE -->
-        <button class="mobile-nav-toggle">☰</button>
+        <!-- BOTÃO MOBILE (HAMBÚRGUER) -->
+        <button class="mobile-menu-btn" aria-label="Abrir Menu">☰</button>
     </div>
 </header>
