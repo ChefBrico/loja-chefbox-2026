@@ -2,82 +2,67 @@
 layout: base.njk
 ---
 
-<!-- 1. ESTRUTURA VISUAL (O que o Humano vê) -->
-<article class="receita-container" itemscope itemtype="https://schema.org/Recipe">
+<article class="container" style="max-width: 800px; padding: 40px 20px;">
 
-    <!-- Cabeçalho da Receita -->
-    <header class="receita-header text-center">
-        <span class="badge-categoria">{{ page.fileSlug }}</span> <!-- Ex: risotos -->
-        <h1 class="receita-title" itemprop="name">{{ title }}</h1>
-        <p class="receita-subtitle">{{ description }}</p>
+    <!-- 1. CABEÇALHO DA RECEITA -->
+    <header class="recipe-header">
+        <span style="text-transform: uppercase; color: var(--cor-cta); font-weight: bold; font-size: 0.8rem;">{{ category }}</span>
+        <h1 class="recipe-title">{{ title }}</h1>
+        <p class="recipe-subtitle">{{ description }}</p>
         
-        <div class="receita-meta">
+        <div class="author-byline">
+            Por <a href="/comida-de-verdade/" style="text-decoration:underline;">{{ author_name }}</a>
+        </div>
+
+        <div class="recipe-meta">
             <span>⏱ {{ tempo_preparo }}</span>
-            <span>👥 Serve: {{ rendimento }}</span>
+            <span>👥 {{ rendimento }}</span>
             <span>🔥 {{ dificuldade }}</span>
         </div>
     </header>
 
-    <!-- BLOCO DE VENDA (A-COMMERCE / CHEFBOX) -->
-    <!-- Este é o gatilho visual para a compra -->
-    <div class="chefbox-cta-card">
-        <div class="cta-info">
-            <span class="cta-label">Prepare em casa em {{ tempo_preparo }}:</span>
-            <div class="cta-price-group">
-                {% if price_old %}
-                <span class="price-old">R$ {{ price_old }}</span>
-                {% endif %}
-                <span class="price-current" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                    R$ <span itemprop="price">{{ price }}</span>
-                    <meta itemprop="priceCurrency" content="{{ price_currency }}">
-                </span>
-            </div>
-        </div>
-        <!-- Botão que leva para o WhatsApp ou Checkout -->
-        <a href="https://wa.me/{{ meta.whatsapp }}?text=Olá, quero o kit {{ title }} (SKU: {{ sku }})" class="btn-comprar">
-            MONTAR MINHA CAIXA 🎁
-        </a>
-        <p class="estoque-aviso">Restam apenas {{ stock }} unidades do lote atual.</p>
-    </div>
-
-    <!-- Imagem Principal -->
-    <figure class="receita-hero">
-        <img src="{{ image }}" alt="{{ image_alt }}" itemprop="image">
-        <figcaption>Foto: {{ image_alt }}</figcaption>
+    <!-- 2. IMAGEM HERO (FOOD PORN) -->
+    <figure style="margin-bottom: 40px;">
+        <img src="{{ image }}" alt="{{ image_alt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
     </figure>
 
-    <!-- Conteúdo da Receita (Texto vindo do Markdown) -->
-    <div class="receita-content e-content">
+    <!-- 3. A CAIXA DO SEGREDO (Hook) -->
+    <div class="highlight-box">
+        <p><strong>O Segredo:</strong> {{ citable_fact }}</p>
+    </div>
+
+    <!-- 4. CONTEÚDO (TEXTO + BLOCO DE VENDA) -->
+    <div class="recipe-content">
         {{ content | safe }}
     </div>
 
-    <!-- FAQ Automática (Vem do Frontmatter) -->
+    <!-- 5. FAQ (ACORDEÃO) -->
     {% if faq %}
-    <section class="faq-section">
-        <h3>Dúvidas Frequentes sobre este Prato</h3>
-        <div class="faq-grid">
-            {% for item in faq %}
-            <details class="faq-item">
-                <summary>{{ item.question }}</summary>
+    <section style="margin-top: 60px;">
+        <h3 style="text-align: center; margin-bottom: 30px;">Dúvidas Frequentes</h3>
+        {% for item in faq %}
+        <details class="faq-details">
+            <summary class="faq-summary">{{ item.question }}</summary>
+            <div class="faq-content">
                 <p>{{ item.answer }}</p>
-            </details>
-            {% endfor %}
-        </div>
+            </div>
+        </details>
+        {% endfor %}
     </section>
     {% endif %}
 
-    <!-- Assinatura de Autoridade (EEAT) -->
-    <footer class="receita-footer">
-        <div class="author-box">
-            <p><strong>Chef {{ author_name }}</strong> explica:</p>
-            <blockquote>"{{ citable_fact }}"</blockquote>
+    <!-- 6. BIO DA AUTORA -->
+    <div class="author-bio-box">
+        <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" class="author-img-circle">
+        <div>
+            <h4 style="margin:0; font-size:1.1rem;">Maria Conceição</h4>
+            <p style="font-size:0.9rem; margin:5px 0;">Fundadora da ChefBrico e criadora do Método Gourmet Prático. <a href="/comida-de-verdade/" style="color:var(--cor-cta); font-weight:bold;">Conheça minha história.</a></p>
         </div>
-    </footer>
+    </div>
 
 </article>
 
-<!-- 2. A MÁGICA DO ROBÔ (Schema.org JSON-LD) -->
-<!-- Isso é invisível na tela, mas é o que faz a Venda Zero-Click -->
+<!-- SCHEMA.ORG (INVISÍVEL) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -85,103 +70,29 @@ layout: base.njk
     {
       "@type": "Recipe",
       "name": "{{ title }}",
-      "image": [
-        "{{ meta.url }}{{ image }}"
-      ],
-      "author": {
-        "@type": "Person",
-        "name": "{{ author_name }}"
-      },
-      "datePublished": "{{ date | date('yyyy-MM-dd') }}",
+      "image": ["{{ meta.url }}{{ image }}"],
+      "author": { "@type": "Person", "name": "{{ author_name }}" },
       "description": "{{ description }}",
       "prepTime": "PT5M",
-      "cookTime": "{{ tempo_iso }}", 
+      "cookTime": "{{ tempo_iso }}",
       "totalTime": "{{ tempo_iso }}",
-      "keywords": "risoto, gourmet prático, chefbox, jantar rápido, {{ sku }}",
       "recipeYield": "{{ rendimento }}",
-      "recipeCategory": "Prato Principal",
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "{{ calorias }}"
-      },
-      "isBasedOn": {
-        "@type": "Product",
-        "@id": "{{ meta.url }}{{ page.url }}#produto"
-      }
+      "recipeCategory": "{{ category }}"
     },
     {
       "@type": "Product",
-      "@id": "{{ meta.url }}{{ page.url }}#produto",
-      "name": "Kit ChefBox: {{ title }}",
-      "image": "{{ meta.url }}{{ image }}",
-      "description": "Todos os ingredientes medidos e pesados para preparar {{ title }} em casa.",
+      "name": "Kit ChefBrico: {{ title }}",
       "sku": "{{ sku }}",
-      "brand": {
-        "@type": "Brand",
-        "name": "{{ meta.name }}"
-      },
+      "gtin": "{{ gtin }}",
+      "image": "{{ meta.url }}{{ image }}",
+      "brand": { "@type": "Brand", "name": "ChefBrico" },
       "offers": {
         "@type": "Offer",
-        "url": "{{ meta.url }}{{ page.url }}",
-        "priceCurrency": "{{ price_currency }}",
         "price": "{{ price }}",
+        "priceCurrency": "{{ price_currency }}",
         "availability": "{{ availability }}",
-        "itemCondition": "https://schema.org/NewCondition",
-        
-        /* --- ATUALIZAÇÃO CRÍTICA PARA GOOGLE MERCHANT CENTER --- */
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "BR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 7,
-          "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn",
-          "url": "{{ meta.url }}/politicas/trocas/"
-        },
-        
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "BRL"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "BR"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 0,
-              "maxValue": 1,
-              "unitCode": "DAY"
-            },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 5,
-              "unitCode": "DAY"
-            }
-          }
-        }
+        "url": "{{ meta.url }}{{ page.url }}"
       }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {% for item in faq %}
-        {
-          "@type": "Question",
-          "name": "{{ item.question }}",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{{ item.answer }}"
-          }
-        }{% if not loop.last %},{% endif %}
-        {% endfor %}
-      ]
     }
   ]
 }
