@@ -5,32 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} | ChefBrico</title>
     <meta name="description" content="{{ description }}">
+    
+    <!-- O Link Vital para o CSS (A Roupa do Site) -->
     <link rel="stylesheet" href="/css/style.css">
     
+    <!-- O Porteiro do Login -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <!-- Schema Global -->
     {% if schema %}
     <script type="application/ld+json">
         {{ schema | safe }}
     </script>
     {% endif %}
-
-    <!-- O Porteiro do Netlify Identity -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
 </head>
 <body>
-    <!-- Puxa o Cabeçalho -->
+    <!-- O Menu entra aqui -->
     {% include "header.njk" %}
     
-    <!-- Aqui entra o conteúdo de cada página -->
+    <!-- O Conteúdo da Página entra aqui -->
     {{ content | safe }}
     
-    <!-- Puxa o Rodapé -->
+    <!-- O Rodapé entra aqui -->
     {% include "footer.njk" %}
     
+    <!-- Script de Lógica -->
     <script src="/js/script.js"></script>
-
-    <!-- Lógica de Redirecionamento do Login -->
+    
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
