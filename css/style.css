@@ -665,3 +665,99 @@ footer { padding: 30px 20px; margin-top: 40px; border-top: 1px solid var(--cor-b
 .faq-link-fragmento:hover {
     color: var(--cor-primaria); /* Cor principal ao passar o mouse */
 }
+
+/* --- ESTILO DO CARTÃO DE VENDA (A-COMMERCE) --- */
+.chefbox-cta-card {
+    background: #fdf6e3; /* Um bege suave culinário */
+    border: 2px solid #d4af37; /* Dourado Premium */
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 30px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.cta-info {
+    margin-bottom: 15px;
+}
+
+.cta-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-price-group {
+    font-family: 'Georgia', serif;
+    margin-top: 5px;
+}
+
+.price-old {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.price-current {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.btn-comprar {
+    display: inline-block;
+    background-color: #27ae60; /* Verde Compra */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 0 #219150;
+}
+
+.btn-comprar:hover {
+    background-color: #2ecc71;
+    transform: translateY(-2px);
+}
+
+.btn-comprar:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.estoque-aviso {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #c0392b;
+    font-weight: 600;
+}
+
+/* FAQ Estilizado */
+.faq-item {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.faq-item summary {
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none; /* Remove a setinha padrão feia */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-item summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: #d4af37;
+}
+
+.faq-item[open] summary::after {
+    content: '-';
+}
