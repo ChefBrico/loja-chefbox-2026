@@ -1,291 +1,119 @@
 ---
 layout: base.njk
-title: Monte sua ChefBox | Jogo 4+1
-description: A experiência gamificada da ChefBrico.
+title: "Monte sua ChefBox | Jogo 4+1"
+description: "A experiência gamificada da ChefBrico. Escolha 4 e ganhe 1."
 ---
 
-<style>
-    /* 1. CABEÇALHO FIXO GAMIFICADO */
-    .game-header {
-        background: white;
-        padding: 15px;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        border-bottom: 5px solid #e0e0e0;
-        transition: border-color 0.3s;
-    }
-    
-    /* Muda de cor quando completa a missão */
-    .game-header.mission-complete { border-color: #D4AF37; }
-
-    .progress-bar {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin: 10px 0;
-    }
-
-    .slot {
-        width: 45px; height: 45px;
-        border-radius: 50%;
-        background: #f4f4f4;
-        border: 2px dashed #ccc;
-        display: flex; align-items: center; justify-content: center;
-        font-weight: bold; color: #ccc;
-        font-size: 1.1rem;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito Bouncy */
-    }
-
-    .slot.filled {
-        background: #27ae60; color: white; border-style: solid; border-color: #219150;
-        transform: scale(1.1);
-        box-shadow: 0 2px 5px rgba(39, 174, 96, 0.4);
-    }
-
-    .slot-gift { border-color: #D4AF37; color: #D4AF37; }
-    
-    .slot-gift.active {
-        background: #D4AF37; color: white; transform: scale(1.2);
-        box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-        animation: pulse 1.5s infinite;
-    }
-
-    /* 2. FILTROS DE CATEGORIA (UX) */
-    .category-filters {
-        display: flex; gap: 10px; justify-content: center; padding: 15px; overflow-x: auto;
-    }
-    .filter-btn {
-        padding: 8px 16px; border: 1px solid #ddd; border-radius: 20px; background: white; cursor: pointer;
-        font-size: 0.9rem; white-space: nowrap;
-    }
-    .filter-btn.active { background: #2c3e50; color: white; border-color: #2c3e50; }
-
-    /* 3. GRID DE PRODUTOS */
-    .game-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 15px; padding: 0 15px 100px 15px; max-width: 1000px; margin: 0 auto;
-    }
-
-    .game-card {
-        background: white; border: 1px solid #eee; border-radius: 12px;
-        overflow: hidden; cursor: pointer; position: relative;
-        transition: transform 0.2s;
-    }
-    
-    .game-card:active { transform: scale(0.95); }
-    
-    /* Feedback visual de seleção */
-    .game-card.selected { border: 3px solid #27ae60; }
-    .game-card.selected::after {
-        content: '✔'; position: absolute; top: 5px; right: 5px;
-        background: #27ae60; color: white; width: 25px; height: 25px;
-        border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
-    }
-
-    .game-card.gift-selected { border: 3px solid #D4AF37; }
-    .game-card.gift-selected::after {
-        content: '🎁'; position: absolute; top: 5px; right: 5px;
-        background: #D4AF37; width: 30px; height: 30px;
-        border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    }
-
-    .game-card img { width: 100%; height: 120px; object-fit: cover; background: #f9f9f9; }
-    .card-info { padding: 10px; text-align: center; }
-    .card-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; line-height: 1.2; }
-    .card-price { font-size: 0.9rem; color: #666; }
-
-    /* 4. CHECKOUT FLUTUANTE */
-    .checkout-bar {
-        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(150%);
-        background: #2c3e50; color: white; padding: 12px 25px;
-        border-radius: 50px; display: flex; align-items: center; gap: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 1000;
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        width: 90%; max-width: 400px; justify-content: space-between;
-    }
-    .checkout-bar.visible { transform: translateX(-50%) translateY(0); }
-
-    .btn-zap {
-        background: #25D366; color: white; border: none; padding: 10px 20px;
-        border-radius: 25px; font-weight: bold; cursor: pointer;
-        text-transform: uppercase; font-size: 0.9rem;
-    }
-
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-</style>
-
-<!-- O JOGO -->
-<div class="game-header" id="header-box">
-    <h3>Monte sua ChefBox</h3>
-    <div class="progress-bar">
-        <div class="slot" id="s0">1</div>
-        <div class="slot" id="s1">2</div>
-        <div class="slot" id="s2">3</div>
-        <div class="slot" id="s3">4</div>
-        <div class="slot slot-gift" id="sGift">🎁</div>
+<!-- BARRA FIXA DO JOGO (CSS já definido no style.css) -->
+<div class="game-bar-sticky">
+    <div class="slots-container">
+        <div class="slot" id="slot-1">1</div>
+        <div class="slot" id="slot-2">2</div>
+        <div class="slot" id="slot-3">3</div>
+        <div class="slot" id="slot-4">4</div>
+        <div class="slot gift" id="slot-5">🎁</div>
     </div>
-    <p id="status-text" style="font-size: 0.9rem; color: #666;">Escolha 4 pratos para desbloquear o presente.</p>
-</div>
-
-<!-- FILTROS (Opcional - melhora UX) -->
-<div class="category-filters">
-    <button class="filter-btn active" onclick="filter('all')">Todos</button>
-    <button class="filter-btn" onclick="filter('risotos')">Risotos</button>
-    <button class="filter-btn" onclick="filter('sopas')">Sopas</button>
-</div>
-
-<!-- VITRINE DINÂMICA (Conectada ao CMS) -->
-<div class="game-grid">
-    {# AQUI ESTÁ A MÁGICA: Loop automático nos produtos reais #}
-    {# Estamos combinando Risotos e Sopas numa lista só #}
     
-    {% for item in collections.risotos %}
-        <div class="game-card cat-risotos" 
-             onclick="toggleItem(this)" 
-             data-id="{{ item.data.sku }}" 
-             data-name="{{ item.data.title }}" 
-             data-price="{{ item.data.price }}">
-            <img src="{{ item.data.image }}" alt="{{ item.data.title }}">
-            <div class="card-info">
-                <div class="card-title">{{ item.data.title }}</div>
-                <div class="card-price">R$ {{ item.data.price }}</div>
+    <div style="flex-grow: 1; text-align: center;">
+        <div class="game-status" id="status-msg" style="color: var(--cor-institucional);">
+            Escolha 4 pratos para ganhar o presente!
+        </div>
+    </div>
+
+    <button id="btn-checkout" class="btn-cta-nav" style="display:none; box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);" onclick="finalizarZap()">
+        FINALIZAR PEDIDO ➜
+    </button>
+</div>
+
+<main class="container" style="padding-top: 40px;">
+    <div style="text-align:center; margin-bottom: 40px;">
+        <h1>Monte sua ChefBox</h1>
+        <p>Selecione seus favoritos clicando nos cartões abaixo.</p>
+    </div>
+
+    <!-- GRID DE PRODUTOS (Puxa automático das receitas) -->
+    <div class="recipe-grid">
+        {% for item in collections.receitas %}
+        <!-- O 'onclick' ativa a função JS abaixo -->
+        <div class="recipe-card" style="cursor: pointer;" onclick="adicionarAoJogo(this, '{{ item.data.title }}', '{{ item.data.price }}')">
+            <div class="card-img-container" style="height: 150px;">
+                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="card-img">
+            </div>
+            <div class="card-content" style="padding: 15px;">
+                <h3 class="card-title" style="font-size: 1rem;">{{ item.data.title }}</h3>
+                <div class="card-footer" style="margin-top: 10px; padding-top: 10px;">
+                    <span class="card-price">R$ {{ item.data.price }}</span>
+                    <div class="btn-buy-mini" style="background: var(--cor-cta);">+</div>
+                </div>
             </div>
         </div>
-    {% endfor %}
-
-    {% for item in collections.sopas %}
-        <div class="game-card cat-sopas" 
-             onclick="toggleItem(this)" 
-             data-id="{{ item.data.sku }}" 
-             data-name="{{ item.data.title }}" 
-             data-price="{{ item.data.price }}">
-            <img src="{{ item.data.image }}" alt="{{ item.data.title }}">
-            <div class="card-info">
-                <div class="card-title">{{ item.data.title }}</div>
-                <div class="card-price">R$ {{ item.data.price }}</div>
-            </div>
-        </div>
-    {% endfor %}
-</div>
-
-<!-- BARRA DE CHECKOUT -->
-<div class="checkout-bar" id="checkout">
-    <div style="display:flex; flex-direction:column;">
-        <span style="font-size:0.7rem; opacity:0.8;">TOTAL DA CAIXA</span>
-        <strong id="total-display" style="font-size:1.1rem;">R$ 0,00</strong>
+        {% endfor %}
     </div>
-    <button class="btn-zap" onclick="finalizarPedido()">PEDIR NO WHATSAPP ➜</button>
-</div>
+</main>
 
+<!-- LÓGICA DO JOGO (JavaScript Embutido para garantir funcionamento) -->
 <script>
-    // LÓGICA DO JOGO
-    let cart = [];
-    let giftItem = null;
-    const MAX_ITENS = 4;
+    let carrinho = [];
+    const MAX_ITENS = 5; // 4 Pagos + 1 Grátis
 
-    function toggleItem(card) {
-        const id = card.dataset.id;
-        const name = card.dataset.name;
-        const price = parseFloat(card.dataset.price);
-
-        // 1. Verifica se já está no carrinho (para remover)
-        const index = cart.findIndex(i => i.id === id);
-        
-        if (index > -1) {
-            // REMOVER ITEM
-            cart.splice(index, 1);
-            card.classList.remove('selected');
-        } else if (giftItem && giftItem.id === id) {
-            // REMOVER PRESENTE
-            giftItem = null;
-            card.classList.remove('gift-selected');
-        } else {
-            // ADICIONAR ITEM
-            if (cart.length < MAX_ITENS) {
-                cart.push({id, name, price});
-                card.classList.add('selected');
-            } else if (!giftItem) {
-                // ADICIONAR COMO PRESENTE
-                giftItem = {id, name, price};
-                card.classList.add('gift-selected');
-            } else {
-                // TUDO CHEIO (Feedback visual de erro?)
-                alert("Sua caixa já está cheia! Remova um item para trocar.");
-                return;
-            }
+    function adicionarAoJogo(elemento, nome, preco) {
+        // 1. Verifica se já está cheio
+        if (carrinho.length >= MAX_ITENS) {
+            alert("Sua caixa já está completa! Remova um item se quiser trocar.");
+            return;
         }
-        updateInterface();
+
+        // 2. Adiciona ao array
+        carrinho.push({ nome: nome, preco: preco });
+        
+        // 3. Feedback Visual no Card (Fica meio transparente e borda verde)
+        elemento.style.opacity = "0.6"; 
+        elemento.style.border = "2px solid var(--cor-cta)";
+        elemento.style.pointerEvents = "none"; // Impede clicar duas vezes no mesmo
+
+        // 4. Atualiza a barra
+        atualizarSlots();
     }
 
-    function updateInterface() {
-        // Atualiza Slots 1-4
-        for (let i = 0; i < MAX_ITENS; i++) {
-            const slot = document.getElementById('s' + i);
-            if (cart[i]) {
+    function atualizarSlots() {
+        const msg = document.getElementById('status-msg');
+        const btn = document.getElementById('btn-checkout');
+
+        // Preenche as bolinhas
+        for (let i = 1; i <= 5; i++) {
+            let slot = document.getElementById('slot-' + i);
+            if (i <= carrinho.length) {
                 slot.classList.add('filled');
                 slot.innerText = "✓";
-            } else {
-                slot.classList.remove('filled');
-                slot.innerText = i + 1;
+                if (i === 5) {
+                    slot.classList.add('active'); // O Presente brilha
+                    slot.innerText = "🎁";
+                }
             }
         }
 
-        // Atualiza Slot Presente
-        const slotGift = document.getElementById('sGift');
-        const header = document.getElementById('header-box');
-        const status = document.getElementById('status-text');
-
-        if (giftItem) {
-            slotGift.classList.add('active');
-            slotGift.innerText = "🎁";
-            header.classList.add('mission-complete');
-            status.innerText = "Parabéns! Caixa completa.";
-            document.getElementById('checkout').classList.add('visible');
-        } else {
-            slotGift.classList.remove('active');
-            slotGift.innerText = "🎁";
-            header.classList.remove('mission-complete');
-            document.getElementById('checkout').classList.remove('visible');
-            
-            // Texto de ajuda
-            if (cart.length < MAX_ITENS) {
-                status.innerText = `Escolha mais ${MAX_ITENS - cart.length} sabores.`;
-            } else {
-                status.innerText = "AGORA CLIQUE NO SEU PRESENTE! (Item Grátis)";
-            }
+        // Mensagens de Incentivo
+        if (carrinho.length < 4) {
+            msg.innerText = `Faltam ${4 - carrinho.length} para liberar o presente!`;
+        } else if (carrinho.length === 4) {
+            msg.innerText = "PARABÉNS! AGORA ESCOLHA SEU PRESENTE GRÁTIS 🎁";
+            msg.style.color = "var(--cor-cta)";
+            msg.style.fontWeight = "bold";
+        } else if (carrinho.length === 5) {
+            msg.innerText = "CAIXA COMPLETA! 🎉";
+            btn.style.display = "block"; // Mostra botão de compra
         }
-
-        // Calcula Total (Soma os 4 itens, ignora o presente)
-        const total = cart.reduce((acc, item) => acc + item.price, 0);
-        document.getElementById('total-display').innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
     }
 
-    function finalizarPedido() {
-        if (cart.length < MAX_ITENS || !giftItem) return;
-
-        let msg = "*🍳 PEDIDO CHEFBOX (5 Itens)*\n\n";
-        msg += "*Itens da Caixa:*\n";
-        cart.forEach(item => msg += `✅ ${item.name}\n`);
+    function finalizarZap() {
+        let texto = "*🍳 PEDIDO CHEFBOX (4+1)*\n\n";
+        texto += "Itens Pagos:\n";
+        for(let i=0; i<4; i++) texto += `✅ ${carrinho[i].nome}\n`;
         
-        msg += `\n🎁 *PRESENTE ESCOLHIDO:* ${giftItem.name}\n`;
-        msg += `\n💰 *Valor Total:* ${document.getElementById('total-display').innerText}`;
-        msg += "\n\nPor favor, me envie a chave Pix!";
+        texto += `\n🎁 *PRESENTE:* ${carrinho[4].nome}\n`;
+        texto += "\nOlá Maria! Montei minha caixa no site e quero finalizar.";
 
-        const link = `https://wa.me/5561996659880?text=${encodeURIComponent(msg)}`;
-        window.open(link, '_blank');
-    }
-
-    // Filtro Simples
-    function filter(cat) {
-        document.querySelectorAll('.game-card').forEach(el => {
-            if(cat === 'all' || el.classList.contains('cat-'+cat)) el.style.display = 'block';
-            else el.style.display = 'none';
-        });
-        // Atualiza botões
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
+        let link = `https://wa.me/5561996659880?text=${encodeURIComponent(texto)}`;
+        window.location.href = link;
     }
 </script>
