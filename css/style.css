@@ -1363,3 +1363,27 @@ body.receita-page h3 {
 body.receita-page p {
     color: #444; /* Texto Cinza Escuro */
 }
+/* --- RÉGUA DE GAMIFICAÇÃO (FORÇAR VISIBILIDADE) --- */
+.chefbox-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-top: 4px solid var(--cor-cta);
+    padding: 15px;
+    z-index: 99999 !important; /* Garante que fique no topo de tudo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+}
+
+/* Ajuste para Mobile */
+@media (max-width: 768px) {
+    .chefbox-sticky-bar {
+        flex-direction: column;
+        padding-bottom: 30px; /* Espaço seguro para iPhone */
+    }
+}
