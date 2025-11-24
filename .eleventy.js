@@ -2,45 +2,35 @@ const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
 
-  // --- 1. CÓPIAS DE ARQUIVOS (SEM O "src/" NA FRENTE) ---
-  // Isso pega a pasta 'css' da raiz e joga para o site final
+  // 1. COPIAS DE ARQUIVOS ESTÁTICOS
+  // Garante que o CSS e as Imagens vão para o site final
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("imagens");
   eleventyConfig.addPassthroughCopy("js");
-  eleventyConfig.addPassthroughCopy("admin"); 
+  eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("_redirects");
 
-  // --- 2. FILTROS DE DATA (Para o Google e Sitemap) ---
-  
-  // Data legível para humanos (Ex: 23/11/2025)
+  // 2. FILTROS DE DATA
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).setZone("America/Sao_Paulo").toFormat("dd/MM/yyyy");
   });
-  
-  // Data ISO para Robôs (Ex: 2025-11-23T14:00:00-03:00)
   eleventyConfig.addFilter("isoDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).setZone("America/Sao_Paulo").toISO();
   });
 
-  // --- 3. CONFIGURAÇÃO DE DIRETÓRIOS (CRÍTICO) ---
+  // 3. CONFIGURAÇÃO CRÍTICA (AQUI ESTAVA O ERRO)
   return {
     dir: {
-      // input: "." significa "A raiz do meu projeto é a entrada"
-      input: ".",     
-      
-      // Onde estão os moldes HTML?
-      includes: "_includes", 
-      
-      // Onde estão os JSONs (meta, menu)?
-      data: "_data",         
-      
-      // Para onde vai o site pronto?
-      output: "_site"
+      input: ".",         // A raiz é a entrada
+      includes: "_includes", // Onde estão header e footer
+      data: "_data",      // Onde estão os jsons
+      output: "_site"     // Para onde vai o site
     },
+    // ESTAS LINHAS ABAIXO CONSERTAM O TEXTO ESTRANHO NO TOPO
     templateFormats: ["md", "njk", "html"],
-    htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",     // <--- OBRIGA O HTML A LER O LAYOUT
+    markdownTemplateEngine: "njk", // <--- OBRIGA O MARKDOWN A LER O LAYOUT
+    dataTemplateEngine: "njk"
   };
 };
