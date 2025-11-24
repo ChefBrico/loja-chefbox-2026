@@ -1,53 +1,39 @@
+<!-- BARRA DE TOPO DOURADA -->
+<div class="top-bar">
+    Gourmet Prático: Culinária saudável, sem desperdício de tempo e ingredientes!
+</div>
+
 <header class="site-header">
     <div class="header-container">
         
-        <!-- 1. LOGO (Esquerda) -->
+        <!-- MENU ESQUERDA (Editorial) -->
+        <ul class="nav-left nav-list">
+            <li><a href="/comida-de-verdade/" class="nav-link">O Método</a></li>
+            <li><a href="/blog/" class="nav-link">Blog & Dicas</a></li>
+            <li><a href="/clube/" class="nav-link">Clube ChefBrico</a></li>
+        </ul>
+
+        <!-- LOGO CENTRAL -->
         <a href="/" class="logo" aria-label="ChefBrico Home">
-            <!-- Certifique-se de que a imagem logo.png existe na pasta imagens -->
             <img src="/imagens/logo.png" alt="ChefBrico Gourmet Prático">
         </a>
 
-        <!-- 2. MENU DE NAVEGAÇÃO (Centro) -->
-        <nav class="main-nav">
-            <ul class="nav-list">
-                <!-- Autoridade -->
-                <li class="nav-item">
-                    <a href="/comida-de-verdade/" class="nav-link">O Método</a>
-                </li>
+        <!-- MENU DIREITA (Loja) -->
+        <ul class="nav-right nav-list">
+            <li class="has-dropdown">
+                <a href="/receitas/" class="nav-link">Cardápio ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/receitas/risotos/">Risotos & Arrozes</a></li>
+                    <li><a href="/receitas/sopas-funcionais/">Sopas Funcionais</a></li>
+                    <li><a href="/receitas/refeicoes-integrais/">Refeições Integrais</a></li>
+                    <li><a href="/receitas/emporio-da-chef/">Empório da Chef</a></li>
+                </ul>
+            </li>
+            <li><a href="/onde-encontrar/" class="nav-link">Onde Encontrar</a></li>
+            <li><a href="/chefbox/" class="nav-link btn-chefbox">MONTE SUA CAIXA 🎁</a></li>
+        </ul>
 
-                <!-- Loja (Dropdown) -->
-                <li class="nav-item has-dropdown">
-                    <a href="/receitas/" class="nav-link">Receitas & Loja ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/receitas/risotos/">Risotos</a></li>
-                        <li><a href="/receitas/sopas-funcionais/">Sopas</a></li>
-                        <li><a href="/receitas/refeicoes-integrais/">Refeições</a></li>
-                        <li><a href="/receitas/emporio-da-chef/">Empório</a></li>
-                    </ul>
-                </li>
-
-                <!-- Comunidade -->
-                <li class="nav-item">
-                    <a href="/clube/" class="nav-link">Clube ChefBrico</a>
-                </li>
-                
-                <!-- Suporte -->
-                <li class="nav-item">
-                    <a href="/faq/" class="nav-link">FAQ</a>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- 3. AÇÃO (Direita) -->
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <!-- Botão Laranja -->
-            <a href="/chefbox/" class="btn-cta-nav">MONTE SUA CAIXA 🎁</a>
-            
-            <!-- Ícone Carrinho (Visual) -->
-            <a href="/chefbox/" class="cart-icon" aria-label="Ver Carrinho">🛒</a>
-            
-            <!-- Botão Mobile -->
-            <button class="mobile-menu-btn" aria-label="Abrir Menu">☰</button>
-        </div>
+        <!-- BOTÃO MOBILE (Hambúrguer) -->
+        <button class="mobile-menu-btn" aria-label="Abrir Menu">☰</button>
     </div>
 </header>
