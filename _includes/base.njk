@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 1. SEO BÁSICO -->
     <title>{{ title }} | ChefBrico</title>
     <meta name="description" content="{{ description }}">
+    <meta name="author" content="Maria Conceição">
     
-    <!-- O Link Vital para o CSS (A Roupa do Site) -->
+    <!-- 2. SEO TÉCNICO (Evita conteúdo duplicado no Google) -->
+    <link rel="canonical" href="https://gourmetpratico.com.br{{ page.url }}">
+
+    <!-- 3. REDES SOCIAIS (Open Graph - Para ficar bonito no WhatsApp/Instagram) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gourmetpratico.com.br{{ page.url }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    {% if image %}
+    <meta property="og:image" content="https://gourmetpratico.com.br{{ image }}">
+    {% else %}
+    <meta property="og:image" content="https://gourmetpratico.com.br/imagens/logo.png">
+    {% endif %}
+
+    <!-- 4. A ROUPA DO SITE (CSS) -->
     <link rel="stylesheet" href="/css/style.css">
     
-    <!-- O Porteiro do Login -->
+    <!-- 5. O PORTEIRO DO CMS (Netlify Identity) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- Schema Global -->
+    <!-- 6. SCHEMA.ORG (Dados Estruturados) -->
+    <!-- Se a página tiver um schema específico, ele entra aqui -->
     {% if schema %}
     <script type="application/ld+json">
         {{ schema | safe }}
@@ -20,18 +38,23 @@
     {% endif %}
 </head>
 <body>
-    <!-- O Menu entra aqui -->
+    
+    <!-- CABEÇALHO -->
     {% include "header.njk" %}
     
-    <!-- O Conteúdo da Página entra aqui -->
-    {{ content | safe }}
+    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- O 'main' ajuda o Google a saber onde começa o texto real -->
+    <main>
+        {{ content | safe }}
+    </main>
     
-    <!-- O Rodapé entra aqui -->
+    <!-- RODAPÉ -->
     {% include "footer.njk" %}
     
-    <!-- Script de Lógica -->
+    <!-- JAVASCRIPT (Lógica do Menu e Jogo) -->
     <script src="/js/script.js"></script>
     
+    <!-- SCRIPT DE LOGIN DO ADMIN (Não mexer) -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
