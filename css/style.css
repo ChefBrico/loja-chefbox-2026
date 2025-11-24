@@ -1175,3 +1175,121 @@ footer { padding: 30px 20px; margin-top: 40px; border-top: 1px solid var(--cor-b
 
 
 }
+/* ========================================= */
+/* 1. IDENTIDADE VISUAL & FUNDOS */
+/* ========================================= */
+:root {
+    --cor-institucional: #014039; /* Verde Escuro */
+    --cor-cta: #F2811D;           /* Laranja */
+    --cor-dourado: #bfb084;       /* Dourado */
+    --cor-fundo: #fdfcf7;         /* Creme (Home) */
+    --cor-branco: #ffffff;        /* Branco (Receitas) */
+}
+
+body {
+    background-color: var(--cor-fundo); /* Padrão */
+    font-family: 'Lato', sans-serif;
+    margin: 0; padding: 0;
+}
+
+/* Fundo Branco para Páginas de Receita (Delicado) */
+body.receita-page {
+    background-color: var(--cor-branco);
+}
+
+/* ========================================= */
+/* 2. CABEÇALHO (HEADER - ALTURA DOBRADA) */
+/* ========================================= */
+.site-header {
+    background-color: var(--cor-institucional);
+    padding: 40px 0; /* Altura dobrada */
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    max-width: 1400px; margin: 0 auto; padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Esquerda - Centro - Direita */
+    align-items: center;
+}
+
+/* Logo Circular (Espaço de 120px) */
+.logo-circle {
+    background: var(--cor-dourado);
+    width: 120px; height: 120px; /* Maior */
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin: -60px auto -60px; /* Saindo para fora */
+    position: relative; z-index: 1001;
+    border: 5px solid var(--cor-institucional);
+}
+.logo img { height: 70px; width: auto; filter: brightness(0) invert(1); }
+
+/* Menus */
+.nav-left, .nav-right { display: flex; gap: 30px; align-items: center; list-style: none; }
+.nav-right { justify-content: flex-end; }
+.nav-link { color: white; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+.nav-link:hover { color: var(--cor-dourado); }
+
+/* ========================================= */
+/* 3. MEGA MENU (RECEITAS) */
+/* ========================================= */
+.has-dropdown { position: relative; }
+
+.mega-menu {
+    display: none;
+    position: absolute;
+    top: 100%; left: -50px; /* Ajuste para centralizar */
+    background: white;
+    min-width: 500px; /* Largo */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-top: 4px solid var(--cor-dourado);
+    z-index: 1001;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+    grid-template-columns: 1fr 1fr; /* Duas Colunas */
+    gap: 30px;
+}
+
+.has-dropdown:hover .mega-menu { display: grid; }
+
+.mega-column h4 {
+    color: var(--cor-institucional);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.mega-column ul { list-style: none; padding: 0; }
+.mega-column li { margin-bottom: 10px; }
+.mega-column a {
+    color: #555; font-size: 0.95rem; text-transform: none; font-weight: normal;
+    display: block; transition: 0.2s;
+}
+.mega-column a:hover { color: var(--cor-cta); transform: translateX(5px); }
+
+/* ========================================= */
+/* 4. RÉGUA GAMIFICAÇÃO (FORÇAR EXIBIÇÃO) */
+/* ========================================= */
+.chefbox-sticky-bar {
+    position: fixed;
+    bottom: 0; left: 0; width: 100%;
+    background: white;
+    border-top: 4px solid var(--cor-cta);
+    padding: 15px;
+    z-index: 99999 !important; /* Força máxima de camada */
+    display: flex; justify-content: center; align-items: center; gap: 20px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+}
+
+/* Mobile: Régua embaixo */
+@media (max-width: 768px) {
+    .chefbox-sticky-bar { flex-direction: column; gap: 10px; padding-bottom: 20px; }
+    .mega-menu { min-width: 100%; left: 0; grid-template-columns: 1fr; position: static; }
+    .header-container { display: flex; justify-content: space-between; }
+    .nav-left, .nav-right { display: none; }
+}
