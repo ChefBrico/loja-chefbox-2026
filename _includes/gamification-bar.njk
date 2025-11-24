@@ -1,13 +1,12 @@
-<!-- RÉGUA DE GAMIFICAÇÃO (GLOBAL) -->
+<!-- RÉGUA DE GAMIFICAÇÃO -->
 <div id="chefbox-bar" class="chefbox-sticky-bar">
     
-    <!-- Texto de Status -->
+    <!-- Texto -->
     <div class="bar-info">
-        <span id="game-status-text">Sua ChefBox:</span>
-        <span id="game-total-price" style="display:none;">R$ 0,00</span>
+        <span id="game-status-text">Monte sua Caixa:</span>
     </div>
     
-    <!-- Os Slots (Bolinhas) -->
+    <!-- Bolinhas -->
     <div class="slots-wrapper">
         <div id="slot-1" class="slot-circle">1</div>
         <div id="slot-2" class="slot-circle">2</div>
@@ -16,11 +15,8 @@
         <div id="slot-5" class="slot-circle gift">🎁</div>
     </div>
 
-    <!-- Botão Finalizar (Aparece quando cheio) -->
-    <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()">
-        FINALIZAR (5º GRÁTIS) ➜
+    <!-- Botão Finalizar (Invisível até completar) -->
+    <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()" style="display:none;">
+        FINALIZAR ➜
     </button>
-
-    <!-- Botão Minimizar (Opcional para Mobile não cobrir tudo) -->
-    <button class="btn-toggle-bar" onclick="toggleBar()">▼</button>
 </div>
