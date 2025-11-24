@@ -1,119 +1,49 @@
 ---
 layout: base.njk
 title: "Monte sua ChefBox | Jogo 4+1"
-description: "A experiência gamificada da ChefBrico. Escolha 4 e ganhe 1."
+description: "Escolha 4 sabores e ganhe o 5º de presente. Jogo de compras ChefBrico."
 ---
 
-<!-- BARRA FIXA DO JOGO (CSS já definido no style.css) -->
-<div class="game-bar-sticky">
-    <div class="slots-container">
-        <div class="slot" id="slot-1">1</div>
-        <div class="slot" id="slot-2">2</div>
-        <div class="slot" id="slot-3">3</div>
-        <div class="slot" id="slot-4">4</div>
-        <div class="slot gift" id="slot-5">🎁</div>
-    </div>
+<main class="container" style="padding-bottom: 180px;"> <!-- Espaço para a régua não cobrir -->
     
-    <div style="flex-grow: 1; text-align: center;">
-        <div class="game-status" id="status-msg" style="color: var(--cor-institucional);">
-            Escolha 4 pratos para ganhar o presente!
-        </div>
+    <!-- CABEÇALHO DO JOGO -->
+    <div style="text-align: center; padding: 40px 20px;">
+        <h1 style="font-family: var(--fonte-titulo); color: var(--cor-institucional);">Monte sua ChefBox</h1>
+        <p style="color: #666; font-size: 1.1rem;">
+            Toque nos produtos abaixo para encher sua caixa.<br>
+            <strong>Complete 4 e o 5º é por nossa conta! 🎁</strong>
+        </p>
     </div>
 
-    <button id="btn-checkout" class="btn-cta-nav" style="display:none; box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);" onclick="finalizarZap()">
-        FINALIZAR PEDIDO ➜
-    </button>
-</div>
-
-<main class="container" style="padding-top: 40px;">
-    <div style="text-align:center; margin-bottom: 40px;">
-        <h1>Monte sua ChefBox</h1>
-        <p>Selecione seus favoritos clicando nos cartões abaixo.</p>
-    </div>
-
-    <!-- GRID DE PRODUTOS (Puxa automático das receitas) -->
+    <!-- VITRINE DE ESCOLHA (GRID DE PRODUTOS) -->
+    <!-- Aqui listamos todas as receitas para o usuário clicar e jogar -->
     <div class="recipe-grid">
         {% for item in collections.receitas %}
-        <!-- O 'onclick' ativa a função JS abaixo -->
-        <div class="recipe-card" style="cursor: pointer;" onclick="adicionarAoJogo(this, '{{ item.data.title }}', '{{ item.data.price }}')">
-            <div class="card-img-container" style="height: 150px;">
-                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="card-img">
+        
+        <!-- O CARD DE JOGO -->
+        <!-- Ao clicar, chama a função addToGame() -->
+        <div class="recipe-card" style="cursor: pointer;" onclick="addToGame('{{ item.data.title }}', '{{ item.data.price }}', '{{ item.data.image }}')">
+            
+            <div class="card-img-container">
+                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="card-img" loading="lazy">
+                
+                <!-- Botão Visual de Adicionar -->
+                <div style="position: absolute; bottom: 10px; right: 10px; background: var(--cor-cta); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); font-size: 1.5rem;">+</div>
             </div>
-            <div class="card-content" style="padding: 15px;">
+            
+            <div class="card-content">
+                <span class="card-cat">{{ item.data.category }}</span>
                 <h3 class="card-title" style="font-size: 1rem;">{{ item.data.title }}</h3>
-                <div class="card-footer" style="margin-top: 10px; padding-top: 10px;">
+                
+                <div class="card-footer">
                     <span class="card-price">R$ {{ item.data.price }}</span>
-                    <div class="btn-buy-mini" style="background: var(--cor-cta);">+</div>
+                    <!-- Link para ver detalhes (sem adicionar) -->
+                    <a href="{{ item.url }}" class="btn-ver" onclick="event.stopPropagation()" style="font-size: 0.8rem; text-decoration: underline;">Ver Detalhes</a>
                 </div>
             </div>
+
         </div>
         {% endfor %}
     </div>
+
 </main>
-
-<!-- LÓGICA DO JOGO (JavaScript Embutido para garantir funcionamento) -->
-<script>
-    let carrinho = [];
-    const MAX_ITENS = 5; // 4 Pagos + 1 Grátis
-
-    function adicionarAoJogo(elemento, nome, preco) {
-        // 1. Verifica se já está cheio
-        if (carrinho.length >= MAX_ITENS) {
-            alert("Sua caixa já está completa! Remova um item se quiser trocar.");
-            return;
-        }
-
-        // 2. Adiciona ao array
-        carrinho.push({ nome: nome, preco: preco });
-        
-        // 3. Feedback Visual no Card (Fica meio transparente e borda verde)
-        elemento.style.opacity = "0.6"; 
-        elemento.style.border = "2px solid var(--cor-cta)";
-        elemento.style.pointerEvents = "none"; // Impede clicar duas vezes no mesmo
-
-        // 4. Atualiza a barra
-        atualizarSlots();
-    }
-
-    function atualizarSlots() {
-        const msg = document.getElementById('status-msg');
-        const btn = document.getElementById('btn-checkout');
-
-        // Preenche as bolinhas
-        for (let i = 1; i <= 5; i++) {
-            let slot = document.getElementById('slot-' + i);
-            if (i <= carrinho.length) {
-                slot.classList.add('filled');
-                slot.innerText = "✓";
-                if (i === 5) {
-                    slot.classList.add('active'); // O Presente brilha
-                    slot.innerText = "🎁";
-                }
-            }
-        }
-
-        // Mensagens de Incentivo
-        if (carrinho.length < 4) {
-            msg.innerText = `Faltam ${4 - carrinho.length} para liberar o presente!`;
-        } else if (carrinho.length === 4) {
-            msg.innerText = "PARABÉNS! AGORA ESCOLHA SEU PRESENTE GRÁTIS 🎁";
-            msg.style.color = "var(--cor-cta)";
-            msg.style.fontWeight = "bold";
-        } else if (carrinho.length === 5) {
-            msg.innerText = "CAIXA COMPLETA! 🎉";
-            btn.style.display = "block"; // Mostra botão de compra
-        }
-    }
-
-    function finalizarZap() {
-        let texto = "*🍳 PEDIDO CHEFBOX (4+1)*\n\n";
-        texto += "Itens Pagos:\n";
-        for(let i=0; i<4; i++) texto += `✅ ${carrinho[i].nome}\n`;
-        
-        texto += `\n🎁 *PRESENTE:* ${carrinho[4].nome}\n`;
-        texto += "\nOlá Maria! Montei minha caixa no site e quero finalizar.";
-
-        let link = `https://wa.me/5561996659880?text=${encodeURIComponent(texto)}`;
-        window.location.href = link;
-    }
-</script>
