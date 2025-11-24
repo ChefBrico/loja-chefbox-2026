@@ -2,11 +2,7 @@ const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
 
-  // --- FORÇAR O MOTOR A LIGAR ---
-  // Isso obriga o Eleventy a ler o frontmatter dentro de arquivos HTML
-  eleventyConfig.setTemplateFormats(["njk", "md", "html"]);
-  
-  // --- CÓPIAS DE ARQUIVOS ---
+  // 1. CÓPIAS DE SEGURANÇA (Pass-through)
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("imagens");
   eleventyConfig.addPassthroughCopy("js");
@@ -14,22 +10,21 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("_redirects");
 
-  // --- FILTROS ---
+  // 2. FILTROS
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).setZone("America/Sao_Paulo").toFormat("dd/MM/yyyy");
   });
 
-  // --- CONFIGURAÇÃO DE DIRETÓRIOS (A VERDADE) ---
+  // 3. CONFIGURAÇÃO RÍGIDA DE DIRETÓRIOS
   return {
     dir: {
-      input: ".",         // A raiz do GitHub é a entrada
-      includes: "_includes", // A pasta de layouts
-      data: "_data",      // A pasta de dados
-      output: "_site"     // Onde o site é gerado
+      input: ".",         // Entrada: Raiz
+      includes: "_includes", // Layouts: Pasta _includes
+      data: "_data",      // Dados: Pasta _data
+      output: "_site"     // Saída: Pasta _site (Igual ao netlify.toml)
     },
-    // Estas 3 linhas garantem que o layout funcione
+    templateFormats: ["md", "njk", "html"],
     htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk",
-    dataTemplateEngine: "njk"
+    markdownTemplateEngine: "njk"
   };
 };
