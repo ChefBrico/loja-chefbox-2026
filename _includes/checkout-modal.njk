@@ -1,0 +1,17 @@
+<!-- MODAL DE CAPTURA (NAP) -->
+<div id="checkout-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-box">
+        <h3>Quase lá! 🛵</h3>
+        <p style="margin-bottom:20px; font-size:0.9rem;">Precisamos dos seus dados para calcular a entrega e enviar o link de pagamento.</p>
+        
+        <input type="text" id="customer-name" placeholder="Seu Nome Completo" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        <input type="text" id="customer-cep" placeholder="CEP" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        <textarea id="customer-address" rows="3" placeholder="Endereço Completo (Rua, Número, Complemento)" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea>
+        
+        <button class="btn-send-whatsapp" onclick="sendOrderToWhatsApp()" style="width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+            ENVIAR PEDIDO NO WHATSAPP 💬
+        </button>
+        
+        <p style="margin-top:15px; font-size:0.8rem; cursor:pointer; color:#888; text-align: center;" onclick="closeCheckoutModal()">Cancelar / Voltar</p>
+    </div>
+</div>
