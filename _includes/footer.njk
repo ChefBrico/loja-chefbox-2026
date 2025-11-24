@@ -3,26 +3,36 @@
         
         <!-- COLUNA 1: A MARCA -->
         <div class="footer-col">
-            <img src="/imagens/logo.png" alt="ChefBrico" style="height: 50px; margin-bottom: 15px; filter: brightness(0) invert(1); opacity: 0.8;">
+            <img src="/imagens/logo.png" alt="ChefBrico" style="height: 50px; margin-bottom: 15px; filter: brightness(0) invert(1);">
             <p style="font-size: 0.9rem; color: #ddd;">Simples como precisa ser, delicioso como você merece.</p>
             <br>
-            <p style="color: var(--cor-dourado); font-weight: bold; border: 1px solid var(--cor-dourado); padding: 10px; display: inline-block; border-radius: 4px;">
-                🏆 Vencedora Prêmio Sebrae Mulher de Negócios
+            <p style="color: var(--cor-dourado); font-weight: bold; border: 1px solid var(--cor-dourado); padding: 8px; display: inline-block; border-radius: 4px; font-size: 0.8rem;">
+                🏆 Vencedora Prêmio Sebrae
             </p>
         </div>
 
-        <!-- COLUNA 2: NAVEGAÇÃO -->
+        <!-- COLUNA 2: NAVEGAÇÃO RÁPIDA -->
         <div class="footer-col">
-            <h4>Explorar</h4>
+            <h4>Navegação</h4>
             <ul>
                 <li><a href="/">Início</a></li>
-                <li><a href="/receitas/">Cardápio Completo</a></li>
+                <li><a href="/receitas/">Todas as Receitas</a></li>
                 <li><a href="/clube/">Clube ChefBrico (Grátis)</a></li>
                 <li><a href="/blog/">Blog da Chef</a></li>
             </ul>
         </div>
 
-        <!-- COLUNA 3: LEGAL (Obrigatório Google) -->
+        <!-- COLUNA 3: LOCAL (Geo SEO) -->
+        <div class="footer-col">
+            <h4>Onde Encontrar</h4>
+            <ul>
+                <li><a href="/onde-encontrar/">Lojas Parceiras</a></li>
+                <li><a href="/onde-encontrar/">Feiras no DF</a></li>
+                <li><a href="/onde-encontrar/">Mapa de Entregas</a></li>
+            </ul>
+        </div>
+
+        <!-- COLUNA 4: LEGAL (Merchant Center) -->
         <div class="footer-col">
             <h4>Ajuda & Legal</h4>
             <ul>
@@ -32,24 +42,23 @@
             </ul>
             <div style="font-size: 0.75rem; margin-top: 15px; color: #aaa;">
                 <strong>ChefBrico Alimentos Ltda</strong><br>
-                CNPJ: {{ meta.organization.cnpj }}<br>
-                Brasília - DF
+                CNPJ: {{ meta.organization.cnpj }}
             </div>
         </div>
 
-        <!-- COLUNA 4: CONTATO -->
+        <!-- COLUNA 5: CONTATO -->
         <div class="footer-col">
             <h4>Fale Conosco</h4>
             <ul>
                 <li>
-                    <a href="https://wa.me/{{ meta.whatsapp }}" target="_blank" style="color: var(--cor-cta); font-weight: bold; font-size: 1.2rem;">
+                    <a href="https://wa.me/{{ meta.whatsapp }}" target="_blank" style="color: var(--cor-cta); font-weight: bold; font-size: 1.1rem;">
                         ✆ (61) 99665-9880
                     </a>
                 </li>
                 <li style="margin-top: 10px;">Vicente Pires, Brasília - DF</li>
-                <li style="margin-top: 15px; display: flex; gap: 10px;">
-                    <a href="https://instagram.com/chefbrico" target="_blank">Instagram</a> • 
-                    <a href="https://linkedin.com/in/mariaconceicao" target="_blank">LinkedIn</a>
+                <li style="margin-top: 15px; display: flex; gap: 15px;">
+                    <a href="https://instagram.com/chefbrico" target="_blank"><img src="/imagens/icon-instagram.svg" alt="Instagram" style="width: 20px; filter: invert(1);"></a>
+                    <a href="https://linkedin.com/in/mariaconceicao" target="_blank"><img src="/imagens/icon-linkedin.svg" alt="LinkedIn" style="width: 20px; filter: invert(1);"></a>
                 </li>
             </ul>
         </div>
