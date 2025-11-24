@@ -49,9 +49,11 @@
     <!-- C. RODAPÉ -->
     {% include "footer.njk" %}
     
-    <!-- D. A-COMMERCE: RÉGUA DE GAMIFICAÇÃO (GLOBAL) -->
-    <!-- Isso garante que a régua apareça em TODAS as páginas -->
-    {% include "gamification-bar.njk" %}
+    <!-- D. A-COMMERCE: RÉGUA DE GAMIFICAÇÃO -->
+    <!-- Lógica: Só aparece se NÃO for a Home (page.url != '/') -->
+    {% if page.url != '/' %}
+        {% include "gamification-bar.njk" %}
+    {% endif %}
     
     <!-- E. A-COMMERCE: MODAL DE CHECKOUT (GLOBAL) -->
     <!-- A janela que pede o endereço -->
