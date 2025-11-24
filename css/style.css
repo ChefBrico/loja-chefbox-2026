@@ -1140,40 +1140,48 @@ footer { padding: 30px 20px; margin-top: 40px; border-top: 1px solid var(--cor-b
 }
 
 /* ========================================= */
-/* 4. RODAPÉ (FOOTER) */
+/* 4. RODAPÉ (FOOTER - CORRIGIDO) */
 /* ========================================= */
 .site-footer {
-    background-color: var(--cor-institucional);
-    color: white; padding: 60px 0 20px;
+    background-color: var(--cor-fundo); /* Fundo Creme */
+    color: var(--cor-institucional); /* Texto Verde */
+    padding: 60px 0 0; /* Padding só em cima */
     border-top: 5px solid var(--cor-dourado);
     margin-top: 80px;
 }
-/* Atualização para suportar 5 colunas no Desktop */
+
 .footer-grid {
     display: grid;
-    /* Cria colunas flexíveis, com largura mínima de 200px */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px 60px; /* Padding embaixo para não colar na faixa verde */
 }
 
-/* Ajuste para telas muito grandes (garante 5 colunas) */
-@media (min-width: 1200px) {
-    .footer-grid {
-        grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; /* A primeira coluna (logo) um pouco maior */
-    }
-}
+/* Títulos das Colunas */
 .footer-col h4 {
-    color: var(--cor-dourado); margin-bottom: 20px; font-size: 1rem;
-    text-transform: uppercase; border-bottom: 1px solid rgba(191,176,132,0.3); padding-bottom: 10px;
+    color: var(--cor-dourado);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(1, 64, 57, 0.1); /* Linha sutil verde */
+    padding-bottom: 10px;
 }
+
+/* Links do Rodapé */
 .footer-col ul li { margin-bottom: 10px; font-size: 0.9rem; }
+.footer-col a { color: var(--cor-institucional); text-decoration: none; }
 .footer-col a:hover { color: var(--cor-cta); text-decoration: underline; }
-.footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 40px; font-size: 0.8rem; color: #aaa; }
 
-
+/* Faixa Verde Final (Copyright) */
+.footer-bottom {
+    background-color: var(--cor-institucional); /* Fundo Verde */
+    color: white; /* Texto Branco */
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    margin-top: 0; /* Cola no grid de cima */
 }
 /* ========================================= */
 /* 1. IDENTIDADE VISUAL & FUNDOS */
