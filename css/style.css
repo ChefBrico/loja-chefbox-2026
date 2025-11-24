@@ -1343,3 +1343,23 @@ body.receita-page {
     }
     .slot-circle { width: 40px; height: 40px; font-size: 0.8rem; }
 }
+/* --- CORREÇÃO DE FUNDO PARA RECEITAS --- */
+body.receita-page {
+    background-color: #ffffff !important; /* Força Branco */
+    background-image: none !important;
+}
+
+body.receita-page main {
+    background-color: #ffffff;
+}
+
+/* Ajuste para o texto não sumir no fundo branco */
+body.receita-page h1, 
+body.receita-page h2, 
+body.receita-page h3 {
+    color: var(--cor-institucional); /* Títulos em Verde Escuro */
+}
+
+body.receita-page p {
+    color: #444; /* Texto Cinza Escuro */
+}
