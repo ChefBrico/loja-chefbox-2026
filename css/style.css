@@ -1281,23 +1281,65 @@ body.receita-page {
 .mega-column a:hover { color: var(--cor-cta); transform: translateX(5px); }
 
 /* ========================================= */
-/* 4. RÉGUA GAMIFICAÇÃO (FORÇAR EXIBIÇÃO) */
+/* 5. RÉGUA GAMIFICADA (CORREÇÃO VISUAL) */
 /* ========================================= */
 .chefbox-sticky-bar {
-    position: fixed;
-    bottom: 0; left: 0; width: 100%;
-    background: white;
-    border-top: 4px solid var(--cor-cta);
-    padding: 15px;
-    z-index: 99999 !important; /* Força máxima de camada */
-    display: flex; justify-content: center; align-items: center; gap: 20px;
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    position: fixed; /* Fixa na tela */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white; /* Fundo Branco Sólido */
+    border-top: 4px solid var(--cor-cta); /* Linha Laranja */
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.2); /* Sombra para destacar do fundo */
+    padding: 15px 20px;
+    z-index: 99999; /* Acima de tudo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
-/* Mobile: Régua embaixo */
+/* Esconde a régua se o JS não carregar (evita fantasmas) */
+.chefbox-sticky-bar:not(.loaded) {
+    /* display: none; Removemos isso para garantir que apareça, mas estilizada */
+}
+
+/* Container das Bolinhas */
+.slots-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+/* Bolinhas (Slots) */
+.slot-circle {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    border: 2px dashed #ccc;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; color: #aaa;
+    font-size: 1rem;
+    overflow: hidden; /* Garante que a imagem não vaze */
+}
+
+/* Imagem dentro da bolinha */
+.slot-circle img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+/* Texto de Status */
+.bar-info {
+    font-weight: bold;
+    color: var(--cor-institucional);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Mobile: Ajuste para não quebrar */
 @media (max-width: 768px) {
-    .chefbox-sticky-bar { flex-direction: column; gap: 10px; padding-bottom: 20px; }
-    .mega-menu { min-width: 100%; left: 0; grid-template-columns: 1fr; position: static; }
-    .header-container { display: flex; justify-content: space-between; }
-    .nav-left, .nav-right { display: none; }
+    .chefbox-sticky-bar {
+        flex-direction: column;
+        padding-bottom: 25px; /* Espaço para barra do iPhone */
+    }
+    .slot-circle { width: 40px; height: 40px; font-size: 0.8rem; }
 }
