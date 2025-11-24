@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 1. SEO BÁSICO -->
+    <!-- 1. SEO E METADADOS -->
     <title>{{ title }} | ChefBrico</title>
     <meta name="description" content="{{ description }}">
     <meta name="author" content="Maria Conceição">
     
-    <!-- 2. SEO TÉCNICO (Evita conteúdo duplicado no Google) -->
+    <!-- 2. SEO TÉCNICO -->
     <link rel="canonical" href="https://gourmetpratico.com.br{{ page.url }}">
 
-    <!-- 3. REDES SOCIAIS (Open Graph - Para ficar bonito no WhatsApp/Instagram) -->
+    <!-- 3. REDES SOCIAIS (Open Graph) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gourmetpratico.com.br{{ page.url }}">
     <meta property="og:title" content="{{ title }}">
@@ -26,11 +26,10 @@
     <!-- 4. A ROUPA DO SITE (CSS) -->
     <link rel="stylesheet" href="/css/style.css">
     
-    <!-- 5. O PORTEIRO DO CMS (Netlify Identity) -->
+    <!-- 5. O PORTEIRO DO CMS -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- 6. SCHEMA.ORG (Dados Estruturados) -->
-    <!-- Se a página tiver um schema específico, ele entra aqui -->
+    <!-- 6. SCHEMA.ORG -->
     {% if schema %}
     <script type="application/ld+json">
         {{ schema | safe }}
@@ -39,22 +38,29 @@
 </head>
 <body>
     
-    <!-- CABEÇALHO -->
+    <!-- A. CABEÇALHO -->
     {% include "header.njk" %}
     
-    <!-- CONTEÚDO PRINCIPAL -->
-    <!-- O 'main' ajuda o Google a saber onde começa o texto real -->
+    <!-- B. CONTEÚDO PRINCIPAL -->
     <main>
         {{ content | safe }}
     </main>
     
-    <!-- RODAPÉ -->
+    <!-- C. RODAPÉ -->
     {% include "footer.njk" %}
     
-    <!-- JAVASCRIPT (Lógica do Menu e Jogo) -->
+    <!-- D. A-COMMERCE: RÉGUA DE GAMIFICAÇÃO (GLOBAL) -->
+    <!-- Isso garante que a régua apareça em TODAS as páginas -->
+    {% include "gamification-bar.njk" %}
+    
+    <!-- E. A-COMMERCE: MODAL DE CHECKOUT (GLOBAL) -->
+    <!-- A janela que pede o endereço -->
+    {% include "checkout-modal.njk" %}
+    
+    <!-- F. SCRIPTS -->
     <script src="/js/script.js"></script>
     
-    <!-- SCRIPT DE LOGIN DO ADMIN (Não mexer) -->
+    <!-- Script de Login do Admin (Netlify) -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
@@ -66,21 +72,5 @@
         });
       }
     </script>
-<body>
-    {% include "header.njk" %}
-
-    <main>
-        {{ content | safe }}
-    </main>
-
-    {% include "footer.njk" %}
-
-    <!-- AQUI ENTRA A RÉGUA GLOBAL -->
-    {% include "gamification-bar.njk" %}
-    
-    <!-- MODAL DE CHECKOUT (Também global) -->
-    {% include "checkout-modal.njk" %} <!-- (Crie este arquivo com o código do modal que fizemos antes) -->
-
-    <script src="/js/script.js"></script>
 </body>
 </html>
