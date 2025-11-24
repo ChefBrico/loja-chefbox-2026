@@ -2,67 +2,56 @@
 layout: base.njk
 ---
 
-<article class="container" style="max-width: 800px; padding: 40px 20px;">
-
-    <!-- 1. CABEÇALHO DA RECEITA -->
-    <header class="recipe-header">
-        <span style="text-transform: uppercase; color: var(--cor-cta); font-weight: bold; font-size: 0.8rem;">{{ category }}</span>
+<article class="receita-container">
+    
+    <!-- 1. CABEÇALHO (Mantido limpo para SEO) -->
+    <header class="recipe-header text-center">
+        <span class="badge-categoria">{{ category }}</span>
         <h1 class="recipe-title">{{ title }}</h1>
         <p class="recipe-subtitle">{{ description }}</p>
         
-        <div class="author-byline">
-            Por <a href="/comida-de-verdade/" style="text-decoration:underline;">{{ author_name }}</a>
-        </div>
-
-        <div class="recipe-meta">
+        <div class="recipe-meta-icons">
             <span>⏱ {{ tempo_preparo }}</span>
             <span>👥 {{ rendimento }}</span>
             <span>🔥 {{ dificuldade }}</span>
         </div>
     </header>
 
-    <!-- 2. IMAGEM HERO (FOOD PORN) -->
-    <figure style="margin-bottom: 40px;">
-        <img src="{{ image }}" alt="{{ image_alt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-    </figure>
-
-    <!-- 3. A CAIXA DO SEGREDO (Hook) -->
-    <div class="highlight-box">
-        <p><strong>O Segredo:</strong> {{ citable_fact }}</p>
-    </div>
-
-    <!-- 4. CONTEÚDO (TEXTO + BLOCO DE VENDA) -->
-    <div class="recipe-content">
+    <!-- 2. CONTEÚDO RICO (AQUI ESTÁ O SEGREDO) -->
+    <!-- A tag 'content | safe' diz ao sistema: "Não limpe nada! Mostre tudo o que o humano criou." -->
+    <!-- Isso vai renderizar suas fotos, seus ícones, seus cards de venda e seus testemunhos exatamente como você desenhou. -->
+    <div class="recipe-content-body">
         {{ content | safe }}
     </div>
 
-    <!-- 5. FAQ (ACORDEÃO) -->
-    {% if faq %}
-    <section style="margin-top: 60px;">
-        <h3 style="text-align: center; margin-bottom: 30px;">Dúvidas Frequentes</h3>
-        {% for item in faq %}
-        <details class="faq-details">
-            <summary class="faq-summary">{{ item.question }}</summary>
-            <div class="faq-content">
+    <!-- 3. FAQ AUTOMÁTICO (Backup) -->
+    <!-- Se você usou o campo 'faq' no cabeçalho, ele aparece aqui. Se já colocou no texto, não duplica. -->
+    {% if faq and not content.includes('faq-section') %}
+    <section class="faq-section">
+        <h3>Dúvidas Frequentes</h3>
+        <div class="faq-grid">
+            {% for item in faq %}
+            <details class="faq-item">
+                <summary>{{ item.question }}</summary>
                 <p>{{ item.answer }}</p>
-            </div>
-        </details>
-        {% endfor %}
+            </details>
+            {% endfor %}
+        </div>
     </section>
     {% endif %}
 
-    <!-- 6. BIO DA AUTORA -->
+    <!-- 4. RODAPÉ DE AUTORIDADE (Fixo) -->
     <div class="author-bio-box">
-        <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" class="author-img-circle">
+        <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" class="author-avatar">
         <div>
-            <h4 style="margin:0; font-size:1.1rem;">Maria Conceição</h4>
-            <p style="font-size:0.9rem; margin:5px 0;">Fundadora da ChefBrico e criadora do Método Gourmet Prático. <a href="/comida-de-verdade/" style="color:var(--cor-cta); font-weight:bold;">Conheça minha história.</a></p>
+            <h4>Sobre a Chef Maria Conceição</h4>
+            <p>Vencedora do Prêmio Sebrae Mulher de Negócios. Criadora do método que une sabor, saúde e praticidade.</p>
         </div>
     </div>
 
 </article>
 
-<!-- SCHEMA.ORG (INVISÍVEL) -->
+<!-- SCHEMA.ORG (INVISÍVEL - MANTIDO PARA O ROBÔ) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -81,7 +70,7 @@ layout: base.njk
     },
     {
       "@type": "Product",
-      "name": "Kit ChefBrico: {{ title }}",
+      "name": "Kit ChefBox: {{ title }}",
       "sku": "{{ sku }}",
       "gtin": "{{ gtin }}",
       "image": "{{ meta.url }}{{ image }}",
