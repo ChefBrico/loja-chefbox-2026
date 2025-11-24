@@ -1,60 +1,61 @@
 <footer class="site-footer">
     <div class="container footer-grid">
         
-        <!-- 1. NAVEGAÇÃO -->
+        <!-- COLUNA 1: A MARCA -->
         <div class="footer-col">
-            <h4>Navegação</h4>
-            <ul>
-                <li><a href="/">Início</a></li>
-                <li><a href="/comida-de-verdade/">O Método</a></li>
-                <li><a href="/blog/">Blog</a></li>
-                <li><a href="/clube/">Clube ChefBrico</a></li>
-            </ul>
-        </div>
-
-        <!-- 2. NOSSOS PRODUTOS -->
-        <div class="footer-col">
-            <h4>Nossos Produtos</h4>
-            <ul>
-                <li><a href="/receitas/risotos/">Risotos</a></li>
-                <li><a href="/receitas/sopas-funcionais/">Sopas Funcionais</a></li>
-                <li><a href="/receitas/refeicoes-integrais/">Refeições Integrais</a></li>
-                <li><a href="/receitas/emporio-da-chef/">Empório da Chef</a></li>
-            </ul>
-        </div>
-
-        <!-- 3. ONDE COMPRAR -->
-        <div class="footer-col">
-            <h4>Onde Comprar</h4>
-            <ul>
-                <li><a href="/chefbox/">Loja Online (ChefBox)</a></li>
-                <li><a href="/onde-encontrar/">Lojas Parceiras</a></li>
-                <li><a href="/onde-encontrar/">Feiras no DF</a></li>
-            </ul>
-        </div>
-
-        <!-- 4. AJUDA & SUPORTE -->
-        <div class="footer-col">
-            <h4>Ajuda & Suporte</h4>
-            <ul>
-                <li><a href="/faq/">Perguntas Frequentes</a></li>
-                <li><a href="/politicas/trocas/">Trocas e Devoluções</a></li>
-                <li><a href="/politicas/entrega/">Política de Frete</a></li>
-                <li><a href="https://wa.me/5561996659880">Fale no WhatsApp</a></li>
-            </ul>
-        </div>
-
-        <!-- 5. REDES SOCIAIS -->
-        <div class="footer-col">
-            <h4>Siga a Chef</h4>
-            <ul>
-                <li><a href="https://instagram.com/chefbrico" target="_blank">Instagram</a></li>
-                <li><a href="https://facebook.com/chefbrico" target="_blank">Facebook</a></li>
-                <li><a href="https://linkedin.com/in/mariaconceicao" target="_blank">LinkedIn</a></li>
-            </ul>
-            <p style="font-size:0.8rem; margin-top:20px; color:#aaa;">
-                ChefBrico Alimentos Ltda<br>CNPJ: {{ meta.organization.cnpj }}
+            <img src="/imagens/logo.png" alt="ChefBrico" style="height: 50px; margin-bottom: 15px; filter: brightness(0) invert(1); opacity: 0.8;">
+            <p style="font-size: 0.9rem; color: #ddd;">Simples como precisa ser, delicioso como você merece.</p>
+            <br>
+            <p style="color: var(--cor-dourado); font-weight: bold; border: 1px solid var(--cor-dourado); padding: 10px; display: inline-block; border-radius: 4px;">
+                🏆 Vencedora Prêmio Sebrae Mulher de Negócios
             </p>
         </div>
+
+        <!-- COLUNA 2: NAVEGAÇÃO -->
+        <div class="footer-col">
+            <h4>Explorar</h4>
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="/receitas/">Cardápio Completo</a></li>
+                <li><a href="/clube/">Clube ChefBrico (Grátis)</a></li>
+                <li><a href="/blog/">Blog da Chef</a></li>
+            </ul>
+        </div>
+
+        <!-- COLUNA 3: LEGAL (Obrigatório Google) -->
+        <div class="footer-col">
+            <h4>Ajuda & Legal</h4>
+            <ul>
+                <li><a href="/politicas/trocas/">Trocas e Devoluções</a></li>
+                <li><a href="/politicas/entrega/">Política de Frete</a></li>
+                <li><a href="/termos/">Termos de Uso</a></li>
+            </ul>
+            <div style="font-size: 0.75rem; margin-top: 15px; color: #aaa;">
+                <strong>ChefBrico Alimentos Ltda</strong><br>
+                CNPJ: {{ meta.organization.cnpj }}<br>
+                Brasília - DF
+            </div>
+        </div>
+
+        <!-- COLUNA 4: CONTATO -->
+        <div class="footer-col">
+            <h4>Fale Conosco</h4>
+            <ul>
+                <li>
+                    <a href="https://wa.me/{{ meta.whatsapp }}" target="_blank" style="color: var(--cor-cta); font-weight: bold; font-size: 1.2rem;">
+                        ✆ (61) 99665-9880
+                    </a>
+                </li>
+                <li style="margin-top: 10px;">Vicente Pires, Brasília - DF</li>
+                <li style="margin-top: 15px; display: flex; gap: 10px;">
+                    <a href="https://instagram.com/chefbrico" target="_blank">Instagram</a> • 
+                    <a href="https://linkedin.com/in/mariaconceicao" target="_blank">LinkedIn</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 ChefBrico. Todos os direitos reservados. Feito com afeto no Cerrado.</p>
     </div>
 </footer>
