@@ -128,47 +128,98 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ==================================================
-// MOTOR CHEFBOX PERSISTENTE (LOCALSTORAGE)
-// ==================================================
+// ================================================================= //
+// ===== ARQUIVO SCRIPT.JS MESTRE - CHEFBRICO A-COMMERCE VFINAL ==== //
+// ================================================================= //
 
+// Variáveis Globais do Jogo
 let chefboxCart = [];
-const MAX_SLOTS = 5;
+const MAX_SLOTS = 5; // 4 Pagos + 1 Presente
 
-// 1. INICIALIZAÇÃO (Roda quando a página carrega)
-document.addEventListener('DOMContentLoaded', () => {
-    loadCart(); // Recupera dados salvos
-    renderRuler(); // Desenha a régua
+// --- 1. INICIALIZAÇÃO (Quando o site carrega) ---
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // A. Carrega o carrinho salvo na memória (Persistência)
+    loadCart();
+    
+    // B. Desenha a régua com o que tiver na memória
+    renderRuler();
+
+    // C. Configura o Menu Mobile (Hambúrguer)
+    setupMobileMenu();
 });
 
-// 2. ADICIONAR (Funciona na Home e na Página de Receita)
+// --- 2. LÓGICA DO MENU MOBILE ---
+function setupMobileMenu() {
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navList = document.querySelector('.nav-list');
+
+    if (mobileBtn && navList) {
+        // Abrir/Fechar ao clicar no ícone
+        mobileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navList.classList.toggle('active');
+            // Muda ícone (☰ para X)
+            mobileBtn.textContent = navList.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Fechar ao clicar fora do menu
+        document.addEventListener('click', (e) => {
+            if (!navList.contains(e.target) && !mobileBtn.contains(e.target)) {
+                navList.classList.remove('active');
+                mobileBtn.textContent = '☰';
+            }
+        });
+
+        // Lógica para Submenus (Dropdown) no Celular
+        const dropdowns = document.querySelectorAll('.has-dropdown > a');
+        dropdowns.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault(); // Não navega, apenas abre
+                    const parent = link.parentElement;
+                    // Fecha outros abertos
+                    document.querySelectorAll('.has-dropdown').forEach(item => {
+                        if (item !== parent) item.classList.remove('open');
+                    });
+                    parent.classList.toggle('open');
+                }
+            });
+        });
+    }
+}
+
+// --- 3. LÓGICA DO JOGO (ADICIONAR/REMOVER) ---
+
+// Função chamada pelos botões "Adicionar" nos Cards e na Página de Receita
 function addToGame(name, price, imageSrc) {
+    // Verifica se já está cheio
     if (chefboxCart.length >= MAX_SLOTS) {
-        alert("Sua caixa está completa! Remova um item da régua para trocar.");
+        alert("Sua caixa já está completa! Clique em uma bolinha na régua para remover um item se quiser trocar.");
         return;
     }
 
-    // Adiciona
-    chefboxCart.push({ name, price, image: imageSrc });
+    // Adiciona produto à lista
+    chefboxCart.push({ name: name, price: price, image: imageSrc });
     
-    // SALVA NA MEMÓRIA DO NAVEGADOR
+    // Salva na memória do navegador
     saveCart();
     
-    // Atualiza Visual
+    // Atualiza a Régua Visual
     renderRuler();
-    
-    // Feedback visual (opcional)
-    alert(`Adicionado: ${name}`);
+
+    // Feedback visual simples (opcional)
+    // alert(`+1 ${name} adicionado!`); 
 }
 
-// 3. REMOVER
+// Função chamada ao clicar na bolinha da régua
 function removeFromGame(index) {
-    chefboxCart.splice(index, 1);
-    saveCart(); // Salva a remoção
-    renderRuler();
+    chefboxCart.splice(index, 1); // Remove o item do array
+    saveCart(); // Salva a alteração
+    renderRuler(); // Redesenha
 }
 
-// 4. SALVAR E CARREGAR (A Mágica da Persistência)
+// --- 4. PERSISTÊNCIA (MEMÓRIA) ---
 function saveCart() {
     localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
 }
@@ -176,49 +227,162 @@ function saveCart() {
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
     if (saved) {
-        chefboxCart = JSON.parse(saved);
+        try {
+            chefboxCart = JSON.parse(saved);
+        } catch (e) {
+            console.error("Erro ao ler carrinho", e);
+            chefboxCart = [];
+        }
     }
 }
 
-// 5. RENDERIZAR A RÉGUA (Atualizado para mostrar preço)
+// --- 5. RENDERIZAÇÃO (DESENHAR A RÉGUA) ---
 function renderRuler() {
-    const slots = document.querySelectorAll('.slot-circle');
-    const btn = document.getElementById('btn-finish-game');
-    const statusText = document.getElementById('game-status-text');
+    // Elementos da DOM
+    const statusText = document.getElementById('game-status'); // Na régua mobile
+    const statusTextGlobal = document.getElementById('game-status-text'); // Na régua global
+    const btnFinish = document.getElementById('btn-finish'); // Botão mobile
+    const btnFinishGlobal = document.getElementById('btn-finish-game'); // Botão global
     
-    // Limpa slots
-    slots.forEach(s => { s.innerHTML = ''; s.className = 'slot-circle'; });
-    slots[4].classList.add('gift');
-    slots[4].innerHTML = '🎁';
+    // Se a régua não existir na página (ex: página de erro), para aqui
+    if (!document.querySelector('.slot-circle')) return;
 
-    let total = 0;
+    // Limpa todos os slots visuais
+    const allSlots = document.querySelectorAll('.slot-circle');
+    allSlots.forEach(s => { 
+        s.innerHTML = s.id.split('-')[1]; // Volta o número (1, 2, 3...)
+        s.className = 'slot-circle'; // Remove classes 'filled', 'gift'
+        s.onclick = null; // Remove clique antigo
+    });
 
-    // Preenche slots
+    // Re-aplica estilo do Presente (Slot 5)
+    const giftSlots = document.querySelectorAll('#slot-5');
+    giftSlots.forEach(s => {
+        s.classList.add('gift');
+        s.innerHTML = '🎁';
+    });
+
+    let totalPrice = 0;
+
+    // Preenche os slots com os itens do carrinho
     chefboxCart.forEach((item, index) => {
-        const slot = slots[index];
-        slot.classList.add('filled');
-        slot.innerHTML = `<img src="${item.image}" alt="${item.name}">`;
-        slot.onclick = () => removeFromGame(index);
+        // Seleciona os slots correspondentes (pode ter mais de um se tiver régua mobile e desktop)
+        const slotsAtIndex = document.querySelectorAll(`#slot-${index + 1}`);
+        
+        slotsAtIndex.forEach(slot => {
+            slot.classList.add('filled');
+            slot.innerHTML = `<img src="${item.image}" alt="${item.name}">`;
+            slot.onclick = () => removeFromGame(index); // Permite remover clicando
+        });
 
         // Soma preço (apenas dos 4 primeiros, o 5º é grátis)
         if (index < 4) {
-            total += parseFloat(item.price.replace(',', '.')); // Garante número
+            // Converte "34,80" ou "34.80" para número
+            let priceNum = parseFloat(item.price.toString().replace(',', '.'));
+            if (!isNaN(priceNum)) {
+                totalPrice += priceNum;
+            }
         }
     });
 
-    // Atualiza Texto e Botão
-    if (chefboxCart.length < 4) {
-        statusText.innerText = `Faltam ${4 - chefboxCart.length} para o presente!`;
-        btn.style.display = 'none';
-    } else if (chefboxCart.length === 4) {
-        statusText.innerText = "ESCOLHA SEU PRESENTE! 🎁";
-        slots[4].classList.add('active'); // Pisca
-        btn.style.display = 'none';
+    // Lógica de Mensagens e Botão Finalizar
+    const count = chefboxCart.length;
+    let message = "";
+    let showButton = false;
+
+    if (count < 4) {
+        message = `Faltam ${4 - count} para liberar o presente!`;
+        // Remove animação do presente
+        giftSlots.forEach(s => s.classList.remove('active'));
+    } else if (count === 4) {
+        message = "PARABÉNS! ESCOLHA SEU PRESENTE AGORA! 🎁";
+        // Faz o presente piscar
+        giftSlots.forEach(s => s.classList.add('active'));
+    } else if (count === 5) {
+        message = `CAIXA COMPLETA! Total: R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+        showButton = true;
+        // Para de piscar
+        giftSlots.forEach(s => s.classList.remove('active'));
+    }
+
+    // Atualiza textos na tela
+    if (statusText) statusText.innerText = message;
+    if (statusTextGlobal) statusTextGlobal.innerText = message;
+
+    // Mostra ou esconde botões de finalizar
+    if (btnFinish) btnFinish.style.display = showButton ? 'block' : 'none';
+    if (btnFinishGlobal) btnFinishGlobal.style.display = showButton ? 'block' : 'none';
+}
+
+// --- 6. MODAL DE CHECKOUT (NAP) ---
+
+function openCheckoutModal() {
+    // Tenta abrir o modal global ou o local
+    const modal = document.getElementById('checkout-modal');
+    if (modal) {
+        modal.style.display = 'flex';
     } else {
-        statusText.innerText = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
-        slots[4].classList.remove('active');
-        btn.style.display = 'block';
+        alert("Erro: Modal de checkout não encontrado.");
     }
 }
 
-// ... (Mantenha as funções de Modal e WhatsApp do passo anterior) ...
+function closeCheckoutModal() {
+    const modal = document.getElementById('checkout-modal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// --- 7. ENVIO PARA WHATSAPP (O FECHAMENTO) ---
+
+function sendOrderToWhatsApp() {
+    // Captura dados dos inputs
+    const nameInput = document.getElementById('customer-name');
+    const addressInput = document.getElementById('customer-address');
+    const cepInput = document.getElementById('customer-cep');
+
+    const name = nameInput ? nameInput.value : "";
+    const address = addressInput ? addressInput.value : "";
+    const cep = cepInput ? cepInput.value : "";
+
+    // Validação simples
+    if (!name || !address) {
+        alert("Por favor, preencha seu Nome e Endereço para que possamos entregar.");
+        return;
+    }
+
+    // Monta a lista de produtos
+    let itemsList = "";
+    let total = 0;
+
+    chefboxCart.forEach((item, index) => {
+        if (index < 4) {
+            let p = parseFloat(item.price.toString().replace(',', '.'));
+            total += p;
+            itemsList += `✅ ${item.name} (R$ ${item.price})\n`;
+        } else {
+            itemsList += `🎁 PRESENTE: ${item.name} (GRÁTIS)\n`;
+        }
+    });
+
+    // Monta a mensagem final
+    const message = `*NOVO PEDIDO CHEFBOX (4+1)* 🥗\n\n` +
+                    `*Cliente:* ${name}\n` +
+                    `*Endereço:* ${address}\n` +
+                    `*CEP:* ${cep}\n\n` +
+                    `*Itens Escolhidos:*\n${itemsList}\n` +
+                    `*💰 TOTAL A PAGAR: R$ ${total.toFixed(2).replace('.', ',')}*\n\n` +
+                    `Aguardo o link de pagamento!`;
+
+    // Número da Maria (Formato Internacional sem +)
+    const phone = "5561996659880"; 
+    
+    // Abre o WhatsApp
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    
+    // Fecha o modal e limpa (opcional)
+    closeCheckoutModal();
+    // localStorage.removeItem('chefbox_cart'); // Descomente se quiser limpar após enviar
+    // chefboxCart = [];
+    // renderRuler();
+}
