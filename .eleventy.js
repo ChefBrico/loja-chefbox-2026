@@ -2,7 +2,7 @@ const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
 
-  // 1. CÓPIAS DE SEGURANÇA (Pass-through)
+  // 1. CÓPIAS DE ARQUIVOS (O que vai direto para o site)
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("imagens");
   eleventyConfig.addPassthroughCopy("js");
@@ -15,16 +15,18 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj).setZone("America/Sao_Paulo").toFormat("dd/MM/yyyy");
   });
 
-  // 3. CONFIGURAÇÃO RÍGIDA DE DIRETÓRIOS
+  // 3. CONFIGURAÇÃO DO MOTOR (AQUI ESTÁ A CURA)
   return {
     dir: {
-      input: ".",         // Entrada: Raiz
-      includes: "_includes", // Layouts: Pasta _includes
-      data: "_data",      // Dados: Pasta _data
-      output: "_site"     // Saída: Pasta _site (Igual ao netlify.toml)
+      input: ".",         // Entrada na raiz
+      includes: "_includes", // Layouts
+      data: "_data",      // Dados
+      output: "_site"     // Saída
     },
-    templateFormats: ["md", "njk", "html"],
+    // ESTAS 3 LINHAS OBRIGAM O HTML A FUNCIONAR
     htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk"
+    markdownTemplateEngine: "njk",
+    dataTemplateEngine: "njk",
+    templateFormats: ["html", "njk", "md"]
   };
 };
