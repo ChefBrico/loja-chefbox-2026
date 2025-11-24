@@ -127,3 +127,98 @@ document.addEventListener('DOMContentLoaded', function() {
         if (filterParam) filterProducts(filterParam);
     }
 });
+
+// ==================================================
+// MOTOR CHEFBOX PERSISTENTE (LOCALSTORAGE)
+// ==================================================
+
+let chefboxCart = [];
+const MAX_SLOTS = 5;
+
+// 1. INICIALIZAÇÃO (Roda quando a página carrega)
+document.addEventListener('DOMContentLoaded', () => {
+    loadCart(); // Recupera dados salvos
+    renderRuler(); // Desenha a régua
+});
+
+// 2. ADICIONAR (Funciona na Home e na Página de Receita)
+function addToGame(name, price, imageSrc) {
+    if (chefboxCart.length >= MAX_SLOTS) {
+        alert("Sua caixa está completa! Remova um item da régua para trocar.");
+        return;
+    }
+
+    // Adiciona
+    chefboxCart.push({ name, price, image: imageSrc });
+    
+    // SALVA NA MEMÓRIA DO NAVEGADOR
+    saveCart();
+    
+    // Atualiza Visual
+    renderRuler();
+    
+    // Feedback visual (opcional)
+    alert(`Adicionado: ${name}`);
+}
+
+// 3. REMOVER
+function removeFromGame(index) {
+    chefboxCart.splice(index, 1);
+    saveCart(); // Salva a remoção
+    renderRuler();
+}
+
+// 4. SALVAR E CARREGAR (A Mágica da Persistência)
+function saveCart() {
+    localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
+}
+
+function loadCart() {
+    const saved = localStorage.getItem('chefbox_cart');
+    if (saved) {
+        chefboxCart = JSON.parse(saved);
+    }
+}
+
+// 5. RENDERIZAR A RÉGUA (Atualizado para mostrar preço)
+function renderRuler() {
+    const slots = document.querySelectorAll('.slot-circle');
+    const btn = document.getElementById('btn-finish-game');
+    const statusText = document.getElementById('game-status-text');
+    
+    // Limpa slots
+    slots.forEach(s => { s.innerHTML = ''; s.className = 'slot-circle'; });
+    slots[4].classList.add('gift');
+    slots[4].innerHTML = '🎁';
+
+    let total = 0;
+
+    // Preenche slots
+    chefboxCart.forEach((item, index) => {
+        const slot = slots[index];
+        slot.classList.add('filled');
+        slot.innerHTML = `<img src="${item.image}" alt="${item.name}">`;
+        slot.onclick = () => removeFromGame(index);
+
+        // Soma preço (apenas dos 4 primeiros, o 5º é grátis)
+        if (index < 4) {
+            total += parseFloat(item.price.replace(',', '.')); // Garante número
+        }
+    });
+
+    // Atualiza Texto e Botão
+    if (chefboxCart.length < 4) {
+        statusText.innerText = `Faltam ${4 - chefboxCart.length} para o presente!`;
+        btn.style.display = 'none';
+    } else if (chefboxCart.length === 4) {
+        statusText.innerText = "ESCOLHA SEU PRESENTE! 🎁";
+        slots[4].classList.add('active'); // Pisca
+        btn.style.display = 'none';
+    } else {
+        statusText.innerText = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+        slots[4].classList.remove('active');
+        btn.style.display = 'block';
+    }
+}
+
+// ... (Mantenha as funções de Modal e WhatsApp do passo anterior) ...
