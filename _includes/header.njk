@@ -1,4 +1,4 @@
-<!-- BARRA DE TOPO DOURADA (Fina) -->
+<!-- BARRA DE TOPO DOURADA -->
 <div class="top-bar">
     Gourmet Prático: Culinária saudável, sem desperdício de tempo e ingredientes!
 </div>
@@ -6,35 +6,57 @@
 <header class="site-header">
     <div class="header-container">
         
-        <!-- MENU ESQUERDA (Autoridade) -->
+        <!-- ESQUERDA -->
         <ul class="nav-left nav-list">
-            <li><a href="/comida-de-verdade/" class="nav-link">Comida de Verdade</a></li>
-            <li><a href="/blog/" class="nav-link">Blog & Dicas</a></li>
+            <li><a href="/comida-de-verdade/" class="nav-link">O Método</a></li>
+            <!-- Blog removido daqui, pois a Home é o Blog -->
+            <li><a href="/clube/" class="nav-link">Clube ChefBrico</a></li>
         </ul>
 
-        <!-- LOGO CENTRAL (Círculo Dourado) -->
-        <a href="/" class="logo-circle" aria-label="ChefBrico Home">
+        <!-- CENTRO (LOGO) -->
+        <a href="/" class="logo-circle" aria-label="Home">
             <img src="/imagens/logo.png" alt="ChefBrico">
         </a>
 
-        <!-- MENU DIREITA (Loja) -->
+        <!-- DIREITA -->
         <ul class="nav-right nav-list">
-            <!-- Dropdown Receitas -->
+            
+            <!-- MEGA MENU RECEITAS -->
             <li class="has-dropdown">
                 <a href="/receitas/" class="nav-link">Receitas ▾</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/receitas/risotos/">Risotos & Arrozes</a></li>
-                    <li><a href="/receitas/sopas-funcionais/">Sopas Funcionais</a></li>
-                    <li><a href="/receitas/refeicoes-integrais/">Refeições Integrais</a></li>
-                    <li><a href="/receitas/emporio-da-chef/">Empório da Chef</a></li>
-                </ul>
+                
+                <div class="mega-menu">
+                    <!-- Coluna 1: Soluções -->
+                    <div class="mega-column">
+                        <h4>Navegue por Solução</h4>
+                        <ul>
+                            <li><a href="/receitas/solucoes/jantar-rapido/">Jantar Rápido</a></li>
+                            <li><a href="/receitas/solucoes/marmita-saudavel/">Marmita Saudável</a></li>
+                            <li><a href="/receitas/solucoes/momento-a-dois/">Momento a Dois</a></li>
+                            <li><a href="/receitas/solucoes/criancas/">Opções para Crianças</a></li>
+                            <li><a href="/receitas/solucoes/dieta-performance/">Cardápio Dieta</a></li>
+                            <li><a href="/receitas/solucoes/trilha-viagem/">Trilha & Viagem</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Coluna 2: Categorias -->
+                    <div class="mega-column">
+                        <h4>Navegue por Categoria</h4>
+                        <ul>
+                            <li><a href="/receitas/risotos/">Risotos</a></li>
+                            <li><a href="/receitas/sopas-funcionais/">Sopas Funcionais</a></li>
+                            <li><a href="/receitas/refeicoes-integrais/">Refeições Integrais</a></li>
+                            <li><a href="/receitas/emporio-da-chef/">Empório da Chef</a></li>
+                        </ul>
+                    </div>
+                </div>
             </li>
-            
-            <!-- Botão ChefBox -->
+
+            <li><a href="/faq/" class="nav-link">FAQ</a></li>
             <li><a href="/chefbox/" class="nav-link btn-chefbox">MONTE SUA CAIXA 🎁</a></li>
         </ul>
 
-        <!-- BOTÃO MOBILE -->
-        <button class="mobile-menu-btn" aria-label="Abrir Menu">☰</button>
+        <!-- MOBILE -->
+        <button class="mobile-menu-btn">☰</button>
     </div>
 </header>
