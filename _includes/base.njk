@@ -66,5 +66,21 @@
         });
       }
     </script>
+<body>
+    {% include "header.njk" %}
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    {% include "footer.njk" %}
+
+    <!-- AQUI ENTRA A RÉGUA GLOBAL -->
+    {% include "gamification-bar.njk" %}
+    
+    <!-- MODAL DE CHECKOUT (Também global) -->
+    {% include "checkout-modal.njk" %} <!-- (Crie este arquivo com o código do modal que fizemos antes) -->
+
+    <script src="/js/script.js"></script>
 </body>
 </html>
