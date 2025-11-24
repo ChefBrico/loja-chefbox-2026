@@ -15,17 +15,35 @@ layout: base.njk
             <span>👥 {{ rendimento }}</span>
             <span>🔥 {{ dificuldade }}</span>
         </div>
+
+        <!-- === NOVO: BOTÃO DE AÇÃO A-COMMERCE (CONECTADO AO JOGO) === -->
+        <!-- Este botão garante que sempre haja como comprar, mesmo sem ler o texto -->
+        <div class="recipe-cta-block" style="margin-top: 25px; text-align: center;">
+            <div style="font-size: 1.5rem; font-weight: bold; color: var(--cor-cta); margin-bottom: 10px;">
+                R$ {{ price }}
+            </div>
+            
+            <button 
+                onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" 
+                class="btn-comprar-agora" 
+                style="cursor: pointer; border: none; font-size: 1rem; padding: 15px 30px; background: var(--cor-cta); color: white; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(242, 129, 29, 0.4);">
+                ADICIONAR À CHEFBOX (+1) 🎁
+            </button>
+            
+            <p style="font-size: 0.8rem; color: #666; margin-top: 8px;">
+                Junte 5 sabores e pague apenas 4!
+            </p>
+        </div>
+        <!-- ========================================================== -->
+
     </header>
 
-    <!-- 2. CONTEÚDO RICO (AQUI ESTÁ O SEGREDO) -->
-    <!-- A tag 'content | safe' diz ao sistema: "Não limpe nada! Mostre tudo o que o humano criou." -->
-    <!-- Isso vai renderizar suas fotos, seus ícones, seus cards de venda e seus testemunhos exatamente como você desenhou. -->
+    <!-- 2. CONTEÚDO RICO (Texto, Fotos, História) -->
     <div class="recipe-content-body">
         {{ content | safe }}
     </div>
 
-    <!-- 3. FAQ AUTOMÁTICO (Backup) -->
-    <!-- Se você usou o campo 'faq' no cabeçalho, ele aparece aqui. Se já colocou no texto, não duplica. -->
+    <!-- 3. FAQ AUTOMÁTICO -->
     {% if faq and not content.includes('faq-section') %}
     <section class="faq-section">
         <h3>Dúvidas Frequentes</h3>
@@ -40,7 +58,7 @@ layout: base.njk
     </section>
     {% endif %}
 
-    <!-- 4. RODAPÉ DE AUTORIDADE (Fixo) -->
+    <!-- 4. RODAPÉ DE AUTORIDADE -->
     <div class="author-bio-box">
         <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" class="author-avatar">
         <div>
@@ -51,7 +69,7 @@ layout: base.njk
 
 </article>
 
-<!-- SCHEMA.ORG (INVISÍVEL - MANTIDO PARA O ROBÔ) -->
+<!-- SCHEMA.ORG (DADOS PARA O ROBÔ) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
