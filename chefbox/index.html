@@ -36,7 +36,7 @@ description: "Escolha 4 sabores e ganhe o 5º sabor de presente. Jogo de compras
                 <h3 class="card-title" style="font-size: 1rem;">{{ item.data.title }}</h3>
                 
                 <div class="card-footer">
-                    <span class="card-price">R$ {{ item.data.price }}</span>
+                    <span class="card-price">R$ {{ item.data.price | dinheiro }}</span>
                     <!-- Link para ver detalhes (sem adicionar) -->
                     <a href="{{ item.url }}" class="btn-ver" onclick="event.stopPropagation()" style="font-size: 0.8rem; text-decoration: underline;">Ver Detalhes</a>
                 </div>
