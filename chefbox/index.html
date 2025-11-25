@@ -22,7 +22,7 @@ description: "Escolha 4 sabores e ganhe o 5º sabor de presente. Jogo de compras
         
         <!-- O CARD DE JOGO -->
         <!-- Ao clicar, chama a função addToGame() -->
-        <div class="recipe-card" style="cursor: pointer;" onclick="addToGame('{{ item.data.title }}', '{{ item.data.price }}', '{{ item.data.image }}')">
+        <div class="recipe-card" style="cursor: pointer;" onclick="addToGame('{{ item.data.title }}', '{{ item.data.price | dinheiro }}', '{{ item.data.image }}')">
             
             <div class="card-img-container">
                 <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="card-img" loading="lazy">
