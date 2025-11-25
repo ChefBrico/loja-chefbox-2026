@@ -6,46 +6,61 @@ layout: base.njk
 
 <article class="receita-container">
     
-    <!-- 1. CABEÇALHO EDITORIAL -->
+    <!-- 1. CABEÇALHO -->
     <header class="recipe-header text-center" style="margin-bottom: 30px;">
-        <span style="text-transform: uppercase; color: var(--cor-dourado); font-weight: bold; letter-spacing: 1px; font-size: 0.9rem;">{{ category }}</span>
-        <h1 style="font-size: 2.5rem; margin-top: 10px; color: var(--cor-institucional);">{{ title }}</h1>
-        <p style="font-size: 1.1rem; color: #666; font-style: italic;">{{ description }}</p>
+        <span class="badge-categoria" style="color: var(--cor-dourado); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">{{ category }}</span>
+        <h1 class="recipe-title" style="font-size: 2.5rem; margin-top: 10px; color: var(--cor-institucional);">{{ title }}</h1>
+        <p class="recipe-subtitle" style="font-size: 1.1rem; color: #666; font-style: italic;">{{ description }}</p>
+        
+        <!-- 3. ÍCONES DE META DADOS (AUTOMÁTICOS) -->
+    <!-- O sistema pega os dados do topo do arquivo .md e desenha aqui -->
+    <div class="recipe-meta-icons" style="display: flex; justify-content: center; gap: 20px; margin: 20px 0; font-size: 1.1rem; color: var(--cor-institucional);">
+        <span>🕒 <strong>Tempo:</strong> {{ tempo_preparo }}</span>
+        <span>🍳 <strong>Dificuldade:</strong> {{ dificuldade }}</span>
+        <span>👨‍👩‍👧‍👦 <strong>Serve:</strong> {{ rendimento }}</span>
+    </div>
     </header>
 
-    <!-- 2. IMAGEM HERO (FOOD PORN) -->
+    <!-- 2. IMAGEM HERO -->
     <figure class="recipe-hero">
-        <img src="{{ image }}" alt="{{ image_alt }}">
+        <img src="{{ image }}" alt="{{ image_alt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
     </figure>
 
-    <!-- 3. META DADOS (TEMPO/DIFICULDADE) -->
-    <div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0; color: #555; font-weight: bold;">
-        <span>🕒 {{ tempo_preparo }}</span>
-        <span>🍳 {{ dificuldade }}</span>
-        <span>👥 {{ rendimento }}</span>
-    </div>
-
-    <!-- 4. CARD DE VENDA ÚNICO E ELEGANTE (A-COMMERCE) -->
-    <div class="chefbox-offer-card">
-        <h3 class="offer-title">Leve este sabor para casa</h3>
-        <div class="price-display">R$ {{ price }}</div>
+    <!-- 3. CARD DE VENDA AUTOMÁTICO (SEU DESIGN AQUI!) -->
+    <!-- Este bloco substitui o que você vai apagar dos arquivos .md -->
+    <div class="card-modelo-autora" style="border: 2px solid #27ae60; background: #f9fff9; padding: 20px; border-radius: 12px; text-align: center; margin: 40px 0;">
         
-        <button onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" class="btn-add-game">
-            Adicione na sua ChefBox (+1) 🎁
+        <h3 style="color: #27ae60; margin-top: 0;">Leve este sabor para Casa</h3>
+        
+        <!-- PREÇO -->
+        <div style="margin: 15px 0;">
+            <span style="font-size: 0.9rem; color: #666; text-decoration: line-through;">De R$ 39,00</span><br>
+            <span style="font-size: 2.5rem; font-weight: 800; color: #2c3e50;">R$ {{ price }}</span>
+            <span style="font-size: 0.9rem; color: #666;">/unidade</span>
+        </div>
+
+        <!-- GATILHO MENTAL -->
+        <p style="font-size: 0.95rem; margin-bottom: 20px; line-height: 1.4;">
+            <strong>🎁 DICA DE OURO:</strong> Na <a href="/chefbox/" style="color:#27ae60; font-weight:bold;">ChefBox</a>, Você escolhe 5 sabores e paga apenas 4. 
+            <br><span style="background:#ffeb3b; padding:2px 8px; border-radius:4px; font-size: 0.85rem;">Ganhe o 5º sabor de presente!<span style="background:#ffeb3b; padding:2px 5px; border-radius:4px;">Representa <strong>20%</strong>de desconto!</span>
+        </p>
+
+        <!-- BOTÃO INTELIGENTE -->
+        <button onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" class="btn-comprar-agora" style="width: 100%; max-width: 350px; cursor: pointer; border:none; background-color: #F2811D; color: white; font-weight: bold; padding: 15px; border-radius: 50px; box-shadow: 0 4px 0 #c0600c; font-size: 1.1rem; text-transform: uppercase;">
+            Adicionar na Sua ChefBox (+1) 🎁
         </button>
         
-        <p style="margin-top: 15px; font-size: 0.9rem; color: #888;">
-            <strong>Dica de ouro:</strong> font-weight:bold;">ChefBox</a>, Você escolhe 4 sabores e Ganha de Presente o 5ºsabor !!<span style="background:#ffeb3b; padding:2px 5px; border-radius:4px;">Representa <strong>20%</strong>de desconto!</span>
+        <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">
+            Continue escolhendo para ganhar seu presente.
         </p>
     </div>
 
-
-    <!-- 5. CONTEÚDO RICO (TEXTO DA MARIA) -->
+    <!-- 4. CONTEÚDO RICO (TEXTO DA MARIA) -->
     <div class="recipe-content-body" style="font-size: 1.1rem; line-height: 1.8; color: #333;">
         {{ content | safe }}
     </div>
 
-    <!-- 6. FAQ (ACORDEÃO) -->
+    <!-- 5. FAQ -->
     {% if faq %}
     <section style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
         <h3 style="color: var(--cor-institucional); text-align: center; margin-bottom: 30px;">Dúvidas Frequentes</h3>
@@ -60,8 +75,8 @@ layout: base.njk
     </section>
     {% endif %}
 
-    <!-- 7. BIO DA AUTORA -->
-    <div style="display: flex; align-items: center; gap: 20px; margin-top: 60px; background: #f9f9f9; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cor-institucional);">
+    <!-- 6. BIO DA AUTORA -->
+    <div class="author-bio-box" style="display: flex; align-items: center; gap: 20px; margin-top: 60px; background: #f9f9f9; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cor-institucional);">
         <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
         <div>
             <h4 style="margin: 0; color: var(--cor-institucional); font-size: 1.1rem;">Chef Maria Conceição</h4>
@@ -71,7 +86,7 @@ layout: base.njk
 
 </article>
 
-<!-- SCHEMA.ORG (ROBÔ) -->
+<!-- SCHEMA.ORG -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
