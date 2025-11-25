@@ -14,7 +14,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).setZone("America/Sao_Paulo").toFormat("dd/MM/yyyy");
   });
-
+// Filtro de Dinheiro (R$ 00,00)
+  eleventyConfig.addFilter("dinheiro", (valor) => {
+    return parseFloat(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  });
   // 3. CONFIGURAÇÃO DO MOTOR (AQUI ESTÁ A CURA)
   return {
     dir: {
