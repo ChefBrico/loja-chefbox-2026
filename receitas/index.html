@@ -2,23 +2,11 @@
 layout: base.njk
 permalink: /receitas/
 title: "Catálogo Inteligente: Encontre sua Solução | ChefBrico"
-description: "Explore o cardápio completo da ChefBrico. Filtre por solução, dieta ou tipo de prato e encontre a refeição perfeita para sua rotina."
+description: "Explore o cardápio completo da ChefBrico. Filtre por solução, dieta ou tipo de prato."
 ---
 
-<!-- SCHEMA DO CATÁLOGO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Cardápio Inteligente ChefBrico",
-  "description": "Catálogo completo de receitas funcionais e gourmet.",
-  "url": "https://gourmetpratico.com.br/receitas/",
-  "publisher": { "@id": "https://gourmetpratico.com.br/#organization" }
-}
-</script>
-
 <style>
-    /* Estilos da Página de Catálogo */
+    /* SEU CSS ORIGINAL MANTIDO E APRIMORADO */
     .page-header-local { text-align: center; margin: 40px 20px 30px; }
     .page-header-local h1 { font-family: 'Merriweather', serif; color: #2c3e50; margin-bottom: 10px; }
     .page-header-local .subtitle { font-family: 'Lato', sans-serif; color: #7f8c8d; max-width: 700px; margin: 0 auto; }
@@ -28,24 +16,46 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
     
     .filter-buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding-bottom: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px; }
     .filter-btn { background-color: #f9f9f9; color: #555; padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; cursor: pointer; font-size: 0.9em; font-weight: bold; transition: all 0.2s; }
-    .filter-btn:hover { background-color: #e0e0e0; }
-    .filter-btn.active { background-color: #27ae60; color: white; border-color: #27ae60; }
+    .filter-btn:hover, .filter-btn.active { background-color: #27ae60; color: white; border-color: #27ae60; }
 
-    #curatorship-box { text-align: center; margin: 0 auto 40px; padding: 20px; background-color: #f0fff4; border-radius: 10px; border: 1px dashed #27ae60; max-width: 800px; display: none; }
-    #curatorship-box h4 { margin: 0 0 10px; color: #27ae60; }
+    .product-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        gap: 30px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding-bottom: 150px; /* Espaço para a régua do jogo não cobrir */
+    }
     
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-    
-    .product-card { display: flex; flex-direction: column; border: 1px solid #eee; border-radius: 15px; overflow: hidden; background-color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s; text-decoration: none; color: #333; }
+    .product-card { 
+        display: flex; flex-direction: column; 
+        border: 1px solid #eee; border-radius: 15px; 
+        overflow: hidden; background-color: white; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.03); 
+        transition: transform 0.3s; 
+        text-decoration: none; color: #333; 
+        cursor: pointer;
+    }
     .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
     
     .product-card-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; }
+    
     .product-card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
     .product-card-content h4 { font-size: 1.2em; margin: 0 0 10px; color: #2c3e50; font-family: 'Merriweather', serif; }
     .product-card-content p { font-size: 0.9em; color: #666; margin-bottom: 20px; flex-grow: 1; }
     
-    .cta-button { margin-top: auto; background: white; border: 2px solid #27ae60; color: #27ae60; padding: 10px; text-align: center; border-radius: 50px; font-weight: bold; transition: 0.3s; }
-    .cta-button:hover { background: #27ae60; color: white; }
+    .card-actions { margin-top: auto; display: flex; gap: 10px; }
+    
+    .btn-ver { 
+        flex: 1; border: 1px solid #ddd; color: #666; padding: 10px; 
+        text-align: center; border-radius: 8px; font-weight: bold; font-size: 0.9rem;
+    }
+    .btn-add { 
+        flex: 1; background: #F2811D; color: white; border: none; padding: 10px; 
+        text-align: center; border-radius: 8px; font-weight: bold; cursor: pointer;
+        box-shadow: 0 4px 0 #c0600c; font-size: 0.9rem;
+    }
+    .btn-add:active { transform: translateY(2px); box-shadow: none; }
 </style>
 
 <main class="container">
@@ -58,13 +68,13 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
     <div class="filter-section">
         <div class="filter-title">🔎 Navegue por Solução</div>
         <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="jantar-rapido">Jantar Rápido</button>
-            <button class="filter-btn" data-filter="marmita-saudavel">Marmita Saudável</button>
-            <button class="filter-btn" data-filter="momento-a-dois">Momentos Especiais</button>
-            <button class="filter-btn" data-filter="para-criancas">Para a Família</button>
-            <button class="filter-btn" data-filter="dieta-performance">Performance & Dieta</button>
-            <button class="filter-btn" data-filter="trilha-viagem">Trilha & Viagem</button>
+            <button class="filter-btn active" onclick="filter('all')">Todos</button>
+            <button class="filter-btn" onclick="filter('jantar-rapido')">Jantar Rápido</button>
+            <button class="filter-btn" onclick="filter('marmita-saudavel')">Marmita Saudável</button>
+            <button class="filter-btn" onclick="filter('momento-especial')">Momentos Especiais</button>
+            <button class="filter-btn" onclick="filter('kids')">Para a Família</button>
+            <button class="filter-btn" onclick="filter('performance')">Performance & Dieta</button>
+            <button class="filter-btn" onclick="filter('trilha')">Trilha & Viagem</button>
         </div>
     </div>
 
@@ -72,244 +82,76 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
     <div class="filter-section">
         <div class="filter-title">🍲 Navegue por Categoria</div>
         <div class="filter-buttons">
-             <button class="filter-btn" data-filter="risoto">Risotos</button>
-             <button class="filter-btn" data-filter="sopa">Sopas</button>
-             <button class="filter-btn" data-filter="refeicao">Refeições Integrais</button>
-             <button class="filter-btn" data-filter="antepasto">Empório da Chef</button>
+             <button class="filter-btn" onclick="filter('Risoto')">Risotos</button>
+             <button class="filter-btn" onclick="filter('Sopa')">Sopas</button>
+             <button class="filter-btn" onclick="filter('Refeição')">Refeições Integrais</button>
+             <button class="filter-btn" onclick="filter('Empório')">Empório da Chef</button>
         </div>
     </div>
-
-    <!-- CAIXA DE CURADORIA (Muda conforme o filtro) -->
-    <div id="curatorship-box">
-        <h4 id="curatorship-title"></h4>
-        <p id="curatorship-text"></p>
-    </div>
     
-    <!-- GRADE DE PRODUTOS -->
+    <!-- GRADE DE PRODUTOS (GERADA AUTOMATICAMENTE) -->
+    <!-- Aqui está a mágica: O sistema lê seus arquivos .md e cria os cards -->
     <div class="product-grid">
+        
+        {% for item in collections.receitas %}
+        <!-- O Card lê as 'keywords' e 'category' do seu arquivo .md para saber onde aparecer -->
+        <div class="product-card" data-tags="{{ item.data.keywords }} {{ item.data.category }}">
+            
+            <!-- Link da Imagem -->
+            <a href="{{ item.url }}">
+                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="product-card-image" loading="lazy">
+            </a>
 
-        <!-- === RISOTOS === -->
-        <a href="/receitas/risotos/funghi/" class="product-card" data-category="risoto vegano sem-gluten momento-especial gourmet-pratico terroso umami">
-            <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" alt="Risoto Funghi Secchi" class="product-card-image" loading="lazy">
             <div class="product-card-content">
-                <h4>Risoto Funghi Secchi</h4>
-                <p>Sabor de restaurante em 18 minutos!</p>
-                <span class="cta-button">Ver Receita</span>
+                <a href="{{ item.url }}">
+                    <h4>{{ item.data.title }}</h4>
+                </a>
+                <p>{{ item.data.description | truncate(80) }}</p>
+                
+                <div style="font-weight:bold; color:#27ae60; margin-bottom:10px;">R$ {{ item.data.price }}</div>
+
+                <div class="card-actions">
+                    <!-- Botão 1: Ver Receita (EEAT) -->
+                    <a href="{{ item.url }}" class="btn-ver">Ver Receita</a>
+                    
+                    <!-- Botão 2: Adicionar ao Jogo (A-Commerce) -->
+                    <button class="btn-add" onclick="addToGame('{{ item.data.title }}', '{{ item.data.price }}', '{{ item.data.image }}')">
+                        + CAIXA 🎁
+                    </button>
+                </div>
             </div>
-        </a>
-
-        <a href="/receitas/risotos/pomodori/" class="product-card" data-category="risoto vegano sem-gluten jantar-rapido momento-especial gourmet-pratico classico italiano">
-            <img src="/imagens/cardapio-risoto-cremoso-pomodori-pesto-chefbrico.png" alt="Risoto Pomodori & Pesto" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto Pomodori & Pesto</h4>
-                <p>O sabor autêntico da Itália em 18 minutos!</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/zucchini/" class="product-card" data-category="risoto sem-gluten leveza refrescante marmita-inteligente jantar-rapido">
-            <img src="/imagens/cardapio-chefbrico-risoto-zucchini.png" alt="Risoto de Zucchini" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto de Zucchini</h4>
-                <p>Leveza e frescor com toque de cúrcuma.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/paella-veg/" class="product-card" data-category="risoto vegano sem-gluten momento-especial gourmet-pratico espanhol">
-            <img src="/imagens/cardapio-chefbrico-risoto-espanhol-paella.png" alt="Risoto Paella Veg." class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto Paella Veg.</h4>
-                <p>Viagem culinária à Espanha com cúrcuma e páprica.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/pera-gorgonzola/" class="product-card" data-category="risoto vegano sem-gluten momento-especial jantar-romantico gourmet-pratico agridoce divertido">
-            <img src="/imagens/cardapio-chefbrico-risoto-pera-e-lima%CC%83o-siciliano.png" alt="Risoto de Pêra e Gorgonzola" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto Pêra e Gorgonzola</h4>
-                <p>O clássico agridoce em uma versão 100% vegetal.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/morango/" class="product-card" data-category="risoto vegano sem-gluten momento-especial agridoce divertido">
-            <img src="/imagens/cardapio-chefbrico-risoto-morango-agridoce.png" alt="Risoto Agridoce de Morango" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto de Morango</h4>
-                <p>Uma experiência sofisticada e surpreendente.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/mix-funghi/" class="product-card" data-category="risoto vegano sem-gluten momento-especial gourmet-pratico terroso umami">
-            <img src="/imagens/cardapio-chefbrico-risoto-mix-funghi.png" alt="Risoto Mix Funghi" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto Mix Funghi</h4>
-                <p>Três cogumelos: Funghi, Shiitake e Shimeji.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/shiimeji/" class="product-card" data-category="risoto vegano sem-gluten gourmet-pratico terroso umami">
-            <img src="/imagens/cardapio-chefbrico-risoto-shiimeji-na%20tijela.png" alt="Risoto de Shiimeji" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto de Shiimeji</h4>
-                <p>Sofisticação e sabor delicado do cogumelo.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/alho-poro/" class="product-card" data-category="risoto vegano sem-gluten gourmet-pratico">
-            <img src="/imagens/cardapio-chefbrico-risoto-alho-poro.png" alt="Risoto de Pesto e Alho-Poró" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto Pesto e Alho-Poró</h4>
-                <p>Cremoso com o frescor do manjericão.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/mediterraneo/" class="product-card" data-category="risoto leveza refrescante">
-            <img src="/imagens/cardapio-chefbrico-risoto-mediterraneo-tijela.png" alt="Risoto Mediterrâneo" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto Mediterrâneo</h4>
-                <p>Toque cítrico de limão siciliano e vegetais.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/tomate-manjericao/" class="product-card" data-category="risoto vegano sem-gluten classico italiano jantar-rapido para-familia">
-            <img src="/imagens/cardapio-chefbrico-risoto-tomate-tijela.png" alt="Risoto de Tomate" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Risoto de Tomate</h4>
-                <p>O sabor clássico de comida de casa.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <!-- === SOPAS FUNCIONAIS === -->
-
-        <a href="/receitas/sopas-funcionais/jeitinho-de-vo/" class="product-card" data-category="sopa vegano sem-gluten para-familia conforto dia-a-dia">
-            <img src="/imagens/cardapio-chefbrico-jeitinho-vo-lentilha-macarrao.png" alt="Sopa Jeitinho de Vó" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Sopa Jeitinho de Vó</h4>
-                <p>Sabor de afeto! Lentilha e macarrão sem glúten.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/sopas-funcionais/sopa-biza-vo/" class="product-card" data-category="sopa para-familia conforto kids">
-            <img src="/imagens/cardapio-chefbrico-sopinha-da-biza-vo.png" alt="Sopinha da Biza Vó" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Sopinha da Biza Vó</h4>
-                <p>O aconchego da infância, nutritiva e amada pelas crianças.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/sopas-funcionais/low-carb-funghi/" class="product-card" data-category="sopa vegano sem-gluten performance low-carb">
-            <img src="/imagens/cardapio-chefbrico-low-carb-funghi.png" alt="Sopa Low Carb Funghi" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Sopa Low Carb Funghi</h4>
-                <p>Sabor gourmet sem culpa. Lentilha negra e funghi.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/sopas-funcionais/low-carb-horta/" class="product-card" data-category="sopa vegano sem-gluten performance low-carb leveza">
-            <img src="/imagens/cardapio-chefbrico-low-carb-lentilha-vermelha.png" alt="Sopa Low Carb da Horta" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Sopa Low Carb da Horta</h4>
-                <p>Deliciosa mistura de vegetais, leve e colorida.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/sopas-funcionais/detox/" class="product-card" data-category="sopa vegano sem-gluten performance detox leveza">
-            <img src="/imagens/cardapio-chefbrico-sopa-detox-ora-pro-nobis.png" alt="Sopa Detox" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Sopa Detox</h4>
-                <p>Um 'reset verde' com Ora-pro-nóbis e gengibre.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/sopas-funcionais/creme-fit/" class="product-card" data-category="sopa vegano sem-gluten performance pos-treino proteico">
-            <img src="/imagens/cardapio-chefbrico-sopa-creme-fit.png" alt="Sopa Creme Fit" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Sopa Creme Fit</h4>
-                <p>Sopa proteica de ervilha para o pós-treino.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/sopas-funcionais/canja-veg/" class="product-card" data-category="sopa vegano sem-gluten conforto kids">
-            <img src="/imagens/cardapio-chefbrico-canja-veg.png" alt="Canja Vegana" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Canja Vegana</h4>
-                <p>Nutritiva e reconfortante com arroz basmati.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <!-- === REFEIÇÕES INTEGRAIS === -->
-
-        <a href="/receitas/refeicoes-integrais/arroz-negro-funghi/" class="product-card" data-category="refeicao vegano sem-gluten marmita-inteligente momento-especial jantar-romantico gourmet-pratico">
-            <img src="/imagens/cardapio-chefbrico-refeicao-arroz-negro-integral.png" alt="Arroz Negro com Funghi" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Arroz Negro com Funghi</h4>
-                <p>Nutritivo e sofisticado, rico em antioxidantes.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/refeicoes-integrais/baiao-de-dois/" class="product-card" data-category="refeicao vegano sem-gluten para-familia dia-a-dia marmita-inteligente brasileiro">
-            <img src="/imagens/cardapio-chefbrico-refeicao-pratica-baiao-2.png" alt="Baião de Dois Integral" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Baião de Dois Integral</h4>
-                <p>Releitura saudável do clássico brasileiro.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <a href="/receitas/refeicoes-integrais/mediterranea/" class="product-card" data-category="refeicao vegano sem-gluten marmita-inteligente mediterraneo leveza">
-            <img src="/imagens/cardapio-chefbrico-grao-bico-arroz-vermelho.png" alt="Refeição Mediterrânea" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Refeição Mediterrânea</h4>
-                <p>Grão de bico e arroz vermelho com toque de limão.</p>
-                <span class="cta-button">Ver Receita</span>
-            </div>
-        </a>
-
-        <!-- === EMPÓRIO DA CHEF === -->
-
-        <a href="/receitas/emporio-da-chef/funghi-confit/" class="product-card" data-category="antepasto vegano sem-gluten momento-especial gourmet-pratico">
-            <img src="/imagens/icone-confit-funghi-chefbrico.png" alt="Funghi Confitado" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Funghi Confitado</h4>
-                <p>Shiitake confitado no azeite. O segredo dos chefs.</p>
-                <span class="cta-button">Ver Detalhes</span>
-            </div>
-        </a>
-
-        <a href="/receitas/emporio-da-chef/pesto-manjericao/" class="product-card" data-category="antepasto sem-gluten momento-especial gourmet-pratico italiano">
-            <img src="/imagens/icone-pesto-manjericao-chefbrico.png" alt="Pesto Manjericão" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Pesto de Manjericão</h4>
-                <p>Clássico genovês com toque de Castanha-do-Pará.</p>
-                <span class="cta-button">Ver Detalhes</span>
-            </div>
-        </a>
-
-        <a href="/receitas/emporio-da-chef/caponata-shiitake/" class="product-card" data-category="antepasto vegano sem-gluten momento-especial gourmet-pratico">
-            <img src="/imagens/icone-caponata-shiitake-chefbrico.png" alt="Caponata Shiitake" class="product-card-image" loading="lazy">
-            <div class="product-card-content">
-                <h4>Caponata com Shiitake</h4>
-                <p>Antepasto gourmet com vegetais e cogumelos.</p>
-                <span class="cta-button">Ver Detalhes</span>
-            </div>
-        </a>
+        </div>
+        {% endfor %}
 
     </div>
 </main>
+
+<!-- SCRIPT DE FILTRO INTELIGENTE -->
+<script>
+function filter(tag) {
+    const cards = document.querySelectorAll('.product-card');
+    const btns = document.querySelectorAll('.filter-btn');
+    
+    // Atualiza visual dos botões
+    btns.forEach(b => {
+        if(b.innerText.toLowerCase().includes(tag) || b.getAttribute('onclick').includes(tag)) {
+            b.classList.add('active');
+        } else {
+            b.classList.remove('active');
+        }
+    });
+
+    // Filtra os cards
+    cards.forEach(card => {
+        const tagsDoProduto = card.getAttribute('data-tags').toLowerCase();
+        // Normaliza a tag de busca
+        const busca = tag.toLowerCase();
+
+        if (tag === 'all' || tagsDoProduto.includes(busca)) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
