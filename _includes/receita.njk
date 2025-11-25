@@ -1,72 +1,70 @@
 ---
 layout: base.njk
 ---
+<!-- Script para ativar o fundo branco -->
+<script>document.body.classList.add('receita-page');</script>
 
 <article class="receita-container">
     
-    <!-- 1. TÍTULO E CATEGORIA -->
-    <header class="recipe-header text-center">
-        <span class="badge-categoria">{{ category }}</span>
-        <h1 class="recipe-title">{{ title }}</h1>
-        <p class="recipe-subtitle">{{ description }}</p>
+    <!-- 1. CABEÇALHO EDITORIAL -->
+    <header class="recipe-header text-center" style="margin-bottom: 30px;">
+        <span style="text-transform: uppercase; color: var(--cor-dourado); font-weight: bold; letter-spacing: 1px; font-size: 0.9rem;">{{ category }}</span>
+        <h1 style="font-size: 2.5rem; margin-top: 10px; color: var(--cor-institucional);">{{ title }}</h1>
+        <p style="font-size: 1.1rem; color: #666; font-style: italic;">{{ description }}</p>
     </header>
 
-    <!-- 2. IMAGEM HERO (A FOTO) -->
+    <!-- 2. IMAGEM HERO (FOOD PORN) -->
     <figure class="recipe-hero">
-        <img src="{{ image }}" alt="{{ image_alt }}" class="img-fluid rounded shadow-lg">
+        <img src="{{ image }}" alt="{{ image_alt }}">
     </figure>
 
-    <!-- 3. ÍCONES DE META DADOS (AUTOMÁTICOS) -->
-    <!-- O sistema pega os dados do topo do arquivo .md e desenha aqui -->
-    <div class="recipe-meta-icons" style="display: flex; justify-content: center; gap: 20px; margin: 20px 0; font-size: 1.1rem; color: var(--cor-institucional);">
-        <span>🕒 <strong>Tempo:</strong> {{ tempo_preparo }}</span>
-        <span>🍳 <strong>Dificuldade:</strong> {{ dificuldade }}</span>
-        <span>👨‍👩‍👧‍👦 <strong>Serve:</strong> {{ rendimento }}</span>
+    <!-- 3. META DADOS (TEMPO/DIFICULDADE) -->
+    <div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0; color: #555; font-weight: bold;">
+        <span>🕒 {{ tempo_preparo }}</span>
+        <span>🍳 {{ dificuldade }}</span>
+        <span>👥 {{ rendimento }}</span>
     </div>
 
-    <!-- 4. A OFERTA IRRESISTÍVEL (CHEFBOX) -->
+    <!-- 4. CARD DE VENDA ÚNICO E ELEGANTE (A-COMMERCE) -->
     <div class="chefbox-offer-card">
-        <div class="offer-content">
-            <h3>Leve este sabor para casa</h3>
-            <div class="price-tag">
-                <span class="currency">R$</span>
-                <span class="value">{{ price }}</span>
-            </div>
-            
-            <!-- BOTÃO INTELIGENTE DO JOGO -->
-            <button onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" class="btn-comprar-agora">
-                Adicionar sua ChefBox (+1) 🎁
-            </button>
-            
-            <p class="upsell-text">Monte sua <a href="/chefbox/">ChefBox</a>: Leve 5, Pague 4!</p>
-        </div>
+        <h3 class="offer-title">Leve este sabor para casa</h3>
+        <div class="price-display">R$ {{ price }}</div>
+        
+        <button onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" class="btn-add-game">
+            ADICIONAR À CAIXA (+1) 🎁
+        </button>
+        
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #888;">
+            <strong>Dica:</strong> Na ChefBox, você escolhe 5 e paga 4!
+        </p>
     </div>
 
     <!-- 5. CONTEÚDO RICO (TEXTO DA MARIA) -->
-    <div class="recipe-content-body">
+    <div class="recipe-content-body" style="font-size: 1.1rem; line-height: 1.8; color: #333;">
         {{ content | safe }}
     </div>
 
-    <!-- 6. FAQ E AUTORIDADE -->
+    <!-- 6. FAQ (ACORDEÃO) -->
     {% if faq %}
-    <section class="faq-section">
-        <h3>Dúvidas Frequentes</h3>
+    <section style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
+        <h3 style="color: var(--cor-institucional); text-align: center; margin-bottom: 30px;">Dúvidas Frequentes</h3>
         <div class="faq-grid">
             {% for item in faq %}
-            <details class="faq-item">
-                <summary>{{ item.question }}</summary>
-                <p>{{ item.answer }}</p>
+            <details style="border-bottom: 1px solid #eee; padding: 15px 0; cursor: pointer;">
+                <summary style="font-weight: bold; color: var(--cor-institucional);">{{ item.question }}</summary>
+                <p style="margin-top: 10px; color: #666;">{{ item.answer }}</p>
             </details>
             {% endfor %}
         </div>
     </section>
     {% endif %}
 
-    <div class="author-bio-box">
-        <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" class="author-avatar">
+    <!-- 7. BIO DA AUTORA -->
+    <div style="display: flex; align-items: center; gap: 20px; margin-top: 60px; background: #f9f9f9; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cor-institucional);">
+        <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
         <div>
-            <h4>Sobre a Chef Maria Conceição</h4>
-            <p>Vencedora do Prêmio Sebrae Mulher de Negócios. Criadora do método que une sabor, saúde e praticidade.</p>
+            <h4 style="margin: 0; color: var(--cor-institucional); font-size: 1.1rem;">Chef Maria Conceição</h4>
+            <p style="font-size: 0.9rem; margin: 5px 0;">Vencedora do Prêmio Sebrae. Criadora do método que une sabor, saúde e praticidade.</p>
         </div>
     </div>
 
@@ -83,11 +81,8 @@ layout: base.njk
       "image": ["{{ meta.url }}{{ image }}"],
       "author": { "@type": "Person", "name": "{{ author_name }}" },
       "description": "{{ description }}",
-      "prepTime": "PT5M",
-      "cookTime": "{{ tempo_iso }}",
-      "totalTime": "{{ tempo_iso }}",
-      "recipeYield": "{{ rendimento }}",
-      "recipeCategory": "{{ category }}"
+      "prepTime": "PT15M",
+      "recipeYield": "{{ rendimento }}"
     },
     {
       "@type": "Product",
@@ -99,8 +94,7 @@ layout: base.njk
         "@type": "Offer",
         "price": "{{ price }}",
         "priceCurrency": "BRL",
-        "availability": "https://schema.org/InStock",
-        "url": "{{ meta.url }}{{ page.url }}"
+        "availability": "https://schema.org/InStock"
       }
     }
   ]
