@@ -73,6 +73,11 @@
           }
         });
       }
-    </script>
+  <script>
+    // Força a régua a aparecer se o JS falhar
+    window.onload = function() {
+        document.querySelector('.chefbox-sticky-bar').style.display = 'flex';
+    }
+</script>
 </body>
 </html>
