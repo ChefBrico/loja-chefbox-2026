@@ -97,27 +97,38 @@ faq:
         <cite>&mdash; Ana Paula, Cliente ChefBrico</cite>
     </div>
 
-    <!-- CARD DE VENDA (ATUALIZADO PARA O JOGO) -->
-    <div class="card-modelo-autora">
-        <img class="card-modelo-autora-image" src="/imagens/cardapio-chefbrico-jeitinho-vo-lentilha-macarrao.png" alt="Embalagem da Sopa Jeitinho de Vó da ChefBrico">
-        <div class="card-modelo-autora-content">
-            <h3>Compre esta Receita Autoral</h3>
-            
-            <div style="margin: 10px 0;">
-                <span style="font-size: 0.9rem; color: #666; text-decoration: line-through;">De R$ 38,00</span><br>
-                <span style="font-size: 2.2rem; font-weight: bold; color: #2c3e50;">R$ 29,60</span>
-                <span style="font-size: 0.9rem; color: #666;">/unidade</span>
-            </div>
-
-            <p>A base para esta refeição saudável é a nossa <strong>Mistura para Sopa Jeitinho de Vó</strong>. O seu jantar fit, delicioso e sem complicação!</p>
-            
-            <!-- BOTÃO INTELIGENTE -->
-            <button onclick="addToGame('Sopa Jeitinho de Vó', '29.60', '/imagens/cardapio-chefbrico-jeitinho-vo-lentilha-macarrao.png')" class="cta-button" style="width:100%; border:none; cursor:pointer;">
-                ADICIONAR À CAIXA (+1) 🎁
-            </button>
-            <p style="font-size:0.8rem; margin-top:5px; color:#27ae60;">Leve 5 e pague 4!</p>
+    <!-- CARD DE VENDA (A-COMMERCE / GAMIFICAÇÃO) -->
+<div class="card-modelo-autora" style="border: 2px solid #27ae60; background: #f9fff9;">
+    <!-- FOTO DO PACOTE -->
+    <img class="card-modelo-autora-image" src="/imagens/[NOME-DA-FOTO-EMBALAGEM].png" alt="Embalagem [NOME]" loading="lazy">
+    
+    <div class="card-modelo-autora-content">
+        <h3 style="color: #27ae60; margin-top: 0;">Leve para sua Casa</h3>
+        
+        <!-- PREÇO -->
+        <div style="margin: 15px 0;">
+            <span style="font-size: 0.9rem; color: #666; text-decoration: line-through;">De R$ 32,00</span><br>
+            <span style="font-size: 2.2rem; font-weight: bold; color: #2c3e50;">R$ {{ price }}</span>
+            <span style="font-size: 0.9rem; color: #666;">/unidade</span>
         </div>
+
+        <!-- GATILHO MENTAL -->
+        <p style="font-size: 0.95rem; margin-bottom: 20px;">
+            <strong>🎁  DICA DE OURO:</strong> Na <a href="/chefbox/" style="color:#27ae60; font-weight:bold;">ChefBox</a>, Você escolhe 4 sabores e Ganha de Presente o 5ºsabor !!<span style="background:#ffeb3b; padding:2px 5px; border-radius:4px;">Representa R$ 29,60 de desconto!</span>
+        </p>
+
+
+        <!-- BOTÃO INTELIGENTE (LIGA O JOGO) -->
+        <!-- Atenção: Este botão não leva pro Zap direto. Ele enche a régua. -->
+        <button onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" class="cta-button" style="width: 100%; cursor: pointer; border:none; background-color: #F2811D; color: white; font-weight: bold; padding: 15px; border-radius: 50px; box-shadow: 0 4px 0 #c0600c;">
+            Adicionar à minha ChefBox  (+1) 🎁
+        </button>
+        
+        <p style="font-size: 0.8rem; color: #888; margin-top: 10px; text-align: center;">
+            Continue escolhendo para ganhar seu presente.
+        </p>
     </div>
+</div>
   
     <h2>O Que Vem no Pacote</h2>
     <p>Macarrão funcional sem glúten (farinha de banana verde, farinha de arroz, fécula de mandioca), lentilha vermelha, quinoa em flocos, cenoura desidratada, batata inglesa desidratada, batata baroa desidratada, salsão desidratado, tomate desidratado, cebola desidratada, alho-poró desidratado e cardamomo em pó.</p>
