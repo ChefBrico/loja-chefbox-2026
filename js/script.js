@@ -179,21 +179,20 @@ function loadCart() {
     }
 }
 
-// Desenhar a Régua (Visual)
+// --- 5. RENDERIZAÇÃO (DESENHAR A RÉGUA) ---
 function renderRuler() {
-    // Elementos da Régua (Mobile e Desktop)
+    // Elementos da DOM
     const statusText = document.getElementById('game-status'); 
     const statusTextGlobal = document.getElementById('game-status-text');
     const btnFinish = document.getElementById('btn-finish');
     const btnFinishGlobal = document.getElementById('btn-finish-game');
+    const priceDisplay = document.getElementById('game-total-price'); // Novo elemento de preço
     
-    // Se não houver régua na página, sai
     if (!document.querySelector('.slot-circle')) return;
 
-    // Limpa Slots
+    // Limpa slots
     const allSlots = document.querySelectorAll('.slot-circle');
     allSlots.forEach(s => { 
-        // Recupera o número original do ID (slot-1 -> 1)
         const num = s.id.split('-')[1];
         s.innerHTML = num; 
         s.className = 'slot-circle'; 
@@ -206,7 +205,7 @@ function renderRuler() {
 
     let totalPrice = 0;
 
-    // Preenche com itens
+    // Preenche slots e calcula preço
     chefboxCart.forEach((item, index) => {
         const slotsAtIndex = document.querySelectorAll(`#slot-${index + 1}`);
         
@@ -216,33 +215,60 @@ function renderRuler() {
             slot.onclick = () => removeFromGame(index);
         });
 
-        // Soma preço (apenas 4 primeiros)
+        // Soma preço (apenas dos 4 primeiros)
         if (index < 4) {
-            let p = parseFloat(item.price.toString().replace(',', '.'));
-            if (!isNaN(p)) totalPrice += p;
+            // CORREÇÃO CRÍTICA DE PREÇO:
+            // Remove "R$", espaços e troca vírgula por ponto para o JS somar
+            let priceString = item.price.toString().replace('R$', '').replace(/\s/g, '').replace(',', '.');
+            let priceNum = parseFloat(priceString);
+            
+            if (!isNaN(priceNum)) {
+                totalPrice += priceNum;
+            }
         }
     });
 
-    // Atualiza Textos e Botões
+    // Formata o preço final para o Brasil (R$ 00,00)
+    const formattedTotal = totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    // Lógica de Mensagens
     const count = chefboxCart.length;
     let message = "";
     let showButton = false;
 
     if (count < 4) {
         message = `Faltam ${4 - count} para o presente!`;
+        if(priceDisplay) priceDisplay.style.display = 'none';
         giftSlots.forEach(s => s.classList.remove('active'));
     } else if (count === 4) {
         message = "PARABÉNS! ESCOLHA SEU PRESENTE! 🎁";
-        giftSlots.forEach(s => s.classList.add('active')); // Pisca
+        if(priceDisplay) {
+            priceDisplay.style.display = 'inline-block';
+            priceDisplay.innerText = formattedTotal;
+        }
+        giftSlots.forEach(s => s.classList.add('active'));
     } else if (count === 5) {
-        message = `TOTAL: R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+        message = `CAIXA COMPLETA!`;
+        if(priceDisplay) {
+            priceDisplay.style.display = 'inline-block';
+            priceDisplay.innerText = formattedTotal;
+        }
         showButton = true;
         giftSlots.forEach(s => s.classList.remove('active'));
     }
 
+    // Atualiza textos
     if (statusText) statusText.innerText = message;
-    if (statusTextGlobal) statusTextGlobal.innerText = message;
+    if (statusTextGlobal) {
+        // Se tivermos o elemento de preço separado, usamos ele. Se não, colocamos no texto.
+        if (!priceDisplay) {
+             statusTextGlobal.innerText = count >= 4 ? `${message} (${formattedTotal})` : message;
+        } else {
+             statusTextGlobal.innerText = message;
+        }
+    }
 
+    // Botões
     if (btnFinish) btnFinish.style.display = showButton ? 'block' : 'none';
     if (btnFinishGlobal) btnFinishGlobal.style.display = showButton ? 'block' : 'none';
 }
