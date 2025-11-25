@@ -1586,3 +1586,45 @@ body.receita-page {
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     margin-bottom: 20px;
 }
+/* --- CARDS COMPACTOS (VITRINE) --- */
+.recipe-grid {
+    display: grid;
+    /* PC: 4 colunas (min 200px). Mobile: 2 colunas (min 140px) */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px; /* Gap menor */
+    margin-bottom: 60px;
+}
+
+.recipe-card {
+    height: 280px; /* Altura reduzida (era 420px) */
+    font-size: 0.9rem; /* Texto menor */
+}
+
+.card-img-container {
+    height: 140px; /* Imagem menor */
+}
+
+.card-content {
+    padding: 10px; /* Menos espaçamento */
+}
+
+.card-title {
+    font-size: 0.95rem;
+    margin: 5px 0;
+    white-space: nowrap; /* Não quebra linha */
+    overflow: hidden;
+    text-overflow: ellipsis; /* ... se for longo */
+}
+
+.card-footer {
+    margin-top: 5px;
+}
+
+/* Ajuste Mobile (2 colunas apertadas) */
+@media (max-width: 768px) {
+    .recipe-grid {
+        grid-template-columns: repeat(2, 1fr); /* Força 2 colunas */
+        gap: 10px;
+    }
+    .recipe-card { height: 260px; }
+}
