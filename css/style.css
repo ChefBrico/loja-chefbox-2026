@@ -1498,3 +1498,91 @@ body {
     position: relative;
     animation: slideUp 0.3s ease;
 }
+
+/* --- 1. CORREÇÃO DE FUNDO E MARGENS (RECEITA) --- */
+body.receita-page {
+    background-color: #ffffff !important; /* Fundo Branco Limpo */
+}
+
+.receita-container {
+    max-width: 800px; /* Largura ideal para leitura */
+    margin: 40px auto; /* Centraliza na tela com respiro em cima/baixo */
+    padding: 0 20px;   /* Margem interna para não grudar na borda do celular */
+    background: white;
+}
+
+/* --- 2. CORREÇÃO DA LOGO NO HEADER --- */
+.logo-circle {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: var(--cor-dourado);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; /* Impede que a imagem vaze */
+    border: 4px solid var(--cor-institucional);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.logo-circle img {
+    max-width: 80%; /* Garante que a logo caiba dentro */
+    height: auto;
+    object-fit: contain;
+}
+
+/* --- 3. ESTILO DO CARD DE VENDA (ELEGÂNCIA) --- */
+.chefbox-offer-card {
+    background: #fdfcf7; /* Creme Suave */
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin: 40px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Faixa Dourada no Topo do Card */
+.chefbox-offer-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+    background: var(--cor-dourado);
+}
+
+.offer-title {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-institucional);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.price-display {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--cor-cta); /* Laranja */
+    margin: 15px 0;
+    font-family: var(--fonte-corpo);
+}
+
+.btn-add-game {
+    background-color: var(--cor-cta);
+    color: white;
+    font-weight: bold;
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(242, 129, 29, 0.3);
+    transition: transform 0.2s;
+    width: 100%;
+    max-width: 300px;
+}
+.btn-add-game:hover { transform: scale(1.05); }
+
+/* --- 4. AJUSTE DA IMAGEM HERO (FOOD PORN) --- */
+.recipe-hero img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
