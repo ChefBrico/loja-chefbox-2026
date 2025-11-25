@@ -11,7 +11,7 @@
     "text": "Cardápio Completo ▾",
     "url": "/receitas/",
     "children": [
-      { "text": "Risotos & Arrozes", "url": "/receitas/risotos/" },
+      { "text": "Risotos", "url": "/receitas/risotos/" },
       { "text": "Sopas Funcionais", "url": "/receitas/sopas-funcionais/" },
       { "text": "Refeições Integrais", "url": "/receitas/refeicoes-integrais/" },
       { "text": "Empório da Chef", "url": "/receitas/emporio-da-chef/" }
