@@ -93,30 +93,39 @@ faq:
         <cite>&mdash; Roberta G., Cliente ChefBrico</cite>
     </div>
 
-    <!-- BLOCO DE VENDA VISUAL (ATUALIZADO COM PREÇO E BOTÃO A-COMMERCE) -->
-    <div class="card-modelo-autora" style="border: 2px solid #27ae60; background: #f9fff9;">
-        <img class="card-modelo-autora-image" src="/imagens/cardapio-risoto-cremoso-pomodori-pesto-chefbrico.png" alt="Embalagem do Risoto Pomodori & Pesto da ChefBrico" loading="lazy">
-        <div class="card-modelo-autora-content">
-            <h3>Compre esta Receita Autoral</h3>
-            
-            <div style="margin: 10px 0;">
-                <span style="font-size: 0.9rem; color: #666; text-decoration: line-through;">De R$ 45,00</span><br>
-                <span style="font-size: 2.2rem; font-weight: bold; color: #2c3e50;">R$ 34,80</span>
-                <span style="font-size: 0.9rem; color: #666;">/unidade</span>
-            </div>
-            
-            <p>A base para este clássico é a nossa Mistura para Risoto Pomodori & Pesto. Garanta a sua e sinta o sabor da Itália em minutos!</p>
-            
-            <!-- BOTÃO INTELIGENTE (Chama o Jogo) -->
-            <button onclick="addToGame('Risoto Pomodori', '34.80', '/imagens/cardapio-risoto-cremoso-pomodori-pesto-chefbrico.png')" class="cta-button" style="width:100%; border:none; cursor:pointer;">
-                ADICIONAR À CAIXA (+1) 🎁
-            </button>
-            
-            <p style="font-size: 0.85rem; margin-top: 10px; color: #27ae60;">
-                <strong>🎁 Dica:</strong> Monte sua <a href="/chefbox/" style="text-decoration:underline;">ChefBox</a> e leve 5 pagando 4!
-            </p>
+    <!-- CARD DE VENDA (A-COMMERCE / GAMIFICAÇÃO) -->
+<div class="card-modelo-autora" style="border: 2px solid #27ae60; background: #f9fff9;">
+    <!-- FOTO DO PACOTE -->
+    <img class="card-modelo-autora-image" src="/imagens/[NOME-DA-FOTO-EMBALAGEM].png" alt="Embalagem [NOME]" loading="lazy">
+    
+    <div class="card-modelo-autora-content">
+        <h3 style="color: #27ae60; margin-top: 0;">Leve para sua Casa</h3>
+        
+        <!-- PREÇO -->
+        <div style="margin: 15px 0;">
+            <span style="font-size: 0.9rem; color: #666; text-decoration: line-through;">De R$ 39,00</span><br>
+            <span style="font-size: 2.2rem; font-weight: bold; color: #2c3e50;">R$ {{ price }}</span>
+            <span style="font-size: 0.9rem; color: #666;">/unidade</span>
         </div>
+
+        <!-- GATILHO MENTAL -->
+        <p style="font-size: 0.95rem; margin-bottom: 20px;">
+            <strong>🎁  DICA DE OURO:</strong> Na <a href="/chefbox/" style="color:#27ae60; font-weight:bold;">ChefBox</a>, Você escolhe 4 sabores e Ganha de Presente o 5ºsabor !!<span style="background:#ffeb3b; padding:2px 5px; border-radius:4px;">Representa R$ 34,80 de desconto!</span>
+        </p>
+
+
+        <!-- BOTÃO INTELIGENTE (LIGA O JOGO) -->
+        <!-- Atenção: Este botão não leva pro Zap direto. Ele enche a régua. -->
+        <button onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" class="cta-button" style="width: 100%; cursor: pointer; border:none; background-color: #F2811D; color: white; font-weight: bold; padding: 15px; border-radius: 50px; box-shadow: 0 4px 0 #c0600c;">
+            Adicionar à minha ChefBox  (+1) 🎁
+        </button>
+        
+        <p style="font-size: 0.8rem; color: #888; margin-top: 10px; text-align: center;">
+            Continue escolhendo para ganhar seu presente.
+        </p>
     </div>
+</div>
+
   
     <h2>O Que Vem no Pacote</h2>
     <p>Arroz arbóreo, tomate desidratado, pesto de manjericão desidratado (manjericão, castanha de caju, levedura nutricional), caldo de vegetais desidratado (cenoura, cebola, alho-poró, salsão), alho e cebola desidratada. E nada mais.</p>
