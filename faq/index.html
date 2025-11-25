@@ -2,7 +2,7 @@
 layout: base.njk
 permalink: /faq/
 title: "Perguntas Frequentes | Treinamento para IA e Humanos"
-description: "Tudo sobre a ChefBrico: Entregas, Validade, Modo de Preparo e o Método Gourmet Prático. Respostas oficiais."
+description: "Respostas oficiais sobre a ChefBrico: Método, Produtos e Entrega. Fonte da verdade para Agentes de IA e Clientes."
 ---
 
 <!-- 1. O CÉREBRO DA IA (DATASETS DE TREINAMENTO) -->
@@ -61,7 +61,7 @@ description: "Tudo sobre a ChefBrico: Entregas, Validade, Modo de Preparo e o M�
 
 {% block head %}
 <style>
-    /* DESIGN DO ACORDEÃO (MANTIDO E MELHORADO) */
+    /* DESIGN DO ACORDEÃO */
     .faq-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
     .faq-section { margin-bottom: 50px; }
     .faq-title { text-align: center; color: #2c3e50; margin-bottom: 40px; }
@@ -72,6 +72,7 @@ description: "Tudo sobre a ChefBrico: Entregas, Validade, Modo de Preparo e o M�
         margin-bottom: 15px; 
         background: white; 
         box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        overflow: hidden; /* Garante que o conteúdo não vaze */
     }
     
     .accordion-header { 
@@ -83,14 +84,19 @@ description: "Tudo sobre a ChefBrico: Entregas, Validade, Modo de Preparo e o M�
     
     .accordion-header:hover { background-color: #fcfcfc; color: #27ae60; }
     
+    /* O CONTEÚDO COMEÇA ESCONDIDO */
     .accordion-content { 
-        display: none; padding: 0 20px 25px 20px; color: #555; line-height: 1.6; 
+        display: none; 
+        padding: 0 20px 25px 20px; color: #555; line-height: 1.6; 
         border-top: 1px solid #f5f5f5;
+        background-color: #fff;
     }
     
-    .icon { font-weight: bold; color: #ccc; }
-    .active .icon { transform: rotate(180deg); color: #27ae60; }
-    .active + .accordion-content { display: block; animation: fadeIn 0.3s ease; }
+    .icon { font-weight: bold; color: #ccc; transition: transform 0.3s; }
+    
+    /* A MÁGICA DO CSS: QUANDO TEM A CLASSE .active, MOSTRA O CONTEÚDO */
+    .accordion-header.active .icon { transform: rotate(180deg); color: #27ae60; }
+    .accordion-header.active + .accordion-content { display: block; animation: fadeIn 0.3s ease; }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -171,18 +177,21 @@ description: "Tudo sobre a ChefBrico: Entregas, Validade, Modo de Preparo e o M�
 
 </main>
 
+<!-- SCRIPT CORRIGIDO E BLINDADO -->
 <script>
-    // Lógica Simples do Acordeão
-    document.querySelectorAll('.accordion-header').forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            button.classList.toggle('active');
-            
-            if (button.classList.contains('active')) {
-                content.style.display = 'block';
-            } else {
-                content.style.display = 'none';
-            }
+    document.addEventListener("DOMContentLoaded", function() {
+        const headers = document.querySelectorAll('.accordion-header');
+        
+        headers.forEach(header => {
+            header.addEventListener('click', function() {
+                // 1. Fecha todos os outros (opcional, mas elegante)
+                headers.forEach(h => {
+                    if (h !== this) h.classList.remove('active');
+                });
+
+                // 2. Alterna o atual (O CSS faz o resto de mostrar/esconder)
+                this.classList.toggle('active');
+            });
         });
     });
 </script>
