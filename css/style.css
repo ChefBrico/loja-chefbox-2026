@@ -1387,3 +1387,74 @@ body.receita-page p {
         padding-bottom: 30px; /* Espaço seguro para iPhone */
     }
 }
+
+/* --- CARDS DE PRODUTO (VITRINE) --- */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Largura mínima fixa */
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.recipe-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Garante que cresça para baixo */
+    height: 420px; /* Altura fixa para todos ficarem iguais */
+    transition: transform 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.recipe-card:hover { transform: translateY(-5px); border-color: var(--cor-cta); }
+
+.card-img-container {
+    height: 50%; /* Metade do card exata */
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Corta a imagem para preencher sem esticar */
+}
+
+.card-content {
+    padding: 15px;
+    height: 50%; /* A outra metade */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1rem;
+    margin: 5px 0;
+    line-height: 1.3;
+    color: var(--cor-institucional);
+    font-weight: bold;
+}
+
+.card-cat {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+.card-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-price {
+    font-size: 1.2rem;
+    color: var(--cor-cta);
+    font-weight: 800;
+}
