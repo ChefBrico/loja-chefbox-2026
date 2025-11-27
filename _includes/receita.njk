@@ -1,92 +1,10 @@
 ---
 layout: base.njk
 ---
-<!-- Script para ativar o fundo branco -->
+<!-- FORÇA O MODO RECEITA (FUNDO BRANCO) -->
 <script>document.body.classList.add('receita-page');</script>
 
-<article class="receita-container">
-    
-    <!-- 1. CABEÇALHO -->
-    <header class="recipe-header text-center" style="margin-bottom: 30px;">
-        <span class="badge-categoria" style="color: var(--cor-dourado); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">{{ category }}</span>
-        <h1 class="recipe-title" style="font-size: 2.5rem; margin-top: 10px; color: var(--cor-institucional);">{{ title }}</h1>
-        <p class="recipe-subtitle" style="font-size: 1.1rem; color: #666; font-style: italic;">{{ description }}</p>
-        
-        <!-- 3. ÍCONES DE META DADOS (AUTOMÁTICOS) -->
-    <!-- O sistema pega os dados do topo do arquivo .md e desenha aqui -->
-    <div class="recipe-meta-icons" style="display: flex; justify-content: center; gap: 20px; margin: 20px 0; font-size: 1.1rem; color: var(--cor-institucional);">
-        <span>🕒 <strong>Tempo:</strong> {{ tempo_preparo }}</span>
-        <span>🍳 <strong>Dificuldade:</strong> {{ dificuldade }}</span>
-        <span>👨‍👩‍👧‍👦 <strong>Serve:</strong> {{ rendimento }}</span>
-    </div>
-    </header>
-
-    <!-- 2. IMAGEM HERO -->
-    <figure class="recipe-hero">
-        <img src="{{ image }}" alt="{{ image_alt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-    </figure>
-
-    <!-- 3. CARD DE VENDA AUTOMÁTICO (SEU DESIGN AQUI!) -->
-    <!-- Este bloco substitui o que você vai apagar dos arquivos .md -->
-    <div class="card-modelo-autora" style="border: 2px solid #27ae60; background: #f9fff9; padding: 20px; border-radius: 12px; text-align: center; margin: 40px 0;">
-        
-        <h3 style="color: #27ae60; margin-top: 0;">Leve este sabor para Casa</h3>
-        
-        <!-- PREÇO -->
-        <div style="margin: 15px 0;">
-            <span style="font-size: 0.9rem; color: #666; text-decoration: line-through;">De R$ 39,00</span><br>
-            <span style="font-size: 2.5rem; font-weight: 800; color: #2c3e50;">R$ {{ price }}</span>
-            <span style="font-size: 0.9rem; color: #666;">/unidade</span>
-        </div>
-
-        <!-- GATILHO MENTAL -->
-        <p style="font-size: 0.95rem; margin-bottom: 20px; line-height: 1.4;">
-            <strong>🎁 DICA DE OURO:</strong> Na <a href="/chefbox/" style="color:#27ae60; font-weight:bold;">ChefBox</a>, Você escolhe 5 sabores e paga apenas 4. 
-            <br><span style="background:#ffeb3b; padding:2px 8px; border-radius:4px; font-size: 0.85rem;">Ganhe o 5º sabor de presente!<span style="background:#ffeb3b; padding:2px 5px; border-radius:4px;">Representa <strong>20%</strong>de desconto!</span>
-        </p>
-
-        <!-- BOTÃO INTELIGENTE -->
-        <button onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" class="btn-comprar-agora" style="width: 100%; max-width: 350px; cursor: pointer; border:none; background-color: #F2811D; color: white; font-weight: bold; padding: 15px; border-radius: 50px; box-shadow: 0 4px 0 #c0600c; font-size: 1.1rem; text-transform: uppercase;">
-            Adicionar na Sua ChefBox (+1) 🎁
-        </button>
-        
-        <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">
-            Continue escolhendo para ganhar seu presente.
-        </p>
-    </div>
-
-    <!-- 4. CONTEÚDO RICO (TEXTO DA MARIA) -->
-    <div class="recipe-content-body" style="font-size: 1.1rem; line-height: 1.8; color: #333;">
-        {{ content | safe }}
-    </div>
-
-    <!-- 5. FAQ -->
-    {% if faq %}
-    <section style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
-        <h3 style="color: var(--cor-institucional); text-align: center; margin-bottom: 30px;">Dúvidas Frequentes</h3>
-        <div class="faq-grid">
-            {% for item in faq %}
-            <details style="border-bottom: 1px solid #eee; padding: 15px 0; cursor: pointer;">
-                <summary style="font-weight: bold; color: var(--cor-institucional);">{{ item.question }}</summary>
-                <p style="margin-top: 10px; color: #666;">{{ item.answer }}</p>
-            </details>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
-
-    <!-- 6. BIO DA AUTORA -->
-    <div class="author-bio-box" style="display: flex; align-items: center; gap: 20px; margin-top: 60px; background: #f9f9f9; padding: 20px; border-radius: 12px; border-left: 4px solid var(--cor-institucional);">
-        <img src="/imagens/maria-conceicao.jpg" alt="Maria Conceição" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
-        <div>
-            <h4 style="margin: 0; color: var(--cor-institucional); font-size: 1.1rem;">Chef Maria Conceição</h4>
-            <p style="font-size: 0.9rem; margin: 5px 0;">Vencedora do Prêmio Sebrae. Criadora do método que une sabor, saúde e praticidade.</p>
-        </div>
-    </div>
-
-</article>
-
-<!-- SCHEMA.ORG -->
+<!-- SCHEMA.ORG PARA ROBÔS (JSON-LD VÁLIDO) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -94,25 +12,88 @@ layout: base.njk
     {
       "@type": "Recipe",
       "name": "{{ title }}",
-      "image": ["{{ meta.url }}{{ image }}"],
-      "author": { "@type": "Person", "name": "{{ author_name }}" },
+      "image": ["https://gourmetpratico.com.br{{ image }}"],
+      "author": {
+        "@type": "Person",
+        "name": "{{ author_name }}"
+      },
       "description": "{{ description }}",
-      "prepTime": "PT15M",
-      "recipeYield": "{{ rendimento }}"
+      "prepTime": "{{ tempo_iso }}",
+      "recipeYield": "{{ rendimento }}",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "{{ calorias }}"
+      }
     },
     {
       "@type": "Product",
       "name": "Kit ChefBox: {{ title }}",
       "sku": "{{ sku }}",
-      "gtin": "{{ gtin }}",
-      "image": "{{ meta.url }}{{ image }}",
+      "image": "https://gourmetpratico.com.br{{ image }}",
       "offers": {
         "@type": "Offer",
         "price": "{{ price }}",
         "priceCurrency": "BRL",
-        "availability": "https://schema.org/InStock"
+        "availability": "{{ availability }}"
       }
     }
   ]
 }
 </script>
+
+<article class="receita-container">
+    
+    <!-- CABEÇALHO DA RECEITA -->
+    <header style="text-align: center; margin-bottom: 30px;">
+        <span style="color: #bfb084; font-weight: bold; text-transform: uppercase;">{{ category }}</span>
+        <h1 style="color: #014039; font-size: 2rem; margin: 10px 0;">{{ title }}</h1>
+        
+        <div style="display: flex; justify-content: center; gap: 15px; color: #666; margin-top: 15px;">
+            <span>🕒 {{ tempo_preparo }}</span>
+            <span>🍳 {{ dificuldade }}</span>
+            <span>🍽️ {{ rendimento }}</span>
+        </div>
+    </header>
+
+    <!-- IMAGEM HERO -->
+    <img src="{{ image }}" alt="{{ image_alt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 30px;">
+
+    <!-- CARD DE VENDA (A-COMMERCE) -->
+    <div class="chefbox-offer-card" style="background: #fdfcf7; border: 2px dashed #bfb084; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 40px;">
+        <h3 style="color: #014039; margin-top: 0;">Leve este sabor para Casa</h3>
+        
+        <div style="font-size: 2rem; font-weight: 800; color: #F2811D; margin: 10px 0;">
+            R$ {{ price }}
+        </div>
+        
+        <p style="font-size: 0.9rem; color: #555;">
+            <strong>DICA:</strong> Na ChefBox, compre 4 e ganhe o 5º de presente! 🎁
+        </p>
+
+        <!-- BOTÃO DE AÇÃO -->
+        <button onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" style="background: #F2811D; color: white; border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; font-size: 1rem; cursor: pointer; width: 100%; box-shadow: 0 4px 0 #c0600c;">
+            Adicionar na ChefBox (+1)
+        </button>
+    </div>
+
+    <!-- CONTEÚDO DA RECEITA -->
+    <div class="post-content" style="line-height: 1.8; color: #333; font-size: 1.1rem;">
+        {{ content | safe }}
+    </div>
+
+    <!-- FAQ -->
+    {% if faq %}
+    <section style="margin-top: 50px;">
+        <h3 style="color: #014039;">Dúvidas Frequentes</h3>
+        {% for item in faq %}
+        <div class="accordion-header" style="background: #f9f9f9; padding: 15px; margin-bottom: 5px; cursor: pointer; font-weight: bold; border-radius: 5px;">
+            {{ item.question }} <span style="float:right;">▼</span>
+        </div>
+        <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: 0.3s; padding: 0 15px;">
+            <p>{{ item.answer }}</p>
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+</article>
