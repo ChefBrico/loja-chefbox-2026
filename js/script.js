@@ -1,68 +1,176 @@
-// =================================================================
-// ARQUIVO: js/script.js (CORRIGIDO E BLINDADO)
-// =================================================================
+// ================================================================= //
+// ===== ARQUIVO SCRIPT.JS GLOBAL - CHEFBRICO (REVISTA + LOJA) ===== //
+// ================================================================= //
 
-// --- VARIÁVEIS GLOBAIS ---
+// --- VARIÁVEIS GLOBAIS DO JOGO CHEFBOX ---
 let chefboxCart = [];
 const MAX_SLOTS = 5; // 4 Pagos + 1 Presente
 
-// --- FUNÇÃO AUXILIAR: LIMPEZA MATEMÁTICA (FIM DO NaN) ---
-function limparPreco(valor) {
-    if (typeof valor === 'number') return valor;
-    if (!valor) return 0;
-    // Remove "R$", espaços e caracteres invisíveis
-    let limpo = valor.toString().replace('R$', '').replace(/\s/g, '').trim();
-    // Troca vírgula por ponto para o padrão internacional (JS)
-    limpo = limpo.replace(',', '.');
-    return parseFloat(limpo) || 0;
-}
-
-// --- FUNÇÃO AUXILIAR: FORMATAR DINHEIRO (VISUAL BRASIL) ---
-function formatarDinheiro(valor) {
-    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
-
+// =================================================================
+// [1] INICIALIZAÇÃO (O Maestro que liga tudo)
+// =================================================================
 document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-    initAccordions();
     
-    // Recupera o carrinho salvo e desenha a régua
+    // 1.1. Inicia Menu Mobile
+    initMobileMenu();
+
+    // 1.2. Inicia Acordeões (FAQ e Detalhes)
+    initAccordions();
+
+    // 1.3. Inicia Carrosséis (Arrastar com mouse/dedo na Home)
+    initCarousels();
+
+    // 1.4. Inicia Filtros (Página de Receitas)
+    initFilters();
+
+    // 1.5. Inicia o Jogo ChefBox (Recupera memória e desenha régua)
     loadCart();
     renderRuler();
 });
 
-// --- 1. MOTOR DO JOGO CHEFBOX (4+1) ---
 
+// =================================================================
+// [2] MOTOR DE NAVEGAÇÃO & UI (Menu, Acordeão, Carrossel)
+// =================================================================
+
+function initMobileMenu() {
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navList = document.querySelector('.nav-list');
+
+    if (mobileBtn && navList) {
+        // Abrir/Fechar
+        mobileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navList.classList.toggle('active');
+            mobileBtn.textContent = navList.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Fechar ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!navList.contains(e.target) && !mobileBtn.contains(e.target)) {
+                navList.classList.remove('active');
+                mobileBtn.textContent = '☰';
+            }
+        });
+
+        // Dropdowns no Mobile (Toque para abrir)
+        const dropdowns = document.querySelectorAll('.has-dropdown > a');
+        dropdowns.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const parent = link.parentElement;
+                    parent.classList.toggle('open');
+                }
+            });
+        });
+    }
+}
+
+function initAccordions() {
+    const headers = document.querySelectorAll('.accordion-header, .faq-summary'); // Suporta ambos os estilos
+    
+    headers.forEach(header => {
+        header.addEventListener('click', function() {
+            // Se for o estilo <details>, o navegador resolve sozinho.
+            // Se for div customizada (FAQ antigo):
+            if (!this.parentElement.tagName.match(/DETAILS/i)) {
+                const content = this.nextElementSibling;
+                this.classList.toggle('active');
+                if (content) {
+                    content.style.display = this.classList.contains('active') ? 'block' : 'none';
+                }
+            }
+        });
+    });
+}
+
+function initCarousels() {
+    const carousels = document.querySelectorAll('.carousel-container, .post-carousel');
+    
+    carousels.forEach(slider => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('active'); });
+        slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('active'); });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; 
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    });
+}
+
+function initFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.recipe-card');
+
+    if (filterButtons.length > 0) {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active de todos
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.innerText.trim(); // Pega o texto do botão (ex: "Risoto")
+
+                productCards.forEach(card => {
+                    const cardCat = card.getAttribute('data-category') || "";
+                    
+                    if (category === 'Todos' || category === 'all' || cardCat.includes(category)) {
+                        card.style.display = 'block'; // ou flex
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+}
+
+
+// =================================================================
+// [3] MOTOR A-COMMERCE (Jogo ChefBox 4+1)
+// =================================================================
+
+// Adicionar Item (Chamado pelo botão HTML)
 function addToGame(name, price, imageSrc) {
     if (chefboxCart.length >= MAX_SLOTS) {
-        alert("Sua ChefBox já está cheia! Remova um item clicando na bolinha se quiser trocar.");
+        alert("Sua caixa já está completa! Clique em uma bolinha na régua para remover um item se quiser trocar.");
         return;
     }
 
-    // Salva o preço bruto para evitar erros futuros
-    chefboxCart.push({ 
-        name: name, 
-        price: price, // Mantém como string ou number, a função limparPreco resolve depois
-        image: imageSrc 
-    });
-    
+    chefboxCart.push({ name: name, price: price, image: imageSrc });
     saveCart();
     renderRuler();
     
-    // Feedback visual (Vibração no celular se suportado)
-    if (navigator.vibrate) navigator.vibrate(50);
+    // Feedback visual rápido (opcional)
+    // alert(`${name} adicionado à caixa!`);
 }
 
+// Remover Item (Chamado ao clicar na bolinha)
 function removeFromGame(index) {
     chefboxCart.splice(index, 1);
     saveCart();
     renderRuler();
 }
 
+// Salvar no Navegador
 function saveCart() {
     localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
 }
 
+// Carregar do Navegador
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
     if (saved) {
@@ -71,61 +179,104 @@ function loadCart() {
     }
 }
 
-// --- 2. RENDERIZAÇÃO DA RÉGUA (VISUAL TREVIJANO) ---
-
+// --- 5. RENDERIZAÇÃO (DESENHAR A RÉGUA) ---
 function renderRuler() {
-    const slots = document.querySelectorAll('.slot-circle');
-    const statusText = document.getElementById('game-status-text');
-    const btnFinish = document.getElementById('btn-finish-game');
+    // Elementos da DOM
+    const statusText = document.getElementById('game-status'); 
+    const statusTextGlobal = document.getElementById('game-status-text');
+    const btnFinish = document.getElementById('btn-finish');
+    const btnFinishGlobal = document.getElementById('btn-finish-game');
+    const priceDisplay = document.getElementById('game-total-price'); // Novo elemento de preço
     
-    if (!slots.length) return; // Se não estiver na página de receitas, sai.
+    if (!document.querySelector('.slot-circle')) return;
 
-    let totalPagavel = 0;
-    let itensCount = chefboxCart.length;
-
-    // 1. Limpa visualmente todos os slots
-    slots.forEach((slot, i) => {
-        slot.innerHTML = i === 4 ? '🎁' : (i + 1); // O 5º é presente
-        slot.classList.remove('filled', 'active');
-        slot.style.backgroundImage = 'none';
-        slot.onclick = null;
+    // Limpa slots
+    const allSlots = document.querySelectorAll('.slot-circle');
+    allSlots.forEach(s => { 
+        const num = s.id.split('-')[1];
+        s.innerHTML = num; 
+        s.className = 'slot-circle'; 
+        s.onclick = null;
     });
 
-    // 2. Preenche com os itens do carrinho
-    chefboxCart.forEach((item, index) => {
-        if (slots[index]) {
-            const slot = slots[index];
-            slot.classList.add('filled');
-            slot.innerHTML = ''; // Remove o número
-            slot.style.backgroundImage = `url('${item.image}')`;
-            slot.style.backgroundSize = 'cover';
-            slot.onclick = () => removeFromGame(index);
+    // Marca o Presente
+    const giftSlots = document.querySelectorAll('#slot-5');
+    giftSlots.forEach(s => { s.classList.add('gift'); s.innerHTML = '🎁'; });
 
-            // Soma apenas os 4 primeiros (O 5º é grátis)
-            if (index < 4) {
-                totalPagavel += limparPreco(item.price);
+    let totalPrice = 0;
+
+    // Preenche slots e calcula preço
+    chefboxCart.forEach((item, index) => {
+        const slotsAtIndex = document.querySelectorAll(`#slot-${index + 1}`);
+        
+        slotsAtIndex.forEach(slot => {
+            slot.classList.add('filled');
+            slot.innerHTML = `<img src="${item.image}" alt="${item.name}">`;
+            slot.onclick = () => removeFromGame(index);
+        });
+
+        // Soma preço (apenas dos 4 primeiros)
+        if (index < 4) {
+            // CORREÇÃO CRÍTICA DE PREÇO:
+            // Remove "R$", espaços e troca vírgula por ponto para o JS somar
+            let priceString = item.price.toString().replace('R$', '').replace(/\s/g, '').replace(',', '.');
+            let priceNum = parseFloat(priceString);
+            
+            if (!isNaN(priceNum)) {
+                totalPrice += priceNum;
             }
         }
     });
 
-    // 3. Atualiza Textos e Botões
-    if (statusText) {
-        if (itensCount < 4) {
-            statusText.innerHTML = `Faltam <strong>${4 - itensCount}</strong> para ganhar o presente!`;
-            if(btnFinish) btnFinish.style.display = 'none';
-        } else if (itensCount === 4) {
-            statusText.innerHTML = `🎉 Parabéns! Escolha seu <strong>PRESENTE</strong> agora!`;
-            if(btnFinish) btnFinish.style.display = 'none';
-            // Anima o slot do presente
-            slots[4].classList.add('active'); 
-        } else if (itensCount === 5) {
-            statusText.innerHTML = `✅ Caixa Completa! Total: <strong>${formatarDinheiro(totalPagavel)}</strong>`;
-            if(btnFinish) btnFinish.style.display = 'flex'; // Mostra botão verde
+    // Formata o preço final para o Brasil (R$ 00,00)
+    const formattedTotal = totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    // Lógica de Mensagens
+    const count = chefboxCart.length;
+    let message = "";
+    let showButton = false;
+
+    if (count < 4) {
+        message = `Faltam ${4 - count} para o presente!`;
+        if(priceDisplay) priceDisplay.style.display = 'none';
+        giftSlots.forEach(s => s.classList.remove('active'));
+    } else if (count === 4) {
+        message = "PARABÉNS! ESCOLHA SEU PRESENTE! 🎁";
+        if(priceDisplay) {
+            priceDisplay.style.display = 'inline-block';
+            priceDisplay.innerText = formattedTotal;
+        }
+        giftSlots.forEach(s => s.classList.add('active'));
+    } else if (count === 5) {
+        message = `CAIXA COMPLETA!`;
+        if(priceDisplay) {
+            priceDisplay.style.display = 'inline-block';
+            priceDisplay.innerText = formattedTotal;
+        }
+        showButton = true;
+        giftSlots.forEach(s => s.classList.remove('active'));
+    }
+
+    // Atualiza textos
+    if (statusText) statusText.innerText = message;
+    if (statusTextGlobal) {
+        // Se tivermos o elemento de preço separado, usamos ele. Se não, colocamos no texto.
+        if (!priceDisplay) {
+             statusTextGlobal.innerText = count >= 4 ? `${message} (${formattedTotal})` : message;
+        } else {
+             statusTextGlobal.innerText = message;
         }
     }
+
+    // Botões
+    if (btnFinish) btnFinish.style.display = showButton ? 'block' : 'none';
+    if (btnFinishGlobal) btnFinishGlobal.style.display = showButton ? 'block' : 'none';
 }
 
-// --- 3. CHECKOUT WHATSAPP (SEM NaN) ---
+
+// =================================================================
+// [4] MOTOR DE CHECKOUT (Modal & WhatsApp)
+// =================================================================
 
 function openCheckoutModal() {
     const modal = document.getElementById('checkout-modal');
@@ -143,63 +294,33 @@ function sendOrderToWhatsApp() {
     const cep = document.getElementById('customer-cep').value;
 
     if (!name || !address) {
-        alert("Por favor, preencha seu Nome e Endereço para a entrega.");
+        alert("Por favor, preencha Nome e Endereço.");
         return;
     }
 
-    let msgItens = "";
-    let totalFinal = 0;
+    let itemsList = "";
+    let total = 0;
 
     chefboxCart.forEach((item, index) => {
         if (index < 4) {
-            let valorItem = limparPreco(item.price);
-            totalFinal += valorItem;
-            msgItens += `✅ ${item.name} (${formatarDinheiro(valorItem)})\n`;
+            let p = parseFloat(item.price.toString().replace(',', '.'));
+            total += p;
+            itemsList += `✅ ${item.name} (R$ ${item.price})\n`;
         } else {
-            msgItens += `🎁 PRESENTE: ${item.name} (GRÁTIS)\n`;
+            itemsList += `🎁 PRESENTE: ${item.name} (GRÁTIS)\n`;
         }
     });
 
-    // Monta a mensagem final
-    const textoZap = `*NOVO PEDIDO CHEFBOX (4+1)* 🥗\n\n` +
-        `*Cliente:* ${name}\n` +
-        `*Endereço:* ${address}\n` +
-        `*CEP:* ${cep}\n\n` +
-        `*Itens Escolhidos:*\n${msgItens}\n` +
-        `*💰 TOTAL A PAGAR: ${formatarDinheiro(totalFinal)}*\n\n` +
-        `Aguardo o link do Pix/Cartão!`;
+    const message = `*NOVO PEDIDO CHEFBOX (4+1)* 🥗\n\n` +
+                    `*Cliente:* ${name}\n` +
+                    `*Endereço:* ${address}\n` +
+                    `*CEP:* ${cep}\n\n` +
+                    `*Itens:*\n${itemsList}\n` +
+                    `*💰 TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*\n\n` +
+                    `Aguardo link de pagamento!`;
 
-    const phone = "5561996659880";
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(textoZap)}`, '_blank');
+    const phone = "5561996659880"; 
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
     
     closeCheckoutModal();
-    // Opcional: Limpar carrinho após envio
-    // chefboxCart = []; saveCart(); renderRuler();
-}
-
-// --- 4. FUNÇÕES DE UI (MENU E ACORDEÃO) ---
-function initMobileMenu() {
-    const btn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('.nav-list');
-    if(btn && nav) {
-        btn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            btn.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
-        });
-    }
-}
-
-function initAccordions() {
-    const acc = document.querySelectorAll('.accordion-header');
-    acc.forEach(el => {
-        el.addEventListener('click', function() {
-            this.classList.toggle('active');
-            const panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        });
-    });
 }
