@@ -1628,3 +1628,45 @@ body.receita-page {
     }
     .recipe-card { height: 260px; }
 }
+/* ================================================================= */
+/* === CORREÇÃO CIRÚRGICA #1: CONTAINER DE LEITURA (FUNDO BRANCO) === */
+/* ================================================================= */
+
+/* 1. Força o fundo da página principal ser o Creme Suave (não o verde escuro) */
+body {
+    background-color: #fdfcf7; 
+}
+
+/* 2. Cria o "Papel" Branco para o conteúdo da Receita */
+.receita-container, 
+article.container, 
+.post-content {
+    background-color: #ffffff; /* Branco Puro */
+    max-width: 800px;          /* Largura ideal para leitura mobile/desktop */
+    margin: -40px auto 40px;   /* Sobe um pouco para encostar no header verde (efeito visual) */
+    padding: 30px;             /* Espaço interno para o texto não bater na borda */
+    border-radius: 16px;       /* Cantos arredondados */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Sombra suave para destacar do fundo */
+    position: relative;        /* Para garantir que fique acima do fundo */
+    z-index: 10;
+}
+
+/* 3. Garante que o texto dentro desse papel seja escuro e legível */
+.receita-container h1, 
+.receita-container h2, 
+.receita-container h3,
+.receita-container p,
+.receita-container li {
+    color: #333333; /* Cinza Escuro */
+}
+
+/* 4. Ajuste Mobile: Remove margens negativas para não quebrar no celular */
+@media (max-width: 768px) {
+    .receita-container, 
+    article.container {
+        margin: 0 auto; /* Remove o efeito de subir */
+        border-radius: 0; /* Ocupa a tela toda */
+        box-shadow: none;
+        padding: 20px;
+    }
+}
