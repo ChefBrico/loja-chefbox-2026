@@ -1712,3 +1712,56 @@ article.container,
         padding: 20px;
     }
 }
+/* ================================================================= */
+/* === CORREÇÃO DE EMERGÊNCIA: VISUAL DA RECEITA E RODAPÉ === */
+/* ================================================================= */
+
+/* 1. MATAR A FAIXA BRANCA DO RODAPÉ */
+/* Removemos o espaço extra que estava criando a faixa branca */
+body {
+    padding-bottom: 0 !important;
+    background-color: #fdfcf7 !important; /* Garante fundo creme, não verde */
+}
+
+/* 2. FORÇAR O FUNDO BRANCO NA RECEITA (O "PAPEL") */
+/* Isso cria um cartão branco flutuante sobre o fundo verde do header */
+.receita-container, 
+article {
+    background-color: #ffffff !important; /* Branco Forçado */
+    color: #333333 !important;            /* Texto Escuro Forçado */
+    max-width: 900px;
+    margin: -50px auto 40px auto !important; /* Sobe para cima do verde */
+    padding: 40px !important;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 50; /* Garante que fique na frente de tudo */
+}
+
+/* 3. RECUPERAR A COR DOS TÍTULOS DENTRO DA RECEITA */
+/* Se o fundo é branco, o título tem que ser verde ou preto, nunca branco */
+.receita-container h1,
+.receita-container h2,
+.receita-container h3,
+.receita-container p,
+.receita-container li,
+.receita-container strong {
+    color: #014039 !important; /* Verde Institucional */
+    text-shadow: none !important;
+}
+
+.receita-container p, 
+.receita-container li {
+    color: #444444 !important; /* Cinza escuro para leitura */
+}
+
+/* 4. AJUSTE MOBILE (PARA NÃO CORTAR LATERAIS) */
+@media (max-width: 768px) {
+    .receita-container, article {
+        margin: 0 auto !important; /* Remove o efeito de subir no celular */
+        border-radius: 0 !important;
+        padding: 20px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
