@@ -6,7 +6,7 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
 ---
 
 <style>
-    /* SEU CSS ORIGINAL MANTIDO E APRIMORADO */
+    /* SEU CSS ORIGINAL MANTIDO */
     .page-header-local { text-align: center; margin: 40px 20px 30px; }
     .page-header-local h1 { font-family: 'Merriweather', serif; color: #2c3e50; margin-bottom: 10px; }
     .page-header-local .subtitle { font-family: 'Lato', sans-serif; color: #7f8c8d; max-width: 700px; margin: 0 auto; }
@@ -64,7 +64,7 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
         <p class="subtitle">Encontre a solução perfeita para cada momento. Use nossos filtros por Solução ou Categoria para navegar em nosso universo de sabores.</p>
     </div>
 
-    <!-- FILTROS POR SOLUÇÃO (NECESSIDADE) -->
+    <!-- FILTROS POR SOLUÇÃO -->
     <div class="filter-section">
         <div class="filter-title">🔎 Navegue por Solução</div>
         <div class="filter-buttons">
@@ -78,7 +78,7 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
         </div>
     </div>
 
-    <!-- FILTROS POR CATEGORIA (PRODUTO) -->
+    <!-- FILTROS POR CATEGORIA -->
     <div class="filter-section">
         <div class="filter-title">🍲 Navegue por Categoria</div>
         <div class="filter-buttons">
@@ -89,12 +89,11 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
         </div>
     </div>
     
-    <!-- GRADE DE PRODUTOS (GERADA AUTOMATICAMENTE) -->
-    <!-- Aqui está a mágica: O sistema lê seus arquivos .md e cria os cards -->
+    <!-- GRADE DE PRODUTOS -->
     <div class="product-grid">
         
         {% for item in collections.receitas %}
-        <!-- O Card lê as 'keywords' e 'category' do seu arquivo .md para saber onde aparecer -->
+        <!-- O Card lê as tags para o filtro funcionar -->
         <div class="product-card" data-tags="{{ item.data.keywords }} {{ item.data.category }}">
             
             <!-- Link da Imagem -->
@@ -108,14 +107,17 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
                 </a>
                 <p>{{ item.data.description | truncate(80) }}</p>
                 
-                <div style="font-weight:bold; color:#27ae60; margin-bottom:10px;">R$ {{ item.data.price }}</div>
+                <!-- CORREÇÃO 1: Preço com Filtro Dinheiro (R$ 34,80) -->
+                <div style="font-weight:bold; color:#27ae60; margin-bottom:10px;">
+                    R$ {{ item.data.price | dinheiro }}
+                </div>
 
                 <div class="card-actions">
-                    <!-- Botão 1: Ver Receita (EEAT) -->
+                    <!-- Botão 1: Ver Receita -->
                     <a href="{{ item.url }}" class="btn-ver">Ver Receita</a>
                     
-                    <!-- Botão 2: Adicionar ao Jogo (A-Commerce) -->
-                    <button class="btn-add" onclick="addToGame('{{ item.data.title }}', '{{ item.data.price }}', '{{ item.data.image }}')">
+                    <!-- CORREÇÃO 2: Botão Adicionar (Sem aspas no preço) -->
+                    <button class="btn-add" onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}')">
                         + CAIXA 🎁
                     </button>
                 </div>
@@ -144,7 +146,6 @@ function filter(tag) {
     // Filtra os cards
     cards.forEach(card => {
         const tagsDoProduto = card.getAttribute('data-tags').toLowerCase();
-        // Normaliza a tag de busca
         const busca = tag.toLowerCase();
 
         if (tag === 'all' || tagsDoProduto.includes(busca)) {
