@@ -1,49 +1,81 @@
 ---
 layout: base.njk
-title: "Monte sua ChefBox | Ganhe de presente o 5º sabor"
-description: "Escolha 4 sabores e ganhe o 5º sabor de presente. Jogo de compras ChefBrico."
+title: "Monte sua ChefBox | 4 Sabores + 1 Presente"
+description: "Escolha seus pratos favoritos. Complete 4 e ganhe o 5º de presente!"
+permalink: /chefbox/
 ---
 
-<main class="container" style="padding-bottom: 180px;"> <!-- Espaço para a régua não cobrir -->
-    
-    <!-- CABEÇALHO DO JOGO -->
-    <div style="text-align: center; padding: 40px 20px;">
-        <h1 style="font-family: var(--fonte-titulo); color: var(--cor-institucional);">Monte sua ChefBox</h1>
-        <p style="color: #666; font-size: 1.1rem;">
-            Toque nos produtos abaixo para encher sua ChefBox.<br>
-            <strong>Complete com 4 sabores e o 5º sabor é por nossa conta! 🎁</strong>
-        </p>
-    </div>
+<style>
+/* Estilo Local para a Vitrine ChefBox */
+.chefbox-header { text-align: center; padding: 40px 20px; }
+.chefbox-header h1 { color: #014039; font-family: 'Merriweather', serif; }
+.chefbox-header p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-    <!-- VITRINE DE ESCOLHA (GRID DE PRODUTOS) -->
-    <!-- Aqui listamos todas as receitas para o usuário clicar e jogar -->
-    <div class="recipe-grid">
-        {% for item in collections.receitas %}
+/* Grid de Produtos */
+.vitrine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Cards menores e ágeis */
+    gap: 15px;
+    padding: 0 20px 150px; /* Espaço embaixo para a régua */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.item-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+.item-card:hover { transform: translateY(-3px); border-color: #F2811D; }
+
+.item-img { width: 100%; height: 140px; object-fit: cover; }
+
+.item-info { padding: 10px; }
+.item-title { font-size: 0.9rem; font-weight: bold; color: #333; margin: 0 0 5px; line-height: 1.3; height: 2.6em; overflow: hidden; }
+.item-price { color: #27ae60; font-weight: 800; font-size: 1rem; }
+
+/* O BOTÃO DE ADICIONAR (+) */
+.btn-plus-add {
+    position: absolute;
+    top: 100px; right: 10px; /* Flutuando sobre a imagem */
+    width: 35px; height: 35px;
+    background-color: #F2811D;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+.btn-plus-add:active { transform: scale(0.9); background-color: #d35400; }
+</style>
+
+<div class="chefbox-header">
+    <h1>Monte sua ChefBox 👩‍🍳</h1>
+    <p>Toque no <strong>(+)</strong> para adicionar à caixa. <br>Complete 4 slots e o <strong>5º é Presente!</strong> 🎁</p>
+</div>
+
+<!-- A VITRINE DE ESCOLHA -->
+<div class="vitrine-grid">
+    {% for item in collections.receitas %}
+    <div class="item-card">
+        <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="item-img" loading="lazy">
         
-        <!-- O CARD DE JOGO -->
-        <!-- Ao clicar, chama a função addToGame() -->
-        <div class="recipe-card" style="cursor: pointer;" onclick="addToGame('{{ item.data.title }}', '{{ item.data.price | dinheiro }}', '{{ item.data.image }}')">
-            
-            <div class="card-img-container">
-                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="card-img" loading="lazy">
-                
-                <!-- Botão Visual de Adicionar -->
-                <div style="position: absolute; bottom: 10px; right: 10px; background: var(--cor-cta); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3); font-size: 1.5rem;">+</div>
-            </div>
-            
-            <div class="card-content">
-                <span class="card-cat">{{ item.data.category }}</span>
-                <h3 class="card-title" style="font-size: 1rem;">{{ item.data.title }}</h3>
-                
-                <div class="card-footer">
-                    <span class="card-price">R$ {{ item.data.price | dinheiro }}</span>
-                    <!-- Link para ver detalhes (sem adicionar) -->
-                    <a href="{{ item.url }}" class="btn-ver" onclick="event.stopPropagation()" style="font-size: 0.8rem; text-decoration: underline;">Ver Detalhes</a>
-                </div>
-            </div>
+        <!-- O BOTÃO QUE ACIONA A RÉGUA -->
+        <button class="btn-plus-add" 
+                onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}')">
+            +
+        </button>
 
+        <div class="item-info">
+            <h3 class="item-title">{{ item.data.title }}</h3>
+            <div class="item-price">R$ {{ item.data.price | dinheiro }}</div>
         </div>
-        {% endfor %}
     </div>
-
-</main>
+    {% endfor %}
+</div>
