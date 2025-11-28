@@ -1843,3 +1843,72 @@ header, .site-header {
     }
     .slot-circle { width: 55px; height: 55px; font-size: 1.2rem; }
 }
+/* ================================================================= */
+/* === CORREÇÃO VISUAL: LAYOUT E BOLINHAS (MECANISMO 4+1) === */
+/* ================================================================= */
+
+/* 1. CORREÇÃO DA PÁGINA DE RECEITA (O "PAPEL" BRANCO) */
+.receita-container, 
+article {
+    max-width: 800px;          /* Largura máxima para leitura confortável */
+    margin: 20px auto 120px;   /* Centraliza e dá espaço para a régua embaixo */
+    padding: 30px;             /* Espaço interno (respiro) */
+    background-color: #ffffff;
+    border-radius: 16px;       /* Cantos arredondados */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05); /* Sombra suave */
+}
+
+/* Ajuste para Celular (Não encostar na borda) */
+@media (max-width: 768px) {
+    .receita-container, article {
+        width: 92%;       /* Ocupa 92% da tela, deixando bordas livres */
+        padding: 20px;    /* Menos espaço interno */
+        margin-top: 10px;
+    }
+}
+
+/* 2. AS BOLINHAS (SLOTS) COM FOTO E "X" */
+.slot-circle {
+    width: 55px; height: 55px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    border: 2px dashed #ccc;
+    position: relative; /* Necessário para o X */
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Quando a bolinha tem produto (Classe .filled adicionada pelo JS) */
+.slot-circle.filled {
+    border: 2px solid #F2811D; /* Borda Laranja */
+    color: transparent; /* Esconde o número */
+}
+
+/* O EFEITO "X" DE REMOVER (Overlay) */
+.slot-circle.filled::after {
+    content: '✕'; /* O X */
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); /* Fundo escuro transparente */
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.2s;
+}
+
+/* Mostra o X ao passar o mouse ou tocar */
+.slot-circle.filled:hover::after {
+    opacity: 1;
+}
+
+/* Animação do Presente (Slot 5) */
+.slot-circle.gift {
+    background-color: #fff8e1;
+    border-color: #FFD700;
+    font-size: 1.5rem;
+}
