@@ -1713,46 +1713,43 @@ article.container,
     }
 }
 /* ================================================================= */
-/* === CORREÇÃO DE EMERGÊNCIA v2: TRAZER O CONTEÚDO PARA FRENTE === */
+/* === RESET BRUTAL DE VISIBILIDADE (PARA PARAR DE SUMIR) === */
 /* ================================================================= */
 
-/* 1. O CORPO DA PÁGINA */
-body {
-    background-color: #fdfcf7 !important; /* Creme */
-    padding-bottom: 0 !important;
+/* 1. Mata qualquer fundo verde que esteja cobrindo o site */
+body, main {
+    background-color: #ffffff !important; /* Branco Puro */
+    background-image: none !important;
 }
 
-/* 2. O CONTAINER DA RECEITA (O "PAPEL") */
-.receita-container, 
-article {
+/* 2. Força o container da receita a ser um bloco simples e visível */
+.receita-container, article {
+    display: block !important;
     background-color: #ffffff !important;
-    color: #333333 !important;
-    max-width: 900px;
-    
-    /* AJUSTE CRÍTICO: Margem positiva para descer o conteúdo */
-    margin: 20px auto 40px auto !important; 
-    
-    padding: 40px !important;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    
+    margin: 0 auto !important; /* Centraliza sem subir nem descer */
+    padding: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
     position: relative !important;
-    z-index: 2000 !important; /* Força ficar NA FRENTE do header */
-    display: block !important; /* Garante que não esteja oculto */
+    z-index: 9999 !important; /* Fica na frente de tudo */
+    top: 0 !important;
+    left: 0 !important;
 }
 
-/* 3. TEXTOS */
-.receita-container h1,
-.receita-container h2,
-.receita-container h3,
-.receita-container p,
-.receita-container li {
+/* 3. Força a cor do texto para Preto/Verde (para não ficar branco no branco) */
+h1, h2, h3, h4, p, li, span, div {
     color: #333333 !important;
-    opacity: 1 !important;
     visibility: visible !important;
+    opacity: 1 !important;
 }
 
-/* 4. CABEÇALHO (HEADER) - Garantir que não cubra tudo */
+/* 4. Títulos em Verde */
+h1, h2, h3 {
+    color: #014039 !important;
+}
+
+/* 5. Garante que o Header não cubra o texto */
 header, .site-header {
-    z-index: 1000 !important; /* Menor que o conteúdo da receita */
+    position: relative !important; /* Deixa de ser fixo/sticky temporariamente */
+    z-index: 500 !important;
 }
