@@ -17,6 +17,7 @@
     <meta property="og:url" content="https://gourmetpratico.com.br{{ page.url }}">
     <meta property="og:title" content="{{ title }}">
     <meta property="og:description" content="{{ description }}">
+    
     {% if image %}
     <meta property="og:image" content="https://gourmetpratico.com.br{{ image }}">
     {% else %}
@@ -49,20 +50,55 @@
     <!-- C. RODAPÉ -->
     {% include "footer.njk" %}
     
-    <!-- D. A-COMMERCE: RÉGUA DE GAMIFICAÇÃO -->
-    <!-- Lógica: Aparece APENAS em Receitas e ChefBox -->
+    <!-- ======================================================= -->
+    <!-- D. A-COMMERCE: RÉGUA DE GAMIFICAÇÃO (MECANISMO 4+1)     -->
+    <!-- Inserido diretamente aqui para garantir funcionamento     -->
+    <!-- ======================================================= -->
+    
+    <!-- Lógica: Só mostra nas Receitas e na página ChefBox -->
     {% if '/receitas/' in page.url or '/chefbox/' in page.url %}
-        {% include "gamification-bar.njk" %}
+    <div id="chefbox-bar" class="chefbox-sticky-bar">
+        <div class="bar-info">
+            <span id="game-status-text">Monte sua ChefBox:</span>
+        </div>
+        
+        <div class="slots-wrapper">
+            <div id="slot-1" class="slot-circle">1</div>
+            <div id="slot-2" class="slot-circle">2</div>
+            <div id="slot-3" class="slot-circle">3</div>
+            <div id="slot-4" class="slot-circle">4</div>
+            <div id="slot-5" class="slot-circle gift">🎁</div>
+        </div>
+
+        <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()" style="display:none;">
+            Finalizar Pedido ➜
+        </button>
+    </div>
     {% endif %}
+
+    <!-- ======================================================= -->
+    <!-- E. A-COMMERCE: MODAL DE CHECKOUT (ZERO-CLIC)            -->
+    <!-- ======================================================= -->
+    <div id="checkout-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <h3 style="color: #014039; text-align: center;">Quase lá! 🛵</h3>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">Confirme seus dados para enviarmos o pedido para a Chef Maria.</p>
+            
+            <input type="text" id="customer-name" placeholder="Seu Nome" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
+            <input type="text" id="customer-cep" placeholder="Seu CEP" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
+            <textarea id="customer-address" placeholder="Endereço (Rua, Número, Complemento)" rows="3" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
+            
+            <button onclick="sendOrderToWhatsApp()" style="width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem; cursor: pointer;">
+                ENVIAR NO WHATSAPP 💬
+            </button>
+            
+            <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 15px; color: #999; cursor: pointer; text-decoration: underline;">Voltar / Cancelar</p>
+        </div>
+    </div>
     
-    <!-- E. A-COMMERCE: MODAL DE CHECKOUT (GLOBAL) -->
-    <!-- A janela que pede o endereço -->
-    {% include "checkout-modal.njk" %}
+    <!-- F. SCRIPTS DO SISTEMA -->
     
-    <!-- F. SCRIPTS -->
-    <script src="/js/script.js"></script>
-    
-    <!-- Script de Login do Admin (Netlify) -->
+    <!-- Script de Login do Admin (Netlify) - CORRIGIDO -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
@@ -73,51 +109,18 @@
           }
         });
       }
-  <script>
-    // Força a régua a aparecer se o JS falhar
-    window.onload = function() {
-        document.querySelector('.chefbox-sticky-bar').style.display = 'flex';
-    }
-</script>
+    </script>
 
-<!-- === COMPONENTE: BARRA DE JOGO (GAMIFICATION) === -->
-<div id="chefbox-bar" class="chefbox-sticky-bar">
-    <div class="bar-info">
-        <span id="game-status-text">Monte sua ChefBox:</span>
-    </div>
-    
-    <div class="slots-wrapper">
-        <div id="slot-1" class="slot-circle">1</div>
-        <div id="slot-2" class="slot-circle">2</div>
-        <div id="slot-3" class="slot-circle">3</div>
-        <div id="slot-4" class="slot-circle">4</div>
-        <div id="slot-5" class="slot-circle gift">🎁</div>
-    </div>
+    <!-- Script de Segurança para exibir a régua -->
+    <script>
+        window.onload = function() {
+            const bar = document.querySelector('.chefbox-sticky-bar');
+            if(bar) bar.style.display = 'flex';
+        }
+    </script>
 
-    <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()" style="display:none;">
-        Finalizar Pedido ➜
-    </button>
-</div>
+    <!-- O CÉREBRO DO JOGO (Carrega por último) -->
+    <script src="/js/app.js"></script>
 
-<!-- === COMPONENTE: MODAL DE CHECKOUT (ZERO-CLIC) === -->
-<div id="checkout-modal" class="modal-overlay" style="display: none;">
-    <div class="modal-box">
-        <h3 style="color: #014039; text-align: center;">Quase lá! 🛵</h3>
-        <p style="text-align: center; margin-bottom: 20px; color: #666;">Confirme seus dados para enviarmos o pedido para a Chef Maria.</p>
-        
-        <input type="text" id="customer-name" placeholder="Seu Nome" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
-        <input type="text" id="customer-cep" placeholder="Seu CEP" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
-        <textarea id="customer-address" placeholder="Endereço (Rua, Número, Complemento)" rows="3" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
-        
-        <button onclick="sendOrderToWhatsApp()" style="width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem; cursor: pointer;">
-            ENVIAR NO WHATSAPP 💬
-        </button>
-        
-        <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 15px; color: #999; cursor: pointer; text-decoration: underline;">Voltar / Cancelar</p>
-    </div>
-</div>
-
-<!-- Carrega o Cérebro do Jogo -->
-<script src="/js/app.js"></script>
 </body>
 </html>
