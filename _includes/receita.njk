@@ -1,153 +1,76 @@
 ---
 layout: base.njk
 ---
-<!-- FORÇA O MODO RECEITA (FUNDO BRANCO) -->
+<!-- Força fundo branco -->
 <script>document.body.classList.add('receita-page');</script>
 
-<!-- ================================================================= -->
-<!-- CAMADA DE DADOS INVISÍVEL (SCHEMA.ORG PARA AGENTES & GOOGLE)      -->
-<!-- Este bloco garante que a IA entenda Preço, Estoque e Logística.   -->
-<!-- Não afeta o visual do site.                                       -->
-<!-- ================================================================= -->
+<!-- SCHEMA.ORG (ROBÔ) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@graph": [
-    {
-      "@type": "Recipe",
-      "@id": "https://gourmetpratico.com.br{{ page.url }}#recipe",
-      "name": "{{ title }}",
-      "image": [
-        "https://gourmetpratico.com.br{{ image }}"
-      ],
-      "author": {
-        "@type": "Person",
-        "name": "{{ author_name }}"
-      },
-      "description": "{{ description }}",
-      "prepTime": "{{ tempo_iso }}",
-      "totalTime": "{{ tempo_iso }}",
-      "recipeYield": "{{ rendimento }}",
-      "recipeCategory": "{{ category }}",
-      "nutrition": {
-        "@type": "NutritionInformation",
-        "calories": "{{ calorias }}"
-      }
-    },
-    {
-      "@type": "Product",
-      "@id": "https://gourmetpratico.com.br{{ page.url }}#product",
-      "name": "Kit ChefBox: {{ title }}",
-      "description": "Ingredientes desidratados 100% naturais para preparar {{ title }}.",
-      "image": "https://gourmetpratico.com.br{{ image }}",
-      "sku": "{{ sku }}",
-      "gtin": "{{ gtin }}",
-      "brand": {
-        "@type": "Brand",
-        "name": "ChefBrico"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://gourmetpratico.com.br{{ page.url }}",
-        "priceCurrency": "BRL",
-        "price": "{{ price }}",
-        "priceValidUntil": "2026-12-31",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@type": "Organization",
-          "name": "ChefBrico"
-        },
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "BRL"
-          },
-          "shippingDestination": {
-            "@type": "DefinedRegion",
-            "addressCountry": "BR"
-          },
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 2,
-              "unitCode": "d"
-            },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 2,
-              "maxValue": 8,
-              "unitCode": "d"
-            }
-          }
-        },
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "BR",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 7,
-          "returnMethod": "https://schema.org/ReturnByMail"
-        }
-      }
-    }
-  ]
+  "@type": "Product",
+  "name": "Kit ChefBox: {{ title }}",
+  "image": "https://gourmetpratico.com.br{{ image }}",
+  "description": "Ingredientes 100% naturais para preparar {{ title }}.",
+  "brand": { "@type": "Brand", "name": "ChefBrico" },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "BRL",
+    "price": "{{ price }}",
+    "availability": "https://schema.org/InStock"
+  }
 }
 </script>
 
 <article class="receita-container">
     
-    <!-- CABEÇALHO DA RECEITA -->
-    <header style="text-align: center; margin-bottom: 30px;">
-        <span style="color: #bfb084; font-weight: bold; text-transform: uppercase;">{{ category }}</span>
+    <!-- Título e Categoria -->
+    <header style="text-align: center; margin-bottom: 20px;">
+        <span style="color: #bfb084; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">{{ category }}</span>
         <h1 style="color: #014039; font-size: 2rem; margin: 10px 0;">{{ title }}</h1>
-        
-        <div style="display: flex; justify-content: center; gap: 15px; color: #666; margin-top: 15px;">
-            <span>🕒 {{ tempo_preparo }}</span>
-            <span>🍳 {{ dificuldade }}</span>
-            <span>🍽️ {{ rendimento }}</span>
-        </div>
     </header>
 
-    <!-- IMAGEM HERO -->
-    <img src="{{ image }}" alt="{{ image_alt }}" style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 30px;">
+    <!-- Imagem Principal -->
+    <div class="article-hero-image-container">
+        <img src="{{ image }}" alt="{{ title }}">
+    </div>
 
-    <!-- CARD DE VENDA (A-COMMERCE) -->
-    <div class="chefbox-offer-card" style="background: #fdfcf7; border: 2px dashed #bfb084; padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 40px;">
+    <!-- CARD DE VENDA (AQUI ESTAVA O ERRO DO PREÇO E BOTÃO) -->
+    <div class="chefbox-offer-card">
         <h3 style="color: #014039; margin-top: 0;">Leve este sabor para Casa</h3>
         
-        <div style="font-size: 2rem; font-weight: 800; color: #F2811D; margin: 10px 0;">
-            R$ {{ price }}
+        <!-- Preço Corrigido com o Filtro -->
+        <div style="font-size: 2.5rem; font-weight: 800; color: #F2811D; margin: 10px 0;">
+            R$ {{ price | dinheiro }}
         </div>
         
-        <p style="font-size: 0.9rem; color: #555;">
+        <p style="font-size: 0.9rem; color: #555; margin-bottom: 20px;">
             <strong>DICA:</strong> Na ChefBox, compre 4 e ganhe o 5º de presente! 🎁
         </p>
 
-        <!-- BOTÃO DE AÇÃO -->
-        <button onclick="addToGame('{{ title }}', '{{ price }}', '{{ image }}')" style="background: #F2811D; color: white; border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; font-size: 1rem; cursor: pointer; width: 100%; box-shadow: 0 4px 0 #c0600c;">
-            Adicionar na ChefBox (+1)
+        <!-- BOTÃO CORRIGIDO (Agora chama o Javascript) -->
+        <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}')" 
+                class="btn-comprar" 
+                style="width: 100%; cursor: pointer;">
+            ADICIONAR NA CHEFBOX (+1)
         </button>
     </div>
 
-    <!-- CONTEÚDO DA RECEITA -->
-    <div class="post-content" style="line-height: 1.8; color: #333; font-size: 1.1rem;">
+    <!-- Conteúdo do Texto -->
+    <div class="post-content">
         {{ content | safe }}
     </div>
 
     <!-- FAQ -->
     {% if faq %}
-    <section style="margin-top: 50px;">
+    <section style="margin-top: 40px;">
         <h3 style="color: #014039;">Dúvidas Frequentes</h3>
         {% for item in faq %}
-        <div class="accordion-header" style="background: #f9f9f9; padding: 15px; margin-bottom: 5px; cursor: pointer; font-weight: bold; border-radius: 5px;">
-            {{ item.question }} <span style="float:right;">▼</span>
-        </div>
-        <div class="accordion-content" style="max-height: 0; overflow: hidden; transition: 0.3s; padding: 0 15px;">
-            <p>{{ item.answer }}</p>
+        <div class="faq-item">
+            <details>
+                <summary>{{ item.question }}</summary>
+                <p style="padding-top: 10px;">{{ item.answer }}</p>
+            </details>
         </div>
         {% endfor %}
     </section>
