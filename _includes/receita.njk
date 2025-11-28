@@ -4,22 +4,31 @@ layout: base.njk
 <!-- FORÇA O MODO RECEITA (FUNDO BRANCO) -->
 <script>document.body.classList.add('receita-page');</script>
 
-<!-- SCHEMA.ORG PARA ROBÔS (JSON-LD VÁLIDO) -->
+<!-- ================================================================= -->
+<!-- CAMADA DE DADOS INVISÍVEL (SCHEMA.ORG PARA AGENTES & GOOGLE)      -->
+<!-- Este bloco garante que a IA entenda Preço, Estoque e Logística.   -->
+<!-- Não afeta o visual do site.                                       -->
+<!-- ================================================================= -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@graph": [
     {
       "@type": "Recipe",
+      "@id": "https://gourmetpratico.com.br{{ page.url }}#recipe",
       "name": "{{ title }}",
-      "image": ["https://gourmetpratico.com.br{{ image }}"],
+      "image": [
+        "https://gourmetpratico.com.br{{ image }}"
+      ],
       "author": {
         "@type": "Person",
         "name": "{{ author_name }}"
       },
       "description": "{{ description }}",
       "prepTime": "{{ tempo_iso }}",
+      "totalTime": "{{ tempo_iso }}",
       "recipeYield": "{{ rendimento }}",
+      "recipeCategory": "{{ category }}",
       "nutrition": {
         "@type": "NutritionInformation",
         "calories": "{{ calorias }}"
@@ -27,14 +36,62 @@ layout: base.njk
     },
     {
       "@type": "Product",
+      "@id": "https://gourmetpratico.com.br{{ page.url }}#product",
       "name": "Kit ChefBox: {{ title }}",
-      "sku": "{{ sku }}",
+      "description": "Ingredientes desidratados 100% naturais para preparar {{ title }}.",
       "image": "https://gourmetpratico.com.br{{ image }}",
+      "sku": "{{ sku }}",
+      "gtin": "{{ gtin }}",
+      "brand": {
+        "@type": "Brand",
+        "name": "ChefBrico"
+      },
       "offers": {
         "@type": "Offer",
-        "price": "{{ price }}",
+        "url": "https://gourmetpratico.com.br{{ page.url }}",
         "priceCurrency": "BRL",
-        "availability": "{{ availability }}"
+        "price": "{{ price }}",
+        "priceValidUntil": "2026-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "ChefBrico"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "BRL"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "BR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 2,
+              "unitCode": "d"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 2,
+              "maxValue": 8,
+              "unitCode": "d"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "BR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 7,
+          "returnMethod": "https://schema.org/ReturnByMail"
+        }
       }
     }
   ]
