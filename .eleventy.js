@@ -2,7 +2,7 @@ const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
 
-  // 1. CÓPIAS DE ARQUIVOS (O que vai direto para o site)
+  // --- 1. O ROBÔ COPIA ESSAS PASTAS PARA O SITE FINAL ---
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("imagens");
   eleventyConfig.addPassthroughCopy("js");
@@ -10,23 +10,31 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("_redirects");
 
-  // 2. FILTROS
+  // --- 2. A CORREÇÃO DO PREÇO (O GARÇOM ESPERTO) ---
+  // Aqui ensinamos ele a escrever "34,80" e não "R$ 34.8"
+  eleventyConfig.addFilter("dinheiro", (valor) => {
+    if (!valor) return "0,00";
+    return parseFloat(valor).toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  });
+
+  // Filtro de Data
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).setZone("America/Sao_Paulo").toFormat("dd/MM/yyyy");
   });
-// Filtro de Dinheiro (R$ 00,00)
-  eleventyConfig.addFilter("dinheiro", (valor) => {
-    return parseFloat(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  });
-  // 3. CONFIGURAÇÃO DO MOTOR (AQUI ESTÁ A CURA)
+
+  // --- 3. ONDE ESTÃO OS ARQUIVOS? (A DESPENSA) ---
   return {
     dir: {
-      input: ".",         // Entrada na raiz
-      includes: "_includes", // Layouts
-      data: "_data",      // Dados
-      output: "_site"     // Saída
+      // SE O SITE FICAR EM BRANCO, TROQUE "." POR "src" NA LINHA ABAIXO
+      input: ".", 
+      
+      includes: "_includes",
+      data: "_data",
+      output: "_site"
     },
-    // ESTAS 3 LINHAS OBRIGAM O HTML A FUNCIONAR
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
     dataTemplateEngine: "njk",
