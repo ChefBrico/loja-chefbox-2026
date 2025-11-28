@@ -79,5 +79,45 @@
         document.querySelector('.chefbox-sticky-bar').style.display = 'flex';
     }
 </script>
+
+<!-- === COMPONENTE: BARRA DE JOGO (GAMIFICATION) === -->
+<div id="chefbox-bar" class="chefbox-sticky-bar">
+    <div class="bar-info">
+        <span id="game-status-text">Monte sua ChefBox:</span>
+    </div>
+    
+    <div class="slots-wrapper">
+        <div id="slot-1" class="slot-circle">1</div>
+        <div id="slot-2" class="slot-circle">2</div>
+        <div id="slot-3" class="slot-circle">3</div>
+        <div id="slot-4" class="slot-circle">4</div>
+        <div id="slot-5" class="slot-circle gift">🎁</div>
+    </div>
+
+    <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()" style="display:none;">
+        Finalizar Pedido ➜
+    </button>
+</div>
+
+<!-- === COMPONENTE: MODAL DE CHECKOUT (ZERO-CLIC) === -->
+<div id="checkout-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-box">
+        <h3 style="color: #014039; text-align: center;">Quase lá! 🛵</h3>
+        <p style="text-align: center; margin-bottom: 20px; color: #666;">Confirme seus dados para enviarmos o pedido para a Chef Maria.</p>
+        
+        <input type="text" id="customer-name" placeholder="Seu Nome" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
+        <input type="text" id="customer-cep" placeholder="Seu CEP" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
+        <textarea id="customer-address" placeholder="Endereço (Rua, Número, Complemento)" rows="3" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
+        
+        <button onclick="sendOrderToWhatsApp()" style="width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem; cursor: pointer;">
+            ENVIAR NO WHATSAPP 💬
+        </button>
+        
+        <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 15px; color: #999; cursor: pointer; text-decoration: underline;">Voltar / Cancelar</p>
+    </div>
+</div>
+
+<!-- Carrega o Cérebro do Jogo -->
+<script src="/js/app.js"></script>
 </body>
 </html>
