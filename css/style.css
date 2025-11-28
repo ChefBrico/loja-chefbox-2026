@@ -1753,3 +1753,93 @@ header, .site-header {
     position: relative !important; /* Deixa de ser fixo/sticky temporariamente */
     z-index: 500 !important;
 }
+/* ======================================================= */
+/* === ADICIONAL: BARRA DE GAMIFICAÇÃO CHEFBOX (4+1) === */
+/* ======================================================= */
+
+.chefbox-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-top: 4px solid #F2811D; /* Laranja CTA */
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    padding: 10px 15px;
+    z-index: 99999; /* Acima de tudo */
+    display: flex;
+    flex-direction: column; /* Mobile First: Texto em cima, bolas embaixo */
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.bar-info {
+    font-size: 0.9rem;
+    color: #014039; /* Verde Institucional */
+    text-transform: uppercase;
+}
+
+.slots-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.slot-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+/* Efeito quando o slot do presente ativa */
+.slot-circle.active {
+    border-color: #F2811D;
+    animation: pulse 1.5s infinite;
+    background-color: #fff8e1;
+}
+
+/* Botão Finalizar Flutuante */
+.btn-finish-float {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    animation: slideIn 0.5s ease;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.4);
+}
+
+/* Animações */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajuste para Desktop (Barra lateralizada) */
+@media (min-width: 768px) {
+    .chefbox-sticky-bar {
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+        padding: 15px;
+    }
+    .slot-circle { width: 55px; height: 55px; font-size: 1.2rem; }
+}
