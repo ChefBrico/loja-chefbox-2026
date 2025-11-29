@@ -6,10 +6,13 @@
 <header class="site-header">
     <div class="header-container">
         
+        <!-- ========================================= -->
+        <!-- 1. MENU DESKTOP (A FLORESTA PRESERVADA)   -->
+        <!-- ========================================= -->
+        
         <!-- ESQUERDA -->
-        <ul class="nav-left nav-list">
+        <ul class="nav-left nav-list desktop-only">
             <li><a href="/comida-de-verdade/" class="nav-link">Comida de Verdade</a></li>
-            <!-- Blog removido daqui, pois a Home é o Blog -->
             <li><a href="/clube/" class="nav-link">Clube ChefBrico</a></li>
         </ul>
 
@@ -19,9 +22,9 @@
         </a>
 
         <!-- DIREITA -->
-        <ul class="nav-right nav-list">
+        <ul class="nav-right nav-list desktop-only">
             
-            <!-- MEGA MENU RECEITAS -->
+            <!-- MEGA MENU RECEITAS (Mantido Intacto) -->
             <li class="has-dropdown">
                 <a href="/receitas/" class="nav-link">Receitas ▾</a>
                 
@@ -56,7 +59,175 @@
             <li><a href="/chefbox/" class="nav-link btn-chefbox">Monte sua ChefBox 🎁</a></li>
         </ul>
 
-        <!-- MOBILE -->
-        <button class="mobile-menu-btn">☰</button>
+        <!-- BOTÃO MOBILE (Só aparece no celular) -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
     </div>
+
+    <!-- ========================================= -->
+    <!-- 2. MENU MOBILE (A GAVETA INTELIGENTE)     -->
+    <!-- Replicamos a estrutura EEAT aqui dentro   -->
+    <!-- ========================================= -->
+    <div id="mobileDrawer" class="mobile-menu-drawer">
+        
+        <!-- Links Principais -->
+        <a href="/" class="mobile-link">🏠 Início</a>
+        <a href="/comida-de-verdade/" class="mobile-link">Comida de Verdade</a>
+        <a href="/clube/" class="mobile-link">Clube ChefBrico</a>
+
+        <!-- O MEGA MENU ADAPTADO (Acordeão) -->
+        <div class="mobile-dropdown">
+            <button class="mobile-link dropdown-btn" onclick="toggleSubmenu()">
+                🍳 Receitas e Soluções <span id="arrow">▼</span>
+            </button>
+            
+            <div id="submenuReceitas" class="mobile-submenu-content">
+                <p class="submenu-title">POR SOLUÇÃO:</p>
+                <a href="/receitas/solucoes/jantar-rapido/">• Jantar Rápido</a>
+                <a href="/receitas/solucoes/marmita-saudavel/">• Marmita Saudável</a>
+                <a href="/receitas/solucoes/momento-a-dois/">• Momento a Dois</a>
+                <a href="/receitas/solucoes/criancas/">• Para Crianças</a>
+                <a href="/receitas/solucoes/dieta-performance/">• Dieta & Performance</a>
+                <a href="/receitas/solucoes/trilha-viagem/">• Trilha & Viagem</a>
+                
+                <p class="submenu-title" style="margin-top:10px;">POR CATEGORIA:</p>
+                <a href="/receitas/risotos/">• Risotos</a>
+                <a href="/receitas/sopas-funcionais/">• Sopas</a>
+                <a href="/receitas/refeicoes-integrais/">• Integrais</a>
+                <a href="/receitas/emporio-da-chef/">• Empório</a>
+            </div>
+        </div>
+
+        <a href="/faq/" class="mobile-link">❓ FAQ</a>
+        <a href="/chefbox/" class="mobile-link highlight">🎁 Monte sua ChefBox (4+1)</a>
+    </div>
+
 </header>
+
+<!-- ========================================= -->
+<!-- 3. CSS DE CORREÇÃO (FAIXA BRANCA + MENU)  -->
+<!-- ========================================= -->
+<style>
+    /* Estilos Base do Mobile Menu */
+    .mobile-menu-drawer {
+        display: none;
+        flex-direction: column;
+        background-color: #014039; /* Verde Institucional */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 20px;
+    }
+    
+    .mobile-link {
+        color: white;
+        padding: 15px 20px;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        font-size: 1.1rem;
+        display: block;
+    }
+
+    .mobile-link.highlight {
+        background-color: #F2811D;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px;
+        border-radius: 8px;
+    }
+
+    /* Submenu Mobile (Escondido por padrão) */
+    .mobile-submenu-content {
+        display: none;
+        background-color: #01332d; /* Verde um pouco mais escuro */
+        padding: 10px 20px;
+    }
+    
+    .mobile-submenu-content a {
+        display: block;
+        color: #bfb084; /* Dourado */
+        padding: 8px 0;
+        text-decoration: none;
+        font-size: 0.95rem;
+    }
+
+    .submenu-title {
+        color: white;
+        font-size: 0.8rem;
+        opacity: 0.7;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .dropdown-btn {
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* CORREÇÃO DA FAIXA BRANCA E LOGO NO MOBILE */
+    @media (max-width: 992px) {
+        .desktop-only { display: none; } /* Esconde menu PC */
+        .mobile-menu-btn { display: block; font-size: 2rem; background: none; border: none; color: #bfb084; cursor: pointer; }
+        
+        /* O Pulo do Gato para a Faixa Branca */
+        .site-header {
+            height: auto !important;
+            padding: 10px 0 !important;
+            overflow: visible; /* Permite o menu descer */
+        }
+        
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            margin: 0; /* Remove margem negativa que causava o buraco */
+            border: 2px solid #bfb084;
+        }
+        
+        .logo-circle img { max-height: 40px; }
+    }
+
+    @media (min-width: 993px) {
+        .mobile-menu-btn { display: none; }
+        .mobile-menu-drawer { display: none !important; }
+    }
+</style>
+
+<!-- ========================================= -->
+<!-- 4. JAVASCRIPT (ABRIR E FECHAR)            -->
+<!-- ========================================= -->
+<script>
+    function toggleMobileMenu() {
+        var drawer = document.getElementById('mobileDrawer');
+        var btn = document.querySelector('.mobile-menu-btn');
+        
+        if (drawer.style.display === 'flex') {
+            drawer.style.display = 'none';
+            btn.innerHTML = '☰';
+        } else {
+            drawer.style.display = 'flex';
+            btn.innerHTML = '✕';
+        }
+    }
+
+    function toggleSubmenu() {
+        var sub = document.getElementById('submenuReceitas');
+        var arrow = document.getElementById('arrow');
+        
+        if (sub.style.display === 'block') {
+            sub.style.display = 'none';
+            arrow.innerHTML = '▼';
+        } else {
+            sub.style.display = 'block';
+            arrow.innerHTML = '▲';
+        }
+    }
+</script>
