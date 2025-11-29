@@ -3,32 +3,34 @@ const { DateTime } = require("luxon");
 module.exports = function(eleventyConfig) {
 
   // =================================================================
-  // 1. O TRANSPORTE DOS ARQUIVOS (Mapeamento Inteligente)
+  // 1. O RESGATE DOS ARQUIVOS (Mapeamento de Segurança)
   // =================================================================
   
-  // A Regra é: { "ONDE_ESTA_AGORA" : "ONDE_VAI_FICAR_NO_SITE" }
-  
-  // CSS: Pega de assets/css e joga na pasta css do site (para não quebrar links)
+  // --- CSS (A CORREÇÃO DO SITE QUEBRADO) ---
+  // Tenta pegar da pasta nova (src/assets/css)
   eleventyConfig.addPassthroughCopy({ "src/assets/css": "css" });
+  // Tenta pegar da pasta antiga na raiz (css), caso você tenha esquecido de mover
+  eleventyConfig.addPassthroughCopy({ "css": "css" });
   
-  // JS: Pega de assets/js e joga na pasta js
-  eleventyConfig.addPassthroughCopy({ "src/assets/js": "js" });
-  
-  // Imagens: Pega de assets/imagens e joga na pasta imagens
+  // --- IMAGENS ---
   eleventyConfig.addPassthroughCopy({ "src/assets/imagens": "imagens" });
+  eleventyConfig.addPassthroughCopy({ "imagens": "imagens" }); // Segurança raiz
   
-  // Admin do CMS
+  // --- JAVASCRIPT ---
+  eleventyConfig.addPassthroughCopy({ "src/assets/js": "js" });
+  eleventyConfig.addPassthroughCopy({ "js": "js" }); // Segurança raiz
+  
+  // --- OUTROS ---
   eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
-
-  // Arquivos Soltos (Robots, Redirects)
+  eleventyConfig.addPassthroughCopy({ "admin": "admin" });
+  
+  // Arquivos soltos
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
 
   // =================================================================
-  // 2. FILTROS (O Cérebro Matemático)
+  // 2. FILTROS
   // =================================================================
-  
-  // Filtro de Dinheiro (Corrige o R$ 34,80)
   eleventyConfig.addFilter("dinheiro", (valor) => {
     if (!valor) return "0,00";
     return parseFloat(valor).toLocaleString('pt-BR', {
@@ -37,7 +39,6 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-  // Filtro de Data
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).setZone("America/Sao_Paulo").toFormat("dd/MM/yyyy");
   });
