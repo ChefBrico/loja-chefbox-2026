@@ -1912,3 +1912,72 @@ article {
     border-color: #FFD700;
     font-size: 1.5rem;
 }
+/* ======================================================= */
+/* === CORREÇÃO DE EMERGÊNCIA: MOBILE HEADER & MENU === */
+/* ======================================================= */
+
+@media (max-width: 768px) {
+    /* 1. Remove a Faixa Branca e Ajusta Altura */
+    .site-header {
+        padding: 10px 0 !important; /* Diminui a altura da faixa verde */
+        height: auto !important;
+        position: relative !important; /* Para de flutuar e ocupar espaço fantasma */
+    }
+
+    /* 2. Arruma a Logo no Celular (Menor e sem sair pra fora) */
+    .logo-circle {
+        width: 60px !important;
+        height: 60px !important;
+        margin: 0 !important; /* Remove a margem negativa que criava o buraco */
+        border: 2px solid #bfb084 !important;
+    }
+    
+    .logo-circle img {
+        max-height: 40px !important;
+    }
+
+    /* 3. Garante que o conteúdo suba */
+    main, .receita-container {
+        margin-top: 20px !important; /* Encosta mais no topo */
+    }
+
+    /* 4. Arruma o Menu Gaveta (Para não ficar transparente ou escondido) */
+    .mobile-menu-drawer {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #014039; /* Fundo Verde igual ao header */
+        z-index: 9999;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        display: none; /* Escondido por padrão */
+        flex-direction: column;
+        padding: 0;
+    }
+
+    /* Quando ativo, aparece */
+    .mobile-menu-drawer.active {
+        display: flex !important;
+    }
+
+    /* Links do Menu Mobile */
+    .mobile-link {
+        color: white !important;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        text-decoration: none;
+        font-size: 1.1rem;
+        display: block;
+    }
+    
+    /* Botão Hambúrguer Visível */
+    .mobile-menu-btn {
+        display: block !important;
+        color: #bfb084 !important; /* Dourado */
+        font-size: 2rem !important;
+        background: none !important;
+        border: none !important;
+        cursor: pointer;
+        padding: 0 10px;
+    }
+}
