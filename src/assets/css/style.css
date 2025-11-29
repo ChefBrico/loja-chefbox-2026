@@ -1981,3 +1981,41 @@ article {
         padding: 0 10px;
     }
 }
+/* ======================================================= */
+/* === CORREÇÃO FINAL: RODAPÉ VERDE (SEM FAIXA BRANCA) === */
+/* ======================================================= */
+
+/* 1. Remove o espaço branco do corpo da página */
+body {
+    padding-bottom: 0 !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Garante que o conteúdo empurre o rodapé para o final */
+main {
+    flex: 1;
+}
+
+/* 3. O Pulo do Gato: O espaço de segurança agora faz parte do VERDE */
+.footer-bottom {
+    background-color: #014039; /* Verde Institucional */
+    color: white;
+    /* Adiciona o espaço aqui dentro, para ficar verde */
+    padding-top: 20px;
+    padding-bottom: 120px; /* Espaço para a Régua ChefBox */
+    margin-bottom: 0;
+}
+
+/* 4. Ajuste Fino para Celular (iPhone tem barra embaixo) */
+@media (max-width: 768px) {
+    .footer-bottom {
+        padding-bottom: 150px; /* Mais espaço no celular */
+    }
+    
+    /* Garante que a régua flutuante fique acima do verde */
+    .chefbox-sticky-bar {
+        bottom: 0;
+    }
+}
