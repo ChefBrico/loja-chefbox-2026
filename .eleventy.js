@@ -2,18 +2,31 @@ const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
 
-  // --- 1. O QUE O ROBÔ DEVE COPIAR (Do SRC para o Site Final) ---
-  // Note que agora apontamos para dentro de "src/"
-  eleventyConfig.addPassthroughCopy("src/css");
-  eleventyConfig.addPassthroughCopy("src/imagens");
-  eleventyConfig.addPassthroughCopy("src/js");
-  eleventyConfig.addPassthroughCopy("src/admin"); 
+  // =================================================================
+  // 1. O TRANSPORTE DOS ARQUIVOS (Mapeamento Inteligente)
+  // =================================================================
   
-  // Arquivos soltos importantes que movemos para src
-  eleventyConfig.addPassthroughCopy("src/robots.txt");
-  eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" }); // Garante que vá para a raiz do site final
+  // A Regra é: { "ONDE_ESTA_AGORA" : "ONDE_VAI_FICAR_NO_SITE" }
+  
+  // CSS: Pega de assets/css e joga na pasta css do site (para não quebrar links)
+  eleventyConfig.addPassthroughCopy({ "src/assets/css": "css" });
+  
+  // JS: Pega de assets/js e joga na pasta js
+  eleventyConfig.addPassthroughCopy({ "src/assets/js": "js" });
+  
+  // Imagens: Pega de assets/imagens e joga na pasta imagens
+  eleventyConfig.addPassthroughCopy({ "src/assets/imagens": "imagens" });
+  
+  // Admin do CMS
+  eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
 
-  // --- 2. FILTROS (Mantidos e Protegidos) ---
+  // Arquivos Soltos (Robots, Redirects)
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
+
+  // =================================================================
+  // 2. FILTROS (O Cérebro Matemático)
+  // =================================================================
   
   // Filtro de Dinheiro (Corrige o R$ 34,80)
   eleventyConfig.addFilter("dinheiro", (valor) => {
@@ -29,13 +42,15 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj).setZone("America/Sao_Paulo").toFormat("dd/MM/yyyy");
   });
 
-  // --- 3. A NOVA CONFIGURAÇÃO DE DIRETÓRIOS (O PULO DO GATO) ---
+  // =================================================================
+  // 3. CONFIGURAÇÃO DO MOTOR
+  // =================================================================
   return {
     dir: {
-      input: "src",          // <--- AQUI MUDOU! Agora olhamos para SRC
-      includes: "_includes", // O Eleventy busca em src/_includes
-      data: "_data",         // O Eleventy busca em src/_data
-      output: "_site"        // Onde o site pronto é gerado
+      input: "src",          // O Robô olha para dentro de SRC
+      includes: "_includes", // Busca layouts em src/_includes
+      data: "_data",         // Busca dados em src/_data
+      output: "_site"        // Cospe o site pronto aqui
     },
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
