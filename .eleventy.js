@@ -3,28 +3,26 @@ const { DateTime } = require("luxon");
 module.exports = function(eleventyConfig) {
 
   // =================================================================
-  // 1. O RESGATE DOS ARQUIVOS (Mapeamento de Segurança)
+  // 1. A REDE DE ARRASTÃO (Encontra o CSS onde ele estiver)
   // =================================================================
   
-  // --- CSS (A CORREÇÃO DO SITE QUEBRADO) ---
-  // Tenta pegar da pasta nova (src/assets/css)
+  // Opção A: Se você colocou em src/assets/css (O Ideal)
   eleventyConfig.addPassthroughCopy({ "src/assets/css": "css" });
-  // Tenta pegar da pasta antiga na raiz (css), caso você tenha esquecido de mover
+  
+  // Opção B: Se você colocou solto em src/css (Comum)
+  eleventyConfig.addPassthroughCopy({ "src/css": "css" });
+  
+  // Opção C: Se você esqueceu na Raiz/css (Antigo)
   eleventyConfig.addPassthroughCopy({ "css": "css" });
-  
-  // --- IMAGENS ---
+
+  // --- OUTROS ARQUIVOS ---
   eleventyConfig.addPassthroughCopy({ "src/assets/imagens": "imagens" });
-  eleventyConfig.addPassthroughCopy({ "imagens": "imagens" }); // Segurança raiz
+  eleventyConfig.addPassthroughCopy({ "src/imagens": "imagens" }); // Segurança
   
-  // --- JAVASCRIPT ---
   eleventyConfig.addPassthroughCopy({ "src/assets/js": "js" });
-  eleventyConfig.addPassthroughCopy({ "js": "js" }); // Segurança raiz
+  eleventyConfig.addPassthroughCopy({ "src/js": "js" }); // Segurança
   
-  // --- OUTROS ---
   eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
-  eleventyConfig.addPassthroughCopy({ "admin": "admin" });
-  
-  // Arquivos soltos
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
 
