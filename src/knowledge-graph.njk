@@ -1,0 +1,48 @@
+---
+permalink: /knowledge-graph.json
+eleventyExcludeFromCollections: true
+---
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://gourmetpratico.com.br/#organization",
+      "name": "ChefBrico Gourmet Prático",
+      "url": "https://gourmetpratico.com.br",
+      "logo": "https://gourmetpratico.com.br/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png",
+      "description": "Especialista em Culinária de Panela Única e Desidratação.",
+      "founder": {
+        "@type": "Person",
+        "name": "Maria Conceição"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+5561996659880",
+        "contactType": "sales",
+        "areaServed": "BR"
+      }
+    },
+    {
+      "@type": "OfferCatalog",
+      "name": "Catálogo ChefBox",
+      "itemListElement": [
+        {% for item in collections.receitas %}
+        {
+          "@type": "Product",
+          "name": "{{ item.data.title }}",
+          "sku": "{{ item.data.sku }}",
+          "image": "https://gourmetpratico.com.br{{ item.data.image }}",
+          "description": "{{ item.data.description }}",
+          "offers": {
+            "@type": "Offer",
+            "price": "{{ item.data.price }}",
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/InStock"
+          }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  ]
+}
