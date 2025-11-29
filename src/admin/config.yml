@@ -1,48 +1,51 @@
 backend:
   name: git-gateway
-  branch: main # Confirme se seu branch principal é 'main' ou 'master'
+  branch: main # O ramo principal do seu GitHub
 
-media_folder: "imagens"    # Pasta onde as fotos ficam guardadas
-public_folder: "/imagens"  # Como o site acessa as fotos
-locale: 'pt'               # Interface em Português
+# --- 1. ONDE GUARDAR AS FOTOS (MUDANÇA CRÍTICA) ---
+# Antes era "imagens". Agora elas moram na pasta de assets dentro do src.
+media_folder: "src/assets/imagens" 
 
-# O "GUARDIÃO": Impede publicação acidental. Cria fluxo Rascunho -> Revisão -> Publicar
-publish_mode: editorial_workflow
+# Como o site lê a foto (Isso não muda, graças ao mapeamento que fizemos)
+public_folder: "/imagens"
+
+locale: 'pt' # Painel em Português
+publish_mode: editorial_workflow # Ativa o modo Rascunho -> Publicar
 
 collections:
-  # --- 1. FUNDAÇÃO (DADOS QUE A IA LÊ) ---
+  # --- 2. DADOS GLOBAIS (O CÉREBRO) ---
   - name: "settings"
     label: "⚙️ Dados Globais (EEAT)"
     files:
       - name: "author"
         label: "Autora (Maria Conceição)"
-        file: "_data/author.json"
-        description: "Dados para o Google saber quem é a autoridade por trás das receitas."
-        format: "json"  # <--- CRÍTICO: Garante que salve como JSON válido
+        file: "src/_data/author.json" # <--- CAMINHO NOVO (dentro de src)
+        description: "Dados para o Google saber quem é a autoridade."
+        format: "json"
         fields:
           - {label: "Nome Completo", name: "name", widget: "string", default: "Maria Conceição"}
           - {label: "Biografia Curta", name: "bio", widget: "text"}
-          - {label: "Prêmios (Autoridade)", name: "award", widget: "string", default: "Prêmio Sebrae Mulher de Negócios"}
-          - {label: "Link ID (Não Mexer)", name: "id", widget: "hidden", default: "https://gourmetpratico.com.br/#person-maria-conceicao"}
+          - {label: "Prêmios", name: "award", widget: "string", default: "Prêmio Sebrae Mulher de Negócios"}
+          - {label: "Link ID", name: "id", widget: "hidden", default: "https://gourmetpratico.com.br/#person-maria-conceicao"}
       
       - name: "organization"
         label: "Marca (ChefBrico)"
-        file: "_data/organization.json"
-        format: "json"  # <--- CRÍTICO
+        file: "src/_data/organization.json" # <--- CAMINHO NOVO
+        format: "json"
         fields:
           - {label: "Nome da Marca", name: "name", widget: "string", default: "ChefBrico"}
-          - {label: "WhatsApp de Venda", name: "whatsapp", widget: "string", hint: "Apenas números (Ex: 5561996659880)"}
+          - {label: "WhatsApp (Só números)", name: "whatsapp", widget: "string", hint: "Ex: 5561996659880"}
           - {label: "CNPJ", name: "cnpj", widget: "string"}
           - {label: "Endereço", name: "address", widget: "string", default: "Brasília, DF"}
 
-  # --- 2. RECEITAS = PRODUTOS (A-COMMERCE) ---
+  # --- 3. RECEITAS (A DESPENSA) ---
   - name: "receitas"
     label: "🍳 Receitas & Produtos"
-    folder: "receitas"  # Pasta na raiz onde ficam os arquivos .md
+    folder: "src/content/receitas" # <--- CAMINHO NOVO (dentro de content)
     create: true
     slug: "{{slug}}"
-    extension: "md"     # <--- SEGURANÇA: Força arquivo Markdown
-    format: "yaml-frontmatter" # <--- SEGURANÇA: Separa Dados do Texto
+    extension: "md"
+    format: "yaml-frontmatter"
     fields:
       # DADOS VITAIS (ROBÔ)
       - {label: "SKU (Código)", name: "sku", widget: "string", hint: "Ex: RIS-FUNGHI"}
@@ -51,31 +54,32 @@ collections:
       
       # CONTEÚDO (HUMANO)
       - {label: "Título da Receita", name: "title", widget: "string"}
-      - {label: "Descrição SEO (Google)", name: "description", widget: "text"}
+      - {label: "Descrição SEO", name: "description", widget: "text"}
       - {label: "Foto do Prato", name: "image", widget: "image"}
+      - {label: "Categoria", name: "category", widget: "select", options: ["Risoto", "Sopa", "Refeição", "Empório"]}
       
       # DADOS TÉCNICOS
       - {label: "Tempo (Ex: 18 min)", name: "tempo_preparo", widget: "string", default: "18 min"}
-      - {label: "Tempo ISO (Ex: PT18M)", name: "tempo_iso", widget: "string", default: "PT18M", hint: "Formato para IA ler (PT + Minutos + M)"}
+      - {label: "Tempo ISO (Ex: PT18M)", name: "tempo_iso", widget: "string", default: "PT18M"}
       - {label: "Rendimento", name: "rendimento", widget: "string", default: "2 pessoas"}
       - {label: "Dificuldade", name: "dificuldade", widget: "select", options: ["Muito Fácil", "Fácil", "Médio"]}
       
       # CORPO DO TEXTO
-      - {label: "Dica de Ouro (Citação)", name: "citable_fact", widget: "text"}
+      - {label: "Dica de Ouro", name: "citable_fact", widget: "text"}
       - {label: "História e Passo a Passo", name: "body", widget: "markdown"}
       
-      # INVISÍVEIS (LAYOUT)
+      # INVISÍVEIS
       - {label: "Layout", name: "layout", widget: "hidden", default: "receita.njk"}
 
-  # --- 3. PÁGINA ESPECIAL (CHEFBOX) ---
+  # --- 4. PÁGINA CHEFBOX ---
   - name: "chefbox"
     label: "🎁 Página ChefBox"
     files:
       - name: "index"
         label: "Conteúdo da Landing Page"
-        file: "chefbox/index.md"
+        file: "src/content/chefbox/index.md" # <--- CAMINHO NOVO
         format: "yaml-frontmatter"
         fields:
-          - {label: "Título", name: "title", widget: "string", default: "A Verdade sobre a ChefBox"}
+          - {label: "Título", name: "title", widget: "string", default: "Monte sua ChefBox"}
           - {label: "Texto Manifesto", name: "body", widget: "markdown"}
-          - {label: "Layout", name: "layout", widget: "hidden", default: "chefbox.njk"}
+          - {label: "Layout", name: "layout", widget: "hidden", default: "base.njk"}
