@@ -379,3 +379,18 @@ main {
     .chefbox-sticky-bar { flex-direction: row; gap: 10px; padding: 10px; }
     .slot-circle { width: 45px; height: 45px; font-size: 1rem; }
 }
+/* CORREÇÃO DA RÉGUA (BOLINHAS NA HORIZONTAL SEMPRE) */
+.chefbox-sticky-bar {
+    flex-direction: row !important; /* Força linha horizontal */
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+    flex-wrap: nowrap; /* Não deixa quebrar linha */
+}
+
+.slot-circle {
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 1rem !important;
+    flex-shrink: 0; /* Não deixa amassar */
+}
