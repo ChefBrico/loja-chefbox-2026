@@ -354,57 +354,59 @@ main {
     font-size: 0.85rem;
 }
 
-/* ==========================================================================
-   8. RESPONSIVIDADE (MOBILE - CORREÇÃO DEFINITIVA DA RÉGUA)
-   ========================================================================== */
+/* ================================================================= */
+/* === CORREÇÃO FINAL E ABSOLUTA DA RÉGUA (MOBILE) === */
+/* ================================================================= */
+
 @media (max-width: 992px) {
     
-    /* --- 1. A BARRA PRINCIPAL (O Container Pai) --- */
-    /* Ela fica VERTICAL para o Texto ficar em cima das Bolas */
+    /* 1. A Barra Fixa no Rodapé */
     .chefbox-sticky-bar {
-        display: flex !important;
-        flex-direction: column !important; /* Texto em cima, grupo de bolas embaixo */
-        align-items: center !important;
-        padding: 10px 0 !important;
-        gap: 5px !important;
-        bottom: 0 !important;
         position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
         width: 100% !important;
-        z-index: 99999 !important;
+        background: white !important;
+        border-top: 4px solid #F2811D !important;
+        z-index: 999999 !important;
+        padding: 10px 0 !important;
+        
+        /* Organização Vertical: Texto em cima, Bolas embaixo */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
 
-    /* --- 2. O GRUPO DE BOLINHAS (O Container Filho) --- */
-    /* AQUI ESTAVA O ERRO: Precisamos forçar este grupo a ser HORIZONTAL */
+    /* 2. O Texto Pequeno */
+    .bar-info {
+        font-size: 0.8rem !important;
+        margin-bottom: 8px !important;
+        font-weight: bold !important;
+        color: #014039 !important;
+    }
+
+    /* 3. O Container das Bolinhas (AQUI É A CHAVE) */
     .slots-wrapper {
         display: flex !important;
-        flex-direction: row !important;  /* <--- ISSO GARANTE A LINHA */
+        flex-direction: row !important; /* LINHA OBRIGATÓRIA */
+        flex-wrap: nowrap !important;   /* NÃO QUEBRAR */
         justify-content: center !important;
-        gap: 8px !important;
+        gap: 10px !important;
         width: 100% !important;
     }
 
-    /* --- 3. AS BOLINHAS INDIVIDUAIS --- */
+    /* 4. As Bolinhas (Tamanho Travado) */
     .slot-circle {
         width: 45px !important;
         height: 45px !important;
+        min-width: 45px !important; /* Impede esmagamento */
+        border-radius: 50% !important;
+        background-color: #f4f4f4 !important;
+        border: 2px dashed #ccc !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         font-size: 1rem !important;
-        margin: 0 !important;
+        margin: 0 !important; /* Remove margens externas */
     }
-
-    /* --- 4. O TEXTO --- */
-    .bar-info {
-        font-size: 0.8rem !important;
-        margin: 0 !important;
-    }
-
-    /* --- 5. AJUSTES GERAIS DO MOBILE (Mantidos) --- */
-    .nav-list { display: none; }
-    .mobile-menu-btn { display: block; }
-    .logo-circle { width: 60px; height: 60px; border-width: 2px; }
-    .hero-section-with-image-and-text { flex-direction: column; padding: 40px 20px; }
-    .hero-image-container-circular { width: 200px; height: 200px; }
-    .hero-content-text h1 { font-size: 2rem; }
-    .receita-container, article { width: 94%; margin: 20px auto 40px; padding: 20px; }
-    .footer-grid { grid-template-columns: 1fr; text-align: center; }
-    .footer-bottom { padding-bottom: 160px; }
 }
