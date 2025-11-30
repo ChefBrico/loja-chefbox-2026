@@ -471,3 +471,44 @@ main {
     .footer-grid { grid-template-columns: 1fr; text-align: center; }
     .footer-bottom { padding-bottom: 200px; } /* Mais espaço para a régua maior */
 }
+/* ================================================================= */
+/* === CORREÇÃO DA VITRINE: 5 CARDS POR LINHA === */
+/* ================================================================= */
+
+.recipe-grid {
+    display: grid;
+    /* O SEGREDO: minmax(200px) permite caber 5 cards na tela de PC */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px; /* Espaço entre os cards */
+    margin-bottom: 100px;
+    width: 100%;
+}
+
+/* Ajuste do Card para ficar bonito menor */
+.recipe-grid .recipe-card {
+    height: auto; /* Altura automática */
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajuste da Imagem no Grid de 5 */
+.recipe-grid .card-image-wrapper {
+    height: 150px; /* Imagem um pouco mais baixa para equilibrar */
+}
+
+/* Ajuste do Título para não ficar gigante */
+.recipe-grid h3 {
+    font-size: 0.95rem; /* Letra ajustada */
+    line-height: 1.3;
+    margin: 10px 0;
+}
+
+/* --- RESPONSIVIDADE (Para não quebrar no celular) --- */
+@media (max-width: 768px) {
+    .recipe-grid {
+        /* No celular, volta para 2 colunas */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px;
+    }
+}
