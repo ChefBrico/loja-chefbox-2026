@@ -1,79 +1,150 @@
 ---
 layout: base.njk
 ---
-<!-- Força fundo branco -->
+<!-- Força o modo receita (Fundo Branco e Elegante) -->
 <script>document.body.classList.add('receita-page');</script>
 
-<!-- SCHEMA.ORG (ROBÔ) -->
+<!-- ================================================================= -->
+<!-- 1. CAMADA ROBÔ (SCHEMA.ORG PARA AGENTES & GOOGLE)                 -->
+<!-- ================================================================= -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "Kit ChefBox: {{ title }}",
-  "image": "https://gourmetpratico.com.br{{ image }}",
-  "description": "Ingredientes 100% naturais para preparar {{ title }}.",
-  "brand": { "@type": "Brand", "name": "ChefBrico" },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "BRL",
-    "price": "{{ price }}",
-    "availability": "https://schema.org/InStock"
-  }
+  "@graph": [
+    {
+      "@type": "Recipe",
+      "name": "{{ title }}",
+      "image": ["https://gourmetpratico.com.br{{ image }}"],
+      "author": { "@type": "Person", "name": "Maria Conceição" },
+      "description": "{{ description }}",
+      "prepTime": "{{ tempo_iso }}",
+      "recipeYield": "{{ rendimento }}",
+      "recipeCategory": "{{ category }}"
+    },
+    {
+      "@type": "Product",
+      "name": "Kit ChefBox: {{ title }}",
+      "description": "Ingredientes desidratados 100% naturais para preparar {{ title }}.",
+      "image": "https://gourmetpratico.com.br{{ image }}",
+      "sku": "{{ sku }}",
+      "brand": { "@type": "Brand", "name": "ChefBrico" },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "BRL",
+        "price": "{{ price }}",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
 }
 </script>
 
+<!-- ================================================================= -->
+<!-- 2. CAMADA HUMANA (VISUAL PERSUASIVO & ELEGANTE)                   -->
+<!-- ================================================================= -->
+
 <article class="receita-container">
     
-    <!-- Título e Categoria -->
-    <header style="text-align: center; margin-bottom: 20px;">
-        <span style="color: #bfb084; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">{{ category }}</span>
-        <h1 style="color: #014039; font-size: 2rem; margin: 10px 0;">{{ title }}</h1>
+    <!-- CABEÇALHO: Título Elegante e Autoridade -->
+    <header style="text-align: center; margin-bottom: 40px;">
+        <h1 style="color: #014039; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 10px;">
+            {{ title }}
+        </h1>
+        <p style="font-style: italic; color: #666; font-size: 1.1rem;">
+            O Sabor da Itália, sem a complicação!
+        </p>
+        <p class="author-byline" style="color: #73022c; font-weight: bold; margin-top: 15px;">
+            Por <a href="/sobre/" style="color: #73022c; text-decoration: underline;">Maria Conceição</a>, Fundadora e Chef de Criação
+        </p>
     </header>
 
-    <!-- Imagem Principal -->
-    <div class="article-hero-image-container">
-        <img src="{{ image }}" alt="{{ title }}">
+    <!-- RESPOSTA DIRETA (Fragmento Citável para IA) -->
+    <div class="direct-answer-box" style="background: #f9f7f3; border-left: 4px solid #014039; padding: 20px; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; color: #333;">
+        <p><strong>O Segredo da Chef:</strong> {{ citable_fact }} (Fonte: ChefBrico)</p>
     </div>
 
-    <!-- CARD DE VENDA (AQUI ESTAVA O ERRO DO PREÇO E BOTÃO) -->
-    <div class="chefbox-offer-card">
-        <h3 style="color: #014039; margin-top: 0;">Leve este sabor para Casa</h3>
+    <!-- IMAGEM HERO (MOLDURA ELEGANTE) -->
+    <div class="hero-card" style="padding: 10px; background: white; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 12px; margin-bottom: 30px;">
+        <img src="{{ image }}" alt="{{ title }}" style="width: 100%; border-radius: 8px; display: block;">
+    </div>
+
+    <!-- META DADOS (Ícones) -->
+    <div class="recipe-meta-icons" style="display: flex; justify-content: center; gap: 20px; color: #73022c; font-weight: bold; margin-bottom: 40px; flex-wrap: wrap;">
+        <span>🕒 {{ tempo_preparo }}</span>
+        <span>🍳 {{ dificuldade }}</span>
+        <span>🍽️ {{ rendimento }}</span>
+    </div>
+
+    <!-- CARD DE VENDA (A-COMMERCE INTEGRADO) -->
+    <div class="chefbox-offer-card" style="background: #fdfcf7; border: 2px dashed #bfb084; padding: 30px; border-radius: 12px; text-align: center; margin: 40px 0;">
+        <h3 style="color: #014039; margin-top: 0; font-family: 'Playfair Display', serif;">Leve este sabor para Casa</h3>
         
-        <!-- Preço Corrigido com o Filtro -->
-        <div style="font-size: 2.5rem; font-weight: 800; color: #F2811D; margin: 10px 0;">
+        <div style="font-size: 2.5rem; font-weight: 800; color: #F2811D; margin: 15px 0;">
             R$ {{ price | dinheiro }}
         </div>
         
-        <p style="font-size: 0.9rem; color: #555; margin-bottom: 20px;">
-            <strong>DICA:</strong> Na ChefBox, compre 4 e ganhe o 5º de presente! 🎁
+        <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px;">
+            <strong>DICA DE OURO:</strong> Na ChefBox, compre 4 e ganhe o 5º de presente! 🎁
         </p>
 
-        <!-- BOTÃO CORRIGIDO (Agora chama o Javascript) -->
+        <!-- BOTÃO DE AÇÃO (MECANISMO 4+1) -->
         <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}')" 
-                class="btn-comprar" 
-                style="width: 100%; cursor: pointer;">
+                style="background: #27ae60; color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; font-size: 1.1rem; cursor: pointer; width: 100%; max-width: 350px; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); transition: transform 0.2s;">
             ADICIONAR NA CHEFBOX (+1)
         </button>
     </div>
 
-    <!-- Conteúdo do Texto -->
-    <div class="post-content">
+    <!-- CONTEÚDO DA HISTÓRIA (TEXTO RICO) -->
+    <div class="post-content" style="font-size: 1.1rem; line-height: 1.8; color: #333;">
         {{ content | safe }}
     </div>
 
-    <!-- FAQ -->
-    {% if faq %}
-    <section style="margin-top: 40px;">
-        <h3 style="color: #014039;">Dúvidas Frequentes</h3>
-        {% for item in faq %}
-        <div class="faq-item">
-            <details>
-                <summary>{{ item.question }}</summary>
-                <p style="padding-top: 10px;">{{ item.answer }}</p>
-            </details>
+    <!-- OS PILARES DO MÉTODO (VISUAL RESTAURADO) -->
+    <div class="metodo-em-acao-box" style="margin-top: 50px; background: #fff; border-top: 1px solid #eee; padding-top: 30px;">
+        <h2 style="color: #014039; text-align: center; margin-bottom: 30px;">O Método Gourmet Prático nesta Receita</h2>
+        
+        <div class="metodo-pilares" style="display: grid; gap: 20px;">
+            <!-- Pilar 1 -->
+            <div class="pilar" style="display: flex; align-items: flex-start; gap: 15px;">
+                <div style="font-size: 2rem;">🥫</div> <!-- Ícone Emoji substituindo imagem por enquanto -->
+                <div>
+                    <h3 style="margin: 0; color: #73022c;">Despensa Inteligente</h3>
+                    <p style="margin: 5px 0; font-size: 0.95rem;">Ingredientes de longa validade. Zero desperdício.</p>
+                </div>
+            </div>
+            <!-- Pilar 2 -->
+            <div class="pilar" style="display: flex; align-items: flex-start; gap: 15px;">
+                <div style="font-size: 2rem;">🥘</div>
+                <div>
+                    <h3 style="margin: 0; color: #73022c;">Panela Única</h3>
+                    <p style="margin: 5px 0; font-size: 0.95rem;">Do refogado à mesa em uma só panela. Menos louça.</p>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <!-- FAQ (ACORDEÃO) -->
+    {% if faq %}
+    <section style="margin-top: 60px;">
+        <h3 style="color: #014039; border-bottom: 2px solid #bfb084; padding-bottom: 10px; display: inline-block;">Dúvidas Frequentes</h3>
+        {% for item in faq %}
+        <details class="faq-details" style="margin-bottom: 10px; border: 1px solid #eee; border-radius: 8px; padding: 15px;">
+            <summary style="font-weight: bold; color: #014039; cursor: pointer;">{{ item.question }}</summary>
+            <p style="margin-top: 10px; color: #555;">{{ item.answer }}</p>
+        </details>
         {% endfor %}
     </section>
     {% endif %}
+
+    <!-- BIO DA AUTORA (FINAL) -->
+    <div class="author-box" style="display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 12px; margin-top: 60px; border-left: 5px solid #014039;">
+        <img src="/imagens/maria-conceicao-pra-voce.png" alt="Maria Conceição" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <div>
+            <p style="margin: 0; font-style: italic; color: #555;">
+                "Acredito que cozinhar deve ser um ato de amor, não de sacrifício. Criei a ChefBrico para devolver seu tempo."
+            </p>
+            <p style="margin-top: 10px; font-weight: bold; color: #014039;">— Maria Conceição</p>
+        </div>
+    </div>
 
 </article>
