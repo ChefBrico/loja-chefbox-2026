@@ -394,3 +394,43 @@ main {
     border: none !important;
     padding-bottom: 140px; /* Espaço para a régua */
 }
+/* CORREÇÃO DO MEGA MENU (SOLUÇÕES VISÍVEIS) */
+.mega-menu {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background: #ffffff;
+    border-top: 3px solid #bfb084; /* Topo Dourado */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 20px;
+    z-index: 1000;
+    min-width: 600px; /* Largo para caber 2 colunas */
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Mostra ao passar o mouse */
+.has-dropdown:hover .mega-menu {
+    display: grid !important;
+}
+
+.mega-column h4 {
+    color: #014039;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.mega-column a {
+    display: block;
+    padding: 5px 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+.mega-column a:hover {
+    color: #F2811D;
+    transform: translateX(5px);
+}
