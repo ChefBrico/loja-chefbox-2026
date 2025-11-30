@@ -365,3 +365,32 @@ main {
     font-size: 0.85rem !important; /* Letra mais fina e elegante */
     letter-spacing: 1px;
 }
+/* CORREÇÃO DO RODAPÉ (BRANCO INFINITO & ELEGANTE) */
+.site-footer {
+    background-color: #ffffff !important; /* Branco Puro */
+    color: #333333 !important; /* Texto Cinza Escuro */
+    border-top: 1px solid #bfb084; /* Linha Dourada Fina */
+    padding-top: 40px;
+}
+
+.footer-col h4 {
+    color: #014039 !important; /* Títulos em Verde */
+    border-bottom: 2px solid #bfb084 !important; /* Sublinhado Dourado */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-col a {
+    color: #555555 !important; /* Links Cinza */
+}
+.footer-col a:hover {
+    color: #F2811D !important; /* Hover Laranja */
+}
+
+/* Área de Copyright */
+.footer-bottom {
+    background-color: #ffffff !important;
+    color: #999 !important;
+    border: none !important;
+    padding-bottom: 140px; /* Espaço para a régua */
+}
