@@ -4,3 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "18"
+
+# --- ADIÇÃO IMPORTANTE PARA O CÉREBRO (FUNCTIONS) ---
+[functions]
+  directory = "netlify/functions"
