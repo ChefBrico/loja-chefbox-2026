@@ -349,3 +349,19 @@ main {
     font-size: 1rem !important;
     flex-shrink: 0; /* Não deixa amassar */
 }
+/* CORREÇÃO DO MENU (ELEGÂNCIA SLIM) */
+.site-header {
+    padding: 10px 0 !important; /* Reduz altura drasticamente */
+}
+
+.logo-circle {
+    width: 70px !important; /* Logo mais delicada */
+    height: 70px !important;
+    margin-top: 5px !important;
+    border-width: 2px !important;
+}
+
+.nav-link {
+    font-size: 0.85rem !important; /* Letra mais fina e elegante */
+    letter-spacing: 1px;
+}
