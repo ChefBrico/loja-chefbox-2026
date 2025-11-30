@@ -52,17 +52,19 @@
     
     <!-- ======================================================= -->
     <!-- D. A-COMMERCE: RÉGUA DE GAMIFICAÇÃO (MECANISMO 4+1)     -->
-    <!-- Inserido diretamente aqui para garantir funcionamento     -->
+    <!-- BLINDADA: Estilos inline para forçar horizontalidade    -->
     <!-- ======================================================= -->
     
-    <!-- Lógica: Só mostra nas Receitas e na página ChefBox -->
     {% if '/receitas/' in page.url or '/chefbox/' in page.url %}
-    <div id="chefbox-bar" class="chefbox-sticky-bar">
-        <div class="bar-info">
+    <div id="chefbox-bar" class="chefbox-sticky-bar" style="display: flex !important; flex-direction: column !important; align-items: center !important; padding: 10px 0 !important;">
+        
+        <!-- Texto (Fica em cima) -->
+        <div class="bar-info" style="margin-bottom: 5px !important; font-size: 0.8rem !important;">
             <span id="game-status-text">Monte sua ChefBox:</span>
         </div>
         
-        <div class="slots-wrapper">
+        <!-- Bolinhas (FORÇADO A FICAR EM LINHA / HORIZONTAL) -->
+        <div class="slots-wrapper" style="display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; gap: 10px !important; justify-content: center !important; width: 100% !important;">
             <div id="slot-1" class="slot-circle">1</div>
             <div id="slot-2" class="slot-circle">2</div>
             <div id="slot-3" class="slot-circle">3</div>
@@ -70,7 +72,8 @@
             <div id="slot-5" class="slot-circle gift">🎁</div>
         </div>
 
-        <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()" style="display:none;">
+        <!-- Botão Finalizar -->
+        <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()" style="display:none; margin-top: 5px;">
             Finalizar Pedido ➜
         </button>
     </div>
