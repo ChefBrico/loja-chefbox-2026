@@ -578,3 +578,14 @@ main {
         min-height: 280px; /* Um pouco menor no celular */
     }
 }
+/* Ajuste para cards menores (5 por linha) */
+.recipe-card .card-title {
+    font-size: 0.95rem; /* Letra um pouco menor para caber */
+    margin: 5px 0;
+    line-height: 1.3;
+}
+
+.recipe-card {
+    height: auto; /* Deixa a altura se ajustar ao conteúdo */
+    min-height: 320px; /* Altura mínima padrão */
+}
