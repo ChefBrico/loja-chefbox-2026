@@ -57,107 +57,31 @@ description: "Catálogo completo de risotos artesanais da ChefBrico. Opções ve
         <h1>Risotos e Arrozes do Mundo</h1>
         <p>A volta ao mundo em 18 minutos. Sabores clássicos e autorais, veganos e sem glúten.</p>
     </div>
-    
     <div class="product-grid">
+    
+    <!-- 1. O ROBÔ COMEÇA A LER TODAS AS RECEITAS DO SITE -->
+    {% for item in collections.receitas %}
         
-        <a href="/receitas/risotos/funghi/" class="product-card">
-            <img src="/imagens/cardapio-risoto-cremoso-funghi-tijela-chefbrico.png" alt="Risoto Funghi Secchi" class="product-card-image">
+        <!-- 2. O FILTRO: "É um Risoto?" -->
+        <!-- Se for Sopa, ele pula. Se for Risoto, ele entra. -->
+        {% if item.data.category == "Risoto" %}
+        
+        <!-- 3. O LINK BLINDADO -->
+        <!-- Ele descobre onde o arquivo está guardado fisicamente e cria o link certo -->
+        {% set linkReal = item.filePathStem | replace("/content", "") + "/" %}
+
+        <!-- 4. O CARD (O Molde) -->
+        <!-- Ele pega a FOTO ÚNICA e o TÍTULO ÚNICO deste risoto específico -->
+        <a href="{{ linkReal }}" class="product-card">
+            <img src="{{ item.data.image }}" alt="{{ item.data.title }}">
             <div class="product-card-content">
-                <span>Clássico</span>
-                <h3>Risoto Funghi Secchi</h3>
+                <h3>{{ item.data.title }}</h3> <!-- Aqui entra "Risoto Pomodori" -->
                 <div class="cta-link">Ver Receita →</div>
             </div>
         </a>
+        
+        {% endif %}
+    {% endfor %}
 
-        <a href="/receitas/risotos/pomodori/" class="product-card">
-            <img src="/imagens/cardapio-risoto-cremoso-pomodori-pesto-chefbrico.png" alt="Risoto Pomodori" class="product-card-image">
-            <div class="product-card-content">
-                <span>Italiano</span>
-                <h3>Risoto Pomodori & Pesto</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/zucchini/" class="product-card">
-            <img src="/imagens/cardapio-chefbrico-risoto-zucchini.png" alt="Risoto Zucchini" class="product-card-image">
-            <div class="product-card-content">
-                <span>Leveza</span>
-                <h3>Risoto de Zucchini</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/paella-veg/" class="product-card">
-            <img src="/imagens/cardapio-chefbrico-risoto-espanhol-paella.png" alt="Risoto Paella Veg" class="product-card-image">
-            <div class="product-card-content">
-                <span>Espanhol</span>
-                <h3>Risoto Paella Veg.</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/pera-gorgonzola/" class="product-card">
-            <img src="/imagens/cardapio-chefbrico-risoto-pera-e-lima%CC%83o-siciliano.png" alt="Risoto Pêra" class="product-card-image">
-            <div class="product-card-content">
-                <span>Agridoce</span>
-                <h3>Risoto Pêra e Gorgonzola</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/morango/" class="product-card">
-            <img src="/imagens/cardapio-chefbrico-risoto-morango-agridoce.png" alt="Risoto Morango" class="product-card-image">
-            <div class="product-card-content">
-                <span>Gourmet</span>
-                <h3>Risoto de Morango</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/mix-funghi/" class="product-card">
-            <img src="/imagens/cardapio-chefbrico-risoto-mix-funghi.png" alt="Risoto Mix Funghi" class="product-card-image">
-            <div class="product-card-content">
-                <span>Umami</span>
-                <h3>Risoto Mix Funghi</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/shiimeji/" class="product-card">
-            <img src="/imagens/cardapio-chefbrico-risoto-shiimeji-na%20tijela.png" alt="Risoto Shiimeji" class="product-card-image">
-            <div class="product-card-content">
-                <span>Sofisticado</span>
-                <h3>Risoto de Shiimeji</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/alho-poro/" class="product-card">
-            <img src="/imagens/cardapio-chefbrico-risoto-alho-poro.png" alt="Risoto Pesto" class="product-card-image">
-            <div class="product-card-content">
-                <span>Cremoso</span>
-                <h3>Risoto Pesto e Alho-Poró</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/mediterraneo/" class="product-card">
-            <img src="/imagens/cardapio-chefbrico-risoto-mediterraneo-tijela.png" alt="Risoto Mediterrâneo" class="product-card-image">
-            <div class="product-card-content">
-                <span>Refrescante</span>
-                <h3>Risoto Mediterrâneo</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <a href="/receitas/risotos/tomate-manjericao/" class="product-card">
-            <img src="/imagens/cardapio-chefbrico-risoto-tomate-tijela.png" alt="Risoto Tomate" class="product-card-image">
-            <div class="product-card-content">
-                <span>Afetivo</span>
-                <h3>Risoto de Tomate</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-    </div>
+</div>
 </main>
