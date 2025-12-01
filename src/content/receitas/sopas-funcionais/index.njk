@@ -49,38 +49,23 @@ description: "Catálogo completo de sopas funcionais: Detox, Low Carb, Fit e Veg
 </style>
 
 <main>
-    <div class="page-header-cat">
-        <h1>Sopas Funcionais</h1>
-        <p>Sabores que cuidam da sua saúde. Opções Detox, Low Carb, Proteicas e Veganas.</p>
-    </div>
-    
-    <div class="product-grid">
-    
-    <!-- 1. O ROBÔ COMEÇA A LER TODAS AS RECEITAS DO SITE -->
+   <div class="product-grid">
     {% for item in collections.receitas %}
+        <!-- O FILTRO MÁGICO: Só deixa passar se for Sopa -->
+        {% if item.data.category == "Sopa" or item.data.category == "Sopas Funcionais" %}
         
-        <!-- 2. O FILTRO: "É um Risoto?" -->
-        <!-- Se for Risoto, ele pula. Se for Sopa, ele entra. -->
-        {% if item.data.category == "Sopas Funcionais" %}
-        
-        <!-- 3. O LINK BLINDADO -->
-        <!-- Ele descobre onde o arquivo está guardado fisicamente e cria o link certo -->
         {% set linkReal = item.filePathStem | replace("/content", "") + "/" %}
 
-        <!-- 4. O CARD (O Molde) -->
-        <!-- Ele pega a FOTO ÚNICA e o TÍTULO ÚNICO deste risoto específico -->
         <a href="{{ linkReal }}" class="product-card">
-            <img src="{{ item.data.image }}" alt="{{ item.data.title }}">
+            <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="product-card-image">
             <div class="product-card-content">
-                <h3>{{ item.data.title }}</h3> <!-- Aqui entra "Sopas-Funcionais" -->
+                <span>{{ item.data.category }}</span>
+                <h3>{{ item.data.title }}</h3>
                 <div class="cta-link">Ver Receita →</div>
             </div>
         </a>
         
         {% endif %}
     {% endfor %}
-
 </div>
-
-    </div>
 </main>
