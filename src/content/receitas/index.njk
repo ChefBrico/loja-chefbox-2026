@@ -5,121 +5,81 @@ title: "Catálogo Inteligente: Encontre sua Solução | ChefBrico"
 description: "Explore o cardápio completo da ChefBrico. Filtre por solução, dieta ou tipo de prato."
 ---
 
-<style>
-    /* SEU CSS ORIGINAL MANTIDO */
-    .page-header-local { text-align: center; margin: 40px 20px 30px; }
-    .page-header-local h1 { font-family: 'Merriweather', serif; color: #2c3e50; margin-bottom: 10px; }
-    .page-header-local .subtitle { font-family: 'Lato', sans-serif; color: #7f8c8d; max-width: 700px; margin: 0 auto; }
-
-    .filter-section { margin-bottom: 30px; text-align: center; }
-    .filter-title { font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #27ae60; margin-bottom: 15px; font-size: 0.9em; }
-    
-    .filter-buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding-bottom: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px; }
-    .filter-btn { background-color: #f9f9f9; color: #555; padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; cursor: pointer; font-size: 0.9em; font-weight: bold; transition: all 0.2s; }
-    .filter-btn:hover, .filter-btn.active { background-color: #27ae60; color: white; border-color: #27ae60; }
-
-    .product-grid { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-        gap: 30px; 
-        max-width: 1200px; 
-        margin: 0 auto; 
-        padding-bottom: 150px; /* Espaço para a régua do jogo não cobrir */
-    }
-    
-    .product-card { 
-        display: flex; flex-direction: column; 
-        border: 1px solid #eee; border-radius: 15px; 
-        overflow: hidden; background-color: white; 
-        box-shadow: 0 5px 15px rgba(0,0,0,0.03); 
-        transition: transform 0.3s; 
-        text-decoration: none; color: #333; 
-        cursor: pointer;
-    }
-    .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    
-    .product-card-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; }
-    
-    .product-card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-    .product-card-content h4 { font-size: 1.2em; margin: 0 0 10px; color: #2c3e50; font-family: 'Merriweather', serif; }
-    .product-card-content p { font-size: 0.9em; color: #666; margin-bottom: 20px; flex-grow: 1; }
-    
-    .card-actions { margin-top: auto; display: flex; gap: 10px; }
-    
-    .btn-ver { 
-        flex: 1; border: 1px solid #ddd; color: #666; padding: 10px; 
-        text-align: center; border-radius: 8px; font-weight: bold; font-size: 0.9rem;
-    }
-    .btn-add { 
-        flex: 1; background: #F2811D; color: white; border: none; padding: 10px; 
-        text-align: center; border-radius: 8px; font-weight: bold; cursor: pointer;
-        box-shadow: 0 4px 0 #c0600c; font-size: 0.9rem;
-    }
-    .btn-add:active { transform: translateY(2px); box-shadow: none; }
-</style>
-
 <main class="container">
-    <div class="page-header-local">
-        <h1>Nosso Catálogo Inteligente</h1>
-        <p class="subtitle">Encontre a solução perfeita para cada momento. Use nossos filtros por Solução ou Categoria para navegar em nosso universo de sabores.</p>
+    
+    <!-- CABEÇALHO DA PÁGINA -->
+    <div class="text-center" style="margin: 40px 0;">
+        <h1 class="text-vinho">Nosso Catálogo Inteligente</h1>
+        <p style="max-width: 700px; margin: 0 auto; color: #666;">
+            Encontre a solução perfeita para cada momento. Use nossos filtros por Solução ou Categoria para navegar em nosso universo de sabores.
+        </p>
     </div>
 
-    <!-- FILTROS POR SOLUÇÃO -->
-    <div class="filter-section">
-        <div class="filter-title">🔎 Navegue por Solução</div>
-        <div class="filter-buttons">
-            <button class="filter-btn active" onclick="filter('all')">Todos</button>
-            <button class="filter-btn" onclick="filter('jantar-rapido')">Jantar Rápido</button>
-            <button class="filter-btn" onclick="filter('marmita-saudavel')">Marmita Saudável</button>
-            <button class="filter-btn" onclick="filter('momento-especial')">Momentos Especiais</button>
-            <button class="filter-btn" onclick="filter('kids')">Para a Família</button>
-            <button class="filter-btn" onclick="filter('performance')">Performance & Dieta</button>
-            <button class="filter-btn" onclick="filter('trilha')">Trilha & Viagem</button>
+    <!-- FILTROS POR SOLUÇÃO (TAGS) -->
+    <div class="filter-section text-center" style="margin-bottom: 30px;">
+        <div style="font-weight: bold; color: var(--cor-institucional); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem;">
+            🔎 NAVEGUE POR SOLUÇÃO
+        </div>
+        <div class="filter-buttons" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+            <button class="btn-filter active" onclick="filter('all')">Todos</button>
+            <button class="btn-filter" onclick="filter('jantar-rapido')">Jantar Rápido</button>
+            <button class="btn-filter" onclick="filter('marmita-saudavel')">Marmita Saudável</button>
+            <button class="btn-filter" onclick="filter('momento-especial')">Momentos Especiais</button>
+            <button class="btn-filter" onclick="filter('kids')">Para a Família</button>
+            <button class="btn-filter" onclick="filter('performance')">Performance & Dieta</button>
+            <button class="btn-filter" onclick="filter('trilha')">Trilha & Viagem</button>
         </div>
     </div>
 
     <!-- FILTROS POR CATEGORIA -->
-    <div class="filter-section">
-        <div class="filter-title">🍲 Navegue por Categoria</div>
-        <div class="filter-buttons">
-             <button class="filter-btn" onclick="filter('Risoto')">Risotos</button>
-             <button class="filter-btn" onclick="filter('Sopa')">Sopas</button>
-             <button class="filter-btn" onclick="filter('Refeição')">Refeições Integrais</button>
-             <button class="filter-btn" onclick="filter('Empório')">Empório da Chef</button>
+    <div class="filter-section text-center" style="margin-bottom: 40px;">
+        <div style="font-weight: bold; color: var(--cor-institucional); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem;">
+            🍲 NAVEGUE POR CATEGORIA
+        </div>
+        <div class="filter-buttons" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+             <button class="btn-filter" onclick="filter('Risoto')">Risotos</button>
+             <button class="btn-filter" onclick="filter('Sopa')">Sopas</button>
+             <button class="btn-filter" onclick="filter('Refeição')">Refeições Integrais</button>
+             <button class="btn-filter" onclick="filter('Empório')">Empório da Chef</button>
         </div>
     </div>
     
-    <!-- GRADE DE PRODUTOS -->
-    <div class="product-grid">
+    <!-- GRADE DE PRODUTOS (VITRINE) -->
+    <div class="recipe-grid">
         
         {% for item in collections.receitas %}
-        <!-- O Card lê as tags para o filtro funcionar -->
-        <div class="product-card" data-tags="{{ item.data.keywords }} {{ item.data.category }}">
+        <!-- Card Inteligente -->
+        <div class="recipe-card" data-tags="{{ item.data.keywords }} {{ item.data.category }}">
             
-            <!-- Link da Imagem -->
-            <a href="{{ item.url }}">
-                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="product-card-image" loading="lazy">
-            </a>
-
-            <div class="product-card-content">
+            <!-- Imagem com Link -->
+            <div class="card-image-wrapper" style="position: relative; height: 200px; overflow: hidden;">
                 <a href="{{ item.url }}">
-                    <h4>{{ item.data.title }}</h4>
+                    <img src="{{ item.data.image }}" alt="{{ item.data.title }}" style="width: 100%; height: 100%; object-fit: cover;">
                 </a>
-                <p>{{ item.data.description | truncate(80) }}</p>
                 
-                <!-- CORREÇÃO 1: Preço com Filtro Dinheiro (R$ 34,80) -->
-                <div style="font-weight:bold; color:#27ae60; margin-bottom:10px;">
-                    R$ {{ item.data.price | dinheiro }}
-                </div>
+                <!-- Botão Flutuante (+) -->
+                <button onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}')"
+                        style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; background: var(--cor-cta); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
+                    +
+                </button>
+            </div>
 
-                <div class="card-actions">
-                    <!-- Botão 1: Ver Receita -->
-                    <a href="{{ item.url }}" class="btn-ver">Ver Receita</a>
-                    
-                    <!-- CORREÇÃO 2: Botão Adicionar (Sem aspas no preço) -->
-                    <button class="btn-add" onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}')">
-                        + CAIXA 🎁
-                    </button>
+            <div class="card-content">
+                <!-- Categoria -->
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: #999; letter-spacing: 1px;">
+                    {{ item.data.category }}
+                </span>
+
+                <!-- Título Clicável -->
+                <a href="{{ item.url }}" style="text-decoration: none;">
+                    <h3 style="font-size: 1rem; margin: 5px 0; color: var(--cor-institucional);">
+                        {{ item.data.title }}
+                    </h3>
+                </a>
+                
+                <!-- Preço -->
+                <div style="font-weight: 800; color: var(--cor-cta); font-size: 1.1rem; margin-top: auto;">
+                    R$ {{ item.data.price | dinheiro }}
                 </div>
             </div>
         </div>
@@ -128,27 +88,46 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
     </div>
 </main>
 
-<!-- SCRIPT DE FILTRO INTELIGENTE -->
+<!-- ESTILO LOCAL (Apenas para os botões de filtro) -->
+<style>
+    .btn-filter {
+        background: white;
+        border: 1px solid #eee;
+        padding: 8px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        color: #555;
+        font-size: 0.9rem;
+        transition: 0.2s;
+    }
+    .btn-filter:hover, .btn-filter.active {
+        background: var(--cor-institucional);
+        color: white;
+        border-color: var(--cor-institucional);
+    }
+</style>
+
+<!-- SCRIPT DE FILTRO -->
 <script>
 function filter(tag) {
-    const cards = document.querySelectorAll('.product-card');
-    const btns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.recipe-card');
+    const btns = document.querySelectorAll('.btn-filter');
     
-    // Atualiza visual dos botões
+    // Atualiza botões
     btns.forEach(b => {
-        if(b.innerText.toLowerCase().includes(tag) || b.getAttribute('onclick').includes(tag)) {
+        if(b.innerText.toLowerCase().includes(tag.toLowerCase()) || b.getAttribute('onclick').includes(tag)) {
             b.classList.add('active');
         } else {
             b.classList.remove('active');
         }
     });
 
-    // Filtra os cards
+    // Filtra cards
     cards.forEach(card => {
-        const tagsDoProduto = card.getAttribute('data-tags').toLowerCase();
+        const tags = card.getAttribute('data-tags').toLowerCase();
         const busca = tag.toLowerCase();
 
-        if (tag === 'all' || tagsDoProduto.includes(busca)) {
+        if (tag === 'all' || tags.includes(busca)) {
             card.style.display = 'flex';
         } else {
             card.style.display = 'none';
