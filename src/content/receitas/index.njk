@@ -47,19 +47,19 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
     <!-- GRADE DE PRODUTOS (VITRINE) -->
     <div class="recipe-grid">
         
-        {% for item in collections.receitas %}
+       {% for item in collections.receitas %}
         <!-- Card Inteligente -->
         <div class="recipe-card" data-tags="{{ item.data.keywords }} {{ item.data.category }}">
             
-            <!-- Imagem com Link -->
-            <div class="card-image-wrapper" style="position: relative; height: 200px; overflow: hidden;">
+            <!-- 1. IMAGEM COM LINK (CORRIGIDO PARA item.url) -->
+            <div class="card-image-wrapper" style="position: relative; height: 150px; overflow: hidden;">
                 <a href="{{ item.url }}">
                     <img src="{{ item.data.image }}" alt="{{ item.data.title }}" style="width: 100%; height: 100%; object-fit: cover;">
                 </a>
                 
                 <!-- Botão Flutuante (+) -->
                 <button onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}')"
-                        style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; background: var(--cor-cta); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
+                        style="position: absolute; bottom: 10px; right: 10px; width: 35px; height: 35px; border-radius: 50%; background: var(--cor-cta); color: white; border: none; font-size: 1.2rem; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
                     +
                 </button>
             </div>
@@ -70,15 +70,15 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
                     {{ item.data.category }}
                 </span>
 
-                <!-- Título Clicável -->
+                <!-- 2. TÍTULO CLICÁVEL (CORRIGIDO PARA item.url) -->
                 <a href="{{ item.url }}" style="text-decoration: none;">
-                    <h3 style="font-size: 1rem; margin: 5px 0; color: var(--cor-institucional);">
+                    <h3 class="card-title" style="font-size: 0.95rem; margin: 5px 0; color: var(--cor-institucional); line-height: 1.3;">
                         {{ item.data.title }}
                     </h3>
                 </a>
                 
                 <!-- Preço -->
-                <div style="font-weight: 800; color: var(--cor-cta); font-size: 1.1rem; margin-top: auto;">
+                <div style="font-weight: 800; color: var(--cor-cta); font-size: 1rem; margin-top: auto;">
                     R$ {{ item.data.price | dinheiro }}
                 </div>
             </div>
