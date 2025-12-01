@@ -578,3 +578,32 @@ main {
         min-height: 280px; /* Um pouco menor no celular */
     }
 }
+/* ================================================================= */
+/* === ULTIMATO: FORÇAR 5 CARDS POR LINHA (DESKTOP) === */
+/* ================================================================= */
+
+@media (min-width: 1200px) {
+    .recipe-grid {
+        display: grid !important;
+        /* Força 5 colunas fixas de 20% cada */
+        grid-template-columns: repeat(5, 1fr) !important; 
+        gap: 15px !important;
+        width: 100% !important;
+        max-width: 1400px !important; /* Permite que a tela estique mais */
+    }
+
+    /* Ajuste para o card não ficar gigante */
+    .recipe-card {
+        min-height: 300px !important;
+    }
+    
+    /* Ajuste da imagem para não ficar alta demais */
+    .card-image-wrapper {
+        height: 140px !important;
+    }
+    
+    /* Ajuste da fonte para caber */
+    .recipe-card h3 {
+        font-size: 0.9rem !important;
+    }
+}
