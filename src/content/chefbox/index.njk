@@ -62,18 +62,27 @@ permalink: /chefbox/
 
 <!-- A VITRINE DE ESCOLHA -->
 <div class="vitrine-grid">
-    {% for item in collections.receitas %}
+   {% for item in collections.receitas %}
+    
+    {% set linkReal = item.filePathStem | replace("/content", "") + "/" %}
+
     <div class="item-card">
-        <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="item-img" loading="lazy">
+        <!-- Link na Imagem -->
+        <a href="{{ linkReal }}">
+            <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="item-img" loading="lazy">
+        </a>
         
         <!-- O BOTÃO QUE ACIONA A RÉGUA -->
         <button class="btn-plus-add" 
-                onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}')">
+                onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')">
             +
         </button>
 
         <div class="item-info">
-            <h3 class="item-title">{{ item.data.title }}</h3>
+            <!-- Link no Título -->
+            <a href="{{ linkReal }}" style="text-decoration: none; color: inherit;">
+                <h3 class="item-title">{{ item.data.title }}</h3>
+            </a>
             <div class="item-price">R$ {{ item.data.price | dinheiro }}</div>
         </div>
     </div>
