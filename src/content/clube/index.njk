@@ -1,145 +1,106 @@
 ---
 layout: base.njk
-permalink: "/clube/"
+permalink: /clube/
 title: "ChefBrico Club | Cupons e Comunidade VIP"
-description: "Entre para o clube exclusivo da ChefBrico. Ganhe 10% OFF na primeira compra e participe da nossa comunidade #ChefBricoEmCasa."
+description: "Entre para o clube exclusivo da ChefBrico. Ganhe 10% OFF na primeira compra e participe da nossa comunidade."
 ---
 
-<!-- 1. SCHEMA PARA COMUNIDADE (ROBÔ) -->
+<!-- SCHEMA (EEAT) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "name": "ChefBrico Club",
-      "description": "Comunidade exclusiva de clientes ChefBrico.",
-      "url": "https://gourmetpratico.com.br/clube/"
-    },
-    {
-      "@type": "Offer",
-      "name": "Cupom de Boas-Vindas",
-      "description": "10% de desconto (Cupom: PRIMEIRA10) ao se inscrever.",
-      "price": "0.00",
-      "priceCurrency": "BRL",
-      "offeredBy": {
-        "@type": "Organization",
-        "name": "ChefBrico",
-        "url": "https://gourmetpratico.com.br"
-      }
-    }
-  ]
+  "@type": "WebPage",
+  "name": "ChefBrico Club",
+  "description": "Comunidade exclusiva com descontos e dicas da Chef Maria Conceição.",
+  "offers": {
+    "@type": "Offer",
+    "name": "Cupom de Boas-Vindas",
+    "price": "0.00",
+    "priceCurrency": "BRL"
+  }
 }
 </script>
 
-<style>
-    /* CSS ESPECÍFICO DESTA PÁGINA */
-    .hero-club {
-        position: relative;
-        text-align: center;
-        background: #fdf6e3; /* Bege ChefBrico */
-        padding: 60px 20px;
-        margin-bottom: 40px;
-        border-radius: 0 0 50% 50% / 20px;
-    }
-
-    .capture-block {
-        background-color: white;
-        border: 2px dashed #d4af37; /* Dourado */
-        border-radius: 12px;
-        padding: 40px;
-        text-align: center;
-        max-width: 600px;
-        margin: -60px auto 40px; /* Sobe por cima do Hero */
-        position: relative;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .capture-form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-    .input-field {
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 1rem;
-    }
-
-    .btn-club {
-        background: #27ae60;
-        color: white;
-        font-weight: bold;
-        padding: 15px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1.1rem;
-        transition: 0.3s;
-    }
-
-    .btn-club:hover { background: #219150; transform: translateY(-2px); }
-
-    .lista-vantagens {
-        text-align: left;
-        margin: 20px 0;
-        padding: 0 20px;
-        list-style: none;
-    }
-    .lista-vantagens li { margin-bottom: 10px; font-size: 0.95rem; }
-</style>
-
 <main>
     
-    <!-- HERO SECTION -->
-    <div class="hero-club">
-        <h1>Bem-vindo ao ChefBrico Club!</h1>
-        <p>A comunidade de quem ama comer bem sem perder tempo.</p>
+    <!-- 1. HERO: Título e Promessa -->
+    <div class="hero-section-with-image-and-text" style="background: linear-gradient(to bottom, #fdfcf7, #fff); padding-bottom: 0;">
+        <div class="hero-content-text" style="text-align: center; margin: 0 auto;">
+            <span style="color: var(--cor-dourado); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">
+                COMUNIDADE VIP
+            </span>
+            <h1 style="font-size: 3rem; margin-top: 10px; color: var(--cor-institucional);">
+                Bem-vindo ao ChefBrico Club! 🥗
+            </h1>
+            <p style="font-size: 1.2rem; color: #555; max-width: 600px; margin: 0 auto;">
+                Junte-se a quem ama comer bem sem perder tempo. Receba presentes, dicas e afeto na sua caixa de entrada.
+            </p>
+        </div>
     </div>
 
-    <!-- FORMULÁRIO REAL (NETLIFY FORMS) -->
-    <section class="capture-block">
-        <h2>Ganhe um Presente Agora!</h2>
-        <p>Inscreva-se e receba o cupom <strong>PRIMEIRA10</strong> (10% OFF) imediatamente no seu e-mail.</p>
-        
-        <!-- ATENÇÃO: O atributo 'netlify' faz o formulário funcionar sem backend -->
-       <form name="clube-chefbrico" method="POST" data-netlify="true" action="/sucesso-clube.html">
-            <input type="hidden" name="form-name" value="clube-chefbrico">
+    <!-- 2. O FORMULÁRIO DE CAPTURA (DESIGN ELEGANTE) -->
+    <section class="container" style="margin-top: -40px; position: relative; z-index: 10;">
+        <div class="chefbox-offer-card" style="background: white; border: 1px solid #eee; box-shadow: 0 20px 50px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; padding: 40px;">
             
-            <input type="text" name="nome" class="input-field" placeholder="Seu Nome" required>
-            <input type="email" name="email" class="input-field" placeholder="Seu Melhor E-mail" required>
-            
-            <button type="submit" class="btn-club">QUERO MEUS CUPONS! 🎟️</button>
-        </form>
+            <h2 style="color: var(--cor-vinho); font-size: 1.8rem; margin-bottom: 10px;">
+                Ganhe um Presente Agora! 🎁
+            </h2>
+            <p style="color: #666; margin-bottom: 30px;">
+                Inscreva-se e receba o cupom <strong>PRIMEIRA10</strong> (10% OFF) imediatamente.
+            </p>
 
-        <ul class="lista-vantagens">
-            <li>✅ <strong>10% OFF</strong> na primeira compra</li>
-            <li>✅ Acesso antecipado à Black Friday ChefBrico</li>
-            <li>✅ Dicas exclusivas da Chef Maria Conceição</li>
-        </ul>
+            <!-- FORMULÁRIO NETLIFY (BLINDADO) -->
+            <form name="clube-chefbrico" method="POST" data-netlify="true" action="/sucesso-clube.html">
+                <input type="hidden" name="form-name" value="clube-chefbrico">
+                
+                <div style="margin-bottom: 15px; text-align: left;">
+                    <label style="font-weight: bold; color: var(--cor-institucional); font-size: 0.9rem;">Seu Nome</label>
+                    <input type="text" name="nome" placeholder="Como você gosta de ser chamado?" required
+                           style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 5px; font-size: 1rem;">
+                </div>
+
+                <div style="margin-bottom: 25px; text-align: left;">
+                    <label style="font-weight: bold; color: var(--cor-institucional); font-size: 0.9rem;">Seu Melhor E-mail</label>
+                    <input type="email" name="email" placeholder="exemplo@email.com" required
+                           style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 5px; font-size: 1rem;">
+                </div>
+                
+                <button type="submit" class="btn-chefbox" style="width: 100%; padding: 15px; font-size: 1.1rem; cursor: pointer;">
+                    QUERO MEUS CUPONS! 🎟️
+                </button>
+            </form>
+
+            <!-- Vantagens -->
+            <div style="margin-top: 30px; text-align: left; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+                <p style="margin: 5px 0;">✅ <strong>10% OFF</strong> na primeira compra</p>
+                <p style="margin: 5px 0;">✅ Acesso antecipado à Black Friday</p>
+                <p style="margin: 5px 0;">✅ Dicas exclusivas da Chef Maria</p>
+            </div>
+        </div>
     </section>
 
-    <!-- CONTEÚDO COMUNITÁRIO -->
-    <div class="container text-center">
-        <h2>Mural da Fama #ChefBricoEmCasa</h2>
-        <p>Poste sua foto no Instagram e marque a gente!</p>
+    <!-- 3. MURAL DA FAMA (PROVA SOCIAL) -->
+    <div class="container text-center" style="margin-top: 80px; margin-bottom: 60px;">
+        <h2 class="text-vinho">Mural da Fama #ChefBricoEmCasa</h2>
+        <p style="color: #666;">Poste sua foto no Instagram e marque a gente!</p>
         
-        <div class="participation-box" style="background:#f9f9f9; padding:20px; margin:30px 0; border-radius:10px;">
-            <h3>Como aparecer aqui?</h3>
-            <p>1. Cozinhe seu prato ChefBrico<br>
-               2. Tire uma foto linda<br>
-               3. Marque <strong>@chefbrico</strong> no Instagram</p>
-            <p style="color:#d4af37; font-weight:bold;">✨ A melhor foto do mês ganha uma ChefBox! ✨</p>
+        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
+            <!-- Simulação de Fotos do Instagram -->
+            <div style="width: 150px; height: 150px; background: #eee; border-radius: 12px;"></div>
+            <div style="width: 150px; height: 150px; background: #eee; border-radius: 12px;"></div>
+            <div style="width: 150px; height: 150px; background: #eee; border-radius: 12px;"></div>
         </div>
 
-        <!-- MENSAGEM DA FUNDADORA -->
-        <div class="author-box" style="margin-top: 50px;">
-            <img src="/imagens/maria-conceicao-pra-voce.png" alt="Maria Conceição" class="author-image" style="width:80px; height:80px; border-radius:50%;">
-            <blockquote>"Ver os pratos que vocês criam é a maior recompensa do meu trabalho. Obrigada por fazer parte!"</blockquote>
-            <cite>- Maria Conceição</cite>
+        <!-- Mensagem da Fundadora -->
+        <div class="author-box" style="max-width: 700px; margin: 50px auto 0;">
+            <img src="/imagens/maria-conceicao-pra-voce.png" alt="Maria Conceição" class="author-image">
+            <div>
+                <p style="font-style: italic; color: #555;">
+                    "Ver os pratos que vocês criam é a maior recompensa do meu trabalho. Obrigada por fazer parte!"
+                </p>
+                <p style="margin-top: 10px; font-weight: bold; color: var(--cor-institucional);">— Maria Conceição</p>
+            </div>
         </div>
     </div>
+
 </main>
