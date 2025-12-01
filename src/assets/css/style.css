@@ -607,3 +607,51 @@ main {
         font-size: 0.9rem !important;
     }
 }
+/* ================================================================= */
+/* === ULTIMATO: CENTRALIZAÇÃO TOTAL NO MOBILE (RODAPÉ E HERO) === */
+/* ================================================================= */
+
+@media (max-width: 992px) {
+    
+    /* 1. RODAPÉ: Centralizar Logo, Prêmio e Textos */
+    .footer-col {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Centraliza os blocos (img, div) */
+        text-align: center !important;  /* Centraliza os textos */
+        width: 100% !important;
+    }
+
+    /* Força a Logo do rodapé a ir para o meio */
+    .footer-col img {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+    }
+
+    /* 2. REDES SOCIAIS: Centralizar Links */
+    .footer-col ul {
+        padding: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 3. PÁGINA COMIDA DE VERDADE: Centralizar o Círculo */
+    .hero-image-container-circular {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+        /* Garante que não flutue para a esquerda */
+        float: none !important; 
+    }
+    
+    /* Centraliza o texto da Hero também */
+    .hero-content-text {
+        text-align: center !important;
+        align-items: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}
