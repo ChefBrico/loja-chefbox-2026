@@ -55,76 +55,32 @@ description: "Catálogo completo de sopas funcionais: Detox, Low Carb, Fit e Veg
     </div>
     
     <div class="product-grid">
+    
+    <!-- 1. O ROBÔ COMEÇA A LER TODAS AS RECEITAS DO SITE -->
+    {% for item in collections.receitas %}
         
-        <!-- Card 1 -->
-        <a href="/receitas/sopas-funcionais/canja-veg/" class="product-card">
-            <img src="/imagens/Canja-Veg-bowl-marrom.png" alt="Canja Vegana" class="product-card-image">
-            <div class="product-card-content">
-                <span>Funcional</span>
-                <h3>Canja Vegana</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
+        <!-- 2. O FILTRO: "É um Risoto?" -->
+        <!-- Se for Risoto, ele pula. Se for Sopa, ele entra. -->
+        {% if item.data.category == "Sopas Funcionais" %}
+        
+        <!-- 3. O LINK BLINDADO -->
+        <!-- Ele descobre onde o arquivo está guardado fisicamente e cria o link certo -->
+        {% set linkReal = item.filePathStem | replace("/content", "") + "/" %}
 
-        <!-- Card 2 -->
-        <a href="/receitas/sopas-funcionais/creme-fit/" class="product-card">
-            <img src="/imagens/creme-fit-sopinha-chefbrico.png" alt="Sopa Creme Fit" class="product-card-image">
+        <!-- 4. O CARD (O Molde) -->
+        <!-- Ele pega a FOTO ÚNICA e o TÍTULO ÚNICO deste risoto específico -->
+        <a href="{{ linkReal }}" class="product-card">
+            <img src="{{ item.data.image }}" alt="{{ item.data.title }}">
             <div class="product-card-content">
-                <span>Proteica</span>
-                <h3>Sopa Creme Fit</h3>
+                <h3>{{ item.data.title }}</h3> <!-- Aqui entra "Sopas-Funcionais" -->
                 <div class="cta-link">Ver Receita →</div>
             </div>
         </a>
+        
+        {% endif %}
+    {% endfor %}
 
-        <!-- Card 3 -->
-        <a href="/receitas/sopas-funcionais/low-carb-horta/" class="product-card">
-            <img src="/imagens/chefbrico-lowcarb-lentilha-vermelha-da-horta(1080x566px).png" alt="Sopa Low Carb da Horta" class="product-card-image">
-            <div class="product-card-content">
-                <span>Low Carb</span>
-                <h3>Sopa da Horta</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <!-- Card 4 -->
-        <a href="/receitas/sopas-funcionais/low-carb-funghi/" class="product-card">
-            <img src="/imagens/low-carb-funghi-lentilha-negra-chefbrico.png" alt="Sopa Low Carb Funghi" class="product-card-image">
-            <div class="product-card-content">
-                <span>Low Carb</span>
-                <h3>Sopa de Funghi</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <!-- Card 5 -->
-        <a href="/receitas/sopas-funcionais/detox/" class="product-card">
-            <img src="/imagens/sopinha-detox-chefbrico%20(1).png" alt="Sopa Detox" class="product-card-image">
-            <div class="product-card-content">
-                <span>Detox</span>
-                <h3>Sopa Detox</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <!-- Card 6 -->
-        <a href="/receitas/sopas-funcionais/sopa-biza-vo/" class="product-card">
-            <img src="/imagens/sopinha-da-biza-vo-chefbrico.png" alt="Sopinha da Biza Vó" class="product-card-image">
-            <div class="product-card-content">
-                <span>Kids / Conforto</span>
-                <h3>Sopinha da Biza Vó</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
-
-        <!-- Card 7 -->
-        <a href="/receitas/sopas-funcionais/jeitinho-de-vo/" class="product-card">
-            <img src="/imagens/jeitinh-vo-sopa-chefbrico.png" alt="Sopa Jeitinho de Vó" class="product-card-image">
-            <div class="product-card-content">
-                <span>Conforto</span>
-                <h3>Jeitinho de Vó</h3>
-                <div class="cta-link">Ver Receita →</div>
-            </div>
-        </a>
+</div>
 
     </div>
 </main>
