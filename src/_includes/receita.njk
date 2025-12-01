@@ -70,12 +70,10 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
                     {{ item.data.category }}
                 </span>
 
-                <!-- Título Clicável -->
-                <a href="{{ item.url }}" style="text-decoration: none;">
-                    <h3 style="font-size: 1rem; margin: 5px 0; color: var(--cor-institucional);">
-                        {{ item.data.title }}
-                    </h3>
-                </a>
+                <!-- Título clicável que leva para a receita -->
+             <a href="{{ item.url }}" style="text-decoration: none; color: inherit;">
+             <h3 class="card-title">{{ item.data.title }}</h3>
+             </a>
                 
                 <!-- Preço -->
                 <div style="font-weight: 800; color: var(--cor-cta); font-size: 1.1rem; margin-top: auto;">
