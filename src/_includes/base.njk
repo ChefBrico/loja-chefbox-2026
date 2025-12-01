@@ -79,23 +79,37 @@
     </div>
     {% endif %}
 
-    <!-- ======================================================= -->
-    <!-- E. A-COMMERCE: MODAL DE CHECKOUT (ZERO-CLIC)            -->
+   <!-- ======================================================= -->
+    <!-- E. A-COMMERCE: MODAL DE CHECKOUT (SACOLINHA & DADOS)    -->
     <!-- ======================================================= -->
     <div id="checkout-modal" class="modal-overlay" style="display: none;">
         <div class="modal-box">
-            <h3 style="color: #014039; text-align: center;">Quase lá! 🛵</h3>
-            <p style="text-align: center; margin-bottom: 20px; color: #666;">Confirme seus dados para enviarmos o pedido para a Chef Maria.</p>
+            <h3 style="color: #014039; text-align: center; margin-bottom: 15px;">Seu Pedido ChefBox 👩‍🍳</h3>
             
-            <input type="text" id="customer-name" placeholder="Seu Nome" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
-            <input type="text" id="customer-cep" placeholder="Seu CEP" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
-            <textarea id="customer-address" placeholder="Endereço (Rua, Número, Complemento)" rows="3" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
+            <!-- 1. A SACOLINHA (RESUMO VISUAL) -->
+            <div id="cart-summary" style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; max-height: 200px; overflow-y: auto; border: 1px solid #eee;">
+                <!-- O Javascript vai preencher isso aqui -->
+                <p style="text-align:center; color:#999;">Carregando itens...</p>
+            </div>
+
+            <!-- 2. DADOS DO CLIENTE -->
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Seus dados para entrega e contato:</p>
             
-            <button onclick="sendOrderToWhatsApp()" style="width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem; cursor: pointer;">
-                ENVIAR NO WHATSAPP 💬
+            <input type="text" id="customer-name" placeholder="Nome Completo" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
+            
+            <!-- NOVO CAMPO: WHATSAPP -->
+            <input type="tel" id="customer-phone" placeholder="Seu WhatsApp (com DDD)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
+            
+            <input type="text" id="customer-cep" placeholder="CEP" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px;">
+            
+            <textarea id="customer-address" placeholder="Endereço Completo (Rua, Número, Complemento)" rows="3" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
+            
+            <!-- 3. BOTÃO DE ENVIO -->
+            <button onclick="sendOrderToWhatsApp()" style="width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 50px; font-weight: bold; font-size: 1.1rem; cursor: pointer; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);">
+                FINALIZAR PEDIDO NO WHATSAPP 💬
             </button>
             
-            <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 15px; color: #999; cursor: pointer; text-decoration: underline;">Voltar / Cancelar</p>
+            <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 15px; color: #999; cursor: pointer; text-decoration: underline;">Voltar / Alterar Itens</p>
         </div>
     </div>
     
