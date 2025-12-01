@@ -1,18 +1,30 @@
 <footer class="site-footer">
     <div class="container footer-grid">
         
-        <!-- COLUNA 1: IDENTIDADE & AUTORIDADE -->
+     <!-- COLUNA 1: IDENTIDADE & AUTORIDADE (PREMIUM) -->
         <div class="footer-col">
-            <img src="/imagens/logomarca-chefbrico-escrita.png" alt="ChefBrico" style="height: 60px; margin-bottom: 15px; filter: brightness(0) invert(1);">
-            <p style="font-size: 0.9rem; color: #ddd; line-height: 1.4;">
-                Simples como precisa ser, delicioso como você merece.
+            
+            <!-- 1. LOGO: Removemos o filtro para mostrar as cores originais (Verde/Dourado) -->
+            <a href="/">
+                <img src="/imagens/logomarca-chefbrico-escrita.png" 
+                     alt="ChefBrico" 
+                     style="height: 70px; margin-bottom: 15px; display: block;">
+            </a>
+
+            <!-- 2. SLOGAN: Verde Institucional para leitura perfeita no fundo claro -->
+            <p style="font-size: 0.95rem; color: var(--cor-institucional); line-height: 1.5; font-weight: 500; margin-bottom: 20px; max-width: 250px;">
+                Simples como precisa ser,<br>delicioso como você merece.
             </p>
-            <br>
-            <div style="border: 1px solid var(--cor-dourado); padding: 10px; border-radius: 4px; display: inline-block;">
-                <p style="color: var(--cor-dourado); font-weight: bold; font-size: 0.8rem; margin: 0;">
-                    🏆 Vencedora Prêmio Sebrae DF<br>Mulher de Negócios
+            
+            <!-- 3. BOX DO PRÊMIO (EEAT): Estilo "Medalha" -->
+            <!-- Fundo bege suave + Borda Dourada + Sombra -->
+            <div style="background-color: #fff8e1; border: 2px solid var(--cor-dourado); padding: 12px 15px; border-radius: 8px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <p style="color: var(--cor-institucional); font-weight: 800; font-size: 0.85rem; margin: 0; line-height: 1.3;">
+                    🏆 Vencedora Prêmio Sebrae Mulher de Negócios<br>
+                    <span style="color: #d35400; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px;">Mulher de Negócios DF</span>
                 </p>
             </div>
+
         </div>
 
         <!-- COLUNA 2: NAVEGAÇÃO INSTITUCIONAL -->
