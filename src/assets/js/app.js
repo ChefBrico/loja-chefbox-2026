@@ -35,28 +35,30 @@ function limparNomeProduto(nomeCompleto) {
 
 // --- MOTOR DO JOGO ---
 // Agora aceita SKU também
-window.addToGame = function(name, price, imageSrc, sku) {
+// ATUALIZAÇÃO: Agora aceita urlProduto
+window.addToGame = function(name, price, imageSrc, sku, urlProduto) {
     if (chefboxCart.length >= MAX_SLOTS) {
         if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
         alert("Sua ChefBox já está completa! Remova um item para trocar.");
         return;
     }
 
-    // Se o SKU não vier (páginas antigas), usa um genérico
     let codigoSku = sku || "PROD";
+    // Fallback: Se a URL não vier, tenta adivinhar, mas idealmente virá do template
+    let linkFinal = urlProduto || "#"; 
 
     chefboxCart.push({ 
         name: name, 
         price: price, 
         image: imageSrc,
-        sku: codigoSku
+        sku: codigoSku,
+        url: linkFinal // Salvamos o link real aqui
     });
     
     saveCart();
     renderRuler();
     if (navigator.vibrate) navigator.vibrate(100);
 }
-
 window.removeFromGame = function(index) {
     chefboxCart.splice(index, 1);
     saveCart();
