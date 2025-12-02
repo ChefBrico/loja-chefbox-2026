@@ -20,7 +20,7 @@ dificuldade: "Muito Fácil"
 calorias: "370 kcal"
 
 # --- IMAGEM (O Hero Card) ---
-image: "/imagens/risoto-pomodori-pesto-tijela-chefbrico.png"
+image: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
 image_alt: "Prato de Risoto Pomodori cremoso com manjericão fresco"
 
 # --- O SEGREDO (A Matriz coloca isso na Caixa Verde) ---
