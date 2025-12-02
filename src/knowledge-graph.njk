@@ -6,11 +6,15 @@ eleventyExcludeFromCollections: true
   "@context": "https://schema.org",
   "@graph": [
     {
+{
       "@type": "Organization",
       "@id": "https://gourmetpratico.com.br/#organization",
-      "name": "ChefBrico Gourmet Prático",
+      "name": "{{ organization.name }}",
+      "legalName": "{{ organization.legalName }}",
+      "taxID": "{{ organization.taxID }}",
+      "knowsAbout": ["Risotos", "Culinária Saudável", "Panela Única"],
       "url": "https://gourmetpratico.com.br",
-      "logo": "https://gourmetpratico.com.br/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png",
+      "logo": "{{ organization.logo }}"
       "description": "Especialista em Culinária de Panela Única e Desidratação.",
       "founder": {
         "@type": "Person",
