@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 
-<!-- 1. SCHEMA HIPER-AVANÇADO (DADOS) -->
+<!-- 1. SCHEMA HIPER-AVANÇADO (DADOS PARA O GOOGLE) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -73,75 +73,46 @@ layout: base.njk
       font-size: 1.6rem; font-family: 'Merriweather', serif;
   }
 
-  /* --- 1. LISTA "POR QUE AMAR" (Quadrado com Check Verde) --- */
+  /* --- LISTAS ESPECIAIS --- */
   .checked-list ul { list-style: none; padding-left: 0; }
   .checked-list ul li { position: relative; padding-left: 35px; margin-bottom: 15px; }
   .checked-list ul li::before {
-      content: '✔'; /* O Check */
-      position: absolute; left: 0; top: 2px;
-      width: 22px; height: 22px;
-      border: 2px solid #27ae60; /* Borda Verde */
-      color: #27ae60; /* Cor do Check */
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 900;
+      content: '✔'; position: absolute; left: 0; top: 2px;
+      width: 22px; height: 22px; border: 2px solid #27ae60; color: #27ae60;
+      border-radius: 4px; font-size: 14px; font-weight: 900;
       display: flex; align-items: center; justify-content: center;
   }
 
-  /* --- 2. LISTA "INGREDIENTES" (Quadrado Vazio) --- */
   .checklist ul { list-style: none; padding-left: 0; }
   .checklist ul li { position: relative; padding-left: 35px; margin-bottom: 10px; }
   .checklist ul li::before {
-      content: ''; /* Vazio */
-      position: absolute; left: 0; top: 4px;
-      width: 18px; height: 18px;
-      border: 2px solid #ccc; /* Borda Cinza */
-      border-radius: 4px;
+      content: ''; position: absolute; left: 0; top: 4px;
+      width: 18px; height: 18px; border: 2px solid #ccc; border-radius: 4px;
   }
 
-  /* --- 3. MODO DE PREPARO (Bolinhas Laranjas) --- */
+  /* --- MODO DE PREPARO --- */
   .modo-preparo ol { list-style: none; counter-reset: steps; padding: 0; }
   .modo-preparo li { position: relative; padding-left: 50px; margin-bottom: 25px; }
   .modo-preparo li::before {
-      counter-increment: steps;
-      content: counter(steps); /* O Número vem aqui */
-      position: absolute; left: 0; top: -2px;
-      width: 32px; height: 32px;
-      background: #F2811D; /* Laranja */
-      color: white;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 32px;
-      font-weight: bold;
-      box-shadow: 0 3px 6px rgba(242, 129, 29, 0.3);
-      z-index: 1;
+      counter-increment: steps; content: counter(steps);
+      position: absolute; left: 0; top: -2px; width: 32px; height: 32px;
+      background: #F2811D; color: white; border-radius: 50%;
+      text-align: center; line-height: 32px; font-weight: bold;
+      box-shadow: 0 3px 6px rgba(242, 129, 29, 0.3); z-index: 1;
   }
 
-  /* --- SIMPLES ASSIM (Posicionado via JS) --- */
   .simples-assim {
-      text-align: center;
-      font-family: 'Dancing Script', cursive; /* Ou serif itálico */
-      font-style: italic;
-      font-size: 1.8rem;
-      color: #27ae60;
-      margin-top: 20px;
-      margin-bottom: 40px;
-      display: none; /* JS vai mostrar no lugar certo */
+      text-align: center; font-family: cursive; font-style: italic;
+      font-size: 1.8rem; color: #27ae60; margin-top: 20px; margin-bottom: 40px;
+      display: none;
   }
 
-  /* --- CARD SEGREDO (FLUTUANTE BRANCO) --- */
+  /* --- CARDS --- */
   .segredo-box {
-      background: #ffffff; /* Fundo Branco */
-      padding: 25px;
-      margin: 30px auto;
-      max-width: 800px;
-      border-radius: 8px;
-      color: #444;
-      border-left: 5px solid #27ae60; /* Linha Verde Lateral */
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Sombra Flutuante */
+      background: #ffffff; padding: 25px; margin: 30px auto; max-width: 800px;
+      border-radius: 8px; color: #444; border-left: 5px solid #27ae60;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   }
-
-  /* --- OUTROS --- */
   .dica-chef-card {
       background: white; border-left: 4px solid #F2811D; padding: 25px;
       border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); margin: 40px 0;
@@ -184,8 +155,135 @@ layout: base.njk
         </p>
     </header>
 
-    <!-- METADADOS CORRIGIDOS -->
+    <!-- METADADOS -->
     <div class="meta-bar">
         <div class="meta-item"><span class="meta-icon">⏱️</span> {{ tempo_preparo }}</div>
         <div class="meta-item"><span class="meta-icon">⚖️</span> {{ calorias }}</div>
-        <div class="meta-item"><span class="meta-icon">🍽️</span> {{ rendimento
+        <div class="meta-item"><span class="meta-icon">🍽️</span> {{ rendimento }}</div>
+        <div class="meta-item" style="background-color: #e8f5e9; color: #2e7d32; border-color: #c8e6c9;">
+            <span class="meta-icon">⚡</span> {{ dificuldade }}
+        </div>
+    </div>
+
+    {% if citable_fact %}
+    <div class="segredo-box">
+        <strong>💡 O Segredo da Chef:</strong> {{ citable_fact }}
+    </div>
+    {% endif %}
+
+    <div class="hero-image-container">
+        <img src="{{ image }}" alt="Foto do prato {{ title }}">
+    </div>
+
+    <!-- WRAPPER DE CONTEÚDO -->
+    <div class="conteudo-leitura">
+        
+        <div id="simples-assim-tag" class="simples-assim">Simples assim! ✨</div>
+
+        {{ content | safe }}
+
+        <!-- PILARES -->
+        <div class="pilares-grid">
+            <a href="/comida-de-verdade/" class="pilar-card">
+                <div style="font-size: 2rem;">🥫</div>
+                <h3>Despensa Inteligente</h3>
+                <p style="font-size: 0.8rem; color: #666;">Ingredientes de longa validade.</p>
+            </a>
+            <a href="/comida-de-verdade/" class="pilar-card">
+                <div style="font-size: 2rem;">🥘</div>
+                <h3>Panela Única</h3>
+                <p style="font-size: 0.8rem; color: #666;">Menos louça, mais tempo.</p>
+            </a>
+            <a href="/comida-de-verdade/" class="pilar-card">
+                <div style="font-size: 2rem;">🎨</div>
+                <h3>Cozinha Criativa</h3>
+                <p style="font-size: 0.8rem; color: #666;">Seu toque final.</p>
+            </a>
+        </div>
+
+        <!-- CTA CHEFBOX -->
+        <div class="cta-box">
+            <img src="{{ image }}" class="cta-img" alt="Miniatura">
+            <div class="cta-content">
+                <h3>Gostou? Leve para casa.</h3>
+                <p>Adicione à sua <strong>ChefBox</strong> agora.</p>
+            </div>
+            <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}', '{{ page.url }}')" 
+                    class="btn-comprar-agora" style="border:none; cursor:pointer;">
+                + Adicionar (R$ {{ price | dinheiro }})
+            </button>
+        </div>
+
+        <!-- FAQ -->
+        {% if faq %}
+        <div style="margin-top: 50px;">
+            <h3 style="border-bottom: 2px solid #eee; padding-bottom: 10px;">Dúvidas Frequentes</h3>
+            {% for item in faq %}
+            <details class="faq-item">
+                <summary>{{ item.question }}</summary>
+                <div class="faq-answer">{{ item.answer }}</div>
+            </details>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- AUTORIDADE -->
+        <div class="author-box">
+            <img src="{{ author.image }}" alt="{{ author.name }}" class="author-img">
+            <div class="author-info">
+                <p style="margin:0; color:#555;">
+                    <strong style="color:#014039;">{{ author.name }}</strong><br>
+                    <span style="font-size:0.9rem;">{{ author.description }}</span>
+                </p>
+                <a href="{{ author.url }}" style="color:#F2811D; font-size:0.85rem; font-weight:bold; text-decoration:none; display:block; margin-top:5px;">
+                    Ler Filosofia Completa ➝
+                </a>
+            </div>
+        </div>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const headers = document.querySelectorAll('.conteudo-leitura h2');
+        const simplesTag = document.getElementById('simples-assim-tag');
+        
+        headers.forEach(h2 => {
+            const title = h2.innerText.toLowerCase();
+
+            if (title.includes('amar')) {
+                const list = h2.nextElementSibling;
+                if (list) list.classList.add('checked-list'); 
+            }
+
+            if (title.includes('precisar') || title.includes('pacote')) {
+                const list = h2.nextElementSibling;
+                if (list) list.classList.add('checklist');
+            }
+
+            if (title.includes('preparo')) {
+                const list = h2.nextElementSibling;
+                if (list && (list.tagName === 'OL' || list.tagName === 'UL')) {
+                    let targetList = list;
+                    if (list.tagName === 'UL') {
+                        const newOl = document.createElement('ol');
+                        newOl.innerHTML = list.innerHTML;
+                        list.parentNode.replaceChild(newOl, list);
+                        targetList = newOl;
+                    }
+                    targetList.classList.add('modo-preparo');
+                    if (simplesTag) {
+                        simplesTag.style.display = 'block'; 
+                        targetList.after(simplesTag); 
+                    }
+                }
+            }
+
+            if (title.includes('criativa')) {
+                const p = h2.nextElementSibling;
+                if (p) p.classList.add('dica-chef-card');
+            }
+        });
+    });
+</script>
