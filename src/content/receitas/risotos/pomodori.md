@@ -42,9 +42,9 @@ Teletransporte-se para uma cantina ensolarada na Toscana. Nosso Risoto Pomodori 
 
 ## Por que Você Vai Amar este Clássico Italiano
 
-*   ✅ **Sabor Intenso e Autêntico:** A combinação perfeita do tomate seco de alta qualidade com o frescor do nosso pesto de manjericão.
-*   ✅ **Culinária Afetiva:** Um prato que evoca memória e conforto, pronto em aproximadamente 18 minutos!
-*   ✅ **100% Natural e Vegano:** Ingredientes puros e selecionados, sem conservantes ou aditivos.
+*    **Sabor Intenso e Autêntico:** A combinação perfeita do tomate seco de alta qualidade com o frescor do nosso pesto de manjericão.
+*    **Culinária Afetiva:** Um prato que evoca memória e conforto, pronto em aproximadamente 18 minutos!
+*    **100% Natural e Vegano:** Ingredientes puros e selecionados, sem conservantes ou aditivos.
 
 > "Esse é o risoto que peço em restaurante, mas feito em casa em menos de 20 minutos. O sabor do tomate seco é incrível e é super cremoso. Já comprei 3 vezes!"
 > — *Roberta G., Cliente ChefBrico*
