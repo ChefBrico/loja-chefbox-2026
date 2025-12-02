@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 
-<!-- 1. SCHEMA HIPER-AVANÇADO (DADOS PARA O GOOGLE) -->
+<!-- 1. SCHEMA DADOS (CÉREBRO) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -43,7 +43,7 @@ layout: base.njk
 }
 </script>
 
-<!-- 2. ESTILO REFINADO (CSS) -->
+<!-- 2. ESTILO CORRIGIDO (CSS) -->
 <style>
   /* --- GERAL --- */
   .receita-header { text-align: center; max-width: 800px; margin: 40px auto; }
@@ -73,41 +73,73 @@ layout: base.njk
       font-size: 1.6rem; font-family: 'Merriweather', serif;
   }
 
-  /* --- LISTAS ESPECIAIS --- */
-  .checked-list ul { list-style: none; padding-left: 0; }
-  .checked-list ul li { position: relative; padding-left: 35px; margin-bottom: 15px; }
-  .checked-list ul li::before {
-      content: '✔'; position: absolute; left: 0; top: 2px;
-      width: 22px; height: 22px; border: 2px solid #27ae60; color: #27ae60;
+  /* --- 1. LISTA "POR QUE AMAR" (Check Verde) --- */
+  .checked-list { list-style: none !important; padding-left: 0; }
+  .checked-list li { position: relative; padding-left: 35px; margin-bottom: 15px; }
+  .checked-list li::before {
+      content: '✔'; 
+      position: absolute; left: 0; top: 2px;
+      width: 22px; height: 22px;
+      border: 2px solid #27ae60; color: #27ae60;
       border-radius: 4px; font-size: 14px; font-weight: 900;
       display: flex; align-items: center; justify-content: center;
   }
 
-  .checklist ul { list-style: none; padding-left: 0; }
-  .checklist ul li { position: relative; padding-left: 35px; margin-bottom: 10px; }
-  .checklist ul li::before {
-      content: ''; position: absolute; left: 0; top: 4px;
-      width: 18px; height: 18px; border: 2px solid #ccc; border-radius: 4px;
+  /* --- 2. LISTA "INGREDIENTES" (Quadrado Vazio CORRIGIDO) --- */
+  .checklist { list-style: none !important; padding-left: 0; }
+  .checklist li { position: relative; padding-left: 35px; margin-bottom: 10px; }
+  .checklist li::before {
+      content: ''; /* Garante que o quadrado apareça */
+      display: block;
+      position: absolute; left: 0; top: 5px;
+      width: 18px; height: 18px;
+      background-color: #fff;
+      border: 2px solid #ccc; /* Borda Cinza */
+      border-radius: 4px;
   }
 
-  /* --- MODO DE PREPARO --- */
-  .modo-preparo ol { list-style: none; counter-reset: steps; padding: 0; }
-  .modo-preparo li { position: relative; padding-left: 50px; margin-bottom: 25px; }
+  /* --- 3. MODO DE PREPARO (CORRIGIDO - SÓ NÚMERO NA BOLINHA) --- */
+  .modo-preparo { 
+      list-style: none !important; /* MATOU O NÚMERO DUPLICADO AQUI */
+      counter-reset: steps; 
+      padding-left: 0; 
+  }
+  .modo-preparo li { 
+      position: relative; 
+      padding-left: 60px; /* Mais espaço para a bolinha */
+      margin-bottom: 25px; 
+  }
   .modo-preparo li::before {
-      counter-increment: steps; content: counter(steps);
-      position: absolute; left: 0; top: -2px; width: 32px; height: 32px;
-      background: #F2811D; color: white; border-radius: 50%;
-      text-align: center; line-height: 32px; font-weight: bold;
-      box-shadow: 0 3px 6px rgba(242, 129, 29, 0.3); z-index: 1;
+      counter-increment: steps;
+      content: counter(steps); /* Número APENAS aqui dentro */
+      position: absolute; 
+      left: 0; top: -5px;
+      width: 35px; height: 35px;
+      background: #F2811D; /* Laranja */
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 35px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 3px 6px rgba(242, 129, 29, 0.3);
+      z-index: 1;
   }
 
+  /* --- SIMPLES ASSIM --- */
   .simples-assim {
-      text-align: center; font-family: cursive; font-style: italic;
-      font-size: 1.8rem; color: #27ae60; margin-top: 20px; margin-bottom: 40px;
-      display: none;
+      text-align: center;
+      font-family: 'Dancing Script', cursive; 
+      font-style: italic;
+      font-size: 2rem;
+      color: #27ae60;
+      margin-top: 30px;
+      margin-bottom: 50px;
+      display: none; /* JS vai ativar */
+      text-shadow: 1px 1px 0px #fff;
   }
 
-  /* --- CARDS --- */
+  /* --- CARDS E DETALHES --- */
   .segredo-box {
       background: #ffffff; padding: 25px; margin: 30px auto; max-width: 800px;
       border-radius: 8px; color: #444; border-left: 5px solid #27ae60;
@@ -165,6 +197,7 @@ layout: base.njk
         </div>
     </div>
 
+    <!-- SEGREDO (CARD FLUTUANTE BRANCO) -->
     {% if citable_fact %}
     <div class="segredo-box">
         <strong>💡 O Segredo da Chef:</strong> {{ citable_fact }}
@@ -244,6 +277,7 @@ layout: base.njk
     </div>
 </article>
 
+<!-- JAVASCRIPT "CIRURGIÃO" -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const headers = document.querySelectorAll('.conteudo-leitura h2');
@@ -252,27 +286,34 @@ layout: base.njk
         headers.forEach(h2 => {
             const title = h2.innerText.toLowerCase();
 
+            // 1. LISTA "POR QUE AMAR"
             if (title.includes('amar')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checked-list'); 
             }
 
+            // 2. LISTA "INGREDIENTES/PRECISAR"
             if (title.includes('precisar') || title.includes('pacote')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checklist');
             }
 
+            // 3. MODO DE PREPARO (CORRIGIDO)
             if (title.includes('preparo')) {
                 const list = h2.nextElementSibling;
                 if (list && (list.tagName === 'OL' || list.tagName === 'UL')) {
                     let targetList = list;
+                    // Força virar OL para garantir ordem
                     if (list.tagName === 'UL') {
                         const newOl = document.createElement('ol');
                         newOl.innerHTML = list.innerHTML;
                         list.parentNode.replaceChild(newOl, list);
                         targetList = newOl;
                     }
+                    
                     targetList.classList.add('modo-preparo');
+                    
+                    // Posiciona o "Simples Assim" logo depois da lista
                     if (simplesTag) {
                         simplesTag.style.display = 'block'; 
                         targetList.after(simplesTag); 
@@ -280,6 +321,7 @@ layout: base.njk
                 }
             }
 
+            // 4. COZINHA CRIATIVA
             if (title.includes('criativa')) {
                 const p = h2.nextElementSibling;
                 if (p) p.classList.add('dica-chef-card');
