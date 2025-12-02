@@ -44,49 +44,44 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
         </div>
     </div>
     
-    <!-- GRADE DE PRODUTOS (VITRINE) -->
-    <div class="recipe-grid">
+   <!-- GRADE DE PRODUTOS (VITRINE) -->
+<div class="recipe-grid">
+    
+   {% for item in collections.receitas %}
+    <div class="recipe-card" data-tags="{{ item.data.keywords }} {{ item.data.category }}">
         
-       {% for item in collections.receitas %}
-        <div class="recipe-card" data-tags="{{ item.data.keywords }} {{ item.data.category }}">
+        <!-- A CORREÇÃO MÁGICA: Usar item.url nativo -->
+        <div class="card-image-wrapper" style="height: 150px; overflow: hidden; position: relative;">
+            <a href="{{ item.url }}">
+                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+            </a>
             
-            <!-- LÓGICA INFALÍVEL DE LINK: -->
-            <!-- Pega a categoria da pasta (ex: risotos) e o nome do arquivo (ex: pomodori) -->
-            <!-- Resultado: /receitas/risotos/pomodori/ -->
-            {% set linkManual = "/receitas/" + item.filePathStem.split('/')[3] + "/" + item.fileSlug + "/" %}
+            <!-- Adicionamos o item.url na função do jogo também -->
+            <button onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}', '{{ item.url }}')"
+                    class="btn-add-game">
+                +
+            </button>
+        </div>
 
-            <!-- Imagem -->
-            <div class="card-image-wrapper" style="height: 150px; overflow: hidden; position: relative;">
-                <a href="{{ linkManual }}">
-                    <img src="{{ item.data.image }}" alt="{{ item.data.title }}" style="width: 100%; height: 100%; object-fit: cover;">
-                </a>
-                
-                <!-- Botão + (Mecanismo 4+1) -->
-                <button onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')"
-                        style="position: absolute; bottom: 10px; right: 10px; width: 35px; height: 35px; border-radius: 50%; background: #F2811D; color: white; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-                    +
-                </button>
-            </div>
+        <div class="card-content">
+            <span class="category-tag">
+                {{ item.data.category }}
+            </span>
 
-            <!-- Conteúdo -->
-            <div class="card-content">
-                <span style="font-size: 0.7rem; text-transform: uppercase; color: #999; letter-spacing: 1px;">
-                    {{ item.data.category }}
-                </span>
-
-                <a href="{{ linkManual }}" style="text-decoration: none;">
-                    <h3 class="card-title" style="font-size: 0.95rem; margin: 5px 0; color: #014039; line-height: 1.3;">
-                        {{ item.data.title }}
-                    </h3>
-                </a>
-                
-                <div style="font-weight: 800; color: #F2811D; font-size: 1rem; margin-top: auto;">
-                    R$ {{ item.data.price | dinheiro }}
-                </div>
+            <!-- Link corrigido aqui também -->
+            <a href="{{ item.url }}" style="text-decoration: none;">
+                <h3 class="card-title">
+                    {{ item.data.title }}
+                </h3>
+            </a>
+            
+            <div class="price-tag">
+                R$ {{ item.data.price | dinheiro }}
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 </main>
 
 <!-- ESTILO LOCAL (Apenas para os botões de filtro) -->
