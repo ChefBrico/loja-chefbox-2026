@@ -5,44 +5,90 @@ eleventyExcludeFromCollections: true
 {
   "@context": "https://schema.org",
   "@graph": [
+    
+    {# 1. A ORGANIZAÇÃO (Puxando direto do arquivo _data/organization.json) #}
     {
-{
       "@type": "Organization",
-      "@id": "https://gourmetpratico.com.br/#organization",
+      "@id": "{{ organization['@id'] }}",
       "name": "{{ organization.name }}",
       "legalName": "{{ organization.legalName }}",
-      "taxID": "{{ organization.taxID }}",
-      "knowsAbout": ["Risotos", "Culinária Saudável", "Panela Única"],
-      "url": "https://gourmetpratico.com.br",
-      "logo": "{{ organization.logo }}"
-      "description": "Especialista em Culinária de Panela Única e Desidratação.",
-      "founder": {
-        "@type": "Person",
-        "name": "Maria Conceição"
-      },
+      "description": "{{ organization.description }}",
+      "url": "{{ organization.url }}",
+      "logo": "{{ organization.logo }}",
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+5561996659880",
-        "contactType": "sales",
-        "areaServed": "BR"
-      }
+        "telephone": "{{ organization.contactPoint.telephone }}",
+        "contactType": "{{ organization.contactPoint.contactType }}",
+        "areaServed": "{{ organization.contactPoint.areaServed }}",
+        "availableLanguage": "{{ organization.contactPoint.availableLanguage }}"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ organization.address.streetAddress }}",
+        "addressLocality": "{{ organization.address.addressLocality }}",
+        "addressRegion": "{{ organization.address.addressRegion }}",
+        "postalCode": "{{ organization.address.postalCode }}",
+        "addressCountry": "{{ organization.address.addressCountry }}"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "{{ organization.geo.latitude }}",
+        "longitude": "{{ organization.geo.longitude }}"
+      },
+      "sameAs": [
+        {% for social in organization.sameAs %}
+          "{{ social }}"{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
     },
+
+    {# 2. A FUNDADORA (Puxando direto do arquivo _data/author.json) #}
+    {
+      "@type": "Person",
+      "@id": "{{ author.id }}",
+      "name": "{{ author.name }}",
+      "jobTitle": "{{ author.jobTitle }}",
+      "image": "https://gourmetpratico.com.br{{ author.image }}",
+      "worksFor": { "@id": "{{ organization['@id'] }}" },
+      "sameAs": [
+        {% for social in author.sameAs %}
+          "{{ social }}"{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    },
+
+    {# 3. O WEBSITE (Conecta a Marca ao Domínio) #}
+    {
+      "@type": "WebSite",
+      "@id": "https://gourmetpratico.com.br/#website",
+      "url": "https://gourmetpratico.com.br",
+      "name": "{{ organization.name }}",
+      "description": "{{ organization.description }}",
+      "publisher": { "@id": "{{ organization['@id'] }}" },
+      "inLanguage": "pt-BR"
+    },
+
+    {# 4. O CATÁLOGO DE PRODUTOS (A Lista para o Robô Comprar) #}
     {
       "@type": "OfferCatalog",
-      "name": "Catálogo ChefBox",
+      "@id": "https://gourmetpratico.com.br/#catalog",
+      "name": "Catálogo Completo ChefBox",
       "itemListElement": [
         {% for item in collections.receitas %}
         {
           "@type": "Product",
           "name": "{{ item.data.title }}",
-          "sku": "{{ item.data.sku }}",
+          "url": "https://gourmetpratico.com.br{{ item.url }}",
           "image": "https://gourmetpratico.com.br{{ item.data.image }}",
           "description": "{{ item.data.description }}",
+          "sku": "{{ item.data.sku }}",
+          "brand": { "@id": "{{ organization['@id'] }}" },
           "offers": {
             "@type": "Offer",
             "price": "{{ item.data.price }}",
             "priceCurrency": "BRL",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "url": "https://gourmetpratico.com.br{{ item.url }}"
           }
         }{% if not loop.last %},{% endif %}
         {% endfor %}
