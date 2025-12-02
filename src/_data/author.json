@@ -3,16 +3,14 @@
   "id": "https://gourmetpratico.com.br/#person-maria-conceicao",
   "jobTitle": "Fundadora e Chef de Criação",
   "description": "Especialista em Culinária Saudável de Panela Única e Desidratação de Vegetais. Criadora do método 'Gourmet Prático' que une psicologia, sabor afetivo e zero desperdício.",
-  "image": "/imagens/maria-conceicao.jpg",
+  "image": "/imagens/maria-conceicao-pra-voce.png",
   "award": "Vencedora do Prêmio Sebrae Mulher de Negócios",
   "knowsAbout": [
     "Culinária Natural",
     "Zero Desperdício",
-    "Risotos",
-    "Sopas",
-    "Refeições Integrais",
-    "Comida de Verdade",
-    "Empreendedorismo Feminino"
+    "Técnicas de Desidratação",
+    "Empreendedorismo Feminino",
+    "Nutrição Afetiva"
   ],
   "worksFor": {
     "name": "ChefBrico",
@@ -20,7 +18,7 @@
   },
   "url": "https://gourmetpratico.com.br/comida-de-verdade/",
   "sameAs": [
-    "https://instagram.com/chefbrico",
-    "https://linkedin.com/in/mariaconceicao"
+    "https://www.instagram.com/chefbrico",
+    "https://br.linkedin.com/in/mariaconceicao"
   ]
 }
