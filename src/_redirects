@@ -29,5 +29,8 @@
 /receita-risoto-pomodori.html       /receitas/risotos/pomodori/       301
 /receita-sopa-ervilha.html          /receitas/sopas-funcionais/sopa-ervilha/ 301
 
+/obrigado.html                    /obrigado/                   301
+
+
 # === NETLIFY IDENTITY (Para o CMS funcionar) ===
 /api/*  https://api.netlify.com/*  200
