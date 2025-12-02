@@ -1,33 +1,43 @@
 {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://gourmetpratico.com.br/#organization",
   "name": "ChefBrico",
   "legalName": "ChefBrico Alimentos Artesanais",
   "slogan": "Simples como precisa ser, delicioso como você merece.",
-  "description": "Especialista em refeições praticas de preparar e prontas em minutos, 100% naturais. Vencedora do Prêmio Sebrae Mulher de Negócios.",
+  "description": "Especialista em refeições práticas, 100% naturais e sem desperdício. Vencedora do Prêmio Sebrae Mulher de Negócios.",
   "url": "https://gourmetpratico.com.br",
   "logo": "https://gourmetpratico.com.br/imagens/selo-dourado-gourmet-pratico-chefbrico.png",
   "foundingDate": "2018",
   "founders": [
     {
-      "name": "Maria Conceição",
-      "jobTitle": "Fundadora e Chef de Criação"
+      "@id": "https://gourmetpratico.com.br/#person-maria-conceicao"
     }
   ],
   "contactPoint": {
+    "@type": "ContactPoint",
     "telephone": "+5561996659880",
-    "contactType": "customer service",
+    "contactType": "sales",
     "areaServed": "BR",
     "availableLanguage": "Portuguese"
   },
+  "whatsapp_display": "(61) 99665-9880",
   "address": {
-    "streetAddress": "Rua 5, Chácara 122, Lote 17",
+    "@type": "PostalAddress",
+    "streetAddress": "Vicente Pires",
     "addressLocality": "Brasília",
     "addressRegion": "DF",
     "postalCode": "72006-060",
     "addressCountry": "BR"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "-15.8080", 
+    "longitude": "-48.0310"
+  },
+  "priceRange": "$$",
   "sameAs": [
     "https://www.instagram.com/chefbrico",
-    "https://www.facebook.com/chefbrico",
-    "https://www.linkedin.com/in/mariaconceicao"
+    "https://www.facebook.com/chefbrico"
   ]
 }
