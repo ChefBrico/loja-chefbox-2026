@@ -1,45 +1,13 @@
 {
+  "lang": "pt-BR",
+  "locale": "pt_BR",
   "url": "https://gourmetpratico.com.br",
-  "whatsapp": "5561996659880",
-  "whatsapp_display": "(61) 99665-9880",
-  "title": "Gourmet Prático | ChefBrico",
-  "description": "Culinária saudável, sem desperdício de Tempo e Ingredientes na cozinha. O método da Chef Maria Conceição.",
-  "organization": {
-    "@type": "Organization",
-    "@id": "https://gourmetpratico.com.br/#organization",
-    "name": "ChefBrico",
-    "legalName": "ChefBrico Alimentos Artesanais",
-    "slogan": "Simples como precisa ser, delicioso como você merece.",
-    "description": "Vencedora do Prêmio Sebrae Mulher de Negócios. Produzimos refeições 100% naturais e sem desperdício.",
-    "url": "https://gourmetpratico.com.br",
-    "logo": "https://gourmetpratico.com.br/imagens/selo-dourado-gourmet-pratico-chefbrico.png",
-    "foundingDate": "2018",
-    "founders": [
-      {
-        "@type": "Person",
-        "@id": "https://gourmetpratico.com.br/#person-maria-conceicao",
-        "name": "Maria Conceição"
-      }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Vicente Pires",
-      "addressLocality": "Brasília",
-      "addressRegion": "DF",
-      "postalCode": "72006-060",
-      "addressCountry": "BR"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+5561996659880",
-      "contactType": "sales",
-      "areaServed": "BR",
-      "availableLanguage": "Portuguese"
-    },
-    "sameAs": [
-      "https://www.instagram.com/chefbrico",
-      "https://www.facebook.com/chefbrico",
-      "https://www.linkedin.com/in/mariaconceicao"
-    ]
-  }
+  "title": "ChefBrico | Gourmet Prático em 18 Minutos",
+  "description": "Culinária saudável, sem desperdício de tempo e ingredientes. Conheça o método da Chef Maria Conceição.",
+  "image": "/imagens/share-padrao-chefbrico.png",
+  "themeColor": "#014039",
+  "@type": "Person",
+  "@id": "https://gourmetpratico.com.br/#person-maria-conceicao",
+  "name": "Maria Conceição"
 }
+
