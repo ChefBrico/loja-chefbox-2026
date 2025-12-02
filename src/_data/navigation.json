@@ -5,10 +5,11 @@
   },
   {
     "text": "Comida de Verdade",
-    "url": "/comida-de-verdade/"
+    "url": "/comida-de-verdade/",
+    "title": "Conheça o Método Gourmet Prático"
   },
   {
-    "text": "Cardápio Completo ▾",
+    "text": "Receitas ▾",
     "url": "/receitas/",
     "children": [
       { "text": "Risotos", "url": "/receitas/risotos/" },
@@ -18,12 +19,13 @@
     ]
   },
   {
-    "text": "Monte sua ChefBox 🎁",
-    "url": "/chefbox/",
-    "type": "cta"
+    "text": "FAQ",
+    "url": "/faq/"
   },
   {
-    "text": "Onde Encontrar em Brasília",
-    "url": "/onde-encontrar/"
+    "text": "Monte sua ChefBox 🎁",
+    "url": "/chefbox/",
+    "type": "cta",
+    "ariaLabel": "Clique para montar seu kit personalizado"
   }
 ]
