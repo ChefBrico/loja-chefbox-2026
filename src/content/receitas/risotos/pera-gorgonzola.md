@@ -1,86 +1,91 @@
 ---
 title: "Risoto de Pêra e Gorgonzola Vegano em 18 Minutos | ChefBrico"
-description: "Um clássico gourmet em versão 100% vegetal. Risoto agridoce com pêra desidratada e queijo vegano tipo gorgonzola. Pronto em 18 minutos."
+description: "Um clássico gourmet 100% vegetal. Risoto com pêra e queijo vegano tipo gorgonzola."
 date: 2025-08-21
-
-# --- DADOS PARA O ROBÔ (Agente-Commerce) ---
 sku: "FF-02"
 gtin: "0619205574362"
 price: 34.80
-price_currency: "BRL"
 stock: 50
 availability: "https://schema.org/InStock"
 category: "Risoto"
 
-# --- DADOS VISUAIS ---
+# VISUAL
 tempo_preparo: "18 min"
 tempo_iso: "PT18M"
 rendimento: "2 pessoas"
 dificuldade: "Muito Fácil"
 calorias: "390 kcal"
-
-# --- IMAGEM ---
 image: "/imagens/risoto-agridoce-pera-gorgonzola-veg-chefbrico.png"
-image_alt: "Prato de Risoto de Pêra e Gorgonzola Vegano cremoso - ChefBrico"
+image_alt: "Risoto de Pêra e Gorgonzola Vegano"
 
-# --- O SEGREDO (Caixa Verde) ---
+# NUTRIÇÃO
+nutrition:
+  portion: "90g (1/2 pacote)"
+  calories: 390
+  protein_g: 10
+  carbs_g: 78
+  fats_g: 3.5
+  fiber_g: 4
+  sodium_mg: 140
+
+diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
+rating: { value: "4.9", count: "132" }
+
+instructions:
+  - name: "Refogar"
+    text: "Refogue o pacote com azeite."
+  - name: "Cozinhar"
+    text: "Cozinhe com 720ml de água."
+  - name: "Finalizar"
+    text: "Sirva com nozes."
+
 author_name: "Maria Conceição"
-citable_fact: "Recriamos o sabor do gorgonzola usando castanha de caju fermentada e levedura nutricional, garantindo o sabor intenso sem ingredientes de origem animal."
-
-# --- FAQ (Acordeão) ---
+citable_fact: "Recriamos o sabor do gorgonzola usando castanha de caju fermentada e levedura nutricional."
 faq:
-  - question: "Como o gorgonzola é vegano?"
-    answer: "É nossa mágica! Usamos castanha de caju fermentada e levedura nutricional para recriar o sabor intenso e a cremosidade do queijo azul."
-  - question: "É muito doce?"
-    answer: "Não. A pêra traz uma doçura suave que equilibra perfeitamente o salgado do queijo vegano. É agridoce e sofisticado."
+  - question: "É doce?"
+    answer: "Não. A pêra traz uma doçura suave que equilibra o salgado do queijo vegano."
 ---
 
-<!-- INTRODUÇÃO NARRATIVA -->
-Uma combinação que nasceu nos melhores restaurantes do mundo, agora na sua cozinha, em uma versão 100% à base de plantas. 
+<!-- INTRODUÇÃO -->
+Uma combinação que nasceu nos melhores restaurantes, agora na sua cozinha, em versão 100% vegetal. O doce da pêra dança com o sabor marcante do nosso gorgonzola vegano.
 
-Descubra como o doce aveludado da pêra desidratada dança em perfeita harmonia com o sabor intenso e marcante do nosso queijo estilo gorgonzola vegano.
+## Por que Você Vai Amar
+<!-- Check Verde -->
+*   **Equilíbrio Perfeito:** O doce da pêra corta a intensidade do queijo.
+*   **Elegância:** Refeição de ocasião especial, pronta em 18 minutos.
+*   **Inclusivo:** Sem lactose e sem ingredientes animais.
 
-## Por que Você Vai Amar este Clássico Gourmet
-<!-- A Matriz aplica Check Verde aqui -->
-*   **Equilíbrio Perfeito:** O doce da pêra corta a intensidade do "gorgonzola" vegano, criando uma experiência de sabor complexa.
-*   **Elegância Instantânea:** Sua refeição com status de ocasião especial, pronta em aproximadamente 18 minutos! Ideal para um jantar romântico.
-*   **100% Natural e Inclusivo:** Ingredientes puros, sem conservantes, sem lactose e sem nada de origem animal.
-
-> "Esse risoto é de outro mundo! Sou vegana e sentia falta de um prato com gorgonzola. A versão da ChefBrico é perfeita, super saborosa e cremosa."
+> "Sou vegana e sentia falta de gorgonzola. A versão da ChefBrico é perfeita!"
 > — *Joana F., Cliente ChefBrico*
 
 ## O que vem no Pacote
-<!-- A Matriz aplica Quadrados Cinzas aqui -->
-*   Arroz arbóreo tipo exportação.
+<!-- Quadrados Cinzas -->
+*   Arroz arbóreo.
 *   Pêra desidratada em cubos.
-*   Queijo vegano em pó estilo Gorgonzola (base de castanha de caju).
-*   Raspas de limão siciliano.
-*   Pimenta do reino preta, alho e cebola desidratados.
-*   Caldo de vegetais caseiro ChefBrico.
+*   Queijo vegano tipo Gorgonzola (base castanha).
+*   Raspas de limão siciliano e pimenta.
 
 ## Você Vai Precisar de
 *   720ml de água fria
 *   1 fio de azeite
 *   Sal a gosto
-*   *Opcional:* Nozes picadas e um fio de melado de cana.
 
 ## Modo de Preparo Simplificado
-<!-- A Matriz aplica Bolinhas Laranjas aqui -->
-
-1.  **Refogue:** Aqueça um fio de azeite e refogue o conteúdo do pacote. O aroma agridoce vai perfumar a cozinha.
-2.  **Cozinhe:** Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo, mexendo ocasionalmente.
-3.  **Finalize:** Para um toque extra de sofisticação, sirva com nozes picadas por cima e, se gostar, um fio de melado de cana.
+<!-- Bolinhas Laranjas -->
+1.  **Refogue:** Aqueça o azeite e refogue o pacote. O aroma agridoce perfuma tudo.
+2.  **Cozinhe:** Adicione 720ml de água e sal. Cozinhe em fogo baixo.
+3.  **Finalize:** Sirva com nozes picadas por cima.
 
 *Simples assim!*
 
 ## Cozinha Criativa: Dicas da Chef
-<!-- A Matriz aplica Card Flutuante aqui -->
-Recriar o Pêra e Gorgonzola em uma versão 100% vegetal foi um dos meus desafios e orgulhos. O segredo é o nosso "queijo" à base de castanhas, que derrete e traz a cremosidade certa. 
+Este prato rico pede um vinho branco encorpado, como Chardonnay.
 
-**Harmonização:** Este prato rico e complexo pede um vinho branco encorpado, como um Chardonnay. Sirva como prato principal ou, para uma entrada inesquecível, prepare mini porções e finalize com uma folha de sálvia frita no azeite.
+### Combina Perfeitamente Com
+Prepare mini porções como entrada e finalize com uma folha de sálvia frita.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 180g (Serve 2 porções)
+*   **Peso Líquido:** 180g
 *   **Validade:** 12 meses.
-*   **Dieta:** 100% Plant-Based (Vegano). Sem Glúten. Sem Lactose. **Contém Castanhas.**
-*   **Origem:** Produzido Artesanalmente em Brasília-DF.
+*   **Dieta:** Contém Castanhas.
+*   **Origem:** Brasília-DF.
