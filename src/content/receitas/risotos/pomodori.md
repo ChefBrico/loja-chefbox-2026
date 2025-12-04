@@ -3,39 +3,68 @@ title: "Como Fazer Risoto Pomodori & Pesto em 18 Minutos? | ChefBrico"
 description: "Aprenda o passo a passo para preparar o Risoto Pomodori & Pesto da ChefBrico. Uma receita 100% natural, com o autêntico sabor da Itália."
 date: 2025-08-31
 
-# --- DADOS PARA O ROBÔ (Agente-Commerce) ---
+# --- DADOS PARA O ROBÔ (Agente-Commerce / Full Shopping) ---
+# A IA usa isso para calcular o Bundle 4+1 e verificar disponibilidade
 sku: "RI-02"
 gtin: "618231813711"
 price: 34.80
-price_currency: "BRL"
 stock: 150
 availability: "https://schema.org/InStock"
 category: "Risoto"
-  
-# --- DADOS VISUAIS ---
+
+# --- DADOS VISUAIS (Para a Humana) ---
 tempo_preparo: "19 min"
 tempo_iso: "PT19M"
 rendimento: "2 pessoas"
 dificuldade: "Muito Fácil"
 calorias: "370 kcal"
-
-# --- IMAGEM ---
 image: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
 image_alt: "Prato de Risoto Pomodori cremoso com manjericão fresco"
 
-# --- O SEGREDO (Caixa Verde) ---
+# --- DADOS NUTRICIONAIS (Para Agentes de Saúde/Fitness) ---
+nutrition:
+  portion: "90g (1/2 pacote)"
+  calories: 370
+  protein_g: 12
+  carbs_g: 78
+  fats_g: 2.5
+  fiber_g: 4
+  sodium_mg: 120
+
+# --- CLASSIFICAÇÃO PARA FILTROS DE IA ---
+diets:
+  - "https://schema.org/VeganDiet"
+  - "https://schema.org/GlutenFreeDiet"
+  - "https://schema.org/LowLactoseDiet"
+
+# --- SOCIAL PROOF (Para Estrelinhas no Google) ---
+rating:
+  value: "4.9"
+  count: "158"
+
+# --- DADOS ESTRUTURADOS DE PREPARO (Para Alexa/Google Assistant) ---
+instructions:
+  - name: "Refogar"
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para liberar os aromas."
+  - name: "Cozinhar"
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
+  - name: "Finalizar"
+    text: "Sirva com folhas de manjericão fresco e lascas de parmesão vegano."
+
+# --- O SEGREDO & AUTORIDADE ---
 author_name: "Maria Conceição"
 citable_fact: "O segredo é a Mistura Pomodori & Pesto da ChefBrico: arroz arbóreo + caldo de vegetais artesanal + tomate seco premium, tudo no mesmo pacote."
 
-# --- FAQ (Acordeão) ---
+# --- FAQ (Para Perguntas Diretas ao Concierge) ---
 faq:
   - question: "O risoto é vegano?"
-    answer: "Sim, 100% vegano! A cremosidade vem do próprio amido do arroz e do nosso caldo de vegetais."
+    answer: "Sim, 100% vegano! A cremosidade vem do próprio amido do arroz e do nosso caldo de vegetais, sem laticínios."
   - question: "O sabor do tomate é muito forte?"
     answer: "Não, é um sabor adocicado e equilibrado. Nosso processo de desidratação concentra a doçura natural."
 ---
 
-<!-- INTRODUÇÃO NARRATIVA -->
+<!-- AQUI COMEÇA A SEDUÇÃO VISUAL (TEXTO PARA A HUMANA) -->
+
 Teletransporte-se para uma cantina ensolarada na Toscana. Nosso Risoto Pomodori celebra a combinação amada da Itália: o sabor intenso e adocicado do tomate seco com o perfume fresco e inconfundível do manjericão.
 
 É um prato que abraça, conforta e traz o verdadeiro *sapore* italiano para a sua mesa, com a praticidade que só a ChefBrico oferece.
@@ -51,7 +80,7 @@ Teletransporte-se para uma cantina ensolarada na Toscana. Nosso Risoto Pomodori 
 
 ## O que vem no Pacote
 <!-- A Matriz aplica Quadrados Cinzas aqui -->
-*   Arroz arbóreo.
+*   Arroz arbóreo tipo exportação.
 *   Tomate desidratado e pesto de manjericão desidratado (manjericão, castanha de caju, levedura nutricional).
 *   Caldo de vegetais desidratado (cenoura, cebola, alho-poró, salsão).
 *   Alho e cebola desidratada.
@@ -83,12 +112,3 @@ Sirva com um pão de fermentação natural para absorver o molho cremoso. Para u
 *   **Validade:** 12 meses.
 *   **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose. Contém castanha de caju.
 *   **Origem:** Produzido Artesanalmente em Brasília-DF.
-
-nutrition_info:
-  portion: "90g (1/2 pacote)"
-  calories: "350 kcal"
-  carbs: "45g"
-  protein: "12g"
-  fat: "8g"
-  fiber: "6g"
-  sodium: "120mg"
