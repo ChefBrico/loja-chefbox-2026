@@ -423,7 +423,7 @@ layout: base.njk
     </div>
 </article>
 
-<!-- JAVASCRIPT CIRURGIÃO -->
+<!-- JAVASCRIPT CIRURGIÃO (VERSÃO FINAL COMPLETA) -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const headers = document.querySelectorAll('.conteudo-leitura h2');
@@ -431,33 +431,50 @@ layout: base.njk
         
         headers.forEach(h2 => {
             const title = h2.innerText.toLowerCase();
+
+            // 1. LISTA "POR QUE AMAR" (Check Verde)
             if (title.includes('amar')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checked-list'); 
             }
-            if (title.includes('precisar') || title.includes('pacote')) {
+
+            // 2. LISTA DE ITENS (Quadrado Vazio)
+            // Agora serve para: "O que vem no Pacote", "No Pote", "Vai Precisar", "Acompanhar"
+            if (title.includes('precisar') || title.includes('pacote') || 
+                title.includes('pote') || title.includes('acompanhar') || 
+                title.includes('sugestões') || title.includes('consumo')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checklist');
             }
+
+            // 3. MODO DE PREPARO (Bolinhas Laranjas Numeradas)
+            // Só ativa se tiver a palavra "Preparo"
             if (title.includes('preparo')) {
                 const list = h2.nextElementSibling;
                 if (list && (list.tagName === 'OL' || list.tagName === 'UL')) {
                     let targetList = list;
+                    // Garante que é uma lista ordenada (OL) para ter números
                     if (list.tagName === 'UL') {
                         const newOl = document.createElement('ol');
                         newOl.innerHTML = list.innerHTML;
                         list.parentNode.replaceChild(newOl, list);
                         targetList = newOl;
                     }
+                    
                     targetList.classList.add('modo-preparo');
+                    
+                    // Move a frase "Simples Assim" para logo depois do preparo
                     if (simplesTag) {
                         simplesTag.style.display = 'block'; 
                         targetList.after(simplesTag); 
                     }
                 }
             }
-            if (title.includes('criativa')) {
+
+            // 4. CARD FLUTUANTE (Dicas da Chef)
+            if (title.includes('criativa') || title.includes('dica')) {
                 const p = h2.nextElementSibling;
+                // Pega o próximo elemento, seja parágrafo ou lista, e aplica o estilo de card
                 if (p) p.classList.add('dica-chef-card');
             }
         });
