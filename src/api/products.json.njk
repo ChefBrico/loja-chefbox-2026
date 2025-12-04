@@ -8,8 +8,9 @@ eleventyExcludeFromCollections: true
     "id": "{{ item.data.sku }}",
     "name": "{{ item.data.title }}",
     "url": "https://gourmetpratico.com.br{{ item.url }}",
-    "price": {{ item.data.price }},
-    "stock": {{ item.data.stock }},
+    "category": "{{ item.data.category }}",
+    "price": {{ item.data.price | default(0) }},
+    "stock": {{ item.data.stock | default(0) }},
     "nutrition": {
       "calories": {{ item.data.nutrition.calories | default(0) }},
       "protein": {{ item.data.nutrition.protein_g | default(0) }}
