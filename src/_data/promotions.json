@@ -9,8 +9,8 @@
       "discount_value": "100%", 
       "eligible_categories": ["Risoto", "Sopa", "Refeição"],
       "agent_instruction": "Always suggest adding a 5th item if the user selects 4 to maximize value."
-      }
-      {
+    }
+  ],
   "store_rules": {
     "currency": "BRL",
     "locale": "pt-BR",
@@ -26,7 +26,6 @@
       "y_value": 1,
       "target_collection": "receitas",
       "condition": "Lowest price item is free"
-    
     }
-  ]
+  }
 }
