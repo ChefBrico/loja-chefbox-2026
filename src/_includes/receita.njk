@@ -67,7 +67,7 @@ layout: base.njk
   "recipeCategory": "{{ category }}",
   "recipeCuisine": "Italian",
 
-  // FILTROS DE DIETA (Se não tiver no MD, assume Vegetariano por padrão)
+  // FILTROS DE DIETA
   "suitableForDiet": [
     {% if diets %}
       {% for diet in diets %}"{{ diet }}"{% if not loop.last %},{% endif %}{% endfor %}
@@ -77,7 +77,7 @@ layout: base.njk
     {% endif %}
   ],
 
-  // SOCIAL PROOF (Simulado ou Real do MD)
+  // SOCIAL PROOF (Simulado ou Real)
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "{{ rating.value | default('4.9') }}",
@@ -86,7 +86,7 @@ layout: base.njk
     "worstRating": "1"
   },
 
-  // NUTRIÇÃO (Se disponível no MD)
+  // NUTRIÇÃO (Para Robôs)
   {% if nutrition %}
   "nutrition": {
     "@type": "NutritionInformation",
@@ -103,21 +103,22 @@ layout: base.njk
 
   // INSTRUÇÕES PASSO A PASSO (Para Assistentes de Voz)
   "recipeInstructions": [
-    {
-      "@type": "HowToStep",
-      "text": "Refogue o conteúdo do pacote com azeite.",
-      "position": 1
-    },
-    {
-      "@type": "HowToStep",
-      "text": "Adicione água e cozinhe até secar.",
-      "position": 2
-    },
-    {
-      "@type": "HowToStep",
-      "text": "Finalize e sirva.",
-      "position": 3
-    }
+    {% if instructions %}
+      {% for step in instructions %}
+      {
+        "@type": "HowToStep",
+        "name": "{{ step.name }}",
+        "text": "{{ step.text }}",
+        "position": {{ loop.index }},
+        "url": "https://gourmetpratico.com.br{{ page.url }}#passo{{ loop.index }}"
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    {% else %}
+      {
+        "@type": "HowToStep",
+        "text": "Siga as instruções de preparo no rótulo ou na descrição abaixo."
+      }
+    {% endif %}
   ],
   
   // OFERTA COMERCIAL (A LÓGICA 4+1)
@@ -199,7 +200,21 @@ layout: base.njk
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
   .conteudo-leitura h2 { color: #014039; margin-top: 50px; margin-bottom: 20px; font-size: 1.6rem; font-family: 'Merriweather', serif; }
 
+  /* --- INTRODUÇÃO CARD (NOVO!) --- */
+  .intro-card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+      border-left: 5px solid #014039;
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+  }
+
   /* --- LISTAS INTELIGENTES --- */
+  /* CHECK VERDE */
   .checked-list { list-style: none !important; padding-left: 0; }
   .checked-list li { position: relative; padding-left: 35px; margin-bottom: 15px; }
   .checked-list li::before {
@@ -208,6 +223,7 @@ layout: base.njk
       display: flex; align-items: center; justify-content: center;
   }
 
+  /* QUADRADO VAZIO */
   .checklist { list-style: none !important; padding-left: 0; }
   .checklist li { position: relative; padding-left: 35px; margin-bottom: 10px; }
   .checklist li::before {
@@ -215,6 +231,7 @@ layout: base.njk
       width: 18px; height: 18px; background-color: #fff; border: 2px solid #ccc; border-radius: 4px;
   }
 
+  /* BOLINHAS LARANJAS (Modo Preparo) */
   .modo-preparo { list-style: none !important; counter-reset: steps; padding-left: 0; }
   .modo-preparo li { position: relative; padding-left: 60px; margin-bottom: 25px; }
   .modo-preparo li::before {
@@ -316,8 +333,10 @@ layout: base.njk
 
     <div class="conteudo-leitura">
         
+        <!-- ELEMENTO QUE O JS VAI MOVER E MOSTRAR -->
         <div id="simples-assim-tag" class="simples-assim">Simples assim! ✨</div>
 
+        <!-- AQUI ENTRA O TEXTO DO ARQUIVO .MD -->
         {{ content | safe }}
 
         <!-- PILARES -->
@@ -423,47 +442,61 @@ layout: base.njk
     </div>
 </article>
 
-<!-- JAVASCRIPT CIRURGIÃO (VERSÃO FINAL COMPLETA) -->
+<!-- JAVASCRIPT: O MAESTRO DA ESTÉTICA -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const headers = document.querySelectorAll('.conteudo-leitura h2');
+        const contentDiv = document.querySelector('.conteudo-leitura');
+        const headers = contentDiv.querySelectorAll('h2');
         const simplesTag = document.getElementById('simples-assim-tag');
         
+        // 1. ACHAR E ESTILIZAR A INTRODUÇÃO (CARD BRANCO NO TOPO)
+        if (headers.length > 0) {
+            let currentNode = contentDiv.firstChild;
+            let introNodes = [];
+            
+            while (currentNode && currentNode !== headers[0]) {
+                if (currentNode.nodeType === 1 && currentNode.tagName === 'P' && currentNode.innerText.trim().length > 0) {
+                    introNodes.push(currentNode);
+                }
+                currentNode = currentNode.nextSibling;
+            }
+
+            introNodes.forEach(node => {
+                node.classList.add('intro-card');
+            });
+        }
+
+        // 2. ESTILIZAR LISTAS (VERDE, VAZIO, LARANJA)
         headers.forEach(h2 => {
             const title = h2.innerText.toLowerCase();
 
-            // 1. LISTA "POR QUE AMAR" (Check Verde)
-            if (title.includes('amar')) {
+            // CHECK VERDE (Por que Amar + Pacote/Pote)
+            if (title.includes('amar') || title.includes('pacote') || title.includes('pote')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checked-list'); 
             }
 
-            // 2. LISTA DE ITENS (Quadrado Vazio)
-            // Agora serve para: "O que vem no Pacote", "No Pote", "Vai Precisar", "Acompanhar"
-            if (title.includes('precisar') || title.includes('pacote') || 
-                title.includes('pote') || title.includes('acompanhar') || 
-                title.includes('sugestões') || title.includes('consumo')) {
+            // QUADRADO VAZIO (Precisar, Acompanhar, Consumo)
+            if (title.includes('precisar') || title.includes('acompanhar') || title.includes('consumo')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checklist');
             }
 
-            // 3. MODO DE PREPARO (Bolinhas Laranjas Numeradas)
-            // Só ativa se tiver a palavra "Preparo"
+            // MODO DE PREPARO (Bolinhas Laranjas)
             if (title.includes('preparo')) {
                 const list = h2.nextElementSibling;
                 if (list && (list.tagName === 'OL' || list.tagName === 'UL')) {
                     let targetList = list;
-                    // Garante que é uma lista ordenada (OL) para ter números
+                    // Garante OL para ter números
                     if (list.tagName === 'UL') {
                         const newOl = document.createElement('ol');
                         newOl.innerHTML = list.innerHTML;
                         list.parentNode.replaceChild(newOl, list);
                         targetList = newOl;
                     }
-                    
                     targetList.classList.add('modo-preparo');
                     
-                    // Move a frase "Simples Assim" para logo depois do preparo
+                    // Move "Simples Assim"
                     if (simplesTag) {
                         simplesTag.style.display = 'block'; 
                         targetList.after(simplesTag); 
@@ -471,10 +504,9 @@ layout: base.njk
                 }
             }
 
-            // 4. CARD FLUTUANTE (Dicas da Chef)
+            // CARD FLUTUANTE (Dica da Chef)
             if (title.includes('criativa') || title.includes('dica')) {
                 const p = h2.nextElementSibling;
-                // Pega o próximo elemento, seja parágrafo ou lista, e aplica o estilo de card
                 if (p) p.classList.add('dica-chef-card');
             }
         });
