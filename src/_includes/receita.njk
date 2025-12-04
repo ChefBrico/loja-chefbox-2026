@@ -67,7 +67,6 @@ layout: base.njk
   "recipeCategory": "{{ category }}",
   "recipeCuisine": "Italian",
 
-  // FILTROS DE DIETA
   "suitableForDiet": [
     {% if diets %}
       {% for diet in diets %}"{{ diet }}"{% if not loop.last %},{% endif %}{% endfor %}
@@ -77,7 +76,6 @@ layout: base.njk
     {% endif %}
   ],
 
-  // SOCIAL PROOF (Simulado ou Real)
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "{{ rating.value | default('4.9') }}",
@@ -86,7 +84,6 @@ layout: base.njk
     "worstRating": "1"
   },
 
-  // NUTRIÇÃO (Para Robôs)
   {% if nutrition %}
   "nutrition": {
     "@type": "NutritionInformation",
@@ -101,7 +98,6 @@ layout: base.njk
 
   "recipeIngredient": [ "Ver lista completa na embalagem ChefBrico" ], 
 
-  // INSTRUÇÕES PASSO A PASSO (Para Assistentes de Voz)
   "recipeInstructions": [
     {% if instructions %}
       {% for step in instructions %}
@@ -121,7 +117,6 @@ layout: base.njk
     {% endif %}
   ],
   
-  // OFERTA COMERCIAL (A LÓGICA 4+1)
   "offers": {
     "@type": "Offer",
     "price": "{{ price }}",
@@ -151,7 +146,6 @@ layout: base.njk
     ]
   },
 
-  // FAQ INTEGRADO
   "mainEntity": {
     "@type": "FAQPage",
     "mainEntity": [
@@ -168,20 +162,20 @@ layout: base.njk
 </script>
 
 <!-- ========================================================================== -->
-<!-- 3. CAMADA VISUAL (CSS ESTILO REVISTA)                                      -->
+<!-- 3. CAMADA VISUAL (CSS)                                                     -->
 <!-- ========================================================================== -->
 <style>
-  /* --- GERAL --- */
+  /* GERAL */
   .receita-header { text-align: center; max-width: 800px; margin: 40px auto; }
   .receita-title { color: #014039; font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; line-height: 1.2; }
   .receita-subtitle { color: #666; font-style: italic; font-size: 1.1rem; }
 
-  /* --- BREADCRUMBS VISUAL --- */
+  /* BREADCRUMBS */
   .breadcrumbs { font-size: 0.85rem; color: #888; margin-bottom: 20px; text-align: center; }
   .breadcrumbs a { color: #888; text-decoration: none; }
   .breadcrumbs span { margin: 0 5px; }
 
-  /* --- METADADOS --- */
+  /* METADADOS */
   .meta-bar {
       display: flex; justify-content: center; gap: 20px; margin: 25px 0;
       font-size: 0.85rem; color: #444; font-weight: 600; flex-wrap: wrap; text-transform: uppercase;
@@ -189,32 +183,25 @@ layout: base.njk
   .meta-item { display: flex; align-items: center; gap: 6px; background: #fff; padding: 8px 15px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
   .meta-icon { font-size: 1.1rem; }
 
-  /* --- IMAGEM --- */
+  /* IMAGEM */
   .hero-image-container {
       max-width: 900px; margin: 0 auto 40px; border-radius: 15px; overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
   .hero-image-container img { width: 100%; height: auto; display: block; }
 
-  /* --- CONTEÚDO --- */
+  /* CONTEÚDO */
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
   .conteudo-leitura h2 { color: #014039; margin-top: 50px; margin-bottom: 20px; font-size: 1.6rem; font-family: 'Merriweather', serif; }
 
-  /* --- INTRODUÇÃO CARD (NOVO!) --- */
+  /* INTRO CARD */
   .intro-card {
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      margin-bottom: 40px;
-      border-left: 5px solid #014039;
-      font-size: 1.1rem;
-      color: #555;
-      line-height: 1.8;
+      background: #fff; padding: 25px; border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 40px;
+      border-left: 5px solid #014039; font-size: 1.1rem; color: #555; line-height: 1.8;
   }
 
-  /* --- LISTAS INTELIGENTES --- */
-  /* CHECK VERDE */
+  /* LISTAS */
   .checked-list { list-style: none !important; padding-left: 0; }
   .checked-list li { position: relative; padding-left: 35px; margin-bottom: 15px; }
   .checked-list li::before {
@@ -223,7 +210,6 @@ layout: base.njk
       display: flex; align-items: center; justify-content: center;
   }
 
-  /* QUADRADO VAZIO */
   .checklist { list-style: none !important; padding-left: 0; }
   .checklist li { position: relative; padding-left: 35px; margin-bottom: 10px; }
   .checklist li::before {
@@ -231,7 +217,6 @@ layout: base.njk
       width: 18px; height: 18px; background-color: #fff; border: 2px solid #ccc; border-radius: 4px;
   }
 
-  /* BOLINHAS LARANJAS (Modo Preparo) */
   .modo-preparo { list-style: none !important; counter-reset: steps; padding-left: 0; }
   .modo-preparo li { position: relative; padding-left: 60px; margin-bottom: 25px; }
   .modo-preparo li::before {
@@ -246,7 +231,7 @@ layout: base.njk
       margin-top: 30px; margin-bottom: 50px; display: none; text-shadow: 1px 1px 0px #fff;
   }
 
-  /* --- CARDS --- */
+  /* CARDS E BLOCOS */
   .segredo-box {
       background: #ffffff; padding: 25px; margin: 30px auto; max-width: 800px;
       border-radius: 8px; color: #444; border-left: 5px solid #27ae60; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
@@ -259,11 +244,12 @@ layout: base.njk
       padding: 20px; margin: 30px 0; font-style: italic; color: #555; background: #f9f9f9; border-radius: 10px; text-align: center;
   }
 
-  /* --- CTA E PILARES --- */
+  /* PILARES */
   .pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 40px 0; text-align: center; }
   .pilar-card { padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: block; transition: all 0.2s; }
   .pilar-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #27ae60; }
 
+  /* CTA */
   .cta-box { background: linear-gradient(90deg, #fdfbf7 0%, #fff 100%); border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; max-width: 700px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
   .cta-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
   .cta-content { flex-grow: 1; text-align: left; }
@@ -277,154 +263,32 @@ layout: base.njk
   }
   .btn-comprar-agora:hover { transform: scale(1.05); }
 
- <!-- ========================================================================== -->
-<!-- NOVA TABELA NUTRICIONAL MODERNA (ESTILO CARDS)                             -->
-<!-- ========================================================================== -->
-{% if nutrition %}
-<style>
-  /* Container dos Cards */
+  /* NOVA TABELA NUTRICIONAL (CARDS) */
   .nutri-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin: 40px auto;
-      max-width: 100%;
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+      margin: 30px auto; max-width: 100%;
   }
-
-  /* O Card Individual (A Pílula) */
   .nutri-card {
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 15px;
-      width: 100px; /* Tamanho fixo para ficarem uniformes */
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
-      text-align: center;
+      background: #fff; border: 1px solid #eee; border-radius: 10px;
+      width: 100px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center; flex-shrink: 0;
   }
-  .nutri-card:hover { transform: translateY(-5px); }
-
-  /* Cabeçalho do Card (Nome do Nutriente) */
   .nutri-head {
-      background: #014039; /* Verde ChefBrico */
-      color: white;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      padding: 8px 5px;
-      font-weight: bold;
-      height: 40px; /* Altura fixa para alinhar */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1.1;
+      background: #014039; color: white; font-size: 0.7rem; text-transform: uppercase;
+      padding: 5px; font-weight: bold; height: 35px; display: flex; align-items: center; justify-content: center;
   }
-
-  /* Corpo do Card (Valor) */
-  .nutri-body {
-      padding: 10px 5px;
-      background: #fdfbf7;
-  }
-  .nutri-value {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: #014039;
-      display: block;
-  }
-  .nutri-unit {
-      font-size: 0.8rem;
-      color: #777;
-      font-weight: normal;
-  }
-
-  /* Rodapé do Card (Opcional - se tivermos %) */
-  .nutri-foot {
-      background: #e0f2f1;
-      color: #00695c;
-      font-size: 0.7rem;
-      padding: 4px;
-      font-weight: bold;
-  }
-
-  /* Disclaimer legal */
-  .nutri-disclaimer {
-      font-size: 0.7rem;
-      color: #888;
-      text-align: center;
-      margin-top: 15px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-  }
+  .nutri-body { padding: 8px 5px; background: #fdfbf7; }
+  .nutri-value { font-size: 1.2rem; font-weight: 800; color: #014039; display: block; }
+  .nutri-unit { font-size: 0.7rem; color: #777; }
+  
+  /* FAQ e Autor */
+  details.faq-item { background: #fff; border-bottom: 1px solid #eee; }
+  details.faq-item summary { padding: 15px 0; color: #333; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
+  .author-box { display: flex; align-items: center; gap: 20px; background: #fafafa; padding: 25px; border-radius: 12px; margin-top: 60px; }
+  .author-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; }
+  
+  @media (max-width: 600px) { .cta-box { flex-direction: column; text-align: center; } }
 </style>
-
-<div style="text-align: center; margin-top: 60px;">
-    <h3 style="font-family: 'Merriweather', serif; color: #014039; margin-bottom: 5px;">Informação Nutricional</h3>
-    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Porção de {{ nutrition.portion | default('1/2 pacote') }}</p>
-
-    <div class="nutri-grid">
-        
-        <!-- CARD CALORIAS -->
-        <div class="nutri-card">
-            <div class="nutri-head" style="background: #F2811D;">Calorias</div> <!-- Laranja para destaque -->
-            <div class="nutri-body">
-                <span class="nutri-value">{{ nutrition.calories }}</span>
-                <span class="nutri-unit">kcal</span>
-            </div>
-        </div>
-
-        <!-- CARD CARBOIDRATOS -->
-        <div class="nutri-card">
-            <div class="nutri-head">Carboidratos</div>
-            <div class="nutri-body">
-                <span class="nutri-value">{{ nutrition.carbs_g }}</span>
-                <span class="nutri-unit">g</span>
-            </div>
-        </div>
-
-        <!-- CARD PROTEÍNAS -->
-        <div class="nutri-card">
-            <div class="nutri-head">Proteínas</div>
-            <div class="nutri-body">
-                <span class="nutri-value">{{ nutrition.protein_g }}</span>
-                <span class="nutri-unit">g</span>
-            </div>
-        </div>
-
-        <!-- CARD GORDURAS -->
-        <div class="nutri-card">
-            <div class="nutri-head">Gorduras</div>
-            <div class="nutri-body">
-                <span class="nutri-value">{{ nutrition.fats_g }}</span>
-                <span class="nutri-unit">g</span>
-            </div>
-        </div>
-
-        <!-- CARD FIBRAS -->
-        <div class="nutri-card">
-            <div class="nutri-head">Fibras</div>
-            <div class="nutri-body">
-                <span class="nutri-value">{{ nutrition.fiber_g }}</span>
-                <span class="nutri-unit">g</span>
-            </div>
-        </div>
-
-        <!-- CARD SÓDIO -->
-        <div class="nutri-card">
-            <div class="nutri-head">Sódio</div>
-            <div class="nutri-body">
-                <span class="nutri-value">{{ nutrition.sodium_mg }}</span>
-                <span class="nutri-unit">mg</span>
-            </div>
-        </div>
-
-    </div>
-
-    <p class="nutri-disclaimer">
-        * % Valores Diários com base em uma dieta de 2.000 kcal ou 8.400 kJ. Seus valores diários podem ser maiores ou menores dependendo de suas necessidades energéticas.
-    </p>
-</div>
-{% endif %}
 
 <!-- ========================================================================== -->
 <!-- 4. PALCO VISUAL (HTML ESTRUTURAL)                                          -->
@@ -465,10 +329,9 @@ layout: base.njk
 
     <div class="conteudo-leitura">
         
-        <!-- ELEMENTO QUE O JS VAI MOVER E MOSTRAR -->
+        <!-- Elemento Movel -->
         <div id="simples-assim-tag" class="simples-assim">Simples assim! ✨</div>
 
-        <!-- AQUI ENTRA O TEXTO DO ARQUIVO .MD -->
         {{ content | safe }}
 
         <!-- PILARES -->
@@ -497,7 +360,6 @@ layout: base.njk
                 <h3>Gostou? Leve para casa.</h3>
                 <p>Adicione à sua <strong>ChefBox</strong> agora.</p>
             </div>
-            <!-- BOTÃO DEEPLINK -->
             <a href="https://wa.me/5561996659880?text=Olá,%20quero%20comprar%20o%20item:%20*{{ title }}*%20(SKU:%20{{ sku }})" 
                class="btn-comprar-agora"
                data-agent-action="purchase"
@@ -507,40 +369,39 @@ layout: base.njk
             </a>
         </div>
 
-        <!-- TABELA NUTRICIONAL VISUAL -->
+        <!-- NOVA TABELA NUTRICIONAL (CARDS) -->
         {% if nutrition %}
-        <div class="nutrition-label">
-            <div class="nutrition-header">
-                <h3 style="font-size: 1.8rem; margin: 0;">Informação Nutricional</h3>
-                <p style="margin: 0;">Porção de 1/2 pacote (prato pronto)</p>
+        <div style="text-align: center; margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
+            <h3 style="font-family: 'Merriweather', serif; color: #014039; margin-bottom: 5px;">Informação Nutricional</h3>
+            <p style="font-size: 0.8rem; color: #999; margin-bottom: 20px;">Porção de {{ nutrition.portion | default('1/2 pacote') }}</p>
+
+            <div class="nutri-grid">
+                <div class="nutri-card">
+                    <div class="nutri-head" style="background: #F2811D;">Calorias</div>
+                    <div class="nutri-body"><span class="nutri-value">{{ nutrition.calories }}</span><span class="nutri-unit">kcal</span></div>
+                </div>
+                <div class="nutri-card">
+                    <div class="nutri-head">Carboidratos</div>
+                    <div class="nutri-body"><span class="nutri-value">{{ nutrition.carbs_g }}</span><span class="nutri-unit">g</span></div>
+                </div>
+                <div class="nutri-card">
+                    <div class="nutri-head">Proteínas</div>
+                    <div class="nutri-body"><span class="nutri-value">{{ nutrition.protein_g }}</span><span class="nutri-unit">g</span></div>
+                </div>
+                <div class="nutri-card">
+                    <div class="nutri-head">Gorduras</div>
+                    <div class="nutri-body"><span class="nutri-value">{{ nutrition.fats_g }}</span><span class="nutri-unit">g</span></div>
+                </div>
+                <div class="nutri-card">
+                    <div class="nutri-head">Fibras</div>
+                    <div class="nutri-body"><span class="nutri-value">{{ nutrition.fiber_g }}</span><span class="nutri-unit">g</span></div>
+                </div>
+                <div class="nutri-card">
+                    <div class="nutri-head">Sódio</div>
+                    <div class="nutri-body"><span class="nutri-value">{{ nutrition.sodium_mg }}</span><span class="nutri-unit">mg</span></div>
+                </div>
             </div>
-            <table>
-                <tr>
-                    <td><strong>Valor Energético</strong></td>
-                    <td style="text-align: right;"><strong>{{ nutrition.calories }}</strong></td>
-                </tr>
-                <tr>
-                    <td>Carboidratos</td>
-                    <td style="text-align: right;">{{ nutrition.carbs_g }}</td>
-                </tr>
-                <tr>
-                    <td>Proteínas</td>
-                    <td style="text-align: right;">{{ nutrition.protein_g }}</td>
-                </tr>
-                <tr>
-                    <td>Gorduras Totais</td>
-                    <td style="text-align: right;">{{ nutrition.fats_g }}</td>
-                </tr>
-                <tr>
-                    <td>Fibra Alimentar</td>
-                    <td style="text-align: right;">{{ nutrition.fiber_g }}</td>
-                </tr>
-                <tr>
-                    <td>Sódio</td>
-                    <td style="text-align: right;">{{ nutrition.sodium_mg }}</td>
-                </tr>
-            </table>
-            <p style="font-size: 0.7rem; margin-top: 5px;">* % Valores Diários com base em uma dieta de 2.000 kcal.</p>
+            <p style="font-size: 0.7rem; color: #ccc; margin-top: 10px;">* Valores aproximados.</p>
         </div>
         {% endif %}
 
@@ -557,7 +418,6 @@ layout: base.njk
         </div>
         {% endif %}
 
-        <!-- AUTORIDADE -->
         <div class="author-box">
             <img src="{{ author.image }}" alt="{{ author.name }}" class="author-img">
             <div class="author-info">
@@ -585,41 +445,35 @@ layout: base.njk
         if (headers.length > 0) {
             let currentNode = contentDiv.firstChild;
             let introNodes = [];
-            
             while (currentNode && currentNode !== headers[0]) {
                 if (currentNode.nodeType === 1 && currentNode.tagName === 'P' && currentNode.innerText.trim().length > 0) {
                     introNodes.push(currentNode);
                 }
                 currentNode = currentNode.nextSibling;
             }
-
             introNodes.forEach(node => {
                 node.classList.add('intro-card');
             });
         }
 
-        // 2. ESTILIZAR LISTAS (VERDE, VAZIO, LARANJA)
+        // 2. ESTILIZAR LISTAS
         headers.forEach(h2 => {
             const title = h2.innerText.toLowerCase();
-
-            // CHECK VERDE (Por que Amar + Pacote/Pote)
+            // CHECK VERDE
             if (title.includes('amar') || title.includes('pacote') || title.includes('pote')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checked-list'); 
             }
-
-            // QUADRADO VAZIO (Precisar, Acompanhar, Consumo)
+            // QUADRADO VAZIO
             if (title.includes('precisar') || title.includes('acompanhar') || title.includes('consumo')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checklist');
             }
-
-            // MODO DE PREPARO (Bolinhas Laranjas)
+            // MODO DE PREPARO
             if (title.includes('preparo')) {
                 const list = h2.nextElementSibling;
                 if (list && (list.tagName === 'OL' || list.tagName === 'UL')) {
                     let targetList = list;
-                    // Garante OL para ter números
                     if (list.tagName === 'UL') {
                         const newOl = document.createElement('ol');
                         newOl.innerHTML = list.innerHTML;
@@ -627,16 +481,13 @@ layout: base.njk
                         targetList = newOl;
                     }
                     targetList.classList.add('modo-preparo');
-                    
-                    // Move "Simples Assim"
                     if (simplesTag) {
                         simplesTag.style.display = 'block'; 
                         targetList.after(simplesTag); 
                     }
                 }
             }
-
-            // CARD FLUTUANTE (Dica da Chef)
+            // CARD FLUTUANTE
             if (title.includes('criativa') || title.includes('dica')) {
                 const p = h2.nextElementSibling;
                 if (p) p.classList.add('dica-chef-card');
