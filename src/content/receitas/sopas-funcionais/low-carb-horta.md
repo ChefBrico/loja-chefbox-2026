@@ -1,86 +1,87 @@
 ---
 title: "Sopa Low Carb da Horta em 15 Minutos | ChefBrico"
-description: "Leveza e cor para sua dieta. Sopa low carb com lentilha vermelha e mix de vegetais da horta. 100% natural, vegana e pronta em 15 minutos."
+description: "Leveza e cor para sua dieta. Sopa low carb com lentilha vermelha e mix de vegetais. 100% natural."
 date: 2025-08-14
-
-# --- DADOS PARA O ROBÔ (Agente-Commerce) ---
 sku: "SP-01"
 gtin: "618231813698"
 price: 29.60
-price_currency: "BRL"
 stock: 45
 availability: "https://schema.org/InStock"
 category: "Sopa"
 
-# --- DADOS VISUAIS ---
+# VISUAL
 tempo_preparo: "16 min"
 tempo_iso: "PT16M"
-rendimento: "3 porções (1 litro)"
+rendimento: "3 porções"
 dificuldade: "Muito Fácil"
 calorias: "160 kcal"
-
-# --- IMAGEM ---
 image: "/imagens/chefbrico-lowcarb-lentilha-vermelha-da-horta(1080x566px).png"
-image_alt: "Prato de Sopa Low Carb da Horta colorida e vibrante - ChefBrico"
+image_alt: "Sopa Low Carb colorida"
 
-# --- O SEGREDO (Caixa Verde) ---
+# NUTRIÇÃO
+nutrition:
+  portion: "50g (1/3 pacote)"
+  calories: 160
+  protein_g: 10
+  carbs_g: 25
+  fats_g: 1.0
+  fiber_g: 7
+  sodium_mg: 90
+
+diets: ["https://schema.org/VeganDiet", "https://schema.org/LowCarbDiet", "https://schema.org/GlutenFreeDiet"]
+rating: { value: "4.8", count: "130" }
+
+instructions:
+  - name: "Cozinhar"
+    text: "Cozinhe com 1 litro de água por 15 minutos."
+  - name: "Finalizar"
+    text: "Tempere com limão."
+
 author_name: "Maria Conceição"
-citable_fact: "A lentilha vermelha é o segredo: rica em proteína e fibras, ela engrossa o caldo naturalmente sem adicionar carboidratos simples."
-
-# --- FAQ (Acordeão) ---
+citable_fact: "A lentilha vermelha é o segredo: rica em proteína, engrossa o caldo sem adicionar carboidratos simples."
 faq:
-  - question: "É realmente low carb?"
-    answer: "Sim! Usamos vegetais de baixo índice glicêmico (abobrinha, couve) e lentilha vermelha, ideal para dietas controladas."
   - question: "Sacia a fome?"
-    answer: "Muito! As fibras dos vegetais e a proteína da lentilha garantem saciedade prolongada com poucas calorias."
+    answer: "Muito! As fibras dos vegetais e a proteína da lentilha garantem saciedade prolongada."
 ---
 
-<!-- INTRODUÇÃO NARRATIVA -->
-Manter o foco na dieta low carb ficou muito mais fácil e delicioso. Apresentamos uma sopa leve, colorida e vibrante, criada para combater a monotonia e dar ânimo à sua rotina. 
-
-Combinamos a leveza dos vegetais da horta com a proteína da lentilha vermelha para uma refeição que nutre sem pesar.
+<!-- INTRODUÇÃO -->
+Manter o foco na dieta low carb ficou delicioso. Uma sopa leve, colorida e vibrante, criada para combater a monotonia. Combinamos a leveza dos vegetais da horta com a proteína da lentilha vermelha.
 
 ## Por que Você Vai Amar esta Sopa Leve
-<!-- A Matriz aplica Check Verde aqui -->
-*   **Leveza e Frescor:** Uma combinação de vegetais frescos e coloridos que resulta em uma das sopas mais leves do nosso cardápio.
-*   **A "Coragem" da Dieta:** O sabor delicioso e os ingredientes vibrantes te dão o ânimo para continuar firme no seu objetivo.
-*   **Nutrição Colorida:** Rica em vitaminas e minerais com baixíssimo carboidrato.
+<!-- Check Verde -->
+*   **Leveza e Frescor:** Uma das sopas mais leves do nosso cardápio.
+*   **A "Coragem" da Dieta:** O sabor delicioso dá ânimo para continuar firme.
+*   **Nutrição Colorida:** Rica em vitaminas e minerais.
 
-> "Essa sopinha é meu jantar de quase toda noite. Leve, gostosa, esquenta o corpo e a alma. E o melhor é saber que estou comendo algo que faz bem."
+> "Essa sopinha é meu jantar de quase toda noite. Leve, gostosa, esquenta o corpo e a alma."
 > — *Patrícia G., Cliente ChefBrico*
 
 ## O que vem no Pacote
-<!-- A Matriz aplica Quadrados Cinzas aqui -->
+<!-- Quadrados Cinzas -->
 *   Lentilha vermelha (proteína vegetal).
-*   Abobrinha, cenoura, couve e espinafre desidratados.
+*   Abobrinha, cenoura, couve e espinafre.
 *   Alho-poró, cebola e alho.
-*   Especiarias funcionais: Cúrcuma, gengibre e páprica.
+*   Especiarias funcionais (Cúrcuma, gengibre).
 
 ## Você Vai Precisar de
-*   1 litro (1000ml) de água fria
+*   1 litro de água fria
 *   Sal a gosto
-*   *Opcional:* Um fio de azeite e gotas de limão.
 
 ## Modo de Preparo Simplificado
-<!-- A Matriz aplica Bolinhas Laranjas aqui -->
-
-1.  **Tudo na Panela:** Coloque o conteúdo do pacote, 1 litro de água fria e sal na panela.
-2.  **Cozinhe:** Leve ao fogo médio. Assim que ferver, abaixe o fogo e cozinhe por 15 a 16 minutos.
-3.  **Finalize:** Sirva bem quentinha. Gotas de limão realçam o frescor dos vegetais.
+<!-- Bolinhas Laranjas -->
+1.  **Tudo na Panela:** Coloque o pacote, 1 litro de água e sal na panela.
+2.  **Cozinhe:** Assim que ferver, cozinhe por 15 a 16 minutos.
+3.  **Finalize:** Gotas de limão realçam o frescor.
 
 *Simples assim!*
 
 ## Cozinha Criativa: Dicas da Chef
-<!-- A Matriz aplica Card Flutuante aqui -->
-Criei a Low Carb da Horta para ser o oposto da dieta repetitiva: uma sopa colorida e cheia de texturas. 
-
-**Dica de Proteína:** Para uma refeição ainda mais completa, sirva com um ovo cozido picado por cima ou cubinhos de queijo branco.
+Para uma refeição ainda mais completa (e manter o low carb), sirva com um ovo cozido picado por cima ou cubinhos de queijo branco.
 
 ### Combina Perfeitamente Com
-Para um plano low carb completo, intercale esta sopa com a nossa **[Sopa Low Carb de Funghi](/receitas/sopas-funcionais/low-carb-funghi/)** durante a semana.
+Intercale com a **[Sopa Low Carb de Funghi](/receitas/sopas-funcionais/low-carb-funghi/)**.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 150g (Rende 3 porções)
+*   **Peso Líquido:** 150g
 *   **Validade:** 12 meses.
-*   **Dieta:** 100% Plant-Based (Vegano). Sem Glúten. Sem Lactose. Baixo Carboidrato.
-*   **Origem:** Produzido Artesanalmente em Brasília-DF.
+*   **Origem:** Brasília-DF.
