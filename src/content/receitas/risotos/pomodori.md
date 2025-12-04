@@ -98,7 +98,7 @@ Teletransporte-se para uma cantina ensolarada na Toscana. Nosso Risoto Pomodori 
 2.  **Cozinhe:** Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos, mexendo ocasionalmente.
 3.  **Finalize:** Sirva com folhas de manjericão fresco e, para uma experiência completa, lascas de queijo parmesão (ou parmesão vegano).
 
-*Simples assim!*
+
 
 ## Cozinha Criativa: Dicas da Chef
 <!-- A Matriz aplica Card Flutuante aqui -->
