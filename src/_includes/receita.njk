@@ -6,9 +6,50 @@ layout: base.njk
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@type": "Recipe",
+  "@type": ["Product", "Recipe"],
   "name": "{{ title }}",
+  "sku": "{{ sku }}",
   "image": "https://gourmetpratico.com.br{{ image }}",
+  
+  // AQUI ESTÁ O SEGREDOS PARA O AGENTE ENTENDER O PREÇO
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ price }}",
+    "priceCurrency": "BRL",
+    "availability": "{% if stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "inventoryLevel": {
+      "@type": "QuantitativeValue",
+      "value": "{{ stock }}"
+    },
+    
+    // AQUI EXPLICAMOS O "4+1" MATEMATICAMENTE
+    "priceSpecification": [
+      {
+        "@type": "UnitPriceSpecification",
+        "price": "{{ price }}",
+        "priceCurrency": "BRL",
+        "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "C62" }
+      },
+      {
+        "@type": "UnitPriceSpecification",
+        "price": "{{ (price * 4) / 5 }}", // O Robô calcula: R$ 27,84 por unidade
+        "priceCurrency": "BRL",
+        "referenceQuantity": { "@type": "QuantitativeValue", "value": "5", "unitCode": "C62" },
+        "description": "Preço unitário ao comprar o Pack ChefBox (Leve 5, Pague 4)"
+      }
+    ]
+  },
+
+  // AQUI EXPLICAMOS A NUTRIÇÃO PARA O AGENTE DE SAÚDE
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": "{{ nutrition.calories }} calories",
+    "proteinContent": "{{ nutrition.protein_g }} g",
+    "carbohydrateContent": "{{ nutrition.carbs_g }} g",
+    "fiberContent": "{{ nutrition.fiber_g }} g"
+  }
+}
+</script>
   "description": "{{ description }}",
   "sku": "{{ sku }}",
   "author": {
