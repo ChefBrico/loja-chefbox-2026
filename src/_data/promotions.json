@@ -1,0 +1,6 @@
+{
+  "rule": "buy_x_get_y",
+  "buy_qty": 4,
+  "get_qty": 1,
+  "discount_type": "cheapest_item_free"
+}
