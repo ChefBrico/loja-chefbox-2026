@@ -11,7 +11,7 @@ price_currency: "BRL"
 stock: 150
 availability: "https://schema.org/InStock"
 category: "Risoto"
-
+  
 # --- DADOS VISUAIS ---
 tempo_preparo: "19 min"
 tempo_iso: "PT19M"
@@ -83,3 +83,12 @@ Sirva com um pão de fermentação natural para absorver o molho cremoso. Para u
 *   **Validade:** 12 meses.
 *   **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose. Contém castanha de caju.
 *   **Origem:** Produzido Artesanalmente em Brasília-DF.
+
+nutrition_info:
+  portion: "90g (1/2 pacote)"
+  calories: "350 kcal"
+  carbs: "45g"
+  protein: "12g"
+  fat: "8g"
+  fiber: "6g"
+  sodium: "120mg"
