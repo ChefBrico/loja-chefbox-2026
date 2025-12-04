@@ -277,22 +277,154 @@ layout: base.njk
   }
   .btn-comprar-agora:hover { transform: scale(1.05); }
 
-  /* --- TABELA NUTRICIONAL (VISUAL) --- */
-  .nutrition-label {
-      border: 2px solid #000; padding: 15px; max-width: 350px; margin: 50px auto;
-      background: white; color: black; font-family: Arial, sans-serif; font-size: 0.9rem;
+ <!-- ========================================================================== -->
+<!-- NOVA TABELA NUTRICIONAL MODERNA (ESTILO CARDS)                             -->
+<!-- ========================================================================== -->
+{% if nutrition %}
+<style>
+  /* Container dos Cards */
+  .nutri-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 40px auto;
+      max-width: 100%;
   }
-  .nutrition-header { border-bottom: 8px solid #000; margin-bottom: 5px; padding-bottom: 5px; }
-  .nutrition-row { display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding: 4px 0; }
-  
-  /* FAQ e Autor */
-  details.faq-item { background: #fff; border-bottom: 1px solid #eee; }
-  details.faq-item summary { padding: 15px 0; color: #333; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
-  .author-box { display: flex; align-items: center; gap: 20px; background: #fafafa; padding: 25px; border-radius: 12px; margin-top: 60px; }
-  .author-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; }
-  
-  @media (max-width: 600px) { .cta-box { flex-direction: column; text-align: center; } }
+
+  /* O Card Individual (A Pílula) */
+  .nutri-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 15px;
+      width: 100px; /* Tamanho fixo para ficarem uniformes */
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+      text-align: center;
+  }
+  .nutri-card:hover { transform: translateY(-5px); }
+
+  /* Cabeçalho do Card (Nome do Nutriente) */
+  .nutri-head {
+      background: #014039; /* Verde ChefBrico */
+      color: white;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      padding: 8px 5px;
+      font-weight: bold;
+      height: 40px; /* Altura fixa para alinhar */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.1;
+  }
+
+  /* Corpo do Card (Valor) */
+  .nutri-body {
+      padding: 10px 5px;
+      background: #fdfbf7;
+  }
+  .nutri-value {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #014039;
+      display: block;
+  }
+  .nutri-unit {
+      font-size: 0.8rem;
+      color: #777;
+      font-weight: normal;
+  }
+
+  /* Rodapé do Card (Opcional - se tivermos %) */
+  .nutri-foot {
+      background: #e0f2f1;
+      color: #00695c;
+      font-size: 0.7rem;
+      padding: 4px;
+      font-weight: bold;
+  }
+
+  /* Disclaimer legal */
+  .nutri-disclaimer {
+      font-size: 0.7rem;
+      color: #888;
+      text-align: center;
+      margin-top: 15px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+  }
 </style>
+
+<div style="text-align: center; margin-top: 60px;">
+    <h3 style="font-family: 'Merriweather', serif; color: #014039; margin-bottom: 5px;">Informação Nutricional</h3>
+    <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Porção de {{ nutrition.portion | default('1/2 pacote') }}</p>
+
+    <div class="nutri-grid">
+        
+        <!-- CARD CALORIAS -->
+        <div class="nutri-card">
+            <div class="nutri-head" style="background: #F2811D;">Calorias</div> <!-- Laranja para destaque -->
+            <div class="nutri-body">
+                <span class="nutri-value">{{ nutrition.calories }}</span>
+                <span class="nutri-unit">kcal</span>
+            </div>
+        </div>
+
+        <!-- CARD CARBOIDRATOS -->
+        <div class="nutri-card">
+            <div class="nutri-head">Carboidratos</div>
+            <div class="nutri-body">
+                <span class="nutri-value">{{ nutrition.carbs_g }}</span>
+                <span class="nutri-unit">g</span>
+            </div>
+        </div>
+
+        <!-- CARD PROTEÍNAS -->
+        <div class="nutri-card">
+            <div class="nutri-head">Proteínas</div>
+            <div class="nutri-body">
+                <span class="nutri-value">{{ nutrition.protein_g }}</span>
+                <span class="nutri-unit">g</span>
+            </div>
+        </div>
+
+        <!-- CARD GORDURAS -->
+        <div class="nutri-card">
+            <div class="nutri-head">Gorduras</div>
+            <div class="nutri-body">
+                <span class="nutri-value">{{ nutrition.fats_g }}</span>
+                <span class="nutri-unit">g</span>
+            </div>
+        </div>
+
+        <!-- CARD FIBRAS -->
+        <div class="nutri-card">
+            <div class="nutri-head">Fibras</div>
+            <div class="nutri-body">
+                <span class="nutri-value">{{ nutrition.fiber_g }}</span>
+                <span class="nutri-unit">g</span>
+            </div>
+        </div>
+
+        <!-- CARD SÓDIO -->
+        <div class="nutri-card">
+            <div class="nutri-head">Sódio</div>
+            <div class="nutri-body">
+                <span class="nutri-value">{{ nutrition.sodium_mg }}</span>
+                <span class="nutri-unit">mg</span>
+            </div>
+        </div>
+
+    </div>
+
+    <p class="nutri-disclaimer">
+        * % Valores Diários com base em uma dieta de 2.000 kcal ou 8.400 kJ. Seus valores diários podem ser maiores ou menores dependendo de suas necessidades energéticas.
+    </p>
+</div>
+{% endif %}
 
 <!-- ========================================================================== -->
 <!-- 4. PALCO VISUAL (HTML ESTRUTURAL)                                          -->
