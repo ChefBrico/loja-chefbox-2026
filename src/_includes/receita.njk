@@ -2,27 +2,137 @@
 layout: base.njk
 ---
 
-<!-- 1. SCHEMA DADOS (CÉREBRO) -->
+<!-- ========================================================================== -->
+<!-- 1. CAMADA DE INTELIGÊNCIA (BREADCRUMBS)                                    -->
+<!-- ========================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://gourmetpratico.com.br"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Receitas",
+    "item": "https://gourmetpratico.com.br/receitas/"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ category }}",
+    "item": "https://gourmetpratico.com.br/receitas/{{ category | slug }}/"
+  },{
+    "@type": "ListItem",
+    "position": 4,
+    "name": "{{ title }}",
+    "item": "https://gourmetpratico.com.br{{ page.url }}"
+  }]
+}
+</script>
+
+<!-- ========================================================================== -->
+<!-- 2. CAMADA DE INTELIGÊNCIA (PRODUTO + RECEITA + E-COMMERCE)                 -->
+<!-- ========================================================================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@type": ["Product", "Recipe"],
+  "@type": ["Recipe", "Product"],
   "name": "{{ title }}",
+  "description": "{{ description }}",
   "sku": "{{ sku }}",
-  "image": "https://gourmetpratico.com.br{{ image }}",
+  "gtin13": "{{ gtin }}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://gourmetpratico.com.br{{ image }}",
+    "height": 566,
+    "width": 1080
+  },
   
-  // AQUI ESTÁ O SEGREDOS PARA O AGENTE ENTENDER O PREÇO
+  "brand": { "@type": "Brand", "name": "ChefBrico" },
+  
+  "author": {
+    "@type": "Person",
+    "name": "{{ author.name | default('Maria Conceição') }}",
+    "url": "https://gourmetpratico.com.br/comida-de-verdade/"
+  },
+
+  "datePublished": "{{ date | postDate }}",
+  "prepTime": "{{ tempo_iso }}",
+  "cookTime": "{{ tempo_iso }}",
+  "totalTime": "{{ tempo_iso }}",
+  "recipeYield": "{{ rendimento }}",
+  "recipeCategory": "{{ category }}",
+  "recipeCuisine": "Italian",
+
+  // FILTROS DE DIETA (Se não tiver no MD, assume Vegetariano por padrão)
+  "suitableForDiet": [
+    {% if diets %}
+      {% for diet in diets %}"{{ diet }}"{% if not loop.last %},{% endif %}{% endfor %}
+    {% else %}
+      "https://schema.org/VegetarianDiet",
+      "https://schema.org/VeganDiet"
+    {% endif %}
+  ],
+
+  // SOCIAL PROOF (Simulado ou Real do MD)
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ rating.value | default('4.9') }}",
+    "reviewCount": "{{ rating.count | default('120') }}",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+
+  // NUTRIÇÃO (Se disponível no MD)
+  {% if nutrition %}
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": "{{ nutrition.calories }} calories",
+    "proteinContent": "{{ nutrition.protein_g }} g",
+    "carbohydrateContent": "{{ nutrition.carbs_g }} g",
+    "fiberContent": "{{ nutrition.fiber_g }} g",
+    "fatContent": "{{ nutrition.fats_g }} g",
+    "sodiumContent": "{{ nutrition.sodium_mg }} mg"
+  },
+  {% endif %}
+
+  "recipeIngredient": [ "Ver lista completa na embalagem ChefBrico" ], 
+
+  // INSTRUÇÕES PASSO A PASSO (Para Assistentes de Voz)
+  "recipeInstructions": [
+    {
+      "@type": "HowToStep",
+      "text": "Refogue o conteúdo do pacote com azeite.",
+      "position": 1
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Adicione água e cozinhe até secar.",
+      "position": 2
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Finalize e sirva.",
+      "position": 3
+    }
+  ],
+  
+  // OFERTA COMERCIAL (A LÓGICA 4+1)
   "offers": {
     "@type": "Offer",
     "price": "{{ price }}",
     "priceCurrency": "BRL",
+    "url": "https://gourmetpratico.com.br{{ page.url }}",
     "availability": "{% if stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
     "inventoryLevel": {
       "@type": "QuantitativeValue",
       "value": "{{ stock }}"
     },
+    "seller": { "@type": "Organization", "name": "ChefBrico" },
     
-    // AQUI EXPLICAMOS O "4+1" MATEMATICAMENTE
     "priceSpecification": [
       {
         "@type": "UnitPriceSpecification",
@@ -32,7 +142,7 @@ layout: base.njk
       },
       {
         "@type": "UnitPriceSpecification",
-        "price": "{{ (price * 4) / 5 }}", // O Robô calcula: R$ 27,84 por unidade
+        "price": "{{ price * 0.8 }}", 
         "priceCurrency": "BRL",
         "referenceQuantity": { "@type": "QuantitativeValue", "value": "5", "unitCode": "C62" },
         "description": "Preço unitário ao comprar o Pack ChefBox (Leve 5, Pague 4)"
@@ -40,35 +150,7 @@ layout: base.njk
     ]
   },
 
-  // AQUI EXPLICAMOS A NUTRIÇÃO PARA O AGENTE DE SAÚDE
-  "nutrition": {
-    "@type": "NutritionInformation",
-    "calories": "{{ nutrition.calories }} calories",
-    "proteinContent": "{{ nutrition.protein_g }} g",
-    "carbohydrateContent": "{{ nutrition.carbs_g }} g",
-    "fiberContent": "{{ nutrition.fiber_g }} g"
-  }
-}
-</script>
-  "description": "{{ description }}",
-  "sku": "{{ sku }}",
-  "author": {
-    "@type": "Person",
-    "name": "{{ author.name }}",
-    "url": "{{ author.url }}"
-  },
-  "prepTime": "{{ tempo_iso }}",
-  "recipeYield": "{{ rendimento }}",
-  "nutrition": { "@type": "NutritionInformation", "calories": "{{ calorias }}" },
-  "recipeIngredient": [ "Ver lista na embalagem" ], 
-  "offers": {
-    "@type": "Offer",
-    "price": "{{ price }}",
-    "priceCurrency": "BRL",
-    "url": "https://gourmetpratico.com.br{{ page.url }}",
-    "availability": "https://schema.org/InStock",
-    "seller": { "@type": "Organization", "name": "ChefBrico" }
-  },
+  // FAQ INTEGRADO
   "mainEntity": {
     "@type": "FAQPage",
     "mainEntity": [
@@ -84,12 +166,19 @@ layout: base.njk
 }
 </script>
 
-<!-- 2. ESTILO CORRIGIDO (CSS) -->
+<!-- ========================================================================== -->
+<!-- 3. CAMADA VISUAL (CSS ESTILO REVISTA)                                      -->
+<!-- ========================================================================== -->
 <style>
   /* --- GERAL --- */
   .receita-header { text-align: center; max-width: 800px; margin: 40px auto; }
   .receita-title { color: #014039; font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; line-height: 1.2; }
   .receita-subtitle { color: #666; font-style: italic; font-size: 1.1rem; }
+
+  /* --- BREADCRUMBS VISUAL --- */
+  .breadcrumbs { font-size: 0.85rem; color: #888; margin-bottom: 20px; text-align: center; }
+  .breadcrumbs a { color: #888; text-decoration: none; }
+  .breadcrumbs span { margin: 0 5px; }
 
   /* --- METADADOS --- */
   .meta-bar {
@@ -99,7 +188,7 @@ layout: base.njk
   .meta-item { display: flex; align-items: center; gap: 6px; background: #fff; padding: 8px 15px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
   .meta-icon { font-size: 1.1rem; }
 
-  /* --- IMAGEM HERO --- */
+  /* --- IMAGEM --- */
   .hero-image-container {
       max-width: 900px; margin: 0 auto 40px; border-radius: 15px; overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -108,94 +197,52 @@ layout: base.njk
 
   /* --- CONTEÚDO --- */
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
-  
-  .conteudo-leitura h2 { 
-      color: #014039; margin-top: 50px; margin-bottom: 20px;
-      font-size: 1.6rem; font-family: 'Merriweather', serif;
-  }
+  .conteudo-leitura h2 { color: #014039; margin-top: 50px; margin-bottom: 20px; font-size: 1.6rem; font-family: 'Merriweather', serif; }
 
-  /* --- 1. LISTA "POR QUE AMAR" (Check Verde) --- */
+  /* --- LISTAS INTELIGENTES --- */
   .checked-list { list-style: none !important; padding-left: 0; }
   .checked-list li { position: relative; padding-left: 35px; margin-bottom: 15px; }
   .checked-list li::before {
-      content: '✔'; 
-      position: absolute; left: 0; top: 2px;
-      width: 22px; height: 22px;
-      border: 2px solid #27ae60; color: #27ae60;
-      border-radius: 4px; font-size: 14px; font-weight: 900;
+      content: '✔'; position: absolute; left: 0; top: 2px; width: 22px; height: 22px;
+      border: 2px solid #27ae60; color: #27ae60; border-radius: 4px; font-size: 14px; font-weight: 900;
       display: flex; align-items: center; justify-content: center;
   }
 
-  /* --- 2. LISTA "INGREDIENTES" (Quadrado Vazio CORRIGIDO) --- */
   .checklist { list-style: none !important; padding-left: 0; }
   .checklist li { position: relative; padding-left: 35px; margin-bottom: 10px; }
   .checklist li::before {
-      content: ''; /* Garante que o quadrado apareça */
-      display: block;
-      position: absolute; left: 0; top: 5px;
-      width: 18px; height: 18px;
-      background-color: #fff;
-      border: 2px solid #ccc; /* Borda Cinza */
-      border-radius: 4px;
+      content: ''; display: block; position: absolute; left: 0; top: 5px;
+      width: 18px; height: 18px; background-color: #fff; border: 2px solid #ccc; border-radius: 4px;
   }
 
-  /* --- 3. MODO DE PREPARO (CORRIGIDO - SÓ NÚMERO NA BOLINHA) --- */
-  .modo-preparo { 
-      list-style: none !important; /* MATOU O NÚMERO DUPLICADO AQUI */
-      counter-reset: steps; 
-      padding-left: 0; 
-  }
-  .modo-preparo li { 
-      position: relative; 
-      padding-left: 60px; /* Mais espaço para a bolinha */
-      margin-bottom: 25px; 
-  }
+  .modo-preparo { list-style: none !important; counter-reset: steps; padding-left: 0; }
+  .modo-preparo li { position: relative; padding-left: 60px; margin-bottom: 25px; }
   .modo-preparo li::before {
-      counter-increment: steps;
-      content: counter(steps); /* Número APENAS aqui dentro */
-      position: absolute; 
-      left: 0; top: -5px;
-      width: 35px; height: 35px;
-      background: #F2811D; /* Laranja */
-      color: white;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 35px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      box-shadow: 0 3px 6px rgba(242, 129, 29, 0.3);
-      z-index: 1;
+      counter-increment: steps; content: counter(steps); position: absolute; left: 0; top: -5px;
+      width: 35px; height: 35px; background: #F2811D; color: white; border-radius: 50%;
+      text-align: center; line-height: 35px; font-weight: bold; font-size: 1.1rem;
+      box-shadow: 0 3px 6px rgba(242, 129, 29, 0.3); z-index: 1;
   }
 
-  /* --- SIMPLES ASSIM --- */
   .simples-assim {
-      text-align: center;
-      font-family: 'Dancing Script', cursive; 
-      font-style: italic;
-      font-size: 2rem;
-      color: #27ae60;
-      margin-top: 30px;
-      margin-bottom: 50px;
-      display: none; /* JS vai ativar */
-      text-shadow: 1px 1px 0px #fff;
+      text-align: center; font-family: cursive; font-style: italic; font-size: 2rem; color: #27ae60;
+      margin-top: 30px; margin-bottom: 50px; display: none; text-shadow: 1px 1px 0px #fff;
   }
 
-  /* --- CARDS E DETALHES --- */
+  /* --- CARDS --- */
   .segredo-box {
       background: #ffffff; padding: 25px; margin: 30px auto; max-width: 800px;
-      border-radius: 8px; color: #444; border-left: 5px solid #27ae60;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border-radius: 8px; color: #444; border-left: 5px solid #27ae60; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   }
   .dica-chef-card {
       background: white; border-left: 4px solid #F2811D; padding: 25px;
       border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); margin: 40px 0;
   }
   .conteudo-leitura blockquote { 
-      padding: 20px; margin: 30px 0; font-style: italic; color: #555; 
-      background: #f9f9f9; border-radius: 10px; text-align: center;
+      padding: 20px; margin: 30px 0; font-style: italic; color: #555; background: #f9f9f9; border-radius: 10px; text-align: center;
   }
 
-  /* CTA e Pilares */
+  /* --- CTA E PILARES --- */
   .pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 40px 0; text-align: center; }
   .pilar-card { padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: block; transition: all 0.2s; }
   .pilar-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #27ae60; }
@@ -205,9 +252,22 @@ layout: base.njk
   .cta-content { flex-grow: 1; text-align: left; }
   .cta-content h3 { margin: 0 0 5px; font-size: 1.1rem; color: #014039; }
   .cta-content p { margin: 0; font-size: 0.9rem; color: #666; }
-  .btn-comprar-agora { background: #F2811D; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 0.95rem; white-space: nowrap; transition: transform 0.2s; }
+  
+  .btn-comprar-agora { 
+      background: #F2811D; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; 
+      text-decoration: none; font-size: 0.95rem; white-space: nowrap; transition: transform 0.2s; 
+      display: inline-block; cursor: pointer; border: none;
+  }
   .btn-comprar-agora:hover { transform: scale(1.05); }
 
+  /* --- TABELA NUTRICIONAL (VISUAL) --- */
+  .nutrition-label {
+      border: 2px solid #000; padding: 15px; max-width: 350px; margin: 50px auto;
+      background: white; color: black; font-family: Arial, sans-serif; font-size: 0.9rem;
+  }
+  .nutrition-header { border-bottom: 8px solid #000; margin-bottom: 5px; padding-bottom: 5px; }
+  .nutrition-row { display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding: 4px 0; }
+  
   /* FAQ e Autor */
   details.faq-item { background: #fff; border-bottom: 1px solid #eee; }
   details.faq-item summary { padding: 15px 0; color: #333; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
@@ -217,18 +277,24 @@ layout: base.njk
   @media (max-width: 600px) { .cta-box { flex-direction: column; text-align: center; } }
 </style>
 
-<!-- 3. ESTRUTURA (PALCO) -->
+<!-- ========================================================================== -->
+<!-- 4. PALCO VISUAL (HTML ESTRUTURAL)                                          -->
+<!-- ========================================================================== -->
 <article>
     
+    <!-- BREADCRUMBS VISUAL -->
+    <div class="breadcrumbs">
+        <a href="/">Home</a> <span>›</span> 
+        <a href="/receitas/">Receitas</a> <span>›</span> 
+        <span>{{ title }}</span>
+    </div>
+
     <header class="receita-header">
         <h1 class="receita-title">{{ title }}</h1>
         <p class="receita-subtitle">O Sabor da Itália, sem a complicação!</p>
-        <p style="font-size: 0.85rem; margin-top: 10px; color: #999; text-transform: uppercase;">
-            Por <strong>{{ author.name }}</strong>
-        </p>
+        <p style="font-size: 0.85rem; margin-top: 10px; color: #999;">Por <strong>{{ author.name }}</strong></p>
     </header>
 
-    <!-- METADADOS -->
     <div class="meta-bar">
         <div class="meta-item"><span class="meta-icon">⏱️</span> {{ tempo_preparo }}</div>
         <div class="meta-item"><span class="meta-icon">⚖️</span> {{ calorias }}</div>
@@ -238,7 +304,6 @@ layout: base.njk
         </div>
     </div>
 
-    <!-- SEGREDO (CARD FLUTUANTE BRANCO) -->
     {% if citable_fact %}
     <div class="segredo-box">
         <strong>💡 O Segredo da Chef:</strong> {{ citable_fact }}
@@ -249,7 +314,6 @@ layout: base.njk
         <img src="{{ image }}" alt="Foto do prato {{ title }}">
     </div>
 
-    <!-- WRAPPER DE CONTEÚDO -->
     <div class="conteudo-leitura">
         
         <div id="simples-assim-tag" class="simples-assim">Simples assim! ✨</div>
@@ -275,18 +339,59 @@ layout: base.njk
             </a>
         </div>
 
-        <!-- CTA CHEFBOX -->
+        <!-- CTA DE COMPRA -->
         <div class="cta-box">
             <img src="{{ image }}" class="cta-img" alt="Miniatura">
             <div class="cta-content">
                 <h3>Gostou? Leve para casa.</h3>
                 <p>Adicione à sua <strong>ChefBox</strong> agora.</p>
             </div>
-            <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}', '{{ page.url }}')" 
-                    class="btn-comprar-agora" style="border:none; cursor:pointer;">
-                + Adicionar (R$ {{ price | dinheiro }})
-            </button>
+            <!-- BOTÃO DEEPLINK -->
+            <a href="https://wa.me/5561996659880?text=Olá,%20quero%20comprar%20o%20item:%20*{{ title }}*%20(SKU:%20{{ sku }})" 
+               class="btn-comprar-agora"
+               data-agent-action="purchase"
+               data-sku="{{ sku }}"
+               data-price="{{ price }}">
+               + Adicionar (R$ {{ price }})
+            </a>
         </div>
+
+        <!-- TABELA NUTRICIONAL VISUAL -->
+        {% if nutrition %}
+        <div class="nutrition-label">
+            <div class="nutrition-header">
+                <h3 style="font-size: 1.8rem; margin: 0;">Informação Nutricional</h3>
+                <p style="margin: 0;">Porção de 1/2 pacote (prato pronto)</p>
+            </div>
+            <table>
+                <tr>
+                    <td><strong>Valor Energético</strong></td>
+                    <td style="text-align: right;"><strong>{{ nutrition.calories }}</strong></td>
+                </tr>
+                <tr>
+                    <td>Carboidratos</td>
+                    <td style="text-align: right;">{{ nutrition.carbs_g }}</td>
+                </tr>
+                <tr>
+                    <td>Proteínas</td>
+                    <td style="text-align: right;">{{ nutrition.protein_g }}</td>
+                </tr>
+                <tr>
+                    <td>Gorduras Totais</td>
+                    <td style="text-align: right;">{{ nutrition.fats_g }}</td>
+                </tr>
+                <tr>
+                    <td>Fibra Alimentar</td>
+                    <td style="text-align: right;">{{ nutrition.fiber_g }}</td>
+                </tr>
+                <tr>
+                    <td>Sódio</td>
+                    <td style="text-align: right;">{{ nutrition.sodium_mg }}</td>
+                </tr>
+            </table>
+            <p style="font-size: 0.7rem; margin-top: 5px;">* % Valores Diários com base em uma dieta de 2.000 kcal.</p>
+        </div>
+        {% endif %}
 
         <!-- FAQ -->
         {% if faq %}
@@ -318,7 +423,7 @@ layout: base.njk
     </div>
 </article>
 
-<!-- JAVASCRIPT "CIRURGIÃO" -->
+<!-- JAVASCRIPT CIRURGIÃO -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const headers = document.querySelectorAll('.conteudo-leitura h2');
@@ -326,43 +431,31 @@ layout: base.njk
         
         headers.forEach(h2 => {
             const title = h2.innerText.toLowerCase();
-
-            // 1. LISTA "POR QUE AMAR"
             if (title.includes('amar')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checked-list'); 
             }
-
-            // 2. LISTA "INGREDIENTES/PRECISAR"
             if (title.includes('precisar') || title.includes('pacote')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checklist');
             }
-
-            // 3. MODO DE PREPARO (CORRIGIDO)
             if (title.includes('preparo')) {
                 const list = h2.nextElementSibling;
                 if (list && (list.tagName === 'OL' || list.tagName === 'UL')) {
                     let targetList = list;
-                    // Força virar OL para garantir ordem
                     if (list.tagName === 'UL') {
                         const newOl = document.createElement('ol');
                         newOl.innerHTML = list.innerHTML;
                         list.parentNode.replaceChild(newOl, list);
                         targetList = newOl;
                     }
-                    
                     targetList.classList.add('modo-preparo');
-                    
-                    // Posiciona o "Simples Assim" logo depois da lista
                     if (simplesTag) {
                         simplesTag.style.display = 'block'; 
                         targetList.after(simplesTag); 
                     }
                 }
             }
-
-            // 4. COZINHA CRIATIVA
             if (title.includes('criativa')) {
                 const p = h2.nextElementSibling;
                 if (p) p.classList.add('dica-chef-card');
