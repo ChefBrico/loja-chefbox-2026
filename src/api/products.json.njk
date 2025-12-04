@@ -1,0 +1,20 @@
+---
+permalink: /api/products.json
+eleventyExcludeFromCollections: true
+---
+[
+  {% for item in collections.receitas %}
+  {
+    "id": "{{ item.data.sku }}",
+    "name": "{{ item.data.title }}",
+    "url": "https://gourmetpratico.com.br{{ item.url }}",
+    "price": {{ item.data.price }},
+    "stock": {{ item.data.stock }},
+    "nutrition": {
+      "calories": {{ item.data.nutrition.calories | default(0) }},
+      "protein": {{ item.data.nutrition.protein_g | default(0) }}
+    },
+    "purchase_link": "https://wa.me/5561996659880?text=Quero%20comprar%20SKU:{{ item.data.sku }}"
+  }{% if not loop.last %},{% endif %}
+  {% endfor %}
+]
