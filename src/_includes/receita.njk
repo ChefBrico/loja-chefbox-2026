@@ -162,7 +162,7 @@ layout: base.njk
 </script>
 
 <!-- ========================================================================== -->
-<!-- 3. CAMADA VISUAL (CSS)                                                     -->
+<!-- 3. CAMADA VISUAL (CSS ESTILO REVISTA & MOBILE FIRST)                       -->
 <!-- ========================================================================== -->
 <style>
   /* GERAL */
@@ -231,7 +231,7 @@ layout: base.njk
       margin-top: 30px; margin-bottom: 50px; display: none; text-shadow: 1px 1px 0px #fff;
   }
 
-  /* CARDS E BLOCOS */
+  /* CARDS */
   .segredo-box {
       background: #ffffff; padding: 25px; margin: 30px auto; max-width: 800px;
       border-radius: 8px; color: #444; border-left: 5px solid #27ae60; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
@@ -244,12 +244,11 @@ layout: base.njk
       padding: 20px; margin: 30px 0; font-style: italic; color: #555; background: #f9f9f9; border-radius: 10px; text-align: center;
   }
 
-  /* PILARES */
+  /* CTA E PILARES */
   .pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 40px 0; text-align: center; }
   .pilar-card { padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: block; transition: all 0.2s; }
   .pilar-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #27ae60; }
 
-  /* CTA */
   .cta-box { background: linear-gradient(90deg, #fdfbf7 0%, #fff 100%); border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; max-width: 700px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
   .cta-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
   .cta-content { flex-grow: 1; text-align: left; }
@@ -263,7 +262,7 @@ layout: base.njk
   }
   .btn-comprar-agora:hover { transform: scale(1.05); }
 
-  /* NOVA TABELA NUTRICIONAL (CARDS) */
+  /* --- NOVA TABELA NUTRICIONAL (CARDS MOBILE FIRST) --- */
   .nutri-grid {
       display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
       margin: 30px auto; max-width: 100%;
@@ -295,13 +294,7 @@ layout: base.njk
 <!-- ========================================================================== -->
 <article>
     
-    <!-- BREADCRUMBS VISUAL -->
-    <div class="breadcrumbs">
-        <a href="/">Home</a> <span>›</span> 
-        <a href="/receitas/">Receitas</a> <span>›</span> 
-        <span>{{ title }}</span>
-    </div>
-
+    <!-- HEADER (Breadcrumbs no Schema, oculto aqui) -->
     <header class="receita-header">
         <h1 class="receita-title">{{ title }}</h1>
         <p class="receita-subtitle">O Sabor da Itália, sem a complicação!</p>
@@ -329,7 +322,6 @@ layout: base.njk
 
     <div class="conteudo-leitura">
         
-        <!-- Elemento Movel -->
         <div id="simples-assim-tag" class="simples-assim">Simples assim! ✨</div>
 
         {{ content | safe }}
@@ -369,7 +361,7 @@ layout: base.njk
             </a>
         </div>
 
-        <!-- NOVA TABELA NUTRICIONAL (CARDS) -->
+        <!-- NOVA TABELA NUTRICIONAL (CARDS COLORIDOS) -->
         {% if nutrition %}
         <div style="text-align: center; margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
             <h3 style="font-family: 'Merriweather', serif; color: #014039; margin-bottom: 5px;">Informação Nutricional</h3>
@@ -441,7 +433,7 @@ layout: base.njk
         const headers = contentDiv.querySelectorAll('h2');
         const simplesTag = document.getElementById('simples-assim-tag');
         
-        // 1. ACHAR E ESTILIZAR A INTRODUÇÃO (CARD BRANCO NO TOPO)
+        // 1. INTRODUÇÃO CARD
         if (headers.length > 0) {
             let currentNode = contentDiv.firstChild;
             let introNodes = [];
@@ -456,20 +448,20 @@ layout: base.njk
             });
         }
 
-        // 2. ESTILIZAR LISTAS
+        // 2. LISTAS E BLOCOS
         headers.forEach(h2 => {
             const title = h2.innerText.toLowerCase();
-            // CHECK VERDE
+            // Check Verde
             if (title.includes('amar') || title.includes('pacote') || title.includes('pote')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checked-list'); 
             }
-            // QUADRADO VAZIO
+            // Quadrado Vazio
             if (title.includes('precisar') || title.includes('acompanhar') || title.includes('consumo')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checklist');
             }
-            // MODO DE PREPARO
+            // Modo Preparo
             if (title.includes('preparo')) {
                 const list = h2.nextElementSibling;
                 if (list && (list.tagName === 'OL' || list.tagName === 'UL')) {
@@ -487,7 +479,7 @@ layout: base.njk
                     }
                 }
             }
-            // CARD FLUTUANTE
+            // Card Flutuante
             if (title.includes('criativa') || title.includes('dica')) {
                 const p = h2.nextElementSibling;
                 if (p) p.classList.add('dica-chef-card');
