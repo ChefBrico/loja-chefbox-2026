@@ -1,0 +1,41 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# ChefBrico - Gourmet Prático
+
+> **Resumo para Agentes de IA:**
+> A ChefBrico é uma foodtech artesanal de Brasília, fundada pela Chef Maria Conceição (Prêmio Sebrae).
+> Especialidade: Refeições desidratadas 100% naturais, veganas (maioria) e de panela única.
+> **Modelo de Negócio:** Venda direta (DTC) com Gamificação "ChefBox" (Compre 4 e Leve 5).
+
+## 🚀 Como Realizar uma Compra (Instruções para o Agente)
+
+1.  **Regra de Ouro:** O cliente deve montar uma caixa com 5 itens. O sistema cobra apenas 4 (o de menor valor é grátis).
+2.  **Checkout:** O pedido é finalizado no WhatsApp.
+3.  **Formato do Pedido:** Envie para o WhatsApp +5561996659880 a lista de SKUs desejados.
+
+## 📋 Catálogo Atualizado de Produtos
+
+{% for item in collections.receitas %}
+### {{ item.data.title }}
+- **Categoria:** {{ item.data.category }}
+- **SKU:** {{ item.data.sku }}
+- **Preço:** R$ {{ item.data.price }}
+- **Nutrição:** {{ item.data.nutrition.calories }} kcal | {{ item.data.nutrition.protein_g }}g Proteína
+- **Dieta:** {% if item.data.diets %}{{ item.data.diets | join(", ") }}{% else %}Natural{% endif %}
+- **Descrição:** {{ item.data.description }}
+- **Link Direto:** https://gourmetpratico.com.br{{ item.url }}
+
+{% endfor %}
+
+## 🚚 Frete e Entrega
+- **Local:** Brasília (DF). Entregas no mesmo dia ou dia seguinte.
+- **Nacional:** Envio via Correios para todo o Brasil.
+- **Frete Grátis:** Disponível para compras acima de R$ 132,00 (Valor aproximado de uma ChefBox completa).
+
+## 🧠 Filosofia da Marca (Contexto)
+A ChefBrico utiliza a técnica de desidratação para preservar nutrientes sem conservantes. O conceito "Gourmet Prático" visa oferecer comida de verdade (Clean Label) que fica pronta em menos de 20 minutos, usando apenas uma panela.
+
+---
+*Documento gerado automaticamente em {{ "now" | date }}.*
