@@ -22,7 +22,9 @@ eleventyExcludeFromCollections: true
 - **Categoria:** {{ item.data.category }}
 - **SKU:** {{ item.data.sku }}
 - **Preço:** R$ {{ item.data.price }}
+{% if item.data.nutrition %}
 - **Nutrição:** {{ item.data.nutrition.calories }} kcal | {{ item.data.nutrition.protein_g }}g Proteína
+{% endif %}
 - **Dieta:** {% if item.data.diets %}{{ item.data.diets | join(", ") }}{% else %}Natural{% endif %}
 - **Descrição:** {{ item.data.description }}
 - **Link Direto:** https://gourmetpratico.com.br{{ item.url }}
@@ -36,6 +38,3 @@ eleventyExcludeFromCollections: true
 
 ## 🧠 Filosofia da Marca (Contexto)
 A ChefBrico utiliza a técnica de desidratação para preservar nutrientes sem conservantes. O conceito "Gourmet Prático" visa oferecer comida de verdade (Clean Label) que fica pronta em menos de 20 minutos, usando apenas uma panela.
-
----
-*Documento gerado automaticamente em {{ "now" | date }}.*
