@@ -47,7 +47,9 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
    <!-- GRADE DE PRODUTOS (VITRINE) -->
 <div class="recipe-grid">
     
-   {% for item in collections.receitas %}
+  <!-- CÓDIGO BLINDADO (SUGESTÃO) -->
+{% for item in collections.receitas %}
+{% if item.data.price %} <!-- SÓ MOSTRA SE TIVER PREÇO -->
     <div class="recipe-card" data-tags="{{ item.data.keywords }} {{ item.data.category }}">
         
         <!-- A CORREÇÃO MÁGICA: Usar item.url nativo -->
