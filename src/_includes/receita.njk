@@ -3,7 +3,7 @@ layout: base.njk
 ---
 
 <!-- ========================================================================== -->
-<!-- 1. CAMADA DE INTELIGÊNCIA (BREADCRUMBS)                                    -->
+<!-- 1. CAMADA DE INTELIGÊNCIA (BREADCRUMBS PARA O GOOGLE)                      -->
 <!-- ========================================================================== -->
 <script type="application/ld+json">
 {
@@ -170,10 +170,8 @@ layout: base.njk
   .receita-title { color: #014039; font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; line-height: 1.2; }
   .receita-subtitle { color: #666; font-style: italic; font-size: 1.1rem; }
 
-  /* BREADCRUMBS */
-  .breadcrumbs { font-size: 0.85rem; color: #888; margin-bottom: 20px; text-align: center; }
-  .breadcrumbs a { color: #888; text-decoration: none; }
-  .breadcrumbs span { margin: 0 5px; }
+  /* BREADCRUMBS VISUAL (Escondido, só dados) */
+  .breadcrumbs { display: none; }
 
   /* METADADOS */
   .meta-bar {
@@ -201,7 +199,8 @@ layout: base.njk
       border-left: 5px solid #014039; font-size: 1.1rem; color: #555; line-height: 1.8;
   }
 
-  /* LISTAS */
+  /* LISTAS INTELIGENTES */
+  /* Check Verde (Por que Amar) */
   .checked-list { list-style: none !important; padding-left: 0; }
   .checked-list li { position: relative; padding-left: 35px; margin-bottom: 15px; }
   .checked-list li::before {
@@ -210,6 +209,7 @@ layout: base.njk
       display: flex; align-items: center; justify-content: center;
   }
 
+  /* Quadrado Vazio (Ingredientes) */
   .checklist { list-style: none !important; padding-left: 0; }
   .checklist li { position: relative; padding-left: 35px; margin-bottom: 10px; }
   .checklist li::before {
@@ -217,6 +217,7 @@ layout: base.njk
       width: 18px; height: 18px; background-color: #fff; border: 2px solid #ccc; border-radius: 4px;
   }
 
+  /* Bolinhas Laranjas (Modo Preparo) */
   .modo-preparo { list-style: none !important; counter-reset: steps; padding-left: 0; }
   .modo-preparo li { position: relative; padding-left: 60px; margin-bottom: 25px; }
   .modo-preparo li::before {
@@ -244,17 +245,19 @@ layout: base.njk
       padding: 20px; margin: 30px 0; font-style: italic; color: #555; background: #f9f9f9; border-radius: 10px; text-align: center;
   }
 
-  /* CTA E PILARES */
+  /* PILARES */
   .pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 40px 0; text-align: center; }
   .pilar-card { padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: block; transition: all 0.2s; }
   .pilar-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #27ae60; }
 
+  /* CTA */
   .cta-box { background: linear-gradient(90deg, #fdfbf7 0%, #fff 100%); border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; max-width: 700px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
   .cta-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
   .cta-content { flex-grow: 1; text-align: left; }
   .cta-content h3 { margin: 0 0 5px; font-size: 1.1rem; color: #014039; }
   .cta-content p { margin: 0; font-size: 0.9rem; color: #666; }
   
+  /* BOTÃO WHATSAPP (DEEPLINK) */
   .btn-comprar-agora { 
       background: #F2811D; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; 
       text-decoration: none; font-size: 0.95rem; white-space: nowrap; transition: transform 0.2s; 
@@ -262,7 +265,7 @@ layout: base.njk
   }
   .btn-comprar-agora:hover { transform: scale(1.05); }
 
-  /* --- NOVA TABELA NUTRICIONAL (CARDS MOBILE FIRST) --- */
+  /* NOVA TABELA NUTRICIONAL (CARDS MOBILE) */
   .nutri-grid {
       display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
       margin: 30px auto; max-width: 100%;
@@ -294,7 +297,6 @@ layout: base.njk
 <!-- ========================================================================== -->
 <article>
     
-    <!-- HEADER (Breadcrumbs no Schema, oculto aqui) -->
     <header class="receita-header">
         <h1 class="receita-title">{{ title }}</h1>
         <p class="receita-subtitle">O Sabor da Itália, sem a complicação!</p>
@@ -345,13 +347,14 @@ layout: base.njk
             </a>
         </div>
 
-        <!-- CTA DE COMPRA -->
+        <!-- CTA DE COMPRA (BOTÃO WHATSAPP) -->
         <div class="cta-box">
             <img src="{{ image }}" class="cta-img" alt="Miniatura">
             <div class="cta-content">
                 <h3>Gostou? Leve para casa.</h3>
                 <p>Adicione à sua <strong>ChefBox</strong> agora.</p>
             </div>
+            <!-- LINK WHATSAPP DIRETO (MELHOR PARA ROBÔS) -->
             <a href="https://wa.me/5561996659880?text=Olá,%20quero%20comprar%20o%20item:%20*{{ title }}*%20(SKU:%20{{ sku }})" 
                class="btn-comprar-agora"
                data-agent-action="purchase"
@@ -448,7 +451,7 @@ layout: base.njk
             });
         }
 
-        // 2. LISTAS E BLOCOS
+        // 2. ESTILIZAR LISTAS
         headers.forEach(h2 => {
             const title = h2.innerText.toLowerCase();
             // Check Verde
