@@ -1,85 +1,174 @@
 backend:
   name: git-gateway
-  branch: main # O ramo principal do seu GitHub
+  branch: main
 
-# --- 1. ONDE GUARDAR AS FOTOS (MUDANÇA CRÍTICA) ---
-# Antes era "imagens". Agora elas moram na pasta de assets dentro do src.
-media_folder: "src/assets/imagens" 
-
-# Como o site lê a foto (Isso não muda, graças ao mapeamento que fizemos)
+# --- CONFIGURAÇÃO DE MÍDIA ---
+media_folder: "src/assets/imagens"
 public_folder: "/imagens"
 
-locale: 'pt' # Painel em Português
-publish_mode: editorial_workflow # Ativa o modo Rascunho -> Publicar
+# --- IDIOMA E PUBLICAÇÃO ---
+locale: 'pt'
+publish_mode: editorial_workflow
+site_url: "https://gourmetpratico.com.br"
+display_url: "https://gourmetpratico.com.br"
+logo_url: "https://gourmetpratico.com.br/imagens/logo.png"
 
 collections:
-  # --- 2. DADOS GLOBAIS (O CÉREBRO) ---
+  # ===========================================================
+  # 1. DADOS GLOBAIS (O CÉREBRO DA MARCA)
+  # ===========================================================
   - name: "settings"
-    label: "⚙️ Dados Globais (EEAT)"
+    label: "⚙️ Configurações Globais"
     files:
       - name: "author"
-        label: "Autora (Maria Conceição)"
-        file: "src/_data/author.json" # <--- CAMINHO NOVO (dentro de src)
-        description: "Dados para o Google saber quem é a autoridade."
+        label: "Autora (EEAT - Maria Conceição)"
+        file: "src/_data/author.json"
+        description: "Dados de autoridade para o Google confiar no conteúdo."
         format: "json"
         fields:
           - {label: "Nome Completo", name: "name", widget: "string", default: "Maria Conceição"}
+          - {label: "Cargo/Título", name: "jobTitle", widget: "string", default: "Fundadora e Chef de Criação"}
           - {label: "Biografia Curta", name: "bio", widget: "text"}
-          - {label: "Prêmios", name: "award", widget: "string", default: "Prêmio Sebrae Mulher de Negócios"}
-          - {label: "Link ID", name: "id", widget: "hidden", default: "https://gourmetpratico.com.br/#person-maria-conceicao"}
+          - {label: "Link Perfil (Sobre)", name: "url", widget: "string"}
+          - {label: "Foto de Perfil", name: "image", widget: "image"}
       
       - name: "organization"
-        label: "Marca (ChefBrico)"
-        file: "src/_data/organization.json" # <--- CAMINHO NOVO
+        label: "Dados da Empresa (Local SEO)"
+        file: "src/_data/organization.json"
         format: "json"
         fields:
           - {label: "Nome da Marca", name: "name", widget: "string", default: "ChefBrico"}
-          - {label: "WhatsApp (Só números)", name: "whatsapp", widget: "string", hint: "Ex: 5561996659880"}
-          - {label: "CNPJ", name: "cnpj", widget: "string"}
-          - {label: "Endereço", name: "address", widget: "string", default: "Brasília, DF"}
+          - {label: "Telefone/WhatsApp", name: "telephone", widget: "string"}
+          - {label: "Endereço Completo", name: "address", widget: "object", fields: [
+              {label: "Rua", name: "streetAddress", widget: "string"},
+              {label: "Cidade", name: "addressLocality", widget: "string", default: "Brasília"},
+              {label: "Estado", name: "addressRegion", widget: "string", default: "DF"}
+            ]}
+          - {label: "Geolocalização (Maps)", name: "geo", widget: "object", fields: [
+              {label: "Latitude", name: "latitude", widget: "string"},
+              {label: "Longitude", name: "longitude", widget: "string"}
+            ]}
 
-  # --- 3. RECEITAS (A DESPENSA) ---
+      - name: "promotions"
+        label: "Regras de Promoção (4+1)"
+        file: "src/_data/promotions.json"
+        format: "json"
+        fields:
+          - label: "Promoções Ativas"
+            name: "active_promotions"
+            widget: "list"
+            fields:
+              - {label: "Nome da Promoção", name: "name", widget: "string"}
+              - {label: "Descrição", name: "description", widget: "string"}
+              - {label: "Qtd Gatilho (Ex: 5)", name: "trigger_quantity", widget: "number"}
+
+  # ===========================================================
+  # 2. RECEITAS & PRODUTOS (A VITRINE)
+  # ===========================================================
   - name: "receitas"
-    label: "🍳 Receitas & Produtos"
-    folder: "src/content/receitas" # <--- CAMINHO NOVO (dentro de content)
+    label: "🍽️ Receitas & Produtos"
+    folder: "src/content/receitas"
     create: true
     slug: "{{slug}}"
     extension: "md"
     format: "yaml-frontmatter"
     fields:
-      # DADOS VITAIS (ROBÔ)
-      - {label: "SKU (Código)", name: "sku", widget: "string", hint: "Ex: RIS-FUNGHI"}
-      - {label: "Preço (R$)", name: "price", widget: "number", value_type: "float", default: 34.90}
-      - {label: "Estoque", name: "stock", widget: "number", default: 50}
-      
-      # CONTEÚDO (HUMANO)
-      - {label: "Título da Receita", name: "title", widget: "string"}
-      - {label: "Descrição SEO", name: "description", widget: "text"}
-      - {label: "Foto do Prato", name: "image", widget: "image"}
-      - {label: "Categoria", name: "category", widget: "select", options: ["Risoto", "Sopa", "Refeição", "Empório"]}
-      
-      # DADOS TÉCNICOS
-      - {label: "Tempo (Ex: 18 min)", name: "tempo_preparo", widget: "string", default: "18 min"}
-      - {label: "Tempo ISO (Ex: PT18M)", name: "tempo_iso", widget: "string", default: "PT18M"}
-      - {label: "Rendimento", name: "rendimento", widget: "string", default: "2 pessoas"}
-      - {label: "Dificuldade", name: "dificuldade", widget: "select", options: ["Muito Fácil", "Fácil", "Médio"]}
-      
-      # CORPO DO TEXTO
-      - {label: "Dica de Ouro", name: "citable_fact", widget: "text"}
-      - {label: "História e Passo a Passo", name: "body", widget: "markdown"}
-      
-      # INVISÍVEIS
-      - {label: "Layout", name: "layout", widget: "hidden", default: "receita.njk"}
+      # --- BLOCO 1: INFORMAÇÕES COMERCIAIS (ROBÔ DE VENDAS) ---
+      - label: "🤖 Dados Comerciais (Agente)"
+        name: "comercial"
+        widget: "object"
+        collapsed: false
+        fields:
+          - {label: "Título do Produto", name: "title", widget: "string"}
+          - {label: "Categoria", name: "category", widget: "select", options: ["Risoto", "Sopa", "Refeição", "Empório"]}
+          - {label: "SKU (Código)", name: "sku", widget: "string"}
+          - {label: "GTIN/EAN (Código de Barras)", name: "gtin", widget: "string", required: false}
+          - {label: "Preço (00.00)", name: "price", widget: "number", value_type: "float"}
+          - {label: "Estoque Atual", name: "stock", widget: "number", default: 50}
+          - {label: "Data de Publicação", name: "date", widget: "datetime"}
 
-  # --- 4. PÁGINA CHEFBOX ---
+      # --- BLOCO 2: VISUAL & MARKETING (HUMANO) ---
+      - label: "👁️ Visual & Marketing"
+        name: "visual"
+        widget: "object"
+        collapsed: true
+        fields:
+          - {label: "Foto Principal", name: "image", widget: "image"}
+          - {label: "Texto Alt da Imagem", name: "image_alt", widget: "string"}
+          - {label: "Descrição Curta (SEO/Zap)", name: "description", widget: "text"}
+          - {label: "O Segredo da Chef (Destaque Verde)", name: "citable_fact", widget: "text"}
+          
+      # --- BLOCO 3: DADOS TÉCNICOS (ICONES) ---
+      - label: "⏱️ Dados Técnicos"
+        name: "tecnico"
+        widget: "object"
+        collapsed: true
+        fields:
+          - {label: "Tempo (Ex: 18 min)", name: "tempo_preparo", widget: "string"}
+          - {label: "Tempo ISO (Ex: PT18M)", name: "tempo_iso", widget: "string"}
+          - {label: "Rendimento (Ex: 2 pessoas)", name: "rendimento", widget: "string"}
+          - {label: "Dificuldade", name: "dificuldade", widget: "select", options: ["Muito Fácil", "Fácil", "Médio"]}
+          - {label: "Calorias (Total)", name: "calorias", widget: "string"}
+
+      # --- BLOCO 4: NUTRIÇÃO DETALHADA (CARDS COLORIDOS) ---
+      - label: "📊 Tabela Nutricional (Cards)"
+        name: "nutrition"
+        widget: "object"
+        collapsed: true
+        fields:
+          - {label: "Tamanho da Porção", name: "portion", widget: "string", default: "90g (1/2 pacote)"}
+          - {label: "Calorias (kcal)", name: "calories", widget: "number"}
+          - {label: "Proteínas (g)", name: "protein_g", widget: "number", value_type: "float"}
+          - {label: "Carboidratos (g)", name: "carbs_g", widget: "number", value_type: "float"}
+          - {label: "Gorduras Totais (g)", name: "fats_g", widget: "number", value_type: "float"}
+          - {label: "Fibras (g)", name: "fiber_g", widget: "number", value_type: "float"}
+          - {label: "Sódio (mg)", name: "sodium_mg", widget: "number", value_type: "float"}
+
+      # --- BLOCO 5: CLASSIFICAÇÃO IA ---
+      - label: "🏷️ Filtros de Dieta (IA)"
+        name: "diets"
+        widget: "select"
+        multiple: true
+        options: 
+          - {label: "Vegano", value: "https://schema.org/VeganDiet"}
+          - {label: "Sem Glúten", value: "https://schema.org/GlutenFreeDiet"}
+          - {label: "Low Carb", value: "https://schema.org/LowCarbDiet"}
+          - {label: "Vegetariano", value: "https://schema.org/VegetarianDiet"}
+      
+      # --- BLOCO 6: CONTEÚDO ESTRUTURADO ---
+      - label: "🍳 Modo de Preparo (Passo a Passo)"
+        name: "instructions"
+        widget: "list"
+        summary: "{{fields.name}}"
+        fields:
+          - {label: "Nome da Etapa (Ex: Refogar)", name: "name", widget: "string"}
+          - {label: "Instrução Detalhada", name: "text", widget: "text"}
+
+      - label: "❓ Perguntas Frequentes (FAQ)"
+        name: "faq"
+        widget: "list"
+        summary: "{{fields.question}}"
+        fields:
+          - {label: "Pergunta", name: "question", widget: "string"}
+          - {label: "Resposta", name: "answer", widget: "text"}
+
+      # --- BLOCO 7: NARRATIVA LIVRE ---
+      - label: "📝 História do Prato (Markdown)"
+        name: "body"
+        widget: "markdown"
+        hint: "Use este espaço para a introdução, 'Por que você vai amar', 'Cozinha Criativa' e 'Cross-Sell'."
+
+  # ===========================================================
+  # 3. PÁGINA CHEFBOX (A LANDING PAGE)
+  # ===========================================================
   - name: "chefbox"
-    label: "🎁 Página ChefBox"
+    label: "🎁 Página Monte sua ChefBox"
     files:
       - name: "index"
-        label: "Conteúdo da Landing Page"
-        file: "src/content/chefbox/index.md" # <--- CAMINHO NOVO
-        format: "yaml-frontmatter"
+        label: "Conteúdo da Página"
+        file: "src/content/chefbox/index.njk"
+        format: "frontmatter"
         fields:
-          - {label: "Título", name: "title", widget: "string", default: "Monte sua ChefBox"}
-          - {label: "Texto Manifesto", name: "body", widget: "markdown"}
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Descrição", name: "description", widget: "text"}
           - {label: "Layout", name: "layout", widget: "hidden", default: "base.njk"}
