@@ -1,12 +1,19 @@
+---
+layout: base.njk
+permalink: /clube/
+title: "ChefBrico Club | Cupons e Comunidade VIP"
+description: "Entre para o clube exclusivo da ChefBrico. Ganhe 10% OFF na primeira compra."
+---
+
 <!--BLOCO DO FORMULÁRIO INTELIGENTE (SEM REDIRECIONAMENTO) -->
-<div id="form-container" class="chefbox-offer-card" style="background: white; border: 1px solid #eee; box-shadow: 0 20px 50px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; padding: 40px; border-radius: 15px;">
+<div id="form-container" class="chefbox-offer-card" style="background: white; border: 1px solid #eee; box-shadow: 0 20px 50px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; padding: 40px; border-radius: 15px; margin-top: 40px; margin-bottom: 60px;">
     
     <!-- 1. O QUE APARECE ANTES DE ENVIAR -->
     <div id="form-content">
-        <h2 style="color: #014039; font-size: 1.8rem; margin-bottom: 10px;">
+        <h1 style="color: #014039; font-size: 1.8rem; margin-bottom: 10px; text-align: center;">
             Ganhe um Presente Agora! 🎁
-        </h2>
-        <p style="color: #666; margin-bottom: 30px;">
+        </h1>
+        <p style="color: #666; margin-bottom: 30px; text-align: center;">
             Inscreva-se e receba o cupom <strong>PRIMEIRA10</strong> (10% OFF).
         </p>
 
@@ -29,7 +36,7 @@
                 QUERO MEUS CUPONS! 🎟️
             </button>
         </form>
-        <p id="loading-msg" style="display:none; color:#F2811D; font-weight:bold; margin-top:15px;">Enviando...</p>
+        <p id="loading-msg" style="display:none; color:#F2811D; font-weight:bold; margin-top:15px; text-align:center;">Enviando...</p>
     </div>
 
     <!-- 2. O QUE APARECE DEPOIS DE ENVIAR (SUCESSO) -->
@@ -50,7 +57,7 @@
 
 </div>
 
-<!-- SCRIPT MÁGICO (Faz a troca sem recarregar a página) -->
+<!-- SCRIPT MÁGICO -->
 <script>
     const form = document.getElementById('club-form');
     const contentDiv = document.getElementById('form-content');
@@ -58,7 +65,7 @@
     const loadingMsg = document.getElementById('loading-msg');
 
     form.addEventListener('submit', (e) => {
-        e.preventDefault(); // Impede o navegador de tentar mudar de página
+        e.preventDefault();
         loadingMsg.style.display = 'block';
         
         let formData = new FormData(form);
@@ -69,10 +76,8 @@
             body: new URLSearchParams(formData).toString()
         })
         .then(() => {
-            // Sucesso! Esconde o form e mostra o cupom
             contentDiv.style.display = 'none';
             successDiv.style.display = 'block';
-            console.log("Lead Enviado para o Netlify CRM");
         })
         .catch((error) => {
             alert('Erro ao enviar. Tente novamente.');
