@@ -60,27 +60,25 @@ permalink: /chefbox/
     <p>Toque no <strong>(+)</strong> para adicionar à caixa. <br>Complete 4 slots e o <strong>5º é Presente!</strong> 🎁</p>
 </div>
 
-<!-- A VITRINE DE ESCOLHA -->
+<!-- A VITRINE DE ESCOLHA (CORRIGIDA) -->
 <div class="vitrine-grid">
    {% for item in collections.receitas %}
     
-    {% set linkReal = item.filePathStem | replace("/content", "") + "/" %}
-
     <div class="item-card">
-        <!-- Link na Imagem -->
-        <a href="{{ linkReal }}">
+        <!-- Link Seguro usando item.url -->
+        <a href="{{ item.url }}">
             <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="item-img" loading="lazy">
         </a>
         
-        <!-- O BOTÃO QUE ACIONA A RÉGUA -->
+        <!-- BOTÃO DO JOGO -->
+        <!-- Adicionei o item.url como 5º parâmetro para o botão funcionar no futuro -->
         <button class="btn-plus-add" 
-                onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')">
+                onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}', '{{ item.url }}')">
             +
         </button>
 
         <div class="item-info">
-            <!-- Link no Título -->
-            <a href="{{ linkReal }}" style="text-decoration: none; color: inherit;">
+            <a href="{{ item.url }}" style="text-decoration: none; color: inherit;">
                 <h3 class="item-title">{{ item.data.title }}</h3>
             </a>
             <div class="item-price">R$ {{ item.data.price | dinheiro }}</div>
