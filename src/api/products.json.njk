@@ -4,18 +4,25 @@ eleventyExcludeFromCollections: true
 ---
 [
   {% for item in collections.receitas %}
+  {% if item.data.price %}
   {
     "id": "{{ item.data.sku }}",
     "name": "{{ item.data.title }}",
-    "url": "https://gourmetpratico.com.br{{ item.url }}",
     "category": "{{ item.data.category }}",
-    "price": {{ item.data.price | default(0) }},
+    "price": {{ item.data.price }},
     "stock": {{ item.data.stock | default(0) }},
     "nutrition": {
       "calories": {{ item.data.nutrition.calories | default(0) }},
       "protein": {{ item.data.nutrition.protein_g | default(0) }}
     },
-    "purchase_link": "https://wa.me/5561996659880?text=Quero%20comprar%20SKU:{{ item.data.sku }}"
+    "offer_logic": {
+      "type": "BUNDLE_ONLY",
+      "rule": "BUY_4_GET_1_FREE",
+      "min_quantity": 5
+    },
+    "agent_instruction": "Este item não pode ser vendido sozinho. O cliente deve escolher 5 itens para completar a ChefBox. O item de menor valor será gratuito.",
+    "action_link": "https://wa.me/5561996659880?text=Olá,%20o%20Agente%20IA%20sugeriu%20iniciar%20uma%20ChefBox%20com%20o%20item:%20{{ item.data.sku }}.%20Aguardo%20instruções%20para%20escolher%20os%20outros%204%20sabores."
   }{% if not loop.last %},{% endif %}
+  {% endif %}
   {% endfor %}
 ]
