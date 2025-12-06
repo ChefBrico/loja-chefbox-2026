@@ -1,42 +1,152 @@
 ---
 layout: base.njk
 permalink: /receitas/
-title: "Catálogo Inteligente: Encontre sua Solução | ChefBrico"
-description: "Explore o cardápio completo da ChefBrico. Filtre por solução, dieta ou tipo de prato."
+title: "Catálogo Inteligente | ChefBrico A-Commerce"
+description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre por solução ou categoria. Compre 4 e ganhe 1 de presente."
 ---
+
+<!-- ========================================================================== -->
+<!-- 1. SCHEMA.ORG (HIERARQUIA CORRETA: PARTE DA LOJA)                          -->
+<!-- ========================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Catálogo Inteligente ChefBrico",
+  "description": "Seleção completa de Risotos, Sopas e Refeições Desidratadas.",
+  "url": "https://gourmetpratico.com.br/receitas/",
+  "isPartOf": {
+    "@type": "Store",
+    "@id": "https://gourmetpratico.com.br/#website", 
+    "name": "ChefBrico Gourmet Prático",
+    "image": "https://gourmetpratico.com.br/imagens/logo.png"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {% for item in collections.receitas %}
+      {% if item.data.price %}
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index }},
+        "url": "https://gourmetpratico.com.br{{ item.url }}",
+        "name": "{{ item.data.title }}"
+      }{% if not loop.last %},{% endif %}
+      {% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+
+<!-- ========================================================================== -->
+<!-- 2. ESTILOS LOCAIS (APENAS O NECESSÁRIO PARA O GRID E CARD)                 -->
+<!-- Nota: Usando variáveis globais onde possível para manter consistência      -->
+<!-- ========================================================================== -->
+<style>
+    /* GRID DE PRODUTOS (Mantendo o padrão visual dos Risotos) */
+    .vitrine-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto 100px;
+        padding: 0 20px;
+    }
+
+    /* CARD DO PRODUTO */
+    .card-produto {
+        border: 1px solid #eee; border-radius: 15px; overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s; background: white;
+        display: flex; flex-direction: column; position: relative;
+    }
+    .card-produto:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: #F2811D; }
+
+    .card-img-wrapper { position: relative; height: 200px; overflow: hidden; }
+    .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .card-produto:hover .card-img { transform: scale(1.05); }
+
+    /* BOTÃO FLUTUANTE (+) - Laranja Padrão */
+    .btn-add-game {
+        position: absolute; bottom: 10px; right: 10px;
+        width: 45px; height: 45px;
+        background-color: #F2811D; color: white;
+        border-radius: 50%; border: none;
+        font-size: 1.6rem; font-weight: bold;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        z-index: 2; transition: transform 0.2s;
+    }
+    .btn-add-game:hover { transform: scale(1.1); background-color: #d35400; }
+
+    /* CONTEÚDO DO CARD */
+    .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+    .card-tag { font-size: 0.75rem; text-transform: uppercase; color: #999; letter-spacing: 1px; margin-bottom: 8px; display: block; }
+    
+    .card-title { 
+        font-size: 1.15rem; color: var(--cor-institucional, #014039); /* Usa sua variável ou fallback */
+        margin: 0 0 15px; 
+        font-weight: bold; text-decoration: none; line-height: 1.3;
+    }
+    
+    .card-footer { 
+        display: flex; justify-content: space-between; align-items: center; margin-top: auto; 
+        border-top: 1px solid #f5f5f5; padding-top: 15px; 
+    }
+    .card-price { color: #F2811D; font-weight: 800; font-size: 1.2rem; }
+    .link-detalhes { color: var(--cor-institucional, #014039); font-size: 0.9rem; text-decoration: underline; cursor: pointer; }
+
+    /* ESTILO DOS BOTÕES DE FILTRO (Reutilizando lógica simples) */
+    .btn-filter {
+        background: white; border: 1px solid #eee; padding: 8px 20px;
+        border-radius: 20px; cursor: pointer; color: #555; font-size: 0.9rem;
+        transition: 0.2s;
+    }
+    .btn-filter:hover, .btn-filter.active {
+        background: var(--cor-institucional, #014039);
+        color: white;
+        border-color: var(--cor-institucional, #014039);
+    }
+    
+    /* Link Pill para Soluções */
+    .solucao-pill {
+        padding: 8px 16px; background: #f4f4f4; border-radius: 20px; text-decoration: none;
+        color: #555; font-size: 0.9rem; border: 1px solid transparent; transition: 0.2s;
+    }
+    .solucao-pill:hover { background: #e0f2f1; color: var(--cor-institucional, #014039); border-color: var(--cor-institucional, #014039); }
+</style>
 
 <main class="container">
     
     <!-- CABEÇALHO DA PÁGINA -->
     <div class="text-center" style="margin: 40px 0;">
-        <h1 class="text-vinho">Nosso Catálogo Inteligente</h1>
+        <h1 style="color: var(--cor-institucional, #014039); font-family: 'Merriweather', serif;">Nosso Catálogo Inteligente</h1>
         <p style="max-width: 700px; margin: 0 auto; color: #666;">
             Encontre a solução perfeita para cada momento. Use nossos filtros por Solução ou Categoria para navegar em nosso universo de sabores.
         </p>
     </div>
 
-    <!-- FILTROS POR SOLUÇÃO (TAGS) -->
+    <!-- 1. FILTROS POR SOLUÇÃO (SEU CÓDIGO ORIGINAL RESTAURADO) -->
     <div class="filter-section text-center" style="margin-bottom: 30px;">
-        <div style="font-weight: bold; color: var(--cor-institucional); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem;">
+        <div style="font-weight: bold; color: var(--cor-institucional, #014039); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem;">
             🔎 NAVEGUE POR SOLUÇÃO
         </div>
-        <div class="filter-buttons" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-            <button class="btn-filter active" onclick="filter('all')">Todos</button>
-            <button class="btn-filter" onclick="filter('jantar-rapido')">Jantar Rápido</button>
-            <button class="btn-filter" onclick="filter('marmita-saudavel')">Marmita Saudável</button>
-            <button class="btn-filter" onclick="filter('momento-especial')">Momentos Especiais</button>
-            <button class="btn-filter" onclick="filter('kids')">Para a Família</button>
-            <button class="btn-filter" onclick="filter('performance')">Performance & Dieta</button>
-            <button class="btn-filter" onclick="filter('trilha')">Trilha & Viagem</button>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+            <a href="/receitas/solucoes/jantar-rapido/" class="solucao-pill">⚡ Jantar Rápido</a>
+            <a href="/receitas/solucoes/marmita-saudavel/" class="solucao-pill">🍱 Marmita Saudável</a>
+            <a href="/receitas/solucoes/momento-a-dois/" class="solucao-pill">🍷 Momento a Dois</a>
+            <a href="/receitas/solucoes/para-criancas/" class="solucao-pill">👶 Para Crianças</a>
+            <a href="/receitas/solucoes/trilha-viagem/" class="solucao-pill">🎒 Trilha & Viagem</a>
         </div>
     </div>
 
-    <!-- FILTROS POR CATEGORIA -->
+    <!-- 2. FILTROS POR CATEGORIA (SEU CÓDIGO ORIGINAL RESTAURADO) -->
     <div class="filter-section text-center" style="margin-bottom: 40px;">
-        <div style="font-weight: bold; color: var(--cor-institucional); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem;">
+        <div style="font-weight: bold; color: var(--cor-institucional, #014039); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem;">
             🍲 NAVEGUE POR CATEGORIA
         </div>
         <div class="filter-buttons" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+             <button class="btn-filter active" onclick="filter('all')">Ver Tudo</button>
              <button class="btn-filter" onclick="filter('Risoto')">Risotos</button>
              <button class="btn-filter" onclick="filter('Sopa')">Sopas</button>
              <button class="btn-filter" onclick="filter('Refeição')">Refeições Integrais</button>
@@ -44,91 +154,78 @@ description: "Explore o cardápio completo da ChefBrico. Filtre por solução, d
         </div>
     </div>
     
-   <!-- GRADE DE PRODUTOS (VITRINE) -->
-<div class="recipe-grid">
-    
-  <!-- CÓDIGO BLINDADO (SUGESTÃO) -->
-{% for item in collections.receitas %}
-{% if item.data.price %} <!-- SÓ MOSTRA SE TIVER PREÇO -->
-    <div class="recipe-card" data-tags="{{ item.data.keywords }} {{ item.data.category }}">
+    <!-- VITRINE (GRID DE PRODUTOS) -->
+    <div class="vitrine-grid">
         
-        <!-- A CORREÇÃO MÁGICA: Usar item.url nativo -->
-        <div class="card-image-wrapper" style="height: 150px; overflow: hidden; position: relative;">
-            <a href="{{ item.url }}">
-                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" style="width: 100%; height: 100%; object-fit: cover;">
-            </a>
+        {% for item in collections.receitas %}
+        {# SÓ MOSTRA SE TIVER PREÇO (GARANTE QUE É PRODUTO) #}
+        {% if item.data.price %}
+        
+        <div class="card-produto" 
+             data-category="{{ item.data.category }}" 
+             data-agent-sku="{{ item.data.sku }}"> <!-- DADO PARA IA -->
             
-            <!-- Adicionamos o item.url na função do jogo também -->
-            <button onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}', '{{ item.url }}')"
-                    class="btn-add-game">
-                +
-            </button>
-        </div>
+            <div class="card-img-wrapper">
+                <a href="{{ item.url }}">
+                    <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="card-img" loading="lazy">
+                </a>
+                
+                <!-- BOTÃO GAMIFICADO (ATUALIZADO COM 5 PARÂMETROS) -->
+                <button onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}', '{{ item.url }}')"
+                        class="btn-add-game" 
+                        title="Adicionar à ChefBox (+)">
+                    +
+                </button>
+            </div>
 
-        <div class="card-content">
-            <span class="category-tag">
-                {{ item.data.category }}
-            </span>
+            <div class="card-content">
+                <span class="card-tag">{{ item.data.category }}</span>
 
-            <!-- Link corrigido aqui também -->
-            <a href="{{ item.url }}" style="text-decoration: none;">
-                <h3 class="card-title">
-                    {{ item.data.title }}
-                </h3>
-            </a>
-            
-            <div class="price-tag">
-                R$ {{ item.data.price | dinheiro }}
+                <a href="{{ item.url }}" class="card-title">
+                    {{ item.data.title | replace(" | ChefBrico", "") }}
+                </a>
+                
+                <div class="card-footer">
+                    <span class="card-price">R$ {{ item.data.price | dinheiro }}</span>
+                    <a href="{{ item.url }}" class="link-detalhes">Ver Detalhes</a>
+                </div>
             </div>
         </div>
+
+        {% endif %}
+        {% endfor %}
+
     </div>
-    {% endfor %}
-</div>
+
 </main>
 
-<!-- ESTILO LOCAL (Apenas para os botões de filtro) -->
-<style>
-    .btn-filter {
-        background: white;
-        border: 1px solid #eee;
-        padding: 8px 20px;
-        border-radius: 20px;
-        cursor: pointer;
-        color: #555;
-        font-size: 0.9rem;
-        transition: 0.2s;
-    }
-    .btn-filter:hover, .btn-filter.active {
-        background: var(--cor-institucional);
-        color: white;
-        border-color: var(--cor-institucional);
-    }
-</style>
-
-<!-- SCRIPT DE FILTRO -->
+<!-- ========================================================================== -->
+<!-- 3. JAVASCRIPT (LÓGICA DE FILTRO)                                           -->
+<!-- ========================================================================== -->
 <script>
-function filter(tag) {
-    const cards = document.querySelectorAll('.recipe-card');
-    const btns = document.querySelectorAll('.btn-filter');
+function filter(category) {
+    const cards = document.querySelectorAll('.card-produto');
+    const buttons = document.querySelectorAll('.btn-filter');
     
-    // Atualiza botões
-    btns.forEach(b => {
-        if(b.innerText.toLowerCase().includes(tag.toLowerCase()) || b.getAttribute('onclick').includes(tag)) {
-            b.classList.add('active');
+    // 1. Atualiza visual dos botões
+    buttons.forEach(btn => {
+        if (btn.innerText.includes(category) || (category === 'all' && btn.innerText === 'Ver Tudo')) {
+            btn.classList.add('active');
         } else {
-            b.classList.remove('active');
+            btn.classList.remove('active');
         }
     });
 
-    // Filtra cards
+    // 2. Filtra os cards
     cards.forEach(card => {
-        const tags = card.getAttribute('data-tags').toLowerCase();
-        const busca = tag.toLowerCase();
-
-        if (tag === 'all' || tags.includes(busca)) {
-            card.style.display = 'flex';
+        const cardCat = card.getAttribute('data-category');
+        
+        if (category === 'all' || cardCat === category) {
+            card.style.display = 'flex'; 
+            card.style.opacity = '0';
+            setTimeout(() => card.style.opacity = '1', 100);
         } else {
-            card.style.display = 'none';
+            card.style.display = 'none'; 
         }
     });
 }
