@@ -51,7 +51,7 @@ exports.handler = async function(event, context) {
 
     canais_oficiais: {
       whatsapp: "+5561996659880",
-      email: "contato@chefbrico.com",
+      email: "familiabricolage@chefbrico.com",
       instagram: "@chefbrico"
     }
   };
