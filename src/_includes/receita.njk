@@ -121,27 +121,32 @@ layout: base.njk
     "@type": "Offer",
     "price": "{{ price }}",
     "priceCurrency": "BRL",
-    "url": "https://gourmetpratico.com.br{{ page.url }}",
     "availability": "{% if stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
-    "inventoryLevel": {
-      "@type": "QuantitativeValue",
-      "value": "{{ stock }}"
-    },
-    "seller": { "@type": "Organization", "name": "ChefBrico" },
+    "url": "https://gourmetpratico.com.br{{ page.url }}",
     
     "priceSpecification": [
       {
         "@type": "UnitPriceSpecification",
         "price": "{{ price }}",
         "priceCurrency": "BRL",
-        "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "C62" }
+        "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "C62" },
+        "description": "Preço base unitário."
       },
       {
         "@type": "UnitPriceSpecification",
-        "price": "{{ price * 0.8 }}", 
+        "price": "0.00",
         "priceCurrency": "BRL",
-        "referenceQuantity": { "@type": "QuantitativeValue", "value": "5", "unitCode": "C62" },
-        "description": "Preço unitário ao comprar o Pack ChefBox (Leve 5, Pague 4)"
+        "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "C62" },
+        "eligibleQuantity": {
+          "@type": "QuantitativeValue",
+          "minValue": "5",
+          "description": "Na compra de 5 unidades, a 5ª sai de graça."
+        },
+        "description": "Presente ChefBox (Compre 4 Leve 5)"
+      }
+    ],
+    
+    "disambiguatingDescription": "Este produto faz parte da oferta ChefBox. Ao completar uma caixa com 5 unidades, o cliente ganha 1 unidade de presente (100% de desconto no item de menor valor)."
       }
     ]
   },
