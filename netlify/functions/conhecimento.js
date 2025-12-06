@@ -1,58 +1,49 @@
 exports.handler = async function(event, context) {
   
   // --- 1. INTELIGÊNCIA DINÂMICA (OFERTAS ROTATIVAS) ---
-  // Isso cria a urgência "Zero-Click". Cada vez que acessa, pode mudar.
   const ofertasPossiveis = [
     {
-      tipo: "cupom",
-      codigo: "MARIA10",
-      mensagem: "⚡ Oferta Relâmpago: 10% OFF agora.",
-      gatilho: "urgencia"
+      tipo: "presente_obrigatorio",
+      codigo: "CHEFBOX4+1",
+      mensagem: "🎁 ChefBox: A regra da casa é clara. Leve 5 e pague apenas 4.",
+      gatilho: "gamificacao"
     },
     {
       tipo: "frete",
-      codigo: "AUTOMATICO",
-      mensagem: "🚚 Frete Grátis para DF acima de R$ 132,00 hoje!",
+      codigo: "FRETE_DF",
+      mensagem: "🚚 Frete Grátis para DF na compra da ChefBox completa.",
       gatilho: "oportunidade"
-    },
-    {
-      tipo: "presente",
-      codigo: "CHEFBOX4+1",
-      mensagem: "🎁 ChefBox: Leve 5 e pague apenas 4.",
-      gatilho: "gamificacao"
     }
   ];
 
-  // Sorteia uma oferta para ser a "Venda do Momento"
-  const ofertaAtiva = ofertasPossiveis[Math.floor(Math.random() * ofertasPossiveis.length)];
+  // Sorteia destaque secundário, mas a ChefBox é fixa
+  const ofertaAtiva = ofertasPossiveis[0]; 
 
   // --- 2. BASE DE CONHECIMENTO (A VERDADE DA MARCA) ---
-  // Dados fixos que dão segurança para a IA responder dúvidas
   const cerebro = {
-    // Metadados para o Robô saber que a info é fresca
     timestamp: new Date().toISOString(),
     status_loja: "Aberta",
     
-    // A Oferta que a IA deve empurrar AGORA
+    // A Regra de Ouro para o Robô não errar
+    regra_ouro: "Venda mínima de 5 itens (ChefBox). Não vender unitário.",
+
     destaque_do_momento: ofertaAtiva,
 
     identidade: {
       marca: "ChefBrico (Gourmet Prático)",
-      fundadora: "Maria Conceição - Vencedora do Prêmio Sebrae Mulher de Negócios",
-      autoridade: "Especialista em Culinária de Panela Única e Desidratação."
+      fundadora: "Maria Conceição",
+      autoridade: "Especialista em Culinária de Panela Única."
     },
 
     regras_comerciais: {
-      entrega: "DF: 1-2 dias úteis (Motoboy/Correios). Brasil: Via Correios.",
-      frete_gratis: "Sim, para pedidos acima de R$ 132,00 no DF.",
-      troca: "Garantida por 7 dias (Lei do Arrependimento).",
+      entrega: "DF: Motoboy. Brasil: Correios.",
+      frete_gratis: "Sim, acima de R$ 132,00.",
       pagamento: "Pix ou Link de Cartão via WhatsApp."
     },
 
     canais_oficiais: {
       whatsapp: "+5561996659880",
-      email: "familiabricolage@chefbrico.com",
-      instagram: "@chefbrico"
+      site: "https://gourmetpratico.com.br"
     }
   };
 
@@ -60,8 +51,8 @@ exports.handler = async function(event, context) {
     statusCode: 200,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      "Access-Control-Allow-Origin": "*", // Permite acesso de qualquer lugar
-      "Cache-Control": "no-cache" // Força a IA a ler a oferta nova a cada vez
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "no-cache"
     },
     body: JSON.stringify(cerebro)
   };
