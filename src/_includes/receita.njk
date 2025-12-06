@@ -3,101 +3,36 @@ layout: base.njk
 ---
 
 <!-- ========================================================================== -->
-<!-- 1. CAMADA DE INTELIGÊNCIA (BREADCRUMBS PARA O GOOGLE)                      -->
-<!-- ========================================================================== -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Home",
-    "item": "https://gourmetpratico.com.br"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "Receitas",
-    "item": "https://gourmetpratico.com.br/receitas/"
-  },{
-    "@type": "ListItem",
-    "position": 3,
-    "name": "{{ category }}",
-    "item": "https://gourmetpratico.com.br/receitas/{{ category | slug }}/"
-  },{
-    "@type": "ListItem",
-    "position": 4,
-    "name": "{{ title }}",
-    "item": "https://gourmetpratico.com.br{{ page.url }}"
-  }]
-}
-</script>
-
-<!-- ========================================================================== -->
-<!-- 2. CAMADA DE INTELIGÊNCIA (PRODUTO + RECEITA + E-COMMERCE)                 -->
+<!-- 1. CAMADA DE INTELIGÊNCIA (SCHEMA HIPER-AVANÇADO A-COMMERCE)               -->
 <!-- ========================================================================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@type": ["Recipe", "Product"],
+  "@type": ["Product", "Recipe"],
   "name": "{{ title }}",
   "description": "{{ description }}",
   "sku": "{{ sku }}",
-  "gtin13": "{{ gtin }}",
   "image": {
     "@type": "ImageObject",
     "url": "https://gourmetpratico.com.br{{ image }}",
     "height": 566,
     "width": 1080
   },
-  
   "brand": { "@type": "Brand", "name": "ChefBrico" },
-  
   "author": {
     "@type": "Person",
     "name": "{{ author.name | default('Maria Conceição') }}",
     "url": "https://gourmetpratico.com.br/comida-de-verdade/"
   },
-
+  
+  /* DADOS DE RECEITA */
   "datePublished": "{{ date | postDate }}",
   "prepTime": "{{ tempo_iso }}",
   "cookTime": "{{ tempo_iso }}",
   "totalTime": "{{ tempo_iso }}",
   "recipeYield": "{{ rendimento }}",
   "recipeCategory": "{{ category }}",
-  "recipeCuisine": "Italian",
-
-  "suitableForDiet": [
-    {% if diets %}
-      {% for diet in diets %}"{{ diet }}"{% if not loop.last %},{% endif %}{% endfor %}
-    {% else %}
-      "https://schema.org/VegetarianDiet",
-      "https://schema.org/VeganDiet"
-    {% endif %}
-  ],
-
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ rating.value | default('4.9') }}",
-    "reviewCount": "{{ rating.count | default('120') }}",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-
-  {% if nutrition %}
-  "nutrition": {
-    "@type": "NutritionInformation",
-    "calories": "{{ nutrition.calories }} calories",
-    "proteinContent": "{{ nutrition.protein_g }} g",
-    "carbohydrateContent": "{{ nutrition.carbs_g }} g",
-    "fiberContent": "{{ nutrition.fiber_g }} g",
-    "fatContent": "{{ nutrition.fats_g }} g",
-    "sodiumContent": "{{ nutrition.sodium_mg }} mg"
-  },
-  {% endif %}
-
-  "recipeIngredient": [ "Ver lista completa na embalagem ChefBrico" ], 
-
+  "recipeIngredient": [ "Ver lista completa na embalagem ChefBrico" ],
   "recipeInstructions": [
     {% if instructions %}
       {% for step in instructions %}
@@ -105,25 +40,24 @@ layout: base.njk
         "@type": "HowToStep",
         "name": "{{ step.name }}",
         "text": "{{ step.text }}",
-        "position": {{ loop.index }},
-        "url": "https://gourmetpratico.com.br{{ page.url }}#passo{{ loop.index }}"
+        "position": {{ loop.index }}
       }{% if not loop.last %},{% endif %}
       {% endfor %}
     {% else %}
-      {
-        "@type": "HowToStep",
-        "text": "Siga as instruções de preparo no rótulo ou na descrição abaixo."
-      }
+      { "@type": "HowToStep", "text": "Siga as instruções do rótulo." }
     {% endif %}
   ],
-  
+
+  /* DADOS COMERCIAIS (A MÁGICA DO PRESENTE) */
   "offers": {
     "@type": "Offer",
     "price": "{{ price }}",
     "priceCurrency": "BRL",
-    "availability": "{% if stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
     "url": "https://gourmetpratico.com.br{{ page.url }}",
+    "availability": "{% if stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "seller": { "@type": "Organization", "name": "ChefBrico" },
     
+    /* PREÇO ESCALONADO SEMÂNTICO */
     "priceSpecification": [
       {
         "@type": "UnitPriceSpecification",
@@ -145,38 +79,19 @@ layout: base.njk
         "description": "Presente ChefBox (Compre 4 Leve 5)"
       }
     ],
-    
-    "disambiguatingDescription": "Este produto faz parte da oferta ChefBox. Ao completar uma caixa com 5 unidades, o cliente ganha 1 unidade de presente (100% de desconto no item de menor valor)."
-      }
-    ]
-  },
-
-  "mainEntity": {
-    "@type": "FAQPage",
-    "mainEntity": [
-      {% for item in faq %}
-      {
-        "@type": "Question",
-        "name": "{{ item.question }}",
-        "acceptedAnswer": { "@type": "Answer", "text": "{{ item.answer }}" }
-      }{% if not loop.last %},{% endif %}
-      {% endfor %}
-    ]
+    "disambiguatingDescription": "Oferta Especial ChefBox: Ao selecionar 5 unidades, o cliente paga apenas por 4. O 5º item é um presente (100% de desconto no item de menor valor)."
   }
 }
 </script>
 
 <!-- ========================================================================== -->
-<!-- 3. CAMADA VISUAL (CSS ESTILO REVISTA & MOBILE FIRST)                       -->
+<!-- 2. CAMADA VISUAL (CSS ESTILO REVISTA & MOBILE FIRST)                       -->
 <!-- ========================================================================== -->
 <style>
   /* GERAL */
   .receita-header { text-align: center; max-width: 800px; margin: 40px auto; }
-  .receita-title { color: #014039; font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; line-height: 1.2; }
+  .receita-title { color: var(--cor-institucional, #014039); font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; line-height: 1.2; }
   .receita-subtitle { color: #666; font-style: italic; font-size: 1.1rem; }
-
-  /* BREADCRUMBS VISUAL (Escondido, só dados) */
-  .breadcrumbs { display: none; }
 
   /* METADADOS */
   .meta-bar {
@@ -184,7 +99,6 @@ layout: base.njk
       font-size: 0.85rem; color: #444; font-weight: 600; flex-wrap: wrap; text-transform: uppercase;
   }
   .meta-item { display: flex; align-items: center; gap: 6px; background: #fff; padding: 8px 15px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-  .meta-icon { font-size: 1.1rem; }
 
   /* IMAGEM */
   .hero-image-container {
@@ -195,17 +109,16 @@ layout: base.njk
 
   /* CONTEÚDO */
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
-  .conteudo-leitura h2 { color: #014039; margin-top: 50px; margin-bottom: 20px; font-size: 1.6rem; font-family: 'Merriweather', serif; }
+  .conteudo-leitura h2 { color: var(--cor-institucional, #014039); margin-top: 50px; margin-bottom: 20px; font-size: 1.6rem; font-family: 'Merriweather', serif; }
 
   /* INTRO CARD */
   .intro-card {
       background: #fff; padding: 25px; border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 40px;
-      border-left: 5px solid #014039; font-size: 1.1rem; color: #555; line-height: 1.8;
+      border-left: 5px solid var(--cor-institucional, #014039); font-size: 1.1rem; color: #555; line-height: 1.8;
   }
 
   /* LISTAS INTELIGENTES */
-  /* Check Verde (Por que Amar) */
   .checked-list { list-style: none !important; padding-left: 0; }
   .checked-list li { position: relative; padding-left: 35px; margin-bottom: 15px; }
   .checked-list li::before {
@@ -214,7 +127,6 @@ layout: base.njk
       display: flex; align-items: center; justify-content: center;
   }
 
-  /* Quadrado Vazio (Ingredientes) */
   .checklist { list-style: none !important; padding-left: 0; }
   .checklist li { position: relative; padding-left: 35px; margin-bottom: 10px; }
   .checklist li::before {
@@ -222,19 +134,13 @@ layout: base.njk
       width: 18px; height: 18px; background-color: #fff; border: 2px solid #ccc; border-radius: 4px;
   }
 
-  /* Bolinhas Laranjas (Modo Preparo) */
   .modo-preparo { list-style: none !important; counter-reset: steps; padding-left: 0; }
   .modo-preparo li { position: relative; padding-left: 60px; margin-bottom: 25px; }
   .modo-preparo li::before {
       counter-increment: steps; content: counter(steps); position: absolute; left: 0; top: -5px;
-      width: 35px; height: 35px; background: #F2811D; color: white; border-radius: 50%;
+      width: 35px; height: 35px; background: var(--cor-cta, #F2811D); color: white; border-radius: 50%;
       text-align: center; line-height: 35px; font-weight: bold; font-size: 1.1rem;
       box-shadow: 0 3px 6px rgba(242, 129, 29, 0.3); z-index: 1;
-  }
-
-  .simples-assim {
-      text-align: center; font-family: cursive; font-style: italic; font-size: 2rem; color: #27ae60;
-      margin-top: 30px; margin-bottom: 50px; display: none; text-shadow: 1px 1px 0px #fff;
   }
 
   /* CARDS */
@@ -243,49 +149,30 @@ layout: base.njk
       border-radius: 8px; color: #444; border-left: 5px solid #27ae60; box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   }
   .dica-chef-card {
-      background: white; border-left: 4px solid #F2811D; padding: 25px;
+      background: white; border-left: 4px solid var(--cor-cta, #F2811D); padding: 25px;
       border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); margin: 40px 0;
   }
-  .conteudo-leitura blockquote { 
-      padding: 20px; margin: 30px 0; font-style: italic; color: #555; background: #f9f9f9; border-radius: 10px; text-align: center;
-  }
-
-  /* PILARES */
-  .pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 40px 0; text-align: center; }
-  .pilar-card { padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 10px; text-decoration: none; color: inherit; display: block; transition: all 0.2s; }
-  .pilar-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #27ae60; }
 
   /* CTA */
   .cta-box { background: linear-gradient(90deg, #fdfbf7 0%, #fff 100%); border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; max-width: 700px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
   .cta-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
   .cta-content { flex-grow: 1; text-align: left; }
-  .cta-content h3 { margin: 0 0 5px; font-size: 1.1rem; color: #014039; }
+  .cta-content h3 { margin: 0 0 5px; font-size: 1.1rem; color: var(--cor-institucional, #014039); }
   .cta-content p { margin: 0; font-size: 0.9rem; color: #666; }
   
-  /* BOTÃO WHATSAPP (DEEPLINK) */
   .btn-comprar-agora { 
-      background: #F2811D; color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; 
+      background: var(--cor-cta, #F2811D); color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; 
       text-decoration: none; font-size: 0.95rem; white-space: nowrap; transition: transform 0.2s; 
       display: inline-block; cursor: pointer; border: none;
   }
   .btn-comprar-agora:hover { transform: scale(1.05); }
 
-  /* NOVA TABELA NUTRICIONAL (CARDS MOBILE) */
-  .nutri-grid {
-      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-      margin: 30px auto; max-width: 100%;
-  }
-  .nutri-card {
-      background: #fff; border: 1px solid #eee; border-radius: 10px;
-      width: 100px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      text-align: center; flex-shrink: 0;
-  }
-  .nutri-head {
-      background: #014039; color: white; font-size: 0.7rem; text-transform: uppercase;
-      padding: 5px; font-weight: bold; height: 35px; display: flex; align-items: center; justify-content: center;
-  }
+  /* TABELA NUTRICIONAL */
+  .nutri-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 30px auto; max-width: 100%; }
+  .nutri-card { background: #fff; border: 1px solid #eee; border-radius: 10px; width: 100px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: center; flex-shrink: 0; }
+  .nutri-head { background: var(--cor-institucional, #014039); color: white; font-size: 0.7rem; text-transform: uppercase; padding: 5px; font-weight: bold; height: 35px; display: flex; align-items: center; justify-content: center; }
   .nutri-body { padding: 8px 5px; background: #fdfbf7; }
-  .nutri-value { font-size: 1.2rem; font-weight: 800; color: #014039; display: block; }
+  .nutri-value { font-size: 1.2rem; font-weight: 800; color: var(--cor-institucional, #014039); display: block; }
   .nutri-unit { font-size: 0.7rem; color: #777; }
   
   /* FAQ e Autor */
@@ -298,7 +185,7 @@ layout: base.njk
 </style>
 
 <!-- ========================================================================== -->
-<!-- 4. PALCO VISUAL (HTML ESTRUTURAL)                                          -->
+<!-- 3. PALCO VISUAL (HTML ESTRUTURAL)                                          -->
 <!-- ========================================================================== -->
 <article>
     
@@ -329,28 +216,9 @@ layout: base.njk
 
     <div class="conteudo-leitura">
         
-        <div id="simples-assim-tag" class="simples-assim">Simples assim! ✨</div>
+        <div id="simples-assim-tag" style="text-align: center; font-family: cursive; font-style: italic; font-size: 2rem; color: #27ae60; margin: 30px 0 50px; display: none;">Simples assim! ✨</div>
 
         {{ content | safe }}
-
-        <!-- PILARES -->
-        <div class="pilares-grid">
-            <a href="/comida-de-verdade/" class="pilar-card">
-                <div style="font-size: 2rem;">🥫</div>
-                <h3>Despensa Inteligente</h3>
-                <p style="font-size: 0.8rem; color: #666;">Ingredientes de longa validade.</p>
-            </a>
-            <a href="/comida-de-verdade/" class="pilar-card">
-                <div style="font-size: 2rem;">🥘</div>
-                <h3>Panela Única</h3>
-                <p style="font-size: 0.8rem; color: #666;">Menos louça, mais tempo.</p>
-            </a>
-            <a href="/comida-de-verdade/" class="pilar-card">
-                <div style="font-size: 2rem;">🎨</div>
-                <h3>Cozinha Criativa</h3>
-                <p style="font-size: 0.8rem; color: #666;">Seu toque final.</p>
-            </a>
-        </div>
 
         <!-- CTA DE COMPRA (BOTÃO WHATSAPP) -->
         <div class="cta-box">
@@ -359,25 +227,22 @@ layout: base.njk
                 <h3>Gostou? Leve para casa.</h3>
                 <p>Adicione à sua <strong>ChefBox</strong> agora.</p>
             </div>
-            <!-- LINK WHATSAPP DIRETO (MELHOR PARA ROBÔS) -->
-            <a href="https://wa.me/5561996659880?text=Olá,%20quero%20comprar%20o%20item:%20*{{ title }}*%20(SKU:%20{{ sku }})" 
-               class="btn-comprar-agora"
-               data-agent-action="purchase"
-               data-sku="{{ sku }}"
-               data-price="{{ price }}">
+            <!-- AÇÃO HÍBRIDA: Adiciona ao Jogo (Humano) ou Link Seguro (Robô) -->
+            <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}', '{{ page.url }}')" 
+               class="btn-comprar-agora">
                + Adicionar (R$ {{ price }})
-            </a>
+            </button>
         </div>
 
-        <!-- NOVA TABELA NUTRICIONAL (CARDS COLORIDOS) -->
+        <!-- TABELA NUTRICIONAL -->
         {% if nutrition %}
         <div style="text-align: center; margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
-            <h3 style="font-family: 'Merriweather', serif; color: #014039; margin-bottom: 5px;">Informação Nutricional</h3>
+            <h3 style="font-family: 'Merriweather', serif; color: var(--cor-institucional, #014039); margin-bottom: 5px;">Informação Nutricional</h3>
             <p style="font-size: 0.8rem; color: #999; margin-bottom: 20px;">Porção de {{ nutrition.portion | default('1/2 pacote') }}</p>
 
             <div class="nutri-grid">
                 <div class="nutri-card">
-                    <div class="nutri-head" style="background: #F2811D;">Calorias</div>
+                    <div class="nutri-head" style="background: var(--cor-cta, #F2811D);">Calorias</div>
                     <div class="nutri-body"><span class="nutri-value">{{ nutrition.calories }}</span><span class="nutri-unit">kcal</span></div>
                 </div>
                 <div class="nutri-card">
@@ -401,7 +266,6 @@ layout: base.njk
                     <div class="nutri-body"><span class="nutri-value">{{ nutrition.sodium_mg }}</span><span class="nutri-unit">mg</span></div>
                 </div>
             </div>
-            <p style="font-size: 0.7rem; color: #ccc; margin-top: 10px;">* Valores aproximados.</p>
         </div>
         {% endif %}
 
@@ -412,7 +276,7 @@ layout: base.njk
             {% for item in faq %}
             <details class="faq-item">
                 <summary>{{ item.question }}</summary>
-                <div class="faq-answer">{{ item.answer }}</div>
+                <div class="faq-answer" style="padding: 15px; color: #555;">{{ item.answer }}</div>
             </details>
             {% endfor %}
         </div>
@@ -422,10 +286,10 @@ layout: base.njk
             <img src="{{ author.image }}" alt="{{ author.name }}" class="author-img">
             <div class="author-info">
                 <p style="margin:0; color:#555;">
-                    <strong style="color:#014039;">{{ author.name }}</strong><br>
+                    <strong style="color:var(--cor-institucional, #014039);">{{ author.name }}</strong><br>
                     <span style="font-size:0.9rem;">{{ author.description }}</span>
                 </p>
-                <a href="{{ author.url }}" style="color:#F2811D; font-size:0.85rem; font-weight:bold; text-decoration:none; display:block; margin-top:5px;">
+                <a href="{{ author.url }}" style="color:var(--cor-cta, #F2811D); font-size:0.85rem; font-weight:bold; text-decoration:none; display:block; margin-top:5px;">
                     Ler Filosofia Completa ➝
                 </a>
             </div>
@@ -459,17 +323,14 @@ layout: base.njk
         // 2. ESTILIZAR LISTAS
         headers.forEach(h2 => {
             const title = h2.innerText.toLowerCase();
-            // Check Verde
             if (title.includes('amar') || title.includes('pacote') || title.includes('pote')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checked-list'); 
             }
-            // Quadrado Vazio
             if (title.includes('precisar') || title.includes('acompanhar') || title.includes('consumo')) {
                 const list = h2.nextElementSibling;
                 if (list) list.classList.add('checklist');
             }
-            // Modo Preparo
             if (title.includes('preparo')) {
                 const list = h2.nextElementSibling;
                 if (list && (list.tagName === 'OL' || list.tagName === 'UL')) {
@@ -487,7 +348,6 @@ layout: base.njk
                     }
                 }
             }
-            // Card Flutuante
             if (title.includes('criativa') || title.includes('dica')) {
                 const p = h2.nextElementSibling;
                 if (p) p.classList.add('dica-chef-card');
