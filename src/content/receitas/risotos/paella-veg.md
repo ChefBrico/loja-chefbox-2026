@@ -68,11 +68,45 @@ faq:
     answer: "Não. A páprica é defumada, trazendo sabor de churrasco/defumado, mas sem ardência. É suave e equilibrado."
 ---
 
+<!-- INTRODUÇÃO -->
 Feche os olhos e sinta a brisa de Valência. Nosso Risoto de Paella é uma homenagem vibrante ao prato mais famoso da Espanha. Uma mistura rica de especiarias que trazem o espírito de *fiesta* para a sua mesa.
 
 ## Por que Você Vai Amar esta Viagem
-*   **Sabor Autêntico da Espanha:** Rico em especiarias, com o toque inconfundível do açafrão e o defumado da páprica.
+<!-- Check Verde -->
+*   **Sabor Autêntico da Espanha:** Rico em especiarias, com o toque inconfundível do açafrão.
 *   **Uma Festa na Panela:** Um prato colorido e delicioso, pronto em 18 minutos!
-*   **Toque do Mar (Vegano):** Usamos algas marinhas para trazer a salinidade do mar, sem usar peixe.
+*   **Versátil:** Uma base perfeita para adicionar pimentões frescos ou alcachofras.
 
-> "O sabor realmente lembra uma paella, mas com a cremosidade do risoto. Fiz para os amigos e foi um sucesso." — *Carlos E., Cliente ChefBrico*
+> "O sabor realmente lembra uma paella, mas com a cremosidade do risoto. Fiz para os amigos e foi um sucesso."
+> — *Carlos E., Cliente ChefBrico*
+
+## O que vem no Pacote
+<!-- Quadrados Cinzas -->
+*   Arroz arbóreo tipo exportação.
+*   Mix de vegetais (tomate, cenoura, abobrinha).
+*   Especiarias (cúrcuma, páprica defumada).
+*   Algas marinhas e levedura nutricional.
+
+## Você Vai Precisar de
+*   720ml de água fria
+*   1 fio de azeite
+*   Sal a gosto
+
+## Modo de Preparo Simplificado
+<!-- Bolinhas Laranjas -->
+1.  **Refogue:** Aqueça um fio de azeite e refogue o conteúdo. O aroma defumado vai subir.
+2.  **Cozinhe:** Adicione 720ml de água fria e sal. Cozinhe em fogo baixo, mexendo ocasionalmente.
+3.  **Finalize:** Sirva com rodelas de limão siciliano para espremer na hora.
+
+*Simples assim!*
+
+## Cozinha Criativa: Dicas da Chef
+A alma da paella pede uma Sangria bem gelada ou um vinho branco espanhol.
+
+### Combina Perfeitamente Com
+Para uma experiência ainda mais autêntica, sirva com pedaços de aspargos grelhados e um toque do nosso **[Pesto de Manjericão](/receitas/emporio-da-chef/pesto-manjericao/)**.
+
+## Informações Adicionais
+*   **Peso Líquido:** 180g
+*   **Validade:** 12 meses.
+*   **Origem:** Brasília-DF.
