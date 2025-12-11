@@ -5,49 +5,127 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
 <channel>
-<title>ChefBrico - Gourmet Prático</title>
+<title>ChefBrico - Inventário Oficial (Brasília)</title>
 <link>{{ meta.url }}</link>
-<description>Refeições gourmet desidratadas 100% naturais.</description>
+<description>Refeições gourmet desidratadas 100% naturais. Entrega local rápida em Brasília e nacional via Correios.</description>
 
-{# LOOP: Pega todas as receitas que têm preço (Produtos) #}
+{# LOOP: Itera sobre os produtos #}
 {% for item in collections.receitas %}
 {% if item.data.price %}
 <item>
-    {# 1. IDENTIDADE BÁSICA #}
+    {# ================================================================== #}
+    {# 1. IDENTIDADE HÍBRIDA (HUMANO + ROBÔ)                              #}
+    {# ================================================================== #}
     <g:id>{{ item.data.sku }}</g:id>
-    <g:title>{{ item.data.title }} | ChefBrico</g:title>
-    <g:description>{{ item.data.description }} Ingredientes 100% naturais, sem conservantes. Método Panela Única, pronto em {{ item.data.tempo_preparo }}.</g:description>
-    <g:link>{{ meta.url }}{{ item.url }}</g:link>
+    
+    {# TÍTULO: Onde o Humano vê o valor (Serve X Pessoas) #}
+    <g:title>{{ item.data.title }} | Serve {{ item.data.rendimento }} | ChefBrico</g:title>
+    
+    {# DESCRIÇÃO TÉCNICA: O "Prompt" para a IA ler primeiro #}
+    <g:description>
+        [DADOS TÉCNICOS PARA AGENTES]
+        UNSPSC: {{ item.data.unspsc | default('50193100') }}.
+        Rendimento: {{ item.data.rendimento }}.
+        Dieta: {{ item.data.diets | join(', ') }}.
+        Ingredientes: {{ item.data.ingredientes_texto }}.
+        
+        [DESCRIÇÃO DO PRODUTO]
+        {{ item.data.description }}
+        Refeição desidratada método Panela Única. Pronto em {{ item.data.tempo_preparo }}.
+    </g:description>
+    
+    <g:link>{{ meta.url }}{{ item.url }}?utm_source=google_merchant&amp;utm_medium=product_sync&amp;utm_campaign=a_commerce</g:link>
     <g:image_link>{{ meta.url }}{{ item.data.image }}</g:image_link>
     <g:brand>ChefBrico</g:brand>
-    
-    {# 2. DISPONIBILIDADE E PREÇO #}
+
+    {# ================================================================== #}
+    {# 2. PREÇIFICAÇÃO E COMPARAÇÃO                                       #}
+    {# ================================================================== #}
     <g:condition>new</g:condition>
-    <g:availability>in_stock</g:availability>
     <g:price>{{ item.data.price }} BRL</g:price>
-    {% if item.data.price_old %}
-    <g:sale_price>{{ item.data.price }} BRL</g:sale_price>
-    <g:price>{{ item.data.price_old }} BRL</g:price>
+    
+    {# PROMOÇÃO 4+1: O Gatilho de Venda #}
+    <g:promotion_id>CHEFBOX_4_PLUS_1</g:promotion_id>
+
+    {# COMPARAÇÃO TÉCNICA (Google exige peso, mas nós focamos no rendimento acima) #}
+    {% if item.data.peso_liquido_g %}
+    <g:unit_pricing_measure>{{ item.data.peso_liquido_g }} g</g:unit_pricing_measure>
+    <g:unit_pricing_base_measure>100 g</g:unit_pricing_base_measure>
     {% endif %}
 
-    {# 3. CATEGORIZAÇÃO GOOGLE (Taxonomia Oficial de Alimentos) #}
-    <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items &gt; Prepared Meals &gt; Freeze-Dried &amp; Dehydrated Prepared Meals</g:google_product_category>
-    <g:product_type>Alimentos > Refeições Práticas > {{ item.data.category }}</g:product_type>
+    {# ================================================================== #}
+    {# 3. CATEGORIZAÇÃO ESTRATÉGICA (TAXONOMIA DUPLA)                     #}
+    {# ================================================================== #}
+    {# ID Oficial do Google (Obrigatório para aprovação) #}
+    <g:google_product_category>5814</g:google_product_category>
+    
+    {# Taxonomia Híbrida com UNSPSC injetado para Agentes #}
+    <g:product_type>Alimentos > Refeições Desidratadas > UNSPSC:50193100 > {{ item.data.category }}</g:product_type>
 
-    {# 4. DADOS PARA A IA (O PULO DO GATO 2026) #}
-    {# Rótulos para filtros de voz #}
-    <g:custom_label_0>Sem Glúten</g:custom_label_0> {# Ajuste conforme a receita real #}
-    <g:custom_label_1>{{ item.data.tempo_preparo }}</g:custom_label_1>
-    <g:custom_label_2>Jantar Rápido</g:custom_label_2>
+    {# ================================================================== #}
+    {# 4. ATRIBUTOS RICOS (PRODUCT DETAIL - O DIFERENCIAL 2026)           #}
+    {# ================================================================== #}
     
-    {# 5. ENTREGA (Conversa com suas regras do Knowledge Graph) #}
-    <g:shipping>
-        <g:country>BR</g:country>
-        <g:service>Correios/Motoboy</g:service>
-        <g:price>0.00 BRL</g:price> {# O valor real é calculado no checkout #}
-    </g:shipping>
+    {# DIETA: Respostas binárias (Sim/Não) para filtros de IA #}
+    <g:product_detail>
+        <g:section_name>Dietary</g:section_name>
+        <g:attribute_name>Gluten Free</g:attribute_name>
+        <g:attribute_value>{% if 'GlutenFree' in item.data.diets %}Yes{% else %}No{% endif %}</g:attribute_value>
+    </g:product_detail>
     
-    <g:identifier_exists>no</g:identifier_exists> {# Produtos artesanais não têm EAN/GTIN #}
+    <g:product_detail>
+        <g:section_name>Dietary</g:section_name>
+        <g:attribute_name>Vegan</g:attribute_name>
+        <g:attribute_value>{% if 'Vegan' in item.data.diets %}Yes{% else %}No{% endif %}</g:attribute_value>
+    </g:product_detail>
+
+    {# RENDIMENTO: Aqui resolvemos a sua dúvida de "Preço vs Porção" #}
+    <g:product_detail>
+        <g:section_name>Yield</g:section_name>
+        <g:attribute_name>Servings</g:attribute_name>
+        <g:attribute_value>{{ item.data.rendimento }}</g:attribute_value>
+    </g:product_detail>
+
+    {# NUTRIÇÃO: Dados crus para Agentes de Saúde #}
+    <g:product_detail>
+        <g:section_name>Nutrition</g:section_name>
+        <g:attribute_name>Calories</g:attribute_name>
+        <g:attribute_value>{{ item.data.nutrition.calories }} kcal</g:attribute_value>
+    </g:product_detail>
+
+    {# PREPARO: Tempo é dinheiro/conveniência #}
+    <g:product_detail>
+        <g:section_name>Preparation</g:section_name>
+        <g:attribute_name>Time</g:attribute_name>
+        <g:attribute_value>{{ item.data.tempo_preparo }}</g:attribute_value>
+    </g:product_detail>
+
+    {# ================================================================== #}
+    {# 5. LOGÍSTICA E DISPONIBILIDADE (LOCAL VS GLOBAL)                   #}
+    {# ================================================================== #}
+    <g:availability>{% if item.data.stock > 0 %}in_stock{% else %}out_of_stock{% endif %}</g:availability>
+    
+    {# Rótulo para configurar Frete Motoboy no Painel GMC #}
+    <g:shipping_label>Local_Delivery_DF</g:shipping_label>
+    
+    {# VÍNCULO COM LOJA FÍSICA (GBP) #}
+    {# Substitua 'MATRIZ_DF_01' pelo código real da sua loja no Perfil da Empresa #}
+    <g:store_code>MATRIZ_DF_01</g:store_code>
+
+    {# ================================================================== #}
+    {# 6. RÓTULOS PARA FILTRAGEM AGÊNTICA (CUSTOM LABELS)                 #}
+    {# ================================================================== #}
+    
+    {# Label 0: Contexto de Uso (Jantar Rápido vs Gourmet) #}
+    <g:custom_label_0>{% if item.data.tempo_preparo == '15 min' or item.data.tempo_preparo == '18 min' %}Jantar Rápido{% else %}Gourmet{% endif %}</g:custom_label_0>
+    
+    {# Label 1: Elegibilidade da Promoção #}
+    <g:custom_label_1>Bundle-Eligible-4plus1</g:custom_label_1>
+
+    {# Label 2: Localização do Hub #}
+    <g:custom_label_2>Hub:DF</g:custom_label_2>
+
+    <g:identifier_exists>no</g:identifier_exists>
 </item>
 {% endif %}
 {% endfor %}
