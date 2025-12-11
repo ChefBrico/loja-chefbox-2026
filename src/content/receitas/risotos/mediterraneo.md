@@ -1,24 +1,31 @@
 ---
 title: "Risoto Mediterrâneo Vegano em 18 Minutos | ChefBrico"
-description: "Leve e refrescante. Risoto vegano com toque de limão-siciliano e vegetais."
+description: "Leve e refrescante. Risoto vegano com toque de limão-siciliano e vegetais desidratados. 100% natural."
 date: 2025-08-24
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RS-04"
 gtin: "618231813674"
+unspsc: "50193100"
 price: 34.80
 stock: 80
 availability: "https://schema.org/InStock"
 category: "Risoto"
+keywords: "risoto limão siciliano, mediterrâneo, vegano, sem glúten, jantar leve, verão"
 
-# VISUAL
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 180
+rendimento: "2 pessoas"
 tempo_preparo: "18 min"
 tempo_iso: "PT18M"
-rendimento: "2 pessoas"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "340 kcal"
 image: "/imagens/risoto-mediterraneo-chefbrico.png"
-image_alt: "Risoto Mediterrâneo com limão siciliano"
+image_alt: "Risoto Mediterrâneo com raspas de limão siciliano"
 
-# NUTRIÇÃO
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 340
@@ -28,23 +35,47 @@ nutrition:
   fiber_g: 4
   sodium_mg: 115
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.8", count: "135" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Arroz arbóreo, raspas de limão siciliano, cenoura desidratada, tomate seco, abobrinha desidratada, cebola, alho e salsa."
 
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "LowFat"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.8"
+  count: "135"
+
+# --- INSTRUÇÕES ---
 instructions:
   - name: "Refogar"
-    text: "Refogue o pacote com azeite."
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para ativar o aroma do limão."
   - name: "Cozinhar"
-    text: "Cozinhe com 720ml de água."
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
   - name: "Finalizar"
-    text: "Sirva com azeite extra virgem."
+    text: "Quando estiver cremoso, desligue e finalize com um fio de azeite extra virgem de boa qualidade."
 
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Nossa técnica preserva o óleo essencial da casca do limão, garantindo frescor sem acidez."
+citable_fact: "Nossa técnica de desidratação preserva os óleos essenciais da casca do limão siciliano, garantindo o perfume cítrico sem a acidez do suco."
+
+# --- FAQ ---
 faq:
-  - question: "É ácido?"
-    answer: "Não! Usamos a casca (zest), que dá perfume, não o suco."
+  - question: "O risoto fica ácido?"
+    answer: "Não! Usamos apenas as raspas (zest) da casca, que conferem perfume e frescor, não o suco ácido."
 ---
+
+O Risoto Mediterrâneo é a nossa homenagem aos dias de sol. Uma combinação vibrante de vegetais coloridos com o toque sofisticado do limão siciliano.
+
+## Por que é perfeito para o Verão?
+*   **Leveza:** É o nosso risoto com menor teor de gordura, perfeito para quem busca uma refeição leve à noite.
+*   **Aroma Cítrico:** O perfume do limão siciliano abre o apetite e traz uma sensação de frescor única.
+*   **Versatilidade:** Acompanha maravilhosamente bem peixes grelhados ou pode ser servido como prato único vegano.
+
+> "Surpreendente! Eu tinha medo de ser azedo, mas é super equilibrado. Parece prato de restaurante chique." — *Camila R., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Inspirado na brisa do Mediterrâneo, nosso risoto é uma viagem sensorial que captura a leveza e o frescor de um dia de sol. Com toque cítrico de limão-siciliano.
