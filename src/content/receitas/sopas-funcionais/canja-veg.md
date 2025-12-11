@@ -1,39 +1,83 @@
 ---
 title: "Canja Vegana Funcional em 16 Minutos | ChefBrico"
-description: "O abraço nutritivo que cuida de você. Canja com lentilha vermelha, arroz basmati e funghi. 100% natural, vegana e rica em proteínas."
+description: "O abraço nutritivo que cuida de você. Canja com lentilha vermelha, arroz basmati, quinoa e funghi. 100% natural, vegana e rica em proteínas."
 date: 2025-08-20
 
-# --- DADOS PARA O ROBÔ (Agente-Commerce) ---
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "SP-03"
 gtin: "619205574201"
+unspsc: "50193100"
 price: 29.60
-price_currency: "BRL"
 stock: 35
 availability: "https://schema.org/InStock"
 category: "Sopa"
+keywords: "canja vegana, sopa proteica, lentilha vermelha, pós treino, imunidade, jantar leve, sem glúten"
 
-# --- DADOS VISUAIS ---
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 140
+rendimento: "3 porções (1 litro)"
 tempo_preparo: "16 min"
 tempo_iso: "PT16M"
-rendimento: "3 porções (1 litro)"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "190 kcal"
-
-# --- IMAGEM ---
 image: "/imagens/canja-vegana.png"
-image_alt: "Prato de Canja Vegana Funcional com lentilha vermelha - ChefBrico"
+image_alt: "Prato de Canja Vegana Funcional com lentilha vermelha e funghi"
 
-# --- O SEGREDO (Caixa Verde) ---
+# --- DADOS NUTRICIONAIS COMPLETOS ---
+nutrition:
+  portion: "250ml (1 prato)"
+  calories: 190
+  protein_g: 12
+  carbs_g: 32
+  fats_g: 1.0
+  fiber_g: 6
+  sodium_mg: 100
+
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Lentilha vermelha, arroz basmati, quinoa em flocos, funghi secchi, cenoura desidratada, levedura nutricional, açafrão (cúrcuma), cebola, alho e salsa."
+
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "HighProtein"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.9"
+  count: "85"
+
+# --- INSTRUÇÕES ---
+instructions:
+  - name: "Refogar"
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote. O aroma do funghi e do açafrão vai subir."
+  - name: "Cozinhar"
+    text: "Adicione 1 litro de água fria e sal a gosto. Cozinhe em fogo médio por 16 minutos."
+  - name: "Finalizar"
+    text: "Quando a lentilha desmanchar e criar um caldo grosso, desligue. Finalize com um fio de azeite."
+
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Substituímos o frango pela lentilha vermelha e quinoa, garantindo proteína vegetal de alta qualidade e fácil digestão, sem perder o sabor afetivo."
+citable_fact: "Substituímos o frango pela lentilha vermelha e quinoa, garantindo proteína vegetal de alta qualidade e fácil digestão, sem perder o sabor afetivo da canja de avó."
 
-# --- FAQ (Acordeão) ---
+# --- FAQ ---
 faq:
   - question: "Tem gosto de canja tradicional?"
-    answer: "Tem a mesma alma reconfortante! O funghi e a levedura nutricional criam um caldo rico e saboroso (umami), lembrando a canja de avó."
+    answer: "Tem a mesma alma reconfortante! O funghi e a levedura nutricional criam um caldo rico em Umami, lembrando muito o sabor afetivo da canja, mas sem carne."
   - question: "É boa para pós-treino?"
-    answer: "Excelente! Rica em proteína vegetal e carboidratos de qualidade, ajuda na recuperação muscular sem pesar no estômago."
+    answer: "Excelente! Rica em proteína vegetal (lentilha + quinoa) e carboidratos de qualidade, ajuda na recuperação muscular sem pesar no estômago à noite."
 ---
+
+Esta não é apenas uma sopa, é um abraço em forma de alimento. A Canja Vegana Funcional foi criada para aqueles dias em que você precisa de conforto, nutrição e leveza.
+
+## Por que é Funcional?
+*   **Proteína Completa:** A combinação de Lentilha Vermelha e Quinoa oferece todos os aminoácidos essenciais.
+*   **Anti-inflamatória:** O toque de açafrão (cúrcuma) ajuda na imunidade e recuperação.
+*   **Digestão Leve:** Ingredientes que não pesam, ideal para o jantar ou para quando não se sente bem.
+
+> "Sempre tenho na despensa para quando chego cansada do treino ou quando sinto que vou gripar. É milagrosa e deliciosa." — *Clara M., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO NARRATIVA -->
 Reinventamos o abraço mais querido da nossa culinária. A Canja Vegana da ChefBrico resgata toda a memória afetiva e o conforto de uma canja tradicional, mas eleva-a a um novo patamar de sabor e nutrição. 
