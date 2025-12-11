@@ -18,18 +18,18 @@ eleventyExcludeFromCollections: true
     {# ================================================================== #}
     <g:id>{{ item.data.sku }}</g:id>
     
-    {# TÍTULO: Onde o Humano vê o valor (Serve X Pessoas) #}
     <g:title>{{ item.data.title }} | Serve {{ item.data.rendimento }} | ChefBrico</g:title>
     
-    {# DESCRIÇÃO TÉCNICA: O "Prompt" para a IA ler primeiro #}
+    {# DESCRIÇÃO TÉCNICA BLINDADA (CORREÇÃO DO ERRO AQUI) #}
     <g:description>
-        [DADOS TÉCNICOS PARA AGENTES]
+        [DADOS TÉCNICOS]
         UNSPSC: {{ item.data.unspsc | default('50193100') }}.
         Rendimento: {{ item.data.rendimento }}.
-        Dieta: {{ item.data.diets | join(', ') }}.
+        {# AQUI ESTAVA O ERRO: Adicionamos verificação se existe dieta #}
+        Dieta: {% if item.data.diets %}{{ item.data.diets | join(', ') }}{% else %}Natural/Padrão{% endif %}.
         Ingredientes: {{ item.data.ingredientes_texto }}.
         
-        [DESCRIÇÃO DO PRODUTO]
+        [DESCRIÇÃO]
         {{ item.data.description }}
         Refeição desidratada método Panela Única. Pronto em {{ item.data.tempo_preparo }}.
     </g:description>
@@ -43,57 +43,50 @@ eleventyExcludeFromCollections: true
     {# ================================================================== #}
     <g:condition>new</g:condition>
     <g:price>{{ item.data.price }} BRL</g:price>
-    
-    {# PROMOÇÃO 4+1: O Gatilho de Venda #}
     <g:promotion_id>CHEFBOX_4_PLUS_1</g:promotion_id>
 
-    {# COMPARAÇÃO TÉCNICA (Google exige peso, mas nós focamos no rendimento acima) #}
     {% if item.data.peso_liquido_g %}
     <g:unit_pricing_measure>{{ item.data.peso_liquido_g }} g</g:unit_pricing_measure>
     <g:unit_pricing_base_measure>100 g</g:unit_pricing_base_measure>
     {% endif %}
 
     {# ================================================================== #}
-    {# 3. CATEGORIZAÇÃO ESTRATÉGICA (TAXONOMIA DUPLA)                     #}
+    {# 3. CATEGORIZAÇÃO ESTRATÉGICA                                       #}
     {# ================================================================== #}
-    {# ID Oficial do Google (Obrigatório para aprovação) #}
     <g:google_product_category>5814</g:google_product_category>
-    
-    {# Taxonomia Híbrida com UNSPSC injetado para Agentes #}
     <g:product_type>Alimentos > Refeições Desidratadas > UNSPSC:50193100 > {{ item.data.category }}</g:product_type>
 
     {# ================================================================== #}
-    {# 4. ATRIBUTOS RICOS (PRODUCT DETAIL - O DIFERENCIAL 2026)           #}
+    {# 4. ATRIBUTOS RICOS (BLINDADOS)                                     #}
     {# ================================================================== #}
     
-    {# DIETA: Respostas binárias (Sim/Não) para filtros de IA #}
+    {# DIETA: Verificação de segurança adicionada #}
     <g:product_detail>
         <g:section_name>Dietary</g:section_name>
         <g:attribute_name>Gluten Free</g:attribute_name>
-        <g:attribute_value>{% if 'GlutenFree' in item.data.diets %}Yes{% else %}No{% endif %}</g:attribute_value>
+        {# Só verifica se 'diets' existir #}
+        <g:attribute_value>{% if item.data.diets and 'GlutenFree' in item.data.diets %}Yes{% else %}No{% endif %}</g:attribute_value>
     </g:product_detail>
     
     <g:product_detail>
         <g:section_name>Dietary</g:section_name>
         <g:attribute_name>Vegan</g:attribute_name>
-        <g:attribute_value>{% if 'Vegan' in item.data.diets %}Yes{% else %}No{% endif %}</g:attribute_value>
+        {# Só verifica se 'diets' existir #}
+        <g:attribute_value>{% if item.data.diets and 'Vegan' in item.data.diets %}Yes{% else %}No{% endif %}</g:attribute_value>
     </g:product_detail>
 
-    {# RENDIMENTO: Resolve a dúvida de "Preço vs Porção" #}
     <g:product_detail>
         <g:section_name>Yield</g:section_name>
         <g:attribute_name>Servings</g:attribute_name>
         <g:attribute_value>{{ item.data.rendimento }}</g:attribute_value>
     </g:product_detail>
 
-    {# NUTRIÇÃO: Dados crus para Agentes de Saúde #}
     <g:product_detail>
         <g:section_name>Nutrition</g:section_name>
         <g:attribute_name>Calories</g:attribute_name>
         <g:attribute_value>{{ item.data.nutrition.calories }} kcal</g:attribute_value>
     </g:product_detail>
 
-    {# PREPARO: Tempo é dinheiro/conveniência #}
     <g:product_detail>
         <g:section_name>Preparation</g:section_name>
         <g:attribute_name>Time</g:attribute_name>
@@ -101,27 +94,17 @@ eleventyExcludeFromCollections: true
     </g:product_detail>
 
     {# ================================================================== #}
-    {# 5. LOGÍSTICA E DISPONIBILIDADE (LOCAL VS GLOBAL)                   #}
+    {# 5. LOGÍSTICA E DISPONIBILIDADE                                     #}
     {# ================================================================== #}
     <g:availability>{% if item.data.stock > 0 %}in_stock{% else %}out_of_stock{% endif %}</g:availability>
-    
-    {# Rótulo para configurar Frete Motoboy no Painel GMC #}
     <g:shipping_label>Local_Delivery_DF</g:shipping_label>
-    
-    {# VÍNCULO COM LOJA FÍSICA (GBP) - CÓDIGO INSERIDO #}
     <g:store_code>10365737667087001606</g:store_code>
 
     {# ================================================================== #}
-    {# 6. RÓTULOS PARA FILTRAGEM AGÊNTICA (CUSTOM LABELS)                 #}
+    {# 6. RÓTULOS PARA FILTRAGEM                                          #}
     {# ================================================================== #}
-    
-    {# Label 0: Contexto de Uso (Jantar Rápido vs Gourmet) #}
     <g:custom_label_0>{% if item.data.tempo_preparo == '15 min' or item.data.tempo_preparo == '18 min' %}Jantar Rápido{% else %}Gourmet{% endif %}</g:custom_label_0>
-    
-    {# Label 1: Elegibilidade da Promoção #}
     <g:custom_label_1>Bundle-Eligible-4plus1</g:custom_label_1>
-
-    {# Label 2: Localização do Hub #}
     <g:custom_label_2>Hub:DF</g:custom_label_2>
 
     <g:identifier_exists>no</g:identifier_exists>
