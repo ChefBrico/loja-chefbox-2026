@@ -1,24 +1,31 @@
 ---
 title: "Risoto de Shiimeji e Alho-Poró em 18 Minutos | ChefBrico"
-description: "Risoto cremoso com cogumelos shiimeji e alho-poró. 100% natural, vegano e pronto em 18 minutos."
+description: "Risoto cremoso com a delicadeza do cogumelo shiimeji e a doçura do alho-poró. 100% natural, vegano e pronto em 18 minutos."
 date: 2025-08-26
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RS-02"
 gtin: "0618231813643"
+unspsc: "50193100"
 price: 34.80
 stock: 85
 availability: "https://schema.org/InStock"
 category: "Risoto"
+keywords: "risoto shiimeji, alho poró, cogumelos, vegano, sem glúten, jantar leve, umami suave"
 
-# VISUAL
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 180
+rendimento: "2 pessoas"
 tempo_preparo: "18 min"
 tempo_iso: "PT18M"
-rendimento: "2 pessoas"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "360 kcal"
-image: "/imagens/chefbrico-risoto-shiimeji-alho-poro%20(1080%20x%20566%20px).png"
-image_alt: "Risoto de Shiimeji e Alho-Poró"
+image: "/imagens/chefbrico-risoto-shiimeji-alho-poro (1080 x 566 px).png"
+image_alt: "Risoto de Shiimeji e Alho-Poró cremoso"
 
-# NUTRIÇÃO
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 360
@@ -28,23 +35,47 @@ nutrition:
   fiber_g: 4
   sodium_mg: 120
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.9", count: "180" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Arroz arbóreo, cogumelo shiimeji desidratado, alho-poró desidratado, caldo de vegetais natural, cebola desidratada, alho e salsa."
 
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "LowFat"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.9"
+  count: "180"
+
+# --- INSTRUÇÕES ---
 instructions:
   - name: "Refogar"
-    text: "Refogue o pacote com azeite."
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto. O aroma suave do shiimeji vai se soltar."
   - name: "Cozinhar"
-    text: "Cozinhe com 720ml de água."
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
   - name: "Finalizar"
-    text: "Sirva com cebolinha."
+    text: "Quando a água secar e o arroz estiver cremoso, desligue. Finalize com cebolinha fresca picada para dar cor."
 
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "A combinação de Shiimeji e Alho-Poró é um clássico, equilibrando o sabor terroso do cogumelo com a doçura do vegetal."
+citable_fact: "A combinação de Shiimeji e Alho-Poró é um clássico da gastronomia contemporânea, equilibrando o sabor terroso e delicado do cogumelo com a doçura vegetal do alho-poró."
+
+# --- FAQ ---
 faq:
   - question: "Preciso hidratar o shiimeji?"
-    answer: "Não! Nossos cogumelos reidratam direto na panela, liberando sabor intenso."
+    answer: "Não! Nossos cogumelos passam por um processo especial que permite reidratação direta na panela, absorvendo o tempero do caldo."
 ---
+
+Se você busca um sabor sofisticado, mas suave, esta é a escolha certa. O Risoto de Shiimeji com Alho-Poró foge do óbvio, entregando uma experiência gastronômica elegante e leve.
+
+## O Equilíbrio Perfeito
+*   **Shiimeji:** Um cogumelo de textura macia e sabor menos agressivo que o Funghi Secchi, ideal para paladares refinados.
+*   **Alho-Poró:** Traz uma doçura natural e uma cor vibrante ao prato.
+*   **Leveza:** Uma opção com baixo teor de gordura, perfeita para um jantar durante a semana.
+
+> "Delicado e saboroso na medida certa. O shiimeji fica com uma textura incrível, parece fresco." — *Mariana C., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Descubra por que a combinação de Shiimeji e Alho-Poró é uma das mais celebradas. Neste risoto artesanal, a textura macia do cogumelo Shiimeji se encontra com a suavidade do alho-poró.
