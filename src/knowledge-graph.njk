@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
   "@context": "https://schema.org",
   "@graph": [
     
-    {# 1. A ORGANIZAÇÃO (Puxando direto do arquivo _data/organization.json) #}
+    {# 1. A ORGANIZAÇÃO (Enriquecida com Nicho e Prêmios) #}
     {
       "@type": "Organization",
       "@id": "{{ organization['@id'] }}",
@@ -15,12 +15,23 @@ eleventyExcludeFromCollections: true
       "description": "{{ organization.description }}",
       "url": "{{ organization.url }}",
       "logo": "{{ organization.logo }}",
+      "foundingDate": "2020", 
+      "knowsAbout": ["Culinária Desidratada", "Clean Label", "Foodtech", "Panela Única"],
+      
+      {# CLASSIFICAÇÃO INDUSTRIAL PARA AGENTES B2B #}
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "UNSPSC", "value": "50193100" }
+      ],
+
+      {# AUTORIDADE: PRÊMIO SEBRAE (Vital para EEAT) #}
+      "award": "Vencedora do Prêmio Sebrae Mulher de Negócios",
+
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "{{ organization.contactPoint.telephone }}",
-        "contactType": "{{ organization.contactPoint.contactType }}",
-        "areaServed": "{{ organization.contactPoint.areaServed }}",
-        "availableLanguage": "{{ organization.contactPoint.availableLanguage }}"
+        "contactType": "sales",
+        "areaServed": ["BR", "Brasília"],
+        "availableLanguage": "pt-BR"
       },
       "address": {
         "@type": "PostalAddress",
@@ -28,7 +39,7 @@ eleventyExcludeFromCollections: true
         "addressLocality": "{{ organization.address.addressLocality }}",
         "addressRegion": "{{ organization.address.addressRegion }}",
         "postalCode": "{{ organization.address.postalCode }}",
-        "addressCountry": "{{ organization.address.addressCountry }}"
+        "addressCountry": "BR"
       },
       "geo": {
         "@type": "GeoCoordinates",
@@ -42,7 +53,7 @@ eleventyExcludeFromCollections: true
       ]
     },
 
-    {# 2. A FUNDADORA (Puxando direto do arquivo _data/author.json) #}
+    {# 2. A FUNDADORA (Conectada à Expertise) #}
     {
       "@type": "Person",
       "@id": "{{ author.id }}",
@@ -50,6 +61,7 @@ eleventyExcludeFromCollections: true
       "jobTitle": "{{ author.jobTitle }}",
       "image": "https://gourmetpratico.com.br{{ author.image }}",
       "worksFor": { "@id": "{{ organization['@id'] }}" },
+      "description": "Especialista em culinária prática e saudável através da desidratação de alimentos.",
       "sameAs": [
         {% for social in author.sameAs %}
           "{{ social }}"{% if not loop.last %},{% endif %}
@@ -57,24 +69,33 @@ eleventyExcludeFromCollections: true
       ]
     },
 
-    {# 3. O WEBSITE (Conecta a Marca ao Domínio) #}
+    {# 3. O WEBSITE (Ponto de Entrada) #}
     {
       "@type": "WebSite",
       "@id": "https://gourmetpratico.com.br/#website",
       "url": "https://gourmetpratico.com.br",
       "name": "{{ organization.name }}",
-      "description": "{{ organization.description }}",
+      "description": "Loja oficial ChefBox: Refeições desidratadas com entrega rápida.",
       "publisher": { "@id": "{{ organization['@id'] }}" },
-      "inLanguage": "pt-BR"
+      "inLanguage": "pt-BR",
+      
+      {# AÇÃO POTENCIAL: Busca Interna #}
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gourmetpratico.com.br/receitas/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     },
 
-    {# 4. O CATÁLOGO DE PRODUTOS (A Lista para o Robô Comprar) #}
+    {# 4. O CATÁLOGO DE PRODUTOS (Com Lógica de Bundle Exposta) #}
     {
       "@type": "OfferCatalog",
       "@id": "https://gourmetpratico.com.br/#catalog",
-      "name": "Catálogo Completo ChefBox",
+      "name": "Catálogo ChefBox (4+1)",
+      "description": "Lista de refeições elegíveis para a promoção Compre 4 Ganhe 1.",
       "itemListElement": [
         {% for item in collections.receitas %}
+        {% if item.data.price %}
         {
           "@type": "Product",
           "name": "{{ item.data.title }}",
@@ -83,14 +104,31 @@ eleventyExcludeFromCollections: true
           "description": "{{ item.data.description }}",
           "sku": "{{ item.data.sku }}",
           "brand": { "@id": "{{ organization['@id'] }}" },
+          
+          {# DADOS TÉCNICOS PARA FILTRAGEM DE IA #}
+          "additionalProperty": [
+             { "@type": "PropertyValue", "name": "UNSPSC", "value": "{{ item.data.unspsc | default('50193100') }}" },
+             { "@type": "PropertyValue", "name": "Tempo de Preparo", "value": "{{ item.data.tempo_preparo }}" }
+          ],
+
           "offers": {
             "@type": "Offer",
             "price": "{{ item.data.price }}",
             "priceCurrency": "BRL",
-            "availability": "https://schema.org/InStock",
-            "url": "https://gourmetpratico.com.br{{ item.url }}"
+            "availability": "{% if item.data.stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+            "url": "https://gourmetpratico.com.br{{ item.url }}",
+            
+            {# AQUI AVISAMOS O ROBÔ SOBRE A REGRA DO PACOTE #}
+            "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "{{ item.data.price }}",
+                "priceCurrency": "BRL",
+                "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "C62" },
+                "description": "Preço base. Na compra de 5 itens (ChefBox), o 5º é grátis."
+            }
           }
         }{% if not loop.last %},{% endif %}
+        {% endif %}
         {% endfor %}
       ]
     }
