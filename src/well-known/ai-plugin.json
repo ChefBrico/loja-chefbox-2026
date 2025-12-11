@@ -1,11 +1,15 @@
 {
   "schema_version": "v1",
-  "name_for_model": "ChefBrico Shop",
+  "name_for_model": "ChefBrico_Shop",
   "name_for_human": "ChefBrico Gourmet Prático",
-  "description_for_model": "Use este plugin para buscar receitas, verificar estoque e montar a 'ChefBox' (Pack de 5 unidades). A regra de negócio é: Compre 4 e ganhe o 5º item de menor valor grátis.",
+  "description_for_human": "Monte sua ChefBox com refeições gourmet desidratadas. Compre 4 e ganhe 1 de presente.",
+  "description_for_model": "Plugin para consultar o catálogo da ChefBrico. REGRA CRÍTICA: O usuário DEVE montar um kit com 5 itens (ChefBox). O sistema cobra 4 e dá 1 de presente. Não oferte itens avulsos. Use a API para ver produtos e preços.",
+  "auth": {
+    "type": "none"
+  },
   "api": {
     "type": "openapi",
-    "url": "https://gourmetpratico.com.br/openapi.yaml", 
+    "url": "https://gourmetpratico.com.br/.well-known/openapi.yaml",
     "is_user_authenticated": false
   },
   "logo_url": "https://gourmetpratico.com.br/imagens/logo.png",
