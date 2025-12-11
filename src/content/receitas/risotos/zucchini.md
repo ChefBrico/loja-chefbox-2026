@@ -45,7 +45,37 @@ diets:
   - "LowFat"
 
 # --- SOCIAL PROOF ---
-ra
+rating:
+  value: "4.8"
+  count: "140"
+
+# --- INSTRUÇÕES ---
+instructions:
+  - name: "Refogar"
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote. Observe a cúrcuma liberar sua cor dourada vibrante."
+  - name: "Cozinhar"
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
+  - name: "Finalizar"
+    text: "Quando estiver cremoso, desligue. Sugestão: Sirva com raspas de limão para realçar o frescor."
+
+# --- AUTORIDADE ---
+author_name: "Maria Conceição"
+citable_fact: "A cúrcuma não é só estética; ela adiciona um sabor terroso sutil e propriedades anti-inflamatórias, tornando este prato funcional."
+
+# --- FAQ ---
+faq:
+  - question: "A cúrcuma deixa o sabor forte?"
+    answer: "Não! Usamos a medida exata para dar a cor dourada linda sem dominar o sabor delicado da abobrinha."
+---
+
+Leveza, cor e saúde no mesmo prato. O Risoto de Zucchini combina a suavidade da abobrinha italiana com o poder da cúrcuma (açafrão-da-terra), criando uma refeição dourada e nutritiva.
+
+## Por que é uma escolha Funcional?
+*   **Cúrcuma (Açafrão-da-Terra):** Conhecida por suas propriedades anti-inflamatórias e antioxidantes.
+*   **Baixas Calorias:** A abobrinha traz volume e textura sem pesar na digestão.
+*   **Visual Incrível:** A cor dourada natural ilumina a mesa e abre o apetite.
+
+> "É o risoto mais bonito que já fiz! A cor fica linda e o sabor é super suave. Ótimo para dias quentes." — *Beatriz L., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Descubra o prato perfeito para seus dias mais leves. Criamos um risoto que combina a delicadeza da abobrinha italiana (zucchini) com a suavidade do alho-poró, finalizado com o toque nutritivo da cúrcuma.
