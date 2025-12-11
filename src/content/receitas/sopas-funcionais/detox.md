@@ -1,24 +1,33 @@
 ---
 title: "Sopa Detox Funcional em 15 Minutos | ChefBrico"
-description: "O 'reset verde' com Ora-pro-nóbis, gengibre e folhas verdes. 100% natural, vegana."
+description: "O 'reset verde' para o seu corpo. Sopa com Ora-pro-nóbis, gengibre e mix de folhas verdes. 100% natural, vegana e levíssima."
 date: 2025-08-17
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "SP-07"
 gtin: "619205574249"
+unspsc: "50193100"
 price: 29.60
 stock: 40
 availability: "https://schema.org/InStock"
 category: "Sopa"
+keywords: "sopa detox, ora-pro-nobis, emagrecimento, jantar leve, verde, vegano, sem glúten, panc"
 
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 120
+rendimento: "3 porções (Leve)"
 tempo_preparo: "16 min"
 tempo_iso: "PT16M"
-rendimento: "3 porções"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "150 kcal"
 image: "/imagens/sopinha-detox-chefbrico.png"
-image_alt: "Sopa Detox Verde"
+image_alt: "Sopa Detox Verde com Ora-pro-nóbis"
 
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
-  portion: "35g (1/3 pacote)"
+  portion: "250ml (1 prato)"
   calories: 150
   protein_g: 8
   carbs_g: 30
@@ -26,21 +35,49 @@ nutrition:
   fiber_g: 6
   sodium_mg: 90
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.8", count: "110" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Arroz quebrado, lentilha, ora-pro-nóbis desidratado, espinafre em pó, gengibre, cebola desidratada, alho e salsa."
 
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "LowCalorie"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.8"
+  count: "110"
+
+# --- INSTRUÇÕES ---
 instructions:
+  - name: "Refogar"
+    text: "Aqueça um fio de azeite e refogue o conteúdo rapidamente. O cheiro de ervas frescas vai subir."
   - name: "Cozinhar"
-    text: "Cozinhe tudo com 1 litro de água por 15 minutos."
-  - name: "Servir"
-    text: "Sirva com sementes de girassol."
+    text: "Adicione 1 litro de água fria e sal a gosto. Cozinhe em fogo médio por 15 a 16 minutos."
+  - name: "Finalizar"
+    text: "Sirva quente. Sugestão: Adicione sementes de girassol ou abóbora por cima para dar crocância."
 
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "O Ora-pro-nóbis é um superalimento brasileiro rico em proteína. O gengibre adiciona efeito termogênico."
+citable_fact: "O Ora-pro-nóbis é um superalimento brasileiro (PANC) rico em proteína vegetal. Combinado com o gengibre, cria um efeito termogênico natural."
+
+# --- FAQ ---
 faq:
   - question: "O que é Ora-pro-nóbis?"
-    answer: "Uma planta brasileira (PANC) riquíssima em proteína vegetal e ferro."
+    answer: "É uma planta alimentícia não convencional (PANC) brasileira, famosa por seu alto teor de proteínas, fibras e ferro."
+  - question: "Emagrece?"
+    answer: "É uma aliada! Com apenas 150kcal e ingredientes diuréticos, é perfeita para substituir o jantar pesado."
 ---
+
+Sente que exagerou no fim de semana? A Sopa Detox é o botão de "Reset" do seu corpo. Leve, nutritiva e repleta de ingredientes verdes que ajudam na limpeza do organismo.
+
+## O Poder do Verde
+*   **Ora-pro-nóbis:** A "carne dos pobres", rica em proteína e ferro.
+*   **Gengibre:** Acelera o metabolismo e aquece o corpo.
+*   **Baixíssima Caloria:** Saciedade real com apenas 150 calorias por prato.
+
+> "Eu tomo toda segunda-feira à noite. Me sinto desinchada no dia seguinte. O sabor é surpreendentemente gostoso para algo tão saudável." — *Patrícia D., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Sinta o poder da natureza. Nossa Sopa Detox é o "reset" que sua rotina pede. Uma combinação vibrante de folhas verdes, Ora-pro-nóbis e o toque do gengibre.
