@@ -1,24 +1,31 @@
 ---
 title: "Risoto Agridoce de Morango em 18 Minutos | ChefBrico"
-description: "Uma experiência gourmet sofisticada. Risoto agridoce com morangos desidratados. 100% natural, vegano."
+description: "Uma experiência gourmet sofisticada. Risoto agridoce com morangos desidratados. 100% natural, vegano e perfeito para ocasiões especiais."
 date: 2025-08-22
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "FF-01"
 gtin: "0619205574355"
+unspsc: "50193100"
 price: 34.80
 stock: 70
 availability: "https://schema.org/InStock"
 category: "Risoto"
+keywords: "risoto morango, agridoce, jantar romântico, vegano, sem glúten, exótico"
 
-# VISUAL
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 180
+rendimento: "2 pessoas"
 tempo_preparo: "18 min"
 tempo_iso: "PT18M"
-rendimento: "2 pessoas"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "380 kcal"
-image: "/imagens/chefbrico-risoto-morango-agridoce-fruta%20(1080%20x%20566%20px).png"
-image_alt: "Risoto Agridoce de Morango"
+image: "/imagens/chefbrico-risoto-morango-agridoce-fruta (1080 x 566 px).png"
+image_alt: "Risoto Agridoce de Morango com lâminas de amêndoas"
 
-# NUTRIÇÃO
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 380
@@ -28,23 +35,45 @@ nutrition:
   fiber_g: 4
   sodium_mg: 100
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.7", count: "55" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Arroz arbóreo, morangos desidratados em pedaços, caldo de vegetais natural, cebola desidratada, alho e especiarias."
 
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "LowFat"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.7"
+  count: "55"
+
+# --- INSTRUÇÕES ---
 instructions:
   - name: "Refogar"
-    text: "Refogue o pacote com azeite."
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto. O aroma do morango vai perfumar a cozinha."
   - name: "Cozinhar"
-    text: "Cozinhe com 720ml de água."
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
   - name: "Finalizar"
-    text: "Sirva com amêndoas."
+    text: "Quando estiver cremoso, desligue. Sugestão: Finalize com lâminas de amêndoas torradas para crocância."
 
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "O uso de frutas no risoto é uma tradição de primavera na Itália, trazendo acidez e doçura."
+citable_fact: "O uso de frutas no risoto é uma tradição de primavera na Itália (Risotto alle Fragole), trazendo acidez e doçura que equilibram o prato."
+
+# --- FAQ ---
 faq:
-  - question: "É sobremesa?"
-    answer: "Não. É um prato principal sofisticado (agridoce), ideal para jantares românticos."
+  - question: "É uma sobremesa?"
+    answer: "Não! É um prato principal salgado com toque agridoce, muito sofisticado. Combina perfeitamente com espumante ou vinho rosé."
 ---
+
+Ousado, elegante e inesquecível. O Risoto de Morango da ChefBrico quebra paradigmas. Inspirado no clássico italiano *Risotto alle Fragole*, ele traz a acidez e o perfume do morango para um contexto salgado.
+
+## Quando servir este prato?
+*   **Jantares Românticos:** A cor levemente rosada e o sabor exótico impressionam qualquer companhia.
+*   **Celebrações Especiais:** Dia dos Namorados, Aniversários de Casamento ou quando você quer sair da rotina.
+*   **Harmonização:** Fica i
 
 <!-- INTRODUÇÃO -->
 Imagine a doçura vibrante do morango encontrando a cremosidade do arroz arbóreo. Uma criação ousada da ChefBrico, desenhada para quem ama explorar novos sabores.
