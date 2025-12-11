@@ -1,26 +1,33 @@
 ---
 title: "Sopa Low Carb da Horta em 15 Minutos | ChefBrico"
-description: "Leveza e cor para sua dieta. Sopa low carb com lentilha vermelha e mix de vegetais. 100% natural."
+description: "Leveza e cor para sua dieta. Sopa low carb com base de lentilha vermelha e um mix vibrante de vegetais desidratados. 100% natural."
 date: 2025-08-14
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "SP-01"
 gtin: "618231813698"
+unspsc: "50193100"
 price: 29.60
 stock: 45
 availability: "https://schema.org/InStock"
 category: "Sopa"
+keywords: "sopa de legumes, low carb, lentilha vermelha, jantar leve, vitaminas, vegano, sem glúten"
 
-# VISUAL
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 140
+rendimento: "3 porções (Nutritiva)"
 tempo_preparo: "16 min"
 tempo_iso: "PT16M"
-rendimento: "3 porções"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "160 kcal"
 image: "/imagens/chefbrico-lowcarb-lentilha-vermelha-da-horta(1080x566px).png"
-image_alt: "Sopa Low Carb colorida"
+image_alt: "Sopa Low Carb colorida com pedaços visíveis de vegetais"
 
-# NUTRIÇÃO
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
-  portion: "50g (1/3 pacote)"
+  portion: "250ml (1 prato)"
   calories: 160
   protein_g: 10
   carbs_g: 25
@@ -28,21 +35,47 @@ nutrition:
   fiber_g: 7
   sodium_mg: 90
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/LowCarbDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.8", count: "130" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Lentilha vermelha, cenoura em cubos, vagem, tomate em flocos, pimentão, cebola desidratada, alho, salsa e especiarias naturais."
 
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "LowCarb"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.8"
+  count: "130"
+
+# --- INSTRUÇÕES ---
 instructions:
+  - name: "Refogar"
+    text: "Aqueça um fio de azeite e refogue o pacote. As cores dos vegetais vão ficar mais vivas."
   - name: "Cozinhar"
-    text: "Cozinhe com 1 litro de água por 15 minutos."
+    text: "Adicione 1 litro de água fria e sal a gosto. Cozinhe em fogo médio por 15 a 16 minutos."
   - name: "Finalizar"
-    text: "Tempere com limão."
+    text: "A lentilha vermelha vai engrossar o caldo naturalmente. Desligue e tempere com gotas de limão para realçar o sabor."
 
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "A lentilha vermelha é o segredo: rica em proteína, engrossa o caldo sem adicionar carboidratos simples."
+citable_fact: "A lentilha vermelha é o segredo desta sopa: rica em proteína vegetal, ela se desfaz e engrossa o caldo sem precisar adicionar batata ou amido."
+
+# --- FAQ ---
 faq:
   - question: "Sacia a fome?"
-    answer: "Muito! As fibras dos vegetais e a proteína da lentilha garantem saciedade prolongada."
+    answer: "Muito! A combinação das fibras dos vegetais com a proteína da lentilha garante saciedade prolongada, mesmo sendo leve."
 ---
+
+Colorida, alegre e cheia de vida. A Sopa da Horta é a nossa maneira de dizer "coma o arco-íris". Uma explosão de micronutrientes em um caldo reconfortante.
+
+## Por que é essencial na dieta?
+*   **Densidade Nutricional:** Uma variedade de vegetais (cenoura, vagem, pimentão) garante um aporte vitamínico completo.
+*   **Baixo Carboidrato:** Usamos vegetais de baixo índice glicêmico e a lentilha vermelha como base, evitando picos de insulina.
+*   **Sabor de Verdade:** Nada de "gosto de hospital". O refogado inicial libera sabores complexos e deliciosos.
+
+> "É a minha favorita para o jantar. Me sinto leve e nutrida. Adoro ver os pedacinhos de legumes." — *Fernanda M., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Manter o foco na dieta low carb ficou delicioso. Uma sopa leve, colorida e vibrante, criada para combater a monotonia. Combinamos a leveza dos vegetais da horta com a proteína da lentilha vermelha.
