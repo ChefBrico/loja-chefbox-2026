@@ -2,23 +2,30 @@
 title: "Risoto de Pesto e Alho-Poró em 18 Minutos | ChefBrico"
 description: "Risoto cremoso com o frescor do manjericão e a suavidade do alho-poró. 100% natural e vegano."
 date: 2025-08-25
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RS-03"
 gtin: "0618231813681"
+unspsc: "50193100"
 price: 34.80
 stock: 120
 availability: "https://schema.org/InStock"
 category: "Risoto"
+keywords: "risoto vegano, alho poró, pesto, sem glúten, jantar rápido, comida desidratada"
 
-# VISUAL
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 180
+rendimento: "2 pessoas"
 tempo_preparo: "18 min"
 tempo_iso: "PT18M"
-rendimento: "2 pessoas"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "380 kcal"
 image: "/imagens/risoto-alho-poro-pesto-chefbrico.png"
 image_alt: "Risoto Verde de Pesto e Alho-Poró"
 
-# NUTRIÇÃO
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 380
@@ -28,23 +35,47 @@ nutrition:
   fiber_g: 4
   sodium_mg: 125
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.9", count: "165" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Arroz arbóreo, alho-poró desidratado, castanha de caju, manjericão, levedura nutricional, caldo de vegetais natural, cebola e alho."
 
+# --- CLASSIFICAÇÃO (Tags Simplificadas para o Código) ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "LowLactose"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.9"
+  count: "165"
+
+# --- INSTRUÇÕES ---
 instructions:
   - name: "Refogar"
-    text: "Refogue o pacote com azeite."
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto."
   - name: "Cozinhar"
-    text: "Cozinhe com 720ml de água."
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por 18 minutos."
   - name: "Finalizar"
-    text: "Sirva com manjericão fresco."
+    text: "Sirva com folhas de manjericão fresco."
 
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
 citable_fact: "A cremosidade vegana vem da combinação de castanha de caju e levedura nutricional no nosso pesto desidratado."
+
+# --- FAQ ---
 faq:
   - question: "Contém queijo?"
     answer: "Não! O sabor 'queijado' vem da levedura nutricional, rica em umami."
 ---
+
+O Risoto de Pesto e Alho-Poró é a prova de que comida verde pode ser incrivelmente saborosa e reconfortante. Unimos a suavidade do alho-poró com a potência aromática do nosso pesto artesanal.
+
+## Por que escolher este Risoto?
+*   **Detox Natural:** O alho-poró é conhecido por suas propriedades diuréticas e leves.
+*   **Cremosidade sem Lácteos:** Usamos castanha de caju triturada para dar textura aveludada sem usar uma gota de leite.
+*   **Praticidade:** Tudo em uma panela só, pronto em menos de 20 minutos.
+
+> "Eu não sou vegana, mas esse risoto virou meu favorito. O sabor do alho-poró é muito delicado." — *Fernanda T., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Celebre a combinação perfeita entre o leve e o sofisticado. Neste risoto, o aroma vibrante do nosso pesto de manjericão se une à suavidade elegante do alho-poró.
