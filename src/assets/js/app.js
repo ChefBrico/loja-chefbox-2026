@@ -1,218 +1,241 @@
-// =================================================================
-// ARQUIVO: src/assets/js/app.js
-// OBJETIVO: Gerenciar Jogo 4+1, Sacolinha e Recibo WhatsApp Profissional
-// =================================================================
+/**
+ * CHEFBOX A-COMMERCE ENGINE v2026
+ * Focado em: Lógica Client-Side, Regra 4+1, Logística Híbrida e Interface para Agentes.
+ */
 
-let chefboxCart = [];
-const MAX_SLOTS = 5;
+class ChefBoxStore {
+    constructor() {
+        // 1. O ESTADO (Single Source of Truth)
+        this.state = {
+            cart: [],
+            config: {
+                minItems: 5, // Regra 4+1
+                discountItemIndex: 4, // O 5º item (índice 4) é grátis
+                freight: {
+                    df_cep_start: 70000000,
+                    df_cep_end: 73999999,
+                    free_shipping_threshold: 132.00
+                }
+            },
+            customer: {
+                name: "",
+                cep: "",
+                address: ""
+            }
+        };
 
-document.addEventListener('DOMContentLoaded', function() {
-    loadCart();
-    renderRuler();
-    // Ajuste Mobile
-    document.body.style.paddingBottom = "120px";
+        this.init();
+    }
+
+    init() {
+        this.loadCart();
+        this.render();
+        this.exposeAgentInterface(); // O Pulo do Gato para 2026
+    }
+
+    // --- GERENCIAMENTO DE DADOS ---
+
+    addToCart(product) {
+        if (this.state.cart.length >= this.state.config.minItems) {
+            alert("Sua ChefBox já está cheia! Remova um item para trocar.");
+            return;
+        }
+
+        this.state.cart.push({
+            sku: product.sku,
+            name: product.name,
+            price: parseFloat(product.price),
+            image: product.image,
+            url: product.url
+        });
+
+        this.saveCart();
+        this.render();
+    }
+
+    removeFromCart(index) {
+        this.state.cart.splice(index, 1);
+        this.saveCart();
+        this.render();
+    }
+
+    saveCart() {
+        localStorage.setItem('chefbox_state', JSON.stringify(this.state.cart));
+        // Dispara evento para Agentes ouvirem a mudança
+        document.dispatchEvent(new CustomEvent('ChefBox:CartUpdated', { detail: this.state.cart }));
+    }
+
+    loadCart() {
+        const saved = localStorage.getItem('chefbox_state');
+        if (saved) {
+            try { this.state.cart = JSON.parse(saved); } catch (e) { console.error("Erro ao carregar carrinho", e); }
+        }
+    }
+
+    // --- LÓGICA DE NEGÓCIOS (A "Borda") ---
+
+    calculateTotals() {
+        let subtotal = 0;
+        let discount = 0;
+        
+        // Ordena por preço para garantir que o desconto seja no menor valor (ou lógica específica)
+        // Aqui assumimos ordem de adição, mas a regra do 5º item grátis se aplica
+        
+        this.state.cart.forEach((item, index) => {
+            subtotal += item.price;
+            // Regra 4+1: O 5º item (index 4) é grátis
+            if (index === this.state.config.discountItemIndex) {
+                discount += item.price;
+            }
+        });
+
+        return {
+            subtotal: subtotal,
+            discount: discount,
+            total: subtotal - discount,
+            count: this.state.cart.length,
+            isComplete: this.state.cart.length === this.state.config.minItems
+        };
+    }
+
+    checkLogistics(cep) {
+        // Sanitiza CEP
+        const cleanCep = parseInt(cep.replace(/\D/g, ''));
+        
+        // Lógica de Zona (DF vs Brasil)
+        if (cleanCep >= this.state.config.freight.df_cep_start && cleanCep <= this.state.config.freight.df_cep_end) {
+            return { zone: "DF", cost: 0, method: "Motoboy (Grátis)" };
+        } else {
+            return { zone: "BR", cost: null, method: "Correios (A Calcular)" };
+        }
+    }
+
+    // --- INTERFACE AGÊNTICA (O Futuro) ---
+    
+    exposeAgentInterface() {
+        window.ChefBoxAgent = {
+            // O Robô pergunta: "Como está o carrinho?"
+            getState: () => this.calculateTotals(),
+            
+            // O Robô comanda: "Adicione o Risoto"
+            addItem: (sku, name, price, image, url) => {
+                this.addToCart({ sku, name, price, image, url });
+                return "Item adicionado. Faltam " + (5 - this.state.cart.length) + " para fechar a caixa.";
+            },
+            
+            // O Robô finaliza: "Me dê o link de pagamento"
+            getCheckoutLink: (customerData) => {
+                this.state.customer = customerData;
+                return this.generateWhatsAppLink();
+            }
+        };
+        console.log("🤖 ChefBox Agent Interface Ready");
+    }
+
+    // --- RENDERIZAÇÃO VISUAL (Para Humanos) ---
+
+    render() {
+        const totals = this.calculateTotals();
+        const slots = document.querySelectorAll('.slot-circle');
+        const btnFinish = document.getElementById('btn-finish-game');
+        const statusText = document.getElementById('game-status-text');
+
+        // Atualiza Régua Visual
+        slots.forEach((slot, i) => {
+            slot.innerHTML = i === 4 ? '🎁' : (i + 1);
+            slot.style.backgroundImage = 'none';
+            slot.classList.remove('filled');
+            slot.onclick = null;
+        });
+
+        this.state.cart.forEach((item, index) => {
+            if (slots[index]) {
+                const slot = slots[index];
+                slot.classList.add('filled');
+                slot.style.backgroundImage = `url('${item.image}')`;
+                slot.style.backgroundSize = 'cover';
+                slot.onclick = () => this.removeFromCart(index);
+            }
+        });
+
+        // Atualiza Textos
+        if (statusText) {
+            if (totals.isComplete) {
+                statusText.innerText = "Caixa Completa! 🎉";
+                statusText.style.color = "#27ae60";
+            } else {
+                statusText.innerText = `Faltam ${5 - totals.count} itens`;
+                statusText.style.color = "#666";
+            }
+        }
+
+        // Botão Finalizar
+        if (btnFinish) {
+            btnFinish.style.display = totals.isComplete ? 'block' : 'none';
+        }
+    }
+
+    // --- PROTOCOLO WHATSAPP (Deep Link) ---
+
+    generateWhatsAppLink() {
+        const totals = this.calculateTotals();
+        const logistics = this.checkLogistics(this.state.customer.cep);
+        
+        let msg = `*PEDIDO CHEFBOX #${Math.floor(Math.random() * 10000)}* 🥗\n`;
+        msg += `--------------------------------\n`;
+        msg += `👤 *Cliente:* ${this.state.customer.name}\n`;
+        msg += `📮 *CEP:* ${this.state.customer.cep} (${logistics.zone})\n`;
+        msg += `📍 *Endereço:* ${this.state.customer.address}\n`;
+        msg += `--------------------------------\n`;
+        msg += `*ITENS ESCOLHIDOS (4+1):*\n`;
+
+        this.state.cart.forEach((item, index) => {
+            let priceDisplay = index === 4 ? "🎁 PRESENTE" : `R$ ${item.price.toFixed(2)}`;
+            msg += `📦 [${item.sku}] ${item.name}\n   └ ${priceDisplay}\n`;
+        });
+
+        msg += `--------------------------------\n`;
+        msg += `🚚 *Frete:* ${logistics.method}\n`;
+        msg += `💰 *TOTAL A PAGAR: R$ ${totals.total.toFixed(2)}*\n`;
+        msg += `--------------------------------\n`;
+        msg += `*PAGAMENTO EXCLUSIVO VIA PIX*\n`;
+        msg += `Chave CNPJ: 36.014.833/0001-59\n`;
+        msg += `\nAguardo confirmação para envio!`;
+
+        return `https://wa.me/5561996659880?text=${encodeURIComponent(msg)}`;
+    }
+}
+
+// Inicializa a Loja
+let store;
+document.addEventListener('DOMContentLoaded', () => {
+    store = new ChefBoxStore();
 });
 
-// --- FUNÇÕES AUXILIARES ---
-function limparPreco(valor) {
-    if (typeof valor === 'number') return valor;
-    if (!valor) return 0;
-    let apenasNumeros = valor.toString().replace(/[^\d,.]/g, '').replace(',', '.');
-    return parseFloat(apenasNumeros) || 0;
-}
+// Funções Globais para o HTML chamar (Legacy Support)
+window.addToGame = (name, price, image, sku, url) => {
+    store.addToCart({ sku, name, price, image, url });
+};
 
-function formatarDinheiro(valor) {
-    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
-
-// Função para encurtar o nome (Remove "ChefBrico", "18 minutos", etc)
-function limparNomeProduto(nomeCompleto) {
-    let nomeCurto = nomeCompleto.split('|')[0]; // Pega tudo antes da barra |
-    nomeCurto = nomeCurto.replace(' em 18 Minutos', ''); // Remove tempo
-    nomeCurto = nomeCurto.replace('ChefBrico', ''); // Remove marca se sobrar
-    return nomeCurto.trim();
-}
-
-// --- MOTOR DO JOGO ---
-// Agora aceita SKU também
-// ATUALIZAÇÃO: Agora aceita urlProduto
-window.addToGame = function(name, price, imageSrc, sku, urlProduto) {
-    if (chefboxCart.length >= MAX_SLOTS) {
-        if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
-        alert("Sua ChefBox já está completa! Remova um item para trocar.");
-        return;
-    }
-
-    let codigoSku = sku || "PROD";
-    // Fallback: Se a URL não vier, tenta adivinhar, mas idealmente virá do template
-    let linkFinal = urlProduto || "#"; 
-
-    chefboxCart.push({ 
-        name: name, 
-        price: price, 
-        image: imageSrc,
-        sku: codigoSku,
-        url: linkFinal // Salvamos o link real aqui
-    });
-    
-    saveCart();
-    renderRuler();
-    if (navigator.vibrate) navigator.vibrate(100);
-}
-window.removeFromGame = function(index) {
-    chefboxCart.splice(index, 1);
-    saveCart();
-    renderRuler();
-}
-
-function saveCart() {
-    localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
-}
-
-function loadCart() {
-    const saved = localStorage.getItem('chefbox_cart');
-    if (saved) { try { chefboxCart = JSON.parse(saved); } catch (e) { chefboxCart = []; } }
-}
-
-// --- RENDERIZAÇÃO DA RÉGUA ---
-function renderRuler() {
-    const slots = document.querySelectorAll('.slot-circle');
-    const statusText = document.getElementById('slots-count');
-    const btnFinish = document.getElementById('btn-finish-game');
-    
-    if (!slots.length) return;
-
-    let totalPagavel = 0;
-    let itensCount = chefboxCart.length;
-
-    // Limpa slots
-    slots.forEach((slot, i) => {
-        slot.innerHTML = i === 4 ? '🎁' : (i + 1);
-        slot.style.backgroundImage = 'none';
-        slot.classList.remove('filled', 'active');
-        slot.onclick = null;
-    });
-
-    // Preenche slots
-    chefboxCart.forEach((item, index) => {
-        if (slots[index]) {
-            const slot = slots[index];
-            slot.classList.add('filled');
-            slot.innerHTML = ''; 
-            slot.style.backgroundImage = `url('${item.image}')`;
-            slot.style.backgroundSize = 'cover';
-            slot.onclick = () => removeFromGame(index);
-
-            if (index < 4) totalPagavel += limparPreco(item.price);
-        }
-    });
-
-    // Atualiza Texto
-    if (statusText) statusText.innerText = (4 - itensCount) > 0 ? (4 - itensCount) : 0;
-
-    // Mostra Botão Finalizar se tiver 5 itens
-    if (btnFinish) {
-        btnFinish.style.display = itensCount === 5 ? 'block' : 'none';
-    }
-}
-
-// --- CHECKOUT E WHATSAPP (AQUI ESTÁ A MUDANÇA) ---
-
-window.openCheckoutModal = function() {
+window.openCheckoutModal = () => {
     document.getElementById('checkout-modal').style.display = 'flex';
-    renderCartSummary(); // Mostra a sacolinha dentro do modal
-}
+};
 
-window.closeCheckoutModal = function() {
+window.closeCheckoutModal = () => {
     document.getElementById('checkout-modal').style.display = 'none';
-}
+};
 
-// Função para desenhar a sacolinha dentro do modal
-function renderCartSummary() {
-    const container = document.getElementById('cart-summary');
-    if (!container) return;
-
-    let html = '<ul style="list-style:none; padding:0; margin:0;">';
-    let total = 0;
-
-    chefboxCart.forEach((item, index) => {
-        let nomeCurto = limparNomeProduto(item.name);
-        let preco = limparPreco(item.price);
-        let displayPreco = formatarDinheiro(preco);
-        
-        if (index === 4) {
-            displayPreco = "GRÁTIS (🎁)";
-            preco = 0;
-        }
-        
-        total += preco;
-
-        html += `
-            <li style="display:flex; justify-content:space-between; border-bottom:1px solid #eee; padding:5px 0; font-size:0.9rem;">
-                <span>${index + 1}. ${nomeCurto}</span>
-                <strong>${displayPreco}</strong>
-            </li>
-        `;
-    });
-
-    html += `</ul>
-             <div style="text-align:right; margin-top:10px; font-size:1.1rem; color:#014039;">
-                Total: <strong>${formatarDinheiro(total)}</strong>
-             </div>`;
-    
-    container.innerHTML = html;
-}
-
-window.sendOrderToWhatsApp = function() {
+window.sendOrderToWhatsApp = () => {
     const name = document.getElementById('customer-name').value;
-    const phone = document.getElementById('customer-phone').value;
     const cep = document.getElementById('customer-cep').value;
     const address = document.getElementById('customer-address').value;
 
-    if (!name || !phone || !address) {
-        alert("Por favor, preencha Nome, WhatsApp e Endereço.");
+    if (!name || !cep || !address) {
+        alert("Por favor, preencha todos os dados.");
         return;
     }
 
-    let msgItens = "";
-    let totalFinal = 0;
-
-    // Monta a lista de itens formatada
-    chefboxCart.forEach((item, index) => {
-        let nomeCurto = limparNomeProduto(item.name);
-        let sku = item.sku || "N/A";
-        
-        if (index < 4) {
-            let valor = limparPreco(item.price);
-            totalFinal += valor;
-            msgItens += `📦 [${sku}] ${nomeCurto}\n   └ R$ ${formatarDinheiro(valor)}\n`;
-        } else {
-            msgItens += `🎁 [${sku}] ${nomeCurto}\n   └ PRESENTE (GRÁTIS)\n`;
-        }
-    });
-
-    // O RECIBO PROFISSIONAL
-    const textoZap = 
-        `*PEDIDO CHEFBOX #${Math.floor(Math.random() * 10000)}* 🥗\n` +
-        `--------------------------------\n` +
-        `👤 *Cliente:* ${name}\n` +
-        `📱 *WhatsApp:* ${phone}\n` +
-        `📍 *Endereço:* ${address}\n` +
-        `📮 *CEP:* ${cep}\n` +
-        `--------------------------------\n` +
-        `*ITENS ESCOLHIDOS:*\n` +
-        `${msgItens}\n` +
-        `--------------------------------\n` +
-        `🚚 *Frete:* Grátis para Brasília\n` +
-        `💰 *TOTAL A PAGAR: ${formatarDinheiro(totalFinal)}*\n` +
-        `--------------------------------\n` +
-        `*PARA PAGAR:* Faça um PIX Copia e Cola:\n` +
-        `🔑 CNPJ: 36.014.833/0001-59\n` +
-        `\nAguardo o comprovante para enviar!`;
-
-    const phoneDestino = "5561996659880"; 
-    window.open(`https://wa.me/${phoneDestino}?text=${encodeURIComponent(textoZap)}`, '_blank');
-    
-    // Opcional: Limpar carrinho após envio
-    // chefboxCart = []; saveCart(); renderRuler(); closeCheckoutModal();
-}
+    store.state.customer = { name, cep, address };
+    const link = store.generateWhatsAppLink();
+    window.open(link, '_blank');
+};
