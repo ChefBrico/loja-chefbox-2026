@@ -1,26 +1,33 @@
 ---
 title: "Sopinha da Biza Vó Funcional em 15 Minutos | ChefBrico"
-description: "Sopa com macarrão sem glúten, quinoa e vegetais. 100% natural, vegana e pronta em 15 minutos."
+description: "Sopa reconfortante com macarrão de banana verde (sem glúten), quinoa e vegetais. 100% natural, vegana e rica em amido resistente."
 date: 2025-08-19
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "SP-06"
 gtin: "619205574232"
+unspsc: "50193100"
 price: 29.60
 stock: 50
 availability: "https://schema.org/InStock"
 category: "Sopa"
+keywords: "sopa para crianças, macarrão sem glúten, banana verde, amido resistente, prebiótico, jantar leve, vegano"
 
-# VISUAL
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 140
+rendimento: "3 porções (Leve)"
 tempo_preparo: "16 min"
 tempo_iso: "PT16M"
-rendimento: "3 porções"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "170 kcal"
 image: "/imagens/sopinha-da-biza-vo-chefbrico.png"
-image_alt: "Sopinha com macarrão e legumes"
+image_alt: "Sopinha da Biza com macarrão e legumes coloridos"
 
-# NUTRIÇÃO
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
-  portion: "35g (1/3 pacote)"
+  portion: "250ml (1 prato)"
   calories: 170
   protein_g: 6
   carbs_g: 34
@@ -28,21 +35,49 @@ nutrition:
   fiber_g: 4
   sodium_mg: 80
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.9", count: "75" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Macarrão funcional de banana verde (sem glúten), quinoa em flocos, cenoura desidratada, vagem, tomate, cebola, alho e salsa."
 
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "KidsFriendly"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.9"
+  count: "75"
+
+# --- INSTRUÇÕES ---
 instructions:
+  - name: "Refogar"
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote rapidamente."
   - name: "Cozinhar"
-    text: "Cozinhe o conteúdo com 1 litro de água por 15 minutos."
-  - name: "Servir"
-    text: "Sirva com azeite."
+    text: "Adicione 1 litro de água fria e sal a gosto. Cozinhe em fogo médio por 15 minutos."
+  - name: "Finalizar"
+    text: "O macarrão ficará macio e o caldo levemente encorpado. Desligue e sirva com um fio de azeite cru."
 
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "O macarrão funcional de banana verde é rico em amido resistente, que alimenta a flora intestinal."
+citable_fact: "O macarrão funcional de banana verde é rico em amido resistente, um prebiótico natural que alimenta a flora intestinal e melhora a imunidade."
+
+# --- FAQ ---
 faq:
   - question: "Crianças gostam?"
-    answer: "Adoram! Tem sabor suave, macarrãozinho e pedacinhos de vegetais coloridos."
+    answer: "Adoram! Tem sabor suave, macarrãozinho divertido e pedacinhos de vegetais coloridos fáceis de mastigar."
+  - question: "Tem gosto de banana?"
+    answer: "Não! A biomassa de banana verde é neutra. O sabor que predomina é o dos vegetais e temperos naturais."
 ---
+
+Uma homenagem às avós, mas com a ciência nutricional de hoje. A Sopinha da Biza Vó é perfeita para crianças e para quem busca saúde intestinal, graças ao poder da banana verde.
+
+## Por que é única?
+*   **Macarrão de Banana Verde:** Inovação pura. Sem glúten e rico em amido resistente (prebiótico).
+*   **Quinoa:** Adiciona proteína vegetal de alta qualidade sem alterar o sabor.
+*   **Suavidade:** Temperos equilibrados que agradam desde o paladar infantil até o adulto que busca conforto.
+
+> "Meu filho de 4 anos chama de 'sopa do macarrãozinho'. É a única forma dele comer quinoa sem reclamar!" — *Ana Clara P., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Resgatamos o sabor que abraça a alma – aquela sopinha da casa da avó. Mantivemos o carinho, mas agora em uma versão rica em super-ingredientes como quinoa e macarrão de banana verde.
