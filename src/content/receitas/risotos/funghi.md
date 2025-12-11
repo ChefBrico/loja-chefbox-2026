@@ -2,23 +2,30 @@
 title: "Risoto Funghi Secchi Clássico em 18 Minutos | ChefBrico"
 description: "O sabor autêntico da Itália com Funghi Secchi chileno. Receita 100% natural, vegana e pronta em 18 minutos na panela única."
 date: 2025-08-30
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RI-01"
 gtin: "0618231813728"
+unspsc: "50193100"
 price: 34.80
 stock: 100
 availability: "https://schema.org/InStock"
 category: "Risoto"
+keywords: "risoto funghi, cogumelos, vegano, sem glúten, jantar romântico, comida italiana"
 
-# VISUAL
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 180
+rendimento: "2 pessoas"
 tempo_preparo: "18 min"
 tempo_iso: "PT18M"
-rendimento: "2 pessoas"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "360 kcal"
 image: "/imagens/risoto-funghi-chefbrico.png"
 image_alt: "Prato de Risoto Funghi Secchi cremoso e dourado"
 
-# NUTRIÇÃO
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 360
@@ -28,23 +35,47 @@ nutrition:
   fiber_g: 5
   sodium_mg: 130
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.9", count: "210" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Arroz arbóreo, funghi secchi (Boletus luteris), caldo de vegetais natural, cebola desidratada, alho desidratado e salsa."
 
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "LowLactose"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.9"
+  count: "210"
+
+# --- INSTRUÇÕES ---
 instructions:
   - name: "Refogar"
-    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto."
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para liberar o aroma dos cogumelos."
   - name: "Cozinhar"
-    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo até secar."
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
   - name: "Finalizar"
-    text: "Finalize com um fio de azeite extra virgem."
+    text: "Quando a água secar e o arroz estiver 'al dente', desligue e finalize com um fio de azeite extra virgem."
 
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Utilizamos o nobre cogumelo Boletus luteris, que não precisa de hidratação prévia. Ele cozinha junto com o arroz, liberando todo o sabor."
+citable_fact: "Utilizamos o nobre cogumelo Boletus luteris, que não precisa de hidratação prévia. Ele cozinha junto com o arroz, liberando todo o sabor no caldo."
+
+# --- FAQ ---
 faq:
   - question: "Preciso hidratar os cogumelos antes?"
-    answer: "Não! Os cogumelos reidratam diretamente na panela durante o cozimento."
+    answer: "Não! Nossa técnica permite que os cogumelos reidratem diretamente na panela durante o cozimento, mantendo todo o sabor no prato."
 ---
+
+Este é o nosso *Best Seller*. O Risoto de Funghi Secchi da ChefBrico traz a profundidade de sabor dos bosques chilenos diretamente para sua mesa. É a definição de *Comfort Food*.
+
+## Por que este Risoto é Especial?
+*   **Cogumelos Nobres:** Usamos *Boletus luteris* importado do Chile, conhecido por seu aroma intenso e textura macia.
+*   **Zero Trabalho:** Esqueça a etapa chata de hidratar cogumelos em água morna. Aqui vai tudo direto para a panela.
+*   **Sofisticação Instantânea:** Perfeito para um jantar a dois ou para impressionar visitas sem passar horas na cozinha.
+
+> "O cheiro que fica na cozinha enquanto prepara é maravilhoso. Ninguém acredita que fiz em 15 minutos." — *Ricardo M., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Há pratos que são sinônimo de sofisticação, e o Risoto de Funghi Secchi é o rei deles. Criamos uma versão que captura a essência das melhores cantinas italianas: o sabor intenso e terroso dos cogumelos e a cremosidade perfeita do arroz arbóreo.
