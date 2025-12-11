@@ -68,11 +68,45 @@ faq:
     answer: "Não. O processo de desidratação concentra a doçura natural do tomate, resultando em um sabor equilibrado e suave."
 ---
 
-Celebramos a combinação perfeita e atemporal do tomate adocicado com o perfume vibrante do manjericão fresco. Um sabor que transporta para as melhores memórias de família.
+<!-- INTRODUÇÃO -->
+Celebramos a combinação perfeita e atemporal do tomate adocicado com o perfume vibrante do manjericão fresco. Um sabor que transporta para as melhores memórias.
 
 ## Por que Você Vai Amar
-*   **Comida Afetiva:** Aquele sabor que remete à cozinha da avó e aos almoços de domingo.
-*   **Aroma Incrível:** O manjericão de alta qualidade libera um perfume que invade a casa.
-*   **Praticidade:** Uma refeição com "cara de domingo", mas pronta em 18 minutos na quarta-feira à noite.
+<!-- Check Verde -->
+*   **Comida Afetiva:** Remete à cozinha da avó.
+*   **Frescor:** Manjericão de alta qualidade libera aroma incrível.
+*   **Praticidade:** Refeição com cara de domingo, pronta em 18 minutos.
 
-> "Incrível como o sabor é de comida feita na hora. É o risoto favorito do meu filho!" — *Paula R., Cliente ChefBrico*
+> "Incrível como o sabor é de comida feita na hora. É o risoto favorito do meu filho!"
+> — *Paula R., Cliente ChefBrico*
+
+## O que vem no Pacote
+<!-- Quadrados Cinzas -->
+*   Arroz cateto selecionado.
+*   Tomate desidratado e Manjericão aromático.
+*   Cebola, alho e alho-poró.
+*   Levedura nutricional.
+
+## Você Vai Precisar de
+*   720ml de água fria
+*   1 fio de azeite
+*   Sal a gosto
+
+## Modo de Preparo Simplificado
+<!-- Bolinhas Laranjas -->
+1.  **Refogue:** Aqueça o azeite e refogue o pacote. O aroma de "pizza caseira" vai subir!
+2.  **Cozinhe:** Adicione 720ml de água e sal. Cozinhe em fogo baixo.
+3.  **Finalize:** Sirva com folhas de manjericão.
+
+*Simples assim!*
+
+## Cozinha Criativa: Dicas da Chef
+Tomate com manjericão é o ABC da minha cozinha afetiva. Fica perfeito com adição de muçarela de búfala.
+
+### Combina Perfeitamente Com
+Para uma entrada, nosso **[Pesto de Manjericão](/receitas/emporio-da-chef/pesto-manjericao/)** em torradas.
+
+## Informações Adicionais
+*   **Peso Líquido:** 180g
+*   **Validade:** 12 meses.
+*   **Origem:** Brasília-DF.
