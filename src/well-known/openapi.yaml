@@ -1,0 +1,32 @@
+openapi: 3.0.1
+info:
+  title: ChefBrico API
+  description: API de consulta de produtos e estoque para Agentes de IA.
+  version: 'v1'
+servers:
+  - url: https://gourmetpratico.com.br
+paths:
+  /api/products.json:
+    get:
+      operationId: getProducts
+      summary: Retorna a lista de produtos disponíveis e regras da ChefBox.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: SKU do produto
+                    name:
+                      type: string
+                    price:
+                      type: number
+                    sales_logic:
+                      type: object
+                      description: Regras de venda (Bundle 4+1)
