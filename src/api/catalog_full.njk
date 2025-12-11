@@ -1,0 +1,25 @@
+---
+permalink: /api/catalog_full.md
+eleventyExcludeFromCollections: true
+---
+# Catálogo Completo Detalhado - ChefBrico
+
+{% for item in collections.receitas %}
+{% if item.data.price %}
+## Produto: {{ item.data.title }}
+**SKU:** {{ item.data.sku }}
+**UNSPSC:** {{ item.data.unspsc | default('50193100') }}
+**Preço:** {{ item.data.price }} BRL
+
+### Descrição Técnica
+{{ item.data.description }}
+
+### Ingredientes & Alergênicos
+{{ item.data.ingredientes_texto }}
+
+### Instruções de Preparo
+{{ item.data.tempo_preparo }} - Método Panela Única.
+
+---
+{% endif %}
+{% endfor %}
