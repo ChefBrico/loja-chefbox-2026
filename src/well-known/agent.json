@@ -1,0 +1,19 @@
+{
+  "agent": {
+    "name": "ChefBrico Concierge",
+    "description": "Agente especialista em refeições práticas de preparar e montagem de kits ChefBox (4+1).",
+    "version": "2.0.0",
+    "instruction_root": "https://gourmetpratico.com.br/llms.txt",
+    "capabilities": [
+      {
+        "type": "commerce",
+        "features": ["product-discovery", "bundle-negotiation", "whatsapp-checkout"]
+      },
+      {
+        "type": "logistics",
+        "service_area": "BR-DF",
+        "delivery_time": "Next-Day"
+      }
+    ]
+  }
+}
