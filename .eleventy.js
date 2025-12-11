@@ -3,32 +3,31 @@ const { DateTime } = require("luxon");
 module.exports = function(eleventyConfig) {
 
   // =================================================================
-  // 1. A REDE DE ARRASTÃO (Encontra o CSS onde ele estiver)
+  // 1. A REDE DE ARRASTÃO (Arquivos Estáticos)
   // =================================================================
   
-  // Opção A: Se você colocou em src/assets/css (O Ideal)
+  // Copia CSS, Imagens e JS da pasta assets para a raiz do site
   eleventyConfig.addPassthroughCopy({ "src/assets/css": "css" });
-  
-  // Opção B: Se você colocou solto em src/css (Comum)
-  eleventyConfig.addPassthroughCopy({ "src/css": "css" });
-  
-  // Opção C: Se você esqueceu na Raiz/css (Antigo)
-  eleventyConfig.addPassthroughCopy({ "css": "css" });
-
-  // --- OUTROS ARQUIVOS ---
   eleventyConfig.addPassthroughCopy({ "src/assets/imagens": "imagens" });
-  eleventyConfig.addPassthroughCopy({ "src/imagens": "imagens" }); // Segurança
-  
   eleventyConfig.addPassthroughCopy({ "src/assets/js": "js" });
-  eleventyConfig.addPassthroughCopy({ "src/js": "js" }); // Segurança
   
+  // Copia o Admin do CMS
   eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
+
+  // Copia arquivos essenciais da raiz
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
 
+  // 🚨 A LINHA CRÍTICA (WEB AGÊNTICA) 🚨
+  // Isso pega a pasta "src/well-known" e publica como ".well-known" (com ponto).
+  // Sem isso, o ChatGPT e o Google não conseguem validar seu agente.
+  eleventyConfig.addPassthroughCopy({ "src/well-known": ".well-known" });
+
   // =================================================================
-  // 2. FILTROS
+  // 2. FILTROS (Formatadores de Dados)
   // =================================================================
+  
+  // Filtro para formatar dinheiro (R$ 1.200,00)
   eleventyConfig.addFilter("dinheiro", (valor) => {
     if (!valor) return "0,00";
     return parseFloat(valor).toLocaleString('pt-BR', {
@@ -37,6 +36,7 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Filtro para formatar datas (DD/MM/AAAA)
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).setZone("America/Sao_Paulo").toFormat("dd/MM/yyyy");
   });
@@ -46,10 +46,10 @@ module.exports = function(eleventyConfig) {
   // =================================================================
   return {
     dir: {
-      input: "src",          // O Robô olha para dentro de SRC
-      includes: "_includes", // Busca layouts em src/_includes
-      data: "_data",         // Busca dados em src/_data
-      output: "_site"        // Cospe o site pronto aqui
+      input: "src",          // Onde estão os arquivos fonte
+      includes: "_includes", // Onde estão os layouts
+      data: "_data",         // Onde estão os dados globais
+      output: "_site"        // Onde o site pronto será salvo
     },
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
