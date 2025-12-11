@@ -1,24 +1,31 @@
 ---
 title: "Risoto de Zucchini e Alho-Poró em 18 Minutos | ChefBrico"
-description: "Leveza e frescor com toque de cúrcuma. Risoto de abobrinha italiana e alho-poró. 100% natural, vegano."
+description: "Leveza e frescor com toque de cúrcuma. Risoto de abobrinha italiana (zucchini) e alho-poró. 100% natural, vegano e funcional."
 date: 2025-08-29
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RI-03"
 gtin: "618231813704"
+unspsc: "50193100"
 price: 34.80
 stock: 65
 availability: "https://schema.org/InStock"
 category: "Risoto"
+keywords: "risoto zucchini, abobrinha, cúrcuma, anti-inflamatório, vegano, sem glúten, jantar leve"
 
-# VISUAL
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 180
+rendimento: "2 pessoas"
 tempo_preparo: "18 min"
 tempo_iso: "PT18M"
-rendimento: "2 pessoas"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "340 kcal"
 image: "/imagens/chefbrico-risoto-zucchini-arboreo(1080x566px).png"
-image_alt: "Risoto de Zucchini dourado com cúrcuma"
+image_alt: "Risoto de Zucchini dourado com cúrcuma e pedaços de abobrinha"
 
-# NUTRIÇÃO
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 340
@@ -28,23 +35,17 @@ nutrition:
   fiber_g: 4
   sodium_mg: 110
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.8", count: "140" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Arroz arbóreo, abobrinha italiana (zucchini) desidratada, alho-poró, cúrcuma (açafrão-da-terra), caldo de vegetais natural, cebola e alho."
 
-instructions:
-  - name: "Refogar"
-    text: "Refogue o pacote com azeite até a cúrcuma liberar a cor."
-  - name: "Cozinhar"
-    text: "Adicione 720ml de água e cozinhe por 18 minutos."
-  - name: "Finalizar"
-    text: "Sirva com raspas de limão."
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "LowFat"
 
-author_name: "Maria Conceição"
-citable_fact: "A cúrcuma não é só estética; ela adiciona um sabor terroso sutil e propriedades anti-inflamatórias."
-faq:
-  - question: "A cúrcuma deixa o sabor forte?"
-    answer: "Não! Usamos a medida exata para dar cor dourada sem dominar o sabor delicado da abobrinha."
----
+# --- SOCIAL PROOF ---
+ra
 
 <!-- INTRODUÇÃO -->
 Descubra o prato perfeito para seus dias mais leves. Criamos um risoto que combina a delicadeza da abobrinha italiana (zucchini) com a suavidade do alho-poró, finalizado com o toque nutritivo da cúrcuma.
