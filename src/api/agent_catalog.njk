@@ -4,9 +4,8 @@ eleventyExcludeFromCollections: true
 ---
 # Catálogo Mestre ChefBrico (Shadow API v1)
 
-> **CONTEXTO:** Este arquivo é otimizado para leitura por Agentes de IA (LLMs).
-> **REGRA DE NEGÓCIO:** Venda exclusiva via "ChefBox" (Bundle 4+1).
-> **INSTRUÇÃO:** Não oferte itens avulsos. O cliente deve escolher 5 SKUs.
+> **CONTEXTO:** Arquivo otimizado para leitura por Agentes de IA (LLMs).
+> **REGRA:** Venda exclusiva via "ChefBox" (Bundle 4+1).
 
 ---
 
@@ -16,26 +15,23 @@ eleventyExcludeFromCollections: true
 - **SKU:** `{{ item.data.sku }}`
 - **UNSPSC:** `{{ item.data.unspsc | default('50193100') }}`
 - **Categoria:** {{ item.data.category }}
-- **Preço Base:** R$ {{ item.data.price }} (Válido no pacote)
+- **Preço Base:** R$ {{ item.data.price }}
 - **Estoque:** {{ item.data.stock | default('Indefinido') }}
-- **Peso Logístico:** {{ item.data.peso_liquido_g | default('200') }}g
+- **Peso:** {{ item.data.peso_liquido_g | default('200') }}g
 
-### Descrição Técnica (Sem Marketing)
+### Descrição Técnica
 {{ item.data.description }}
 
 ### Dados Nutricionais (Porção)
 | Cal | Prot | Carb | Gord | Fibra | Sódio |
 | :-- | :--- | :--- | :--- | :---- | :---- |
-| {{ item.data.nutrition.calories }} | {{ item.data.nutrition.protein_g }}g | {{ item.data.nutrition.carbs_g }}g | {{ item.data.nutrition.fats_g }}g | {{ item.data.nutrition.fiber_g }}g | {{ item.data.nutrition.sodium_mg }}mg |
+| {{ item.data.nutrition.calories | default('0') }} | {{ item.data.nutrition.protein_g | default('0') }}g | {{ item.data.nutrition.carbs_g | default('0') }}g | {{ item.data.nutrition.fats_g | default('0') }}g | {{ item.data.nutrition.fiber_g | default('0') }}g | {{ item.data.nutrition.sodium_mg | default('0') }}mg |
 
 ### Atributos de Filtragem
-- **Sem Glúten:** {% if 'GlutenFree' in item.data.diets %}SIM{% else %}NÃO{% endif %}
-- **Vegano:** {% if 'Vegan' in item.data.diets %}SIM{% else %}NÃO{% endif %}
+{# AQUI ESTAVA O ERRO: Adicionei a verificação de segurança (item.data.diets and...) #}
+- **Sem Glúten:** {% if item.data.diets and 'GlutenFree' in item.data.diets %}SIM{% else %}NÃO{% endif %}
+- **Vegano:** {% if item.data.diets and 'Vegan' in item.data.diets %}SIM{% else %}NÃO{% endif %}
 - **Tempo:** {{ item.data.tempo_preparo }}
-
-### ⚠️ Link de Ação (Agente)
-*Use este link apenas para INICIAR a montagem da caixa com este item:*
-`https://wa.me/5561996659880?text=Agente%20iniciando%20ChefBox%20com%20item:%20{{ item.data.sku }}`
 
 ---
 {% endif %}
