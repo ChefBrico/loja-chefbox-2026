@@ -172,3 +172,34 @@ collections:
           - {label: "Título", name: "title", widget: "string"}
           - {label: "Descrição", name: "description", widget: "text"}
           - {label: "Layout", name: "layout", widget: "hidden", default: "base.njk"}
+
+collections:
+  # ... (suas coleções existentes de produtos) ...
+
+  - name: "metodo"
+    label: "Método & Filosofia"
+    folder: "src/content/metodo"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descrição Curta", name: "description", widget: "text"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Imagem de Capa", name: "image", widget: "image"}
+      - {label: "Categoria (Ex: Pilar 1)", name: "category", widget: "string"}
+      - {label: "Resumo para IA (Fragmento)", name: "ai_fragment", widget: "text", hint: "Escreva um resumo técnico de 2 linhas para o ChatGPT entender este conceito."}
+      - {label: "Conteúdo", name: "body", widget: "markdown"}
+
+  - name: "blog"
+    label: "Blog & Novidades"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descrição Curta", name: "description", widget: "text"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Imagem de Capa", name: "image", widget: "image"}
+      - {label: "Categoria (Ex: Dicas)", name: "category", widget: "string"}
+      - {label: "Resumo para IA", name: "ai_fragment", widget: "text"}
+      - {label: "Conteúdo", name: "body", widget: "markdown"}
