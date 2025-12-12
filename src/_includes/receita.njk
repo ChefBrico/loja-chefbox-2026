@@ -198,10 +198,11 @@ layout: base.njk
                 <p>Adicione à sua <strong>ChefBox</strong> agora.</p>
             </div>
             <!-- AÇÃO: Adiciona ao Jogo (Humano) -->
-            <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}', '{{ page.url }}')" 
-               class="btn-comprar-agora">
-               + Adicionar (R$ {{ price }})
-            </button>
+          <!-- DEPOIS (Corrigido com filtro dinheiro) -->
+          <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}', '{{ page.url }}')" 
+          class="btn-comprar-agora">
+          + Adicionar (R$ {{ price | dinheiro }})
+          </button>
         </div>
 
         <!-- TABELA NUTRICIONAL -->
