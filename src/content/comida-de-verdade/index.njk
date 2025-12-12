@@ -1,133 +1,53 @@
 ---
 layout: base.njk
 permalink: /comida-de-verdade/
-title: "Comida de Verdade e Propósito | O Método Maria Conceição"
-description: "Conheça a Chef Maria Conceição, vencedora do Prêmio Sebrae, e seu Método Gourmet Prático. Transformando ingredientes do Cerrado em rituais de afeto."
+title: "A Trilha da ChefBrico | Filosofia e Método"
+description: "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
 ---
 
-<!-- 1. O SUPER SCHEMA (EEAT MÁXIMO PARA ROBÔS) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfilePage",
-      "mainEntity": {
-        "@type": "Person",
-        "@id": "https://gourmetpratico.com.br/#person-maria-conceicao",
-        "name": "Maria Conceição",
-        "jobTitle": "Fundadora e Chef de Criação",
-        "description": "Empreendedora premiada que revolucionou a culinária prática com o método 'Gourmet Prático'.",
-        "image": "https://gourmetpratico.com.br/imagens/maria-conceicao.jpg",
-        "award": "Prêmio Sebrae Mulher de Negócios (Ouro)",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "ChefBrico",
-          "location": { "@type": "Place", "name": "Brasília - Cerrado Brasileiro" }
-        }
-      }
-    }
-  ]
-}
-</script>
-
-<main>
+<main class="container">
     
-    <!-- 1. HERO DE AUTORIDADE (O ROSTO DA MARCA) -->
-    <!-- Usando o componente Hero que já criamos no CSS Mestre -->
-    <div class="hero-section-with-image-and-text" style="background: linear-gradient(to bottom, #fdfcf7, #fff);">
-        
-        <!-- Foto Circular -->
-        <div class="hero-image-container-circular">
-            <img src="/imagens/maria-conceicao.jpg" alt="Chef Maria Conceição">
-        </div>
-        
-        <!-- Texto Manifesto -->
-        <div class="hero-content-text">
-            <span style="color: var(--cor-dourado); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">
-                🏆 Prêmio Sebrae Mulher de Negócios
-            </span>
-            
-            <h1 style="margin-top: 10px;">Transformo a pressa em presença através da panela única.</h1>
-            
-            <p style="font-size: 1.1rem; color: #555;">
-                Eu sou Maria Conceição. Nascida no Cerrado, psicóloga de formação e cozinheira de alma. Criei a ChefBrico porque acredito que <strong>comer comida de verdade não deveria ser um luxo</strong>, mas um direito.
-            </p>
+    <!-- HERO: MARIA -->
+    <div class="author-box" style="align-items: flex-start; margin: 40px 0; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+        <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" class="author-image" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+        <div class="author-info">
+            <span style="font-size: 0.8em; text-transform: uppercase; color: #999; font-weight: bold;">Inspirar & Cuidar</span>
+            <h1 style="color: var(--cor-institucional); font-family: 'Merriweather', serif;">A Trilha da ChefBrico</h1>
+            <p style="color: #555;">Meu nome é Maria Conceição. Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
         </div>
     </div>
 
-    <!-- 2. O MÉTODO GOURMET PRÁTICO (OS 3 PILARES) -->
-    <section class="container" style="padding: 60px 20px; text-align: center;">
-        <h2 class="text-vinho">O Método Gourmet Prático</h2>
-        <p style="max-width: 600px; margin: 0 auto 40px;">
-            Desenvolvi uma metodologia baseada em 3 pilares para garantir sabor de chef em 18 minutos.
-        </p>
+    <!-- CARROSSEL DINÂMICO: O MÉTODO -->
+    <h2 class="text-center" style="color: var(--cor-institucional); margin-top: 50px;">Os Pilares do Método</h2>
+    <div class="carousel-container">
         
-        <!-- Grid de Pilares (Usando classe do CSS Mestre) -->
-        <div class="metodo-pilares">
-            <!-- Pilar 1 -->
-            <div class="pilar">
-                <div style="font-size: 2.5rem;">🥫</div>
-                <h3>1. Despensa Inteligente</h3>
-                <p>Ingredientes desidratados naturalmente que duram meses. Zero desperdício, sempre à mão.</p>
+        <!-- LOOP AUTOMÁTICO (Lê os arquivos .md da pasta metodo) -->
+        {% for post in collections.metodo %}
+        <a href="{{ post.url }}" class="card">
+            <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
+            <div class="card-content">
+                <span class="card-category" style="color: var(--cor-cta);">{{ post.data.category }}</span>
+                <h3 style="font-size: 1.1rem; margin: 10px 0;">{{ post.data.title }}</h3>
+                <p style="font-size: 0.9rem; color: #666;">{{ post.data.description }}</p>
             </div>
+        </a>
+        {% endfor %}
 
-            <!-- Pilar 2 -->
-            <div class="pilar">
-                <div style="font-size: 2.5rem;">🥘</div>
-                <h3>2. Panela Única</h3>
-                <p>A arquitetura do sabor pensada para sujar apenas uma panela. Do refogado à finalização.</p>
+        <!-- CARD FIXO DA CHEFBOX (Produto) -->
+        <a href="/chefbox/" class="card" style="border: 2px solid var(--cor-cta);">
+            <img src="/imagens/maria-conceicao-empreendedora-feira-tematica.png" class="card-image" alt="ChefBox">
+            <div class="card-content">
+                <span class="card-category" style="color: var(--cor-cta); font-weight: bold;">A Experiência</span>
+                <h3>ChefBox (4+1)</h3>
+                <p>A materialização da filosofia. Monte seu kit e ganhe presente.</p>
             </div>
+        </a>
 
-            <!-- Pilar 3 -->
-            <div class="pilar">
-                <div style="font-size: 2.5rem;">✨</div>
-                <h3>3. Cozinha Criativa</h3>
-                <p>Bases neutras e sofisticadas que permitem você dar o seu toque final. A técnica é minha, o show é seu.</p>
-            </div>
-        </div>
-        
-        <p style="font-style:italic; color:#999; margin-top: 40px;">"Ecoamos a sabedoria das mulheres que vieram antes de nós."</p>
-    </section>
+    </div>
 
-    <!-- 3. PERSONAS (DIRECIONAMENTO A-COMMERCE) -->
-    <section style="background: var(--cor-creme); padding: 60px 20px; text-align: center; border-top: 1px solid #eee;">
-        <div class="container">
-            <h2 style="margin-bottom:40px; color: var(--cor-institucional);">Qual é o seu momento hoje?</h2>
-            
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px;">
-                
-                <!-- Card 1 -->
-                <div class="card" style="padding: 30px;">
-                    <span style="font-size:2rem;">⚡</span>
-                    <h3 style="font-size: 1.2rem; margin: 10px 0;">Rotina Agitada</h3>
-                    <p style="font-size: 0.9rem;">Para quem quer comer bem em 15 minutos sem pedir delivery.</p>
-                    <a href="/receitas/solucoes/jantar-rapido/" class="btn-chefbox" style="margin-top: 15px; display: inline-block;">Ver Soluções</a>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="card" style="padding: 30px;">
-                    <span style="font-size:2rem;">🍷</span>
-                    <h3 style="font-size: 1.2rem; margin: 10px 0;">Jantar a Dois</h3>
-                    <p style="font-size: 0.9rem;">Risotos cremosos para impressionar quem você ama.</p>
-                    <a href="/receitas/risotos/" class="btn-chefbox" style="margin-top: 15px; display: inline-block;">Ver Risotos</a>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="card" style="padding: 30px;">
-                    <span style="font-size:2rem;">🎒</span>
-                    <h3 style="font-size: 1.2rem; margin: 10px 0;">Trilha & Cerrado</h3>
-                    <p style="font-size: 0.9rem;">Leveza e nutrição para sua aventura na natureza.</p>
-                    <a href="/receitas/solucoes/trilha-viagem/" class="btn-chefbox" style="margin-top: 15px; display: inline-block;">Kit Aventura</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    
-    <!-- 4. LOCAL SEO (GEO) -->
-    <div style="text-align:center; padding:40px; color:#666; font-size:0.85rem;">
-        <p>🌱 Produzido artesanalmente em <strong>Brasília</strong>, com orgulho e ingredientes do Cerrado.</p>
+    <div class="conteudo-leitura" style="margin-top: 60px;">
+        <h2>Uma Conquista de Todas Nós</h2>
+        <p>A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong>Sebrae, Emater e Senar</strong>.</p>
     </div>
 
 </main>
