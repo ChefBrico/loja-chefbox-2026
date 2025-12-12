@@ -1,0 +1,177 @@
+---
+layout: base.njk
+permalink: /
+title: "Revista Digital ChefBrico | Comida de Verdade"
+description: "Receitas 100% naturais, prontas em 18 minutos. O método da Chef Maria Conceição para uma rotina saudável e sem desperdício."
+image: "/imagens/maria-conceicao-empreendedora-feira-tematica.png"
+
+# --- SCHEMA DA HOME (A PORTA DE ENTRADA) ---
+schema: {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ChefBrico Gourmet Prático",
+      "url": "https://gourmetpratico.com.br",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gourmetpratico.com.br/receitas/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://gourmetpratico.com.br/#organization",
+      "name": "ChefBrico",
+      "logo": "https://gourmetpratico.com.br/imagens/logo.png",
+      "sameAs": [
+        "https://www.instagram.com/chefbrico",
+        "https://www.facebook.com/chefbrico"
+      ]
+    }
+  ]
+}
+---
+
+<!-- ESTILOS LOCAIS (Para garantir o Carrossel Perfeito) -->
+<style>
+    .hero-buttons-grid { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .btn-pill {
+        padding: 10px 25px; border-radius: 50px; background: rgba(255,255,255,0.9);
+        color: #014039; text-decoration: none; font-weight: bold; font-size: 0.95rem;
+        border: 1px solid #ddd; transition: 0.2s; display: flex; align-items: center; gap: 8px;
+    }
+    .btn-pill:hover { transform: translateY(-2px); background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .btn-pill.highlight { background: #F2811D; color: white; border: none; }
+
+    /* Carrossel com Scroll Snap (UX Mobile Premium) */
+    .carousel-container {
+        display: flex; overflow-x: auto; gap: 20px; padding: 10px 5px 30px 5px;
+        scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    }
+    .carousel-container::-webkit-scrollbar { display: none; }
+    .card { flex: 0 0 280px; scroll-snap-align: start; }
+</style>
+
+<main>
+    
+    <!-- HERO SECTION: A CAPA QUE CONVERSA -->
+    <section class="hero-section-with-image-and-text">
+         <div class="hero-image-container-circular">
+             <img src="/imagens/maria-conceicao-empreendedora-feira-tematica.png" 
+                  alt="Maria Conceição, fundadora da ChefBrico" 
+                  class="circular-image imagem-interativa-premium">
+         </div>
+         <div class="hero-content-text">
+             <h1 class="hero-title">Comida de Verdade;<br>Sem confusão na cozinha!</h1>
+             <p class="hero-subtitle">Uma revolução no sabor e na sua rotina. Refeições práticas, 100% naturais e com o afeto da nossa cozinha.</p>
+             
+             <!-- BOTÕES DE AÇÃO RÁPIDA (ZERO-CLICK) -->
+             <div class="hero-buttons-grid">
+                 <a href="/receitas/" class="btn-pill">📖 Ver Catálogo</a>
+                 <a href="/chefbox/" class="btn-pill highlight">🎁 Montar ChefBox (4+1)</a>
+             </div>
+         </div>
+    </section>
+
+    <div class="container">
+        
+        <!-- SEÇÃO 1: O MÉTODO (Dinâmico - Puxa da pasta src/content/metodo/) -->
+        <div style="display:flex; justify-content:space-between; align-items:end; margin-top:60px;">
+            <h2 style="color:var(--cor-institucional); margin:0;">Comece por Aqui: O Método</h2>
+            <span style="font-size:0.8rem; color:#999; display:none;" class="mobile-hint">Arraste ➝</span>
+        </div>
+
+        <div class="carousel-container">
+            
+            <!-- Loop Automático: Lê os arquivos .md que criamos -->
+            {% for post in collections.metodo %}
+            <a href="{{ post.url }}" class="card">
+                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
+                <div class="card-content">
+                    <span class="card-category" style="color:var(--cor-cta);">{{ post.data.category }}</span>
+                    <h3>{{ post.data.title }}</h3>
+                    <p>{{ post.data.description | truncate(60) }}</p>
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+
+        <!-- SEÇÃO 2: NOVIDADES (Dinâmico - Puxa da pasta src/content/blog/) -->
+        <h2 style="margin-top: 50px; color: var(--cor-institucional);">Novidades na Revista</h2>
+        <div class="carousel-container">
+            
+            {% for post in collections.blog %}
+            <a href="{{ post.url }}" class="card">
+                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">{{ post.data.category }}</span>
+                    <h3>{{ post.data.title }}</h3>
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+
+        <!-- SEÇÃO 3: VITRINE DE CATEGORIAS (Estático - Links Fixos para os Universos) -->
+        <h2 style="margin-top: 50px; color: var(--cor-institucional);">Quatro Universos de Sabor</h2>
+        <div class="carousel-container">
+            
+            <!-- Card 1: Risotos -->
+            <a href="/receitas/risotos/" class="card">
+                <img src="/imagens/risoto-pomodori-pesto-chefbrico-580px.png" alt="Risoto Pomodori" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Jantar Italiano</span>
+                    <h3>Risotos e Arrozes</h3>
+                    <p>O sabor autêntico da Itália, cremoso e pronto em 18 minutos.</p>
+                </div>
+            </a>
+
+            <!-- Card 2: Sopas -->
+            <a href="/receitas/sopas-funcionais/" class="card">
+                <img src="/imagens/chefbrico-creme-fit-sopinha-chefbrico-580%20px.png" alt="Creme Fit" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Detox & Leveza</span>
+                    <h3>Sopas Funcionais</h3>
+                    <p>Nutrição densa e conforto para dias leves.</p>
+                </div>
+            </a>
+
+            <!-- Card 3: Integrais -->
+            <a href="/receitas/refeicoes-integrais/" class="card">
+                <img src="/imagens/refeicao-nutritiva-integral-arroz-negro-chefbrico-80%20px.png" alt="Arroz Negro" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Grãos Nobres</span>
+                    <h3>Refeições Integrais</h3>
+                    <p>Arroz negro, vermelho e grãos ancestrais.</p>
+                </div>
+            </a>
+
+            <!-- Card 4: Empório -->
+            <a href="/receitas/emporio-da-chef/" class="card">
+                <img src="/imagens/confitado-shiitake-chefbrico.png" alt="Confit Shiitake" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Para Finalizar</span>
+                    <h3>Empório da Chef</h3>
+                    <p>Pestos, antepastos e confits para elevar seu prato.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- CTA FINAL -->
+        <div class="cta-section-article" style="text-align: center; margin: 60px 0; padding: 40px 20px; background-color: #fdf6e3; border-radius: 12px; border: 1px solid #d4af37;">
+            <h3 style="margin-top:0; color: var(--cor-institucional); font-family: 'Merriweather', serif;">Ainda não decidiu?</h3>
+            <p style="margin-bottom: 25px; font-size: 1.1rem; color: #555;">Que tal montar sua caixa personalizada e ganhar um presente?</p>
+            <a href="/chefbox/" class="btn-pill highlight" style="display:inline-block; width:auto; padding: 15px 30px; font-size: 1.1rem;">🎁 Monte sua ChefBox (Ganhe 1)</a> 
+        </div>
+
+    </div>
+</main>
+
+<!-- SCRIPT UX: Mostra dica de arrastar no mobile -->
+<script>
+    if (window.innerWidth < 768) {
+        document.querySelectorAll('.mobile-hint').forEach(el => el.style.display = 'block');
+    }
+</script>
