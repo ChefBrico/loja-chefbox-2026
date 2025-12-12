@@ -26,64 +26,72 @@ layout: base.njk
 </script>
 
 <style>
-    /* --- 1. HERO SECTION PREMIUM (Fundo Escuro + Sobreposição) --- */
+    /* --- 1. HERO SECTION (Ajustada para não encavalar) --- */
     .editorial-header {
-        background-color: var(--cor-institucional, #014039); /* Verde Profundo */
+        background-color: var(--cor-institucional, #014039);
         color: white;
-        padding: 80px 20px 120px; /* Espaço extra embaixo para o card subir */
+        /* Aumentei o padding-bottom para 160px. Isso dá espaço para o texto respirar */
+        padding: 60px 20px 160px; 
         text-align: center;
         position: relative;
     }
 
+    /* Categoria: Limpa, Branca, Sem fundo dourado */
     .editorial-category {
-        background-color: var(--cor-dourado, #bfb084);
-        color: #fff;
-        padding: 4px 12px;
+        color: rgba(255, 255, 255, 0.9); /* Branco levemente suave */
+        font-family: 'Lato', sans-serif;
+        font-size: 0.85rem;
         text-transform: uppercase;
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-        font-weight: bold;
-        display: inline-block;
+        letter-spacing: 3px; /* Espaçamento chique */
+        font-weight: 600;
+        display: block; /* Garante linha própria */
         margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.2); /* Linha fina sutil */
+        display: inline-block;
+        padding-bottom: 5px;
     }
 
     .editorial-title {
         font-family: 'Merriweather', serif;
-        font-size: 3rem; /* Título Gigante */
+        font-size: 3.2rem;
         line-height: 1.1;
         max-width: 900px;
-        margin: 0 auto 20px;
+        margin: 0 auto 25px;
+        color: white;
     }
 
     .editorial-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         opacity: 0.9;
         font-weight: 300;
         max-width: 700px;
         margin: 0 auto;
         font-style: italic;
+        line-height: 1.5;
     }
 
-    /* --- 2. O CARD FLUTUANTE (Corpo do Texto) --- */
+    /* --- 2. O CARD FLUTUANTE --- */
     .editorial-body {
         max-width: 800px;
-        margin: -80px auto 60px; /* Sobe 80px para cima do verde */
+        /* Sobe 100px para cima do verde. Como o verde tem 160px de sobra, não encavala */
+        margin: -100px auto 60px; 
         background: white;
-        padding: 60px;
-        border-radius: 8px; /* Cantos suaves */
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Sombra de luxo */
+        padding: 0 60px 60px; /* Padding top zerado, quem empurra é a imagem */
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         position: relative;
         z-index: 10;
     }
 
-    /* A Imagem Circular (Centralizada e Imponente) */
+    /* A Imagem Circular (Posicionamento Matemático) */
     .author-circle-hero {
         width: 180px;
         height: 180px;
         border-radius: 50%;
-        border: 6px solid white; /* Moldura branca */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        margin: -150px auto 40px; /* Puxa para cima para conectar as seções */
+        border: 8px solid white; /* Borda mais grossa para destacar */
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        /* Margem negativa de -90px (metade da altura) para ficar 50/50 */
+        margin: -90px auto 50px; 
         overflow: hidden;
         background: #fff;
         position: relative;
@@ -103,13 +111,14 @@ layout: base.njk
         color: #2c3e50;
     }
     
-    /* Letra Capitular (Estilo Revista) */
+    /* Letra Capitular */
     .pro-text > p:first-of-type::first-letter {
         font-family: 'Merriweather', serif;
         font-size: 3.5rem;
         float: left;
         line-height: 0.8;
         margin-right: 10px;
+        margin-top: 5px;
         color: var(--cor-institucional, #014039);
         font-weight: bold;
     }
@@ -118,66 +127,67 @@ layout: base.njk
         font-family: 'Merriweather', serif;
         color: var(--cor-institucional, #014039);
         font-size: 1.8rem;
-        margin-top: 50px;
-        margin-bottom: 20px;
-        text-align: center; /* Títulos centralizados */
+        margin-top: 60px;
+        margin-bottom: 25px;
+        text-align: center;
     }
     
-    /* Separador elegante abaixo do H2 */
     .pro-text h2::after {
         content: "";
         display: block;
-        width: 60px;
-        height: 3px;
+        width: 40px;
+        height: 2px;
         background: var(--cor-dourado, #bfb084);
-        margin: 15px auto 0;
+        margin: 20px auto 0;
     }
 
     .pro-text h3 {
         color: var(--cor-cta, #F2811D);
         font-size: 1.3rem;
-        margin-top: 30px;
+        margin-top: 40px;
         font-weight: bold;
     }
 
-    /* Box de IA (Discreto e Técnico) */
+    /* Box de IA */
     .ai-box {
-        background: #f8f9fa;
-        border-left: 4px solid #ccc;
-        padding: 15px;
-        font-size: 0.9rem;
-        color: #666;
-        margin-bottom: 40px;
+        background: #fdfbf7;
+        border: 1px solid #eee;
+        border-left: 4px solid var(--cor-institucional, #014039);
+        padding: 20px;
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 50px;
         font-style: italic;
+        border-radius: 4px;
     }
 
-    /* --- 3. SEÇÃO DE MÍDIA (GRID) --- */
+    /* Grid de Mídia */
     .media-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 15px;
-        margin-top: 40px;
+        margin-top: 60px;
         border-top: 1px solid #eee;
         padding-top: 40px;
     }
     .media-card {
-        background: #fdfbf7;
+        background: #fff;
         padding: 15px;
         border: 1px solid #eee;
         border-radius: 8px;
         text-align: center;
         transition: 0.2s;
     }
-    .media-card:hover { border-color: var(--cor-dourado, #bfb084); }
-    .media-source { font-weight: bold; color: var(--cor-institucional, #014039); display: block; margin-bottom: 5px; font-size: 0.8rem; text-transform: uppercase; }
+    .media-card:hover { border-color: var(--cor-dourado, #bfb084); transform: translateY(-2px); }
+    .media-source { font-weight: bold; color: var(--cor-institucional, #014039); display: block; margin-bottom: 5px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
     .media-link { color: #555; font-size: 0.9rem; text-decoration: none; line-height: 1.3; display: block; }
-    .media-link:hover { text-decoration: underline; }
 
     /* Mobile */
     @media (max-width: 768px) {
-        .editorial-title { font-size: 2rem; }
-        .editorial-body { padding: 30px 20px; margin-top: -60px; }
-        .author-circle-hero { width: 140px; height: 140px; margin-top: -100px; }
+        .editorial-header { padding: 40px 20px 120px; }
+        .editorial-title { font-size: 2.2rem; }
+        .editorial-body { padding: 0 25px 40px; margin-top: -80px; }
+        .author-circle-hero { width: 140px; height: 140px; margin: -70px auto 40px; border-width: 5px; }
     }
 </style>
 
@@ -185,6 +195,7 @@ layout: base.njk
     
     <!-- 1. HERO (Fundo Verde + Texto Branco) -->
     <header class="editorial-header">
+        <!-- Categoria Limpa (Sem fundo dourado) -->
         <span class="editorial-category">{{ category }}</span>
         <h1 class="editorial-title">{{ title }}</h1>
         <p class="editorial-subtitle">{{ description }}</p>
@@ -193,7 +204,7 @@ layout: base.njk
     <!-- 2. CORPO FLUTUANTE -->
     <div class="editorial-body">
         
-        <!-- A Imagem Circular (Flutuando entre o verde e o branco) -->
+        <!-- A Imagem Circular (Centralizada e Equilibrada) -->
         <div class="author-circle-hero">
             <img src="{{ image }}" alt="{{ title }}">
         </div>
@@ -208,11 +219,11 @@ layout: base.njk
             {{ content | safe }}
         </div>
 
-        <!-- 3. RECONHECIMENTO NA MÍDIA (Grid Elegante) -->
+        <!-- 3. RECONHECIMENTO NA MÍDIA -->
         {% if media_mentions %}
         <div class="media-grid">
             <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 10px;">
-                <h4 style="color: #999; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;">Reconhecimento & Mídia</h4>
+                <h4 style="color: #999; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem;">Reconhecimento & Mídia</h4>
             </div>
             {% for item in media_mentions %}
             <div class="media-card">
@@ -224,9 +235,9 @@ layout: base.njk
         {% endif %}
 
         <!-- 4. ASSINATURA FINAL -->
-        <div style="margin-top: 60px; text-align: center;">
-            <img src="/imagens/logo.png" alt="ChefBrico" style="width: 80px; opacity: 0.8; margin-bottom: 10px;">
-            <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: var(--cor-institucional, #014039);">
+        <div style="margin-top: 80px; text-align: center;">
+            <img src="/imagens/logo.png" alt="ChefBrico" style="width: 80px; opacity: 0.8; margin-bottom: 15px;">
+            <p style="font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--cor-institucional, #014039);">
                 Com carinho, Maria Conceição.
             </p>
         </div>
