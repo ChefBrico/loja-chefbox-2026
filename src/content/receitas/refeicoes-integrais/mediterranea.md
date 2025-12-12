@@ -1,24 +1,33 @@
 ---
 title: "Refeição Mediterrânea Vegana em 25 Minutos | ChefBrico"
-description: "Grão de bico, arroz vermelho e toque cítrico. 100% natural e vegana."
+description: "Inspirada na dieta da longevidade. Grão de bico, arroz vermelho integral e toque cítrico. 100% natural, vegana e rica em fibras."
 date: 2025-08-09
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RF-04"
 gtin: "619205574270"
+unspsc: "50193100"
 price: 29.60
 stock: 45
 availability: "https://schema.org/InStock"
 category: "Refeição"
+keywords: "dieta mediterrânea, grão de bico, arroz vermelho, longevidade, vegano, sem glúten, proteína completa"
 
-tempo_preparo: "25 min"
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 150
+rendimento: "3 porções (Nutritiva)"
+tempo_preparo: "25 min (Pressão)"
 tempo_iso: "PT25M"
-rendimento: "3 porções"
+
+# --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "350 kcal"
 image: "/imagens/refeicao-grao-bico-arroz-integral-vermelho-chefbrico.png"
-image_alt: "Refeição Mediterrânea com grão de bico"
+image_alt: "Refeição Mediterrânea com grão de bico e arroz vermelho"
 
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
-  portion: "50g (1/3 pacote)"
+  portion: "250ml (1 prato)"
   calories: 350
   protein_g: 14
   carbs_g: 65
@@ -26,24 +35,49 @@ nutrition:
   fiber_g: 8
   sodium_mg: 125
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.7", count: "60" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Grão de bico, arroz vermelho integral, tomate seco, raspas de limão, azeitona preta desidratada, cebola, alho, orégano e ervas finas."
 
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "WholeGrain"
+
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.7"
+  count: "60"
+
+# --- INSTRUÇÕES ---
 instructions:
-  - name: "Pressão"
-    text: "Coloque tudo na panela de pressão com 1 litro de água."
+  - name: "Refogar"
+    text: "Na panela de pressão, aqueça um fio de azeite e refogue o pacote rapidamente para ativar as ervas."
   - name: "Cozinhar"
-    text: "Cozinhe por 25 minutos após pegar pressão."
-  - name: "Servir"
-    text: "Aguarde sair a pressão e sirva."
+    text: "Adicione 1 litro de água e sal a gosto. Tampe. Após pegar pressão, cozinhe por 25 minutos."
+  - name: "Finalizar"
+    text: "Desligue, espere a pressão sair naturalmente. O caldo estará encorpado e os grãos macios. Sirva com azeite."
 
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Inspirada na dieta da longevidade, une grão de bico e arroz vermelho para uma proteína completa."
+citable_fact: "Inspirada na dieta das 'Blue Zones' (áreas de longevidade), esta receita une a leguminosa (grão de bico) ao cereal (arroz vermelho) para formar uma proteína completa."
+
+# --- FAQ ---
 faq:
-  - question: "É refeição completa?"
-    answer: "Sim! Une leguminosa (grão de bico) e cereal (arroz vermelho)."
+  - question: "É uma refeição completa?"
+    answer: "Sim! A combinação de leguminosa e cereal fornece todos os aminoácidos essenciais, dispensando a necessidade de carne."
+  - question: "O arroz vermelho é duro?"
+    answer: "Ele é um grão integral firme, mas na pressão fica macio e com uma textura deliciosa de nozes."
 ---
 
+Viaje para o Mediterrâneo sem sair de casa. Esta refeição é um tributo à saúde e ao sabor, combinando ingredientes que são pilares da longevidade.
+
+## O Poder da Combinação
+*   **Arroz Vermelho:** Um grão ancestral, rico em monacolina (ajuda no colesterol) e fibras.
+*   **Grão de Bico:** Fonte de proteína e triptofano (o hormônio do bem-estar).
+*   **Toque Cítrico:** As raspas de limão e as ervas trazem frescor e facilitam a digestão.
+
+> "Faço na pressão e tenho almoço garantido para 3 dias. É muito prático e me sinto super bem alimentada." — *Carla D., Cliente ChefBrico*
 <!-- INTRODUÇÃO -->
 Transporte-se para a costa do Mediterrâneo. Unimos a robustez do grão-de-bico com a textura rústica do arroz vermelho. O toque defumado da páprica e o perfume do limão-siciliano completam a experiência.
 
