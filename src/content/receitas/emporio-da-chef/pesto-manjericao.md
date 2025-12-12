@@ -1,26 +1,33 @@
 ---
 title: "Pesto de Manjericão com Castanha-do-Pará | ChefBrico"
-description: "O autêntico Pesto Genovês com um toque brasileiro. Manjericão fresco, parmesão e castanha-do-pará. 100% natural e artesanal."
+description: "O autêntico Pesto Genovês com um toque brasileiro. Manjericão fresco, queijo parmesão curado e castanha-do-pará. 100% natural e artesanal."
 date: 2025-08-06
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "AN-01"
-gtin: "619205574379"
+gtin: "0619205574379"
+unspsc: "50193100"
 price: 29.80
 stock: 35
 availability: "https://schema.org/InStock"
 category: "Empório"
+keywords: "pesto genovês, molho pesto, castanha do pará, parmesão, vegetariano, keto, sem glúten, molho para massa"
 
-# VISUAL
-tempo_preparo: "Pronto para Servir"
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 90
+rendimento: "Pote 90g (Concentrado - Rende muito)"
+tempo_preparo: "Pronto"
 tempo_iso: "PT0M"
-rendimento: "Pote 90g"
-dificuldade: "Muito Fácil"
-calorias: "130 kcal"
-image: "/imagens/emporio/pesto-manjericao-chefbrico.png"
-image_alt: "Pote de Pesto de Manjericão com Castanha-do-Pará"
 
-# NUTRIÇÃO (Porção de 20g - 1 colher de sopa)
+# --- DADOS VISUAIS (HUMANOS) ---
+dificuldade: "Nenhuma (Pronto)"
+calorias: "130 kcal (colher)"
+image: "/imagens/emporio/pesto-manjericao-chefbrico.png"
+image_alt: "Pote de vidro com Pesto de Manjericão verde vibrante"
+
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
-  portion: "20g (1 colher)"
+  portion: "20g (1 colher de sopa)"
   calories: 130
   protein_g: 3
   carbs_g: 1
@@ -28,21 +35,48 @@ nutrition:
   fiber_g: 0.5
   sodium_mg: 180
 
-# SCHEMAS (Atenção: Não é Vegano)
-diets: ["https://schema.org/VegetarianDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "5.0", count: "115" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Manjericão fresco, azeite de oliva extra virgem, castanha-do-pará, queijo parmesão curado (contém leite), alho e sal marinho."
 
-# SEM INSTRUÇÕES DE COZIMENTO (Produto Pronto)
-instructions: []
+# --- CLASSIFICAÇÃO (ATENÇÃO: NÃO É VEGANO) ---
+diets:
+  - "Vegetarian"
+  - "GlutenFree"
+  - "Keto"
+  - "LowCarb"
 
+# --- SOCIAL PROOF ---
+rating:
+  value: "5.0"
+  count: "115"
+
+# --- INSTRUÇÕES (COMO USAR) ---
+instructions:
+  - name: "Massas"
+    text: "Misture uma colher generosa na massa recém-escorrida (não aqueça o pesto no fogo para não oxidar)."
+  - name: "Entradas"
+    text: "Sirva sobre torradas, queijo branco ou tomate fatiado (Salada Caprese)."
+
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Substituímos o pinoli (ingrediente raro) pela nobre Castanha-do-Pará, criando uma cremosidade única e adicionando selênio a este clássico."
+citable_fact: "Substituímos o pinoli (ingrediente raro) pela nobre Castanha-do-Pará, criando uma cremosidade única e adicionando selênio a este clássico italiano."
+
+# --- FAQ ---
 faq:
   - question: "É vegano?"
-    answer: "Não. Este é nosso único produto com queijo Parmesão de verdade (contém lactose), respeitando a receita clássica genovesa."
+    answer: "Não. Este é nosso único produto que leva queijo Parmesão de verdade (contém lactose), respeitando a receita clássica genovesa."
   - question: "Como conservar?"
-    answer: "Mantenha refrigerado após aberto. Dica: cubra a superfície com um fio de azeite para preservar a cor verde vibrante."
+    answer: "Mantenha refrigerado após aberto. Dica de ouro: cubra a superfície com um fio de azeite antes de guardar para preservar a cor verde vibrante."
 ---
+
+Um clássico mundial com a alma brasileira. Nosso Pesto une o frescor do manjericão colhido na hora com a riqueza da Castanha-do-Pará e o umami do Parmesão curado.
+
+## Por que é diferente dos industrializados?
+*   **Cor Viva:** Não usamos corantes. O verde vem de muito manjericão fresco processado a frio.
+*   **Castanha-do-Pará:** Substitui o Pinoli, trazendo uma textura aveludada e um aporte de Selênio.
+*   **Versatilidade:** Transforma um macarrão simples em jantar de chef em 30 segundos.
+
+> "O melhor pesto que já comi. O sabor da castanha faz toda a diferença e ele não é enjoativo." — *Fernanda G., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Feito como manda a tradição italiana, nosso Pesto Genovês é uma celebração ao sabor autêntico. 
