@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 
-<!-- SCHEMA.ORG (Mantido e Otimizado) -->
+<!-- SCHEMA.ORG (Mantido) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,101 +25,93 @@ layout: base.njk
 }
 </script>
 
-<!-- ESTILOS EXCLUSIVOS DE REVISTA (PREMIUM) -->
 <style>
-    /* 1. O CABEÇALHO HERO (Estilo Home) */
-    .magazine-hero {
-        background-color: #fdfbf7; /* Fundo Creme Suave */
-        border-bottom: 1px solid #e0e0e0;
-        padding: 60px 20px;
+    /* --- 1. HERO SECTION PREMIUM (Fundo Escuro + Sobreposição) --- */
+    .editorial-header {
+        background-color: var(--cor-institucional, #014039); /* Verde Profundo */
+        color: white;
+        padding: 80px 20px 120px; /* Espaço extra embaixo para o card subir */
         text-align: center;
         position: relative;
-        overflow: hidden;
-    }
-    
-    .hero-content-wrapper {
-        max-width: 1000px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        flex-wrap: wrap; /* Para mobile */
     }
 
-    /* A Imagem no Círculo (Blindada para não estourar) */
-    .hero-circle-frame {
-        width: 220px;
-        height: 220px;
-        border-radius: 50%;
-        border: 6px solid white;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        overflow: hidden;
-        flex-shrink: 0; /* Não deixa esmagar */
-        position: relative;
+    .editorial-category {
+        background-color: var(--cor-dourado, #bfb084);
+        color: #fff;
+        padding: 4px 12px;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 20px;
     }
-    .hero-circle-frame img {
+
+    .editorial-title {
+        font-family: 'Merriweather', serif;
+        font-size: 3rem; /* Título Gigante */
+        line-height: 1.1;
+        max-width: 900px;
+        margin: 0 auto 20px;
+    }
+
+    .editorial-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        font-weight: 300;
+        max-width: 700px;
+        margin: 0 auto;
+        font-style: italic;
+    }
+
+    /* --- 2. O CARD FLUTUANTE (Corpo do Texto) --- */
+    .editorial-body {
+        max-width: 800px;
+        margin: -80px auto 60px; /* Sobe 80px para cima do verde */
+        background: white;
+        padding: 60px;
+        border-radius: 8px; /* Cantos suaves */
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Sombra de luxo */
+        position: relative;
+        z-index: 10;
+    }
+
+    /* A Imagem Circular (Centralizada e Imponente) */
+    .author-circle-hero {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 6px solid white; /* Moldura branca */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        margin: -150px auto 40px; /* Puxa para cima para conectar as seções */
+        overflow: hidden;
+        background: #fff;
+        position: relative;
+        z-index: 20;
+    }
+    .author-circle-hero img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: block;
     }
 
-    /* O Texto do Cabeçalho */
-    .hero-text-block {
-        flex: 1;
-        text-align: left;
-        min-width: 300px;
-    }
-    
-    .hero-category {
-        background-color: var(--cor-dourado, #bfb084);
-        color: white;
-        padding: 6px 16px;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: bold;
-        display: inline-block;
-        margin-bottom: 15px;
-    }
-
-    .hero-title {
-        font-family: 'Merriweather', serif;
-        color: var(--cor-institucional, #014039);
-        font-size: 2.5rem;
-        line-height: 1.2;
-        margin: 0 0 15px 0;
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-        color: #555;
-        font-style: italic;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    /* 2. O CORPO DO ARTIGO (Estilo Card Flutuante) */
-    .magazine-body {
-        max-width: 800px; /* Largura de leitura confortável */
-        margin: -40px auto 80px; /* Sobe um pouco sobre o hero */
-        background: white;
-        padding: 50px;
-        border-radius: 12px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        position: relative;
-        z-index: 10;
-        border: 1px solid #eee;
-    }
-
-    /* Tipografia de Revista */
+    /* Tipografia do Texto */
     .pro-text {
         font-family: 'Lato', sans-serif;
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: #333;
+        font-size: 1.15rem;
+        line-height: 1.9;
+        color: #2c3e50;
+    }
+    
+    /* Letra Capitular (Estilo Revista) */
+    .pro-text > p:first-of-type::first-letter {
+        font-family: 'Merriweather', serif;
+        font-size: 3.5rem;
+        float: left;
+        line-height: 0.8;
+        margin-right: 10px;
+        color: var(--cor-institucional, #014039);
+        font-weight: bold;
     }
 
     .pro-text h2 {
@@ -128,97 +120,116 @@ layout: base.njk
         font-size: 1.8rem;
         margin-top: 50px;
         margin-bottom: 20px;
-        border-bottom: 2px solid #f0f0f0;
-        padding-bottom: 10px;
+        text-align: center; /* Títulos centralizados */
+    }
+    
+    /* Separador elegante abaixo do H2 */
+    .pro-text h2::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--cor-dourado, #bfb084);
+        margin: 15px auto 0;
     }
 
     .pro-text h3 {
         color: var(--cor-cta, #F2811D);
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         margin-top: 30px;
-        margin-bottom: 15px;
+        font-weight: bold;
     }
 
-    .pro-text p { margin-bottom: 25px; }
-
-    /* Destaque para IA (Fragmento) */
-    .ai-highlight-box {
-        background-color: #fdfbf7;
-        border-left: 5px solid var(--cor-institucional, #014039);
-        padding: 25px;
+    /* Box de IA (Discreto e Técnico) */
+    .ai-box {
+        background: #f8f9fa;
+        border-left: 4px solid #ccc;
+        padding: 15px;
+        font-size: 0.9rem;
+        color: #666;
         margin-bottom: 40px;
-        border-radius: 0 8px 8px 0;
         font-style: italic;
-        color: #555;
     }
 
-    /* Ajustes Mobile */
+    /* --- 3. SEÇÃO DE MÍDIA (GRID) --- */
+    .media-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 40px;
+        border-top: 1px solid #eee;
+        padding-top: 40px;
+    }
+    .media-card {
+        background: #fdfbf7;
+        padding: 15px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        text-align: center;
+        transition: 0.2s;
+    }
+    .media-card:hover { border-color: var(--cor-dourado, #bfb084); }
+    .media-source { font-weight: bold; color: var(--cor-institucional, #014039); display: block; margin-bottom: 5px; font-size: 0.8rem; text-transform: uppercase; }
+    .media-link { color: #555; font-size: 0.9rem; text-decoration: none; line-height: 1.3; display: block; }
+    .media-link:hover { text-decoration: underline; }
+
+    /* Mobile */
     @media (max-width: 768px) {
-        .hero-content-wrapper { flex-direction: column; text-align: center; gap: 20px; }
-        .hero-text-block { text-align: center; }
-        .hero-circle-frame { width: 180px; height: 180px; }
-        .magazine-body { margin-top: 0; border-radius: 0; padding: 30px 20px; box-shadow: none; border: none; border-top: 1px solid #eee; }
-        .hero-title { font-size: 2rem; }
+        .editorial-title { font-size: 2rem; }
+        .editorial-body { padding: 30px 20px; margin-top: -60px; }
+        .author-circle-hero { width: 140px; height: 140px; margin-top: -100px; }
     }
 </style>
 
-<!-- ESTRUTURA HTML -->
 <article>
     
-    <!-- 1. HERO SECTION (Círculo + Texto) -->
-    <header class="magazine-hero">
-        <div class="hero-content-wrapper">
-            <!-- Imagem no Círculo (Blindada) -->
-            <div class="hero-circle-frame">
-                <img src="{{ image }}" alt="{{ title }}">
-            </div>
-            
-            <!-- Texto ao Lado -->
-            <div class="hero-text-block">
-                <span class="hero-category">{{ category }}</span>
-                <h1 class="hero-title">{{ title }}</h1>
-                <p class="hero-subtitle">{{ description }}</p>
-            </div>
-        </div>
+    <!-- 1. HERO (Fundo Verde + Texto Branco) -->
+    <header class="editorial-header">
+        <span class="editorial-category">{{ category }}</span>
+        <h1 class="editorial-title">{{ title }}</h1>
+        <p class="editorial-subtitle">{{ description }}</p>
     </header>
 
-    <!-- 2. CORPO DO ARTIGO (Card Branco) -->
-    <div class="magazine-body">
+    <!-- 2. CORPO FLUTUANTE -->
+    <div class="editorial-body">
         
-        <!-- Resumo Técnico (Visível e Elegante) -->
-        <div class="ai-highlight-box">
-            <strong style="display:block; margin-bottom:5px; color:var(--cor-institucional, #014039); text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;">Resumo do Método</strong>
-            {{ ai_fragment }}
+        <!-- A Imagem Circular (Flutuando entre o verde e o branco) -->
+        <div class="author-circle-hero">
+            <img src="{{ image }}" alt="{{ title }}">
         </div>
 
-        <!-- Conteúdo Markdown -->
+        <!-- Resumo Técnico (IA) -->
+        <div class="ai-box">
+            <strong>Resumo do Método:</strong> {{ ai_fragment }}
+        </div>
+
+        <!-- Texto Diagramado -->
         <div class="pro-text">
             {{ content | safe }}
         </div>
 
-        <!-- 3. ASSINATURA (EEAT) -->
-        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid #eee; display: flex; align-items: center; gap: 20px;">
-            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
-            <div>
-                <p style="margin:0; font-family: 'Merriweather', serif; font-weight: bold; color: var(--cor-institucional, #014039);">Maria Conceição</p>
-                <p style="margin:0; font-size: 0.9rem; color: #666;">Fundadora da ChefBrico • Psicóloga • Chef de Criação</p>
-            </div>
-        </div>
-
-        <!-- Seção de Mídia (Se houver) -->
+        <!-- 3. RECONHECIMENTO NA MÍDIA (Grid Elegante) -->
         {% if media_mentions %}
-        <div style="margin-top: 40px; background: #fafafa; padding: 25px; border-radius: 8px;">
-            <h4 style="margin-top:0; color: #555;">Reconhecimento na Mídia</h4>
-            <ul style="margin:0; padding-left: 20px;">
-                {% for item in media_mentions %}
-                <li style="margin-bottom: 8px;">
-                    <a href="{{ item.url }}" target="_blank" style="color: var(--cor-cta, #F2811D); text-decoration: underline;">{{ item.title }}</a> 
-                    <span style="color:#999; font-size:0.85rem;">({{ item.source }})</span>
-                </li>
-                {% endfor %}
-            </ul>
+        <div class="media-grid">
+            <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 10px;">
+                <h4 style="color: #999; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;">Reconhecimento & Mídia</h4>
+            </div>
+            {% for item in media_mentions %}
+            <div class="media-card">
+                <span class="media-source">{{ item.source }}</span>
+                <a href="{{ item.url }}" target="_blank" class="media-link">{{ item.title }}</a>
+            </div>
+            {% endfor %}
         </div>
         {% endif %}
+
+        <!-- 4. ASSINATURA FINAL -->
+        <div style="margin-top: 60px; text-align: center;">
+            <img src="/imagens/logo.png" alt="ChefBrico" style="width: 80px; opacity: 0.8; margin-bottom: 10px;">
+            <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: var(--cor-institucional, #014039);">
+                Com carinho, Maria Conceição.
+            </p>
+        </div>
 
     </div>
 
