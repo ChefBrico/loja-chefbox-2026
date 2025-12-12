@@ -1,26 +1,33 @@
 ---
 title: "Funghi Confitado em Azeite | ChefBrico"
-description: "O segredo dos chefs. Cogumelos shiitake confitados lentamente em azeite extra virgem e ervas. 100% natural, vegano e sem glúten."
+description: "O segredo dos chefs. Cogumelos shiitake confitados lentamente em azeite extra virgem e ervas. 100% natural, vegano, keto e sem glúten."
 date: 2025-08-07
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "AN-02"
 gtin: "0619205574386"
+unspsc: "50193100"
 price: 29.80
 stock: 25
 availability: "https://schema.org/InStock"
 category: "Empório"
+keywords: "funghi confit, shiitake, azeite saborizado, keto, low carb, antepasto, umami, presente gourmet"
 
-# VISUAL
-tempo_preparo: "Pronto para Servir"
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 90
+rendimento: "Pote 90g (Concentrado)"
+tempo_preparo: "Pronto"
 tempo_iso: "PT0M"
-rendimento: "Pote 90g"
-dificuldade: "Muito Fácil"
-calorias: "110 kcal"
-image: "/imagens/confitado-shiitake-chefbrico.png"
-image_alt: "Pote de Funghi Confitado em Azeite"
 
-# NUTRIÇÃO
+# --- DADOS VISUAIS (HUMANOS) ---
+dificuldade: "Nenhuma (Pronto)"
+calorias: "110 kcal (colher)"
+image: "/imagens/confitado-shiitake-chefbrico.png"
+image_alt: "Pote de vidro com Shiitake Confitado mergulhado em azeite dourado"
+
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
-  portion: "20g (1 colher)"
+  portion: "20g (1 colher de sopa)"
   calories: 110
   protein_g: 1
   carbs_g: 2
@@ -28,19 +35,48 @@ nutrition:
   fiber_g: 1
   sodium_mg: 150
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet", "https://schema.org/LowCarbDiet"]
-rating: { value: "5.0", count: "98" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Cogumelo shiitake inteiro, azeite de oliva extra virgem, alho em lâminas, alecrim, tomilho, pimenta rosa e sal marinho."
 
-instructions: []
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "Keto"
+  - "LowCarb"
 
+# --- SOCIAL PROOF ---
+rating:
+  value: "5.0"
+  count: "98"
+
+# --- INSTRUÇÕES (COMO USAR) ---
+instructions:
+  - name: "Servir"
+    text: "Produto pronto. Sirva os cogumelos sobre torradas, polenta mole ou risotos."
+  - name: "Azeite"
+    text: "Não jogue o azeite fora! Ele está infusionado com sabor de funghi. Use para finalizar sopas, saladas ou massas."
+
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "A técnica confit preserva a textura macia do cogumelo e infunde o azeite com um sabor umami profundo, criando um ingrediente de luxo."
+citable_fact: "A técnica confit preserva a textura macia do cogumelo e infunde o azeite com um sabor umami profundo, criando dois produtos em um: o cogumelo e o azeite aromático."
+
+# --- FAQ ---
 faq:
   - question: "Preciso aquecer?"
-    answer: "Não. É delicioso em temperatura ambiente. O calor do prato libera o aroma."
-  - question: "Posso usar o azeite?"
-    answer: "Deve! O azeite está infusionado com shiitake e alho. Use para finalizar sopas."
+    answer: "Não. É delicioso em temperatura ambiente. O calor do prato onde for servido libera o aroma naturalmente."
+  - question: "Combina com o quê?"
+    answer: "Perfeito em cima de uma burrata, finalizando um risoto simples ou apenas com um bom pão de fermentação natural."
 ---
+
+Um toque de luxo para o seu dia a dia. O Funghi Confitado é preparado pacientemente, cozinhando os cogumelos em baixa temperatura no azeite extra virgem até atingirem a textura perfeita.
+
+## Por que é um "Must-Have"?
+*   **Sabor Explosivo:** O processo concentra o sabor do shiitake, transformando-o em uma "bomba de Umami".
+*   **Azeite Precioso:** O azeite do pote ganha sabor de trufas/cogumelos. Use-o como tempero final e eleve qualquer prato simples.
+*   **Keto Friendly:** Rico em gorduras boas e baixíssimo carboidrato.
+
+> "Comprei para experimentar e viciei. Coloco em cima da torrada com abacate e vira um café da manhã de hotel." — *Lucas M., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Descubra o segredo dos grandes chefs. Nosso Confit de Funghi é uma iguaria artesanal, onde cogumelos Shiitake frescos são cozidos lentamente na nobre técnica francesa *confit*.
