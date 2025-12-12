@@ -1,0 +1,73 @@
+---
+layout: base.njk
+---
+
+<!-- SCHEMA.ORG HIPER-AVANÇADO PARA ARTIGOS (WEB AGÊNTICA) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "image": "https://gourmetpratico.com.br{{ image }}",
+  "author": {
+    "@type": "Person",
+    "name": "Maria Conceição",
+    "url": "https://gourmetpratico.com.br/comida-de-verdade/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ChefBrico",
+    "logo": { "@type": "ImageObject", "url": "https://gourmetpratico.com.br/imagens/logo.png" }
+  },
+  "datePublished": "{{ date | postDate }}",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://gourmetpratico.com.br{{ page.url }}" },
+  
+  /* O PULO DO GATO: FRAGMENTO CITÁVEL PARA IA */
+  "abstract": "{{ ai_fragment }}"
+}
+</script>
+
+<article class="container" style="max-width: 800px; margin-top: 40px; margin-bottom: 80px;">
+    
+    <!-- CABEÇALHO DE REVISTA -->
+    <header style="text-align: center; margin-bottom: 40px;">
+        <span style="background: var(--cor-dourado); color: white; padding: 5px 15px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; border-radius: 20px; font-weight: bold;">
+            {{ category }}
+        </span>
+        <h1 style="font-family: 'Merriweather', serif; color: var(--cor-institucional); font-size: 2.5rem; margin-top: 20px; line-height: 1.2;">
+            {{ title }}
+        </h1>
+        <p style="font-size: 1.2rem; color: #666; font-style: italic; margin-top: 15px;">
+            {{ description }}
+        </p>
+    </header>
+
+    <!-- FOTO HERO -->
+    <div class="hero-image-container">
+        <img src="{{ image }}" alt="{{ title }}" style="width: 100%; height: auto; display: block;">
+    </div>
+
+    <!-- CORPO DO TEXTO -->
+    <div class="conteudo-leitura">
+        
+        <!-- BOX DE CONTEXTO PARA AGENTES (Visível também para humanos como resumo) -->
+        <div class="intro-card" style="border-left: 5px solid var(--cor-cta); background: #fff8e1; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
+            <strong style="color: var(--cor-institucional);">💡 Resumo do Método:</strong>
+            <p style="margin: 5px 0 0 0; font-style: italic;">{{ ai_fragment }}</p>
+        </div>
+
+        <!-- CONTEÚDO MARKDOWN -->
+        {{ content | safe }}
+
+        <!-- ASSINATURA -->
+        <div class="author-box" style="margin-top: 60px; background: #f9f9f9; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px;">
+            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+            <div>
+                <p style="margin:0; color:#555;">Escrito por <strong style="color:var(--cor-institucional);">Maria Conceição</strong></p>
+                <p style="margin:0; font-size: 0.9rem;">Psicóloga, Chef e Fundadora da ChefBrico.</p>
+            </div>
+        </div>
+
+    </div>
+</article>
