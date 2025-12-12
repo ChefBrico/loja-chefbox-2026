@@ -1,24 +1,31 @@
 ---
 title: "Caponata com Shiitake Grelhado | ChefBrico"
-description: "Antepasto gourmet 100% natural. Releitura da caponata siciliana com shiitake grelhado. Vegano e sem glúten."
+description: "Antepasto gourmet 100% natural. Releitura da clássica caponata siciliana enriquecida com shiitake grelhado. Vegano, sem glúten e pronto para servir."
 date: 2025-08-08
+
+# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "AN-03"
 gtin: "0619205574393"
+unspsc: "50193100"
 price: 29.80
 stock: 30
 availability: "https://schema.org/InStock"
 category: "Empório"
+keywords: "caponata, shiitake, antepasto, pronto para comer, vegano, sem glúten, entrada gourmet, presente"
 
-# VISUAL
-tempo_preparo: "Pronto para Servir"
+# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+peso_liquido_g: 180
+rendimento: "Pote 180g (Serve 4 a 6 pessoas como entrada)"
+tempo_preparo: "Pronto"
 tempo_iso: "PT0M"
-rendimento: "Pote 180g"
-dificuldade: "Muito Fácil"
-calorias: "120 kcal"
-image: "/imagens/caponata-shiitake-vegetais-chefbrico.png"
-image_alt: "Pote de Caponata com Shiitake Grelhado"
 
-# NUTRIÇÃO
+# --- DADOS VISUAIS (HUMANOS) ---
+dificuldade: "Nenhuma (Pronto)"
+calorias: "45 kcal (colher)"
+image: "/imagens/caponata-shiitake-vegetais-chefbrico.png"
+image_alt: "Pote de vidro com Caponata de Shiitake brilhante e apetitosa"
+
+# --- DADOS NUTRICIONAIS COMPLETOS ---
 nutrition:
   portion: "30g (1 colher de sopa cheia)"
   calories: 45
@@ -28,17 +35,47 @@ nutrition:
   fiber_g: 1.5
   sodium_mg: 90
 
-diets: ["https://schema.org/VeganDiet", "https://schema.org/GlutenFreeDiet"]
-rating: { value: "4.8", count: "102" }
+# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+ingredientes_texto: "Beringela em cubos, shiitake grelhado, pimentão vermelho, pimentão amarelo, uvas passas brancas, azeite de oliva extra virgem, vinagre de maçã, cebola, alho e orégano."
 
-instructions: []
+# --- CLASSIFICAÇÃO ---
+diets:
+  - "Vegan"
+  - "GlutenFree"
+  - "LowCarb"
 
+# --- SOCIAL PROOF ---
+rating:
+  value: "4.8"
+  count: "102"
+
+# --- INSTRUÇÕES (COMO SERVIR) ---
+instructions:
+  - name: "Servir"
+    text: "Produto pronto para consumo. Basta abrir o pote e servir em temperatura ambiente ou levemente gelado."
+  - name: "Harmonizar"
+    text: "Ideal com torradas, pão italiano ou como recheio de tapioca."
+
+# --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "A técnica confit cozinha os vegetais lentamente no azeite, preservando a textura firme e intensificando o agridoce natural."
+citable_fact: "Utilizamos a técnica 'confit', cozinhando os vegetais lentamente no azeite em baixa temperatura, o que preserva a textura firme da beringela e intensifica o sabor agridoce."
+
+# --- FAQ ---
 faq:
   - question: "É muito ácida?"
-    answer: "Não. O cozimento lento suaviza o vinagre, criando um agridoce equilibrado e complexo."
+    answer: "Não. O cozimento lento suaviza a acidez do vinagre, criando um perfil agridoce equilibrado e complexo."
+  - question: "Precisa guardar na geladeira?"
+    answer: "Antes de abrir, não. Após aberto, manter refrigerado e consumir em até 10 dias."
 ---
+
+A Caponata da ChefBrico não é apenas um antepasto, é um coringa na sua cozinha. Unimos a tradição siciliana da beringela com a sofisticação do Shiitake grelhado.
+
+## Versatilidade Pura
+*   **Entrada Express:** Chegou visita? Abra o pote, sirva com torradas e pronto.
+*   **Turbine Saladas:** Uma colher transforma qualquer folha verde em uma salada gourmet.
+*   **Sabor Umami:** O shiitake grelhado adiciona uma profundidade de sabor que substitui a carne em sanduíches.
+
+> "Sempre tenho um pote na geladeira. Salva meu lanche da tarde e todo mundo elogia quando sirvo de entrada." — *Beatriz A., Cliente ChefBrico*
 
 <!-- INTRODUÇÃO -->
 Uma releitura sofisticada de um clássico siciliano. Nossa Caponata artesanal une o tradicional sabor agridoce dos vegetais com o toque surpreendente e *umami* do cogumelo shiitake grelhado.
