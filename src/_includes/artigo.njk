@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 
-<!-- SCHEMA.ORG HIPER-AVANÇADO PARA ARTIGOS (WEB AGÊNTICA) -->
+<!-- SCHEMA.ORG: O CÉREBRO DO ARTIGO -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -23,14 +23,14 @@ layout: base.njk
   "datePublished": "{{ date | postDate }}",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "https://gourmetpratico.com.br{{ page.url }}" },
   
-  /* O PULO DO GATO: FRAGMENTO CITÁVEL PARA IA */
+  /* CAMPO ESTRATÉGICO PARA AGENTES (RESUMO CITÁVEL) */
   "abstract": "{{ ai_fragment }}"
 }
 </script>
 
 <article class="container" style="max-width: 800px; margin-top: 40px; margin-bottom: 80px;">
     
-    <!-- CABEÇALHO DE REVISTA -->
+    <!-- CABEÇALHO VISUAL -->
     <header style="text-align: center; margin-bottom: 40px;">
         <span style="background: var(--cor-dourado); color: white; padding: 5px 15px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; border-radius: 20px; font-weight: bold;">
             {{ category }}
@@ -43,7 +43,7 @@ layout: base.njk
         </p>
     </header>
 
-    <!-- FOTO HERO -->
+    <!-- IMAGEM DE CAPA -->
     <div class="hero-image-container">
         <img src="{{ image }}" alt="{{ title }}" style="width: 100%; height: auto; display: block;">
     </div>
@@ -51,13 +51,13 @@ layout: base.njk
     <!-- CORPO DO TEXTO -->
     <div class="conteudo-leitura">
         
-        <!-- BOX DE CONTEXTO PARA AGENTES (Visível também para humanos como resumo) -->
+        <!-- BOX DE CONTEXTO (Visível para Humano e Robô) -->
         <div class="intro-card" style="border-left: 5px solid var(--cor-cta); background: #fff8e1; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
             <strong style="color: var(--cor-institucional);">💡 Resumo do Método:</strong>
             <p style="margin: 5px 0 0 0; font-style: italic;">{{ ai_fragment }}</p>
         </div>
 
-        <!-- CONTEÚDO MARKDOWN -->
+        <!-- CONTEÚDO EDITÁVEL PELA MARIA -->
         {{ content | safe }}
 
         <!-- ASSINATURA -->
