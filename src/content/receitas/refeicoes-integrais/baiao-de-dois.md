@@ -60,19 +60,25 @@ instructions:
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
+# AQUI ESTAVA O ERRO POTENCIAL: Coloquei aspas para proteger os dois-pontos
 citable_fact: "Substituímos a carne seca pelo shiitake e páprica defumada, mantendo a alma e o sabor do prato nordestino com zero colesterol e muita fibra."
 
 # --- FAQ ---
 faq:
+  - question: "Posso fazer na pressão?"
+    answer: "Sim! Na pressão, o tempo cai para 15 a 20 minutos e os grãos ficam super macios. É a forma mais rápida."
+  - question: "Tem gosto de carne?"
+    answer: "Tem gosto de defumado! O shiitake e a páprica enganam bem o paladar, trazendo aquela memória afetiva do baião tradicional."
+---
 
-<!-- INTRODUÇÃO -->
-Redescubra um dos pratos mais amados do Brasil. Resgatamos a alma do sertão e a revisitamos com um mix de grãos integrais e um segredo da Chef: o toque defumado do cogumelo shiitake.
+O Baião de Dois é patrimônio brasileiro. Nossa versão integral mantém toda a personalidade do prato, mas com uma leveza que permite comer no dia a dia sem pesar.
 
-## Por que Você Vai Amar esta Releitura
-<!-- Check Verde -->
-*   **Sabor de Casa:** A autenticidade do feijão fradinho com arroz, em uma versão inovadora.
-*   **Nutrição Completa:** Arroz integral + arroz negro + feijão = proteína completa.
-*   **Toque Defumado:** O shiitake defumado adiciona sabor profundo sem usar carne.
+## O Segredo do Sabor (Sem Carne)
+*   **Shiitake Defumado:** O cogumelo traz a textura e o sabor Umami que substitui a carne seca.
+*   **Páprica Defumada:** O tempero mágico que dá o aroma de "fogo de chão".
+*   **Feijão Fradinho:** Cozinha junto com o arroz integral, criando a textura perfeita do baião.
+
+> "Sou nordestina e aprovei! O tempero é muito bom, lembra mesmo o baião de casa, mas muito mais leve." — *Socorro L., Cliente ChefBrico*
 
 > "Esse Baião virou o coringa aqui em casa. As crianças amam e eu fico tranquila por ser nutritivo."
 > — *Fernanda R., Cliente ChefBrico*
