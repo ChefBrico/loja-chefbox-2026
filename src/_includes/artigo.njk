@@ -2,7 +2,7 @@
 layout: base.njk
 ---
 
-<!-- SCHEMA.ORG HIPER-AVANÇADO (COM CITAÇÕES) -->
+<!-- SCHEMA.ORG (Mantido e Otimizado) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -13,11 +13,7 @@ layout: base.njk
   "author": {
     "@type": "Person",
     "name": "Maria Conceição",
-    "url": "https://gourmetpratico.com.br/comida-de-verdade/",
-    "sameAs": [
-        "https://www.instagram.com/chefbrico",
-        "https://www.facebook.com/chefbrico"
-    ]
+    "url": "https://gourmetpratico.com.br/comida-de-verdade/"
   },
   "publisher": {
     "@type": "Organization",
@@ -25,75 +21,205 @@ layout: base.njk
     "logo": { "@type": "ImageObject", "url": "https://gourmetpratico.com.br/imagens/logo.png" }
   },
   "datePublished": "{{ date | postDate }}",
-  "abstract": "{{ ai_fragment }}",
-  
-  /* AQUI ESTÁ A MÁGICA DO EEAT: CITAÇÕES EXTERNAS */
-  "citation": [
-    {% if media_mentions %}
-      {% for item in media_mentions %}
-        "{{ item.url }}"{% if not loop.last %},{% endif %}
-      {% endfor %}
-    {% endif %}
-  ]
+  "abstract": "{{ ai_fragment }}"
 }
 </script>
 
-<article class="container" style="max-width: 800px; margin-top: 40px; margin-bottom: 80px;">
+<!-- ESTILOS EXCLUSIVOS DE REVISTA (PREMIUM) -->
+<style>
+    /* 1. O CABEÇALHO HERO (Estilo Home) */
+    .magazine-hero {
+        background-color: #fdfbf7; /* Fundo Creme Suave */
+        border-bottom: 1px solid #e0e0e0;
+        padding: 60px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
     
-    <header style="text-align: center; margin-bottom: 40px;">
-        <span style="background: var(--cor-dourado); color: white; padding: 5px 15px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; border-radius: 20px; font-weight: bold;">
-            {{ category }}
-        </span>
-        <h1 style="font-family: 'Merriweather', serif; color: var(--cor-institucional); font-size: 2.5rem; margin-top: 20px; line-height: 1.2;">
-            {{ title }}
-        </h1>
-        <p style="font-size: 1.2rem; color: #666; font-style: italic; margin-top: 15px;">
-            {{ description }}
-        </p>
+    .hero-content-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap; /* Para mobile */
+    }
+
+    /* A Imagem no Círculo (Blindada para não estourar) */
+    .hero-circle-frame {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        border: 6px solid white;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        overflow: hidden;
+        flex-shrink: 0; /* Não deixa esmagar */
+        position: relative;
+    }
+    .hero-circle-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* O Texto do Cabeçalho */
+    .hero-text-block {
+        flex: 1;
+        text-align: left;
+        min-width: 300px;
+    }
+    
+    .hero-category {
+        background-color: var(--cor-dourado, #bfb084);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+
+    .hero-title {
+        font-family: 'Merriweather', serif;
+        color: var(--cor-institucional, #014039);
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin: 0 0 15px 0;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+        color: #555;
+        font-style: italic;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* 2. O CORPO DO ARTIGO (Estilo Card Flutuante) */
+    .magazine-body {
+        max-width: 800px; /* Largura de leitura confortável */
+        margin: -40px auto 80px; /* Sobe um pouco sobre o hero */
+        background: white;
+        padding: 50px;
+        border-radius: 12px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        position: relative;
+        z-index: 10;
+        border: 1px solid #eee;
+    }
+
+    /* Tipografia de Revista */
+    .pro-text {
+        font-family: 'Lato', sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #333;
+    }
+
+    .pro-text h2 {
+        font-family: 'Merriweather', serif;
+        color: var(--cor-institucional, #014039);
+        font-size: 1.8rem;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 10px;
+    }
+
+    .pro-text h3 {
+        color: var(--cor-cta, #F2811D);
+        font-size: 1.4rem;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    .pro-text p { margin-bottom: 25px; }
+
+    /* Destaque para IA (Fragmento) */
+    .ai-highlight-box {
+        background-color: #fdfbf7;
+        border-left: 5px solid var(--cor-institucional, #014039);
+        padding: 25px;
+        margin-bottom: 40px;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        color: #555;
+    }
+
+    /* Ajustes Mobile */
+    @media (max-width: 768px) {
+        .hero-content-wrapper { flex-direction: column; text-align: center; gap: 20px; }
+        .hero-text-block { text-align: center; }
+        .hero-circle-frame { width: 180px; height: 180px; }
+        .magazine-body { margin-top: 0; border-radius: 0; padding: 30px 20px; box-shadow: none; border: none; border-top: 1px solid #eee; }
+        .hero-title { font-size: 2rem; }
+    }
+</style>
+
+<!-- ESTRUTURA HTML -->
+<article>
+    
+    <!-- 1. HERO SECTION (Círculo + Texto) -->
+    <header class="magazine-hero">
+        <div class="hero-content-wrapper">
+            <!-- Imagem no Círculo (Blindada) -->
+            <div class="hero-circle-frame">
+                <img src="{{ image }}" alt="{{ title }}">
+            </div>
+            
+            <!-- Texto ao Lado -->
+            <div class="hero-text-block">
+                <span class="hero-category">{{ category }}</span>
+                <h1 class="hero-title">{{ title }}</h1>
+                <p class="hero-subtitle">{{ description }}</p>
+            </div>
+        </div>
     </header>
 
-    <div class="hero-image-container">
-        <img src="{{ image }}" alt="{{ title }}" style="width: 100%; height: auto; display: block;">
-    </div>
-
-    <div class="conteudo-leitura">
+    <!-- 2. CORPO DO ARTIGO (Card Branco) -->
+    <div class="magazine-body">
         
-        <div class="intro-card" style="border-left: 5px solid var(--cor-cta); background: #fff8e1; padding: 20px; margin-bottom: 30px; border-radius: 8px;">
-            <strong style="color: var(--cor-institucional);">💡 Resumo:</strong>
-            <p style="margin: 5px 0 0 0; font-style: italic;">{{ ai_fragment }}</p>
+        <!-- Resumo Técnico (Visível e Elegante) -->
+        <div class="ai-highlight-box">
+            <strong style="display:block; margin-bottom:5px; color:var(--cor-institucional, #014039); text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;">Resumo do Método</strong>
+            {{ ai_fragment }}
         </div>
 
-        {{ content | safe }}
+        <!-- Conteúdo Markdown -->
+        <div class="pro-text">
+            {{ content | safe }}
+        </div>
 
-        <!-- SEÇÃO DE MÍDIA E RECONHECIMENTO (VISUAL) -->
+        <!-- 3. ASSINATURA (EEAT) -->
+        <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid #eee; display: flex; align-items: center; gap: 20px;">
+            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
+            <div>
+                <p style="margin:0; font-family: 'Merriweather', serif; font-weight: bold; color: var(--cor-institucional, #014039);">Maria Conceição</p>
+                <p style="margin:0; font-size: 0.9rem; color: #666;">Fundadora da ChefBrico • Psicóloga • Chef de Criação</p>
+            </div>
+        </div>
+
+        <!-- Seção de Mídia (Se houver) -->
         {% if media_mentions %}
-        <div style="margin-top: 50px; padding: 30px; background: #fff; border: 1px solid #eee; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-            <h3 style="color: var(--cor-institucional); border-bottom: 2px solid var(--cor-dourado); padding-bottom: 10px; margin-bottom: 20px;">
-                Reconhecimento na Mídia
-            </h3>
-            <ul style="list-style: none; padding: 0;">
+        <div style="margin-top: 40px; background: #fafafa; padding: 25px; border-radius: 8px;">
+            <h4 style="margin-top:0; color: #555;">Reconhecimento na Mídia</h4>
+            <ul style="margin:0; padding-left: 20px;">
                 {% for item in media_mentions %}
-                <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
-                    <span style="color: var(--cor-cta);">★</span>
-                    <div>
-                        <strong style="display:block; color: #333;">{{ item.source }}</strong>
-                        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" style="color: var(--cor-institucional); text-decoration: underline; font-size: 0.95rem;">
-                            {{ item.title }}
-                        </a>
-                    </div>
+                <li style="margin-bottom: 8px;">
+                    <a href="{{ item.url }}" target="_blank" style="color: var(--cor-cta, #F2811D); text-decoration: underline;">{{ item.title }}</a> 
+                    <span style="color:#999; font-size:0.85rem;">({{ item.source }})</span>
                 </li>
                 {% endfor %}
             </ul>
         </div>
         {% endif %}
 
-        <div class="author-box" style="margin-top: 60px; background: #f9f9f9; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px;">
-            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
-            <div>
-                <p style="margin:0; color:#555;">Escrito por <strong style="color:var(--cor-institucional);">Maria Conceição</strong></p>
-                <p style="margin:0; font-size: 0.9rem;">Psicóloga, Chef e Fundadora da ChefBrico.</p>
-            </div>
-        </div>
-
     </div>
+
 </article>
