@@ -655,3 +655,48 @@ main {
         flex-direction: column !important;
     }
 }
+/* ==========================================================================
+   PADRONIZAÇÃO VISUAL: AVATAR DA CHEF (MARIA CONCEIÇÃO)
+   ========================================================================== */
+
+/* 1. Versão GIGANTE (Para Hero da Home e Comida de Verdade) */
+.avatar-hero-circle {
+    width: 280px; /* Aumentado para dar destaque */
+    height: 280px;
+    border-radius: 50%;
+    border: 8px solid #fff; /* Moldura branca grossa */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Sombra elegante */
+    overflow: hidden; /* Garante que a foto não vaze */
+    margin: 0 auto;
+    flex-shrink: 0; /* Impede que o círculo amasse no mobile */
+    position: relative;
+    z-index: 10;
+}
+
+.avatar-hero-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* A foto preenche o círculo sem distorcer */
+    object-position: center top; /* Foca no rosto */
+}
+
+/* 2. Versão MÉDIA (Para Assinatura no final das Receitas) */
+.avatar-signature-circle {
+    width: 100px; /* Tamanho bom para rodapé */
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+/* --- AJUSTE MOBILE (Responsividade Automática) --- */
+@media (max-width: 768px) {
+    .avatar-hero-circle {
+        width: 200px; /* Um pouco menor no celular para caber na tela */
+        height: 200px;
+        border-width: 5px;
+    }
+}
