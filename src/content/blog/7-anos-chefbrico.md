@@ -1,6 +1,7 @@
 ---
 layout: artigo.njk
 title: "7 Anos de ChefBrico: Das Raízes aos Frutos"
+order: 2 
 description: "Celebramos 7 anos de uma jornada que começou com cogumelos frescos e floresceu na metodologia Gourmet Prático."
 date: 2025-09-20
 image: "/imagens/trajetoria-maria-conceicao-cogumelos-frescos.png"
