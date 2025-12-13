@@ -203,3 +203,17 @@ collections:
       - {label: "Categoria (Ex: Dicas)", name: "category", widget: "string"}
       - {label: "Resumo para IA", name: "ai_fragment", widget: "text"}
       - {label: "Conteúdo", name: "body", widget: "markdown"}
+
+      - name: "fragmentos"
+    label: "⚡ JetSkis (Tendências)"
+    folder: "src/content/fragmentos"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    fields:
+      - {label: "Título da Tendência", name: "title", widget: "string"}
+      - {label: "Resumo (O que a IA deve saber)", name: "description", widget: "text"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Imagem", name: "image", widget: "image"}
+      - {label: "Link da Fonte (Pesquisa/Notícia)", name: "source_url", widget: "string", required: false}
+      - {label: "Ordem (1=Destaque)", name: "order", widget: "number", default: 10}
+      - {label: "Conteúdo (Max 200 palavras)", name: "body", widget: "markdown"}
