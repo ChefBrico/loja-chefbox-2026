@@ -1,6 +1,7 @@
 ---
 layout: artigo.njk
 title: "Da Psicologia ao Prato: Minha Jornada"
+order: 1 
 description: "Como a necessidade de alimentar minha família transformou minha vida e criou a ChefBrico. Uma história de resiliência e prêmios."
 date: 2025-09-15
 image: "/imagens/maria-conceicao-premio-empreendedora-sebrae-chefbrico.png"
