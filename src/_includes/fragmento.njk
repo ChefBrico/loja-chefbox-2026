@@ -2,115 +2,204 @@
 layout: base.njk
 ---
 
-<!-- 1. O SCHEMA QAPage (O "Petisco" para a IA) -->
+<!-- ========================================================================== -->
+<!-- 1. SCHEMA.ORG: NEWS ARTICLE (O "JetSki" para o Google Discover)            -->
+<!-- ========================================================================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "QAPage",
-  "mainEntity": {
-    "@type": "Question",
-    "name": "{{ title }}",
-    "text": "{{ title }}",
-    "answerCount": 1,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "{{ fragmento_texto }}",
-      "author": {
-        "@type": "Person",
-        "name": "{{ author_name }}"
-      },
-      "url": "{{ meta.url }}{{ page.url }}"
+  "@type": "NewsArticle",
+  "headline": "{{ title }}",
+  "image": [
+    "https://gourmetpratico.com.br{{ image }}"
+  ],
+  "datePublished": "{{ date | postDate }}",
+  "dateModified": "{{ date | postDate }}",
+  "author": {
+    "@type": "Person",
+    "name": "Maria Conceição",
+    "url": "https://gourmetpratico.com.br/comida-de-verdade/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ChefBrico",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gourmetpratico.com.br/imagens/logo.png"
     }
+  },
+  "description": "{{ description }}",
+  
+  /* DADOS PARA AGENTES DE VOZ E IA */
+  "dateline": "Brasília",
+  "about": { "@type": "Thing", "name": "Nutrição Funcional" },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".fragment-summary"]
   }
 }
 </script>
 
 <style>
-    /* Design de "Cartão de Definição" (Dicionário) */
+    /* Design de "Flash News" (Tendência) */
     .fragmento-container {
         max-width: 700px;
-        margin: 60px auto;
-        padding: 20px;
+        margin: 40px auto 80px;
+        padding: 0 20px;
     }
     
-    .fragmento-card {
-        background: #fff;
-        border-left: 6px solid #d4af37; /* Dourado */
-        padding: 40px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        border-radius: 8px;
+    /* Cabeçalho Jornalístico */
+    .fragmento-header {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
     }
 
-    .fragmento-question {
-        font-family: 'Playfair Display', serif;
+    .trend-badge {
+        background: #e0f2f1;
+        color: var(--cor-institucional, #014039);
+        padding: 5px 12px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+
+    .fragmento-title {
+        font-family: 'Merriweather', serif;
         color: #2c3e50;
-        font-size: 2rem;
+        font-size: 2.2rem;
         margin-top: 0;
         line-height: 1.2;
     }
 
-    .fragmento-answer {
-        font-size: 1.3rem;
-        color: #444;
-        line-height: 1.6;
-        margin: 20px 0;
-    }
-
     .fragmento-meta {
+        color: #999;
+        font-size: 0.9rem;
+        margin-top: 10px;
         display: flex;
         align-items: center;
-        gap: 15px;
-        margin-top: 30px;
-        border-top: 1px solid #eee;
-        padding-top: 20px;
+        gap: 10px;
     }
 
-    .author-avatar {
-        width: 60px; height: 60px;
-        border-radius: 50%;
-        object-fit: cover;
+    /* Corpo do Texto */
+    .fragmento-body {
+        font-size: 1.1rem;
+        color: #444;
+        line-height: 1.8;
     }
 
-    .cta-box {
-        margin-top: 40px;
-        text-align: center;
-        background: #fdf6e3;
-        padding: 20px;
+    /* O Resumo para Voz (Speakable) */
+    .fragmento-summary {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--cor-institucional, #014039);
+        margin-bottom: 30px;
+        line-height: 1.5;
+        border-left: 4px solid var(--cor-cta, #F2811D);
+        padding-left: 20px;
+    }
+
+    /* Imagem */
+    .fragmento-img {
+        width: 100%;
+        height: auto;
         border-radius: 8px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    /* Box de Fonte Científica (EEAT) */
+    .source-box {
+        margin-top: 40px;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        border: 1px solid #eee;
+    }
+
+    /* CTA Final */
+    .cta-box {
+        margin-top: 50px;
+        text-align: center;
+        padding: 30px;
+        background: #fdfbf7;
+        border-radius: 12px;
+        border: 1px dashed var(--cor-dourado, #bfb084);
     }
     
-    .cta-link {
-        color: #27ae60;
-        font-weight: bold;
+    .btn-pill {
+        display: inline-block;
+        background: var(--cor-institucional, #014039);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 50px;
         text-decoration: none;
-        font-size: 1.1rem;
+        font-weight: bold;
+        transition: 0.2s;
     }
-    .cta-link:hover { text-decoration: underline; }
+    .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 </style>
 
-<main class="fragmento-container">
-    <article class="fragmento-card">
-        <!-- A Pergunta -->
-        <h1 class="fragmento-question">{{ title }}</h1>
-        
-        <!-- A Resposta Oficial (Fragmento) -->
-        <div class="fragmento-answer">
-            {{ fragmento_texto }}
-        </div>
-
-        <!-- Autoridade -->
+<article class="fragmento-container">
+    
+    <!-- 1. CABEÇALHO -->
+    <header class="fragmento-header">
+        <span class="trend-badge">Tendência da Semana</span>
+        <h1 class="fragmento-title">{{ title }}</h1>
         <div class="fragmento-meta">
-            <img src="{{ author_avatar }}" alt="{{ author_name }}" class="author-avatar">
-            <div>
-                <strong>Resposta verificada por {{ author_name }}</strong><br>
-                <span style="font-size:0.9rem; color:#777;">{{ author_title }}</span>
-            </div>
+            <span>📅 {{ date | postDate }}</span>
+            <span>•</span>
+            <span>⏱️ Leitura de 2 min</span>
         </div>
-    </article>
+    </header>
 
-    <!-- O Funil (Leva para o artigo completo) -->
-    <div class="cta-box">
-        <p>{{ sale_signature }}</p>
-        <a href="{{ cta_link }}" class="cta-link">{{ cta_texto }} ➜</a>
+    <!-- 2. CONTEÚDO -->
+    <div class="fragmento-body">
+        
+        <!-- Resumo para IA/Voz (O que a Alexa vai ler) -->
+        <div class="fragmento-summary">
+            {{ description }}
+        </div>
+
+        <!-- Imagem Ilustrativa -->
+        {% if image %}
+        <img src="{{ image }}" alt="{{ title }}" class="fragmento-img">
+        {% endif %}
+
+        <!-- Texto Markdown -->
+        {{ content | safe }}
+
+        <!-- 3. FONTE CIENTÍFICA (EEAT) -->
+        {% if source_url %}
+        <div class="source-box">
+            <strong>🔬 Fonte da Pesquisa:</strong> 
+            <a href="{{ source_url }}" target="_blank" rel="nofollow" style="color: var(--cor-cta, #F2811D); text-decoration: underline;">
+                Ler estudo original / Referência
+            </a>
+        </div>
+        {% endif %}
+
     </div>
-</main>
+
+    <!-- 4. ASSINATURA SIMPLIFICADA -->
+    <div style="margin-top: 40px; display: flex; align-items: center; gap: 15px;">
+        <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+        <div style="font-size: 0.9rem; color: #666;">
+            Curadoria por <strong>Maria Conceição</strong><br>
+            ChefBrico Research Team
+        </div>
+    </div>
+
+    <!-- 5. CTA (CONVERSÃO) -->
+    <div class="cta-box">
+        <h3 style="margin-top:0; color: var(--cor-institucional, #014039);">Gostou da dica?</h3>
+        <p style="margin-bottom: 20px;">Veja como aplicamos essa ciência em nossos produtos.</p>
+        <a href="/receitas/" class="btn-pill">Ver Produtos Relacionados ➜</a>
+    </div>
+
+</article>
