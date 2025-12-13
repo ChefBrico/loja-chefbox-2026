@@ -253,8 +253,12 @@ layout: base.njk
         </div>
         {% endif %}
 
-        <div class="author-box">
-            <img src="/imagens/maria-conceicao-empreendedora-feira-tematica.png" alt="{{ author_name }}" class="author-img">
+       <div class="author-box" style="margin-top: 60px; background: #f9f9f9; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px;">
+            
+            <!-- AQUI ESTÁ A MUDANÇA: Classe Média -->
+            <img src="/imagens/maria-conceicao-empreendedora-feira-tematica.png" 
+                 alt="{{ author_name }}" 
+                 class="avatar-signature-circle">
             <div class="author-info">
                 <p style="margin:0; color:#555;">
                     <strong style="color:var(--cor-institucional, #014039);">{{ author_name }}</strong><br>
