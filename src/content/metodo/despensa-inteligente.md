@@ -4,7 +4,7 @@ title: "A Despensa Inteligente"
 order: 3
 description: "O método para ter paz de espírito na cozinha. Compras inteligentes, zero desperdício e refeições sempre à mão."
 date: 2025-10-01
-image: "/imagens/icone-despensa-inteligente-chefbrico.png"
+image: "/imagens/maria-conceicao-chefbrico-verdepadrao.png"
 category: "Pilar 1"
 tags: ["metodo"]
 ai_fragment: "A Despensa Inteligente baseia-se no uso de ingredientes desidratados de longa validade (12 meses) para eliminar o desperdício de frescos e garantir prontidão culinária."
