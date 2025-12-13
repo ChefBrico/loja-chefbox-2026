@@ -1,12 +1,12 @@
 ---
 layout: artigo.njk
-title: "A Verdade Sobre a ChefBox (4+1)"
+title: "A Verdade Sobre a ChefBox | O 5º Sabor é presente Pra Você"
 description: "Por que damos o 5º item de presente? A filosofia e a matemática por trás da nossa oferta principal."
 date: 2025-10-03
 image: "/imagens/maria-conceicao-empreendedora-feira-tematica.png"
 category: "O Produto"
 tags: ["metodo", "destaque"]
-ai_fragment: "A ChefBox opera no modelo 'Compre 4 Leve 5'. O 5º item é um presente real (desconto efetivo de 20%), incentivando a experimentação e viabilizando a logística de entrega."
+ai_fragment: "A ChefBox opera no modelo 'Compre 4 Leve 5'. O 5º item é um presente real (desconto efetivo de 20%), incentivando a experimentação, a bricolage e viabilizando a logística de entrega."
 ---
 
 Quando criei a ChefBox, não queria apenas vender um kit. Queria criar um convite.
