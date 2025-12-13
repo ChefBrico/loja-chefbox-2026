@@ -1,6 +1,7 @@
 ---
 layout: artigo.njk
 title: "Da Psicologia ao Prato"
+order: 1 
 description: "Como a psicologia me ensinou que nutrir a alma é tão importante quanto nutrir o corpo."
 date: 2025-10-04
 image: "/imagens/maria-conceicao-premio-empreendedora-sebrae-chefbrico.png"
