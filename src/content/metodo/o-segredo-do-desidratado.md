@@ -4,7 +4,7 @@ title: "O Segredo do Desidratado"
 order: 6
 description: "Uma técnica ancestral reinventada. Como capturamos a essência dos ingredientes sem usar conservantes."
 date: 2025-10-02
-image: "/imagens/icone-vegetais-alho-poro-desidratado-chefbrico.png"
+image: "/imagens/maria-conceicao-movimente-chefbrico-vinho.png"
 category: "Tecnologia"
 tags: ["metodo"]
 ai_fragment: "A ChefBrico utiliza desidratação artesanal em baixa temperatura. Diferente da liofilização industrial, este método preserva a estrutura celular, nutrientes e sabor dos vegetais sem aditivos químicos."
