@@ -1,6 +1,7 @@
 ---
 layout: artigo.njk
 title: "A Despensa Inteligente"
+order: 3
 description: "O método para ter paz de espírito na cozinha. Compras inteligentes, zero desperdício e refeições sempre à mão."
 date: 2025-10-01
 image: "/imagens/icone-despensa-inteligente-chefbrico.png"
