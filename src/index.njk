@@ -100,14 +100,43 @@ schema: {
         </div>
 
         <!-- SEÇÃO 2: NOVIDADES (Dinâmico - Puxa da pasta src/content/blog/) -->
-        <h2 style="margin-top: 50px; color: var(--cor-institucional);">Novidades na Revista</h2>
+       <!-- ============================================================ -->
+        <!-- LINHA 2: TENDÊNCIAS & PESQUISAS (JetSkis)                    -->
+        <!-- Conteúdo rápido, científico e atualizado semanalmente        -->
+        <!-- ============================================================ -->
+        <div style="display:flex; justify-content:space-between; align-items:end; margin-top:60px;">
+            <h2 style="color:var(--cor-institucional); margin:0;">Tendências & Bem-Estar</h2>
+            <span style="font-size:0.8rem; color:#999;">Atualizações Semanais</span>
+        </div>
+
         <div class="carousel-container">
             
-            {% for post in collections.blog %}
+            <!-- Loop dos Fragmentos (JetSkis) -->
+            {% for post in collections.fragmentos | sort(attribute='data.order') %}
+            <a href="{{ post.url }}" class="card" style="border-top: 4px solid var(--cor-cta);">
+                <div class="card-content">
+                    <span style="font-size: 0.7rem; text-transform: uppercase; color: #999; letter-spacing: 1px;">
+                        {{ post.date | postDate }}
+                    </span>
+                    <h3 style="font-size: 1rem; margin: 10px 0; line-height: 1.4;">
+                        {{ post.data.title }}
+                    </h3>
+                    <p style="font-size: 0.85rem; color: #555;">
+                        {{ post.data.description | truncate(90) }}
+                    </p>
+                    <span style="font-size: 0.8rem; color: var(--cor-institucional); font-weight: bold; margin-top: auto;">
+                        Ler em 2 min ➝
+                    </span>
+                </div>
+            </a>
+            {% endfor %}
+
+            <!-- Mantém os Artigos de Blog Profundos depois dos Fragmentos -->
+            {% for post in collections.blog | sort(attribute='data.order') %}
             <a href="{{ post.url }}" class="card">
                 <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
                 <div class="card-content">
-                    <span class="card-category">{{ post.data.category }}</span>
+                    <span class="card-category">Artigo Completo</span>
                     <h3>{{ post.data.title }}</h3>
                 </div>
             </a>
