@@ -1,6 +1,7 @@
 ---
 layout: artigo.njk
 title: "Cozinha Criativa"
+order: 5
 description: "A filosofia de liberdade. Damos a base perfeita, mas a mágica final é toda sua."
 date: 2025-10-03
 image: "/imagens/icone-maozinha-na-rotina-chefbrico.png"
