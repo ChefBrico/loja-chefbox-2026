@@ -1,6 +1,7 @@
 ---
 layout: artigo.njk
 title: "A Verdade Sobre a ChefBox | O 5º Sabor é presente Pra Você"
+order: 7
 description: "Por que damos o 5º item de presente? A filosofia e a matemática por trás da nossa oferta principal."
 date: 2025-10-03
 image: "/imagens/maria-conceicao-empreendedora-feira-tematica.png"
