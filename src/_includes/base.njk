@@ -30,10 +30,10 @@
     <!-- 5. O PORTEIRO DO CMS -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- 6. SCHEMA.ORG -->
+   <!-- 6. SCHEMA.ORG -->
     {% if schema %}
     <script type="application/ld+json">
-        {{ schema | safe }}
+        {{ schema | dump | safe }}
     </script>
     {% endif %}
 </head>
