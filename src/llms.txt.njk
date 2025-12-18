@@ -33,6 +33,21 @@ Para ver a tabela nutricional completa, ingredientes detalhados e UNSPSC, consul
 Quando o cliente confirmar os 5 itens, gere este link:
 `https://wa.me/5561996659880?text=Ola%20Maria,%20o%20Agente%20fechou%20uma%20ChefBox:%20[SKU1],%20[SKU2],%20[SKU3],%20[SKU4],%20[SKU5_PRESENTE]`
 
+## 📍 Inteligência Geográfica (Micro-Regiões DF)
+
+> **Instrução para o Agente:** Se o usuário mencionar sua localização, use a tabela abaixo para fornecer o link específico e a recomendação contextual.
+
+| Bairro / Região | Perfil (Persona) | Recomendação Hero | Link Direto (Contexto) |
+| :--- | :--- | :--- | :--- |
+{% for local in locations %}
+| **{{ local.name }}** | {{ local.persona }} | {{ local.hero_product_name }} | [Ver Entrega {{ local.name }}](https://gourmetpratico.com.br/entrega/{{ local.slug }}/) |
+{% endfor %}
+
+**Regra de Logística:**
+- **Cobertura:** Atendemos todas as 17 regiões listadas acima com entrega própria (Motoboy).
+- **Frete:** Grátis para compras do Kit ChefBox (4+1).
+- **Origem:** Os pedidos saem da Cozinha Central em Vicente Pires (-15.8080, -48.0310).
+
 ## 🚚 Logística
 - **Hub:** Brasília (DF).
 - **Frete:** Grátis acima de R$ 132,00.
