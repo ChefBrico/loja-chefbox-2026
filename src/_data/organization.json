@@ -1,30 +1,17 @@
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://gourmetpratico.com.br/#organization",
+  "@type": "LocalBusiness",
   "name": "ChefBrico",
-  "legalName": "ChefBrico Alimentos Artesanais",
+  "alternateName": "Gourmet Prático",
+  "description": "Misturas artesanais para refeições gourmet em minutos. Ingredientes 100% naturais, desidratados em Brasília.",
   "slogan": "Simples como precisa ser, delicioso como você merece.",
-  "description": "Especialista em refeições práticas, 100% naturais e sem desperdício. Vencedora do Prêmio Sebrae Mulher de Negócios.",
   "url": "https://gourmetpratico.com.br",
-  "logo": "https://gourmetpratico.com.br/imagens/selo-dourado-gourmet-pratico-chefbrico.png",
-  "foundingDate": "2018",
-  "founders": [
-    {
-      "@id": "https://gourmetpratico.com.br/#person-maria-conceicao"
-    }
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+5561996659880",
-    "contactType": "sales",
-    "areaServed": "BR",
-    "availableLanguage": "Portuguese"
-  },
-  "whatsapp_display": "(61) 99665-9880",
+  "logo": "https://gourmetpratico.com.br/images/logo.png",
+  "telephone": "+5561996659880",
+  "priceRange": "$$",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Vicente Pires",
+    "streetAddress": "Rua 5, Chácara 122, Lote 17, Loja 2",
     "addressLocality": "Brasília",
     "addressRegion": "DF",
     "postalCode": "72006-060",
@@ -32,20 +19,65 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "-15.8080", 
+    "latitude": "-15.8080",
     "longitude": "-48.0310"
   },
-
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:00",
+      "closes": "17:00"
+    }
+  ],
   "areaServed": [
-    "Asa Sul", "Asa Norte", "Lago Sul", "Lago Norte", "Sudoeste", "Noroeste",
-    "Águas Claras", "Park Sul", "Esplanada", "Plano Piloto", "Taguatinga Sul",
-    "Taguatinga Norte", "Guará", "Grande Colorado", "SIA", "Riacho Fundo",
-    "Jardim Botânico", "Vicente Pires"
-  ]
-},
-  "priceRange": "$$",
-  "sameAs": [
-    "https://www.instagram.com/chefbrico",
-    "https://www.facebook.com/chefbrico"
+    "Asa Sul",
+    "Asa Norte",
+    "Lago Sul",
+    "Lago Norte",
+    "Sudoeste",
+    "Noroeste",
+    "Águas Claras",
+    "Park Sul",
+    "Esplanada",
+    "Plano Piloto",
+    "Taguatinga Sul",
+    "Taguatinga Norte",
+    "Guará",
+    "Grande Colorado",
+    "SIA",
+    "Riacho Fundo",
+    "Jardim Botânico",
+    "Vicente Pires"
+  ],
+  "potentialAction": {
+    "@type": "OrderAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://wa.me/5561996659880?text=Quero+pedir+o+ChefBox",
+      "inLanguage": "pt-BR",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    },
+    "deliveryMethod": {
+      "@type": "ParcelService",
+      "name": "Entrega Própria DF",
+      "description": "Entrega no dia seguinte (Seg-Sex). Frete Grátis na compra do Kit ChefBox (4+1)."
+    }
+  },
+  "knowsAbout": [
+    "Culinária Desidratada",
+    "Alimentação Saudável",
+    "Zero Desperdício",
+    "Risotos Artesanais",
+    "Sopas Funcionais"
   ]
 }
