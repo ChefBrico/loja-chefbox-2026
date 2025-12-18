@@ -5,7 +5,9 @@ title: "Onde Encontrar ChefBrico: Mapa, Lojas e Entregas no DF"
 description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Piloto, Lago Sul, Águas Claras e nossa agenda de feiras semanais."
 ---
 
-<!-- 1. O SUPER MAPA PARA ROBÔS (GEO + EVENTOS + ENTREGA) -->
+<!-- ========================================================================== -->
+<!-- 1. CÉREBRO DIGITAL (SCHEMA.ORG DE LOGÍSTICA AVANÇADA)                      -->
+<!-- ========================================================================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -27,15 +29,28 @@ description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Pilot
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -15.812345, 
-        "longitude": -48.023456
+        "latitude": -15.8080, 
+        "longitude": -48.0310
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "18:00"
+        "opens": "08:00",
+        "closes": "17:00"
       },
+      "areaServed": [
+        {% for local in locations %}
+        {
+            "@type": "Place",
+            "name": "{{ local.name }}",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "{{ local.geo.latitude }}",
+                "longitude": "{{ local.geo.longitude }}"
+            }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Serviços de Entrega",
@@ -50,34 +65,9 @@ description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Pilot
               "@type": "Place",
               "name": "Distrito Federal"
             }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Envio para Todo o Brasil (Correios)"
-            }
           }
         ]
       }
-    },
-    {
-      "@type": "Event",
-      "name": "Feira Rural no Hemocentro",
-      "startDate": "2025-01-01T09:00",
-      "endDate": "2025-12-31T15:00",
-      "eventSchedule": {
-        "@type": "Schedule",
-        "byDay": "https://schema.org/Wednesday",
-        "startTime": "09:00",
-        "endTime": "15:00"
-      },
-      "location": {
-        "@type": "Place",
-        "name": "Hemocentro de Brasília",
-        "address": "SMHN Quadra 3, Asa Norte"
-      },
-      "organizer": { "@id": "https://gourmetpratico.com.br/#local" }
     }
   ]
 }
@@ -86,21 +76,22 @@ description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Pilot
 {% block head %}
 <style>
     /* Estilos do Mapa e Navegação */
-    .page-header-local h1 { color: #5a3a30; font-family: 'Playfair Display', serif; }
-    .phase-title { color: #014039; font-weight: bold; text-transform: uppercase; margin-top: 40px; border-bottom: 2px solid #ddd; display: inline-block; }
+    .page-header-local h1 { color: #5a3a30; font-family: 'Playfair Display', serif; margin-bottom: 10px; }
+    .phase-title { color: #014039; font-weight: bold; text-transform: uppercase; margin-top: 40px; border-bottom: 2px solid #ddd; display: inline-block; margin-bottom: 15px; }
     
-    .region-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+    .region-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; justify-content: center; }
     .region-tag {
         background: #fff;
         border: 1px solid #ccc;
-        padding: 8px 15px;
+        padding: 10px 20px;
         border-radius: 20px;
         color: #555;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         text-decoration: none;
         transition: 0.2s;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-    .region-tag:hover { background: #27ae60; color: white; border-color: #27ae60; }
+    .region-tag:hover { background: #27ae60; color: white; border-color: #27ae60; transform: translateY(-2px); }
 
     /* Estilos da Agenda */
     .feira-card {
@@ -112,6 +103,7 @@ description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Pilot
         display: flex;
         align-items: center;
         gap: 20px;
+        border-radius: 8px;
     }
     .feira-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
     
@@ -132,8 +124,14 @@ description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Pilot
         align-items: center;
         gap: 10px;
         font-size: 1rem;
+        transition: transform 0.2s;
     }
     .float-delivery-btn:hover { transform: translateY(-3px); }
+
+    @media (max-width: 600px) {
+        .feira-card { flex-direction: column; text-align: center; }
+        .region-tag { width: 100%; text-align: center; }
+    }
 </style>
 {% endblock %}
 
@@ -150,98 +148,102 @@ description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Pilot
     </div>
 
     <!-- 2. PEDIDO ONLINE (DESTAQUE A-COMMERCE) -->
-    <div style="background: #fdf6e3; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 40px; border: 1px dashed #d4af37;">
-        <h3>🛵 Prefere receber em casa?</h3>
-        <p><strong>Brasília (DF):</strong> Entrega em até 24h via Motoboy.<br>
-           <strong>Brasil:</strong> Envio via Correios (PAC/Sedex) em 2 a 5 dias.</p>
-        <a href="https://wa.me/5561996659880?text=Olá, quero pedir uma entrega!" class="cta-button">Pedir Agora no WhatsApp</a>
+    <div style="background: #fdf6e3; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 40px; border: 1px dashed #d4af37; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <h3 style="color: #d4af37;">🛵 Prefere receber em casa?</h3>
+        <p style="font-size: 1.1rem; margin: 15px 0;">
+            <strong>Brasília (DF):</strong> Entrega em até 24h via Motoboy.<br>
+            <strong>Brasil:</strong> Envio via Correios (PAC/Sedex) em 2 a 5 dias.
+        </p>
+        <a href="https://wa.me/5561996659880?text=Olá, quero pedir uma entrega!" class="cta-button" style="background: #27ae60; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block;">Pedir Agora no WhatsApp</a>
     </div>
 
-    <!-- 3. MAPA DE PARCEIROS (BAIRROS) -->
-    <h2 class="text-center">Encontre um Parceiro Local</h2>
+    <!-- 3. MAPA DE PARCEIROS (BAIRROS DINÂMICOS) -->
+    <div class="text-center">
+        <h2>Selecione seu Bairro para Entrega Rápida</h2>
+        <p style="color: #666; margin-bottom: 30px;">Clique na sua região para ver detalhes de entrega e produtos favoritos.</p>
+    </div>
     
-    <div class="phase-title">Plano Piloto</div>
+    <div class="phase-title text-center">Áreas de Atuação (DF)</div>
     <div class="region-nav">
-        <span class="region-tag">Asa Sul</span>
-        <span class="region-tag">Asa Norte</span>
-        <span class="region-tag">Sudoeste</span>
-        <span class="region-tag">Noroeste</span>
-        <span class="region-tag">Lago Sul</span>
-        <span class="region-tag">Lago Norte</span>
+        <!-- LOOP DINÂMICO: GERA LINKS PARA AS LANDING PAGES DE BAIRRO -->
+        {% for local in locations %}
+            <a href="/entrega/{{ local.slug }}/" class="region-tag" title="Entrega ChefBrico em {{ local.name }}">
+                📍 {{ local.name }}
+            </a>
+        {% endfor %}
     </div>
 
-    <div class="phase-title">Cidades Satélites</div>
-    <div class="region-nav">
-        <span class="region-tag">Águas Claras</span>
-        <span class="region-tag">Guará</span>
-        <span class="region-tag">Vicente Pires</span>
-        <span class="region-tag">Taguatinga</span>
-        <span class="region-tag">Jardim Botânico</span>
-        <span class="region-tag">Sobradinho</span>
-    </div>
-
-    <!-- LISTA DETALHADA (ACORDEÃO) -->
-    <div class="faq-section" style="margin-top: 40px;">
-        <h3 class="text-center mb-4">Lista de Lojas Parceiras</h3>
+    <!-- LISTA DETALHADA DE PARCEIROS FÍSICOS (ACORDEÃO) -->
+    <div class="faq-section" style="margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <h3 class="text-center mb-4">Lojas Parceiras (Retirada Imediata)</h3>
         
         <!-- Parceiro 1 -->
-        <div class="faq-item-accordion">
-            <button class="accordion-header"><h3>📍 NOSSO Empório (Águas Claras)</h3><span class="icon">▼</span></button>
-            <div class="accordion-content"><p>Edifício Águas de Manaíra - R. 24 Norte, 04.</p></div>
+        <div class="faq-item-accordion" style="border-bottom: 1px solid #eee; padding: 10px 0;">
+            <details>
+                <summary style="cursor: pointer; font-weight: bold; padding: 10px;">📍 NOSSO Empório (Águas Claras)</summary>
+                <p style="padding: 10px; color: #555;">Edifício Águas de Manaíra - R. 24 Norte, 04.</p>
+            </details>
         </div>
         
         <!-- Parceiro 2 -->
-        <div class="faq-item-accordion">
-            <button class="accordion-header"><h3>📍 Mercearia Colaborativa (Asa Norte)</h3><span class="icon">▼</span></button>
-            <div class="accordion-content"><p>CLN 412 Bloco E.</p></div>
+        <div class="faq-item-accordion" style="border-bottom: 1px solid #eee; padding: 10px 0;">
+            <details>
+                <summary style="cursor: pointer; font-weight: bold; padding: 10px;">📍 Mercearia Colaborativa (Asa Norte)</summary>
+                <p style="padding: 10px; color: #555;">CLN 412 Bloco E.</p>
+            </details>
         </div>
 
         <!-- Parceiro 3 (Destaque Cozinha) -->
-        <div class="faq-item-accordion" style="border: 2px solid #27ae60;">
-            <button class="accordion-header"><h3 style="color:#27ae60;">🏭 Cozinha Central ChefBrico (Retirada)</h3><span class="icon">▼</span></button>
-            <div class="accordion-content">
-                <p>Rua 5, Chácara 122, Vicente Pires.<br><strong>Apenas com horário marcado.</strong></p>
-            </div>
+        <div class="faq-item-accordion" style="border: 2px solid #27ae60; border-radius: 8px; margin-top: 20px; background: #f9fff9;">
+            <details open>
+                <summary style="cursor: pointer; font-weight: bold; padding: 15px; color: #27ae60;">🏭 Cozinha Central ChefBrico (Vicente Pires)</summary>
+                <div style="padding: 0 15px 15px; color: #555;">
+                    <p><strong>Endereço:</strong> Rua 5, Chácara 122, Lote 17, Loja 2.</p>
+                    <p><strong>Obs:</strong> Apenas retirada de encomendas agendadas.</p>
+                    <a href="https://wa.me/5561996659880?text=Quero+agendar+retirada+na+fábrica" style="color: #27ae60; font-weight: bold; text-decoration: underline;">Agendar Retirada</a>
+                </div>
+            </details>
         </div>
     </div>
 
     <!-- 4. AGENDA DE FEIRAS -->
-    <section class="agenda-section">
-        <h2 class="text-center">Encontros Semanais</h2>
-        <p class="text-center">Venha provar nossas novidades!</p>
+    <section class="agenda-section" style="margin-top: 60px; background: #fdfbf7; padding: 40px 20px; border-radius: 10px;">
+        <h2 class="text-center" style="color: var(--cor-institucional);">Encontros Semanais</h2>
+        <p class="text-center" style="margin-bottom: 30px;">Venha provar nossas novidades pessoalmente!</p>
         
-        <div class="carousel-container">
+        <div class="carousel-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
             <div class="feira-card">
                 <img src="/imagens/conceicao-feira-tematica-chefbrico.jpeg" class="feira-img" alt="Feira Hemocentro">
                 <div>
-                    <h3>Feira do Hemocentro</h3>
-                    <p><strong>Quando:</strong> Toda Quarta, 9h às 15h</p>
-                    <p><strong>Onde:</strong> SMHN Quadra 3 (Asa Norte)</p>
+                    <h3 style="margin: 0 0 5px;">Feira do Hemocentro</h3>
+                    <p style="margin: 0; font-size: 0.9rem;"><strong>Quando:</strong> Toda Quarta, 9h às 15h</p>
+                    <p style="margin: 0; font-size: 0.9rem;"><strong>Onde:</strong> SMHN Quadra 3 (Asa Norte)</p>
                 </div>
             </div>
 
             <div class="feira-card">
                 <img src="/imagens/maria-conceicao-feira-tematica.jpeg" class="feira-img" alt="Feira QI 13">
                 <div>
-                    <h3>Feira da Praça QI 13</h3>
-                    <p><strong>Quando:</strong> Todo Sábado, 8h às 14h</p>
-                    <p><strong>Onde:</strong> Lago Sul</p>
+                    <h3 style="margin: 0 0 5px;">Feira da Praça QI 13</h3>
+                    <p style="margin: 0; font-size: 0.9rem;"><strong>Quando:</strong> Todo Sábado, 8h às 14h</p>
+                    <p style="margin: 0; font-size: 0.9rem;"><strong>Onde:</strong> Lago Sul</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 5. GOOGLE REVIEW (PROVA SOCIAL) -->
-    <section class="review-cta-section-v2 text-center" style="margin-top:60px; padding:40px; background:white; border:1px solid #eee;">
+    <section class="review-cta-section-v2 text-center" style="margin-top:60px; padding:40px; background:white; border:1px solid #eee; border-radius: 10px;">
         <h2>Já comprou com a gente?</h2>
         <p>Sua opinião ajuda outras pessoas a descobrirem a comida de verdade.</p>
         <div style="font-size:2rem; color:#f1c40f; margin:10px;">★★★★★</div>
-        <a href="https://g.page/r/CWIKRViCYBCDEAI/review" target="_blank" class="cta-button">Avaliar no Google</a>
+        <a href="https://g.page/r/CWIKRViCYBCDEAI/review" target="_blank" class="cta-button" style="background: #4285F4; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Avaliar no Google</a>
     </section>
 
     <!-- BOTÃO FLUTUANTE ZAP -->
     <a href="https://wa.me/5561996659880?text=Olá, quero pedir uma entrega!" class="float-delivery-btn">
-        <span>🛵 Pedir Entrega</span>
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 5px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></path></svg>
+        <span>Pedir Entrega</span>
     </a>
 
 </main>
