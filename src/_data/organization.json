@@ -10,13 +10,13 @@
   "telephone": "+5561996659880",
   "priceRange": "$$",
   "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Rua 5, Chácara 122, Lote 17, Loja 2",
-    "addressLocality": "Brasília",
-    "addressRegion": "DF",
-    "postalCode": "72006-060",
-    "addressCountry": "BR"
-  },
+        "@type": "PostalAddress",
+        "streetAddress": "Rua 5, Chácara 122, Lote 17, Loja 2",
+        "addressLocality": "Vicente Pires",
+        "addressRegion": "Brasília",
+        "postalCode": "72006-060",
+        "addressCountry": "BR"
+      },
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": "-15.8080",
