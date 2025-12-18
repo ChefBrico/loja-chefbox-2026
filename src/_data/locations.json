@@ -1,0 +1,164 @@
+[
+  {
+    "name": "Asa Sul",
+    "slug": "asa-sul",
+    "persona": "Casal que Cozinha Junto",
+    "pain_point": "Jantares repetitivos e falta de tempo para alta gastronomia.",
+    "hero_product_sku": "37",
+    "hero_product_name": "Risoto de Funghi",
+    "geo": { "latitude": "-15.8130", "longitude": "-47.9150" }
+  },
+  {
+    "name": "Asa Norte",
+    "slug": "asa-norte",
+    "persona": "Solteiro Prático",
+    "pain_point": "Desperdício de ingredientes ao cozinhar para um.",
+    "hero_product_sku": "45",
+    "hero_product_name": "Sopa Creme Fit",
+    "geo": { "latitude": "-15.7634", "long": "-47.8706" }
+  },
+  {
+    "name": "Lago Sul",
+    "slug": "lago-sul",
+    "persona": "Casal que Cozinha Junto",
+    "pain_point": "Exigência de alta qualidade e ingredientes nobres sem trabalho.",
+    "hero_product_sku": "31",
+    "hero_product_name": "Sopa Jeitinho de Vó Lentilha",
+    "geo": { "latitude": "-15.8366", "longitude": "-47.8879" }
+  },
+  {
+    "name": "Lago Norte / Varjão",
+    "slug": "lago-norte",
+    "persona": "Vida Funcional",
+    "pain_point": "Distância de bons empórios e busca por saúde.",
+    "hero_product_sku": "39",
+    "hero_product_name": "Sopa Detox",
+    "geo": { "latitude": "-15.7368", "longitude": "-47.8637" }
+  },
+  {
+    "name": "Sudoeste / Octogonal",
+    "slug": "sudoeste",
+    "persona": "Vida Funcional",
+    "pain_point": "Rotina intensa de trabalho e treinos, precisa de nutrição rápida.",
+    "hero_product_sku": "41",
+    "hero_product_name": "Sopa Low Carb da Horta",
+    "geo": { "latitude": "-15.7956", "longitude": "-47.9247" }
+  },
+  {
+    "name": "Noroeste",
+    "slug": "noroeste",
+    "persona": "Vida Funcional",
+    "pain_point": "Bairro novo, busca conveniência premium e sustentabilidade.",
+    "hero_product_sku": "37",
+    "hero_product_name": "Risoto de Funghi",
+    "geo": { "latitude": "-15.7533", "longitude": "-47.9144" }
+  },
+  {
+    "name": "Águas Claras / Arniqueiras",
+    "slug": "aguas-claras",
+    "persona": "Solteiro Prático",
+    "pain_point": "Trânsito pesado, busca jantar rápido ao chegar em casa.",
+    "hero_product_sku": "33",
+    "hero_product_name": "Sopinha da Biza Vó",
+    "geo": { "latitude": "-15.8363", "longitude": "-48.0193" }
+  },
+  {
+    "name": "Park Sul SQPS",
+    "slug": "park-sul",
+    "persona": "Viajante Airbnb",
+    "pain_point": "Estadias curtas, precisa de comida prática e segura.",
+    "hero_product_sku": "37",
+    "hero_product_name": "Risoto de Funghi",
+    "geo": { "latitude": "-15.8260", "longitude": "-47.9540" }
+  },
+  {
+    "name": "Esplanada dos Ministérios",
+    "slug": "esplanada",
+    "persona": "Vida Funcional",
+    "pain_point": "Almoço de trabalho rápido e leve para não dar sono.",
+    "hero_product_sku": "39",
+    "hero_product_name": "Sopa Detox",
+    "geo": { "latitude": "-15.7975", "longitude": "-47.8645" }
+  },
+  {
+    "name": "Plano Piloto - Governo DF",
+    "slug": "plano-piloto",
+    "persona": "Vida Funcional",
+    "pain_point": "Rotina administrativa corrida, busca praticidade.",
+    "hero_product_sku": "45",
+    "hero_product_name": "Sopa Creme Fit",
+    "geo": { "latitude": "-15.7801", "longitude": "-47.9292" }
+  },
+  {
+    "name": "Taguatinga Sul",
+    "slug": "taguatinga-sul",
+    "persona": "Casal que Cozinha Junto",
+    "pain_point": "Reunir a família com comida afetiva e econômica.",
+    "hero_product_sku": "31",
+    "hero_product_name": "Sopa Jeitinho de Vó",
+    "geo": { "latitude": "-15.8330", "longitude": "-48.0560" }
+  },
+  {
+    "name": "Taguatinga Norte",
+    "slug": "taguatinga-norte",
+    "persona": "Solteiro Prático",
+    "pain_point": "Praticidade para o dia a dia corrido.",
+    "hero_product_sku": "33",
+    "hero_product_name": "Sopinha da Biza Vó",
+    "geo": { "latitude": "-15.8150", "longitude": "-48.0650" }
+  },
+  {
+    "name": "Guará / Park Way",
+    "slug": "guara",
+    "persona": "Trilheiro do Cerrado",
+    "pain_point": "Alimentação energética para quem curte natureza e parques.",
+    "hero_product_sku": "41",
+    "hero_product_name": "Sopa Low Carb da Horta",
+    "geo": { "latitude": "-15.8267", "longitude": "-47.9800" }
+  },
+  {
+    "name": "Grande Colorado / Taquari",
+    "slug": "grande-colorado",
+    "persona": "Trilheiro do Cerrado",
+    "pain_point": "Distância de centros gastronômicos, busca estoque em casa.",
+    "hero_product_sku": "37",
+    "hero_product_name": "Risoto de Funghi",
+    "geo": { "latitude": "-15.6900", "longitude": "-47.8500" }
+  },
+  {
+    "name": "SIA",
+    "slug": "sia",
+    "persona": "Vida Funcional",
+    "pain_point": "Área industrial com poucas opções saudáveis de delivery.",
+    "hero_product_sku": "45",
+    "hero_product_name": "Sopa Creme Fit",
+    "geo": { "latitude": "-15.8000", "longitude": "-47.9500" }
+  },
+  {
+    "name": "Riacho Fundo",
+    "slug": "riacho-fundo",
+    "persona": "Casal que Cozinha Junto",
+    "pain_point": "Confort food para o jantar em família.",
+    "hero_product_sku": "31",
+    "hero_product_name": "Sopa Jeitinho de Vó",
+    "geo": { "latitude": "-15.8800", "longitude": "-48.0200" }
+  },
+  {
+    "name": "Jardim Botânico",
+    "slug": "jardim-botanico",
+    "persona": "Trilheiro do Cerrado",
+    "pain_point": "Contato com a natureza, busca produtos naturais e sem lixo.",
+    "hero_product_sku": "41",
+    "hero_product_name": "Sopa Low Carb da Horta",
+    "geo": { "latitude": "-15.8600", "longitude": "-47.8300" }
+  },
+  {
+    "name": "Vicente Pires",
+    "slug": "vicente-pires",
+    "persona": "Local Hero",
+    "pain_point": "Apoiar o comércio local e retirada rápida na fábrica.",
+    "hero_product_sku": "37",
+    "hero_product_name": "Risoto de Funghi",
+    "geo": { "latitude": "-15.8080", "longitude": "-48.0310" }
+  }
+]
