@@ -35,6 +35,14 @@
     "latitude": "-15.8080", 
     "longitude": "-48.0310"
   },
+
+  "areaServed": [
+    "Asa Sul", "Asa Norte", "Lago Sul", "Lago Norte", "Sudoeste", "Noroeste",
+    "Águas Claras", "Park Sul", "Esplanada", "Plano Piloto", "Taguatinga Sul",
+    "Taguatinga Norte", "Guará", "Grande Colorado", "SIA", "Riacho Fundo",
+    "Jardim Botânico", "Vicente Pires"
+  ]
+},
   "priceRange": "$$",
   "sameAs": [
     "https://www.instagram.com/chefbrico",
