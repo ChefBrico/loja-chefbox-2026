@@ -1,25 +1,25 @@
-<footer class="site-footer">
+<footer class="site-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
     <div class="container footer-grid">
         
      <!-- COLUNA 1: IDENTIDADE & AUTORIDADE (PREMIUM) -->
         <div class="footer-col">
             
-            <!-- 1. LOGO: Removemos o filtro para mostrar as cores originais (Verde/Dourado) -->
-            <a href="/">
+            <!-- 1. LOGO -->
+            <a href="/" aria-label="Voltar para o início">
                 <img src="/imagens/logomarca-chefbrico-escrita.png" 
-                     alt="ChefBrico" 
-                     style="height: 70px; margin-bottom: 15px; display: block;">
+                     alt="ChefBrico - Gourmet Prático" 
+                     style="height: 70px; margin-bottom: 15px; display: block;"
+                     loading="lazy">
             </a>
 
-            <!-- 2. SLOGAN: Verde Institucional para leitura perfeita no fundo claro -->
+            <!-- 2. SLOGAN -->
             <p style="font-size: 0.95rem; color: var(--cor-institucional); line-height: 1.5; font-weight: 500; margin-bottom: 20px; max-width: 250px;">
                 Simples como precisa ser,<br>delicioso como você merece.
             </p>
             
-            <!-- 3. BOX DO PRÊMIO (EEAT): Estilo "Medalha" -->
-            <!-- Fundo bege suave + Borda Dourada + Sombra -->
-            <div style="background-color: #fff8e1; border: 2px solid var(--cor-dourado); padding: 12px 15px; border-radius: 8px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                <p style="color: var(--cor-institucional); font-weight: 800; font-size: 0.85rem; margin: 0; line-height: 1.3;">
+            <!-- 3. BOX DO PRÊMIO (EEAT - PROVA SOCIAL) -->
+            <div style="background-color: #fff8e1; border: 2px solid #bfb084; padding: 12px 15px; border-radius: 8px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <p style="color: #014039; font-weight: 800; font-size: 0.85rem; margin: 0; line-height: 1.3;">
                     🏆 Vencedora Prêmio Sebrae Mulher de Negócios<br>
                     <span style="color: #d35400; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px;">Mulher de Negócios DF</span>
                 </p>
@@ -32,7 +32,7 @@
             <h4>Explorar</h4>
             <ul>
                 <li><a href="/">Início</a></li>
-                <li><a href="/comida-de-verdade/">Comida de Verdade</a></li>
+                <li><a href="/comida-de-verdade/">O Método Gourmet Prático</a></li>
                 <li><a href="/clube/">Clube ChefBrico</a></li>
             </ul>
         </div>
@@ -46,7 +46,7 @@
                 <li><a href="/receitas/refeicoes-integrais/">Refeições Integrais</a></li>
                 <li><a href="/receitas/emporio-da-chef/">Empório da Chef</a></li>
                 <li style="margin-top: 10px;">
-                    <a href="/chefbox/" style="color: var(--cor-cta); font-weight: bold;">Monte sua ChefBox 🎁</a>
+                    <a href="/chefbox/" style="color: #F2811D; font-weight: bold;">Monte sua ChefBox 🎁</a>
                 </li>
             </ul>
         </div>
@@ -67,33 +67,42 @@
         <!-- COLUNA 5: CONTATO & DADOS -->
         <div class="footer-col">
             <h4>Fale Comigo</h4>
-            <ul>
+            <ul itemscope itemtype="https://schema.org/ContactPoint">
                 <li>
-                    <a href="https://wa.me/{{ meta.whatsapp }}" target="_blank" style="color: var(--cor-cta); font-weight: bold; font-size: 1.2rem;">
+                    <a href="https://wa.me/5561996659880" target="_blank" style="color: #F2811D; font-weight: bold; font-size: 1.2rem;">
                         ✆ (61) 99665-9880
                     </a>
+                    <meta itemprop="telephone" content="+5561996659880">
+                    <meta itemprop="contactType" content="sales">
                 </li>
                 <li style="margin-top: 10px; font-size: 0.9rem;">
                     Brasília - DF<br>
-                    Entrego em todo Brasil
+                    Entrego em todo Brasil (Via Tray)
                 </li>
                 <li style="margin-top: 10px;">
                     <div style="display: flex; gap: 10px;">
                         <a href="https://instagram.com/chefbrico" target="_blank" aria-label="Instagram">Instagram</a>
-                        <a href="https://linkedin.com/in/mariaconceicao" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                        <!-- LINKEDIN REMOVIDO CONFORME SOLICITAÇÃO -->
                     </div>
                 </li>
             </ul>
             
             <div style="font-size: 0.7rem; margin-top: 20px; color: #aaa; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
                 Razão Social: ChefBrico Alimentos<br>
-                CNPJ: {{ meta.organization.cnpj }}
+                CNPJ: 36.014.833/0001-59
             </div>
         </div>
     </div>
 
-    <!-- LINHA FINAL DE COPYRIGHT -->
+    <!-- LINHA FINAL DE COPYRIGHT + LINKS OCULTOS PARA ROBÔS -->
     <div class="footer-bottom">
-        <p>&copy; 2025 ChefBrico. Todos os direitos reservados. Feito com afeto no Cerrado.</p>
+        <p>&copy; 2026 ChefBrico. Todos os direitos reservados. Feito com afeto no Cerrado.</p>
+        
+        <!-- SHADOW LINKS (Para indexação rápida de Agentes) -->
+        <div class="sr-only" style="display:none;">
+            <a href="/llms.txt">Agent Instructions</a>
+            <a href="/sitemap.xml">Sitemap</a>
+            <a href="/feed_merchant.xml">Product Feed</a>
+        </div>
     </div>
 </footer>
