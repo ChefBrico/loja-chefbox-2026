@@ -1,22 +1,27 @@
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "FoodEstablishment",
+  "@id": "https://gourmetpratico.com.br/#organization",
   "name": "ChefBrico",
+  "legalName": "ChefBrico Alimentos Artesanais",
   "alternateName": "Gourmet Prático",
-  "description": "Misturas artesanais para refeições gourmet em minutos. Ingredientes 100% naturais, desidratados em Brasília.",
+  "taxID": "36.014.833/0001-59",
+  "description": "Foodtech de refeições desidratadas artesanais. Criadora do método Gourmet Prático e do sistema ChefBox.",
   "slogan": "Simples como precisa ser, delicioso como você merece.",
   "url": "https://gourmetpratico.com.br",
-  "logo": "https://gourmetpratico.com.br/images/logo.png",
+  "logo": "https://gourmetpratico.com.br/imagens/logo.png",
   "telephone": "+5561996659880",
+  "email": "familiabricolage@chefbrico.com",
   "priceRange": "$$",
+  "award": "Vencedora do Prêmio Sebrae Mulher de Negócios",
   "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Rua 5, Chácara 122, Lote 17, Loja 2",
-        "addressLocality": "Vicente Pires",
-        "addressRegion": "Brasília",
-        "postalCode": "72006-060",
-        "addressCountry": "BR"
-      },
+    "@type": "PostalAddress",
+    "streetAddress": "Rua 5, Chácara 122, Lote 17, Loja 2",
+    "addressLocality": "Vicente Pires, Brasília",
+    "addressRegion": "DF",
+    "postalCode": "72006-060",
+    "addressCountry": "BR"
+  },
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": "-15.8080",
@@ -56,6 +61,23 @@
     "Jardim Botânico",
     "Vicente Pires"
   ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Serviços de Entrega",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Entrega Grátis em Brasília (ChefBox 4+1)"
+        },
+        "areaServed": {
+          "@type": "State",
+          "name": "Distrito Federal"
+        }
+      }
+    ]
+  },
   "potentialAction": {
     "@type": "OrderAction",
     "target": {
@@ -70,14 +92,36 @@
     "deliveryMethod": {
       "@type": "ParcelService",
       "name": "Entrega Própria DF",
-      "description": "Entrega no dia seguinte (Seg-Sex). Frete Grátis na compra do Kit ChefBox (4+1)."
+      "description": "Entrega no dia seguinte (Seg-Sex). Frete Grátis na compra do Kit ChefBox."
     }
   },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "UNSPSC",
+      "value": "50193100",
+      "description": "Prepared food services"
+    }
+  ],
   "knowsAbout": [
-    "Culinária Desidratada",
-    "Alimentação Saudável",
-    "Zero Desperdício",
-    "Risotos Artesanais",
-    "Sopas Funcionais"
+    {
+      "@type": "Thing",
+      "name": "Culinária Desidratada",
+      "sameAs": "https://www.wikidata.org/wiki/Q193256"
+    },
+    {
+      "@type": "Thing",
+      "name": "Alimentação Saudável",
+      "sameAs": "https://www.wikidata.org/wiki/Q210380"
+    },
+    {
+      "@type": "Thing",
+      "name": "Zero Desperdício",
+      "sameAs": "https://www.wikidata.org/wiki/Q1542380"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/chefbrico",
+    "https://www.chefbrico.com"
   ]
 }
