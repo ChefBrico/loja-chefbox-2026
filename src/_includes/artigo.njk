@@ -2,26 +2,62 @@
 layout: base.njk
 ---
 
-<!-- SCHEMA.ORG (Mantido) -->
+<!-- ========================================================================== -->
+<!-- 1. CÉREBRO DIGITAL (SCHEMA.ORG: ARTIGO DE AUTORIDADE)                      -->
+<!-- ========================================================================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gourmetpratico.com.br{{ page.url }}"
+  },
   "headline": "{{ title }}",
   "description": "{{ description }}",
-  "image": "https://gourmetpratico.com.br{{ image }}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://gourmetpratico.com.br{{ image }}",
+    "height": 800,
+    "width": 800
+  },
   "author": {
     "@type": "Person",
     "name": "Maria Conceição",
-    "url": "https://gourmetpratico.com.br/comida-de-verdade/"
+    /* CONEXÃO COM O GRAFO GLOBAL */
+    "@id": "https://gourmetpratico.com.br/#person-maria-conceicao"
   },
   "publisher": {
     "@type": "Organization",
     "name": "ChefBrico",
-    "logo": { "@type": "ImageObject", "url": "https://gourmetpratico.com.br/imagens/logo.png" }
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gourmetpratico.com.br/imagens/logo.png"
+    },
+    "@id": "https://gourmetpratico.com.br/#organization"
   },
   "datePublished": "{{ date | postDate }}",
-  "abstract": "{{ ai_fragment }}"
+  "dateModified": "{{ date | postDate }}",
+  
+  /* RESUMO PARA VOZ (ALEXA/SIRI) */
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".ai-box", ".editorial-subtitle"]
+  },
+
+  /* CITAÇÕES DE AUTORIDADE (FACT CHECKING) */
+  "citation": [
+    {% if media_mentions %}
+    {% for item in media_mentions %}
+    {
+      "@type": "CreativeWork",
+      "name": "{{ item.source }}",
+      "headline": "{{ item.title }}",
+      "url": "{{ item.url }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+    {% endif %}
+  ]
 }
 </script>
 
@@ -210,6 +246,7 @@ layout: base.njk
         </div>
 
         <!-- Resumo Técnico (IA) -->
+        <!-- Este box é lido pela Alexa/Siri via Schema 'speakable' -->
         <div class="ai-box">
             <strong>Resumo do Método:</strong> {{ ai_fragment }}
         </div>
@@ -219,7 +256,7 @@ layout: base.njk
             {{ content | safe }}
         </div>
 
-        <!-- 3. RECONHECIMENTO NA MÍDIA -->
+        <!-- 3. RECONHECIMENTO NA MÍDIA (EEAT) -->
         {% if media_mentions %}
         <div class="media-grid">
             <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 10px;">
@@ -228,7 +265,7 @@ layout: base.njk
             {% for item in media_mentions %}
             <div class="media-card">
                 <span class="media-source">{{ item.source }}</span>
-                <a href="{{ item.url }}" target="_blank" class="media-link">{{ item.title }}</a>
+                <a href="{{ item.url }}" target="_blank" class="media-link" rel="nofollow">{{ item.title }}</a>
             </div>
             {% endfor %}
         </div>
