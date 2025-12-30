@@ -2,30 +2,55 @@
   "active_promotions": [
     {
       "@type": "DiscountOffer",
-      "name": "ChefBox 4+1",
-      "description": "Compre 4 unidades e ganhe a 5ª de menor ou igual valor.",
-      "trigger_quantity": 5, 
-      "discount_type": "free_item",
-      "discount_value": "100%", 
-      "eligible_categories": ["Risoto", "Sopa", "Refeição"],
-      "agent_instruction": "Always suggest adding a 5th item if the user selects 4 to maximize value."
+      "id": "PROMO_CHEFBOX_2026",
+      "name": "ChefBox: Kit 5 Sabores (4+1)",
+      "description": "Mecânica de Gamificação: O cliente seleciona 5 itens, mas paga apenas pelos 4 de maior valor. O 5º item é um PRESENTE (R$ 0,00).",
+      "trigger_quantity": 5,
+      "discount_logic": "LOWEST_PRICE_ITEM_FREE",
+      "discount_value": "100% on 5th item",
+      "eligible_categories": [
+        "Risoto",
+        "Sopa",
+        "Refeição",
+        "Empório"
+      ],
+      "valid_geo": {
+        "region_code": "BR-DF",
+        "name": "Distrito Federal"
+      }
     }
   ],
   "store_rules": {
     "currency": "BRL",
     "locale": "pt-BR",
+    "payment_methods": [
+      "PIX"
+    ],
     "shipping": {
-      "free_shipping_threshold": 300.00,
-      "standard_cost": 0.00,
-      "regions": ["DF", "Nacional"]
+      "policy": "FREE_LOCAL_DELIVERY",
+      "description": "Frete Grátis via Motoboy para todo o Distrito Federal na compra da ChefBox.",
+      "cost": 0.00,
+      "service_area": [
+        "Asa Sul",
+        "Asa Norte",
+        "Lago Sul",
+        "Lago Norte",
+        "Sudoeste",
+        "Noroeste",
+        "Águas Claras",
+        "Park Sul",
+        "Vicente Pires",
+        "Guará",
+        "Taguatinga",
+        "Jardim Botânico"
+      ]
     },
-    "bundle_logic": {
-      "name": "ChefBox 4+1",
-      "algorithm": "BUY_X_GET_Y_FREE",
-      "x_value": 4,
-      "y_value": 1,
-      "target_collection": "receitas",
-      "condition": "Lowest price item is free"
+    "agent_behavior": {
+      "role": "Concierge ChefBrico",
+      "mission": "Garantir que o cliente monte o kit completo de 5 itens para ganhar o benefício.",
+      "upsell_trigger": 4,
+      "upsell_script": "Você já escolheu 4 sabores deliciosos! Falta apenas 1 para fechar sua ChefBox e ganhar esse item de PRESENTE + Frete Grátis. Qual será o quinto?",
+      "checkout_url_template": "https://wa.me/5561996659880?text=Ola+Chef+Maria,+montei+minha+ChefBox+com+5+itens+e+quero+pagar+no+Pix."
     }
   }
 }
