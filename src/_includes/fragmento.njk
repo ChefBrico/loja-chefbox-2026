@@ -3,12 +3,16 @@ layout: base.njk
 ---
 
 <!-- ========================================================================== -->
-<!-- 1. SCHEMA.ORG: NEWS ARTICLE (O "JetSki" para o Google Discover)            -->
+<!-- 1. CÉREBRO DIGITAL (SCHEMA.ORG: NEWS ARTICLE + CONEXÃO GLOBAL)             -->
 <!-- ========================================================================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gourmetpratico.com.br{{ page.url }}"
+  },
   "headline": "{{ title }}",
   "image": [
     "https://gourmetpratico.com.br{{ image }}"
@@ -18,7 +22,8 @@ layout: base.njk
   "author": {
     "@type": "Person",
     "name": "Maria Conceição",
-    "url": "https://gourmetpratico.com.br/comida-de-verdade/"
+    /* CONEXÃO COM O GRAFO GLOBAL */
+    "@id": "https://gourmetpratico.com.br/#person-maria-conceicao"
   },
   "publisher": {
     "@type": "Organization",
@@ -26,16 +31,22 @@ layout: base.njk
     "logo": {
       "@type": "ImageObject",
       "url": "https://gourmetpratico.com.br/imagens/logo.png"
-    }
+    },
+    /* CONEXÃO COM A MARCA */
+    "@id": "https://gourmetpratico.com.br/#organization"
   },
   "description": "{{ description }}",
   
   /* DADOS PARA AGENTES DE VOZ E IA */
-  "dateline": "Brasília",
-  "about": { "@type": "Thing", "name": "Nutrição Funcional" },
+  "dateline": "Brasília, DF",
+  "about": { 
+    "@type": "Thing", 
+    "name": "Nutrição Funcional",
+    "sameAs": "https://www.wikidata.org/wiki/Q210380"
+  },
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": [".fragment-summary"]
+    "cssSelector": [".fragmento-summary"]
   }
 }
 </script>
@@ -199,7 +210,8 @@ layout: base.njk
     <div class="cta-box">
         <h3 style="margin-top:0; color: var(--cor-institucional, #014039);">Gostou da dica?</h3>
         <p style="margin-bottom: 20px;">Veja como aplicamos essa ciência em nossos produtos.</p>
-        <a href="/receitas/" class="btn-pill">Ver Produtos Relacionados ➜</a>
+        <!-- CTA OTIMIZADO: Leva para a ChefBox -->
+        <a href="/chefbox/" class="btn-pill">🎁 Ver na ChefBox (4+1) ➜</a>
     </div>
 
 </article>
