@@ -7,21 +7,38 @@ eleventyExcludeFromCollections: true
   {% if item.data.price %}
   {
     "id": "{{ item.data.sku }}",
-    "name": "{{ item.data.title }}",
+    "sku": "{{ item.data.sku }}",
+    "name": "{{ item.data.title | replace('"', '') }}",
     "category": "{{ item.data.category }}",
+    "unspsc": "{{ item.data.unspsc | default('50193100') }}",
     "price": {{ item.data.price }},
-    "stock": {{ item.data.stock | default(0) }},
-    "nutrition": {
+    "currency": "BRL",
+    "stock_status": "{% if item.data.stock > 0 %}IN_STOCK{% else %}OUT_OF_STOCK{% endif %}",
+    
+    "image_url": "https://gourmetpratico.com.br{{ item.data.image }}",
+    
+    "attributes": {
+      "prep_time": "{{ item.data.tempo_preparo }}",
+      "servings": "{{ item.data.rendimento }}",
+      "is_vegan": {{ true if item.data.diets and 'Vegan' in item.data.diets else false }},
+      "is_gluten_free": {{ true if item.data.diets and 'GlutenFree' in item.data.diets else false }},
+      "is_lactose_free": {{ true if item.data.diets and 'LactoseFree' in item.data.diets else false }}
+    },
+
+    "nutrition_summary": {
       "calories": {{ item.data.nutrition.calories | default(0) }},
       "protein": {{ item.data.nutrition.protein_g | default(0) }}
     },
+
     "sales_logic": {
-      "type": "BUNDLE_REQUIRED",
-      "rule_name": "ChefBox 4+1",
-      "min_quantity": 5,
-      "instruction": "Este item NÃO pode ser vendido avulso. O cliente deve selecionar 5 itens. O de menor valor será gratuito (Presente)."
+      "model": "CHEFBOX_BUNDLE",
+      "min_qty": 5,
+      "rule": "PAY_4_GET_5",
+      "discount_percent": 20,
+      "instruction": "Item deve ser adicionado a um kit de 5. O 5º item é gratuito."
     },
-    "action_link": "https://wa.me/5561996659880?text=Olá,%20o%20Agente%20IA%20sugeriu%20iniciar%20uma%20ChefBox%20com%20o%20item:%20{{ item.data.sku }}.%20Aguardo%20instruções%20para%20escolher%20os%20outros%204%20sabores."
+
+    "action_link": "https://wa.me/5561996659880?text=Ola+Chef,+gostaria+de+adicionar+o+item+{{ item.data.sku }}+({{ item.data.title | urlencode }})+na+minha+ChefBox."
   }{% if not loop.last %},{% endif %}
   {% endif %}
   {% endfor %}
