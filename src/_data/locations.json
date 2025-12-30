@@ -6,7 +6,10 @@
     "pain_point": "Jantares repetitivos e falta de tempo para alta gastronomia.",
     "hero_product_sku": "37",
     "hero_product_name": "Risoto de Funghi",
-    "geo": { "latitude": "-15.8130", "longitude": "-47.9150" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8130", "longitude": "-47.9150" },
+    "nearby": ["asa-norte", "lago-sul", "sudoeste"]
   },
   {
     "name": "Asa Norte",
@@ -15,7 +18,10 @@
     "pain_point": "Desperdício de ingredientes ao cozinhar para um.",
     "hero_product_sku": "45",
     "hero_product_name": "Sopa Creme Fit",
-    "geo": { "latitude": "-15.7634", "long": "-47.8706" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.7634", "long": "-47.8706" },
+    "nearby": ["asa-sul", "lago-norte", "noroeste"]
   },
   {
     "name": "Lago Sul",
@@ -24,7 +30,10 @@
     "pain_point": "Exigência de alta qualidade e ingredientes nobres sem trabalho.",
     "hero_product_sku": "31",
     "hero_product_name": "Sopa Jeitinho de Vó Lentilha",
-    "geo": { "latitude": "-15.8366", "longitude": "-47.8879" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8366", "longitude": "-47.8879" },
+    "nearby": ["asa-sul", "jardim-botanico", "park-sul"]
   },
   {
     "name": "Lago Norte / Varjão",
@@ -33,7 +42,10 @@
     "pain_point": "Distância de bons empórios e busca por saúde.",
     "hero_product_sku": "39",
     "hero_product_name": "Sopa Detox",
-    "geo": { "latitude": "-15.7368", "longitude": "-47.8637" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.7368", "longitude": "-47.8637" },
+    "nearby": ["asa-norte", "grande-colorado"]
   },
   {
     "name": "Sudoeste / Octogonal",
@@ -42,7 +54,10 @@
     "pain_point": "Rotina intensa de trabalho e treinos, precisa de nutrição rápida.",
     "hero_product_sku": "41",
     "hero_product_name": "Sopa Low Carb da Horta",
-    "geo": { "latitude": "-15.7956", "longitude": "-47.9247" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.7956", "longitude": "-47.9247" },
+    "nearby": ["asa-sul", "noroeste", "park-sul"]
   },
   {
     "name": "Noroeste",
@@ -51,7 +66,10 @@
     "pain_point": "Bairro novo, busca conveniência premium e sustentabilidade.",
     "hero_product_sku": "37",
     "hero_product_name": "Risoto de Funghi",
-    "geo": { "latitude": "-15.7533", "longitude": "-47.9144" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.7533", "longitude": "-47.9144" },
+    "nearby": ["asa-norte", "sudoeste"]
   },
   {
     "name": "Águas Claras / Arniqueiras",
@@ -60,7 +78,10 @@
     "pain_point": "Trânsito pesado, busca jantar rápido ao chegar em casa.",
     "hero_product_sku": "33",
     "hero_product_name": "Sopinha da Biza Vó",
-    "geo": { "latitude": "-15.8363", "longitude": "-48.0193" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8363", "longitude": "-48.0193" },
+    "nearby": ["taguatinga-sul", "guara", "vicente-pires"]
   },
   {
     "name": "Park Sul SQPS",
@@ -69,7 +90,10 @@
     "pain_point": "Estadias curtas, precisa de comida prática e segura.",
     "hero_product_sku": "37",
     "hero_product_name": "Risoto de Funghi",
-    "geo": { "latitude": "-15.8260", "longitude": "-47.9540" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8260", "longitude": "-47.9540" },
+    "nearby": ["asa-sul", "sudoeste", "guara"]
   },
   {
     "name": "Esplanada dos Ministérios",
@@ -78,7 +102,10 @@
     "pain_point": "Almoço de trabalho rápido e leve para não dar sono.",
     "hero_product_sku": "39",
     "hero_product_name": "Sopa Detox",
-    "geo": { "latitude": "-15.7975", "longitude": "-47.8645" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.7975", "longitude": "-47.8645" },
+    "nearby": ["asa-sul", "asa-norte", "plano-piloto"]
   },
   {
     "name": "Plano Piloto - Governo DF",
@@ -87,7 +114,10 @@
     "pain_point": "Rotina administrativa corrida, busca praticidade.",
     "hero_product_sku": "45",
     "hero_product_name": "Sopa Creme Fit",
-    "geo": { "latitude": "-15.7801", "longitude": "-47.9292" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.7801", "longitude": "-47.9292" },
+    "nearby": ["esplanada", "asa-sul", "asa-norte"]
   },
   {
     "name": "Taguatinga Sul",
@@ -96,7 +126,10 @@
     "pain_point": "Reunir a família com comida afetiva e econômica.",
     "hero_product_sku": "31",
     "hero_product_name": "Sopa Jeitinho de Vó",
-    "geo": { "latitude": "-15.8330", "longitude": "-48.0560" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8330", "longitude": "-48.0560" },
+    "nearby": ["taguatinga-norte", "aguas-claras"]
   },
   {
     "name": "Taguatinga Norte",
@@ -105,7 +138,10 @@
     "pain_point": "Praticidade para o dia a dia corrido.",
     "hero_product_sku": "33",
     "hero_product_name": "Sopinha da Biza Vó",
-    "geo": { "latitude": "-15.8150", "longitude": "-48.0650" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8150", "longitude": "-48.0650" },
+    "nearby": ["taguatinga-sul", "vicente-pires"]
   },
   {
     "name": "Guará / Park Way",
@@ -114,7 +150,10 @@
     "pain_point": "Alimentação energética para quem curte natureza e parques.",
     "hero_product_sku": "41",
     "hero_product_name": "Sopa Low Carb da Horta",
-    "geo": { "latitude": "-15.8267", "longitude": "-47.9800" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8267", "longitude": "-47.9800" },
+    "nearby": ["park-sul", "aguas-claras", "sia"]
   },
   {
     "name": "Grande Colorado / Taquari",
@@ -123,7 +162,10 @@
     "pain_point": "Distância de centros gastronômicos, busca estoque em casa.",
     "hero_product_sku": "37",
     "hero_product_name": "Risoto de Funghi",
-    "geo": { "latitude": "-15.6900", "longitude": "-47.8500" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.6900", "longitude": "-47.8500" },
+    "nearby": ["lago-norte"]
   },
   {
     "name": "SIA",
@@ -132,7 +174,10 @@
     "pain_point": "Área industrial com poucas opções saudáveis de delivery.",
     "hero_product_sku": "45",
     "hero_product_name": "Sopa Creme Fit",
-    "geo": { "latitude": "-15.8000", "longitude": "-47.9500" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8000", "longitude": "-47.9500" },
+    "nearby": ["guara", "cruzeiro"]
   },
   {
     "name": "Riacho Fundo",
@@ -141,7 +186,10 @@
     "pain_point": "Confort food para o jantar em família.",
     "hero_product_sku": "31",
     "hero_product_name": "Sopa Jeitinho de Vó",
-    "geo": { "latitude": "-15.8800", "longitude": "-48.0200" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8800", "longitude": "-48.0200" },
+    "nearby": ["taguatinga-sul", "park-way"]
   },
   {
     "name": "Jardim Botânico",
@@ -150,7 +198,10 @@
     "pain_point": "Contato com a natureza, busca produtos naturais e sem lixo.",
     "hero_product_sku": "41",
     "hero_product_name": "Sopa Low Carb da Horta",
-    "geo": { "latitude": "-15.8600", "longitude": "-47.8300" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8600", "longitude": "-47.8300" },
+    "nearby": ["lago-sul"]
   },
   {
     "name": "Vicente Pires",
@@ -159,6 +210,9 @@
     "pain_point": "Apoiar o comércio local e retirada rápida na fábrica.",
     "hero_product_sku": "37",
     "hero_product_name": "Risoto de Funghi",
-    "geo": { "latitude": "-15.8080", "longitude": "-48.0310" }
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8080", "longitude": "-48.0310" },
+    "nearby": ["aguas-claras", "taguatinga-norte"]
   }
 ]
