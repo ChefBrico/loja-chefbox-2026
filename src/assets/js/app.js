@@ -1,269 +1,235 @@
-/**
- * CHEFBOX A-COMMERCE ENGINE v2026 (FINAL)
- * Integração: Lógica Client-Side + Netlify Forms + WhatsApp Pix
- */
+// =================================================================
+// ARQUIVO: js/app.js (VERSÃO FINAL - CORREÇÃO MATEMÁTICA)
+// =================================================================
 
-class ChefBoxStore {
-    constructor() {
-        // 1. O ESTADO (Dados do Carrinho e Configurações)
-        this.state = {
-            cart: [],
-            config: {
-                minItems: 5, // Regra 4+1
-                discountItemIndex: 4, // O 5º item é grátis
-                freight: {
-                    df_cep_start: 70000000,
-                    df_cep_end: 73999999,
-                    free_shipping_threshold: 132.00
-                }
-            },
-            customer: { name: "", cep: "", address: "" }
-        };
-        this.init();
-    }
+// --- 1. VARIÁVEIS GLOBAIS ---
+let chefboxCart = [];
+const MAX_SLOTS = 5; // 4 Pagos + 1 Presente
 
-    init() {
-        this.loadCart();
-        this.render();
-        this.exposeAgentInterface(); // Permite que Robôs comprem
-    }
+// --- 2. FUNÇÕES AUXILIARES (A MÁGICA DA MATEMÁTICA) ---
 
-    // --- GERENCIAMENTO DO CARRINHO ---
-
-    addToCart(product) {
-        if (this.state.cart.length >= this.state.config.minItems) {
-            alert("Sua ChefBox já está cheia! Remova um item para trocar.");
-            return;
-        }
-        this.state.cart.push({
-            sku: product.sku,
-            name: product.name,
-            price: parseFloat(product.price),
-            image: product.image,
-            url: product.url
-        });
-        this.saveCart();
-        this.render();
-    }
-
-    removeFromCart(index) {
-        this.state.cart.splice(index, 1);
-        this.saveCart();
-        this.render();
-    }
-
-    saveCart() {
-        localStorage.setItem('chefbox_state', JSON.stringify(this.state.cart));
-    }
-
-    loadCart() {
-        const saved = localStorage.getItem('chefbox_state');
-        if (saved) {
-            try { this.state.cart = JSON.parse(saved); } catch (e) { console.error(e); }
-        }
-    }
-
-    // --- CÁLCULOS E LÓGICA (A Inteligência) ---
-
-    calculateTotals() {
-        let subtotal = 0;
-        let discount = 0;
-        
-        this.state.cart.forEach((item, index) => {
-            subtotal += item.price;
-            // O 5º item é grátis (Regra 4+1)
-            if (index === this.state.config.discountItemIndex) {
-                discount += item.price;
-            }
-        });
-
-        return {
-            subtotal: subtotal,
-            discount: discount,
-            total: subtotal - discount,
-            count: this.state.cart.length,
-            isComplete: this.state.cart.length === this.state.config.minItems
-        };
-    }
-
-    checkLogistics(cep) {
-        const cleanCep = parseInt(cep.replace(/\D/g, ''));
-        // Verifica se é Brasília (Faixa de CEP 70xxx a 73xxx)
-        if (cleanCep >= this.state.config.freight.df_cep_start && cleanCep <= this.state.config.freight.df_cep_end) {
-            return { zone: "DF", method: "Motoboy (Grátis/Rápido)" };
-        } else {
-            return { zone: "BR", method: "Correios (Valor a Calcular)" };
-        }
-    }
-
-    // --- INTERFACE PARA ROBÔS (A-Commerce) ---
-    exposeAgentInterface() {
-        window.ChefBoxAgent = {
-            getState: () => this.calculateTotals(),
-            addItem: (sku, name, price, image, url) => {
-                this.addToCart({ sku, name, price, image, url });
-                return "Item adicionado.";
-            },
-            getCheckoutLink: (customerData) => {
-                this.state.customer = customerData;
-                return this.generateWhatsAppLink("PEDIDO-ROBO");
-            }
-        };
-    }
-
-    // --- VISUAL (Atualiza as bolinhas e botões) ---
-    render() {
-        const totals = this.calculateTotals();
-        const slots = document.querySelectorAll('.slot-circle');
-        const btnFinish = document.getElementById('btn-finish-game');
-        const statusText = document.getElementById('game-status-text');
-
-        // Limpa slots
-        slots.forEach((slot, i) => {
-            slot.innerHTML = i === 4 ? '🎁' : (i + 1);
-            slot.style.backgroundImage = 'none';
-            slot.classList.remove('filled');
-            slot.onclick = null;
-        });
-
-        // Preenche slots
-        this.state.cart.forEach((item, index) => {
-            if (slots[index]) {
-                const slot = slots[index];
-                slot.classList.add('filled');
-                slot.style.backgroundImage = `url('${item.image}')`;
-                slot.style.backgroundSize = 'cover';
-                slot.onclick = () => this.removeFromCart(index);
-            }
-        });
-
-        // Atualiza Texto
-        if (statusText) {
-            statusText.innerText = totals.isComplete ? "Caixa Completa! 🎉" : `Faltam ${5 - totals.count} itens`;
-            statusText.style.color = totals.isComplete ? "#27ae60" : "#666";
-        }
-
-        // Mostra/Esconde Botão
-        if (btnFinish) {
-            btnFinish.style.display = totals.isComplete ? 'block' : 'none';
-        }
-    }
-
-    // --- GERAÇÃO DO LINK WHATSAPP (Com PIX) ---
-    generateWhatsAppLink(orderId) {
-        const totals = this.calculateTotals();
-        const logistics = this.checkLogistics(this.state.customer.cep);
-        
-        let msg = `*PEDIDO CHEFBOX #${orderId}* 🥗\n`;
-        msg += `--------------------------------\n`;
-        msg += `👤 *Cliente:* ${this.state.customer.name}\n`;
-        msg += `📮 *CEP:* ${this.state.customer.cep} (${logistics.zone})\n`;
-        msg += `📍 *Endereço:* ${this.state.customer.address}\n`;
-        msg += `--------------------------------\n`;
-        msg += `*ITENS ESCOLHIDOS (4+1):*\n`;
-
-        this.state.cart.forEach((item, index) => {
-            let priceDisplay = index === 4 ? "🎁 PRESENTE" : `R$ ${item.price.toFixed(2)}`;
-            msg += `📦 [${item.sku}] ${item.name}\n   └ ${priceDisplay}\n`;
-        });
-
-        msg += `--------------------------------\n`;
-        msg += `🚚 *Frete:* ${logistics.method}\n`;
-        msg += `💰 *TOTAL A PAGAR: R$ ${totals.total.toFixed(2)}*\n`;
-        msg += `--------------------------------\n`;
-        msg += `*PARA PAGAR (PIX):*\n`;
-        msg += `1. Copie a chave CNPJ abaixo:\n`;
-        msg += `36.014.833/0001-59\n`; 
-        msg += `2. Envie o comprovante aqui.\n`;
-        
-        return `https://wa.me/5561996659880?text=${encodeURIComponent(msg)}`;
-    }
+// Transforma qualquer coisa (Texto "R$ 30,00" ou Número 30) em Número Puro (30.00)
+function limparPreco(valor) {
+    if (!valor) return 0;
+    if (typeof valor === 'number') return valor;
+    
+    // Remove tudo que não for número ou vírgula
+    let apenasNumeros = valor.toString().replace(/[^\d,]/g, '');
+    // Troca vírgula por ponto (padrão americano que o sistema entende)
+    apenasNumeros = apenasNumeros.replace(',', '.');
+    
+    return parseFloat(apenasNumeros) || 0;
 }
 
-// --- INICIALIZAÇÃO E EVENTOS ---
+// Transforma Número Puro (30.00) em Texto Brasileiro ("R$ 30,00")
+function formatarDinheiro(valor) {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
 
-let store;
-
-document.addEventListener('DOMContentLoaded', () => {
-    store = new ChefBoxStore();
-
-    // Lógica do Formulário Híbrido (Netlify + Zap)
-    const form = document.getElementById('form-checkout');
-    if (form) {
-        form.addEventListener('submit', handleFormSubmit);
-    }
-
-    // Cálculo de Frete ao digitar CEP
-    const cepInput = document.getElementById('customer-cep');
-    if (cepInput) {
-        cepInput.addEventListener('blur', (e) => {
-            const logistics = store.checkLogistics(e.target.value);
-            const preview = document.getElementById('frete-preview');
-            if(preview) {
-                preview.value = logistics.method;
-                preview.style.color = logistics.zone === 'DF' ? '#27ae60' : '#e67e22';
-            }
-        });
-    }
+// --- 3. INICIALIZAÇÃO ---
+document.addEventListener('DOMContentLoaded', function() {
+    initMobileMenu();
+    initAccordions();
+    
+    // Recupera o carrinho salvo se o cliente voltar
+    loadCart();
+    renderRuler();
 });
 
-// Função que processa o envio
-async function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    const btn = document.querySelector('.btn-finalizar-zap');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = "⏳ Processando...";
-    btn.disabled = true;
+// --- 4. MOTOR DO JOGO CHEFBOX (4+1) ---
 
-    // 1. Captura Dados
-    const formData = new FormData(e.target);
-    store.state.customer = {
-        name: formData.get('nome'),
-        cep: formData.get('cep'),
-        address: formData.get('endereco')
-    };
+function addToGame(name, price, imageSrc, sku, url) {
+    if (chefboxCart.length >= MAX_SLOTS) {
+        alert("Sua ChefBox já está completa! Remova um item clicando na bolinha se quiser trocar.");
+        return;
+    }
 
-    // 2. Gera ID e Prepara Backup
-    const orderId = `CB-${Date.now().toString().slice(-6)}`;
-    const totals = store.calculateTotals();
+    // Adiciona ao carrinho
+    chefboxCart.push({ 
+        name: name, 
+        price: price, 
+        image: imageSrc,
+        sku: sku,
+        url: url
+    });
     
-    // Preenche inputs ocultos para o Netlify receber
-    let resumo = "";
-    store.state.cart.forEach(i => resumo += `${i.name} | `);
+    saveCart();
+    renderRuler();
     
-    if(document.getElementById('hidden-pedido')) document.getElementById('hidden-pedido').value = resumo;
-    if(document.getElementById('hidden-total')) document.getElementById('hidden-total').value = totals.total.toFixed(2);
-    if(document.getElementById('hidden-id')) document.getElementById('hidden-id').value = orderId;
-
-    // 3. Envia Backup (Silencioso)
-    try {
-        await fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(new FormData(e.target)).toString(),
-        });
-    } catch (err) { console.log("Backup offline, seguindo para Zap"); }
-
-    // 4. Abre WhatsApp
-    const linkZap = store.generateWhatsAppLink(orderId);
-    
-    btn.innerHTML = "✅ Abrindo WhatsApp...";
-    setTimeout(() => {
-        window.open(linkZap, '_blank');
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-        closeCheckoutModal();
-    }, 1000);
+    // Feedback tátil (vibra o celular)
+    if (navigator.vibrate) navigator.vibrate(50);
 }
 
-// --- FUNÇÕES GLOBAIS (Para os botões do HTML funcionarem) ---
-window.addToGame = (name, price, image, sku, url) => {
-    store.addToCart({ sku, name, price, image, url });
-};
-window.openCheckoutModal = () => {
-    document.getElementById('checkout-modal').style.display = 'flex';
-};
-window.closeCheckoutModal = () => {
-    document.getElementById('checkout-modal').style.display = 'none';
-};
+function removeFromGame(index) {
+    chefboxCart.splice(index, 1);
+    saveCart();
+    renderRuler();
+}
+
+function saveCart() {
+    localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
+}
+
+function loadCart() {
+    const saved = localStorage.getItem('chefbox_cart');
+    if (saved) {
+        try { chefboxCart = JSON.parse(saved); } 
+        catch (e) { chefboxCart = []; }
+    }
+}
+
+// --- 5. RENDERIZAÇÃO DA RÉGUA (VISUAL + CÁLCULO) ---
+
+function renderRuler() {
+    // Pega os elementos da tela
+    const slots = document.querySelectorAll('.slot-circle');
+    const statusText = document.getElementById('game-status-text');
+    const btnFinish = document.getElementById('btn-finish-game');
+    const barContainer = document.getElementById('chefbox-bar');
+    
+    // Se não tiver régua na página, para aqui (evita erro)
+    if (!slots.length) return;
+
+    let totalPagavel = 0;
+    let itensCount = chefboxCart.length;
+
+    // A. Limpa visualmente todos os slots (reseta)
+    slots.forEach((slot, i) => {
+        slot.innerHTML = i === 4 ? '🎁' : (i + 1); // O 5º é presente
+        slot.classList.remove('filled', 'active');
+        slot.style.backgroundImage = 'none';
+        slot.onclick = null;
+    });
+
+    // B. Preenche com os itens do carrinho
+    chefboxCart.forEach((item, index) => {
+        if (slots[index]) {
+            const slot = slots[index];
+            slot.classList.add('filled');
+            slot.innerHTML = ''; // Remove o número para mostrar a foto
+            
+            // Ajuste da imagem de fundo
+            slot.style.backgroundImage = `url('${item.image}')`;
+            slot.style.backgroundSize = 'cover';
+            slot.style.backgroundPosition = 'center';
+            
+            // Clique para remover
+            slot.onclick = () => removeFromGame(index);
+
+            // C. CÁLCULO DO PREÇO (AQUI ESTAVA O ERRO NaN)
+            // Só soma se for um dos 4 primeiros (índice 0, 1, 2, 3). O índice 4 é grátis.
+            if (index < 4) {
+                totalPagavel += limparPreco(item.price);
+            }
+        }
+    });
+
+    // D. Atualiza Textos e Botões na Régua
+    if (statusText) {
+        if (itensCount === 0) {
+            statusText.innerHTML = `Monte sua ChefBox:`;
+            if(btnFinish) btnFinish.style.display = 'none';
+        
+        } else if (itensCount < 4) {
+            let faltam = 4 - itensCount;
+            statusText.innerHTML = `Faltam <strong>${faltam}</strong> para ganhar o presente!`;
+            if(btnFinish) btnFinish.style.display = 'none';
+        
+        } else if (itensCount === 4) {
+            statusText.innerHTML = `🎉 Parabéns! Escolha seu <strong>PRESENTE</strong> agora!`;
+            if(btnFinish) btnFinish.style.display = 'none';
+            slots[4].classList.add('active'); // Anima o slot do presente
+        
+        } else if (itensCount === 5) {
+            // Mostra o total formatado corretamente (Ex: R$ 139,20)
+            statusText.innerHTML = `✅ Completa! Total: <strong>${formatarDinheiro(totalPagavel)}</strong>`;
+            if(btnFinish) btnFinish.style.display = 'flex'; // Mostra botão verde
+        }
+    }
+}
+
+// --- 6. CHECKOUT WHATSAPP (ENVIO DO PEDIDO) ---
+
+function openCheckoutModal() {
+    const modal = document.getElementById('checkout-modal');
+    if (modal) modal.style.display = 'flex';
+}
+
+function closeCheckoutModal() {
+    const modal = document.getElementById('checkout-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+function sendOrderToWhatsApp() {
+    // Pega dados do formulário
+    const name = document.getElementById('customer-name').value;
+    const address = document.getElementById('customer-address').value;
+    const cep = document.getElementById('customer-cep').value;
+
+    if (!name || !address) {
+        alert("Por favor, preencha seu Nome e Endereço para a entrega.");
+        return;
+    }
+
+    let msgItens = "";
+    let totalFinal = 0;
+
+    // Monta a lista de itens para o Zap
+    chefboxCart.forEach((item, index) => {
+        if (index < 4) {
+            let valorItem = limparPreco(item.price);
+            totalFinal += valorItem;
+            msgItens += `✅ ${item.name} (${formatarDinheiro(valorItem)})\n`;
+        } else {
+            msgItens += `🎁 PRESENTE: ${item.name} (GRÁTIS)\n`;
+        }
+    });
+
+    // Monta a mensagem final
+    const textoZap = `*NOVO PEDIDO CHEFBOX (4+1)* 🥗\n\n` +
+        `*Cliente:* ${name}\n` +
+        `*Endereço:* ${address}\n` +
+        `*CEP:* ${cep}\n\n` +
+        `*Itens Escolhidos:*\n${msgItens}\n` +
+        `*💰 TOTAL A PAGAR: ${formatarDinheiro(totalFinal)}*\n\n` +
+        `*Chave PIX:* 36.014.833/0001-59\n` +
+        `Aguardo confirmação!`;
+
+    // Abre o WhatsApp
+    const phone = "5561996659880";
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(textoZap)}`, '_blank');
+    
+    closeCheckoutModal();
+}
+
+// --- 7. FUNÇÕES DE UI (MENU E ACORDEÃO) ---
+function initMobileMenu() {
+    const btn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('.mobile-menu-drawer');
+    if(btn && nav) {
+        btn.addEventListener('click', () => {
+            if (nav.style.display === 'flex') {
+                nav.style.display = 'none';
+                btn.innerHTML = '☰';
+            } else {
+                nav.style.display = 'flex';
+                btn.innerHTML = '✕';
+            }
+        });
+    }
+}
+
+function initAccordions() {
+    const acc = document.querySelectorAll('.accordion-header');
+    acc.forEach(el => {
+        el.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    });
+}
