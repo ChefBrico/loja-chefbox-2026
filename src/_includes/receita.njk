@@ -3,12 +3,18 @@ layout: base.njk
 ---
 
 <!-- ========================================================================== -->
-<!-- 1. CÉREBRO DIGITAL (SCHEMA.ORG HIPER-AVANÇADO)                             -->
+<!-- 1. CÉREBRO DIGITAL (SCHEMA.ORG: RECEITA + OFERTA 4+1)                      -->
 <!-- ========================================================================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@type": ["Product", "Recipe"],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gourmetpratico.com.br{{ page.url }}"
+  },
+  
+  /* IDENTIDADE DO PRODUTO */
   "name": "{{ title }}",
   "description": "{{ description }}",
   "sku": "{{ sku }}",
@@ -19,9 +25,19 @@ layout: base.njk
     "height": 566,
     "width": 1080
   },
-  "brand": { "@type": "Brand", "name": "ChefBrico" },
+  "brand": { 
+    "@type": "Brand", 
+    "name": "ChefBrico",
+    "@id": "https://gourmetpratico.com.br/#organization"
+  },
   
-  /* DADOS TÉCNICOS PARA AGENTES B2B */
+  /* CONEXÃO SEMÂNTICA (WIKIDATA DO PRATO) */
+  {% if wikidata_id %}
+  "isBasedOn": "https://www.wikidata.org/wiki/{{ wikidata_id }}",
+  {% endif %}
+  "keywords": "{{ category }}, Culinária Saudável, {{ main_ingredient }}",
+
+  /* DADOS TÉCNICOS B2B */
   "additionalProperty": [
     { "@type": "PropertyValue", "name": "UNSPSC", "value": "{{ unspsc | default('50193100') }}" },
     { "@type": "PropertyValue", "name": "Peso Líquido", "value": "{{ peso_liquido_g }}g" },
@@ -29,7 +45,11 @@ layout: base.njk
   ],
 
   /* DADOS DE RECEITA (SEO DE VOZ) */
-  "author": { "@type": "Person", "name": "{{ author_name }}" },
+  "author": { 
+    "@type": "Person", 
+    "name": "{{ author_name }}",
+    "@id": "https://gourmetpratico.com.br/#person-maria-conceicao"
+  },
   "datePublished": "{{ date | postDate }}",
   "prepTime": "{{ tempo_iso }}",
   "cookTime": "{{ tempo_iso }}",
@@ -60,7 +80,7 @@ layout: base.njk
     "servingSize": "{{ nutrition.portion }}"
   },
 
-  /* DADOS COMERCIAIS (A LÓGICA 4+1) */
+  /* DADOS COMERCIAIS (A LÓGICA DO PRESENTE) */
   "offers": {
     "@type": "Offer",
     "price": "{{ price }}",
@@ -68,9 +88,9 @@ layout: base.njk
     "url": "https://gourmetpratico.com.br{{ page.url }}",
     "availability": "{% if stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
     "itemCondition": "https://schema.org/NewCondition",
-    "seller": { "@type": "Organization", "name": "ChefBrico" },
+    "seller": { "@id": "https://gourmetpratico.com.br/#organization" },
+    "areaServed": { "@type": "State", "name": "Distrito Federal" },
     
-    /* O SEGREDO DO A-COMMERCE: PREÇO SEMÂNTICO */
     "priceSpecification": [
       {
         "@type": "UnitPriceSpecification",
@@ -86,13 +106,14 @@ layout: base.njk
         "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "C62" },
         "eligibleQuantity": {
           "@type": "QuantitativeValue",
-          "minValue": "5",
-          "description": "Na compra de 5 unidades, o item de menor valor é gratuito."
+          "value": "5",
+          "unitCode": "C62"
         },
-        "description": "Presente ChefBox (Compre 4 Leve 5)"
+        /* AQUI ESTÁ A CORREÇÃO DA LÓGICA */
+        "description": "Na compra de 5 unidades, o 5º item é 100% gratuito (Presente). Isso equivale a 20% de desconto no total do kit."
       }
     ],
-    "disambiguatingDescription": "Oferta Especial ChefBox: Ao selecionar 5 unidades, o cliente paga apenas por 4. O 5º item é um presente (100% de desconto no item de menor valor)."
+    "disambiguatingDescription": "Oferta ChefBox: Monte um kit com 5 sabores. Você paga 4 e ganha o 5º de presente. Frete Grátis para DF."
   },
 
   "aggregateRating": {
@@ -104,31 +125,25 @@ layout: base.njk
 </script>
 
 <!-- ========================================================================== -->
-<!-- 2. CAMADA VISUAL (MANTIDA IDÊNTICA AO SEU DESIGN SYSTEM v5.0)              -->
+<!-- 2. CAMADA VISUAL (MANTIDA)                                                 -->
 <!-- ========================================================================== -->
 <style>
-  /* Importando variáveis globais para garantir consistência */
   .receita-header { text-align: center; max-width: 800px; margin: 40px auto; }
   .receita-title { color: var(--cor-institucional, #014039); font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; line-height: 1.2; }
   .receita-subtitle { color: #666; font-style: italic; font-size: 1.1rem; }
 
-  /* Metadados Visuais */
   .meta-bar { display: flex; justify-content: center; gap: 20px; margin: 25px 0; font-size: 0.85rem; color: #444; font-weight: 600; flex-wrap: wrap; text-transform: uppercase; }
   .meta-item { display: flex; align-items: center; gap: 6px; background: #fff; padding: 8px 15px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
 
-  /* Imagem Hero */
   .hero-image-container { max-width: 900px; margin: 0 auto 40px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .hero-image-container img { width: 100%; height: auto; display: block; }
 
-  /* Conteúdo */
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
   .conteudo-leitura h2 { color: var(--cor-institucional, #014039); margin-top: 50px; margin-bottom: 20px; font-size: 1.6rem; font-family: 'Merriweather', serif; }
 
-  /* Elementos Especiais (Segredo, Dica) */
   .segredo-box { background: #ffffff; padding: 25px; margin: 30px auto; max-width: 800px; border-radius: 8px; color: #444; border-left: 5px solid #27ae60; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
   .dica-chef-card { background: white; border-left: 4px solid var(--cor-cta, #F2811D); padding: 25px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); margin: 40px 0; }
   
-  /* Listas Estilizadas */
   .checked-list { list-style: none !important; padding-left: 0; }
   .checked-list li { position: relative; padding-left: 35px; margin-bottom: 15px; }
   .checked-list li::before { content: '✔'; position: absolute; left: 0; top: 2px; width: 22px; height: 22px; border: 2px solid #27ae60; color: #27ae60; border-radius: 4px; font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
@@ -137,14 +152,12 @@ layout: base.njk
   .modo-preparo li { position: relative; padding-left: 60px; margin-bottom: 25px; }
   .modo-preparo li::before { counter-increment: steps; content: counter(steps); position: absolute; left: 0; top: -5px; width: 35px; height: 35px; background: var(--cor-cta, #F2811D); color: white; border-radius: 50%; text-align: center; line-height: 35px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 3px 6px rgba(242, 129, 29, 0.3); z-index: 1; }
 
-  /* CTA Box */
   .cta-box { background: linear-gradient(90deg, #fdfbf7 0%, #fff 100%); border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; max-width: 700px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
   .cta-img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
   .cta-content { flex-grow: 1; text-align: left; }
   .btn-comprar-agora { background: var(--cor-cta, #F2811D); color: white; padding: 10px 20px; border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 0.95rem; white-space: nowrap; transition: transform 0.2s; display: inline-block; cursor: pointer; border: none; }
   .btn-comprar-agora:hover { transform: scale(1.05); }
 
-  /* Tabela Nutricional (Cards) */
   .nutri-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 30px auto; max-width: 100%; }
   .nutri-card { background: #fff; border: 1px solid #eee; border-radius: 10px; width: 100px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: center; flex-shrink: 0; }
   .nutri-head { background: var(--cor-institucional, #014039); color: white; font-size: 0.7rem; text-transform: uppercase; padding: 5px; font-weight: bold; height: 35px; display: flex; align-items: center; justify-content: center; }
@@ -155,9 +168,6 @@ layout: base.njk
   @media (max-width: 600px) { .cta-box { flex-direction: column; text-align: center; } }
 </style>
 
-<!-- ========================================================================== -->
-<!-- 3. PALCO VISUAL (HTML)                                                     -->
-<!-- ========================================================================== -->
 <article>
     <header class="receita-header">
         <h1 class="receita-title">{{ title }}</h1>
@@ -198,7 +208,6 @@ layout: base.njk
                 <p>Adicione à sua <strong>ChefBox</strong> agora.</p>
             </div>
             <!-- AÇÃO: Adiciona ao Jogo (Humano) -->
-          <!-- DEPOIS (Corrigido com filtro dinheiro) -->
           <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}', '{{ page.url }}')" 
           class="btn-comprar-agora">
           + Adicionar (R$ {{ price | dinheiro }})
@@ -254,8 +263,6 @@ layout: base.njk
         {% endif %}
 
        <div class="author-box" style="margin-top: 60px; background: #f9f9f9; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px;">
-            
-            <!-- AQUI ESTÁ A MUDANÇA: Classe Média -->
             <img src="/imagens/maria-conceicao-empreendedora-feira-tematica.png" 
                  alt="{{ author_name }}" 
                  class="avatar-signature-circle">
@@ -273,14 +280,13 @@ layout: base.njk
     </div>
 </article>
 
-<!-- JAVASCRIPT: O MAESTRO DA ESTÉTICA (Mantido para estilizar listas automaticamente) -->
+<!-- JAVASCRIPT: O MAESTRO DA ESTÉTICA (Mantido) -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const contentDiv = document.querySelector('.conteudo-leitura');
         const headers = contentDiv.querySelectorAll('h2');
         const simplesTag = document.getElementById('simples-assim-tag');
         
-        // 1. INTRODUÇÃO CARD
         if (headers.length > 0) {
             let currentNode = contentDiv.firstChild;
             let introNodes = [];
@@ -295,7 +301,6 @@ layout: base.njk
             });
         }
 
-        // 2. ESTILIZAR LISTAS AUTOMATICAMENTE
         headers.forEach(h2 => {
             const title = h2.innerText.toLowerCase();
             if (title.includes('amar') || title.includes('pacote') || title.includes('pote')) {
