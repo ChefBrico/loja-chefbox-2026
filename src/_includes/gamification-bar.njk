@@ -1,22 +1,43 @@
-<!-- BARRA DE GAMIFICAÇÃO (STICKY FOOTER) -->
-<div id="chefbox-bar" class="chefbox-sticky-bar">
+<!-- ======================================================= -->
+<!-- BARRA DE GAMIFICAÇÃO (COM SEMÂNTICA A-COMMERCE)         -->
+<!-- ======================================================= -->
+<aside id="chefbox-bar" class="chefbox-sticky-bar" 
+       role="region" 
+       aria-label="Progresso da Promoção ChefBox"
+       data-agent-context="bundle-progress-tracker"
+       data-agent-rule="buy_4_get_1_free">
     
     <!-- Texto de Status -->
     <div class="bar-info">
-        <span id="game-status-text">Monte sua ChefBox:</span>
+        <span id="game-status-text" data-agent-state="dynamic">
+            Monte sua ChefBox:
+        </span>
     </div>
     
     <!-- Slots (Bolinhas) -->
+    <!-- Adicionei 'title' para UX e 'data-slot' para a IA entender a posição -->
     <div class="slots-wrapper">
-        <div id="slot-1" class="slot-circle">1</div>
-        <div id="slot-2" class="slot-circle">2</div>
-        <div id="slot-3" class="slot-circle">3</div>
-        <div id="slot-4" class="slot-circle">4</div>
-        <div id="slot-5" class="slot-circle gift">🎁</div>
+        <div id="slot-1" class="slot-circle" data-slot-index="1" title="Escolha o 1º sabor">1</div>
+        <div id="slot-2" class="slot-circle" data-slot-index="2" title="Escolha o 2º sabor">2</div>
+        <div id="slot-3" class="slot-circle" data-slot-index="3" title="Escolha o 3º sabor">3</div>
+        <div id="slot-4" class="slot-circle" data-slot-index="4" title="Escolha o 4º sabor">4</div>
+        <div id="slot-5" class="slot-circle gift" data-slot-index="5" data-slot-type="bonus" title="Seu Presente (Grátis)!">🎁</div>
     </div>
 
     <!-- Botão Finalizar (Aparece via JS) -->
-    <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()" style="display:none;">
+    <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()" style="display:none;" 
+            data-agent-action="checkout-whatsapp">
         Finalizar Pedido ➜
     </button>
-</div>
+
+    <!-- SHADOW DATA (Invisível para humanos, Instrução para Agentes) -->
+    <!-- Isso explica a regra do jogo para o Robô sem poluir a tela -->
+    <script type="application/json" id="agent-bundle-rules">
+    {
+        "target_quantity": 5,
+        "discount_slot": 5,
+        "benefit_description": "20% OFF (Free Item)",
+        "current_status": "waiting_user_input"
+    }
+    </script>
+</aside>
