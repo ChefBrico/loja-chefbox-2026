@@ -4,28 +4,34 @@
     "url": "/"
   },
   {
-    "text": "Comida de Verdade",
+    "text": "O Método",
     "url": "/comida-de-verdade/",
-    "title": "Conheça o Método Gourmet Prático"
+    "title": "Conheça a Ciência e o Afeto da Chef Maria"
   },
   {
-    "text": "Receitas ▾",
+    "text": "Cardápio ▾",
     "url": "/receitas/",
     "children": [
-      { "text": "Risotos", "url": "/receitas/risotos/" },
+      { "text": "Ver Tudo", "url": "/receitas/" },
+      { "text": "Risotos (18 min)", "url": "/receitas/risotos/" },
       { "text": "Sopas Funcionais", "url": "/receitas/sopas-funcionais/" },
       { "text": "Refeições Integrais", "url": "/receitas/refeicoes-integrais/" },
       { "text": "Empório da Chef", "url": "/receitas/emporio-da-chef/" }
     ]
   },
   {
-    "text": "FAQ",
+    "text": "Áreas de Entrega",
+    "url": "/onde-encontrar/",
+    "title": "Mapa de cobertura e parceiros no DF"
+  },
+  {
+    "text": "Dúvidas",
     "url": "/faq/"
   },
   {
-    "text": "Monte sua ChefBox 🎁",
+    "text": "🎁 ChefBox (4+1)",
     "url": "/chefbox/",
     "type": "cta",
-    "ariaLabel": "Clique para montar seu kit personalizado"
+    "ariaLabel": "Promoção: Monte 5 e Pague 4. Frete Grátis DF."
   }
 ]
