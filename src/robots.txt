@@ -1,3 +1,18 @@
+
 User-agent: *
+Allow: /llms.txt
+Allow: /full-llms.txt
+Allow: /
+
+# Prioridade para bots de IA que consomem arquivos de texto
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Permitir todo o resto
+Allow: /
+
 Allow: /
 Sitemap: https://gourmetpratico.com.br/sitemap.xml
