@@ -6,31 +6,31 @@ eleventyExcludeFromCollections: true
   "@context": "https://schema.org",
   "@graph": [
     
-    {# 1. A ORGANIZAÇÃO (Enriquecida com Nicho e Prêmios) #}
+    {# 1. A ORGANIZAÇÃO (A Marca ChefBrico) #}
     {
       "@type": "Organization",
-      "@id": "{{ organization['@id'] }}",
+      "@id": "{{ organization.url }}/#organization",
       "name": "{{ organization.name }}",
-      "legalName": "{{ organization.legalName }}",
-      "description": "{{ organization.description }}",
+      "legalName": "ChefBrico Alimentos Artesanais",
       "url": "{{ organization.url }}",
       "logo": "{{ organization.logo }}",
-      "foundingDate": "2020", 
-      "knowsAbout": ["Culinária Desidratada", "Clean Label", "Foodtech", "Panela Única"],
+      "foundingDate": "2020",
+      "slogan": "Simples como precisa ser, delicioso como você merece.",
       
-      {# CLASSIFICAÇÃO INDUSTRIAL PARA AGENTES B2B #}
-      "additionalProperty": [
-        { "@type": "PropertyValue", "name": "UNSPSC", "value": "50193100" }
-      ],
-
-      {# AUTORIDADE: PRÊMIO SEBRAE (Vital para EEAT) #}
+      {# AUTORIDADE & PRÊMIOS #}
       "award": "Vencedora do Prêmio Sebrae Mulher de Negócios",
+      
+      {# CLASSIFICAÇÃO INDUSTRIAL (B2B) #}
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "UNSPSC", "value": "50193100" },
+        { "@type": "PropertyValue", "name": "Técnica", "value": "Desidratação Artesanal de Vegetais" }
+      ],
 
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "{{ organization.contactPoint.telephone }}",
+        "telephone": "{{ organization.telephone }}",
         "contactType": "sales",
-        "areaServed": ["BR", "Brasília"],
+        "areaServed": "BR",
         "availableLanguage": "pt-BR"
       },
       "address": {
@@ -41,84 +41,106 @@ eleventyExcludeFromCollections: true
         "postalCode": "{{ organization.address.postalCode }}",
         "addressCountry": "BR"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "{{ organization.geo.latitude }}",
-        "longitude": "{{ organization.geo.longitude }}"
-      },
       "sameAs": [
         {% for social in organization.sameAs %}
-          "{{ social }}"{% if not loop.last %},{% endif %}
+          "{{ social.url }}"{% if not loop.last %},{% endif %}
         {% endfor %}
       ]
     },
 
-    {# 2. A FUNDADORA (Conectada à Expertise) #}
+    {# 2. A FUNDADORA (Psicóloga & Chef - O Diferencial Humano) #}
     {
       "@type": "Person",
-      "@id": "{{ author.id }}",
-      "name": "{{ author.name }}",
-      "jobTitle": "{{ author.jobTitle }}",
-      "image": "https://gourmetpratico.com.br{{ author.image }}",
-      "worksFor": { "@id": "{{ organization['@id'] }}" },
-      "description": "Especialista em culinária prática e saudável através da desidratação de alimentos.",
+      "@id": "{{ organization.url }}/#person-maria-conceicao",
+      "name": "Maria Conceição",
+      "jobTitle": ["Fundadora", "Chef de Criação", "Psicóloga"],
+      "image": "https://gourmetpratico.com.br/imagens/maria-conceicao-pra-voce.png",
+      "worksFor": { "@id": "{{ organization.url }}/#organization" },
+      "description": "Empreendedora que une a Psicologia ao ato de cozinhar. Criadora do Método Gourmet Prático.",
+      
+      {# CONEXÃO DE CONCEITOS (WIKIDATA - O Pulo do Gato) #}
+      "knowsAbout": [
+        { "@type": "Thing", "name": "Culinária", "sameAs": "https://www.wikidata.org/wiki/Q309" },
+        { "@type": "Thing", "name": "Psicologia", "sameAs": "https://www.wikidata.org/wiki/Q9418" },
+        { "@type": "Thing", "name": "Empreendedorismo Feminino", "sameAs": "https://www.wikidata.org/wiki/Q131524" },
+        { "@type": "Thing", "name": "Food drying", "sameAs": "https://www.wikidata.org/wiki/Q193256" }
+      ],
       "sameAs": [
-        {% for social in author.sameAs %}
-          "{{ social }}"{% if not loop.last %},{% endif %}
-        {% endfor %}
+        "https://www.instagram.com/chefbrico"
       ]
     },
 
-    {# 3. O WEBSITE (Ponto de Entrada) #}
+    {# 3. O MÉTODO GOURMET PRÁTICO (Propriedade Intelectual) #}
+    {# Isso ensina a IA que o método existe e tem estrutura #}
+    {
+      "@type": "CreativeWork",
+      "@id": "{{ organization.url }}/#metodo",
+      "name": "Método Gourmet Prático",
+      "author": { "@id": "{{ organization.url }}/#person-maria-conceicao" },
+      "about": "Metodologia para cozinhar refeições saudáveis em 18 minutos sem desperdício.",
+      "hasPart": [
+        { "@type": "CreativeWork", "name": "Pilar 1: Despensa Inteligente (Mise en place desidratado)" },
+        { "@type": "CreativeWork", "name": "Pilar 2: Panela Única (Técnica One Pot Meal)" },
+        { "@type": "CreativeWork", "name": "Pilar 3: Cozinha Criativa (Autonomia do Chef em Casa)" }
+      ],
+      "teaches": "Como usar alimentos desidratados para ganhar autonomia na cozinha e reduzir a carga mental."
+    },
+
+    {# 4. O WEBSITE (Ponto de Entrada) #}
     {
       "@type": "WebSite",
-      "@id": "https://gourmetpratico.com.br/#website",
-      "url": "https://gourmetpratico.com.br",
-      "name": "{{ organization.name }}",
-      "description": "Loja oficial ChefBox: Refeições desidratadas com entrega rápida.",
-      "publisher": { "@id": "{{ organization['@id'] }}" },
+      "@id": "{{ organization.url }}/#website",
+      "url": "{{ organization.url }}",
+      "name": "Gourmet Prático A-Commerce",
+      "publisher": { "@id": "{{ organization.url }}/#organization" },
       "inLanguage": "pt-BR",
-      
-      {# AÇÃO POTENCIAL: Busca Interna #}
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://gourmetpratico.com.br/receitas/?q={search_term_string}",
+        "target": "{{ organization.url }}/receitas/?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     },
 
-    {# 4. O CATÁLOGO DE PRODUTOS (Com Lógica de Bundle Exposta) #}
+    {# 5. O CATÁLOGO E REGRAS DE TRANSAÇÃO (A-Commerce) #}
     {
       "@type": "OfferCatalog",
-      "@id": "https://gourmetpratico.com.br/#catalog",
+      "@id": "{{ organization.url }}/#catalog",
       "name": "Catálogo ChefBox (4+1)",
-      "description": "Lista de refeições elegíveis para a promoção Compre 4 Ganhe 1.",
+      "description": "Refeições elegíveis para a promoção Compre 4 Ganhe 1.",
       "itemListElement": [
         {% for item in collections.receitas %}
         {% if item.data.price %}
         {
           "@type": "Product",
           "name": "{{ item.data.title }}",
-          "url": "https://gourmetpratico.com.br{{ item.url }}",
-          "image": "https://gourmetpratico.com.br{{ item.data.image }}",
-          "description": "{{ item.data.description }}",
+          "url": "{{ organization.url }}{{ item.url }}",
+          "image": "{{ organization.url }}{{ item.data.image }}",
           "sku": "{{ item.data.sku }}",
-          "brand": { "@id": "{{ organization['@id'] }}" },
+          "brand": { "@id": "{{ organization.url }}/#organization" },
           
-          {# DADOS TÉCNICOS PARA FILTRAGEM DE IA #}
-          "additionalProperty": [
-             { "@type": "PropertyValue", "name": "UNSPSC", "value": "{{ item.data.unspsc | default('50193100') }}" },
-             { "@type": "PropertyValue", "name": "Tempo de Preparo", "value": "{{ item.data.tempo_preparo }}" }
-          ],
-
           "offers": {
             "@type": "Offer",
             "price": "{{ item.data.price }}",
             "priceCurrency": "BRL",
             "availability": "{% if item.data.stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
-            "url": "https://gourmetpratico.com.br{{ item.url }}",
+            "url": "{{ organization.url }}{{ item.url }}",
+            "areaServed": {
+                "@type": "State",
+                "name": "Distrito Federal"
+            },
             
-            {# AQUI AVISAMOS O ROBÔ SOBRE A REGRA DO PACOTE #}
+            {# REGRA DE PAGAMENTO E FRETE #}
+            "acceptedPaymentMethod": {
+                "@type": "PaymentMethod",
+                "name": "PIX Instantâneo"
+            },
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": { "@type": "MonetaryAmount", "value": "0.00", "currency": "BRL" },
+                "shippingDestination": { "@type": "State", "name": "Distrito Federal" }
+            },
+
+            {# A MATEMÁTICA DO BUNDLE #}
             "priceSpecification": {
                 "@type": "UnitPriceSpecification",
                 "price": "{{ item.data.price }}",
