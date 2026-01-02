@@ -1,5 +1,5 @@
 ---
-permalink: /api/full-llms.txt
+permalink: /full-llms.txt
 eleventyExcludeFromCollections: true
 ---
 # ChefBrico & Método Gourmet Prático: Documentation for AI Agents (Deep RAG)
