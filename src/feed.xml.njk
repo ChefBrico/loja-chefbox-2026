@@ -1,116 +1,56 @@
 ---
 permalink: /feed_merchant.xml
 eleventyExcludeFromCollections: true
+layout: null
 ---
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
 <channel>
-<title>ChefBrico - Inventário Oficial (Brasília)</title>
-<link>{{ meta.url }}</link>
-<description>Refeições gourmet desidratadas 100% naturais. Entrega local rápida em Brasília e nacional via Correios.</description>
+<title>ChefBrico Ofertas (DF)</title>
+<link>https://gourmetpratico.com.br</link>
+<description>Entrega exclusiva Distrito Federal. Kit ChefBox R$ 132,00.</description>
 
-{# LOOP: Itera sobre os produtos #}
-{% for item in collections.receitas %}
-{% if item.data.price %}
 <item>
-    {# ================================================================== #}
-    {# 1. IDENTIDADE HÍBRIDA (HUMANO + ROBÔ)                              #}
-    {# ================================================================== #}
-    <g:id>{{ item.data.sku }}</g:id>
+    <g:id>CHEFBOX-KIT-5-SABORES-DF</g:id>
+    <g:title>ChefBox: Kit 5 Refeições Gourmet (Pague 4 Leve 5) - Entrega DF</g:title>
     
-    <g:title>{{ item.data.title }} | Serve {{ item.data.rendimento }} | ChefBrico</g:title>
-    
-    {# DESCRIÇÃO TÉCNICA BLINDADA (CORREÇÃO DO ERRO AQUI) #}
     <g:description>
-        [DADOS TÉCNICOS]
-        UNSPSC: {{ item.data.unspsc | default('50193100') }}.
-        Rendimento: {{ item.data.rendimento }}.
-        {# AQUI ESTAVA O ERRO: Adicionamos verificação se existe dieta #}
-        Dieta: {% if item.data.diets %}{{ item.data.diets | join(', ') }}{% else %}Natural/Padrão{% endif %}.
-        Ingredientes: {{ item.data.ingredientes_texto }}.
+        OFERTA ÚNICA BRASÍLIA: 5 Refeições Gourmet por R$ 132,00 (R$ 26,40/prato).
+        REGRA 4+1: Você escolhe 5 sabores, o 5º é PRESENTE.
         
-        [DESCRIÇÃO]
-        {{ item.data.description }}
-        Refeição desidratada método Panela Única. Pronto em {{ item.data.tempo_preparo }}.
+        DETALHES:
+        - Método Gourmet Prático (Desidratado).
+        - Pronto em 18 minutos (Panela Única).
+        - Validade: 6 a 12 meses na despensa.
+        - Frete Grátis para todo o DF (Entrega D+1).
+        
+        Ideal para garantir o jantar saudável da semana.
     </g:description>
-    
-    <g:link>{{ meta.url }}{{ item.url }}?utm_source=google_merchant&amp;utm_medium=product_sync&amp;utm_campaign=a_commerce</g:link>
-    <g:image_link>{{ meta.url }}{{ item.data.image }}</g:image_link>
-    <g:brand>ChefBrico</g:brand>
 
-    {# ================================================================== #}
-    {# 2. PREÇIFICAÇÃO E COMPARAÇÃO                                       #}
-    {# ================================================================== #}
+    <g:link>https://gourmetpratico.com.br/chefbox/?utm_source=google_shopping&amp;utm_medium=cpc&amp;utm_campaign=kit_132</g:link>
+    <g:image_link>https://gourmetpratico.com.br/imagens/maria-conceicao-chefbrico-laranja.png</g:image_link>
+
+    <g:price>132.00 BRL</g:price>
+    <g:availability>in_stock</g:availability>
     <g:condition>new</g:condition>
-    <g:price>{{ item.data.price }} BRL</g:price>
-    <g:promotion_id>CHEFBOX_4_PLUS_1</g:promotion_id>
 
-    {% if item.data.peso_liquido_g %}
-    <g:unit_pricing_measure>{{ item.data.peso_liquido_g }} g</g:unit_pricing_measure>
-    <g:unit_pricing_base_measure>100 g</g:unit_pricing_base_measure>
-    {% endif %}
-
-    {# ================================================================== #}
-    {# 3. CATEGORIZAÇÃO ESTRATÉGICA                                       #}
-    {# ================================================================== #}
     <g:google_product_category>5814</g:google_product_category>
-    <g:product_type>Alimentos > Refeições Desidratadas > UNSPSC:50193100 > {{ item.data.category }}</g:product_type>
+    <g:product_type>Alimentos > Kits de Refeição</g:product_type>
 
-    {# ================================================================== #}
-    {# 4. ATRIBUTOS RICOS (BLINDADOS)                                     #}
-    {# ================================================================== #}
+    <g:identifier_exists>no</g:identifier_exists> 
+    <g:is_bundle>yes</g:is_bundle>
     
-    {# DIETA: Verificação de segurança adicionada #}
-    <g:product_detail>
-        <g:section_name>Dietary</g:section_name>
-        <g:attribute_name>Gluten Free</g:attribute_name>
-        {# Só verifica se 'diets' existir #}
-        <g:attribute_value>{% if item.data.diets and 'GlutenFree' in item.data.diets %}Yes{% else %}No{% endif %}</g:attribute_value>
-    </g:product_detail>
-    
-    <g:product_detail>
-        <g:section_name>Dietary</g:section_name>
-        <g:attribute_name>Vegan</g:attribute_name>
-        {# Só verifica se 'diets' existir #}
-        <g:attribute_value>{% if item.data.diets and 'Vegan' in item.data.diets %}Yes{% else %}No{% endif %}</g:attribute_value>
-    </g:product_detail>
-
-    <g:product_detail>
-        <g:section_name>Yield</g:section_name>
-        <g:attribute_name>Servings</g:attribute_name>
-        <g:attribute_value>{{ item.data.rendimento }}</g:attribute_value>
-    </g:product_detail>
-
-    <g:product_detail>
-        <g:section_name>Nutrition</g:section_name>
-        <g:attribute_name>Calories</g:attribute_name>
-        <g:attribute_value>{{ item.data.nutrition.calories }} kcal</g:attribute_value>
-    </g:product_detail>
-
-    <g:product_detail>
-        <g:section_name>Preparation</g:section_name>
-        <g:attribute_name>Time</g:attribute_name>
-        <g:attribute_value>{{ item.data.tempo_preparo }}</g:attribute_value>
-    </g:product_detail>
-
-    {# ================================================================== #}
-    {# 5. LOGÍSTICA E DISPONIBILIDADE                                     #}
-    {# ================================================================== #}
-    <g:availability>{% if item.data.stock > 0 %}in_stock{% else %}out_of_stock{% endif %}</g:availability>
     <g:shipping_label>Local_Delivery_DF</g:shipping_label>
-    <g:store_code>10365737667087001606</g:store_code>
+    <g:custom_label_0>Promoção R$ 132</g:custom_label_0>
+    <g:custom_label_1>DF Only</g:custom_label_1>
 
-    {# ================================================================== #}
-    {# 6. RÓTULOS PARA FILTRAGEM                                          #}
-    {# ================================================================== #}
-    <g:custom_label_0>{% if item.data.tempo_preparo == '15 min' or item.data.tempo_preparo == '18 min' %}Jantar Rápido{% else %}Gourmet{% endif %}</g:custom_label_0>
-    <g:custom_label_1>Bundle-Eligible-4plus1</g:custom_label_1>
-    <g:custom_label_2>Hub:DF</g:custom_label_2>
-
-    <g:identifier_exists>no</g:identifier_exists>
+    <g:shipping>
+        <g:country>BR</g:country>
+        <g:region>Distrito Federal</g:region>
+        <g:service>Motoboy D+1</g:service>
+        <g:price>0.00 BRL</g:price>
+    </g:shipping>
 </item>
-{% endif %}
-{% endfor %}
 
 </channel>
 </rss>
