@@ -1,11 +1,11 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO MESTRA V3.0 - DF ONLY & 5º PRESENTE)
+// ARQUIVO: js/app.js (VERSÃO MESTRA V4.0 - DF ONLY & R$ 132)
 // =================================================================
 
 let chefboxCart = [];
 const MAX_SLOTS = 5;
 
-// --- 1. FUNÇÕES UTILITÁRIAS (LIMPEZA DE DADOS) ---
+// --- 1. FUNÇÕES UTILITÁRIAS ---
 function limparPreco(valor) {
     if (!valor) return 0;
     if (typeof valor === 'number') return valor;
@@ -38,8 +38,7 @@ function addToGame(name, price, imageSrc, sku, url) {
     }
 
     // REGRA DE OURO: ORDEM CRONOLÓGICA
-    // O item entra na fila. Se for o 1º, 2º, 3º ou 4º => PAGO.
-    // Se for o 5º a entrar => PRESENTE.
+    // O item entra na fila. Se for o 5º a entrar => PRESENTE.
     chefboxCart.push({ name, price, image: imageSrc, sku, url });
     saveCart();
     renderRuler();
@@ -156,7 +155,7 @@ function sendOrderToWhatsApp() {
             totalFinal += valor;
             msgItens += `✅ ${index+1}. ${item.name} (${formatarDinheiro(valor)})\n`;
         } else {
-            // Item 5: PRESENTE (Independente do valor, pode ser o mais caro)
+            // Item 5: PRESENTE
             msgItens += `🎁 5. ${item.name} (PRESENTE! R$ 0,00)\n`;
         }
     });
