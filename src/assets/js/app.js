@@ -1,66 +1,55 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO FINAL - CORREÇÃO MATEMÁTICA)
+// ARQUIVO: js/app.js (VERSÃO MESTRA V3.0 - DF ONLY & 5º PRESENTE)
 // =================================================================
 
-// --- 1. VARIÁVEIS GLOBAIS ---
 let chefboxCart = [];
-const MAX_SLOTS = 5; // 4 Pagos + 1 Presente
+const MAX_SLOTS = 5;
 
-// --- 2. FUNÇÕES AUXILIARES (A MÁGICA DA MATEMÁTICA) ---
-
-// Transforma qualquer coisa (Texto "R$ 30,00" ou Número 30) em Número Puro (30.00)
+// --- 1. FUNÇÕES UTILITÁRIAS (LIMPEZA DE DADOS) ---
 function limparPreco(valor) {
     if (!valor) return 0;
     if (typeof valor === 'number') return valor;
-    
-    // Remove tudo que não for número ou vírgula
-    let apenasNumeros = valor.toString().replace(/[^\d,]/g, '');
-    // Troca vírgula por ponto (padrão americano que o sistema entende)
-    apenasNumeros = apenasNumeros.replace(',', '.');
-    
+    // Converte "R$ 30,00" para 30.00 (Padrão Matemático)
+    let apenasNumeros = valor.toString().replace(/[^\d,]/g, '').replace(',', '.');
     return parseFloat(apenasNumeros) || 0;
 }
 
-// Transforma Número Puro (30.00) em Texto Brasileiro ("R$ 30,00")
 function formatarDinheiro(valor) {
     return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
-// --- 3. INICIALIZAÇÃO ---
+// --- 2. INICIALIZAÇÃO ---
 document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-    initAccordions();
-    
-    // Recupera o carrinho salvo se o cliente voltar
     loadCart();
     renderRuler();
 });
 
-// --- 4. MOTOR DO JOGO CHEFBOX (4+1) ---
-
+// --- 3. MOTOR DO JOGO (ADICIONAR ITEM) ---
 function addToGame(name, price, imageSrc, sku, url) {
     if (chefboxCart.length >= MAX_SLOTS) {
-        alert("Sua ChefBox já está completa! Remova um item clicando na bolinha se quiser trocar.");
+        // Feedback visual de erro (Piscar vermelho suave)
+        const bar = document.getElementById('chefbox-bar');
+        if(bar) {
+            bar.style.backgroundColor = '#ffebee';
+            setTimeout(() => { bar.style.backgroundColor = 'white'; }, 500);
+        }
+        alert("Sua ChefBox já está completa (5 Sabores). Remova um item para trocar.");
         return;
     }
 
-    // Adiciona ao carrinho
-    chefboxCart.push({ 
-        name: name, 
-        price: price, 
-        image: imageSrc,
-        sku: sku,
-        url: url
-    });
-    
+    // REGRA DE OURO: ORDEM CRONOLÓGICA
+    // O item entra na fila. Se for o 1º, 2º, 3º ou 4º => PAGO.
+    // Se for o 5º a entrar => PRESENTE.
+    chefboxCart.push({ name, price, image: imageSrc, sku, url });
     saveCart();
     renderRuler();
     
-    // Feedback tátil (vibra o celular)
+    // Feedback tátil (Vibração para Mobile)
     if (navigator.vibrate) navigator.vibrate(50);
 }
 
 function removeFromGame(index) {
+    // Ao remover, a fila anda. O item que era 5º vira 4º (e passa a ser pago).
     chefboxCart.splice(index, 1);
     saveCart();
     renderRuler();
@@ -78,131 +67,124 @@ function loadCart() {
     }
 }
 
-// --- 5. RENDERIZAÇÃO DA RÉGUA (VISUAL + CÁLCULO) ---
-
+// --- 4. RENDERIZAÇÃO E CÁLCULO (A LÓGICA DO PRESENTE) ---
 function renderRuler() {
-    // Pega os elementos da tela
     const slots = document.querySelectorAll('.slot-circle');
     const statusText = document.getElementById('game-status-text');
     const btnFinish = document.getElementById('btn-finish-game');
-    const barContainer = document.getElementById('chefbox-bar');
-    
-    // Se não tiver régua na página, para aqui (evita erro)
+
     if (!slots.length) return;
 
-    let totalPagavel = 0;
-    let itensCount = chefboxCart.length;
-
-    // A. Limpa visualmente todos os slots (reseta)
+    // A. Limpa Slots Visualmente
     slots.forEach((slot, i) => {
-        slot.innerHTML = i === 4 ? '🎁' : (i + 1); // O 5º é presente
-        slot.classList.remove('filled', 'active');
+        slot.innerHTML = i === 4 ? '🎁' : (i + 1); // O ícone do 5º slot é fixo
+        slot.classList.remove('filled', 'active', 'gift-active');
         slot.style.backgroundImage = 'none';
         slot.onclick = null;
     });
 
-    // B. Preenche com os itens do carrinho
+    // B. Preenche com Itens do Carrinho
     chefboxCart.forEach((item, index) => {
         if (slots[index]) {
             const slot = slots[index];
             slot.classList.add('filled');
-            slot.innerHTML = ''; // Remove o número para mostrar a foto
-            
-            // Ajuste da imagem de fundo
+            slot.innerHTML = ''; 
             slot.style.backgroundImage = `url('${item.image}')`;
             slot.style.backgroundSize = 'cover';
             slot.style.backgroundPosition = 'center';
-            
-            // Clique para remover
-            slot.onclick = () => removeFromGame(index);
-
-            // C. CÁLCULO DO PREÇO (AQUI ESTAVA O ERRO NaN)
-            // Só soma se for um dos 4 primeiros (índice 0, 1, 2, 3). O índice 4 é grátis.
-            if (index < 4) {
-                totalPagavel += limparPreco(item.price);
-            }
+            slot.onclick = () => removeFromGame(index); // Clique remove o item
         }
     });
 
-    // D. Atualiza Textos e Botões na Régua
+    // C. CÁLCULO FINANCEIRO
+    let totalPagar = 0;
+    
+    chefboxCart.forEach((item, i) => {
+        // Regra Absoluta:
+        // Índices 0, 1, 2, 3 (os 4 primeiros) = PAGOS.
+        // Índice 4 (o 5º item) = GRATIS/PRESENTE (Valor ignorado na soma).
+        if (i < 4) { 
+            totalPagar += limparPreco(item.price);
+        }
+    });
+
+    // D. Comunicação com o Humano (Texto da Régua)
+    let count = chefboxCart.length;
+    
     if (statusText) {
-        if (itensCount === 0) {
+        if (count === 0) {
             statusText.innerHTML = `Monte sua ChefBox:`;
             if(btnFinish) btnFinish.style.display = 'none';
-        
-        } else if (itensCount < 4) {
-            let faltam = 4 - itensCount;
-            statusText.innerHTML = `Faltam <strong>${faltam}</strong> para ganhar o presente!`;
+        } else if (count < 5) {
+            let faltam = 5 - count;
+            statusText.innerHTML = `Escolha mais <strong>${faltam}</strong>. O 5º é Presente!`;
             if(btnFinish) btnFinish.style.display = 'none';
-        
-        } else if (itensCount === 4) {
-            statusText.innerHTML = `🎉 Parabéns! Escolha seu <strong>PRESENTE</strong> agora!`;
-            if(btnFinish) btnFinish.style.display = 'none';
-            slots[4].classList.add('active'); // Anima o slot do presente
-        
-        } else if (itensCount === 5) {
-            // Mostra o total formatado corretamente (Ex: R$ 139,20)
-            statusText.innerHTML = `✅ Completa! Total: <strong>${formatarDinheiro(totalPagavel)}</strong>`;
-            if(btnFinish) btnFinish.style.display = 'flex'; // Mostra botão verde
+        } else if (count === 5) {
+            // AQUI ESTÁ O "WOW FACTOR"
+            statusText.innerHTML = `🎁 <strong>PRESENTE ATIVADO!</strong><br>Total Final: <strong>${formatarDinheiro(totalPagar)}</strong>`;
+            if(btnFinish) btnFinish.style.display = 'flex';
+            slots[4].classList.add('gift-active'); // Faz o slot do presente brilhar/destacar
         }
     }
 }
 
-// --- 6. CHECKOUT WHATSAPP (ENVIO DO PEDIDO) ---
-
-function openCheckoutModal() {
-    const modal = document.getElementById('checkout-modal');
-    if (modal) modal.style.display = 'flex';
-}
-
-function closeCheckoutModal() {
-    const modal = document.getElementById('checkout-modal');
-    if (modal) modal.style.display = 'none';
-}
+// --- 5. CHECKOUT WHATSAPP (A "NOTA FISCAL" SEMÂNTICA) ---
+function openCheckoutModal() { document.getElementById('checkout-modal').style.display = 'flex'; }
+function closeCheckoutModal() { document.getElementById('checkout-modal').style.display = 'none'; }
 
 function sendOrderToWhatsApp() {
-    // Pega dados do formulário
     const name = document.getElementById('customer-name').value;
     const address = document.getElementById('customer-address').value;
     const cep = document.getElementById('customer-cep').value;
 
+    // VALIDAÇÃO GEOGRÁFICA (HUMANA)
     if (!name || !address) {
-        alert("Por favor, preencha seu Nome e Endereço para a entrega.");
+        alert("Atenção: Para entrega no DF, precisamos do seu Nome e Endereço completo.");
         return;
     }
 
+    // Prepara a lista EXATAMENTE como o cliente montou (Cronológica)
+    let itensParaZap = [...chefboxCart];
+    
     let msgItens = "";
     let totalFinal = 0;
 
-    // Monta a lista de itens para o Zap
-    chefboxCart.forEach((item, index) => {
+    itensParaZap.forEach((item, index) => {
+        let valor = limparPreco(item.price);
         if (index < 4) {
-            let valorItem = limparPreco(item.price);
-            totalFinal += valorItem;
-            msgItens += `✅ ${item.name} (${formatarDinheiro(valorItem)})\n`;
+            // Itens 1 a 4: Cobrados
+            totalFinal += valor;
+            msgItens += `✅ ${index+1}. ${item.name} (${formatarDinheiro(valor)})\n`;
         } else {
-            msgItens += `🎁 PRESENTE: ${item.name} (GRÁTIS)\n`;
+            // Item 5: PRESENTE (Independente do valor, pode ser o mais caro)
+            msgItens += `🎁 5. ${item.name} (PRESENTE! R$ 0,00)\n`;
         }
     });
 
-    // Monta a mensagem final
-    const textoZap = `*NOVO PEDIDO CHEFBOX (4+1)* 🥗\n\n` +
+    // MENSAGEM BLINDADA PARA O WHATSAPP
+    const textoZap = 
+        `*PEDIDO CHEFBOX (DF)* 🛵\n` +
+        `----------------------------------\n` +
         `*Cliente:* ${name}\n` +
         `*Endereço:* ${address}\n` +
-        `*CEP:* ${cep}\n\n` +
-        `*Itens Escolhidos:*\n${msgItens}\n` +
-        `*💰 TOTAL A PAGAR: ${formatarDinheiro(totalFinal)}*\n\n` +
-        `*Chave PIX:* 36.014.833/0001-59\n` +
-        `Aguardo confirmação!`;
+        `*CEP:* ${cep}\n` +
+        `----------------------------------\n` +
+        `*SEUS 5 ESCOLHIDOS:*\n${msgItens}` +
+        `----------------------------------\n` +
+        `*TOTAL A PAGAR: ${formatarDinheiro(totalFinal)}*\n` +
+        `*Frete:* Grátis (Entrega D+1)\n` +
+        `----------------------------------\n` +
+        `Aguardo chave PIX!`;
 
-    // Abre o WhatsApp
     const phone = "5561996659880";
+    
+    // Dispara para o WhatsApp
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(textoZap)}`, '_blank');
     
     closeCheckoutModal();
 }
 
-// --- 7. FUNÇÕES DE UI (MENU E ACORDEÃO) ---
+// --- 6. UI AUXILIAR (MENUS) ---
 function initMobileMenu() {
     const btn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('.mobile-menu-drawer');
@@ -217,19 +199,4 @@ function initMobileMenu() {
             }
         });
     }
-}
-
-function initAccordions() {
-    const acc = document.querySelectorAll('.accordion-header');
-    acc.forEach(el => {
-        el.addEventListener('click', function() {
-            this.classList.toggle('active');
-            const panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        });
-    });
 }
