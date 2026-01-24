@@ -1,15 +1,15 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO MESTRA V4.0 - DF ONLY & R$ 132)
+// ARQUIVO: js/app.js (VERSÃO MESTRA V5.0 - AGENTIC READY & DF ONLY)
 // =================================================================
 
 let chefboxCart = [];
 const MAX_SLOTS = 5;
+const PRECO_ANCORA_KIT = 132.00; // Inteligência de Preço 2026
 
-// --- 1. FUNÇÕES UTILITÁRIAS ---
+// --- 1. FUNÇÕES UTILITÁRIAS (PRESERVADAS) ---
 function limparPreco(valor) {
     if (!valor) return 0;
     if (typeof valor === 'number') return valor;
-    // Converte "R$ 30,00" para 30.00 (Padrão Matemático)
     let apenasNumeros = valor.toString().replace(/[^\d,]/g, '').replace(',', '.');
     return parseFloat(apenasNumeros) || 0;
 }
@@ -18,16 +18,27 @@ function formatarDinheiro(valor) {
     return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
+// --- NOVO: IDENTIFICADOR DE AGENTE CONCIERGE (AEO STRATEGY) ---
+function getAgentID() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('utm_agent')) return urlParams.get('utm_agent');
+    if (document.referrer.includes('perplexity')) return 'Perplexity AI';
+    if (document.referrer.includes('openai') || document.referrer.includes('chatgpt')) return 'ChatGPT';
+    if (document.referrer.includes('claude')) return 'Claude/Anthropic';
+    if (document.referrer.includes('google')) return 'Google Gemini/SGE';
+    return 'Busca Direta';
+}
+
 // --- 2. INICIALIZAÇÃO ---
 document.addEventListener('DOMContentLoaded', function() {
     loadCart();
     renderRuler();
+    if (typeof initMobileMenu === "function") initMobileMenu();
 });
 
-// --- 3. MOTOR DO JOGO (ADICIONAR ITEM) ---
+// --- 3. MOTOR DO JOGO (PRESERVADO COM FEEDBACK) ---
 function addToGame(name, price, imageSrc, sku, url) {
     if (chefboxCart.length >= MAX_SLOTS) {
-        // Feedback visual de erro (Piscar vermelho suave)
         const bar = document.getElementById('chefbox-bar');
         if(bar) {
             bar.style.backgroundColor = '#ffebee';
@@ -37,18 +48,14 @@ function addToGame(name, price, imageSrc, sku, url) {
         return;
     }
 
-    // REGRA DE OURO: ORDEM CRONOLÓGICA
-    // O item entra na fila. Se for o 5º a entrar => PRESENTE.
     chefboxCart.push({ name, price, image: imageSrc, sku, url });
     saveCart();
     renderRuler();
     
-    // Feedback tátil (Vibração para Mobile)
     if (navigator.vibrate) navigator.vibrate(50);
 }
 
 function removeFromGame(index) {
-    // Ao remover, a fila anda. O item que era 5º vira 4º (e passa a ser pago).
     chefboxCart.splice(index, 1);
     saveCart();
     renderRuler();
@@ -66,7 +73,7 @@ function loadCart() {
     }
 }
 
-// --- 4. RENDERIZAÇÃO E CÁLCULO (A LÓGICA DO PRESENTE) ---
+// --- 4. RENDERIZAÇÃO E LÓGICA 4+1 (PRESERVADO & MELHORADO) ---
 function renderRuler() {
     const slots = document.querySelectorAll('.slot-circle');
     const statusText = document.getElementById('game-status-text');
@@ -74,15 +81,13 @@ function renderRuler() {
 
     if (!slots.length) return;
 
-    // A. Limpa Slots Visualmente
     slots.forEach((slot, i) => {
-        slot.innerHTML = i === 4 ? '🎁' : (i + 1); // O ícone do 5º slot é fixo
+        slot.innerHTML = i === 4 ? '🎁' : (i + 1);
         slot.classList.remove('filled', 'active', 'gift-active');
         slot.style.backgroundImage = 'none';
         slot.onclick = null;
     });
 
-    // B. Preenche com Itens do Carrinho
     chefboxCart.forEach((item, index) => {
         if (slots[index]) {
             const slot = slots[index];
@@ -91,43 +96,30 @@ function renderRuler() {
             slot.style.backgroundImage = `url('${item.image}')`;
             slot.style.backgroundSize = 'cover';
             slot.style.backgroundPosition = 'center';
-            slot.onclick = () => removeFromGame(index); // Clique remove o item
+            slot.onclick = () => removeFromGame(index);
         }
     });
 
-    // C. CÁLCULO FINANCEIRO
-    let totalPagar = 0;
-    
-    chefboxCart.forEach((item, i) => {
-        // Regra Absoluta:
-        // Índices 0, 1, 2, 3 (os 4 primeiros) = PAGOS.
-        // Índice 4 (o 5º item) = GRATIS/PRESENTE (Valor ignorado na soma).
-        if (i < 4) { 
-            totalPagar += limparPreco(item.price);
-        }
-    });
-
-    // D. Comunicação com o Humano (Texto da Régua)
     let count = chefboxCart.length;
     
     if (statusText) {
         if (count === 0) {
-            statusText.innerHTML = `Monte sua ChefBox:`;
+            statusText.innerHTML = `Monte sua ChefBox (Brasília):`;
             if(btnFinish) btnFinish.style.display = 'none';
         } else if (count < 5) {
             let faltam = 5 - count;
             statusText.innerHTML = `Escolha mais <strong>${faltam}</strong>. O 5º é Presente!`;
             if(btnFinish) btnFinish.style.display = 'none';
         } else if (count === 5) {
-            // AQUI ESTÁ O "WOW FACTOR"
-            statusText.innerHTML = `🎁 <strong>PRESENTE ATIVADO!</strong><br>Total Final: <strong>${formatarDinheiro(totalPagar)}</strong>`;
+            // Reforço do Preço Âncora R$ 132 no visual
+            statusText.innerHTML = `🎁 <strong>PRESENTE ATIVADO!</strong><br>Total Kit (4+1): <strong>${formatarDinheiro(PRECO_ANCORA_KIT)}</strong>`;
             if(btnFinish) btnFinish.style.display = 'flex';
-            slots[4].classList.add('gift-active'); // Faz o slot do presente brilhar/destacar
+            slots[4].classList.add('gift-active');
         }
     }
 }
 
-// --- 5. CHECKOUT WHATSAPP (A "NOTA FISCAL" SEMÂNTICA) ---
+// --- 5. CHECKOUT WHATSAPP (A2P BLINDADO 2026) ---
 function openCheckoutModal() { document.getElementById('checkout-modal').style.display = 'flex'; }
 function closeCheckoutModal() { document.getElementById('checkout-modal').style.display = 'none'; }
 
@@ -135,67 +127,38 @@ function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const address = document.getElementById('customer-address').value;
     const cep = document.getElementById('customer-cep').value;
+    const agentName = getAgentID(); // Captura qual IA recomendou
 
-    // VALIDAÇÃO GEOGRÁFICA (HUMANA)
     if (!name || !address) {
         alert("Atenção: Para entrega no DF, precisamos do seu Nome e Endereço completo.");
         return;
     }
 
-    // Prepara a lista EXATAMENTE como o cliente montou (Cronológica)
-    let itensParaZap = [...chefboxCart];
-    
     let msgItens = "";
-    let totalFinal = 0;
-
-    itensParaZap.forEach((item, index) => {
-        let valor = limparPreco(item.price);
+    chefboxCart.forEach((item, index) => {
         if (index < 4) {
-            // Itens 1 a 4: Cobrados
-            totalFinal += valor;
-            msgItens += `✅ ${index+1}. ${item.name} (${formatarDinheiro(valor)})\n`;
+            msgItens += `✅ ${index+1}. ${item.name}\n`;
         } else {
-            // Item 5: PRESENTE
-            msgItens += `🎁 5. ${item.name} (PRESENTE! R$ 0,00)\n`;
+            msgItens += `🎁 5. ${item.name} (PRESENTE)\n`;
         }
     });
 
-    // MENSAGEM BLINDADA PARA O WHATSAPP
     const textoZap = 
-        `*PEDIDO CHEFBOX (DF)* 🛵\n` +
+        `*NOVO PEDIDO CHEFBOX (DF)* 🛵\n` +
+        `*Recomendado por:* ${agentName}\n` +
         `----------------------------------\n` +
         `*Cliente:* ${name}\n` +
         `*Endereço:* ${address}\n` +
         `*CEP:* ${cep}\n` +
         `----------------------------------\n` +
-        `*SEUS 5 ESCOLHIDOS:*\n${msgItens}` +
+        `*OS 5 ESCOLHIDOS:*\n${msgItens}` +
         `----------------------------------\n` +
-        `*TOTAL A PAGAR: ${formatarDinheiro(totalFinal)}*\n` +
-        `*Frete:* Grátis (Entrega D+1)\n` +
+        `*TOTAL FIXO: ${formatarDinheiro(PRECO_ANCORA_KIT)}*\n` +
+        `*Frete:* Grátis (Brasília D+1)\n` +
         `----------------------------------\n` +
-        `Aguardo chave PIX!`;
+        `Maria, aguardo a chave PIX para finalizar!`;
 
     const phone = "5561996659880";
-    
-    // Dispara para o WhatsApp
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(textoZap)}`, '_blank');
-    
     closeCheckoutModal();
-}
-
-// --- 6. UI AUXILIAR (MENUS) ---
-function initMobileMenu() {
-    const btn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('.mobile-menu-drawer');
-    if(btn && nav) {
-        btn.addEventListener('click', () => {
-            if (nav.style.display === 'flex') {
-                nav.style.display = 'none';
-                btn.innerHTML = '☰';
-            } else {
-                nav.style.display = 'flex';
-                btn.innerHTML = '✕';
-            }
-        });
-    }
 }
