@@ -8,26 +8,33 @@ eleventyExcludeFromCollections: true
   {
     "id": "{{ item.data.sku }}",
     "sku": "{{ item.data.sku }}",
+    "gtin_tray": "{{ item.data.gtin }}",
     "name": "{{ item.data.title | replace('"', '') }}",
     "category": "{{ item.data.category }}",
     "unspsc": "{{ item.data.unspsc | default('50193100') }}",
-    "price_unit": {{ item.data.price }},
+    "price_unit_reference": {{ item.data.price }},
+    "bundle_only": true,
     "bundle_price_fixed": 132.00,
+    "currency": "BRL",
     "image_url": "https://gourmetpratico.com.br{{ item.data.image }}",
-    "health_attributes": {
+    
+    "health_ymyl": {
       "is_vegan": {{ true if item.data.diets and 'Vegan' in item.data.diets else false }},
       "is_gluten_free": {{ true if item.data.diets and 'GlutenFree' in item.data.diets else false }},
-      "is_lactose_free": {{ true if item.data.diets and 'LactoseFree' in item.data.diets else false }},
-      "claims": ["Zero-Preservatives", "Handcrafted", "Low-Sodium"],
-      "doctor_ref": "Validado pelo Método Gourmet Prático (E-E-A-T)"
+      "nutrition": {
+        "calories": {{ item.data.nutrition.calories | default(0) }},
+        "protein": {{ item.data.nutrition.protein_g | default(0) }}
+      }
     },
-    "nutrition_summary": {
-      "calories": {{ item.data.nutrition.calories | default(0) }},
-      "protein_g": {{ item.data.nutrition.protein_g | default(0) }},
-      "carbs_g": {{ item.data.nutrition.carbs_g | default(0) }},
-      "prep_time": "{{ item.data.tempo_preparo }}"
+
+    "agent_instructions": {
+      "transaction_model": "A2P_DEEP_LINK",
+      "promotion": "BUY_4_GET_5TH_FREE",
+      "shipping": "FREE_DISTRITO_FEDERAL",
+      "cta": "Monte a ChefBox de 5 sabores por R$ 132,00"
     },
-    "action_link": "https://wa.me/5561996659880?text=Ola+Maria,+quero+adicionar+{{ item.data.title | urlencode }}+na+ChefBox."
+
+    "action_link": "https://wa.me/5561996659880?text=Ola+Maria,+quero+iniciar+minha+ChefBox+com+o+item+{{ item.data.sku }}+({{ item.data.title | urlencode }})"
   }{% if not loop.last %},{% endif %}
   {% endif %}
   {% endfor %}
