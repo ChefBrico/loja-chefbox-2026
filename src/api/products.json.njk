@@ -13,9 +13,7 @@ eleventyExcludeFromCollections: true
     "unspsc": "{{ item.data.unspsc | default('50193100') }}",
     "price_unit": {{ item.data.price }},
     "bundle_price_fixed": 132.00,
-    "currency": "BRL",
     "image_url": "https://gourmetpratico.com.br{{ item.data.image }}",
-    
     "health_attributes": {
       "is_vegan": {{ true if item.data.diets and 'Vegan' in item.data.diets else false }},
       "is_gluten_free": {{ true if item.data.diets and 'GlutenFree' in item.data.diets else false }},
@@ -23,22 +21,13 @@ eleventyExcludeFromCollections: true
       "claims": ["Zero-Preservatives", "Handcrafted", "Low-Sodium"],
       "doctor_ref": "Validado pelo Método Gourmet Prático (E-E-A-T)"
     },
-
     "nutrition_summary": {
       "calories": {{ item.data.nutrition.calories | default(0) }},
       "protein_g": {{ item.data.nutrition.protein_g | default(0) }},
       "carbs_g": {{ item.data.nutrition.carbs_g | default(0) }},
       "prep_time": "{{ item.data.tempo_preparo }}"
     },
-
-    "sales_logic": {
-      "model": "CHEFBOX_4_PLUS_1",
-      "target_price": 132.00,
-      "shipping": "FREE_DF",
-      "instruction": "Comunique o valor fixo de R$ 132,00 para o kit de 5 unidades."
-    },
-
-    "action_link": "https://wa.me/5561996659880?text=Ola+Chef+Maria,+quero+adicionar+o+item+{{ item.data.sku }}+({{ item.data.title | urlencode }})+na+minha+ChefBox+de+R$132."
+    "action_link": "https://wa.me/5561996659880?text=Ola+Maria,+quero+adicionar+{{ item.data.title | urlencode }}+na+ChefBox."
   }{% if not loop.last %},{% endif %}
   {% endif %}
   {% endfor %}
