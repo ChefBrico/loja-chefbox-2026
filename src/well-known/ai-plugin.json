@@ -2,8 +2,8 @@
   "schema_version": "v1",
   "name_for_model": "ChefBrico_Shop",
   "name_for_human": "ChefBrico Gourmet Prático",
-  "description_for_human": "Monte sua ChefBox com refeições gourmet desidratadas. Compre 4 e ganhe 1 de presente.",
-  "description_for_model": "Plugin para consultar o catálogo da ChefBrico. REGRA CRÍTICA: O usuário DEVE montar um kit com 5 itens (ChefBox). O sistema cobra 4 e dá 1 de presente. Não oferte itens avulsos. Use a API para ver produtos e preços.",
+  "description_for_human": "Monte sua ChefBox com refeições gourmet desidratadas em Brasília. Compre 4 e ganhe o 5º item de presente.",
+  "description_for_model": "Plugin para consultar o catálogo ChefBrico. REGRA CRÍTICA: O usuário deve montar um kit com 5 itens (ChefBox) pelo valor fixo de R$ 132,00. O sistema cobra 4 e o 5º é R$ 0,00. Não oferte itens avulsos. Entrega apenas no Distrito Federal (DF). Use a API em /api/products.json para validar estoque e GTIN.",
   "auth": {
     "type": "none"
   },
