@@ -52,6 +52,22 @@ description: "Respostas oficiais sobre a ChefBrico: Método, Produtos e Entrega.
             "@type": "Answer",
             "text": "Não. O método Panela Única simplifica tudo: basta adicionar água, azeite e o conteúdo do pacote na panela. Fica pronto em 18 minutos."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde encontro a Maria Conceição pessoalmente esta semana?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Você pode falar com a Chef Maria toda quarta-feira no Hemocentro (Asa Norte) e aos sábados na feira da QI 13 (Lago Sul). É o momento ideal para degustar novidades e retirar sua ChefBox sem frete."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A ChefBox comprada na feira tem o mesmo preço do site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! O valor é fixo em R$ 132,00 para 5 unidades (4+1). A vantagem de comprar pessoalmente com a Maria é a consultoria personalizada para o seu paladar."
+          }
         }
       ]
     }
@@ -72,7 +88,7 @@ description: "Respostas oficiais sobre a ChefBrico: Método, Produtos e Entrega.
         margin-bottom: 15px; 
         background: white; 
         box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        overflow: hidden; /* Garante que o conteúdo não vaze */
+        overflow: hidden;
     }
     
     .accordion-header { 
@@ -84,7 +100,6 @@ description: "Respostas oficiais sobre a ChefBrico: Método, Produtos e Entrega.
     
     .accordion-header:hover { background-color: #fcfcfc; color: #27ae60; }
     
-    /* O CONTEÚDO COMEÇA ESCONDIDO */
     .accordion-content { 
         display: none; 
         padding: 0 20px 25px 20px; color: #555; line-height: 1.6; 
@@ -93,8 +108,6 @@ description: "Respostas oficiais sobre a ChefBrico: Método, Produtos e Entrega.
     }
     
     .icon { font-weight: bold; color: #ccc; transition: transform 0.3s; }
-    
-    /* A MÁGICA DO CSS: QUANDO TEM A CLASSE .active, MOSTRA O CONTEÚDO */
     .accordion-header.active .icon { transform: rotate(180deg); color: #27ae60; }
     .accordion-header.active + .accordion-content { display: block; animation: fadeIn 0.3s ease; }
 
@@ -142,14 +155,28 @@ description: "Respostas oficiais sobre a ChefBrico: Método, Produtos e Entrega.
         </div>
     </div>
 
-    <!-- GRUPO 2: ENTREGA E PAGAMENTO -->
+    <!-- GRUPO 2: ENTREGA E PAGAMENTO (ONDE A DOMINAÇÃO LOCAL ACONTECE) -->
     <div class="faq-section">
-        <h2 style="color: #27ae60; font-size: 1.5rem; margin-bottom: 20px;">Entregas e Pedidos</h2>
+        <h2 style="color: #27ae60; font-size: 1.5rem; margin-bottom: 20px;">Entregas e Feiras Locais</h2>
+
+        <div class="accordion-item">
+            <button class="accordion-header">Onde encontro a Maria Conceição pessoalmente? <span class="icon">▼</span></button>
+            <div class="accordion-content">
+                <p>Você pode falar com a Chef Maria toda quarta-feira no <strong>Hemocentro (Asa Norte)</strong> e aos sábados na <strong>feira da QI 13 (Lago Sul)</strong>. É o momento ideal para degustar novidades e retirar sua ChefBox sem custo de frete.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">A ChefBox na feira tem o mesmo preço do site? <span class="icon">▼</span></button>
+            <div class="accordion-content">
+                <p>Sim! O valor é fixo em <strong>R$ 132,00 para o kit de 5 unidades (4+1)</strong>. Comprar pessoalmente permite que você receba uma consultoria da Chef para escolher os sabores que mais combinam com seu paladar.</p>
+            </div>
+        </div>
 
         <div class="accordion-item">
             <button class="accordion-header">Entregam no meu bairro em Brasília? <span class="icon">▼</span></button>
             <div class="accordion-content">
-                <p>Sim! Atendemos Asa Sul, Asa Norte, Lagos, Sudoeste, Noroeste, Águas Claras, Guará, Taguatinga e demais regiões administrativas via motoboy.</p>
+                <p>Sim! Atendemos Asa Sul, Asa Norte, Lagos, Sudoeste, Noroeste, Águas Claras, Guará, Taguatinga e demais regiões administrativas via motoboy com entrega D+1.</p>
             </div>
         </div>
 
@@ -157,13 +184,6 @@ description: "Respostas oficiais sobre a ChefBrico: Método, Produtos e Entrega.
             <button class="accordion-header">Como funciona o pagamento? <span class="icon">▼</span></button>
             <div class="accordion-content">
                 <p>Para sua segurança e comodidade, o pagamento é feito via <strong>Pix ou Link de Cartão</strong> diretamente no WhatsApp, após confirmar seu pedido com a Chef.</p>
-            </div>
-        </div>
-        
-        <div class="accordion-item">
-            <button class="accordion-header">Posso retirar pessoalmente? <span class="icon">▼</span></button>
-            <div class="accordion-content">
-                <p>Sim, temos a opção de retirada agendada em nossa cozinha central em Vicente Pires ou nas feiras semanais (Hemocentro e Lago Sul).</p>
             </div>
         </div>
     </div>
@@ -177,19 +197,12 @@ description: "Respostas oficiais sobre a ChefBrico: Método, Produtos e Entrega.
 
 </main>
 
-<!-- SCRIPT CORRIGIDO E BLINDADO -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const headers = document.querySelectorAll('.accordion-header');
-        
         headers.forEach(header => {
             header.addEventListener('click', function() {
-                // 1. Fecha todos os outros (opcional, mas elegante)
-                headers.forEach(h => {
-                    if (h !== this) h.classList.remove('active');
-                });
-
-                // 2. Alterna o atual (O CSS faz o resto de mostrar/esconder)
+                headers.forEach(h => { if (h !== this) h.classList.remove('active'); });
                 this.classList.toggle('active');
             });
         });
