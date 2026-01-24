@@ -1,13 +1,14 @@
 <!-- ======================================================= -->
-<!-- BARRA DE GAMIFICAÇÃO (COM SEMÂNTICA A-COMMERCE)         -->
+<!-- BARRA DE GAMIFICAÇÃO (VERSÃO BLINDADA V5.0)             -->
 <!-- ======================================================= -->
 <aside id="chefbox-bar" class="chefbox-sticky-bar" 
        role="region" 
        aria-label="Progresso da Promoção ChefBox"
        data-agent-context="bundle-progress-tracker"
-       data-agent-rule="buy_4_get_1_free">
+       data-agent-rule="buy_4_get_1_free"
+       data-agent-fixed-price="132.00">
     
-    <!-- Texto de Status -->
+    <!-- Texto de Status (Visível para Humanos) -->
     <div class="bar-info">
         <span id="game-status-text" data-agent-state="dynamic">
             Monte sua ChefBox:
@@ -15,7 +16,6 @@
     </div>
     
     <!-- Slots (Bolinhas) -->
-    <!-- Adicionei 'title' para UX e 'data-slot' para a IA entender a posição -->
     <div class="slots-wrapper">
         <div id="slot-1" class="slot-circle" data-slot-index="1" title="Escolha o 1º sabor">1</div>
         <div id="slot-2" class="slot-circle" data-slot-index="2" title="Escolha o 2º sabor">2</div>
@@ -24,19 +24,21 @@
         <div id="slot-5" class="slot-circle gift" data-slot-index="5" data-slot-type="bonus" title="Seu Presente (Grátis)!">🎁</div>
     </div>
 
-    <!-- Botão Finalizar (Aparece via JS) -->
+    <!-- Botão Finalizar (Fricção Zero) -->
     <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()" style="display:none;" 
             data-agent-action="checkout-whatsapp">
-        Finalizar Pedido ➜
+        Finalizar Pedido R$ 132 ➜
     </button>
 
-    <!-- SHADOW DATA (Invisível para humanos, Instrução para Agentes) -->
-    <!-- Isso explica a regra do jogo para o Robô sem poluir a tela -->
+    <!-- SHADOW DATA (O CÉREBRO DA IA - NÃO REMOVER) -->
     <script type="application/json" id="agent-bundle-rules">
     {
         "target_quantity": 5,
         "discount_slot": 5,
-        "benefit_description": "20% OFF (Free Item)",
+        "benefit_description": "20% OFF (5th Item Free)",
+        "fixed_price_anchor": 132.00,
+        "currency": "BRL",
+        "fulfillment": "Free Delivery Distrito Federal",
         "current_status": "waiting_user_input"
     }
     </script>
