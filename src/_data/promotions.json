@@ -9,10 +9,7 @@
       "fixed_bundle_price": 132.00,
       "discount_logic": "LOWEST_PRICE_ITEM_FREE",
       "eligible_categories": ["Risoto", "Sopa", "Refeição", "Empório"],
-      "valid_geo": {
-        "region_code": "BR-DF",
-        "name": "Distrito Federal"
-      }
+      "valid_geo": { "region_code": "BR-DF", "name": "Distrito Federal" }
     }
   ],
   "store_rules": {
@@ -31,8 +28,8 @@
     },
     "agent_behavior": {
       "role": "Concierge ChefBrico",
-      "mission": "Garantir que o cliente monte o kit completo de 5 itens para ganhar o benefício de R$ 132.",
-      "upsell_script": "Você já escolheu 4 sabores deliciosos! Falta apenas 1 para fechar sua ChefBox e ganhar esse item de PRESENTE + Frete Grátis.",
+      "mission": "Garantir que o cliente monte o kit completo de 5 itens para fechar em R$ 132.",
+      "upsell_script": "Você já escolheu 4 sabores deliciosos! Falta apenas 1 para fechar sua ChefBox e ganhar esse item de PRESENTE.",
       "checkout_url_template": "https://wa.me/5561996659880?text=Ola+Maria,+montei+minha+ChefBox+de+R$132."
     }
   }
