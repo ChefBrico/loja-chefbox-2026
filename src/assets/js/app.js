@@ -1,26 +1,35 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V8.0 - FIX TOTAL)
+// ARQUIVO: js/app.js (VERSÃO V9.0 - WHATSAPP CRM & CLUB)
 // =================================================================
 
 let chefboxCart = [];
 const MAX_SLOTS = 5;
 const PRECO_FIXO = 132.00;
 
+// GERA ID ÚNICO PARA CONCILIAÇÃO BANCÁRIA
+function generateOrderID() {
+    return 'GP' + Math.floor(100000 + Math.random() * 900000);
+}
+
+// GERA CÓDIGO DE FÃ PARA O CRM (Ex: EDISON-720)
+function generateFanCode(name, cep) {
+    const cleanName = name.split(' ')[0].toUpperCase();
+    const cepPrefix = cep.substring(0, 3);
+    return `${cleanName}-${cepPrefix}`;
+}
+
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
-    if (saved) {
-        try { chefboxCart = JSON.parse(saved); } 
-        catch (e) { chefboxCart = []; }
-    }
+    if (saved) { chefboxCart = JSON.parse(saved); }
 }
 
 function saveCart() {
     localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
 }
 
-function addToGame(name, price, imageSrc, sku, url) {
+function addToGame(name, price, imageSrc, sku) {
     if (chefboxCart.length >= MAX_SLOTS) {
-        alert("ChefBox completa! Clique em Finalizar ou remova um item para trocar.");
+        alert("ChefBox completa! Clique no botão verde para finalizar.");
         return;
     }
     chefboxCart.push({ name, price, image: imageSrc, sku });
@@ -39,87 +48,79 @@ function renderRuler() {
     const btnFinish = document.getElementById('btn-finish-game');
     const slots = document.querySelectorAll('.slot-circle');
 
-    if (!slots.length) return;
-
-    // 1. Limpeza de Segurança
     slots.forEach((slot, i) => {
         slot.classList.remove('filled', 'gift-active');
         slot.style.backgroundImage = 'none';
         slot.innerHTML = i === 4 ? '🎁' : (i + 1);
-        slot.onclick = null;
     });
 
-    // 2. Preenchimento Dinâmico
     chefboxCart.forEach((item, index) => {
         if (slots[index]) {
-            const slot = slots[index];
-            slot.classList.add('filled');
-            slot.style.backgroundImage = `url('${item.image}')`;
-            slot.innerHTML = ''; // Limpa o número para mostrar a foto
-            slot.onclick = () => removeFromGame(index);
-            
-            // Se preencheu o 5º slot, ativa o brilho do presente
-            if (index === 4) {
-                slot.classList.add('gift-active');
-            }
+            slots[index].classList.add('filled');
+            slots[index].style.backgroundImage = `url('${item.image}')`;
+            slots[index].innerHTML = '';
+            slots[index].onclick = () => removeFromGame(index);
+            if (index === 4) slots[index].classList.add('gift-active');
         }
     });
 
-    // 3. Status do Botão e Texto
     let count = chefboxCart.length;
     if (statusText) {
         if (count < 5) {
-            statusText.innerHTML = `Escolha mais <strong>${5 - count}</strong> sabores (4+1):`;
+            statusText.innerHTML = `Faltam <strong>${5-count}</strong> para seu PRESENTE!`;
             if(btnFinish) btnFinish.style.display = 'none';
         } else {
-            statusText.innerHTML = `🎁 <strong>PRESENTE LIBERADO!</strong><br>Total Kit: R$ 132,00`;
-            if(btnFinish) {
-                btnFinish.style.display = 'block';
-                btnFinish.style.visibility = 'visible'; // Garante que não está oculto por outra regra
-            }
+            statusText.innerHTML = `🎁 <strong>COMBO VIP ATIVADO!</strong><br>Total Fixo: R$ 132,00`;
+            if(btnFinish) btnFinish.style.display = 'block';
         }
     }
 }
 
-// --- FUNÇÃO QUE ESTAVA FALTANDO ---
-function openCheckoutModal() {
-    const modal = document.getElementById('checkout-modal');
-    if (modal) {
-        modal.style.display = 'flex';
-    } else {
-        alert("Erro técnico: Modal de cadastro não encontrado. Verifique o arquivo base.njk.");
-    }
-}
-
-function closeCheckoutModal() {
-    const modal = document.getElementById('checkout-modal');
-    if (modal) modal.style.display = 'none';
-}
-
-function sendOrderToWhatsApp() {
+// --- FUNÇÃO MESTRE: O NOVO TICKET WHATSAPP V9.0 ---
+async function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
+    const phone = document.getElementById('customer-phone').value;
     const address = document.getElementById('customer-address').value;
+    const cep = document.getElementById('customer-cep').value;
 
-    let msgItens = chefboxCart.map((item, i) => `✅ ${i+1}. ${item.name}`).join('\n');
+    const orderID = generateOrderID();
+    const fanCode = generateFanCode(name, cep);
+
+    let msgItens = chefboxCart.map((item, i) => {
+        return `🍲 [${item.sku}] ${item.name}${i === 4 ? ' (🎁 PRESENTE)' : ''}`;
+    }).join('\n');
 
     const textoZap = 
-        `*PEDIDO CLUB GOURMET* 🛵\n` +
-        `----------------------------------\n` +
-        `*Fã:* ${name}\n` +
-        `*E-mail:* ${email}\n` +
-        `*Endereço:* ${address}\n` +
-        `----------------------------------\n` +
-        `*ITENS DO KIT (4+1):*\n${msgItens}\n` +
-        `----------------------------------\n` +
-        `*TOTAL FIXO: R$ 132,00*\n` +
-        `----------------------------------\n` +
-        `Maria, quero meu brinde VIP! Manda o Pix?`;
+`🚀 *PEDIDO ${orderID} - CLUB GOURMET* 
+--------------------------------
+🌟 *STATUS:* MEMBRO VIP ATIVO
+👤 *CLIENTE:* ${name}
+🆔 *FÃ-CODE:* ${fanCode}
+📧 *E-MAIL:* ${email}
+📍 *ENTREGA:* ${address}
+🚚 *CEP:* ${cep} (DF)
+--------------------------------
+*ITENS ESCOLHIDOS (4+1):*
+${msgItens}
+--------------------------------
+🛵 *FRETE:* GRÁTIS (Brasília D+1)
+💰 *TOTAL A PAGAR: R$ 132,00*
+--------------------------------
+*PARA PAGAR (PIX):*
+1. Copie o CNPJ abaixo:
+*36.014.833/0001-59*
+2. Envie o comprovante aqui.
+
+_Maria, estou aguardando meu mimo surpresa!_`;
 
     window.open(`https://wa.me/5561996659880?text=${encodeURIComponent(textoZap)}`, '_blank');
+    
+    // SINAL PARA O N8N (No futuro, descomentar a linha abaixo)
+    // fetch('SUA_URL_N8N', { method: 'POST', body: JSON.stringify({orderID, fanCode, email, name, items: chefboxCart}) });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadCart();
-    renderRuler();
-});
+function openCheckoutModal() { document.getElementById('checkout-modal').style.display = 'flex'; }
+function closeCheckoutModal() { document.getElementById('checkout-modal').style.display = 'none'; }
+
+document.addEventListener('DOMContentLoaded', () => { loadCart(); renderRuler(); });
