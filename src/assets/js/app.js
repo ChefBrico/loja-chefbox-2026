@@ -1,39 +1,36 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V7.0 - CLUB GOURMET PRÁTICO & CRM)
+// ARQUIVO: js/app.js (VERSÃO V8.0 - FIX TOTAL)
 // =================================================================
 
 let chefboxCart = [];
 const MAX_SLOTS = 5;
 const PRECO_FIXO = 132.00;
 
-// --- 1. UTILITÁRIOS AGÊNTICOS ---
-
-// Gera ID Único para o Pix (Ex: GP-1234)
-function generateOrderID() {
-    return 'GP-' + Math.floor(1000 + Math.random() * 9000);
+function loadCart() {
+    const saved = localStorage.getItem('chefbox_cart');
+    if (saved) {
+        try { chefboxCart = JSON.parse(saved); } 
+        catch (e) { chefboxCart = []; }
+    }
 }
 
-// Gera Código de Fã (Ex: MARIA-720)
-function generateFanCode(name, cep) {
-    const cleanName = name.split(' ')[0].toUpperCase();
-    const cepPrefix = cep.substring(0, 3);
-    return `${cleanName}-${cepPrefix}`;
+function saveCart() {
+    localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
 }
-
-function getAgentID() {
-    if (document.referrer.includes('perplexity')) return 'Perplexity AI';
-    if (document.referrer.includes('openai')) return 'ChatGPT';
-    return 'Busca Direta';
-}
-
-// --- 2. MOTOR DO JOGO (PRESERVADO) ---
 
 function addToGame(name, price, imageSrc, sku, url) {
     if (chefboxCart.length >= MAX_SLOTS) {
-        alert("ChefBox completa! Troque um item se desejar.");
+        alert("ChefBox completa! Clique em Finalizar ou remova um item para trocar.");
         return;
     }
     chefboxCart.push({ name, price, image: imageSrc, sku });
+    saveCart();
+    renderRuler();
+}
+
+function removeFromGame(index) {
+    chefboxCart.splice(index, 1);
+    saveCart();
     renderRuler();
 }
 
@@ -41,71 +38,78 @@ function renderRuler() {
     const statusText = document.getElementById('game-status-text');
     const btnFinish = document.getElementById('btn-finish-game');
     const slots = document.querySelectorAll('.slot-circle');
-    
+
+    // Limpa visual antes de renderizar
+    slots.forEach((slot, i) => {
+        slot.classList.remove('filled', 'gift-active');
+        slot.style.backgroundImage = 'none';
+        slot.innerHTML = i === 4 ? '🎁' : (i + 1);
+        slot.onclick = null;
+    });
+
+    // Preenche com os itens escolhidos
     chefboxCart.forEach((item, index) => {
         if (slots[index]) {
             slots[index].classList.add('filled');
             slots[index].style.backgroundImage = `url('${item.image}')`;
-            slots[index].innerHTML = '';
+            slots[index].style.backgroundSize = 'cover';
+            slots[index].innerHTML = ''; // Remove o número/presente
+            slots[index].onclick = () => removeFromGame(index);
         }
     });
 
     let count = chefboxCart.length;
     if (statusText) {
         if (count < 5) {
-            statusText.innerHTML = `Faltam <strong>${5-count}</strong> sabores. O 5º é Presente!`;
+            statusText.innerHTML = `Escolha mais <strong>${5 - count}</strong> sabores. O 5º é Presente!`;
             if(btnFinish) btnFinish.style.display = 'none';
         } else {
             statusText.innerHTML = `🎁 <strong>COMBO VIP ATIVADO!</strong><br>Total Fixo: R$ 132,00`;
-            if(btnFinish) btnFinish.style.display = 'flex';
+            if(btnFinish) btnFinish.style.display = 'block'; // Garante que o botão apareça
+            slots[4].classList.add('gift-active');
         }
     }
 }
 
-// --- 3. CHECKOUT COM IMPLICIT LOYALTY (A2P + N8N READY) ---
+// --- FUNÇÃO QUE ESTAVA FALTANDO ---
+function openCheckoutModal() {
+    const modal = document.getElementById('checkout-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+    } else {
+        alert("Erro técnico: Modal de cadastro não encontrado. Verifique o arquivo base.njk.");
+    }
+}
 
-async function sendOrderToWhatsApp() {
-    // CAPTURA DOS CAMPOS
+function closeCheckoutModal() {
+    const modal = document.getElementById('checkout-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
-    const phone = document.getElementById('customer-phone').value;
     const address = document.getElementById('customer-address').value;
-    const cep = document.getElementById('customer-cep').value;
-    const optIn = document.getElementById('customer-optin').checked;
 
-    // LÓGICA DE FIDELIDADE
-    const orderID = generateOrderID();
-    const fanCode = generateFanCode(name, cep);
-    const agent = getAgentID();
-
-    // SALVA NO NAVEGADOR (LOYALTY TRACKING)
-    localStorage.setItem('gp_member', 'true');
-    localStorage.setItem('gp_fancode', fanCode);
-
-    // PREPARA MENSAGEM WHATSAPP
     let msgItens = chefboxCart.map((item, i) => `✅ ${i+1}. ${item.name}`).join('\n');
-    
+
     const textoZap = 
-        `*PEDIDO ${orderID} - CLUB GOURMET* 👩‍🍳\n` +
+        `*PEDIDO CLUB GOURMET* 🛵\n` +
         `----------------------------------\n` +
         `*Fã:* ${name}\n` +
-        `*Seu Código:* ${fanCode}\n` +
         `*E-mail:* ${email}\n` +
         `*Endereço:* ${address}\n` +
         `----------------------------------\n` +
-        `*KIT ESCOLHIDO (4+1):*\n${msgItens}\n` +
+        `*ITENS DO KIT (4+1):*\n${msgItens}\n` +
         `----------------------------------\n` +
         `*TOTAL FIXO: R$ 132,00*\n` +
-        `*Logística:* Frete Grátis Brasília\n` +
         `----------------------------------\n` +
-        `*Origem:* Agente ${agent}\n` +
-        `${optIn ? "📢 _Autorizo novidades na Lista de Transmissão_" : ""}\n` +
-        `----------------------------------\n` +
-        `Maria, quero meu mimo surpresa! Pode mandar o Pix?`;
+        `Maria, quero meu brinde VIP! Manda o Pix?`;
 
-    // DISPARO WHATSAPP
     window.open(`https://wa.me/5561996659880?text=${encodeURIComponent(textoZap)}`, '_blank');
-    
-    // NOTA PARA O EDISON: No futuro, o comando de envio para o n8n entra aqui!
-    console.log(`Pedido ${orderID} gerado. Lead VIP ${fanCode} capturado.`);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadCart();
+    renderRuler();
+});
