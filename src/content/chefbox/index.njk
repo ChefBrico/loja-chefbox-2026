@@ -1,24 +1,31 @@
 ---
 layout: base.njk
-title: "Monte sua ChefBox | 4 Sabores + 1 Presente"
-description: "Escolha seus pratos favoritos. Complete 4 e ganhe o 5º de presente!"
+title: "ChefBox + Club Gourmet Prático | 4 Sabores + 1 Presente"
+description: "Escolha 5 pratos e pague apenas 4. Ao finalizar, você entra automaticamente para o Club Gourmet Prático e garante seu mimo surpresa!"
 permalink: /chefbox/
 ---
 
 <style>
 /* Estilo Local para a Vitrine ChefBox */
-.chefbox-header { text-align: center; padding: 40px 20px; }
-.chefbox-header h1 { color: #014039; font-family: 'Merriweather', serif; }
-.chefbox-header p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+.chefbox-header { text-align: center; padding: 40px 20px; background: #fdfcf7; border-bottom: 1px solid #eee; }
+.chefbox-header h1 { color: #014039; font-family: 'Merriweather', serif; font-size: 2rem; margin-bottom: 10px; }
+.chefbox-header .club-badge { background: #F2811D; color: white; padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 15px; }
+.chefbox-header p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.4; }
 
-/* Grid de Produtos */
+/* Grid de Produtos - Inteligência 2x6 */
 .vitrine-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Cards menores e ágeis */
+    grid-template-columns: repeat(2, 1fr); /* Mobile: 2 colunas */
     gap: 15px;
-    padding: 0 20px 150px; /* Espaço embaixo para a régua */
+    padding: 30px 15px 180px; /* Espaço generoso para a régua v7.0 */
     max-width: 1200px;
     margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .vitrine-grid {
+        grid-template-columns: repeat(6, 1fr); /* Desktop: 6 colunas */
+    }
 }
 
 .item-card {
@@ -29,60 +36,71 @@ permalink: /chefbox/
     position: relative;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
 }
 .item-card:hover { transform: translateY(-3px); border-color: #F2811D; }
 
-.item-img { width: 100%; height: 140px; object-fit: cover; }
+.item-img-link { display: block; width: 100%; height: 140px; }
+.item-img { width: 100%; height: 100%; object-fit: cover; }
 
-.item-info { padding: 10px; }
-.item-title { font-size: 0.9rem; font-weight: bold; color: #333; margin: 0 0 5px; line-height: 1.3; height: 2.6em; overflow: hidden; }
-.item-price { color: #27ae60; font-weight: 800; font-size: 1rem; }
+.item-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; }
+.item-title { font-size: 0.85rem; font-weight: bold; color: #333; margin: 0 0 8px; line-height: 1.3; height: 2.6em; overflow: hidden; }
+.item-price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.item-price { color: #27ae60; font-weight: 800; font-size: 0.95rem; }
 
-/* O BOTÃO DE ADICIONAR (+) */
+/* O BOTÃO DE ADICIONAR (+) - ESTÉTICA V7.0 */
 .btn-plus-add {
     position: absolute;
-    top: 100px; right: 10px; /* Flutuando sobre a imagem */
-    width: 35px; height: 35px;
+    top: 100px; right: 8px;
+    width: 36px; height: 36px;
     background-color: #F2811D;
     color: white;
     border-radius: 50%;
-    border: none;
-    font-size: 1.5rem;
+    border: 2px solid white;
+    font-size: 1.6rem;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    z-index: 10;
 }
 .btn-plus-add:active { transform: scale(0.9); background-color: #d35400; }
 </style>
 
 <div class="chefbox-header">
-    <h1>Monte sua ChefBox 👩‍🍳</h1>
-    <p>Toque no <strong>(+)</strong> para adicionar à caixa. <br>Complete 4 slots e o <strong>5º é Presente!</strong> 🎁</p>
+    <span class="club-badge">✨ Club Gourmet Prático</span>
+    <h1>Monte sua ChefBox</h1>
+    <p>Escolha 5 sabores favoritos. <br>Pague 4 e o <strong>5º é um PRESENTE</strong> da Chef Maria! 🎁</p>
+    <p style="font-size: 0.9rem; margin-top: 10px; color: #27ae60; font-weight: bold;">Valor Final do Kit: R$ 132,00</p>
 </div>
 
-<!-- A VITRINE DE ESCOLHA (CORRIGIDA) -->
+<!-- A VITRINE DE ESCOLHA (CONEXÃO COM 24 RECEITAS) -->
 <div class="vitrine-grid">
    {% for item in collections.receitas %}
-    
-    <div class="item-card">
-        <!-- Link Seguro usando item.url -->
-        <a href="{{ item.url }}">
+    {# Só exibe itens que possuem preço cadastrado no markdown #}
+    {% if item.data.price %}
+    <div class="item-card" data-agent-sku="{{ item.data.sku }}">
+        
+        <a href="{{ item.url }}" class="item-img-link">
             <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="item-img" loading="lazy">
         </a>
         
-        <!-- BOTÃO DO JOGO -->
-        <!-- Adicionei o item.url como 5º parâmetro para o botão funcionar no futuro -->
+        <!-- BOTÃO DO JOGO V7.0 (Sincronizado com app.js) -->
         <button class="btn-plus-add" 
+                aria-label="Adicionar {{ item.data.title }} à caixa"
                 onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}', '{{ item.url }}')">
             +
         </button>
 
         <div class="item-info">
             <a href="{{ item.url }}" style="text-decoration: none; color: inherit;">
-                <h3 class="item-title">{{ item.data.title }}</h3>
+                <h3 class="item-title">{{ item.data.title | replace(" | ChefBrico", "") }}</h3>
             </a>
-            <div class="item-price">R$ {{ item.data.price | dinheiro }}</div>
+            <div class="item-price-row">
+                <span class="item-price">R$ {{ item.data.price | dinheiro }}</span>
+            </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
 </div>
