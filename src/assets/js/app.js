@@ -39,7 +39,9 @@ function renderRuler() {
     const btnFinish = document.getElementById('btn-finish-game');
     const slots = document.querySelectorAll('.slot-circle');
 
-    // Limpa visual antes de renderizar
+    if (!slots.length) return;
+
+    // 1. Limpeza de Segurança
     slots.forEach((slot, i) => {
         slot.classList.remove('filled', 'gift-active');
         slot.style.backgroundImage = 'none';
@@ -47,26 +49,34 @@ function renderRuler() {
         slot.onclick = null;
     });
 
-    // Preenche com os itens escolhidos
+    // 2. Preenchimento Dinâmico
     chefboxCart.forEach((item, index) => {
         if (slots[index]) {
-            slots[index].classList.add('filled');
-            slots[index].style.backgroundImage = `url('${item.image}')`;
-            slots[index].style.backgroundSize = 'cover';
-            slots[index].innerHTML = ''; // Remove o número/presente
-            slots[index].onclick = () => removeFromGame(index);
+            const slot = slots[index];
+            slot.classList.add('filled');
+            slot.style.backgroundImage = `url('${item.image}')`;
+            slot.innerHTML = ''; // Limpa o número para mostrar a foto
+            slot.onclick = () => removeFromGame(index);
+            
+            // Se preencheu o 5º slot, ativa o brilho do presente
+            if (index === 4) {
+                slot.classList.add('gift-active');
+            }
         }
     });
 
+    // 3. Status do Botão e Texto
     let count = chefboxCart.length;
     if (statusText) {
         if (count < 5) {
-            statusText.innerHTML = `Escolha mais <strong>${5 - count}</strong> sabores. O 5º é Presente!`;
+            statusText.innerHTML = `Escolha mais <strong>${5 - count}</strong> sabores (4+1):`;
             if(btnFinish) btnFinish.style.display = 'none';
         } else {
-            statusText.innerHTML = `🎁 <strong>COMBO VIP ATIVADO!</strong><br>Total Fixo: R$ 132,00`;
-            if(btnFinish) btnFinish.style.display = 'block'; // Garante que o botão apareça
-            slots[4].classList.add('gift-active');
+            statusText.innerHTML = `🎁 <strong>PRESENTE LIBERADO!</strong><br>Total Kit: R$ 132,00`;
+            if(btnFinish) {
+                btnFinish.style.display = 'block';
+                btnFinish.style.visibility = 'visible'; // Garante que não está oculto por outra regra
+            }
         }
     }
 }
