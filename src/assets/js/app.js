@@ -1,23 +1,30 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V9.0 - WHATSAPP CRM & CLUB)
+// ARQUIVO: js/app.js (VERSÃO V9.2 - WHATSAPP INVOICE & CLUB)
 // =================================================================
 
 let chefboxCart = [];
 const MAX_SLOTS = 5;
-const PRECO_FIXO = 132.00;
+const PRECO_FIXO_KIT = 132.00;
+const CNPJ_PIX = "36.014.833/0001-59";
 
-// GERA ID ÚNICO PARA CONCILIAÇÃO BANCÁRIA
+// 1. GERADORES DE IDENTIDADE
 function generateOrderID() {
     return 'GP' + Math.floor(100000 + Math.random() * 900000);
 }
 
-// GERA CÓDIGO DE FÃ PARA O CRM (Ex: EDISON-720)
 function generateFanCode(name, cep) {
     const cleanName = name.split(' ')[0].toUpperCase();
-    const cepPrefix = cep.substring(0, 3);
+    const cepPrefix = cep.replace(/\D/g, '').substring(0, 3);
     return `${cleanName}-${cepPrefix}`;
 }
 
+function getAgentID() {
+    if (document.referrer.includes('perplexity')) return 'Perplexity AI';
+    if (document.referrer.includes('openai')) return 'ChatGPT';
+    return 'Busca Direta';
+}
+
+// 2. FUNÇÕES DO CARRINHO (PRESERVADAS)
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
     if (saved) { chefboxCart = JSON.parse(saved); }
@@ -29,7 +36,7 @@ function saveCart() {
 
 function addToGame(name, price, imageSrc, sku) {
     if (chefboxCart.length >= MAX_SLOTS) {
-        alert("ChefBox completa! Clique no botão verde para finalizar.");
+        alert("Sua ChefBox está completa! Clique em 'Finalizar Pedido'.");
         return;
     }
     chefboxCart.push({ name, price, image: imageSrc, sku });
@@ -67,7 +74,7 @@ function renderRuler() {
     let count = chefboxCart.length;
     if (statusText) {
         if (count < 5) {
-            statusText.innerHTML = `Faltam <strong>${5-count}</strong> para seu PRESENTE!`;
+            statusText.innerHTML = `Escolha mais <strong>${5-count}</strong> sabores para ganhar o PRESENTE!`;
             if(btnFinish) btnFinish.style.display = 'none';
         } else {
             statusText.innerHTML = `🎁 <strong>COMBO VIP ATIVADO!</strong><br>Total Fixo: R$ 132,00`;
@@ -76,7 +83,7 @@ function renderRuler() {
     }
 }
 
-// --- FUNÇÃO MESTRE: O NOVO TICKET WHATSAPP V9.0 ---
+// 3. O NOVO TICKET DE VENDA (A2P PROTOCOL)
 async function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
@@ -86,41 +93,55 @@ async function sendOrderToWhatsApp() {
 
     const orderID = generateOrderID();
     const fanCode = generateFanCode(name, cep);
+    const agent = getAgentID();
 
+    // Montagem da lista de produtos
     let msgItens = chefboxCart.map((item, i) => {
-        return `🍲 [${item.sku}] ${item.name}${i === 4 ? ' (🎁 PRESENTE)' : ''}`;
+        return `✅ ${i+1}. [${item.sku}] ${item.name}${i === 4 ? ' (🎁 PRESENTE)' : ''}`;
     }).join('\n');
 
+    // ESTRUTURA DO RECIBO DIGITAL
     const textoZap = 
-`🚀 *PEDIDO ${orderID} - CLUB GOURMET* 
+`🧾 *COMPROVANTE DE PEDIDO ${orderID}*
 --------------------------------
-🌟 *STATUS:* MEMBRO VIP ATIVO
+🌟 *STATUS:* CLUB GOURMET VIP
 👤 *CLIENTE:* ${name}
 🆔 *FÃ-CODE:* ${fanCode}
 📧 *E-MAIL:* ${email}
-📍 *ENTREGA:* ${address}
+📍 *ENDEREÇO:* ${address}
 🚚 *CEP:* ${cep} (DF)
 --------------------------------
-*ITENS ESCOLHIDOS (4+1):*
+*ITENS DA SUA CHEFBOX (4+1):*
 ${msgItens}
 --------------------------------
 🛵 *FRETE:* GRÁTIS (Brasília D+1)
 💰 *TOTAL A PAGAR: R$ 132,00*
 --------------------------------
-*PARA PAGAR (PIX):*
-1. Copie o CNPJ abaixo:
-*36.014.833/0001-59*
-2. Envie o comprovante aqui.
+💳 *PARA PAGAR (PIX):*
+1. Copie a chave CNPJ abaixo:
+*${CNPJ_PIX}*
 
-_Maria, estou aguardando meu mimo surpresa!_`;
+2. Realize o pagamento de *R$ 132,00*
+3. Envie o comprovante nesta conversa.
+--------------------------------
+_Origem: ${agent}_
+_Maria, já estou fazendo o Pix para garantir meu mimo!_`;
 
+    // Ação: Abre o WhatsApp com a mensagem pronta
     window.open(`https://wa.me/5561996659880?text=${encodeURIComponent(textoZap)}`, '_blank');
     
-    // SINAL PARA O N8N (No futuro, descomentar a linha abaixo)
-    // fetch('SUA_URL_N8N', { method: 'POST', body: JSON.stringify({orderID, fanCode, email, name, items: chefboxCart}) });
+    // Backup no LocalStorage para o cliente não precisar preencher de novo se voltar
+    localStorage.setItem('gp_member', 'true');
+    localStorage.setItem('gp_name', name);
+    localStorage.setItem('gp_fancode', fanCode);
+
+    if (typeof closeCheckoutModal === "function") closeCheckoutModal();
 }
 
 function openCheckoutModal() { document.getElementById('checkout-modal').style.display = 'flex'; }
 function closeCheckoutModal() { document.getElementById('checkout-modal').style.display = 'none'; }
 
-document.addEventListener('DOMContentLoaded', () => { loadCart(); renderRuler(); });
+document.addEventListener('DOMContentLoaded', () => {
+    loadCart();
+    renderRuler();
+});
