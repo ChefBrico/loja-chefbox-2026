@@ -475,30 +475,26 @@ main {
 /* === GRID MESTRE A-COMMERCE: 6 COLUNAS (VERSÃO 10/10)          === */
 /* ================================================================= */
 
+/* VERSÃO AUDITADA PELO CTO: 6 COLUNAS ABSOLUTAS */
 .recipe-grid, .vitrine-grid {
     display: grid !important;
-    gap: 12px !important; /* Espaço otimizado para 6 colunas */
+    grid-template-columns: repeat(2, 1fr) !important; /* Mobile */
+    gap: 15px !important;
     width: 100% !important;
     max-width: 1400px !important;
     margin: 0 auto 100px !important;
-    padding: 0 10px !important;
-    /* MOBILE: Sempre 2 colunas */
-    grid-template-columns: repeat(2, 1fr) !important;
 }
 
-/* TABLETS E TELAS MÉDIAS */
-@media (min-width: 768px) {
-    .recipe-grid, .vitrine-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-    }
-}
-
-/* DESKTOP (PC): 6 COLUNAS PADRONIZADAS */
 @media (min-width: 1024px) {
     .recipe-grid, .vitrine-grid {
-        grid-template-columns: repeat(6, 1fr) !important;
-        gap: 15px !important;
+        grid-template-columns: repeat(6, 1fr) !important; /* PC */
     }
+}
+
+.recipe-card, .item-card {
+    min-height: 320px !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 /* PADRONIZAÇÃO DOS CARDS (PARA NÃO QUEBRAR O LAYOUT) */
