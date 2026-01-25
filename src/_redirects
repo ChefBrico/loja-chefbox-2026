@@ -31,6 +31,5 @@
 
 /obrigado.html                    /obrigado/                   301
 
-
 # === NETLIFY IDENTITY (Para o CMS funcionar) ===
 /api/*  https://api.netlify.com/*  200
