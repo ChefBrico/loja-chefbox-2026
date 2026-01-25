@@ -1,37 +1,16 @@
 [
-  {
-    "text": "Início",
-    "url": "/"
-  },
-  {
-    "text": "O Método",
-    "url": "/comida-de-verdade/",
-    "title": "Conheça a Ciência e o Afeto da Chef Maria"
-  },
-  {
-    "text": "Cardápio ▾",
-    "url": "/receitas/",
+  { "text": "Início", "url": "/" },
+  { "text": "O Método", "url": "/comida-de-verdade/" },
+  { "text": "Cardápio ▾", "url": "/receitas/",
     "children": [
       { "text": "Ver Tudo", "url": "/receitas/" },
-      { "text": "Risotos (18 min)", "url": "/receitas/risotos/" },
-      { "text": "Sopas Funcionais", "url": "/receitas/sopas-funcionais/" },
-      { "text": "Refeições Integrais", "url": "/receitas/refeicoes-integrais/" },
-      { "text": "Empório da Chef", "url": "/receitas/emporio-da-chef/" }
+      { "text": "Risotos", "url": "/receitas/risotos/" },
+      { "text": "Sopas", "url": "/receitas/sopas-funcionais/" },
+      { "text": "Refeições", "url": "/receitas/refeicoes-integrais/" },
+      { "text": "Empório", "url": "/receitas/emporio-da-chef/" }
     ]
   },
-  {
-    "text": "Áreas de Entrega",
-    "url": "/onde-encontrar/",
-    "title": "Mapa de cobertura e parceiros no DF"
-  },
-  {
-    "text": "Dúvidas",
-    "url": "/faq/"
-  },
-  {
-    "text": "🎁 ChefBox (4+1)",
-    "url": "/chefbox/",
-    "type": "cta",
-    "ariaLabel": "Monte sua ChefBox: Escolha 5, Pague 4 e entre para o Clube VIP."
-  }
+  { "text": "Onde Entregamos", "url": "/onde-encontrar/" },
+  { "text": "Dúvidas", "url": "/faq/" },
+  { "text": "🎁 ChefBox (4+1)", "url": "/chefbox/", "type": "cta" }
 ]
