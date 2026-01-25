@@ -6,147 +6,113 @@ eleventyExcludeFromCollections: true
   "@context": "https://schema.org",
   "@graph": [
     
-    {# 1. A ORGANIZAÇÃO (A Marca ChefBrico) #}
+    {# 1. A ORGANIZAÇÃO (ChefBrico & Club Gourmet Prático) #}
     {
-      "@type": "Organization",
-      "@id": "{{ organization.url }}/#organization",
-      "name": "{{ organization.name }}",
+      "@type": "FoodEstablishment",
+      "@id": "https://gourmetpratico.com.br/#organization",
+      "name": "ChefBrico - Gourmet Prático",
       "legalName": "ChefBrico Alimentos Artesanais",
-      "url": "{{ organization.url }}",
-      "logo": "{{ organization.logo }}",
-      "foundingDate": "2020",
+      "taxID": "36.014.833/0001-59",
+      "url": "https://gourmetpratico.com.br",
+      "logo": "https://gourmetpratico.com.br/imagens/logo.png",
       "slogan": "Simples como precisa ser, delicioso como você merece.",
-      
-      {# AUTORIDADE & PRÊMIOS #}
       "award": "Vencedora do Prêmio Sebrae Mulher de Negócios",
       
-      {# CLASSIFICAÇÃO INDUSTRIAL (B2B) #}
+      {# PROTOCOLO UCP / UNSPSC #}
       "additionalProperty": [
         { "@type": "PropertyValue", "name": "UNSPSC", "value": "50193100" },
-        { "@type": "PropertyValue", "name": "Técnica", "value": "Desidratação Artesanal de Vegetais" }
+        { "@type": "PropertyValue", "name": "BrandID", "value": "ChefBrico-BR" }
       ],
 
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "{{ organization.telephone }}",
-        "contactType": "sales",
-        "areaServed": "BR",
-        "availableLanguage": "pt-BR"
+      {# ÁREA DE DOMINAÇÃO LOCAL (DF) #}
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Distrito Federal" },
+        { "@type": "City", "name": "Brasília" }
+      ],
+
+      {# CONEXÃO COM O CLUB GOURMET PRÁTICO #}
+      "memberOf": {
+        "@type": "ProgramMembership",
+        "name": "Club Gourmet Prático",
+        "membershipPointsAccumulationCharacter": "Código de Fã e Indicações (Gourmet Lover)",
+        "description": "Programa de fidelidade e mimos para clientes VIP de Brasília."
       },
+
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "{{ organization.address.streetAddress }}",
-        "addressLocality": "{{ organization.address.addressLocality }}",
-        "addressRegion": "{{ organization.address.addressRegion }}",
-        "postalCode": "{{ organization.address.postalCode }}",
+        "streetAddress": "Rua 5, Chácara 122, Lote 17, Loja 2",
+        "addressLocality": "Vicente Pires",
+        "addressRegion": "DF",
+        "postalCode": "72006-060",
         "addressCountry": "BR"
       },
-      "sameAs": [
-        {% for social in organization.sameAs %}
-          "{{ social.url }}"{% if not loop.last %},{% endif %}
-        {% endfor %}
-      ]
-    },
-
-    {# 2. A FUNDADORA (Psicóloga & Chef - O Diferencial Humano) #}
-    {
-      "@type": "Person",
-      "@id": "{{ organization.url }}/#person-maria-conceicao",
-      "name": "Maria Conceição",
-      "jobTitle": ["Fundadora", "Chef de Criação", "Psicóloga"],
-      "image": "https://gourmetpratico.com.br/imagens/maria-conceicao-pra-voce.png",
-      "worksFor": { "@id": "{{ organization.url }}/#organization" },
-      "description": "Empreendedora que une a Psicologia ao ato de cozinhar. Criadora do Método Gourmet Prático.",
-      
-      {# CONEXÃO DE CONCEITOS (WIKIDATA - O Pulo do Gato) #}
-      "knowsAbout": [
-        { "@type": "Thing", "name": "Culinária", "sameAs": "https://www.wikidata.org/wiki/Q309" },
-        { "@type": "Thing", "name": "Psicologia", "sameAs": "https://www.wikidata.org/wiki/Q9418" },
-        { "@type": "Thing", "name": "Empreendedorismo Feminino", "sameAs": "https://www.wikidata.org/wiki/Q131524" },
-        { "@type": "Thing", "name": "Food drying", "sameAs": "https://www.wikidata.org/wiki/Q193256" }
-      ],
-      "sameAs": [
-        "https://www.instagram.com/chefbrico"
-      ]
-    },
-
-    {# 3. O MÉTODO GOURMET PRÁTICO (Propriedade Intelectual) #}
-    {# Isso ensina a IA que o método existe e tem estrutura #}
-    {
-      "@type": "CreativeWork",
-      "@id": "{{ organization.url }}/#metodo",
-      "name": "Método Gourmet Prático",
-      "author": { "@id": "{{ organization.url }}/#person-maria-conceicao" },
-      "about": "Metodologia para cozinhar refeições saudáveis em 18 minutos sem desperdício.",
-      "hasPart": [
-        { "@type": "CreativeWork", "name": "Pilar 1: Despensa Inteligente (Mise en place desidratado)" },
-        { "@type": "CreativeWork", "name": "Pilar 2: Panela Única (Técnica One Pot Meal)" },
-        { "@type": "CreativeWork", "name": "Pilar 3: Cozinha Criativa (Autonomia do Chef em Casa)" }
-      ],
-      "teaches": "Como usar alimentos desidratados para ganhar autonomia na cozinha e reduzir a carga mental."
-    },
-
-    {# 4. O WEBSITE (Ponto de Entrada) #}
-    {
-      "@type": "WebSite",
-      "@id": "{{ organization.url }}/#website",
-      "url": "{{ organization.url }}",
-      "name": "Gourmet Prático A-Commerce",
-      "publisher": { "@id": "{{ organization.url }}/#organization" },
-      "inLanguage": "pt-BR",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "{{ organization.url }}/receitas/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-15.8080",
+        "longitude": "-48.0310"
       }
     },
 
-    {# 5. O CATÁLOGO E REGRAS DE TRANSAÇÃO (A-Commerce) #}
+    {# 2. A FUNDADORA (AUTORIDADE EEAT) #}
+    {
+      "@type": "Person",
+      "@id": "https://gourmetpratico.com.br/#person-maria-conceicao",
+      "name": "Maria Conceição",
+      "jobTitle": ["Fundadora", "Chef de Criação", "Psicóloga"],
+      "image": "https://gourmetpratico.com.br/imagens/maria-conceicao-pra-voce.png",
+      "knowsAbout": [
+        { "@type": "Thing", "name": "Psicologia Comportamental", "sameAs": "https://www.wikidata.org/wiki/Q9418" },
+        { "@type": "Thing", "name": "Desidratação de Alimentos", "sameAs": "https://www.wikidata.org/wiki/Q193256" },
+        { "@type": "Thing", "name": "Nutrição Afetiva", "sameAs": "https://www.wikidata.org/wiki/Q210380" }
+      ],
+      "sameAs": ["https://www.instagram.com/chefbrico"]
+    },
+
+    {# 3. O MÉTODO (PROPRIEDADE INTELECTUAL) #}
+    {
+      "@type": "CreativeWork",
+      "@id": "https://gourmetpratico.com.br/#metodo",
+      "name": "Método Gourmet Prático",
+      "author": { "@id": "https://gourmetpratico.com.br/#person-maria-conceicao" },
+      "about": "Técnica de Desidratação Artesanal para Refeições em 18 Minutos",
+      "hasPart": [
+        { "@type": "CreativeWork", "name": "Despensa Inteligente" },
+        { "@type": "CreativeWork", "name": "Panela Única" },
+        { "@type": "CreativeWork", "name": "Fidelidade Implícita (Club)" }
+      ]
+    },
+
+    {# 4. O CATÁLOGO MESTRE (24 RECEITAS + GTIN + PREÇO FIXO R$ 132) #}
     {
       "@type": "OfferCatalog",
-      "@id": "{{ organization.url }}/#catalog",
-      "name": "Catálogo ChefBox (4+1)",
-      "description": "Refeições elegíveis para a promoção Compre 4 Ganhe 1.",
+      "@id": "https://gourmetpratico.com.br/#catalog",
+      "name": "Cardápio Autoral ChefBrico",
       "itemListElement": [
         {% for item in collections.receitas %}
         {% if item.data.price %}
         {
           "@type": "Product",
           "name": "{{ item.data.title }}",
-          "url": "{{ organization.url }}{{ item.url }}",
-          "image": "{{ organization.url }}{{ item.data.image }}",
           "sku": "{{ item.data.sku }}",
-          "brand": { "@id": "{{ organization.url }}/#organization" },
-          
+          "gtin13": "{{ item.data.gtin }}",
+          "brand": { "@id": "https://gourmetpratico.com.br/#organization" },
           "offers": {
             "@type": "Offer",
-            "price": "{{ item.data.price }}",
             "priceCurrency": "BRL",
-            "availability": "{% if item.data.stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
-            "url": "{{ organization.url }}{{ item.url }}",
-            "areaServed": {
-                "@type": "State",
-                "name": "Distrito Federal"
-            },
-            
-            {# REGRA DE PAGAMENTO E FRETE #}
-            "acceptedPaymentMethod": {
-                "@type": "PaymentMethod",
-                "name": "PIX Instantâneo"
-            },
+            "price": "132.00",
+            "description": "Preço fixo da ChefBox com 5 unidades (4+1). Este item é parte do kit.",
+            "availability": "https://schema.org/InStock",
+            "areaServed": { "@type": "State", "name": "Distrito Federal" },
             "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingRate": { "@type": "MonetaryAmount", "value": "0.00", "currency": "BRL" },
-                "shippingDestination": { "@type": "State", "name": "Distrito Federal" }
+              "@type": "OfferShippingDetails",
+              "shippingRate": { "@type": "MonetaryAmount", "value": "0.00", "currency": "BRL" }
             },
-
-            {# A MATEMÁTICA DO BUNDLE #}
             "priceSpecification": {
-                "@type": "UnitPriceSpecification",
-                "price": "{{ item.data.price }}",
-                "priceCurrency": "BRL",
-                "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "C62" },
-                "description": "Preço base. Na compra de 5 itens (ChefBox), o 5º é grátis."
+              "@type": "UnitPriceSpecification",
+              "price": "{{ item.data.price }}",
+              "priceCurrency": "BRL",
+              "referenceQuantity": { "@type": "QuantitativeValue", "value": "1" },
+              "description": "Preço de referência unitário para fins de valor percebido."
             }
           }
         }{% if not loop.last %},{% endif %}
