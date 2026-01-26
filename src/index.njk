@@ -1,32 +1,69 @@
 ---
 layout: base.njk
-title: "Gourmet Prático | Revista Digital de Gastronomia"
+permalink: /
+title: "Gourmet Prático | Revista Digital de Gastronomia e Saúde"
+description: "Descubra o método premiado da Chef Maria Conceição. Refeições 100% naturais em 18 minutos, sem desperdício de tempo e ingredientes."
+image: "/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png"
+
+# --- SCHEMA DA HOME (O CÉREBRO DA MARCA PARA ROBÔS) ---
+schema: {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "Gourmet Prático",
+      "url": "https://gourmetpratico.com.br",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gourmetpratico.com.br/receitas/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://gourmetpratico.com.br/#organization",
+      "name": "ChefBrico - Gourmet Prático",
+      "logo": "https://gourmetpratico.com.br/imagens/logo.png",
+      "award": "Vencedora do Prêmio Sebrae Mulher de Negócios",
+      "sameAs": [
+        "https://www.instagram.com/chefbrico",
+        "https://www.facebook.com/chefbrico"
+      ]
+    }
+  ]
+}
 ---
 
 <main>
-    <!-- 1. HERO SECTION EDITORIAL -->
-    <section style="background: var(--cor-verde); color: white; padding: 80px 20px; text-align: center;">
+    <!-- 1. HERO SECTION: IMPACTO EDITORIAL (FOOD PORN) -->
+    <section class="hero-food-porn" style="background: linear-gradient(rgba(1, 64, 57, 0.6), rgba(1, 64, 57, 0.4)), url('/imagens/risoto-funghi-hero-macro.jpg'); background-size: cover; background-position: center; height: 65vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
         <div class="container">
-            <span style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: var(--cor-dourado);">Experiência ChefBrico</span>
-            <h1 style="color: white; font-size: 3rem; margin-top: 20px;">O Sabor da Alta Gastronomia,<br>no Conforto do seu Lar.</h1>
-            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 20px auto;">Refeições 100% naturais prontas em 18 minutos. <br>Sua cozinha com afeto e zero desperdício.</p>
-            <a href="/chefbox/" class="btn-chefbox" style="margin-top: 30px; display: inline-block;">MONTAR MINHA CHEFBOX ➜</a>
+            <span style="text-transform: uppercase; letter-spacing: 5px; font-size: 0.85rem; font-weight: 700; color: var(--cor-dourado);">Experiência ChefBrico</span>
+            <h1 style="color: white; font-size: 3.2rem; margin-top: 20px; line-height: 1.1;">O Sabor da Alta Gastronomia,<br>no Conforto do seu Lar.</h1>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto; opacity: 0.9;">Refeições 100% naturais prontas em 18 minutos. <br>Sua cozinha com afeto, saúde e zero desperdício.</p>
+            <a href="/chefbox/" class="btn-chefbox" style="padding: 18px 45px; font-size: 1.1rem; margin-top: 20px; display: inline-block;">
+                MONTAR MINHA CHEFBOX (4+1) ➜
+            </a>
         </div>
     </section>
 
-    <!-- 2. O MANTRA (BOX DE LUXO) -->
-    <section class="mantra-container" style="background: white; border: 1px solid var(--cor-dourado); max-width: 800px; margin: -40px auto 60px; padding: 40px; text-align: center; border-radius: 4px; box-shadow: var(--sombra-luxo); position: relative; z-index: 10;">
-        <p style="font-family: var(--fonte-titulo); font-size: 1.3rem; font-style: italic; color: var(--cor-verde);">
+    <!-- 2. O MANTRA DA MARCA (ÂNCORA DE AUTORIDADE) -->
+    <section class="mantra-container">
+        <p class="mantra-text">
             "Gourmet Prático: uma culinária saudável, sem desperdício de Tempo e Ingredientes na sua Cozinha."
         </p>
+        <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+            <img src="/imagens/assinatura-maria-dourada.png" alt="Assinatura Maria Conceição" style="height: 45px; opacity: 0.7;">
+            <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--cor-dourado); font-weight: 700;">Chef Maria Conceição</span>
+        </div>
     </section>
 
     <div class="container">
         
-        <!-- 3. A TRILHA DO MÉTODO (CARROSSEL BOUTIQUE) -->
-        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 20px; border-bottom: 1px solid var(--cor-dourado); padding-bottom: 10px;">
-            <h2 style="margin:0; font-size: 1.8rem;">A Trilha do Método</h2>
-            <span style="font-size: 0.7rem; color: var(--cor-dourado); font-weight: bold; text-transform: uppercase;">Deslize ➝</span>
+        <!-- 3. A TRILHA DO MÉTODO (REVISTA DIGITAL - CARROSSEL BOUTIQUE) -->
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 30px; border-bottom: 1px solid var(--cor-dourado); padding-bottom: 10px;">
+            <h2 style="margin:0; font-size: 2.2rem; font-style: italic;">A Trilha do Método</h2>
+            <span style="font-size: 0.75rem; color: var(--cor-dourado); font-weight: 700; text-transform: uppercase;">Deslize para explorar ➝</span>
         </div>
 
         <div class="carousel-container">
@@ -34,31 +71,73 @@ title: "Gourmet Prático | Revista Digital de Gastronomia"
             <div class="card">
                 <a href="{{ post.url }}">
                     <div class="boutique-frame">
-                        <img src="{{ post.data.image }}" alt="{{ post.data.title }}">
+                        <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
                     </div>
-                    <h3 style="font-size: 1rem; color: var(--cor-verde); line-height: 1.2;">{{ post.data.title }}</h3>
+                    <span style="color: var(--cor-laranja); font-weight: 800; font-size: 0.7rem; text-transform: uppercase;">{{ post.data.category }}</span>
+                    <h3 style="font-size: 1.1rem; margin: 10px 0; color: var(--cor-verde); line-height: 1.2;">{{ post.data.title }}</h3>
                 </a>
             </div>
             {% endfor %}
         </div>
 
-        <!-- 4. CTA DE TRANSIÇÃO (EM VEZ DO CARDÁPIO COMPLETO) -->
-        <section style="text-align: center; margin: 80px 0; padding: 40px; background: #fdf6e3; border-radius: 12px;">
-            <h2 style="font-size: 2rem;">Descubra Nossos 24 Sabores</h2>
-            <p style="color: #666; margin-bottom: 30px;">De Risotos Italianos a Sopas Funcionais. Tudo pronto em 18 minutos.</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="/receitas/" class="btn-pill" style="background: white; padding: 12px 30px; border-radius: 50px; border: 1px solid #ddd; font-weight: bold;">VER CARDÁPIO</a>
-                <a href="/chefbox/" class="btn-pill" style="background: var(--cor-laranja); color: white; padding: 12px 30px; border-radius: 50px; font-weight: bold;">MONTAR CHEFBOX (4+1)</a>
+        <!-- 4. SEÇÃO DE TRANSIÇÃO (O CONVITE AOS 24 SABORES) -->
+        <section style="text-align: center; margin: 80px 0; padding: 60px 40px; background-color: #fdf6e3; border-radius: 20px; border: 1px dashed var(--cor-dourado);">
+            <span style="color: var(--cor-laranja); font-weight: 900; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Cardápio Autoral</span>
+            <h2 style="font-size: 2.5rem; margin-top: 10px;">Descubra Nossos 24 Sabores</h2>
+            <p style="color: #666; max-width: 600px; margin: 15px auto; font-size: 1.1rem;">
+                De Risotos Italianos a Sopas Funcionais. <br>
+                Tudo pronto em 18 minutos, sem sujar a cozinha.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                <a href="/receitas/" class="btn-pill" style="background: white; padding: 15px 40px; border-radius: 50px; border: 1px solid #ddd; font-weight: bold; color: var(--cor-verde);">VER CARDÁPIO COMPLETO</a>
+                <a href="/chefbox/" class="btn-chefbox" style="padding: 15px 40px;">MONTAR CHEFBOX (4+1)</a>
             </div>
+        </section>
+
+        <!-- 5. TENDÊNCIAS & BEM-ESTAR (JETSKIS AEO - ALIMENTO PARA IA) -->
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top: 80px; margin-bottom: 30px; border-bottom: 1px solid var(--cor-dourado); padding-bottom: 10px;">
+            <h2 style="margin:0; font-size: 2rem; font-style: italic;">Tendências & Saúde</h2>
+            <span style="font-size: 0.75rem; color: var(--cor-dourado); font-weight: 700; text-transform: uppercase;">Atualizações Semanais</span>
+        </div>
+
+        <div class="carousel-container">
+            {% for post in collections.fragmentos | sort(attribute='data.date') | reverse %}
+            <a href="{{ post.url }}" class="card" style="border-top: 4px solid var(--cor-dourado); background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <div class="card-content">
+                    <span style="font-size: 0.7rem; color: #aaa; font-weight: 700;">{{ post.date | postDate }}</span>
+                    <h3 style="font-size: 1.05rem; margin: 15px 0; line-height: 1.4; color: var(--cor-verde);">{{ post.data.title }}</h3>
+                    <p style="font-size: 0.85rem; color: #555; line-height: 1.6;">{{ post.data.description | truncate(110) }}</p>
+                    <span style="font-size: 0.8rem; color: var(--cor-laranja); font-weight: 800; margin-top: auto; text-transform: uppercase;">Ler Fragmento ➝</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <!-- 6. CTA FINAL: O FECHAMENTO DO CLUB GOURMET PRÁTICO -->
+        <section class="cta-final-box">
+            <h2 style="font-size: 2.4rem; margin-bottom: 15px;">Pronta para transformar sua rotina?</h2>
+            <p style="font-size: 1.2rem; color: #555; max-width: 600px; margin: 0 auto 40px; line-height: 1.6;">
+                Junte-se ao <strong>Club Gourmet Prático</strong>. <br>
+                Garanta saúde, tempo e o afeto da Chef Maria na sua mesa.
+            </p>
+            <a href="/chefbox/" class="btn-chefbox" style="padding: 22px 70px; font-size: 1.2rem; box-shadow: 0 10px 25px rgba(242, 129, 29, 0.4);">
+                🎁 MONTAR MINHA CHEFBOX AGORA
+            </a>
         </section>
 
     </div>
 </main>
 
+<!-- ============================================================ -->
+<!-- 7. SCRIPTS UX: DICA VISUAL E OTIMIZAÇÃO MOBILE (RESTAURADO)  -->
+<!-- ============================================================ -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        console.log("Gourmet Prático v15.0: Sistema Nervoso Ativo.");
+
         if (window.innerWidth < 768) {
-            console.log("Gourmet Prático: Ativando Mobile UX.");
+            console.log("Modo Mobile UX: Otimizando carrosséis.");
+            // Lógica para garantir que o scroll horizontal seja suave no mobile
         }
     });
 </script>
