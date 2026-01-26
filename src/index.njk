@@ -1,55 +1,207 @@
 ---
 layout: base.njk
-title: "Gourmet Prático | Revista Digital de Gastronomia"
+permalink: /
+title: "Revista Digital ChefBrico | Comida de Verdade"
+description: "Receitas 100% naturais, prontas em 18 minutos. O método da Chef Maria Conceição para uma rotina saudável e sem desperdício."
+image: "/imagens/maria-conceicao-empreendedora-feira-tematica.png"
+
+# --- SCHEMA DA HOME (A PORTA DE ENTRADA) ---
+schema: {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ChefBrico Gourmet Prático",
+      "url": "https://gourmetpratico.com.br",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gourmetpratico.com.br/receitas/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://gourmetpratico.com.br/#organization",
+      "name": "ChefBrico",
+      "logo": "https://gourmetpratico.com.br/imagens/logo.png",
+      "sameAs": [
+        "https://www.instagram.com/chefbrico",
+        "https://www.facebook.com/chefbrico"
+      ]
+    }
+  ]
+}
 ---
 
-<main>
-    <!-- 1. HERO SECTION EDITORIAL -->
-    <section style="background: var(--cor-verde); color: white; padding: 60px 20px; text-align: center;">
-        <div class="container">
-            <span style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: var(--cor-dourado);">Experiência ChefBrico</span>
-            <h1 style="color: white; font-size: 2.8rem; margin-top: 15px;">O Sabor da Alta Gastronomia,<br>no Conforto do seu Lar.</h1>
-            <p style="opacity: 0.9; margin-top: 10px;">Refeições 100% naturais prontas em 18 minutos.</p>
-            <a href="/chefbox/" class="btn-chefbox" style="margin-top: 25px; display: inline-block; padding: 15px 40px; font-size: 1rem;">MONTAR MINHA CHEFBOX ➜</a>
-        </div>
-    </section>
+<!-- ESTILOS LOCAIS (Para garantir o Carrossel Perfeito) -->
+<style>
+    .hero-buttons-grid { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .btn-pill {
+        padding: 10px 25px; border-radius: 50px; background: rgba(255,255,255,0.9);
+        color: #014039; text-decoration: none; font-weight: bold; font-size: 0.95rem;
+        border: 1px solid #ddd; transition: 0.2s; display: flex; align-items: center; gap: 8px;
+    }
+    .btn-pill:hover { transform: translateY(-2px); background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .btn-pill.highlight { background: #F2811D; color: white; border: none; }
 
-    <!-- 2. O MANTRA (CARD DE AUTORIDADE RESTAURADO) -->
-    <section class="mantra-card">
-        <p class="mantra-text">
-            "Gourmet Prático: uma culinária saudável, sem desperdício de Tempo e Ingredientes na sua Cozinha."
-        </p>
-        <div style="margin-top: 20px;">
-            <img src="/imagens/assinatura-maria-dourada.png" alt="Assinatura Maria" class="signature-img">
-            <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--cor-dourado); font-weight: bold; margin-top: 10px;">Chef Maria Conceição</p>
-        </div>
+    /* Carrossel com Scroll Snap (UX Mobile Premium) */
+    .carousel-container {
+        display: flex; overflow-x: auto; gap: 20px; padding: 10px 5px 30px 5px;
+        scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    }
+    .carousel-container::-webkit-scrollbar { display: none; }
+    .card { flex: 0 0 280px; scroll-snap-align: start; }
+</style>
+
+<main>
+    
+    <!-- HERO SECTION: A CAPA QUE CONVERSA -->
+    <!-- HERO SECTION -->
+    <section class="hero-section-with-image-and-text">
+         <!-- AQUI ESTÁ A MUDANÇA: Usando a classe do CSS Global -->
+         <div class="avatar-hero-circle">
+             <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" 
+                  alt="Maria Conceição e familia, na propriedade rural fundadora da ChefBrico,">
+         </div>
+         <div class="hero-content-text">
+             <h1 class="hero-title">Comida de Verdade;<br>Sem confusão na cozinha!</h1>
+             <p class="hero-subtitle">Uma revolução no sabor e na sua rotina. Refeições práticas, 100% naturais e com o afeto da nossa cozinha.</p>
+             
+             <!-- BOTÕES DE AÇÃO RÁPIDA (ZERO-CLICK) -->
+             <div class="hero-buttons-grid">
+                 <a href="/receitas/" class="btn-pill">📖 Ver Catálogo</a>
+                 <a href="/chefbox/" class="btn-pill highlight">🎁 Montar ChefBox (4+1)</a>
+             </div>
+         </div>
     </section>
 
     <div class="container">
-        <!-- 3. A TRILHA DO MÉTODO (REVISTA DIGITAL) -->
-        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 20px; border-bottom: 1px solid var(--cor-dourado); padding-bottom: 10px;">
-            <h2 style="margin:0; font-size: 1.8rem;">A Trilha do Método</h2>
-            <span style="font-size: 0.7rem; color: var(--cor-dourado); font-weight: bold; text-transform: uppercase;">Deslize ➝</span>
+        
+        <!-- SEÇÃO 1: O MÉTODO (Dinâmico - Puxa da pasta src/content/metodo/) -->
+        <div style="display:flex; justify-content:space-between; align-items:end; margin-top:60px;">
+            <h2 style="color:var(--cor-institucional); margin:0;">Comece por Aqui: O Método</h2>
+            <span style="font-size:0.8rem; color:#999; display:none;" class="mobile-hint">Arraste ➝</span>
         </div>
 
         <div class="carousel-container">
-            {% for post in collections.metodo | sort(attribute='data.order') %}
-            <div class="card">
-                <a href="{{ post.url }}">
-                    <div class="boutique-frame">
-                        <img src="{{ post.data.image }}" alt="{{ post.data.title }}">
-                    </div>
-                    <h3 style="font-size: 0.95rem; color: var(--cor-verde); line-height: 1.2;">{{ post.data.title }}</h3>
-                </a>
-            </div>
+            
+            <!-- Loop Automático: Lê os arquivos .md que criamos -->
+            {% for post in collections.metodo %}
+            <a href="{{ post.url }}" class="card">
+                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
+                <div class="card-content">
+                    <span class="card-category" style="color:var(--cor-cta);">{{ post.data.category }}</span>
+                    <h3>{{ post.data.title }}</h3>
+                    <p>{{ post.data.description | truncate(60) }}</p>
+                </div>
+            </a>
             {% endfor %}
+
         </div>
 
-        <!-- 4. CTA FINAL -->
-        <section style="text-align: center; margin: 60px auto; padding: 50px 30px; background-color: #fff; border: 1px solid var(--cor-dourado); border-radius: 15px; max-width: 750px; box-shadow: var(--sombra-luxo);">
-            <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Pronta para transformar sua rotina?</h2>
-            <p style="color: #666; margin-bottom: 30px;">Junte-se ao Club Gourmet Prático e receba o afeto da Maria na sua mesa.</p>
-            <a href="/chefbox/" class="btn-chefbox" style="padding: 20px 60px; font-size: 1.2rem;">🎁 MONTAR MINHA CHEFBOX AGORA</a>
-        </section>
+        <!-- SEÇÃO 2: NOVIDADES (Dinâmico - Puxa da pasta src/content/blog/) -->
+       <!-- ============================================================ -->
+        <!-- LINHA 2: TENDÊNCIAS & PESQUISAS (JetSkis)                    -->
+        <!-- Conteúdo rápido, científico e atualizado semanalmente        -->
+        <!-- ============================================================ -->
+        <div style="display:flex; justify-content:space-between; align-items:end; margin-top:60px;">
+            <h2 style="color:var(--cor-institucional); margin:0;">Tendências & Bem-Estar</h2>
+            <span style="font-size:0.8rem; color:#999;">Atualizações Semanais</span>
+        </div>
+
+        <div class="carousel-container">
+            
+            <!-- Loop dos Fragmentos (JetSkis) -->
+            {% for post in collections.fragmentos | sort(attribute='data.order') %}
+            <a href="{{ post.url }}" class="card" style="border-top: 4px solid var(--cor-cta);">
+                <div class="card-content">
+                    <span style="font-size: 0.7rem; text-transform: uppercase; color: #999; letter-spacing: 1px;">
+                        {{ post.date | postDate }}
+                    </span>
+                    <h3 style="font-size: 1rem; margin: 10px 0; line-height: 1.4;">
+                        {{ post.data.title }}
+                    </h3>
+                    <p style="font-size: 0.85rem; color: #555;">
+                        {{ post.data.description | truncate(90) }}
+                    </p>
+                    <span style="font-size: 0.8rem; color: var(--cor-institucional); font-weight: bold; margin-top: auto;">
+                        Ler em 2 min ➝
+                    </span>
+                </div>
+            </a>
+            {% endfor %}
+
+            <!-- Mantém os Artigos de Blog Profundos depois dos Fragmentos -->
+            {% for post in collections.blog | sort(attribute='data.order') %}
+            <a href="{{ post.url }}" class="card">
+                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Artigo Completo</span>
+                    <h3>{{ post.data.title }}</h3>
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+
+        <!-- SEÇÃO 3: VITRINE DE CATEGORIAS (Estático - Links Fixos para os Universos) -->
+        <h2 style="margin-top: 50px; color: var(--cor-institucional);">Quatro Universos de Sabor</h2>
+        <div class="carousel-container">
+            
+            <!-- Card 1: Risotos -->
+            <a href="/receitas/risotos/" class="card">
+                <img src="/imagens/risoto-pomodori-pesto-chefbrico-580px.png" alt="Risoto Pomodori" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Jantar Italiano</span>
+                    <h3>Risotos e Arrozes</h3>
+                    <p>O sabor autêntico da Itália, cremoso e pronto em 18 minutos.</p>
+                </div>
+            </a>
+
+            <!-- Card 2: Sopas -->
+            <a href="/receitas/sopas-funcionais/" class="card">
+                <img src="/imagens/chefbrico-creme-fit-sopinha-chefbrico-580%20px.png" alt="Creme Fit" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Detox & Leveza</span>
+                    <h3>Sopas Funcionais</h3>
+                    <p>Nutrição densa e conforto para dias leves.</p>
+                </div>
+            </a>
+
+            <!-- Card 3: Integrais -->
+            <a href="/receitas/refeicoes-integrais/" class="card">
+                <img src="/imagens/refeicao-nutritiva-integral-arroz-negro-chefbrico-80%20px.png" alt="Arroz Negro" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Grãos Nobres</span>
+                    <h3>Refeições Integrais</h3>
+                    <p>Arroz negro, vermelho e grãos ancestrais.</p>
+                </div>
+            </a>
+
+            <!-- Card 4: Empório -->
+            <a href="/receitas/emporio-da-chef/" class="card">
+                <img src="/imagens/confitado-shiitake-chefbrico.png" alt="Confit Shiitake" class="card-image">
+                <div class="card-content">
+                    <span class="card-category">Para Finalizar</span>
+                    <h3>Empório da Chef</h3>
+                    <p>Pestos, antepastos e confits para elevar seu prato.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- CTA FINAL -->
+        <div class="cta-section-article" style="text-align: center; margin: 60px 0; padding: 40px 20px; background-color: #fdf6e3; border-radius: 12px; border: 1px solid #d4af37;">
+            <h3 style="margin-top:0; color: var(--cor-institucional); font-family: 'Merriweather', serif;">Ainda não decidiu?</h3>
+            <p style="margin-bottom: 25px; font-size: 1.1rem; color: #555;">Que tal montar sua caixa personalizada e ganhar um presente?</p>
+            <a href="/chefbox/" class="btn-pill highlight" style="display:inline-block; width:auto; padding: 15px 30px; font-size: 1.1rem;">🎁 Monte sua ChefBox (Ganhe 1)</a> 
+        </div>
+
     </div>
 </main>
+
+<!-- SCRIPT UX: Mostra dica de arrastar no mobile -->
+<script>
+    if (window.innerWidth < 768) {
+        document.querySelectorAll('.mobile-hint').forEach(el => el.style.display = 'block');
+    }
+</script>
