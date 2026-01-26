@@ -1,22 +1,20 @@
 /* ==========================================================================
-   GOURMET PRÁTICO | DESIGN SYSTEM v17.0 - ARQUITETURA INTEGRAL BLINDADA
+   GOURMET PRÁTICO | DESIGN SYSTEM v18.0 - VERSÃO FINAL DE RIGOR
    ========================================================================== */
 
 /* 1. FONTES E IDENTIDADE */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap');
 
 :root {
-    --cor-verde:         #014039;
-    --cor-dourado:       #bfb084;
-    --cor-laranja:       #F2811D;
-    --cor-creme:         #fdfcf7;
+    --cor-verde:         #014039; /* Institucional */
+    --cor-dourado:       #bfb084; /* Slogan e Detalhes */
+    --cor-laranja:       #F2811D; /* CTA */
+    --cor-creme:         #fdfcf7; /* Fundo Papel */
     --cor-branco:        #ffffff;
     --cor-texto:         #2c3e50;
     --fonte-titulo:      'Playfair Display', serif;
     --fonte-corpo:       'Lato', sans-serif;
-    --fonte-assinatura:  'Dancing Script', cursive;
     --border-radius:     12px;
-    --sombra-luxo:       0 20px 40px rgba(1, 64, 57, 0.08);
 }
 
 /* 2. RESET E ESTRUTURA BASE */
@@ -29,64 +27,59 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
-main { flex: 1; width: 100%; padding-bottom: 20px; }
-.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* 3. CABEÇALHO SLIM & SELO CENTRAL (FIX: ALTURA E SIMETRIA) */
+/* 3. A LINHA DOURADA (SLOGAN) */
+.top-bar-slogan {
+    background-color: var(--cor-dourado);
+    color: white;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* 4. CABEÇALHO SLIM COM SELO CENTRALIZADO */
 .site-header {
     background-color: var(--cor-verde); 
-    height: 80px !important; 
+    height: 85px !important; 
     display: flex; align-items: center;
     position: sticky; top: 0; z-index: 1000;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+
 .header-container { 
     display: grid !important; 
-    grid-template-columns: 1fr auto 1fr !important; 
+    grid-template-columns: 1fr auto 1fr !important; /* DIVISÃO EM 3 PARTES IGUAIS */
     align-items: center; 
     width: 100%; 
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-@media (min-width: 993px) { .mobile-menu-btn { display: none !important; } }
-
 .logo-circle {
-    width: 65px; height: 65px; background: var(--cor-branco);
+    width: 70px; height: 70px; background: var(--cor-branco);
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--cor-dourado); margin: 0 15px; z-index: 10;
+    border: 2px solid var(--cor-dourado);
+    z-index: 10;
 }
 .logo-circle img { max-height: 75%; width: auto; }
 
-/* 4. NAVEGAÇÃO E MENU DROPDOWN (SEO CATEGORIAS) */
-.nav-list { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; align-items: center; }
-.nav-left { justify-content: flex-end; }
-.nav-right { justify-content: flex-start; }
-.nav-link { color: white; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+/* LINKS LATERAIS - PUXADOS PARA O CENTRO */
+.nav-list { display: flex; gap: 25px; list-style: none; margin: 0; padding: 0; align-items: center; }
+.nav-left { justify-content: flex-end; } /* Encosta no logo pela esquerda */
+.nav-right { justify-content: flex-start; } /* Encosta no logo pela direita */
+.nav-link { color: white; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
 
-.has-dropdown { position: relative; padding: 10px 0; }
-.mega-menu {
-    display: none; position: absolute; top: 100%; left: 0;
-    background: white; padding: 15px; min-width: 240px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 3px solid var(--cor-dourado);
-    border-radius: 0 0 8px 8px;
-}
-.has-dropdown:hover .mega-menu { display: block; }
-.mega-menu a { display: block; padding: 8px; color: var(--cor-verde); font-size: 0.85rem; border-bottom: 1px solid #f5f5f5; font-weight: bold; }
-.mega-menu a:hover { color: var(--cor-laranja); background: #fdfcf7; }
-
-/* 5. MANTRA E CARD DE AUTORIDADE (EEAT RESTAURADO) */
-.mantra-card {
-    background: white;
-    border: 1px solid var(--cor-dourado);
-    max-width: 850px;
-    margin: -40px auto 40px; 
-    padding: 35px;
+/* 5. HERO SECTION (FIX: REMOÇÃO DO FUNDO VERDE) */
+.hero-editorial {
+    background-color: #e9ecef; /* Cor neutra ou imagem de fundo */
+    padding: 80px 20px;
     text-align: center;
-    border-radius: 8px;
-    box-shadow: var(--sombra-luxo);
-    position: relative;
-    z-index: 20;
 }
-.mantra-text { font-family: var(--fonte-titulo); font-size: 1.4rem; font-style: italic; color: var(--cor-verde); margin-bottom: 15px; }
+.hero-editorial h1 { color: var(--cor-verde); font-size: 3rem; margin-bottom: 15px; }
 
 /* 6. MOLDURA BOUTIQUE (CÍRCULOS DA REVISTA) */
 .boutique-frame {
@@ -105,19 +98,19 @@ main { flex: 1; width: 100%; padding-bottom: 20px; }
     gap: 15px !important;
     width: 100% !important;
     max-width: 1400px !important;
-    margin: 30px auto 80px !important;
+    margin: 40px auto 80px !important;
 }
 @media (min-width: 1024px) {
     .recipe-grid, .vitrine-grid, .vitrine-magica { grid-template-columns: repeat(6, 1fr) !important; }
 }
 
-/* 8. CARROSSEL 'COMIDA DE VERDADE' (PRESERVAÇÃO) */
+/* 8. CARROSSEL 'COMIDA DE VERDADE' */
 .carousel-container {
     display: flex !important; overflow-x: auto !important;
-    scroll-behavior: smooth; gap: 25px; padding: 10px 5px 30px;
+    gap: 25px; padding: 10px 5px 30px;
     scrollbar-width: none; scroll-snap-type: x mandatory;
 }
-.carousel-container .card { flex: 0 0 240px; scroll-snap-align: start; text-align: center; background: none; border: none; }
+.carousel-container .card { flex: 0 0 240px; text-align: center; background: none; border: none; }
 
 /* 9. RÉGUA GAMIFICADA (FIX: CÍRCULO NEGRO) */
 .chefbox-sticky-bar {
@@ -129,30 +122,42 @@ main { flex: 1; width: 100%; padding-bottom: 20px; }
 }
 .slot-circle.filled { background-color: white !important; border: 2px solid var(--cor-laranja); }
 
-/* 10. RODAPÉ PROFISSIONAL (FIX: 5 COLUNAS RESTAURADAS) */
+/* 10. RODAPÉ CENTRALIZADO E ACHATADO */
 .site-footer {
     background-color: var(--cor-branco); color: var(--cor-texto);
     padding: 40px 0 20px; border-top: 1px solid var(--cor-dourado);
+    text-align: center;
 }
 .footer-grid { 
     display: grid !important; 
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important; 
     gap: 30px; 
+    justify-content: center;
 }
-.footer-col h4 { color: var(--cor-verde); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px; border-bottom: 2px solid var(--cor-dourado); padding-bottom: 3px; display: inline-block; }
+.footer-col { display: flex; flex-direction: column; align-items: center; }
+.footer-col h4 { color: var(--cor-verde); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px; border-bottom: 2px solid var(--cor-dourado); padding-bottom: 3px; }
 .footer-col ul { list-style: none; padding: 0; margin: 0; }
-.footer-col li { margin-bottom: 8px; font-size: 0.85rem; }
 
 .footer-bottom { 
     background-color: #f9f9f9; color: #999; 
-    text-align: center; padding: 15px 20px 85px; 
-    border-top: 1px solid #eee; font-size: 0.75rem; 
+    text-align: center; padding: 15px 20px 85px; /* ESPAÇO PARA RÉGUA */
+    border-top: 1px solid #eee; font-size: 0.7rem; 
 }
 
-/* 11. RESPONSIVIDADE MOBILE */
+/* 11. DROPDOWN MENU */
+.has-dropdown { position: relative; }
+.mega-menu {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: white; padding: 15px; min-width: 200px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 3px solid var(--cor-dourado);
+    border-radius: 0 0 8px 8px; text-align: left;
+}
+.has-dropdown:hover .mega-menu { display: block; }
+.mega-menu a { display: block; padding: 8px; color: var(--cor-verde); font-size: 0.85rem; border-bottom: 1px solid #f5f5f5; }
+
+/* 12. RESPONSIVIDADE MOBILE */
 @media (max-width: 992px) {
     .header-container { grid-template-columns: 1fr auto 1fr !important; height: 70px; }
     .mobile-menu-btn { display: block !important; position: absolute; left: 20px; color: var(--cor-dourado); font-size: 1.8rem; background: none; border: none; }
     .nav-left, .nav-right { display: none; }
-    .footer-grid { grid-template-columns: 1fr !important; text-align: center; }
 }
