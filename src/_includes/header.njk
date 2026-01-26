@@ -1,30 +1,49 @@
+<!-- 1. LINHA DOURADA SUPERIOR (SLOGAN) -->
+<div class="top-bar-slogan">
+    Gourmet Prático: uma culinária saudável, sem desperdício de Tempo e Ingredientes na sua Cozinha!
+</div>
+
 <header class="site-header">
     <div class="header-container">
-        <!-- ESQUERDA -->
+        
+        <!-- 2. LADO ESQUERDO: AUTORIDADE -->
         <nav class="nav-left desktop-only">
             <ul class="nav-list">
                 <li><a href="/comida-de-verdade/" class="nav-link">O Método</a></li>
             </ul>
         </nav>
 
-        <!-- CENTRO -->
+        <!-- 3. CENTRO: O SELO DOURADO -->
         <a href="/" class="logo-circle" aria-label="ChefBrico Home">
-            <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="Logo" width="50" height="50">
+            <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="Logo ChefBrico" width="50" height="50">
         </a>
 
-        <!-- DIREITA -->
+        <!-- 4. LADO DIREITO: PRODUTO & MEGA MENU -->
         <nav class="nav-right desktop-only">
             <ul class="nav-list">
                 <li class="has-dropdown">
                     <a href="/receitas/" class="nav-link">Cardápio ▾</a>
+                    
+                    <!-- MEGA MENU DESKTOP (2 COLUNAS) -->
                     <div class="mega-menu">
-                        <p style="font-size: 0.7rem; color: #999; margin: 0 0 5px 8px; text-transform: uppercase;">Por Solução:</p>
-                        <a href="/receitas/solucoes/jantar-rapido/">⚡ Jantar Rápido</a>
-                        <a href="/receitas/solucoes/momento-a-dois/">🍷 Jantar a Dois</a>
-                        <a href="/receitas/solucoes/trilha-viagem/">🎒 Trilha & Viagem</a>
-                        <p style="font-size: 0.7rem; color: #999; margin: 10px 0 5px 8px; text-transform: uppercase;">Categorias:</p>
-                        <a href="/receitas/risotos/">Risotos</a>
-                        <a href="/receitas/sopas-funcionais/">Sopas</a>
+                        <div class="mega-column">
+                            <h4>Por Solução</h4>
+                            <ul>
+                                <li><a href="/receitas/solucoes/jantar-rapido/">⚡ Jantar Rápido</a></li>
+                                <li><a href="/receitas/solucoes/marmita-saudavel/">🍱 Marmita Fit</a></li>
+                                <li><a href="/receitas/solucoes/momento-a-dois/">🍷 Jantar a Dois</a></li>
+                                <li><a href="/receitas/solucoes/criancas/">👶 Para Crianças</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Por Categoria</h4>
+                            <ul>
+                                <li><a href="/receitas/risotos/">Risotos</a></li>
+                                <li><a href="/receitas/sopas-funcionais/">Sopas</a></li>
+                                <li><a href="/receitas/refeicoes-integrais/">Integrais</a></li>
+                                <li><a href="/receitas/emporio-da-chef/">Empório</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </li>
                 <li><a href="/onde-encontrar/" class="nav-link">Onde Entregamos</a></li>
@@ -32,6 +51,52 @@
             </ul>
         </nav>
 
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        <!-- BOTÃO MOBILE -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menu">☰</button>
+    </div>
+
+    <!-- 5. MENU MOBILE (GAVETA COM ACORDEÃO COMPLETO) -->
+    <div id="mobileDrawer" class="mobile-menu-drawer">
+        <a href="/" class="mobile-link">🏠 Início</a>
+        <a href="/comida-de-verdade/" class="mobile-link">📘 O Método</a>
+        
+        <div class="mobile-dropdown">
+            <button class="mobile-link" onclick="toggleSubmenu()" style="width:100%; text-align:left; background:none; border:none; display:flex; justify-content:space-between; align-items:center; cursor:pointer;">
+                🍽️ Cardápio Completo <span id="arrow">▼</span>
+            </button>
+            
+            <div id="submenuReceitas" class="mobile-submenu-content">
+                <p class="submenu-label">POR SOLUÇÃO:</p>
+                <a href="/receitas/solucoes/jantar-rapido/">• Jantar Rápido</a>
+                <a href="/receitas/solucoes/marmita-saudavel/">• Marmita Fit</a>
+                <a href="/receitas/solucoes/momento-a-dois/">• Jantar a Dois</a>
+                <a href="/receitas/solucoes/criancas/">• Para Crianças</a>
+                
+                <p class="submenu-label">POR CATEGORIA:</p>
+                <a href="/receitas/risotos/">• Risotos</a>
+                <a href="/receitas/sopas-funcionais/">• Sopas</a>
+                <a href="/receitas/refeicoes-integrais/">• Integrais</a>
+                <a href="/receitas/emporio-da-chef/">• Empório</a>
+            </div>
+        </div>
+
+        <a href="/onde-encontrar/" class="mobile-link">📍 Áreas de Entrega</a>
+        <a href="/faq/" class="mobile-link">❓ Dúvidas</a>
+        <a href="/chefbox/" class="mobile-link highlight">🎁 Montar ChefBox (Mimo VIP)</a>
     </div>
 </header>
+
+<script>
+    function toggleMobileMenu() {
+        var drawer = document.getElementById('mobileDrawer');
+        var isVisible = drawer.style.display === 'flex';
+        drawer.style.display = isVisible ? 'none' : 'flex';
+    }
+    function toggleSubmenu() {
+        var sub = document.getElementById('submenuReceitas');
+        var arrow = document.getElementById('arrow');
+        var isVisible = sub.style.display === 'block';
+        sub.style.display = isVisible ? 'none' : 'block';
+        arrow.innerHTML = isVisible ? '▼' : '▲';
+    }
+</script>
