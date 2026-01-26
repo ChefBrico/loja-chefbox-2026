@@ -1,9 +1,9 @@
 /* ==========================================================================
-   GOURMET PRÁTICO | DESIGN SYSTEM v12.0 - FULL ARCHITECTURE
-   ESTRUTURA BLINDADA: 12 ÁREAS DE INTELIGÊNCIA GASTRONÔMICA
+   GOURMET PRÁTICO | DESIGN SYSTEM v14.0 - FULL ARCHITECTURE
+   ESTRUTURA BLINDADA: 12 ÁREAS DE INTELIGÊNCIA GASTRONÔMICA INTEGRADA
    ========================================================================== */
 
-/* 1. FONTES E AUTORIDADE (EEAT) */
+/* 1. FONTES E AUTORIDADE (EEAT & YMYL) */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap');
 
 :root {
@@ -21,7 +21,7 @@
     --sombra-luxo:       0 20px 40px rgba(1, 64, 57, 0.08);
 }
 
-/* 2. RESET E ESTRUTURA BASE */
+/* 2. RESET E ESTRUTURA BASE (SKELETON) */
 * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 body {
     background-color: var(--cor-creme);
@@ -34,10 +34,10 @@ body {
 main { flex: 1; width: 100%; padding-bottom: 40px; }
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* 3. CABEÇALHO SLIM (FIX: ALTURA E HAMBÚRGUER) */
+/* 3. CABEÇALHO SLIM (FIX: ALTURA E SELO CENTRAL) */
 .top-bar {
     background-color: var(--cor-dourado); color: white;
-    text-align: center; padding: 8px 0; font-size: 0.75rem;
+    text-align: center; padding: 6px 0; font-size: 0.75rem;
     font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
 }
 .site-header {
@@ -47,31 +47,42 @@ main { flex: 1; width: 100%; padding-bottom: 40px; }
     position: sticky; top: 0; z-index: 1000;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.header-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.header-container { 
+    display: grid; 
+    grid-template-columns: 1fr auto 1fr; /* ESQUERDA | LOGO | DIREITA */
+    align-items: center; 
+    width: 100%; 
+}
 
-/* ESCONDER HAMBÚRGUER NO DESKTOP */
+/* ESCONDER HAMBÚRGUER NO DESKTOP (RIGOR TOTAL) */
 @media (min-width: 993px) {
     .mobile-menu-btn { display: none !important; }
 }
 
-/* 4. NAVEGAÇÃO E MENU (FIX: SOBREPOSIÇÃO) */
+.logo-circle {
+    width: 65px; height: 65px; background: var(--cor-branco);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--cor-dourado);
+    margin: 0 20px;
+}
+.logo-circle img { max-width: 70%; }
+
+/* 4. NAVEGAÇÃO (LINKS LATERAIS) */
 .nav-list { display: flex; gap: 25px; list-style: none; margin: 0; padding: 0; align-items: center; }
+.nav-left { justify-content: flex-end; }
+.nav-right { justify-content: flex-start; }
 .nav-link { color: white; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 .nav-link:hover { color: var(--cor-dourado); }
 
-.has-dropdown { position: relative; }
-.mega-menu {
-    display: none; position: absolute; top: 100%; left: 0;
-    background: white; padding: 15px; min-width: 220px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 3px solid var(--cor-dourado);
-    border-radius: 0 0 8px 8px;
+.btn-chefbox {
+    background-color: var(--cor-laranja); color: white !important;
+    padding: 10px 22px; border-radius: 50px; font-weight: 800;
+    box-shadow: 0 4px 10px rgba(242, 129, 29, 0.3);
 }
-.has-dropdown:hover .mega-menu { display: block; }
-.mega-menu a { display: block; padding: 10px; color: var(--cor-verde); font-size: 0.9rem; border-bottom: 1px solid #f5f5f5; }
 
-/* 5. MOLDURA BOUTIQUE (CONTROLE DAS IMAGENS DA REVISTA) */
+/* 5. MOLDURA BOUTIQUE (CONTROLE DE IMAGENS DA REVISTA) */
 .boutique-frame {
-    width: 220px !important; height: 220px !important;
+    width: 200px !important; height: 200px !important;
     border-radius: 50% !important;
     overflow: hidden !important;
     border: 4px solid var(--cor-dourado);
@@ -82,10 +93,10 @@ main { flex: 1; width: 100%; padding-bottom: 40px; }
 }
 .boutique-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-/* 6. GRID MESTRE (6 COLUNAS - CARDÁPIO E CHEFBOX) */
+/* 6. GRID MESTRE (6 COLUNAS UNIFICADAS - CARDÁPIO) */
 .recipe-grid, .vitrine-grid, .vitrine-magica {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* Mobile */
     gap: 15px !important;
     width: 100% !important;
     max-width: 1400px !important;
@@ -93,20 +104,32 @@ main { flex: 1; width: 100%; padding-bottom: 40px; }
 }
 @media (min-width: 1024px) {
     .recipe-grid, .vitrine-grid, .vitrine-magica {
-        grid-template-columns: repeat(6, 1fr) !important;
+        grid-template-columns: repeat(6, 1fr) !important; /* PC */
     }
 }
 
-/* 7. CARDS GASTRONÔMICOS (PADRONIZAÇÃO) */
+/* 7. CARDS GASTRONÔMICOS (PADRONIZAÇÃO A-COMMERCE) */
 .recipe-card, .item-card, .card-gastronomico {
     background-color: var(--cor-branco);
     border: 1px solid #eee; border-radius: var(--border-radius);
     display: flex; flex-direction: column;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     overflow: hidden; min-height: 320px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+}
+.recipe-card:hover, .item-card:hover { 
+    transform: translateY(-8px); border-color: var(--cor-dourado);
+    box-shadow: var(--sombra-luxo);
 }
 .card-image-wrapper { height: 150px; overflow: hidden; position: relative; }
 .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+.btn-plus-boutique {
+    position: absolute; bottom: 8px; right: 8px;
+    width: 36px; height: 36px; background: var(--cor-laranja);
+    color: white; border: 2px solid white; border-radius: 50%;
+    cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center;
+}
 
 /* 8. CARROSSEL 'COMIDA DE VERDADE' (PRESERVAÇÃO DA REVISTA) */
 .carousel-container {
@@ -115,13 +138,13 @@ main { flex: 1; width: 100%; padding-bottom: 40px; }
     scrollbar-width: none; scroll-snap-type: x mandatory;
 }
 .carousel-container::-webkit-scrollbar { display: none; }
-.carousel-container .card { flex: 0 0 250px; scroll-snap-align: start; text-align: center; background: none; border: none; }
+.carousel-container .card { flex: 0 0 250px; scroll-snap-align: start; text-align: center; background: none; border: none; box-shadow: none; }
 
 /* 9. RÉGUA GAMIFICADA (FIX: CÍRCULO NEGRO E BRILHO) */
 .chefbox-sticky-bar {
     position: fixed; bottom: 0; left: 0; width: 100%;
     background: rgba(255, 255, 255, 0.98); border-top: 4px solid var(--cor-laranja);
-    padding: 15px 0; z-index: 9999;
+    padding: 10px 0; z-index: 9999;
     display: flex; flex-direction: column; align-items: center;
     backdrop-filter: blur(10px); box-shadow: 0 -10px 30px rgba(0,0,0,0.08);
 }
@@ -132,45 +155,49 @@ main { flex: 1; width: 100%; padding-bottom: 40px; }
     background-size: cover; background-position: center;
 }
 .slot-circle.filled { background-color: white !important; border: 2px solid var(--cor-laranja); }
-.slot-circle.gift-active { border: 3px solid #27ae60 !important; box-shadow: 0 0 20px rgba(39, 174, 96, 0.4); }
+.slot-circle.gift-active { border: 3px solid #27ae60 !important; box-shadow: 0 0 20px rgba(39, 174, 96, 0.4); transform: scale(1.1); }
 
-/* 10. MODAL DE CHECKOUT (LUXO E CRM) */
+/* 10. MODAL DE CHECKOUT (LUXO & CAPTURA CRM) */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(1, 64, 57, 0.85); z-index: 100000;
     display: none; justify-content: center; align-items: center;
+    backdrop-filter: blur(5px);
 }
 .modal-box {
     background: var(--cor-creme); padding: 40px; width: 92%; max-width: 450px;
     border-radius: 20px; border-top: 8px solid var(--cor-laranja);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
 }
 
-/* 11. AVATARS E EEAT (IDENTIDADE MARIA) */
+/* 11. AVATARS E IDENTIDADE (EEAT DA MARIA) */
 .avatar-hero-circle {
     width: 260px; height: 260px; border-radius: 50%;
     border: 6px solid white; box-shadow: var(--sombra-luxo);
-    overflow: hidden; margin: 0 auto;
+    overflow: hidden; margin: 0 auto; flex-shrink: 0;
 }
 .avatar-signature-circle {
     width: 100px; height: 100px; border-radius: 50%;
-    border: 3px solid white; object-fit: cover;
+    border: 3px solid white; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* 12. RODAPÉ (FIX: REDUÇÃO DE ALTURA) */
+/* 12. RODAPÉ (FIX: REDUÇÃO DE ALTURA E COPYRIGHT) */
 .site-footer {
     background-color: var(--cor-branco); color: var(--cor-texto);
     padding-top: 40px; margin-top: auto; border-top: 1px solid var(--cor-dourado);
 }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; padding-bottom: 20px; }
+.footer-col h4 { color: var(--cor-verde); font-size: 0.95rem; text-transform: uppercase; margin-bottom: 20px; border-bottom: 2px solid var(--cor-dourado); padding-bottom: 5px; display: inline-block; }
 .footer-bottom { 
-    background-color: var(--cor-branco); color: #999; 
+    background-color: #f9f9f9; color: #999; 
     text-align: center; padding: 20px 20px 100px; /* ESPAÇO PARA RÉGUA */
     border-top: 1px solid #eee; font-size: 0.8rem; 
 }
 
 /* RESPONSIVIDADE FINAL */
 @media (max-width: 992px) {
-    .header-container { justify-content: center; height: 70px; }
-    .mobile-menu-btn { display: block; position: absolute; left: 20px; color: var(--cor-dourado); font-size: 2rem; }
+    .header-container { grid-template-columns: 1fr auto 1fr; height: 70px; }
+    .mobile-menu-btn { display: block !important; position: absolute; left: 20px; color: var(--cor-dourado); font-size: 2rem; background: none; border: none; }
+    .nav-left, .nav-right { display: none; } /* ESCONDE MENU PC NO MOBILE */
     .footer-col { display: flex; flex-direction: column; align-items: center; text-align: center; }
 }
