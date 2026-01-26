@@ -1,28 +1,30 @@
 <header class="site-header">
     <div class="header-container">
-        
-        <!-- 1. LADO ESQUERDO: AUTORIDADE -->
+        <!-- ESQUERDA -->
         <nav class="nav-left desktop-only">
             <ul class="nav-list">
                 <li><a href="/comida-de-verdade/" class="nav-link">O Método</a></li>
             </ul>
         </nav>
 
-        <!-- 2. CENTRO: O SELO DOURADO -->
+        <!-- CENTRO -->
         <a href="/" class="logo-circle" aria-label="ChefBrico Home">
-            <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="Logo ChefBrico" width="50" height="50">
+            <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="Logo" width="50" height="50">
         </a>
 
-        <!-- 3. LADO DIREITO: TRANSAÇÃO -->
+        <!-- DIREITA -->
         <nav class="nav-right desktop-only">
             <ul class="nav-list">
                 <li class="has-dropdown">
                     <a href="/receitas/" class="nav-link">Cardápio ▾</a>
                     <div class="mega-menu">
+                        <p style="font-size: 0.7rem; color: #999; margin: 0 0 5px 8px; text-transform: uppercase;">Por Solução:</p>
+                        <a href="/receitas/solucoes/jantar-rapido/">⚡ Jantar Rápido</a>
+                        <a href="/receitas/solucoes/momento-a-dois/">🍷 Jantar a Dois</a>
+                        <a href="/receitas/solucoes/trilha-viagem/">🎒 Trilha & Viagem</a>
+                        <p style="font-size: 0.7rem; color: #999; margin: 10px 0 5px 8px; text-transform: uppercase;">Categorias:</p>
                         <a href="/receitas/risotos/">Risotos</a>
                         <a href="/receitas/sopas-funcionais/">Sopas</a>
-                        <a href="/receitas/refeicoes-integrais/">Refeições</a>
-                        <a href="/receitas/emporio-da-chef/">Empório</a>
                     </div>
                 </li>
                 <li><a href="/onde-encontrar/" class="nav-link">Onde Entregamos</a></li>
@@ -30,16 +32,6 @@
             </ul>
         </nav>
 
-        <!-- BOTÃO MOBILE (HAMBÚRGUER) -->
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menu">☰</button>
-    </div>
-
-    <!-- MENU MOBILE (GAVETA) -->
-    <div id="mobileDrawer" class="mobile-menu-drawer" style="display:none;">
-        <a href="/" class="mobile-link">🏠 Início</a>
-        <a href="/comida-de-verdade/" class="mobile-link">📘 O Método</a>
-        <a href="/receitas/" class="mobile-link">🍽️ Cardápio</a>
-        <a href="/onde-encontrar/" class="mobile-link">📍 Onde Entregamos</a>
-        <a href="/chefbox/" class="mobile-link highlight">🎁 ChefBox (Mimo VIP)</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
     </div>
 </header>
