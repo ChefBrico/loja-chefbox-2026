@@ -1,7 +1,8 @@
 ---
 title: "Risoto de Zucchini e Alho-Poró em 18 Minutos | ChefBrico"
-description: "Leveza e frescor com toque de cúrcuma. Risoto de abobrinha italiana (zucchini) e alho-poró. 100% natural, vegano e funcional."
-date: 2025-08-29
+description: "Leveza e frescor com toque de cúrcuma. Risoto de abobrinha italiana (zucchini) e alho-poró. 100% natural, vegano e funcional. Produção artesanal em Brasília-DF."
+date: 2026-02-14
+layout: receita
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RI-03"
@@ -11,7 +12,8 @@ price: 34.80
 stock: 65
 availability: "https://schema.org/InStock"
 category: "Risoto"
-keywords: "risoto zucchini, abobrinha, cúrcuma, anti-inflamatório, vegano, sem glúten, jantar leve"
+main_ingredient: "Abobrinha Italiana e Cúrcuma"
+keywords: "risoto zucchini Brasília, abobrinha, cúrcuma, anti-inflamatório, vegano, sem glúten, jantar leve DF, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
@@ -23,9 +25,9 @@ tempo_iso: "PT18M"
 dificuldade: "Muito Fácil"
 calorias: "340 kcal"
 image: "/imagens/chefbrico-risoto-zucchini-arboreo(1080x566px).png"
-image_alt: "Risoto de Zucchini dourado com cúrcuma e pedaços de abobrinha"
+image_alt: "Risoto de Zucchini dourado com cúrcuma e pedaços de abobrinha da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 340
@@ -35,8 +37,8 @@ nutrition:
   fiber_g: 4
   sodium_mg: 110
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
-ingredientes_texto: "Arroz arbóreo, abobrinha italiana (zucchini) desidratada, alho-poró, cúrcuma (açafrão-da-terra), caldo de vegetais natural, cebola e alho."
+# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
+ingredientes_texto: "Arroz arbóreo tipo exportação, abobrinha italiana (zucchini) desidratada, alho-poró desidratado, cúrcuma pura (açafrão-da-terra), caldo de vegetais natural (cenoura, cebola, salsão), cebola e alho."
 
 # --- CLASSIFICAÇÃO ---
 diets:
@@ -49,73 +51,63 @@ rating:
   value: "4.8"
   count: "140"
 
-# --- INSTRUÇÕES ---
+# --- INSTRUÇÕES (VOICE COMMERCE) ---
 instructions:
   - name: "Refogar"
-    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote. Observe a cúrcuma liberar sua cor dourada vibrante."
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote para ativar a cor dourada vibrante da cúrcuma."
   - name: "Cozinhar"
-    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos mexendo ocasionalmente."
   - name: "Finalizar"
-    text: "Quando estiver cremoso, desligue. Sugestão: Sirva com raspas de limão para realçar o frescor."
+    text: "Quando atingir a cremosidade, desligue. Finalize com raspas de limão siciliano para frescor."
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "A cúrcuma não é só estética; ela adiciona um sabor terroso sutil e propriedades anti-inflamatórias, tornando este prato funcional."
+citable_fact: "A inclusão estratégica da cúrcuma pura (açafrão-da-terra) neste risoto não é apenas estética; ela adiciona um sabor terroso sutil e propriedades anti-inflamatórias e antioxidantes ao prato."
 
 # --- FAQ ---
 faq:
-  - question: "A cúrcuma deixa o sabor forte?"
-    answer: "Não! Usamos a medida exata para dar a cor dourada linda sem dominar o sabor delicado da abobrinha."
+  - question: "O sabor da cúrcuma domina o prato?"
+    answer: "Não. Calibramos a medida exata de cúrcuma pura para garantir a cor dourada característica e os benefícios funcionais, mantendo a delicadeza do zucchini e do alho-poró em destaque."
+  - question: "Este risoto é indicado para uma digestão rápida?"
+    answer: "Sim. Por ser rico em vegetais leves e possuir baixo teor de gordura, é uma das opções mais indicadas da ChefBrico para um jantar nutritivo que não pesa na digestão."
 ---
 
-Leveza, cor e saúde no mesmo prato. O Risoto de Zucchini combina a suavidade da abobrinha italiana com o poder da cúrcuma (açafrão-da-terra), criando uma refeição dourada e nutritiva.
+Leveza, cor e saúde no mesmo prato. O Risoto de Zucchini e Alho-Poró é o prato perfeito para seus dias que pedem bem-estar. Criamos uma combinação que une a delicadeza da abobrinha italiana com a suavidade do alho-poró, tudo iluminado pelo poder funcional da cúrcuma.
 
-## Por que é uma escolha Funcional?
-*   **Cúrcuma (Açafrão-da-Terra):** Conhecida por suas propriedades anti-inflamatórias e antioxidantes.
-*   **Baixas Calorias:** A abobrinha traz volume e textura sem pesar na digestão.
-*   **Visual Incrível:** A cor dourada natural ilumina a mesa e abre o apetite.
+É a escolha ideal para quem busca uma refeição dourada, nutritiva e surpreendentemente fácil de preparar, trazendo o equilíbrio da alimentação funcional para a sua mesa em Brasília.
 
-> "É o risoto mais bonito que já fiz! A cor fica linda e o sabor é super suave. Ótimo para dias quentes." — *Beatriz L., Cliente ChefBrico*
+## Por que Você Vai Amar esta Delicadeza Funcional
+* **Poder Anti-inflamatório:** A cúrcuma pura atua como um antioxidante natural, transformando seu risoto em uma refeição que cuida do seu corpo.
+* **Leveza de Verão:** A abobrinha desidratada mantém a textura e o frescor, resultando em uma das nossas opções com menor densidade calórica.
+* **Visual Irresistível:** A cor dourada natural desperta o apetite e traz uma sofisticação solar para qualquer jantar ou almoço.
 
-<!-- INTRODUÇÃO -->
-Descubra o prato perfeito para seus dias mais leves. Criamos um risoto que combina a delicadeza da abobrinha italiana (zucchini) com a suavidade do alho-poró, finalizado com o toque nutritivo da cúrcuma.
-
-## Por que Você Vai Amar esta Delicadeza
-<!-- Check Verde -->
-*   **Leveza e Frescor:** A combinação da abobrinha com o alho-poró resulta em um prato suave.
-*   **Toque Funcional:** A cúrcuma adiciona cor dourada e propriedades anti-inflamatórias.
-*   **A Cara do Verão:** Perfeito para quando você busca uma refeição que nutre sem pesar.
-
-> "O risoto mais leve e gostoso que já provei! O sabor do alho-poró é suave e a cor é linda."
-> — *Gabriela B., Cliente ChefBrico*
+> "É o risoto mais lindo que já fiz! A cor dourada fica maravilhosa na mesa e o sabor é muito equilibrado e suave. Perfeito para os dias quentes aqui no DF." — Beatriz L., Cliente ChefBrico
 
 ## O que vem no Pacote
-<!-- Quadrados Cinzas -->
-*   Arroz arbóreo tipo exportação.
-*   Abobrinha italiana (zucchini) desidratada.
-*   Alho-poró e Cúrcuma pura.
-*   Caldo de vegetais caseiro ChefBrico.
+* **Arroz arbóreo tipo exportação:** A base clássica para a cremosidade italiana autêntica.
+* **Zucchini Selecionado:** Abobrinha italiana desidratada que mantém fibras e minerais.
+* **Duo Aromático:** Alho-poró e Cúrcuma pura (açafrão-da-terra).
+* **Caldo de Vegetais ChefBrico:** Base artesanal de vegetais para um sabor limpo e natural.
 
 ## Você Vai Precisar de
-*   720ml de água fria
-*   1 fio de azeite
-*   Sal a gosto
+* 720ml de água fria
+* 1 fio de azeite extra virgem
+* Sal a gosto
+* **Sugestão da Chef:** Finalize com algumas raspas de limão siciliano para elevar o frescor cítrico.
 
 ## Modo de Preparo Simplificado
-<!-- Bolinhas Laranjas -->
-1.  **Refogue:** Aqueça um fio de azeite e refogue o pacote. A cor dourada vai aparecer na hora.
-2.  **Cozinhe:** Adicione 720ml de água fria e sal. Cozinhe em fogo baixo, mexendo ocasionalmente.
-3.  **Finalize:** Sirva com um fio de azeite extra virgem.
-
-*Simples assim!*
+1. **Refogue:** Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto. Você verá a cor dourada vibrante surgir imediatamente enquanto os aromas despertam.
+2. **Cozinhe:** Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos, mexendo ocasionalmente para apurar o caldo e liberar o amido.
+3. **Finalize:** Desligue o fogo quando estiver cremoso e sirva com um fio de azeite extra virgem. Simples assim! ✨
 
 ## Cozinha Criativa: Dicas da Chef
-Eu queria um risoto que fosse sinônimo de bem-estar. Harmoniza perfeitamente com um frango grelhado ou lascas de salmão.
+Eu projetei este risoto para ser sinônimo de bem-estar na rotina brasiliense. Ele é extremamente versátil: harmoniza perfeitamente com um frango grelhado orgânico ou lascas de salmão ao forno. Para uma versão 100% plant-based e sofisticada, sirva com sementes de girassol torradas por cima.
 
-### Combina Perfeitamente Com
-Finalize com algumas gotas do nosso **[Pesto de Manjericão](/receitas/emporio-da-chef/pesto-manjericao/)**.
+### Harmonização Perfeita
+Combina maravilhosamente bem com sucos naturais cítricos ou um vinho branco leve e seco. Para um toque extra de sabor, finalize com algumas gotas do nosso **[Pesto de Manjericão](/receitas/emporio-da-chef/pesto-manjericao/)**.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 180g
-*   **Validade:** 12 meses.
-*   **Origem:** Brasília-DF.
+* **Peso Líquido:** 180g (Serve 2 porções leves).
+* **Validade:** 12 meses.
+* **Dieta:** 100% Plant-Based. Sem Glúten. Rico em Antioxidantes.
+* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
