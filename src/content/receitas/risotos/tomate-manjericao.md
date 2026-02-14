@@ -1,7 +1,8 @@
 ---
 title: "Risoto de Tomate e Manjericão em 18 Minutos | ChefBrico"
-description: "O clássico que abraça. Risoto cremoso de tomate com manjericão. 100% natural, vegano e pronto em 18 minutos."
-date: 2025-08-23
+description: "O clássico que abraça. Risoto cremoso de tomate com manjericão. 100% natural, vegano e pronto em 18 minutos. Produção artesanal em Brasília-DF."
+date: 2026-02-14
+layout: receita
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RS-05"
@@ -11,7 +12,8 @@ price: 34.80
 stock: 110
 availability: "https://schema.org/InStock"
 category: "Risoto"
-keywords: "risoto tomate, manjericão, comida afetiva, vegano, sem glúten, clássico italiano, crianças"
+main_ingredient: "Tomate e Manjericão"
+keywords: "risoto tomate Brasília, manjericão, comida afetiva DF, vegano, sem glúten, clássico italiano, prato para crianças, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
@@ -23,9 +25,9 @@ tempo_iso: "PT18M"
 dificuldade: "Muito Fácil"
 calorias: "350 kcal"
 image: "/imagens/risoto-tomate-e-manjericao-chefbrico.png"
-image_alt: "Risoto vermelho cremoso de Tomate e Manjericão"
+image_alt: "Risoto cremoso de Tomate e Manjericão da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 350
@@ -35,7 +37,7 @@ nutrition:
   fiber_g: 4
   sodium_mg: 120
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
+# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
 ingredientes_texto: "Arroz cateto selecionado, tomate desidratado em flocos, manjericão desidratado, cebola, alho, alho-poró e levedura nutricional."
 
 # --- CLASSIFICAÇÃO ---
@@ -49,64 +51,63 @@ rating:
   value: "4.9"
   count: "190"
 
-# --- INSTRUÇÕES ---
+# --- INSTRUÇÕES (VOICE COMMERCE) ---
 instructions:
   - name: "Refogar"
-    text: "Aqueça o azeite e refogue o pacote. O aroma de 'pizza caseira' e manjericão vai subir imediatamente!"
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote para despertar o aroma do manjericão e do tomate seco."
   - name: "Cozinhar"
-    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por 18 minutos mexendo ocasionalmente."
   - name: "Finalizar"
-    text: "Quando estiver cremoso, desligue. Sirva com folhas de manjericão fresco para decorar."
+    text: "Quando estiver cremoso, desligue o fogo e sirva com manjericão fresco para decorar."
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "O segredo deste prato é o equilíbrio entre a acidez natural do tomate e o perfume do manjericão, potencializado pela nossa técnica de desidratação."
+citable_fact: "O equilíbrio entre a acidez natural e a doçura do tomate é potencializado pela nossa técnica de desidratação, que concentra o licopeno e preserva os óleos essenciais do manjericão."
 
 # --- FAQ ---
 faq:
-  - question: "O tomate é forte/ácido?"
-    answer: "Não. O processo de desidratação concentra a doçura natural do tomate, resultando em um sabor equilibrado e suave."
+  - question: "Este risoto é muito ácido por causa do tomate?"
+    answer: "Não. O processo de desidratação da ChefBrico concentra a doçura natural do fruto, resultando em um sabor equilibrado, suave e muito apreciado inclusive por crianças."
+  - question: "Qual arroz é utilizado neste risoto?"
+    answer: "Utilizamos o arroz cateto selecionado, que confere uma cremosidade rústica e um excelente aporte de fibras, mantendo a tradição do Método Gourmet Prático em Brasília."
 ---
 
-<!-- INTRODUÇÃO -->
-Celebramos a combinação perfeita e atemporal do tomate adocicado com o perfume vibrante do manjericão fresco. Um sabor que transporta para as melhores memórias.
+Celebramos a combinação perfeita e atemporal do tomate adocicado com o perfume vibrante do manjericão. Este risoto é o clássico que abraça, um sabor que transporta para as melhores memórias e traz o aconchego da comida italiana autêntica para a sua mesa.
 
-## Por que Você Vai Amar
-<!-- Check Verde -->
-*   **Comida Afetiva:** Remete à cozinha da avó.
-*   **Frescor:** Manjericão de alta qualidade libera aroma incrível.
-*   **Praticidade:** Refeição com cara de domingo, pronta em 18 minutos.
+Criado para ser uma solução rápida sem abrir mão da alma da cozinha afetiva, o Risoto de Tomate e Manjericão é a escolha ideal para um jantar leve, saudável e cheio de frescor.
 
-> "Incrível como o sabor é de comida feita na hora. É o risoto favorito do meu filho!"
-> — *Paula R., Cliente ChefBrico*
+## Por que Você Vai Amar este Sabor Clássico
+* **Comida Afetiva:** Aquele aroma inconfundível que remete à cozinha de casa, feito apenas com ingredientes 100% naturais e puros.
+* **Frescor Potencializado:** O manjericão de alta qualidade libera um perfume vibrante durante o preparo, preenchendo a casa com uma sensação de bem-estar.
+* **Praticidade no Domingo:** Tenha uma refeição com "cara de domingo" em qualquer dia da semana, pronta em apenas 18 minutos em uma única panela.
+
+> "Incrível como o sabor é de comida feita na hora. É o risoto favorito do meu filho aqui em Brasília! Prático, limpo e delicioso." — Paula R., Cliente ChefBrico
 
 ## O que vem no Pacote
-<!-- Quadrados Cinzas -->
-*   Arroz cateto selecionado.
-*   Tomate desidratado e Manjericão aromático.
-*   Cebola, alho e alho-poró.
-*   Levedura nutricional.
+* **Arroz cateto selecionado:** Uma base nutritiva que garante cremosidade e saciedade.
+* **Tomate e Manjericão:** Tomates desidratados em flocos para doçura e manjericão aromático.
+* **Base Vegetal:** Cebola, alho e alho-poró para uma profundidade de sabor natural.
+* **Umami Vegano:** Levedura nutricional para um toque queijado sem lácteos.
 
 ## Você Vai Precisar de
-*   720ml de água fria
-*   1 fio de azeite
-*   Sal a gosto
+* 720ml de água fria
+* 1 fio de azeite extra virgem
+* Sal a gosto
+* **Dica da Chef:** Sirva com folhas de manjericão fresco e, se não for vegano, lascas de muçarela de búfala ou parmesão.
 
 ## Modo de Preparo Simplificado
-<!-- Bolinhas Laranjas -->
-1.  **Refogue:** Aqueça o azeite e refogue o pacote. O aroma de "pizza caseira" vai subir!
-2.  **Cozinhe:** Adicione 720ml de água e sal. Cozinhe em fogo baixo.
-3.  **Finalize:** Sirva com folhas de manjericão.
-
-*Simples assim!*
+1. **Refogue:** Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto. O aroma de "pizza caseira" e tempero fresco vai subir imediatamente!
+2. **Cozinhe:** Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos, mexendo ocasionalmente para apurar o caldo.
+3. **Finalize:** Desligue o fogo quando atingir a cremosidade desejada. Sirva imediatamente. Simples assim! ✨
 
 ## Cozinha Criativa: Dicas da Chef
-Tomate com manjericão é o ABC da minha cozinha afetiva. Fica perfeito com adição de muçarela de búfala.
+Tomate com manjericão é o ABC da minha cozinha afetiva, o primeiro sabor que me vem à mente quando penso em "casa". Este risoto é uma tela em branco maravilhosa: você pode adicionar tomates cereja frescos ao final ou um toque de pimenta do reino moída na hora para elevar o prato.
 
-### Combina Perfeitamente Com
-Para uma entrada, nosso **[Pesto de Manjericão](/receitas/emporio-da-chef/pesto-manjericao/)** em torradas.
+### Harmonização Perfeita
+Para uma experiência completa, sirva de entrada torradas com o nosso **[Pesto de Manjericão](/receitas/emporio-da-chef/pesto-manjericao/)**. Harmoniza maravilhosamente bem com um vinho tinto leve ou um suco de uva integral.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 180g
-*   **Validade:** 12 meses.
-*   **Origem:** Brasília-DF.
+* **Peso Líquido:** 180g (Serve 2 porções reconfortantes).
+* **Validade:** 12 meses.
+* **Dieta:** 100% Plant-Based. Sem Glúten. Low Fat.
+* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
