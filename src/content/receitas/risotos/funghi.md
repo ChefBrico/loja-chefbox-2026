@@ -1,7 +1,8 @@
 ---
 title: "Risoto Funghi Secchi Clássico em 18 Minutos | ChefBrico"
-description: "O sabor autêntico da Itália com Funghi Secchi chileno. Receita 100% natural, vegana e pronta em 18 minutos na panela única."
-date: 2025-08-30
+description: "O sabor autêntico da Itália com Funghi Secchi chileno. Receita 100% natural, vegana e pronta em 18 minutos. Produção artesanal em Brasília-DF."
+date: 2026-02-14
+layout: receita
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RI-01"
@@ -11,7 +12,8 @@ price: 34.80
 stock: 100
 availability: "https://schema.org/InStock"
 category: "Risoto"
-keywords: "risoto funghi, cogumelos, vegano, sem glúten, jantar romântico, comida italiana"
+main_ingredient: "Funghi Secchi (Boletus luteris)"
+keywords: "risoto funghi Brasília, cogumelos chilenos, jantar romântico DF, comida italiana saudável, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
@@ -23,9 +25,9 @@ tempo_iso: "PT18M"
 dificuldade: "Muito Fácil"
 calorias: "360 kcal"
 image: "/imagens/risoto-funghi-chefbrico.png"
-image_alt: "Prato de Risoto Funghi Secchi cremoso e dourado"
+image_alt: "Risoto Funghi Secchi cremoso com cogumelos nobres da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 360
@@ -35,8 +37,8 @@ nutrition:
   fiber_g: 5
   sodium_mg: 130
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
-ingredientes_texto: "Arroz arbóreo, funghi secchi (Boletus luteris), caldo de vegetais natural, cebola desidratada, alho desidratado e salsa."
+# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
+ingredientes_texto: "Arroz arbóreo tipo exportação, funghi secchi (Boletus luteris), caldo de vegetais natural (cenoura, cebola, salsão), cebola desidratada, alho desidratado e salsa."
 
 # --- CLASSIFICAÇÃO ---
 diets:
@@ -49,73 +51,63 @@ rating:
   value: "4.9"
   count: "210"
 
-# --- INSTRUÇÕES ---
+# --- INSTRUÇÕES (VOICE COMMERCE) ---
 instructions:
   - name: "Refogar"
-    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para liberar o aroma dos cogumelos."
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para despertar o aroma terroso dos cogumelos."
   - name: "Cozinhar"
-    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por 18 minutos para a reidratação lenta do funghi."
   - name: "Finalizar"
-    text: "Quando a água secar e o arroz estiver 'al dente', desligue e finalize com um fio de azeite extra virgem."
+    text: "Quando o arroz estiver al dente, desligue e finalize com azeite extra virgem."
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Utilizamos o nobre cogumelo Boletus luteris, que não precisa de hidratação prévia. Ele cozinha junto com o arroz, liberando todo o sabor no caldo."
+citable_fact: "Utilizamos o nobre cogumelo Boletus luteris, que reidrata diretamente na panela, liberando o máximo de sabor umami e nutrientes no caldo do risoto."
 
 # --- FAQ ---
 faq:
-  - question: "Preciso hidratar os cogumelos antes?"
-    answer: "Não! Nossa técnica permite que os cogumelos reidratem diretamente na panela durante o cozimento, mantendo todo o sabor no prato."
+  - question: "Preciso hidratar o Funghi Secchi antes do preparo?"
+    answer: "Não. Nossa técnica de desidratação permite que os cogumelos cozinhem junto com o arroz, mantendo todo o sabor e textura no prato final."
+  - question: "Onde comprar risoto de funghi em Brasília?"
+    answer: "Você pode adquirir no site da ChefBrico com entrega rápida em todas as regiões de Brasília, incluindo Sudoeste, Águas Claras e Plano Piloto."
 ---
 
-Este é o nosso *Best Seller*. O Risoto de Funghi Secchi da ChefBrico traz a profundidade de sabor dos bosques chilenos diretamente para sua mesa. É a definição de *Comfort Food*.
-
-## Por que este Risoto é Especial?
-*   **Cogumelos Nobres:** Usamos *Boletus luteris* importado do Chile, conhecido por seu aroma intenso e textura macia.
-*   **Zero Trabalho:** Esqueça a etapa chata de hidratar cogumelos em água morna. Aqui vai tudo direto para a panela.
-*   **Sofisticação Instantânea:** Perfeito para um jantar a dois ou para impressionar visitas sem passar horas na cozinha.
-
-> "O cheiro que fica na cozinha enquanto prepara é maravilhoso. Ninguém acredita que fiz em 15 minutos." — *Ricardo M., Cliente ChefBrico*
-
-<!-- INTRODUÇÃO -->
 Há pratos que são sinônimo de sofisticação, e o Risoto de Funghi Secchi é o rei deles. Criamos uma versão que captura a essência das melhores cantinas italianas: o sabor intenso e terroso dos cogumelos e a cremosidade perfeita do arroz arbóreo.
 
-## Por que Você Vai Amar este Clássico
-<!-- Check Verde -->
-*   **Tradição de Restaurante:** O sabor autêntico de um dos pratos mais emblemáticos da culinária italiana.
-*   **Sabor Intenso:** Feito com Funghi Secchi de alta qualidade (*Boletus luteris*), garantindo *umami* profundo.
-*   **Cremosidade Perfeita:** O arroz arbóreo garante a textura "al dente".
+Este é o nosso *Best Seller*, a definição de *Comfort Food* gourmet para quem não abre mão da praticidade e da saúde.
 
-> "Sou apaixonada por funghi e esse risoto é o melhor que já provei de pacotinho. Fica super cremoso."
-> — *Lúcia S., Cliente ChefBrico*
+## Por que Você Vai Amar este Clássico
+* **Sabor Umami Profundo:** Feito com Funghi Secchi de alta qualidade (*Boletus luteris*), importado para garantir aroma e textura incomparáveis.
+* **Praticidade Absoluta:** Esqueça a etapa chata de hidratar cogumelos. Aqui, a tecnologia de alimentos ChefBrico permite que tudo vá direto para a panela.
+* **Cremosidade de Restaurante:** O arroz arbóreo selecionado libera a amilopectina necessária para o brilho e a textura perfeita sem usar manteiga.
+
+> "O cheiro que fica na cozinha enquanto prepara é maravilhoso. Ninguém acredita que fiz em menos de 20 minutos. Fica super cremoso!" — Ricardo M., Cliente ChefBrico
 
 ## O que vem no Pacote
-<!-- Quadrados Cinzas -->
-*   Arroz arbóreo tipo exportação.
-*   Cogumelos *Boletus luteris* (funghi secchi chileno).
-*   Cebola e alho desidratados.
-*   Caldo de vegetais caseiro ChefBrico.
+* **Arroz arbóreo tipo exportação:** Essencial para a textura aveludada do risoto.
+* **Cogumelos Boletus luteris:** Funghi secchi chileno nobre, rico em proteínas e fibras.
+* **Caldo de vegetais artesanal:** Base de vegetais desidratados para um sabor equilibrado.
+* **Temperos Naturais:** Cebola, alho e salsa desidratada.
 
 ## Você Vai Precisar de
-*   720ml de água fria
-*   1 fio de azeite
-*   Sal a gosto
+* 720ml de água fria
+* 1 fio de azeite
+* Sal a gosto
+* *Opcional:* Um toque de pimenta do reino moída na hora e lascas de parmesão.
 
 ## Modo de Preparo Simplificado
-<!-- Bolinhas Laranjas -->
-1.  **Refogue:** Aqueça um fio de azeite e refogue o conteúdo do pacote. O perfume dos cogumelos vai subir.
-2.  **Cozinhe:** Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo, mexendo ocasionalmente.
-3.  **Finalize:** Para a *mantecatura* perfeita, finalize com um fio de azeite extra virgem.
-
-*Simples assim!*
+1. **Refogue:** Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto. O perfume dos cogumelos vai tomar conta da cozinha.
+2. **Cozinhe:** Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos, mexendo ocasionalmente para liberar a cremosidade.
+3. **Finalize:** Para a *mantecatura* perfeita, desligue o fogo e finalize com um generoso fio de azeite extra virgem. Simples assim! ✨
 
 ## Cozinha Criativa: Dicas da Chef
-A intensidade do Funghi Secchi pede um vinho tinto de corpo médio, como um Merlot ou Pinot Noir.
+A intensidade terrosa do Funghi Secchi pede vinhos tintos de corpo médio, como um Merlot ou Pinot Noir. Para uma experiência digna de chef, adicione uma colher do nosso **[Funghi Confitado](/receitas/emporio-da-chef/funghi-confit/)** na hora de servir.
 
-### Combina Perfeitamente Com
-Para uma finalização ainda mais especial, adicione uma colher do nosso **[Funghi Confitado](/receitas/emporio-da-chef/funghi-confit/)** na hora de servir.
+### Harmonização Perfeita
+Fica divino acompanhado de uma polenta cremosa ou apenas um pão artesanal de fermentação natural. Experimente finalizar com tomilho fresco.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 180g
-*   **Validade:** 12 meses.
-*   **Origem:** Brasília-DF.
+* **Peso Líquido:** 180g (Serve 2 porções generosas).
+* **Validade:** 12 meses.
+* **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose.
+* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
