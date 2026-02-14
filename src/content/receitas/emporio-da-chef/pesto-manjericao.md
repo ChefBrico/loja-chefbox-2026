@@ -1,7 +1,8 @@
 ---
-title: "Pesto de Manjericão com Castanha-do-Pará | ChefBrico"
-description: "O autêntico Pesto Genovês com um toque brasileiro. Manjericão fresco, queijo parmesão curado e castanha-do-pará. 100% natural e artesanal."
-date: 2025-08-06
+title: "Pesto de Manjericão com Castanha-do-Brasil | ChefBrico"
+description: "O autêntico Pesto Genovês com um toque brasileiro. Manjericão fresco, queijo parmesão curado e castanha-do-Brasil. 100% natural e artesanal. Produção em Brasília-DF."
+date: 2026-02-14
+layout: receita
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "AN-01"
@@ -11,21 +12,22 @@ price: 29.80
 stock: 35
 availability: "https://schema.org/InStock"
 category: "Empório"
-keywords: "pesto genovês, molho pesto, castanha do pará, parmesão, vegetariano, keto, sem glúten, molho para massa"
+main_ingredient: "Manjericão Fresco e Castanha-do-Brasil"
+keywords: "pesto genovês Brasília, molho pesto artesanal, castanha do Brasil, parmesão curado, vegetariano, keto DF, sem glúten, molho para massa, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 90
 rendimento: "Pote 90g (Concentrado - Rende muito)"
-tempo_preparo: "Pronto"
+tempo_preparo: "Pronto para Consumo"
 tempo_iso: "PT0M"
 
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Nenhuma (Pronto)"
 calorias: "130 kcal (colher)"
 image: "/imagens/emporio/pesto-manjericao-chefbrico.png"
-image_alt: "Pote de vidro com Pesto de Manjericão verde vibrante"
+image_alt: "Pote de vidro com Pesto de Manjericão verde vibrante da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
 nutrition:
   portion: "20g (1 colher de sopa)"
   calories: 130
@@ -35,10 +37,10 @@ nutrition:
   fiber_g: 0.5
   sodium_mg: 180
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
-ingredientes_texto: "Manjericão fresco, azeite de oliva extra virgem, castanha-do-pará, queijo parmesão curado (contém leite), alho e sal marinho."
+# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
+ingredientes_texto: "Manjericão fresco selecionado, azeite de oliva extra virgem, castanha-do-Brasil, queijo parmesão curado (contém leite/lactose), alho e sal marinho."
 
-# --- CLASSIFICAÇÃO (ATENÇÃO: NÃO É VEGANO) ---
+# --- CLASSIFICAÇÃO ---
 diets:
   - "Vegetarian"
   - "GlutenFree"
@@ -50,70 +52,58 @@ rating:
   value: "5.0"
   count: "115"
 
-# --- INSTRUÇÕES (COMO USAR) ---
+# --- INSTRUÇÕES (VOICE COMMERCE) ---
 instructions:
-  - name: "Massas"
-    text: "Misture uma colher generosa na massa recém-escorrida (não aqueça o pesto no fogo para não oxidar)."
-  - name: "Entradas"
-    text: "Sirva sobre torradas, queijo branco ou tomate fatiado (Salada Caprese)."
+  - name: "Consumo"
+    text: "Não aqueça o pesto diretamente no fogo para não oxidar o manjericão. Misture na massa quente fora do fogo."
+  - name: "Armazenar"
+    text: "Mantenha refrigerado. Após aberto, cubra com uma camada de azeite para preservar a cor verde."
+  - name: "Harmonizar"
+    text: "Ideal para massas, saladas caprese, bruschettas ou para finalizar risotos."
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Substituímos o pinoli (ingrediente raro) pela nobre Castanha-do-Pará, criando uma cremosidade única e adicionando selênio a este clássico italiano."
+citable_fact: "Substituímos o pinoli (ingrediente europeu) pela nobre Castanha-do-Brasil, o que confere uma cremosidade única ao molho e adiciona o poder antioxidante do selênio a este clássico italiano."
 
 # --- FAQ ---
 faq:
-  - question: "É vegano?"
-    answer: "Não. Este é nosso único produto que leva queijo Parmesão de verdade (contém lactose), respeitando a receita clássica genovesa."
-  - question: "Como conservar?"
-    answer: "Mantenha refrigerado após aberto. Dica de ouro: cubra a superfície com um fio de azeite antes de guardar para preservar a cor verde vibrante."
+  - question: "O Pesto da ChefBrico é vegano?"
+    answer: "Não. Este é o nosso único produto que leva Queijo Parmesão curado de verdade para respeitar a receita clássica genovesa e garantir o sabor 'umami' autêntico."
+  - question: "Por que o pesto da ChefBrico é tão verde?"
+    answer: "Porque utilizamos uma quantidade massiva de manjericão fresco colhido no ponto ideal e processado a frio com azeite extra virgem, sem adição de corantes ou conservantes."
 ---
 
-Um clássico mundial com a alma brasileira. Nosso Pesto une o frescor do manjericão colhido na hora com a riqueza da Castanha-do-Pará e o umami do Parmesão curado.
+Um clássico mundial com a alma brasileira. Nosso Pesto de Manjericão une o frescor vibrante das ervas colhidas no ponto ideal com a riqueza da Castanha-do-Pará e o sabor profundo do queijo Parmesão curado. 
 
-## Por que é diferente dos industrializados?
-*   **Cor Viva:** Não usamos corantes. O verde vem de muito manjericão fresco processado a frio.
-*   **Castanha-do-Pará:** Substitui o Pinoli, trazendo uma textura aveludada e um aporte de Selênio.
-*   **Versatilidade:** Transforma um macarrão simples em jantar de chef em 30 segundos.
+Diferente dos molhos industrializados, o Pesto ChefBrico é um concentrado de frescor, feito artesanalmente em Brasília para quem não abre mão da autenticidade. É a solução gourmet instantânea que transforma uma massa simples ou uma torrada em um prato digno de um *chef* em questão de segundos.
 
-> "O melhor pesto que já comi. O sabor da castanha faz toda a diferença e ele não é enjoativo." — *Fernanda G., Cliente ChefBrico*
+## Por que Você Vai Amar este Clássico do Empório
+* **Explosão de Frescor:** Cor verde viva e aroma potente de manjericão real, preservados pelo processamento a frio e pelo azeite extra virgem de alta qualidade.
+* **Toque de Brasilidade:** A Castanha-do-Brasil substitui o pinoli com perfeição, trazendo uma textura aveludada, sabor amanteigado e um aporte natural de selênio.
+* **Versatilidade Máxima:** Um verdadeiro curinga na geladeira para elevar bruschettas, sanduíches gourmet, massas e saladas caprese.
 
-<!-- INTRODUÇÃO -->
-Feito como manda a tradição italiana, nosso Pesto Genovês é uma celebração ao sabor autêntico. 
-
-Utilizamos uma quantidade generosa de manjericão fresco, o mais puro azeite extra virgem, queijo Parmesão de verdade e o toque de brasilidade da Castanha-do-Pará.
-
-## Por que Você Vai Amar este Clássico
-<!-- Check Verde -->
-*   **O Verdadeiro Pesto:** Recriado com ingredientes nobres para um sabor autêntico.
-*   **Frescor Explosivo:** O aroma e a cor vibrante do manjericão fresco são a alma deste pesto.
-*   **Versatilidade:** A solução gourmet instantânea para massas e entradas.
-
-> "Simplesmente divino! O melhor pesto que já provei. Perfeito com meu queijo preferido e um vinho."
-> — *Joana F., Cliente ChefBrico*
+> "Simplesmente divino! O melhor pesto que já provei aqui em Brasília. O sabor da castanha faz toda a diferença e ele tem uma cor linda, nada de corante. Perfeito com um bom vinho!" — Joana F., Cliente ChefBrico
 
 ## O Que Vem no Pote
-<!-- Quadrados Cinzas -->
-*   Manjericão fresco e Azeite extra virgem.
-*   Castanha-do-Pará (o toque brasileiro).
-*   Queijo Parmesão (**Contém Lactose**).
-*   Alho e sal marinho.
+* **Manjericão Fresco:** Folhas selecionadas para garantir o aroma e a cor verde vibrante.
+* **Azeite Extra Virgem:** Veículo de sabor e conservação natural de elite.
+* **Castanha-do-Pará Nobre:** O segredo da nossa cremosidade e identidade brasileira.
+* **Parmesão Curado:** Umami real (**Contém Lactose**) para a profundidade de sabor clássica.
+* **Base Aromática:** Alho fresco e sal marinho na medida exata.
 
 ## Sugestões de Consumo
-<!-- Quadrados Cinzas (Via Script) -->
-*   **Massa ao Pesto:** Misture na massa quente com um pouco da água do cozimento.
-*   **Caprese:** Adicione sobre rodelas de tomate e mussarela de búfala.
-*   **Sanduíche Gourmet:** Use como base no pão ciabatta ou torrada.
+* **Massa ao Pesto:** Escorra sua massa (espaguete ou fusilli) e misture uma colher generosa do pesto com um pouquinho da água do cozimento. 
+* **Salada Caprese:** Adicione sobre rodelas de tomate fresco e muçarela de búfala.
+* **Sanduíche Gourmet:** Use como base no pão ciabatta ou para finalizar uma focaccia artesanal.
 
 ## Cozinha Criativa: Dicas da Chef
-<!-- Card Flutuante -->
-Não há atalhos para um bom pesto. É a qualidade do manjericão, do queijo e do azeite que manda. Fiz questão de seguir a receita clássica que amo, mas com um toque nosso.
+Não há atalhos para um bom pesto; a qualidade dos ingredientes é o que manda. O segredo para ele durar mais na geladeira é manter a superfície sempre coberta com um "véu" de azeite extra virgem, evitando o contato direto do manjericão com o ar. Em Brasília, esse pote é um presente inesquecível para quem aprecia a verdadeira culinária italiana.
 
-### Combina Perfeitamente Com
-Quer a experiência italiana completa? Use este pesto para finalizar o nosso **[Risoto de Tomate e Manjericão](/receitas/risotos/tomate-manjericao/)**.
+### Harmonização Perfeita
+Quer a experiência italiana completa? Use este pesto para finalizar nosso **[Risoto de Tomate e Manjericão](/receitas/risotos/tomate-manjericao/)**. Harmoniza maravilhosamente bem com um vinho branco seco (Pinot Grigio) ou um espumante Brut.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 90g
-*   **Validade:** 3 meses (fechado). Após aberto, 7 dias refrigerado.
-*   **Dieta:** Contém Leite e Castanha. Não é vegano.
-*   **Origem:** Brasília-DF.
+* **Peso Líquido:** 90g (Concentrado - Rende muito em diversas preparações).
+* **Validade:** 3 meses (fechado em local fresco). Após aberto, manter refrigerado e consumir em até 7 dias.
+* **Dieta:** Vegetariana. Sem Glúten. Contém Leite e Castanhas.
+* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
