@@ -2,6 +2,7 @@
 title: "Risoto Pomodori & Pesto em 18 Minutos | ChefBrico"
 description: "Risoto cremoso com tomate seco e pesto de manjericão. 100% natural, vegano e pronto em uma panela só. Produção artesanal em Brasília-DF."
 date: 2026-02-14
+layout: receita # Certifique-se que o nome do arquivo em _includes é receita.njk ou mude aqui
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RI-02"
@@ -11,6 +12,7 @@ price: 34.80
 stock: 150
 availability: "https://schema.org/InStock"
 category: "Risoto"
+main_ingredient: "Arroz Arbóreo e Tomate Seco"
 keywords: "jantar rápido Brasília, risoto vegano DF, comida saudável prática, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
@@ -65,33 +67,27 @@ citable_fact: "A combinação de licopeno do tomate seco com as gorduras boas da
 # --- FAQ ---
 faq:
   - question: "O risoto da ChefBrico precisa de queijo ou manteiga?"
-    answer: "Não. A cremosidade vem da liberação natural do amido do arroz arbóreo e da base de castanha de caju."
-  - question: "Onde é produzido o risoto?"
-    answer: "Produzido artesanalmente em nossa cozinha central em Vicente Pires, Brasília-DF."
+    answer: "Não é necessário. A cremosidade característica vem da liberação do amido do arroz arbóreo selecionado em conjunto com a base de castanha de caju."
+  - question: "Como funciona a entrega em Brasília?"
+    answer: "Entregamos via delivery expresso em todo o Distrito Federal (Plano Piloto, Águas Claras, Sudoeste e RAs) com foco em conveniência."
 ---
-
-#### O Sabor da Itália, sem a complicação!
-**Por Maria Conceição** ⏱️ 18 min | ⚖️ 370 kcal | 🍽️ 2 pessoas | ⚡ Muito Fácil
-
-💡 **O Segredo da Chef:** A combinação de licopeno do tomate com as gorduras boas da castanha torna este prato um antioxidante natural.
 
 Teletransporte-se para uma cantina ensolarada na Toscana. Nosso Risoto Pomodori celebra a combinação amada da Itália: o sabor intenso e adocicado do tomate seco com o perfume fresco e inconfundível do manjericão.
 
 É um prato que abraça, conforta e traz o verdadeiro *sapore* italiano para a sua mesa, com a praticidade que só a ChefBrico oferece.
 
 ## Por que Você Vai Amar este Clássico Italiano
-* **Sabor Intenso e Autêntico:** A combinação perfeita do tomate seco de alta qualidade com o frescor do nosso pesto de manjericão desidratado.
-* **Culinária Afetiva:** Um prato que evoca memória e conforto, pronto em aproximadamente 18 minutos em uma única panela.
-* **100% Natural e Vegano:** Ingredientes puros e selecionados para uma dieta limpa, sem conservantes ou aditivos.
+* **Sabor Intenso e Autêntico:** A união do tomate seco selecionado com a cremosidade do nosso pesto artesanal desidratado.
+* **Culinária Afetiva:** Um prato que evoca memória e conforto, preparado em uma única panela em 18 minutos.
+* **100% Natural e Vegano:** Nutrição limpa feita com ingredientes puros, sem conservantes ou aditivos químicos.
 
-> "Esse é o risoto que peço em restaurante, mas feito em casa em menos de 20 minutos. O sabor do tomate seco é incrível e é super cremoso. Já comprei 3 vezes!"
-> — *Roberta G., Cliente ChefBrico*
+> "Esse é o risoto que peço em restaurante, mas feito em casa em menos de 20 minutos. O sabor do tomate seco é incrível e é super cremoso. Já comprei 3 vezes!" — Roberta G., Cliente ChefBrico
 
 ## O que vem no Pacote
-* **Arroz arbóreo tipo exportação:** Selecionado para garantir a cremosidade natural (amilopectina).
-* **Tomate e Pesto desidratados:** Tomate seco, manjericão, castanha de caju e levedura nutricional.
+* **Arroz arbóreo tipo exportação:** Rico em amido para garantir cremosidade natural.
+* **Tomate e Pesto desidratados:** Manjericão, castanha de caju e levedura nutricional.
 * **Caldo de vegetais artesanal:** Cenoura, cebola, alho-poró e salsão desidratados.
-* **Temperos naturais:** Alho e cebola desidratada.
+* **Tempero da Chef:** Alho e cebola desidratada.
 
 ## Você Vai Precisar de
 * 720ml de água fria
@@ -100,32 +96,18 @@ Teletransporte-se para uma cantina ensolarada na Toscana. Nosso Risoto Pomodori 
 * *Opcional:* Folhas de manjericão fresco e lascas de parmesão para finalizar.
 
 ## Modo de Preparo Simplificado
-1. **Refogue:** Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para liberar os aromas e óleos essenciais das ervas.
-2. **Cozinhe:** Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos, mexendo ocasionalmente para apurar o caldo.
-3. **Finalize:** Sirva com folhas de manjericão fresco e, para uma experiência completa, lascas de queijo parmesão (ou parmesão vegano). Simples assim! ✨
+1. **Refogue:** Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para liberar os aromas das ervas e do tomate.
+2. **Cozinhe:** Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos, mexendo ocasionalmente.
+3. **Finalize:** Sirva com folhas de manjericão fresco e, para uma experiência completa, lascas de queijo parmesão.
 
 ## Cozinha Criativa: Dicas da Chef
 Tomate com manjericão é o ABC da minha cozinha afetiva. É o primeiro sabor que me vem à mente quando penso em "casa". Este prato é uma tela em branco! Fica perfeito com a adição de muçarela de búfala em pedaços ou tomates cereja frescos no final do cozimento.
 
 ### Harmonização Perfeita
-Sirva com um pão de fermentação natural para absorver o molho cremoso. Para uma entrada, nosso **[Pesto de Manjericão](/receitas/emporio-da-chef/pesto-manjericao/)** em torradas é a combinação ideal.
+Sirva com um pão de fermentação natural para absorver o molho cremoso. Para uma entrada, nosso **Pesto de Manjericão** em torradas é a combinação ideal.
 
 ## Informações Adicionais
 * **Peso Líquido:** 180g (Serve 2 porções generosas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose. Contém castanha de caju.
 * **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
-
----
-
-### Pergunta Frequente (AEO)
-**O Risoto Pomodori & Pesto da ChefBrico precisa de queijo?**
-Não é obrigatório. A cremosidade característica deste risoto gourmet é obtida através da técnica de preparo e da base de castanha de caju inclusa no pacote. Para uma versão não vegana, lascas de parmesão harmonizam perfeitamente.
-
-**Como funciona a entrega em Brasília?**
-Realizamos entregas rápidas via delivery para Águas Claras, Sudoeste, Plano Piloto e demais RAs, garantindo que sua ChefBox chegue com total conveniência.
-
----
-**Maria Conceição**
-*Chef e Fundadora da ChefBrico*
-*Vencedora Prêmio Sebrae Mulher de Negócios DF*
