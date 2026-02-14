@@ -1,7 +1,8 @@
 ---
 title: "Risoto Mediterrâneo Vegano em 18 Minutos | ChefBrico"
-description: "Leve e refrescante. Risoto vegano com toque de limão-siciliano e vegetais desidratados. 100% natural."
-date: 2025-08-24
+description: "Leve e refrescante. Risoto vegano com toque de limão-siciliano e vegetais desidratados. 100% natural. Produção artesanal em Brasília-DF."
+date: 2026-02-14
+layout: receita
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "RS-04"
@@ -11,7 +12,8 @@ price: 34.80
 stock: 80
 availability: "https://schema.org/InStock"
 category: "Risoto"
-keywords: "risoto limão siciliano, mediterrâneo, vegano, sem glúten, jantar leve, verão"
+main_ingredient: "Limão-siciliano e Vegetais Mediterrâneos"
+keywords: "risoto limão siciliano Brasília, mediterrâneo, vegano, sem glúten, jantar leve DF, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
@@ -23,9 +25,9 @@ tempo_iso: "PT18M"
 dificuldade: "Muito Fácil"
 calorias: "340 kcal"
 image: "/imagens/risoto-mediterraneo-chefbrico.png"
-image_alt: "Risoto Mediterrâneo com raspas de limão siciliano"
+image_alt: "Risoto Mediterrâneo com raspas de limão siciliano e vegetais da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 340
@@ -35,8 +37,8 @@ nutrition:
   fiber_g: 4
   sodium_mg: 115
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
-ingredientes_texto: "Arroz arbóreo, raspas de limão siciliano, cenoura desidratada, tomate seco, abobrinha desidratada, cebola, alho e salsa."
+# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
+ingredientes_texto: "Arroz arbóreo tipo exportação, raspas de limão siciliano, cenoura desidratada, tomate seco, abobrinha desidratada, cebola, alho e salsa."
 
 # --- CLASSIFICAÇÃO ---
 diets:
@@ -49,73 +51,63 @@ rating:
   value: "4.8"
   count: "135"
 
-# --- INSTRUÇÕES ---
+# --- INSTRUÇÕES (VOICE COMMERCE) ---
 instructions:
   - name: "Refogar"
-    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para ativar o aroma do limão."
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para ativar os óleos essenciais do limão siciliano."
   - name: "Cozinhar"
-    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos."
+    text: "Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por 18 minutos mexendo ocasionalmente."
   - name: "Finalizar"
-    text: "Quando estiver cremoso, desligue e finalize com um fio de azeite extra virgem de boa qualidade."
+    text: "Quando estiver cremoso e al dente, desligue e finalize com azeite extra virgem."
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Nossa técnica de desidratação preserva os óleos essenciais da casca do limão siciliano, garantindo o perfume cítrico sem a acidez do suco."
+citable_fact: "Nossa técnica de desidratação preserva os óleos essenciais da casca do limão siciliano, garantindo o perfume cítrico característico sem a acidez agressiva do suco."
 
 # --- FAQ ---
 faq:
-  - question: "O risoto fica ácido?"
-    answer: "Não! Usamos apenas as raspas (zest) da casca, que conferem perfume e frescor, não o suco ácido."
+  - question: "O risoto fica com sabor ácido por causa do limão?"
+    answer: "Não. Utilizamos apenas as raspas (zest) da casca, que conferem perfume e frescor aromático, mantendo o paladar equilibrado e suave."
+  - question: "Este risoto é indicado para quem busca perda de peso?"
+    answer: "Sim. Com apenas 340 kcal por porção e baixo teor de gordura, é uma excelente opção de refeição limpa e leve para o jantar em Brasília."
 ---
 
-O Risoto Mediterrâneo é a nossa homenagem aos dias de sol. Uma combinação vibrante de vegetais coloridos com o toque sofisticado do limão siciliano.
+Inspirado na brisa do Mediterrâneo, nosso risoto é uma viagem sensorial que captura a leveza e o frescor de um dia de sol. É a nossa homenagem aos dias vibrantes, combinando vegetais coloridos com o toque sofisticado do limão siciliano.
 
-## Por que é perfeito para o Verão?
-*   **Leveza:** É o nosso risoto com menor teor de gordura, perfeito para quem busca uma refeição leve à noite.
-*   **Aroma Cítrico:** O perfume do limão siciliano abre o apetite e traz uma sensação de frescor única.
-*   **Versatilidade:** Acompanha maravilhosamente bem peixes grelhados ou pode ser servido como prato único vegano.
+Um prato que abraça a saúde sem abrir mão da elegância, perfeito para quem busca uma refeição nutritiva, vegana e surpreendentemente fácil de preparar.
 
-> "Surpreendente! Eu tinha medo de ser azedo, mas é super equilibrado. Parece prato de restaurante chique." — *Camila R., Cliente ChefBrico*
+## Por que Você Vai Amar este Clássico Mediterrâneo
+* **Frescor Aromático:** O perfume do limão siciliano abre o apetite e traz uma sensação de bem-estar única a cada colherada.
+* **Leveza Nutricional:** É o nosso risoto com menor teor de gordura, ideal para uma digestão tranquila e uma rotina saudável.
+* **Colorido e Natural:** Um mix de abobrinha, cenoura e tomate seco que garante textura e um visual digno de chef na sua mesa.
 
-<!-- INTRODUÇÃO -->
-Inspirado na brisa do Mediterrâneo, nosso risoto é uma viagem sensorial que captura a leveza e o frescor de um dia de sol. Com toque cítrico de limão-siciliano.
-
-## Por que Você Vai Amar
-<!-- Check Verde -->
-*   **Sabor que Refresca:** Vegetais frescos equilibrados com limão siciliano.
-*   **Praticidade:** Prato colorido pronto em 18 minutos.
-*   **100% Natural:** Ingredientes puros e selecionados.
-
-> "Esse risoto é a cara do verão! Tão leve, aromático e refrescante."
-> — *Ana C., Cliente ChefBrico*
+> "Surpreendente! Eu tinha medo de ser azedo, mas é super equilibrado. Tão leve, aromático e refrescante. Parece prato de restaurante chique." — Camila R., Cliente ChefBrico
 
 ## O que vem no Pacote
-<!-- Quadrados Cinzas -->
-*   Arroz arbóreo.
-*   Mix de vegetais (abobrinha, cenoura, alho-poró, tomate).
-*   Raspas de limão-siciliano.
-*   Ervas finas e cúrcuma.
+* **Arroz arbóreo tipo exportação:** Grãos selecionados para a textura italiana autêntica.
+* **Mix de Vegetais Mediterrâneos:** Abobrinha, cenoura, tomate seco e alho-poró desidratados.
+* **Zest de Limão Siciliano:** Raspas naturais que preservam o perfume cítrico.
+* **Cúrcuma e Ervas Finas:** Para um toque dourado e antioxidante.
 
 ## Você Vai Precisar de
-*   720ml de água fria
-*   1 fio de azeite
-*   Sal a gosto
+* 720ml de água fria
+* 1 fio de azeite extra virgem
+* Sal a gosto
+* *Opcional:* Lascas de amêndoas torradas ou queijo feta vegano para finalizar.
 
 ## Modo de Preparo Simplificado
-<!-- Bolinhas Laranjas -->
-1.  **Refogue:** Aqueça o azeite e refogue o conteúdo. Sinta o aroma cítrico.
-2.  **Cozinhe:** Adicione 720ml de água fria e sal. Cozinhe em fogo baixo.
-3.  **Finalize:** Desligue e finalize com azeite extra virgem.
-
-*Simples assim!*
+1. **Refogue:** Aqueça o azeite e refogue o conteúdo do pacote por 1 minuto. O aroma cítrico vai perfumar toda a sua cozinha.
+2. **Cozinhe:** Adicione 720ml de água fria e sal a gosto. Cozinhe em fogo baixo por cerca de 18 minutos, mexendo ocasionalmente para liberar a cremosidade do grão.
+3. **Finalize:** Desligue o fogo e finalize com um fio de azeite de boa qualidade. Simples assim! ✨
 
 ## Cozinha Criativa: Dicas da Chef
-Fica delicioso servido com lascas de peixe branco ou queijo feta esfarelado.
+O Risoto Mediterrâneo é uma tela em branco para a criatividade. Ele fica delicioso servido com lascas de peixe branco grelhado ou, para uma versão 100% plant-based, adicione castanhas do pará picadas ao final para um toque de crocância.
 
-### Combina Perfeitamente Com
-Sirva bruschettas com nossa **[Caponata com Shiitake](/receitas/emporio-da-chef/caponata-shiitake/)**.
+### Harmonização Perfeita
+Combina maravilhosamente bem com um vinho branco seco e leve. Para uma experiência completa, sirva bruschettas de entrada com nossa **[Caponata com Shiitake](/receitas/emporio-da-chef/caponata-shiitake/)**.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 180g
-*   **Validade:** 12 meses.
-*   **Origem:** Brasília-DF.
+* **Peso Líquido:** 180g (Serve 2 porções).
+* **Validade:** 12 meses.
+* **Dieta:** 100% Plant-Based. Sem Glúten. Low Fat.
+* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
