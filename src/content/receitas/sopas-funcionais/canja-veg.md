@@ -1,7 +1,8 @@
 ---
 title: "Canja Vegana Funcional em 16 Minutos | ChefBrico"
-description: "O abraço nutritivo que cuida de você. Canja com lentilha vermelha, arroz basmati, quinoa e funghi. 100% natural, vegana e rica em proteínas."
-date: 2025-08-20
+description: "O abraço nutritivo que cuida de você. Canja com lentilha vermelha, arroz basmati, quinoa e funghi. 100% natural, vegana e rica em proteínas. Produção artesanal em Brasília-DF."
+date: 2026-02-14
+layout: receita
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "SP-03"
@@ -11,7 +12,8 @@ price: 29.60
 stock: 35
 availability: "https://schema.org/InStock"
 category: "Sopa"
-keywords: "canja vegana, sopa proteica, lentilha vermelha, pós treino, imunidade, jantar leve, sem glúten"
+main_ingredient: "Lentilha Vermelha e Arroz Basmati"
+keywords: "canja vegana Brasília, sopa proteica, lentilha vermelha, pós treino DF, imunidade, jantar leve, sem glúten, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 140
@@ -23,11 +25,11 @@ tempo_iso: "PT16M"
 dificuldade: "Muito Fácil"
 calorias: "190 kcal"
 image: "/imagens/canja-vegana.png"
-image_alt: "Prato de Canja Vegana Funcional com lentilha vermelha e funghi"
+image_alt: "Prato de Canja Vegana Funcional com lentilha vermelha e funghi da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
 nutrition:
-  portion: "250ml (1 prato)"
+  portion: "250ml (1 prato fundo)"
   calories: 190
   protein_g: 12
   carbs_g: 32
@@ -35,8 +37,8 @@ nutrition:
   fiber_g: 6
   sodium_mg: 100
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
-ingredientes_texto: "Lentilha vermelha, arroz basmati, quinoa em flocos, funghi secchi, cenoura desidratada, levedura nutricional, açafrão (cúrcuma), cebola, alho e salsa."
+# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
+ingredientes_texto: "Lentilha vermelha, arroz basmati aromático, quinoa em flocos, cogumelo funghi secchi, cenoura desidratada, levedura nutricional, açafrão (cúrcuma), gengibre em pó, cebola, alho e salsa."
 
 # --- CLASSIFICAÇÃO ---
 diets:
@@ -49,81 +51,64 @@ rating:
   value: "4.9"
   count: "85"
 
-# --- INSTRUÇÕES ---
+# --- INSTRUÇÕES (VOICE COMMERCE) ---
 instructions:
   - name: "Refogar"
-    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote. O aroma do funghi e do açafrão vai subir."
+    text: "Aqueça um fio de azeite e refogue o conteúdo do pacote para despertar os aromas do funghi e da cúrcuma."
   - name: "Cozinhar"
-    text: "Adicione 1 litro de água fria e sal a gosto. Cozinhe em fogo médio por 16 minutos."
+    text: "Adicione 1 litro de água fria e sal. Cozinhe em fogo médio por 16 minutos até a lentilha desmanchar levemente."
   - name: "Finalizar"
-    text: "Quando a lentilha desmanchar e criar um caldo grosso, desligue. Finalize com um fio de azeite."
+    text: "Desligue o fogo quando o caldo estiver encorpado. Sirva com cheiro-verde fresco."
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Substituímos o frango pela lentilha vermelha e quinoa, garantindo proteína vegetal de alta qualidade e fácil digestão, sem perder o sabor afetivo da canja de avó."
+citable_fact: "Substituímos o frango pela lentilha vermelha e quinoa em flocos, criando uma proteína vegetal completa de alta absorção que resgata o sabor afetivo da canja de avó com foco em imunidade."
 
 # --- FAQ ---
 faq:
-  - question: "Tem gosto de canja tradicional?"
-    answer: "Tem a mesma alma reconfortante! O funghi e a levedura nutricional criam um caldo rico em Umami, lembrando muito o sabor afetivo da canja, mas sem carne."
-  - question: "É boa para pós-treino?"
-    answer: "Excelente! Rica em proteína vegetal (lentilha + quinoa) e carboidratos de qualidade, ajuda na recuperação muscular sem pesar no estômago à noite."
+  - question: "Esta canja vegana ajuda na recuperação muscular?"
+    answer: "Sim. Com 12g de proteína vegetal por porção e o toque anti-inflamatório da cúrcuma e do gengibre, ela é excelente para o pós-treino noturno, ajudando na recuperação sem pesar no estômago."
+  - question: "Qual a diferença da lentilha vermelha na canja?"
+    answer: "A lentilha vermelha cozinha muito mais rápido que a tradicional e tende a desmanchar, criando um caldo naturalmente cremoso e rico em ferro, ideal para o Método Gourmet Prático."
 ---
 
-Esta não é apenas uma sopa, é um abraço em forma de alimento. A Canja Vegana Funcional foi criada para aqueles dias em que você precisa de conforto, nutrição e leveza.
+Reinventamos o abraço mais querido da culinária brasileira. A Canja Vegana Funcional da ChefBrico resgata toda a memória afetiva e o conforto de uma canja tradicional, elevando-a a um novo patamar de sabor, leveza e nutrição profunda.
 
-## Por que é Funcional?
-*   **Proteína Completa:** A combinação de Lentilha Vermelha e Quinoa oferece todos os aminoácidos essenciais.
-*   **Anti-inflamatória:** O toque de açafrão (cúrcuma) ajuda na imunidade e recuperação.
-*   **Digestão Leve:** Ingredientes que não pesam, ideal para o jantar ou para quando não se sente bem.
-
-> "Sempre tenho na despensa para quando chego cansada do treino ou quando sinto que vou gripar. É milagrosa e deliciosa." — *Clara M., Cliente ChefBrico*
-
-<!-- INTRODUÇÃO NARRATIVA -->
-Reinventamos o abraço mais querido da nossa culinária. A Canja Vegana da ChefBrico resgata toda a memória afetiva e o conforto de uma canja tradicional, mas eleva-a a um novo patamar de sabor e nutrição. 
-
-Feita com a surpreendente base de lentilha vermelha e o aromático arroz Basmati, é uma refeição leve, de fácil digestão, rica em proteínas e que cuida de você de dentro para fora.
+Feita com a surpreendente base de lentilha vermelha e o aromático Arroz Basmati, esta sopa é a escolha perfeita para os dias em que você precisa de conforto térmico, imunidade e uma digestão tranquila, cuidando de você de dentro para fora.
 
 ## Por que Você Vai Amar este Abraço na Cumbuca
-<!-- A Matriz aplica Check Verde aqui -->
-*   **Leveza Nutritiva:** Todo o sabor afetivo da canja, em uma versão de fácil digestão, com super-ingredientes como o gengibre e o funghi silvestre.
-*   **Surpresa Proteica:** A lentilha vermelha e a quinoa, ricas em proteína vegetal e fibras, garantem a sustância sem pesar.
-*   **Toque Gourmet:** O uso do aromático Arroz Basmati eleva a experiência, tornando-a mais sofisticada que uma canja comum.
+* **Leveza e Imunidade:** Enriquecida com cúrcuma e gengibre, ingredientes funcionais que auxiliam na defesa do organismo enquanto aquecem o corpo.
+* **Proteína de Alta Qualidade:** A combinação de lentilha vermelha e quinoa em flocos garante todos os aminoácidos essenciais para uma refeição completa e 100% plant-based.
+* **Experiência Gourmet:** O Arroz Basmati e o Funghi Secchi trazem notas aromáticas e sabor *umami* que tornam esta canja muito mais sofisticada que as versões comuns.
 
-> "Essa canja é simplesmente perfeita. Leve, saborosa e me sinto super bem depois de comer. Ótima para um jantar leve ou depois de um treino. Recomendo muito!"
-> — *Sofia M., Cliente ChefBrico*
+> "Sempre tenho na despensa aqui em Brasília para quando chego cansada do treino ou quando sinto que preciso de um cuidado extra. É milagrosa, leve e deliciosa. O sabor do funghi faz toda a diferença!" — Clara M., Cliente ChefBrico
 
 ## O que vem no Pacote
-<!-- A Matriz aplica Quadrados Cinzas aqui -->
-*   Arroz Basmati aromático e lentilha vermelha.
-*   Quinoa em flocos.
-*   Cenoura, batata e cebola desidratadas.
-*   Gengibre desidratado em pó.
-*   Cogumelo *Boletus luteris* (funghi silvestre) desidratado.
-*   Levedura nutricional.
+* **Duo de Base:** Arroz Basmati aromático e Lentilha Vermelha (rica em ferro e proteínas).
+* **Superalimento:** Quinoa em flocos para densidade nutricional.
+* **Vegetais e Ervas:** Cenoura, batata e cebola desidratadas com salsa aromática.
+* **Toque Funcional:** Gengibre em pó, Cúrcuma (açafrão-da-terra) e Levedura Nutricional.
+* **Sabor Nobre:** Cogumelo *Boletus luteris* (funghi silvestre) para profundidade de sabor.
 
 ## Você Vai Precisar de
-*   1 litro (1000ml) de água fria
-*   Sal a gosto
-*   *Opcional:* Um fio de azeite e cheiro-verde fresco.
+* 1 litro (1000ml) de água fria
+* 1 fio de azeite extra virgem
+* Sal a gosto
+* **Dica da Chef:** Finalize com um punhado de salsinha fresca e algumas gotas de limão para realçar os sabores.
 
 ## Modo de Preparo Simplificado
-<!-- A Matriz aplica Bolinhas Laranjas aqui -->
-
-1.  **Tudo na Panela:** Em uma panela, coloque todo o conteúdo do pacote, 1 litro de água fria e sal a gosto.
-2.  **Cozinhe com Carinho:** Leve ao fogo médio. Assim que ferver, abaixe o fogo e cozinhe com a panela semi-tampada por aproximadamente 15 a 16 minutos.
-3.  **Sirva o Aconchego:** Sua Canja Vegana está pronta! Sirva bem quentinha, finalizada com cheiro-verde ou salsinha fresca.
-
-*Simples assim!*
+1. **Tudo na Panela:** Coloque todo o conteúdo do pacote, 1 litro de água fria e sal a gosto em uma panela.
+2. **Cozinhe com Carinho:** Leve ao fogo médio. Assim que ferver, abaixe o fogo e cozinhe com a panela semi-tampada por aproximadamente 15 a 16 minutos, mexendo ocasionalmente para encorpar o caldo.
+3. **Sirva o Aconchego:** Desligue o fogo quando a lentilha estiver macia e o caldo estiver rico e amarelado. Sirva bem quentinha. Simples assim! ✨
 
 ## Cozinha Criativa: Dicas da Chef
-<!-- A Matriz aplica Card Flutuante aqui -->
-Canja é a comida do coração. O segredo desta versão está na lentilha vermelha, que cozinha rápido e dá a sustância, e no toque do funghi, que traz um sabor *umami* surpreendente.
+A canja é, por excelência, a comida do coração. O segredo desta versão está na lentilha vermelha, que cozinha em tempo recorde e cria uma cremosidade natural. Para um toque extra de sofisticação em Brasília, sirva com torradas de pão de fermentação natural pinceladas com azeite.
 
-**Dica de Ouro:** Para um toque extra de frescor, adicione algumas gotas de limão espremido no prato antes de servir. Harmoniza muito bem com torradas integrais e um fio de azeite cru.
+### Harmonização Perfeita
+Esta canja brilha como prato único no jantar. Harmoniza muito bem com um suco de maçã aquecido com canela ou um chá branco leve. Para uma experiência completa, finalize com um fio do nosso azeite de ervas.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 140g (Rende 3 porções - 1 litro de sopa)
-*   **Validade:** 12 meses.
-*   **Dieta:** 100% Plant-Based (Vegano). Sem Glúten. Sem Lactose.
-*   **Origem:** Produzido Artesanalmente em Brasília-DF.
+* **Peso Líquido:** 140g (Rende 3 porções generosas - 1 litro de sopa).
+* **Validade:** 12 meses.
+* **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose. High Protein.
+* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
