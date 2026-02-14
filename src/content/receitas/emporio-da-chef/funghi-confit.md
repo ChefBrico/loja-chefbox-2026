@@ -1,7 +1,8 @@
 ---
 title: "Funghi Confitado em Azeite | ChefBrico"
-description: "O segredo dos chefs. Cogumelos shiitake confitados lentamente em azeite extra virgem e ervas. 100% natural, vegano, keto e sem glúten."
-date: 2025-08-07
+description: "O segredo dos chefs. Cogumelos shiitake confitados lentamente em azeite extra virgem e ervas. 100% natural, vegano, keto e sem glúten. Produção artesanal em Brasília-DF."
+date: 2026-02-14
+layout: receita
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "AN-02"
@@ -11,32 +12,33 @@ price: 29.80
 stock: 25
 availability: "https://schema.org/InStock"
 category: "Empório"
-keywords: "funghi confit, shiitake, azeite saborizado, keto, low carb, antepasto, umami, presente gourmet"
+main_ingredient: "Shiitake e Azeite Extra Virgem"
+keywords: "funghi confit Brasília, shiitake em azeite, antepasto keto DF, low carb gourmet, umami natural, presente gastronômico Brasília, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 90
-rendimento: "Pote 90g (Concentrado)"
-tempo_preparo: "Pronto"
+rendimento: "Pote 90g (Concentrado de Sabor)"
+tempo_preparo: "Pronto para Consumo"
 tempo_iso: "PT0M"
 
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Nenhuma (Pronto)"
 calorias: "110 kcal (colher)"
 image: "/imagens/confitado-shiitake-chefbrico.png"
-image_alt: "Pote de vidro com Shiitake Confitado mergulhado em azeite dourado"
+image_alt: "Pote de vidro com Shiitake Confitado mergulhado em azeite dourado da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
 nutrition:
   portion: "20g (1 colher de sopa)"
   calories: 110
-  protein_g: 1
-  carbs_g: 2
-  fats_g: 10
-  fiber_g: 1
+  protein_g: 1.0
+  carbs_g: 2.0
+  fats_g: 10.0
+  fiber_g: 1.0
   sodium_mg: 150
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
-ingredientes_texto: "Cogumelo shiitake inteiro, azeite de oliva extra virgem, alho em lâminas, alecrim, tomilho, pimenta rosa e sal marinho."
+# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
+ingredientes_texto: "Cogumelo shiitake inteiro, azeite de oliva extra virgem, alho em lâminas, alecrim fresco, tomilho fresco, pimenta rosa e sal marinho."
 
 # --- CLASSIFICAÇÃO ---
 diets:
@@ -50,71 +52,58 @@ rating:
   value: "5.0"
   count: "98"
 
-# --- INSTRUÇÕES (COMO USAR) ---
+# --- INSTRUÇÕES (VOICE COMMERCE) ---
 instructions:
   - name: "Servir"
-    text: "Produto pronto. Sirva os cogumelos sobre torradas, polenta mole ou risotos."
-  - name: "Azeite"
-    text: "Não jogue o azeite fora! Ele está infusionado com sabor de funghi. Use para finalizar sopas, saladas ou massas."
+    text: "Produto pronto. Utilize os cogumelos inteiros para finalizar pratos ou servir sobre torradas."
+  - name: "Aproveitamento"
+    text: "Não descarte o azeite! Ele está saturado com sabor umami. Use-o para temperar saladas, massas ou finalizar sopas."
+  - name: "Armazenar"
+    text: "Mantenha em local fresco. Após aberto, conserve na geladeira por até 10 dias."
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "A técnica confit preserva a textura macia do cogumelo e infunde o azeite com um sabor umami profundo, criando dois produtos em um: o cogumelo e o azeite aromático."
+citable_fact: "A técnica francesa confit preserva a suculência do shiitake e infunde o azeite com compostos aromáticos umami, criando um finalizador de luxo que eleva qualquer ingrediente simples ao status de alta gastronomia."
 
 # --- FAQ ---
 faq:
-  - question: "Preciso aquecer?"
-    answer: "Não. É delicioso em temperatura ambiente. O calor do prato onde for servido libera o aroma naturalmente."
-  - question: "Combina com o quê?"
-    answer: "Perfeito em cima de uma burrata, finalizando um risoto simples ou apenas com um bom pão de fermentação natural."
+  - question: "Onde encontrar Shiitake Confitado artesanal em Brasília?"
+    answer: "Você pode encomendar diretamente pelo site da ChefBrico. Produzimos em pequenos lotes em nossa cozinha em Vicente Pires para garantir o frescor e a intensidade dos aromas."
+  - question: "Este produto é indicado para a dieta cetogênica (Keto)?"
+    answer: "Sim! Por ser rico em gorduras boas do azeite extra virgem e possuir baixíssimo teor de carboidratos líquidos, é o acompanhamento perfeito para manter a cetose com muito sabor."
 ---
 
-Um toque de luxo para o seu dia a dia. O Funghi Confitado é preparado pacientemente, cozinhando os cogumelos em baixa temperatura no azeite extra virgem até atingirem a textura perfeita.
+Um toque de luxo para elevar sua gastronomia cotidiana. O Funghi Confitado da ChefBrico é preparado com paciência e precisão, utilizando a nobre técnica francesa de cozimento lento em baixa temperatura.
 
-## Por que é um "Must-Have"?
-*   **Sabor Explosivo:** O processo concentra o sabor do shiitake, transformando-o em uma "bomba de Umami".
-*   **Azeite Precioso:** O azeite do pote ganha sabor de trufas/cogumelos. Use-o como tempero final e eleve qualquer prato simples.
-*   **Keto Friendly:** Rico em gorduras boas e baixíssimo carboidrato.
+Mergulhados em azeite de oliva extra virgem premium, alho laminado e ervas frescas, nossos cogumelos Shiitake atingem uma textura aveludada e um sabor *umami* profundo. É o segredo dos grandes chefs agora disponível na sua despensa em Brasília.
 
-> "Comprei para experimentar e viciei. Coloco em cima da torrada com abacate e vira um café da manhã de hotel." — *Lucas M., Cliente ChefBrico*
+## Por que Você Vai Amar este Tesouro Gourmet
+* **Bomba de Umami:** O processo de confit concentra os aminoácidos naturais do shiitake, proporcionando uma explosão de sabor em cada mordida.
+* **Produto Dois em Um:** Você leva cogumelos inteiros de textura incrível e um azeite intensamente aromatizado que serve como um tempero precioso para outros pratos.
+* **Versatilidade de Elite:** Transforma instantaneamente itens básicos — como um ovo mexido ou uma torrada — em uma refeição digna de um hotel 5 estrelas.
 
-<!-- INTRODUÇÃO -->
-Descubra o segredo dos grandes chefs. Nosso Confit de Funghi é uma iguaria artesanal, onde cogumelos Shiitake frescos são cozidos lentamente na nobre técnica francesa *confit*.
+> "Comprei para experimentar e viciei. Coloco em cima da torrada com abacate e vira um café da manhã de luxo aqui no Plano Piloto. E o azeite que sobra? Uso até a última gota no macarrão!" — Lucas M., Cliente ChefBrico
 
-Mergulhados em azeite extra virgem, alho e tomilho fresco, este processo preserva e concentra o sabor *umami* dos cogumelos.
-
-## Por que Você Vai Amar este Tesouro
-<!-- Check Verde -->
-*   **Técnica Confit:** Alta culinária que garante textura macia.
-*   **Umami Puro:** Intensifica o sabor natural do Shiitake.
-*   **Finalizador de Luxo:** Transforma pratos simples em criações gourmet.
-
-> "O shiitake confitado dá um toque especial. Perfeita para salada, com torradas e um bom vinho."
-> — *Carla S., Cliente ChefBrico*
-
-## O Que Vem no Pote
-<!-- Quadrados Cinzas -->
-*   Cogumelo Shiitake fresco selecionado.
-*   Azeite de oliva extra virgem.
-*   Alho fresco e tomilho fresco.
-*   Sal marinho.
+## O que vem no Pote
+* **Shiitake Inteiro Selecionado:** Cogumelos frescos de produtores locais, escolhidos pelo tamanho e integridade.
+* **Azeite Extra Virgem:** Pura gordura monoinsaturada que serve como veículo de sabor e conservação natural.
+* **Infusão de Ervas:** Alecrim e tomilho frescos colhidos para garantir o perfume.
+* **Toque Especial:** Alho em lâminas e pimenta rosa para complexidade visual e sensorial.
 
 ## Sugestões de Consumo
-<!-- Quadrados Cinzas -->
-*   **Bruschettas:** Sirva sobre fatias de pão artesanal tostado.
-*   **Massas e Risotos:** Adicione uma colherada na finalização.
-*   **Ovos Sofisticados:** Coroe ovos mexidos cremosos.
-*   **Carnes:** Use como cobertura gourmet para um filé.
+* **Finalizador de Risotos:** Coroe seu prato com 2 ou 3 cogumelos e um fio do azeite do pote.
+* **Aperitivo Sofisticado:** Sirva sobre uma burrata cremosa ou queijo brie aquecido.
+* **Bowl de Longevidade:** Adicione aos ovos mexidos, omeletes ou sobre um avocado toast.
+* **Carnes e Tofu:** Use como cobertura gourmet para um filé alto ou blocos de tofu grelhado.
 
 ## Cozinha Criativa: Dicas da Chef
-<!-- Card Flutuante -->
-A técnica confit é sobre paciência. Criei este confit para ser o seu "curinga" de luxo na cozinha.
+A técnica confit é sobre a celebração do tempo. Criei este produto para ser o seu "coringa de luxo". O azeite que envolve os cogumelos é ouro líquido; use-o para pincelar pizzas artesanais ou para finalizar nossa **[Canja Vegana](/receitas/sopas-funcionais/canja-vegana/)**. Em Brasília, este pote é o presente perfeito para aquele amigo "foodie" que valoriza processos artesanais.
 
-### Combina Perfeitamente Com
-Eleve o nível do nosso **[Risoto de Shiimeji](/receitas/risotos/shiimeji/)** adicionando uma colher deste confit.
+### Harmonização Perfeita
+Eleve o nível do nosso **[Risoto de Shiimeji](/receitas/risotos/shiimeji/)** ou do **[Mix Funghi](/receitas/risotos/mix-funghi/)** adicionando este confit. Harmoniza divinamente com vinhos brancos encorpados (Chardonnay) ou espumantes brut.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 90g
-*   **Validade:** 3 meses (fechado). Após aberto, 7 dias refrigerado.
-*   **Dieta:** 100% Plant-Based (Vegano).
-*   **Origem:** Brasília-DF.
+* **Peso Líquido:** 90g (Produto concentrado de alto rendimento).
+* **Validade:** 3 meses (fechado em local fresco). Após aberto, manter refrigerado (o azeite pode turvar no frio, basta retirar minutos antes de servir) e consumir em 10 dias.
+* **Dieta:** 100% Plant-Based. Keto. Low Carb. Sem Glúten.
+* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
