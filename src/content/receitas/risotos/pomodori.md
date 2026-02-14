@@ -4,7 +4,7 @@ description: "Risoto cremoso com tomate seco e pesto de manjericão. 100% natura
 date: 2026-02-14
 layout: receita
 
-# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
+# --- DADOS ESTRATÉGICOS (Não altere os nomes à esquerda) ---
 sku: "RI-02"
 gtin: "618231813711"
 unspsc: "50193100"
@@ -15,19 +15,20 @@ category: "Risoto"
 main_ingredient: "Arroz Arbóreo e Tomate Seco"
 keywords: "jantar rápido Brasília, risoto vegano DF, comida saudável prática, ChefBrico"
 
-# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
+# --- DADOS LOGÍSTICOS (Essenciais para o site) ---
 peso_liquido_g: 180
 rendimento: "2 pessoas"
 tempo_preparo: "18 min"
 tempo_iso: "PT18M"
 
-# --- DADOS VISUAIS (HUMANOS) ---
+# --- DADOS VISUAIS ---
 dificuldade: "Muito Fácil"
+calorias: "370 kcal"
 image: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
 image_alt: "Prato de Risoto Pomodori cremoso com manjericão fresco e tomates secos da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS (ESTRUTURA PARA API) ---
-# ATENÇÃO: Use apenas números aqui para o sistema calcular automaticamente
+# --- DADOS NUTRICIONAIS (Onde estava o erro de sumiço) ---
+# Aqui mantive os nomes que o seu arquivo catalog_full.md e agent_catalog.md pedem
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 370
@@ -37,22 +38,16 @@ nutrition:
   fiber_g: 4
   sodium_mg: 120
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
+# --- INGREDIENTES ---
 ingredientes_texto: "Arroz arbóreo tipo exportação, tomate desidratado, castanha de caju, levedura nutricional, manjericão desidratado, caldo de vegetais em pó (cenoura, salsão, alho-poró), cebola e alho."
 
-# --- CLASSIFICAÇÃO ---
-# Se for livre de glúten, use o termo 'GlutenFree' exatamente assim
+# --- CLASSIFICAÇÃO (Importante para os selos de dieta) ---
 diets:
   - "Vegan"
   - "GlutenFree"
   - "LowLactose"
 
-# --- SOCIAL PROOF ---
-rating:
-  value: "4.9"
-  count: "158"
-
-# --- INSTRUÇÕES (PASSOS PARA A API) ---
+# --- INSTRUÇÕES (Para aparecer o passo a passo) ---
 instructions:
   - name: "Refogar"
     text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para liberar os aromas."
@@ -73,4 +68,4 @@ faq:
     answer: "Entregamos via delivery expresso em todo o Distrito Federal (Plano Piloto, Águas Claras, Sudoeste e RAs) com foco em conveniência."
 ---
 
-Teletransporte-se para uma cantina ensolarada na Toscana...
+O conteúdo abaixo daqui é o que os humanos leem...
