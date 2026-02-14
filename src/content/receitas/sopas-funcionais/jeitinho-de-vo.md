@@ -1,7 +1,8 @@
 ---
 title: "Sopa Jeitinho de Vó em 15 Minutos | ChefBrico"
-description: "O aconchego da infância no prato. Sopa cremosa de lentilha rosa com macarrão sem glúten e um toque especial de cardamomo."
-date: 2025-08-16
+description: "O aconchego da infância no prato. Sopa cremosa de lentilha rosa com macarrão sem glúten e toque de cardamomo. 100% natural e vegana. Produção artesanal em Brasília-DF."
+date: 2026-02-14
+layout: receita
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "SP-04"
@@ -11,7 +12,8 @@ price: 29.60
 stock: 40
 availability: "https://schema.org/InStock"
 category: "Sopa"
-keywords: "sopa de lentilha rosa, macarrão sem glúten, cardamomo, comida afetiva, vegano, jantar leve, crianças"
+main_ingredient: "Lentilha Rosa e Macarrão de Arroz"
+keywords: "sopa de lentilha rosa Brasília, comida afetiva DF, macarrão sem glúten, cardamomo benefícios, sopa para crianças, jantar leve vegano, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 140
@@ -23,11 +25,11 @@ tempo_iso: "PT16M"
 dificuldade: "Muito Fácil"
 calorias: "180 kcal"
 image: "/imagens/sopa-jeitinho-de-vo-chefbrico.png"
-image_alt: "Sopa de Lentilha Rosa e Macarrão sem glúten"
+image_alt: "Sopa de Lentilha Rosa e Macarrão sem glúten da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
 nutrition:
-  portion: "250ml (1 prato)"
+  portion: "250ml (1 prato fundo)"
   calories: 180
   protein_g: 9
   carbs_g: 32
@@ -35,8 +37,8 @@ nutrition:
   fiber_g: 7
   sodium_mg: 100
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
-ingredientes_texto: "Lentilha rosa, macarrão de arroz (sem glúten), cenoura desidratada, cardamomo em pó, levedura nutricional, cebola, alho e salsa."
+# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
+ingredientes_texto: "Lentilha rosa (vermelha), macarrão de arroz (sem glúten), quinoa, batata baroa desidratada, cenoura desidratada, cardamomo em pó, levedura nutricional, cebola, alho e salsa."
 
 # --- CLASSIFICAÇÃO ---
 diets:
@@ -49,76 +51,63 @@ rating:
   value: "5.0"
   count: "105"
 
-# --- INSTRUÇÕES ---
+# --- INSTRUÇÕES (VOICE COMMERCE) ---
 instructions:
   - name: "Refogar"
-    text: "Em uma panela comum, aqueça um fio de azeite e refogue o pacote. O aroma do cardamomo vai perfumar o ambiente."
+    text: "Em uma panela comum, aqueça um fio de azeite e refogue o conteúdo do pacote para despertar o aroma acolhedor do cardamomo."
   - name: "Cozinhar"
-    text: "Adicione 1 litro de água fria e sal a gosto. Cozinhe em fogo médio por cerca de 15 a 16 minutos."
+    text: "Adicione 1 litro de água fria e sal. Cozinhe em fogo médio por 15 a 16 minutos após a fervura."
   - name: "Finalizar"
-    text: "A lentilha rosa vai derreter e engrossar o caldo. Desligue e sirva com cheiro-verde fresco."
+    text: "Aguarde a lentilha rosa desmanchar para criar o creme natural. Sirva bem quente."
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "A lentilha rosa cozinha rápido e dá cremosidade natural, enquanto o cardamomo adiciona um toque digestivo único, evitando o desconforto comum de grãos."
+citable_fact: "A lentilha rosa é a estrela desta receita: ela cozinha em tempo recorde e desmancha naturalmente, criando um caldo aveludado sem necessidade de espessantes artificiais. O cardamomo atua como um potente digestivo natural."
 
 # --- FAQ ---
 faq:
-  - question: "Fica rala ou cremosa?"
-    answer: "Naturalmente cremosa! A lentilha rosa tem a propriedade de se desfazer no cozimento, engrossando o caldo sem precisar de amido ou batata."
-  - question: "Criança gosta?"
-    answer: "Adora! O sabor é suave, o macarrão diverte e a textura é fácil de comer. É um sucesso com os pequenos."
+  - question: "Por que a Sopa Jeitinho de Vó é recomendada para crianças?"
+    answer: "Pelo sabor suave e adocicado da batata baroa e da lentilha rosa, além do macarrãozinho sem glúten que diverte os pequenos. É nutritiva, fácil de engolir e não possui temperos agressivos."
+  - question: "O cardamomo deixa a sopa com gosto forte?"
+    answer: "Não. O cardamomo é usado em dosagem sutil para conferir um perfume 'quentinho' e sofisticado, além de facilitar a digestão dos grãos, evitando o inchaço abdominal."
 ---
 
-Sabe aquele cheirinho de comida de vó que cura qualquer dia ruim? Recriamos essa memória afetiva. A "Jeitinho de Vó" une a nutrição da lentilha rosa com o conforto do macarrãozinho.
+Sabe aquele cheirinho de comida de vó que parece curar qualquer dia ruim? Resgatamos essa memória afetiva em uma sopa que é puro aconchego na cumbuca. A "Jeitinho de Vó" une a nutrição da lentilha rosa com o conforto do macarrãozinho de arroz, criando uma textura cremosa que abraça o paladar.
 
-## O Toque de Mágica
-*   **Lentilha Rosa:** Diferente da marrom, ela é mais leve, cozinha rápido e cria um creme aveludado.
-*   **Cardamomo:** O segredo da Chef. Uma especiaria que ajuda na digestão e dá um aroma sofisticado e acolhedor.
-*   **Macarrão Sem Glúten:** Usamos massa de arroz para que todos possam comer sem preocupação.
+Criada para ser o "porto seguro" da sua despensa em Brasília, esta receita combina ingredientes simples com o toque mestre do cardamomo, garantindo uma refeição leve, nutritiva e carregada de amor, pronta em apenas 15 minutos.
 
-> "Comprei para minha filha, mas quem tomou tudo fui eu. É muito reconfortante e o tempero é perfeito." — *Sônia G., Cliente ChefBrico*
+## Por que Você Vai Amar este Aconchego na Cumbuca
+* **Cremosidade Natural:** A lentilha rosa tem a propriedade mágica de se desfazer no cozimento, engrossando o caldo naturalmente sem precisar de batatas extras ou amidos.
+* **Digestão Inteligente:** O cardamomo, o segredo da nossa Chef, eleva o prato a uma nova experiência sensorial e ajuda seu sistema digestivo a processar a refeição com leveza.
+* **Memória e Saúde:** Todo o prazer da *comfort food* tradicional, em uma versão moderna: sem glúten, vegana e rica em proteínas vegetais.
 
-<!-- INTRODUÇÃO -->
-Existe um sabor que só o carinho de avó consegue criar. Resgatamos essa memória afetiva em uma sopa que é puro aconchego na cumbuca.
-
-Combina a maciez da lentilha rosa com a doçura da batata baroa e um toque secreto de cardamomo.
-
-## Por que Você Vai Amar este "Jeitinho de Vó"
-<!-- Check Verde -->
-*   **Sabor de Casa:** Evoca a memória de comida simples feita com amor.
-*   **Nutrição que Sustenta:** Lentilha rosa e quinoa são fontes poderosas de proteína.
-*   **Toque de Chef:** O cardamomo eleva uma simples sopa a uma nova experiência.
-
-> "Essa sopa tem o verdadeiro gostinho de casa de vó! É a minha salvação nos dias corridos."
-> — *Ana Paula, Cliente ChefBrico*
+> "Essa sopa tem o verdadeiro gostinho de casa de vó aqui em Brasília! É a minha salvação nos dias frios ou quando chego cansada. O tempero é perfeito e reconfortante." — Sônia G., Cliente ChefBrico
 
 ## O que vem no Pacote
-<!-- Quadrados Cinzas -->
-*   Macarrão funcional sem glúten.
-*   Lentilha vermelha e quinoa.
-*   Cenoura, batata baroa e salsão.
-*   Cardamomo em pó e especiarias.
+* **Macarrão de Arroz Funcional:** Massa sem glúten de fácil digestão para toda a família.
+* **Duo Proteico:** Lentilha Rosa (vermelha) e Quinoa para um aporte completo de aminoácidos.
+* **Vegetais Adocicados:** Batata baroa, cenoura e salsão desidratados.
+* **Especiaria Secreta:** Cardamomo puro em pó e base aromática ChefBrico.
 
 ## Você Vai Precisar de
-*   1 litro de água fria
-*   Sal a gosto
+* 1 litro de água fria
+* 1 fio de azeite extra virgem
+* Sal a gosto
+* **Dica da Chef:** Para um toque extra de nutrição para os pequenos, adicione frango desfiado ou cubinhos de tofu nos minutos finais.
 
 ## Modo de Preparo Simplificado
-<!-- Bolinhas Laranjas -->
-1.  **Tudo na Panela:** Coloque o pacote, 1 litro de água e sal na panela.
-2.  **Cozinhe:** Assim que ferver, cozinhe em fogo médio por 15 minutos.
-3.  **Sirva:** Finalize com cheiro-verde fresco.
-
-*Simples assim!*
+1. **Tudo na Panela:** Coloque todo o conteúdo do pacote, 1 litro de água fria e sal a gosto em uma panela. Se quiser potencializar o aroma, refogue no azeite por 30 segundos antes.
+2. **Cozinhe:** Assim que ferver, abaixe um pouco o fogo e cozinhe por aproximadamente 15 a 16 minutos. Você notará a sopa mudando de cor e ficando mais espessa.
+3. **Sirva o Carinho:** Quando a lentilha estiver "derretida" e o macarrão macio, sua sopa está pronta. Finalize com cheiro-verde fresco. Simples assim! ✨
 
 ## Cozinha Criativa: Dicas da Chef
-O "jeitinho de vó" é transformar o simples em extraordinário. Para um "boost" de proteína, adicione frango desfiado nos últimos minutos.
+O "jeitinho de vó" é transformar o simples em extraordinário. Em Brasília, nos dias de chuva, essa sopa brilha acompanhada de uma torrada de pão integral com um toque de alho. Se desejar uma textura ainda mais lisa para bebês em fase de introdução alimentar, você pode bater rapidamente no mixer.
 
-### Combina Perfeitamente Com
-Sirva com torradas integrais e queijo ralado (vegano ou tradicional).
+### Harmonização Perfeita
+Sirva com um fio de azeite cru e queijo ralado (vegano ou tradicional). Para beber, um chá de camomila morno completa o ritual de relaxamento antes de dormir.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 140g
-*   **Validade:** 12 meses.
-*   **Origem:** Brasília-DF.
+* **Peso Líquido:** 140g (Rende 3 porções generosas).
+* **Validade:** 12 meses.
+* **Dieta:** 100% Plant-Based. Sem Glúten. Comfort Food.
+* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
