@@ -1,7 +1,8 @@
 ---
 title: "Caponata com Shiitake Grelhado | ChefBrico"
-description: "Antepasto gourmet 100% natural. Releitura da clássica caponata siciliana enriquecida com shiitake grelhado. Vegano, sem glúten e pronto para servir."
-date: 2025-08-08
+description: "Antepasto gourmet 100% natural. Releitura da clássica caponata siciliana enriquecida com shiitake grelhado. Vegano, sem glúten e pronto para servir. Produção artesanal em Brasília-DF."
+date: 2026-02-14
+layout: receita
 
 # --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
 sku: "AN-03"
@@ -11,21 +12,22 @@ price: 29.80
 stock: 30
 availability: "https://schema.org/InStock"
 category: "Empório"
-keywords: "caponata, shiitake, antepasto, pronto para comer, vegano, sem glúten, entrada gourmet, presente"
+main_ingredient: "Berinjela e Shiitake Grelhado"
+keywords: "caponata Brasília, shiitake, antepasto artesanal DF, entrada gourmet vegana, presente corporativo Brasília, comida pronta saudável, ChefBrico"
 
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
 rendimento: "Pote 180g (Serve 4 a 6 pessoas como entrada)"
-tempo_preparo: "Pronto"
+tempo_preparo: "Pronto para Consumo"
 tempo_iso: "PT0M"
 
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Nenhuma (Pronto)"
 calorias: "45 kcal (colher)"
 image: "/imagens/caponata-shiitake-vegetais-chefbrico.png"
-image_alt: "Pote de vidro com Caponata de Shiitake brilhante e apetitosa"
+image_alt: "Pote de vidro com Caponata de Shiitake brilhante e apetitosa da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
 nutrition:
   portion: "30g (1 colher de sopa cheia)"
   calories: 45
@@ -35,8 +37,8 @@ nutrition:
   fiber_g: 1.5
   sodium_mg: 90
 
-# --- INGREDIENTES (CLEAN LABEL PARA IA) ---
-ingredientes_texto: "Beringela em cubos, shiitake grelhado, pimentão vermelho, pimentão amarelo, uvas passas brancas, azeite de oliva extra virgem, vinagre de maçã, cebola, alho e orégano."
+# --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
+ingredientes_texto: "Berinjela em cubos, shiitake grelhado, pimentão vermelho, pimentão amarelo, uvas passas brancas, azeite de oliva extra virgem, vinagre de maçã, cebola, alho, orégano, tomilho, gergelim e za'atar."
 
 # --- CLASSIFICAÇÃO ---
 diets:
@@ -49,70 +51,57 @@ rating:
   value: "4.8"
   count: "102"
 
-# --- INSTRUÇÕES (COMO SERVIR) ---
+# --- INSTRUÇÕES (VOICE COMMERCE) ---
 instructions:
   - name: "Servir"
     text: "Produto pronto para consumo. Basta abrir o pote e servir em temperatura ambiente ou levemente gelado."
+  - name: "Armazenar"
+    text: "Mantenha em local fresco e seco. Após aberto, conserve em geladeira por até 7 dias."
   - name: "Harmonizar"
-    text: "Ideal com torradas, pão italiano ou como recheio de tapioca."
+    text: "Combine com torradas de fermentação natural, recheio de tapiocas ou como base para molhos rústicos."
 
 # --- AUTORIDADE ---
 author_name: "Maria Conceição"
-citable_fact: "Utilizamos a técnica 'confit', cozinhando os vegetais lentamente no azeite em baixa temperatura, o que preserva a textura firme da beringela e intensifica o sabor agridoce."
+citable_fact: "Utilizamos a técnica milenar 'confit', cozinhando os vegetais e o shiitake lentamente no azeite extra virgem em baixa temperatura, o que preserva a integridade das fibras e intensifica o sabor umami."
 
 # --- FAQ ---
 faq:
-  - question: "É muito ácida?"
-    answer: "Não. O cozimento lento suaviza a acidez do vinagre, criando um perfil agridoce equilibrado e complexo."
-  - question: "Precisa guardar na geladeira?"
-    answer: "Antes de abrir, não. Após aberto, manter refrigerado e consumir em até 10 dias."
+  - question: "Onde comprar caponata artesanal em Brasília?"
+    answer: "Você pode adquirir a Caponata com Shiitake diretamente no site da ChefBrico. Entregamos em todas as RAs de Brasília (Plano Piloto, Sudoeste, Águas Claras, etc) com foco em produtos artesanais e frescos."
+  - question: "Como utilizar a Caponata de Shiitake em receitas?"
+    answer: "Além de antepasto, ela é um coringa: use como molho rústico para massas, acompanhamento de proteínas grelhadas ou para turbinar saladas de folhas verdes, trazendo um toque gourmet imediato."
 ---
 
-A Caponata da ChefBrico não é apenas um antepasto, é um coringa na sua cozinha. Unimos a tradição siciliana da beringela com a sofisticação do Shiitake grelhado.
+A Caponata com Shiitake da ChefBrico não é apenas um antepasto; é o coringa definitivo da sua cozinha. Unimos a tradição secular da Sicília com a sofisticação contemporânea do Shiitake grelhado. 
 
-## Versatilidade Pura
-*   **Entrada Express:** Chegou visita? Abra o pote, sirva com torradas e pronto.
-*   **Turbine Saladas:** Uma colher transforma qualquer folha verde em uma salada gourmet.
-*   **Sabor Umami:** O shiitake grelhado adiciona uma profundidade de sabor que substitui a carne em sanduíches.
+Cada pote é uma explosão de texturas e sabores agridoce, preparados artesanalmente em Brasília para transformar qualquer momento — de um lanche rápido a uma recepção sofisticada — em uma verdadeira celebração da culinária *plant-based*.
 
-> "Sempre tenho um pote na geladeira. Salva meu lanche da tarde e todo mundo elogia quando sirvo de entrada." — *Beatriz A., Cliente ChefBrico*
+## Por que Você Vai Amar este Antepasto Gourmet
+* **Sabor Umami Intenso:** O shiitake grelhado adiciona uma profundidade de sabor amadeirada que eleva a berinjela a um novo patamar de sofisticação.
+* **Técnica Confit Artesanal:** Vegetais cozidos lentamente no azeite de oliva extra virgem, garantindo maciez incomparável e conservação natural.
+* **Praticidade de Elite:** Tenha uma entrada digna de restaurante sempre pronta na sua despensa para receber visitas de última hora.
 
-<!-- INTRODUÇÃO -->
-Uma releitura sofisticada de um clássico siciliano. Nossa Caponata artesanal une o tradicional sabor agridoce dos vegetais com o toque surpreendente e *umami* do cogumelo shiitake grelhado.
+> "Sempre tenho um pote na geladeira aqui em Brasília. Salva meu lanche da tarde e todo mundo elogia quando sirvo de entrada nas reuniões. O shiitake dá um toque super especial e o brilho do azeite é lindo!" — Beatriz A., Cliente ChefBrico
 
-É o coringa perfeito para ter na despensa e transformar qualquer momento em uma ocasião gourmet.
-
-## Por que Você Vai Amar
-<!-- Check Verde -->
-*   **Sabor Complexo:** Agridoce clássico + Shiitake defumado.
-*   **Versatilidade:** Perfeito como aperitivo ou molho.
-*   **Técnica Confit:** Textura macia e sabor incomparável.
-
-> "A melhor caponata que já provei. O shiitake dá um toque super especial."
-> — *Fernanda M., Cliente ChefBrico*
-
-## O Que Vem no Pote
-<!-- Quadrados Cinzas -->
-*   Berinjela, pimentão e tomate selecionados.
-*   Shiitake grelhado.
-*   Azeite extra virgem e vinagre de maçã.
-*   Especiarias: *Za'atar*, tomilho e gergelim.
+## O que vem no Pote
+* **Vegetais Selecionados:** Berinjela, pimentões coloridos e tomate em cubos perfeitos.
+* **Shiitake Premium:** Grelhado previamente para selar o sabor e garantir a textura firme.
+* **Conservação Nobre:** Azeite de oliva extra virgem e vinagre de maçã de alta qualidade.
+* **Assinatura da Chef:** Mix de especiarias com *Za'atar*, tomilho e gergelim tostado.
 
 ## Sugestões de Consumo
-<!-- Quadrados Cinzas -->
-*   **Bruschetta:** Sirva sobre pão italiano tostado.
-*   **Molho Rústico:** Misture com macarrão recém-cozido.
-*   **Salada:** Adicione uma colherada sobre folhas verdes.
+* **Bruschetta Express:** Sirva generosamente sobre fatias de pão italiano ou baguete tostada com alho.
+* **Massa Rústica:** Misture meio pote ao seu espaguete recém-cozido para um jantar vegano sofisticado em segundos.
+* **Bowl Nutritivo:** Adicione uma colherada sobre folhas verdes, grão-de-bico ou quinoa para uma salada de alta gastronomia.
 
 ## Cozinha Criativa: Dicas da Chef
-<!-- Card Flutuante -->
-Eu amo a caponata clássica, mas queria dar a ela uma assinatura ChefBrico. O shiitake grelhado traz sofisticação.
+Eu amo a caponata clássica, mas queria dar a ela uma assinatura digital e gourmet. O segredo está no equilíbrio agridoce das uvas passas brancas com a acidez sutil do vinagre de maçã. Em Brasília, este pote é também uma excelente opção de presente para quem ama gastronomia de verdade.
 
-### Combina Perfeitamente Com
-Use esta caponata para finalizar o nosso **[Risoto Mediterrâneo](/receitas/risotos/mediterraneo/)**.
+### Harmonização Perfeita
+Use esta caponata para finalizar ou acompanhar o nosso **[Risoto Mediterrâneo](/receitas/risotos/mediterraneo/)**. Harmoniza maravilhosamente bem com um vinho tinto de uva Cabernet Sauvignon ou uma água tônica com Alecrim.
 
 ## Informações Adicionais
-*   **Peso Líquido:** 180g
-*   **Validade:** 3 meses (fechado). Após aberto, 7 dias refrigerado.
-*   **Dieta:** 100% Plant-Based (Vegano).
-*   **Origem:** Brasília-DF.
+* **Peso Líquido:** 180g (Serve de 4 a 6 pessoas como entrada).
+* **Validade:** 3 meses (fechado em local fresco). Após aberto, manter refrigerado e consumir em até 7 dias.
+* **Dieta:** 100% Plant-Based. Sem Glúten. Low Carb.
+* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
