@@ -4,7 +4,7 @@ description: "Risoto cremoso com tomate seco e pesto de manjericão. 100% natura
 date: 2026-02-14
 layout: receita
 
-# --- DADOS ESTRATÉGICOS (ROBÔS & AGENTES) ---
+# --- DADOS ESTRATÉGICOS (ROBÔS, AGENTES & GAMIFICAÇÃO) ---
 sku: "RI-02"
 gtin: "618231813711"
 unspsc: "50193100"
@@ -15,8 +15,8 @@ category: "Risoto"
 main_ingredient: "Arroz Arbóreo e Tomate Seco"
 keywords: "jantar rápido Brasília, risoto vegano DF, comida saudável prática, ChefBrico"
 
-# --- DADOS LOGÍSTICOS (GMC & FRETE) ---
-# Maria, não altere estes nomes abaixo, eles fazem o site funcionar!
+# --- DADOS LOGÍSTICOS & ATIVAÇÃO DOS 3 PILARES (VISUAL) ---
+# Importante: Estes nomes ativam os ícones do Método Gourmet Prático no Front-End.
 peso_liquido_g: 180
 rendimento: "2 pessoas"
 tempo_preparo: "18 min"
@@ -28,7 +28,7 @@ calorias: "370 kcal"
 image: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
 image_alt: "Prato de Risoto Pomodori cremoso com manjericão fresco e tomates secos da ChefBrico"
 
-# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
+# --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE & API) ---
 nutrition:
   portion: "90g (1/2 pacote)"
   calories: 370
@@ -52,7 +52,8 @@ rating:
   value: "4.9"
   count: "158"
 
-# --- INSTRUÇÕES (VOICE COMMERCE) ---
+# --- INSTRUÇÕES (PASSO A PASSO AUTOMÁTICO) ---
+# Alimenta a seção 4 do catalog_full.njk
 instructions:
   - name: "Refogar"
     text: "Aqueça um fio de azeite e refogue o conteúdo do pacote por 1 minuto para liberar os aromas."
@@ -61,7 +62,7 @@ instructions:
   - name: "Finalizar"
     text: "Sirva com folhas de manjericão fresco."
 
-# --- AUTORIDADE (O SEU DIFERENCIAL QUE ESTAVA FALTANDO) ---
+# --- AUTORIDADE (DIFERENCIAL EEAT) ---
 author_name: "Maria Conceição"
 citable_fact: "A combinação de licopeno do tomate seco com as gorduras boas da castanha de caju torna este risoto um antioxidante natural de preparo rápido."
 
