@@ -8,46 +8,51 @@ eleventyExcludeFromCollections: true
 
     {# 1. LOOP MESTRE DE INTEGRIDADE #}
     {% for page in collections.all %}
-        {# Filtra páginas técnicas, rascunhos ou excluídas #}
+        {# Filtra páginas técnicas, rascunhos ou caminhos nulos #}
         {% if not page.data.eleventyExcludeFromCollections and page.url %}
         <url>
             <loc>{{ meta.url }}{{ page.url | url }}</loc>
             <lastmod>{{ page.date.toISOString() }}</lastmod>
 
-            {# 2. LÓGICA DE PRIORIDADE AGÊNTICA 2026 #}
+            {# 2. LÓGICA DE PRIORIDADE AGÊNTICA E HIPERLOCAL 2026 #}
             {% if page.url == '/' %}
-                {# HOME: Frequência máxima para validar a marca #}
+                {# HOME: Centro de autoridade da marca no DF #}
                 <changefreq>daily</changefreq>
                 <priority>1.0</priority>
             
-            {% elseif '/chefbox/' in page.url %}
-                {# CHEFBOX + CLUB: Prioridade comercial máxima #}
+            {% elseif '/chefbox/' in page.url or '/clube/' in page.url %}
+                {# ÁREAS DE CONVERSÃO: Onde o lucro acontece (R$ 132,00) #}
                 <changefreq>daily</changefreq>
                 <priority>1.0</priority>
 
-            {% elseif '/fragmentos/' in page.url or '/blog/' in page.url %}
-                {# CONTEÚDO AEO: Notícias e tendências de saúde #}
+            {% elseif '/receitas/' in page.url or '/sabores/' in page.url %}
+                {# PRODUTOS: Cada sabor é uma entidade SEO/GEO #}
+                <changefreq>weekly</changefreq>
+                <priority>0.9</priority>
+
+            {% elseif '/entrega/' in page.url or '/brasilia/' in page.url %}
+                {# GEO SEO: Páginas específicas de bairros do DF #}
+                <changefreq>weekly</changefreq>
+                <priority>0.9</priority>
+
+            {% elseif '/fragmentos/' in page.url or '/blog/' in page.url or '/artigos/' in page.url %}
+                {# CONTEÚDO AEO: Educação sobre o Método e Saúde #}
                 <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
             
-            {% elseif '/entrega/' in page.url %}
-                {# GEO SEO: As 18 micro-regiões de Brasília #}
-                <changefreq>monthly</changefreq>
-                <priority>0.9</priority>
-            
             {% else %}
-                {# DEMAIS PÁGINAS (FAQ, RECEITAS) #}
+                {# DEMAIS PÁGINAS (FAQ, Sobre, Contato) #}
                 <changefreq>monthly</changefreq>
-                <priority>0.7</priority>
+                <priority>0.6</priority>
             {% endif %}
 
-            {# 3. O SEGREDO DO LMM (IA DE IMAGEM) #}
+            {# 3. O SEGREDO DO LMM (IA DE IMAGEM & PINTEREST READY) #}
             {% if page.data.image %}
             <image:image>
                 <image:loc>{{ meta.url }}{{ page.data.image }}</image:loc>
-                <image:title>{{ page.data.title | replace("&", "e") }}</image:title>
+                <image:title>{{ page.data.title | xml_escape }}</image:title>
                 {% if page.data.description %}
-                <image:caption>{{ page.data.description | replace("&", "e") | truncate(140) }}</image:caption>
+                <image:caption>{{ page.data.description | xml_escape | truncate(140) }}</image:caption>
                 {% endif %}
             </image:image>
             {% endif %}
