@@ -1,5 +1,5 @@
 <div class="top-bar" role="banner" style="background: #bfb084; color: #fff; text-align: center; padding: 8px; font-size: 0.85rem; font-weight: bold; letter-spacing: 1px;">
-    Gourmet Prático: Culinária saudável, sem desperdício de tempo e ingredientes!
+    GOURMET PRÁTICO: CULINÁRIA SAUDÁVEL, SEM DESPERDÍCIO DE TEMPO E INGREDIENTES!
 </div>
 
 <header class="site-header" style="background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000;">
@@ -19,18 +19,35 @@
 
         <nav class="nav-inner-side right desktop-only">
             <ul class="nav-list-tight">
-                <li class="has-dropdown-tight">
+                
+                <li class="has-mega-menu">
                     <a href="/receitas/" class="nav-link-tight">Cardápio ▾</a>
-                    <div class="dropdown-tight">
-                        <a href="/receitas/risotos/">Risotos</a>
-                        <a href="/receitas/sopas-funcionais/">Sopas</a>
-                        <a href="/receitas/refeicoes-integrais/">Integrais</a>
+                    
+                    <div class="mega-menu-content">
+                        <div class="mega-grid">
+                            <div class="mega-column">
+                                <h4 class="mega-title">POR SOLUÇÃO</h4>
+                                <a href="/receitas/solucoes/jantar-rapido/">⚡ Jantar Rápido</a>
+                                <a href="/receitas/solucoes/marmita-saudavel/">🍱 Marmita Fit</a>
+                                <a href="/receitas/solucoes/momento-a-dois/">🍷 Jantar a Dois</a>
+                                <a href="/receitas/solucoes/para-criancas/">👶 Para Crianças</a>
+                            </div>
+                            <div class="mega-column">
+                                <h4 class="mega-title">POR CATEGORIA</h4>
+                                <a href="/receitas/risotos/">Risotos</a>
+                                <a href="/receitas/sopas-funcionais/">Sopas</a>
+                                <a href="/receitas/refeicoes-integrais/">Integrais</a>
+                                <a href="/receitas/emporio-da-chef/">Empório</a>
+                            </div>
+                        </div>
                     </div>
                 </li>
+
                 <li><a href="/onde-encontrar/" class="nav-link-tight">Onde Entregamos</a></li>
+                
                 <li>
                     <a href="/chefbox/" class="btn-chefbox-war">
-                        MONTAR CHEFBOX 4=1
+                        🎁 CHEFBOX (4+1)
                     </a>
                 </li>
             </ul>
@@ -40,33 +57,23 @@
     </div>
 
     <div id="mobileDrawer" class="mobile-menu-drawer" style="display: none;">
-        <a href="/comida-de-verdade/">📘 O Método</a>
-        <a href="/receitas/">🍽️ Cardápio</a>
-        <a href="/onde-encontrar/">📍 Onde Entregamos</a>
-        <a href="/chefbox/" class="mobile-highlight">🎁 Montar ChefBox 4=1</a>
+        <a href="/comida-de-verdade/">O Método</a>
+        <a href="/receitas/">Cardápio Completo</a>
+        <a href="/onde-encontrar/">Onde Entregamos</a>
+        <a href="/chefbox/" class="mobile-highlight">🎁 Montar ChefBox (4+1)</a>
     </div>
 </header>
 
 <style>
-    /* 1. LAYOUT CENTRALIZADO (AI FIRST) */
+    /* LAYOUT CENTRALIZADO AI-FIRST */
     .header-contain-centered {
-        max-width: 1400px;
+        max-width: 1200px;
         margin: 0 auto;
         display: flex;
-        justify-content: center; /* Traz tudo para o meio */
+        justify-content: center; 
         align-items: center;
         padding: 5px 20px;
-        gap: 20px; /* Espaçamento curto entre os blocos e a logo */
-    }
-
-    .logo-axis {
-        flex: 0 0 auto;
-        z-index: 10;
-    }
-
-    .nav-inner-side {
-        display: flex;
-        align-items: center;
+        gap: 30px;
     }
 
     .nav-list-tight {
@@ -74,71 +81,86 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        gap: 20px; /* Distância curta entre os links */
+        gap: 25px;
         align-items: center;
     }
 
-    /* 2. ESTILO DOS LINKS (TIGHT & BOLD) */
     .nav-link-tight {
         text-decoration: none;
         color: #014039;
         font-weight: 700;
         font-size: 0.85rem;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
         white-space: nowrap;
     }
 
-    /* 3. BOTÃO LARANJA (ESTILO GUERRA LOCAL) */
+    /* ESTILO DO BOTÃO LARANJA */
     .btn-chefbox-war {
         background: #F2811D;
         color: #fff !important;
-        padding: 10px 18px;
-        border-radius: 50px;
+        padding: 10px 20px;
+        border-radius: 8px; /* Conforme imagem */
         font-weight: 800;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         text-decoration: none;
-        box-shadow: 0 4px 10px rgba(242, 129, 29, 0.3);
-        white-space: nowrap;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    /* 4. ACORDEÃO / DROPDOWN REFINADO */
-    .has-dropdown-tight { position: relative; }
-    .dropdown-tight {
+    /* SISTEMA DO MEGA MENU (ACORDEÃO DESKTOP) */
+    .has-mega-menu { position: relative; }
+    
+    .mega-menu-content {
         display: none;
         position: absolute;
         top: 100%;
-        left: 0;
+        right: -100px; /* Ajuste para centralizar sob o menu */
         background: #fff;
-        min-width: 160px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        width: 450px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         border-radius: 8px;
-        padding: 10px 0;
-        border-top: 3px solid #F2811D;
-    }
-    .has-dropdown-tight:hover .dropdown-tight { display: block; }
-    .dropdown-tight a {
-        display: block;
-        padding: 8px 20px;
-        color: #333;
-        text-decoration: none;
-        font-size: 0.8rem;
+        padding: 25px;
+        z-index: 1000;
+        border-top: 4px solid #014039;
     }
 
-    /* 5. MOBILE E RESPONSIVIDADE */
+    .has-mega-menu:hover .mega-menu-content { display: block; }
+
+    .mega-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .mega-title {
+        font-size: 0.75rem;
+        color: #999;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+    }
+
+    .mega-column a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 8px 0;
+        transition: 0.2s;
+    }
+
+    .mega-column a:hover { color: #F2811D; padding-left: 5px; }
+
+    /* RESPONSIVIDADE */
     @media (max-width: 992px) {
         .desktop-only { display: none; }
         .header-contain-centered { justify-content: space-between; }
-        .logo-axis { order: 1; }
-        .mobile-menu-btn { order: 2; display: block; background: none; border: none; font-size: 1.8rem; cursor: pointer; }
-        
+        .mobile-menu-btn { display: block; background: none; border: none; font-size: 1.8rem; cursor: pointer; }
         .mobile-menu-drawer { 
             position: absolute; top: 100%; left: 0; width: 100%; 
-            background: #014039; display: none; flex-direction: column; 
-            z-index: 999;
+            background: #014039; flex-direction: column; 
         }
         .mobile-menu-drawer a { color: #fff; padding: 15px 20px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .mobile-highlight { background: #F2811D; font-weight: bold; text-align: center; }
     }
 </style>
 
