@@ -1,5 +1,5 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V9.3 - AGENTIC ENHANCED)
+// ARQUIVO: js/app.js (VERSÃO V9.4 - PIX AUTOMÁTICO & AGENTIC)
 // =================================================================
 
 let chefboxCart = [];
@@ -7,7 +7,7 @@ const MAX_SLOTS = 5;
 const PRECO_FIXO_KIT = 132.00;
 const CNPJ_PIX = "36.014.833/0001-59";
 
-// 1. GERADORES DE IDENTIDADE (Preservados)
+// 1. GERADORES DE IDENTIDADE
 function generateOrderID() {
     return 'GP' + Math.floor(100000 + Math.random() * 900000);
 }
@@ -25,7 +25,7 @@ function getAgentID() {
     return 'Busca Direta';
 }
 
-// 2. FUNÇÕES DO CARRINHO (Integridade Total)
+// 2. FUNÇÕES DO CARRINHO (INTEGRIDADE TOTAL DOS SLOTS)
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
     if (saved) { chefboxCart = JSON.parse(saved); }
@@ -33,7 +33,6 @@ function loadCart() {
 
 function saveCart() {
     localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
-    // NOVIDADE: Sincroniza estado para leitura de Agentes de IA (Meta-Data Dinâmico)
     document.documentElement.setAttribute('data-cart-count', chefboxCart.length);
 }
 
@@ -57,6 +56,8 @@ function renderRuler() {
     const statusText = document.getElementById('game-status-text');
     const btnFinish = document.getElementById('btn-finish-game');
     const slots = document.querySelectorAll('.slot-circle');
+
+    if (!slots.length) return;
 
     slots.forEach((slot, i) => {
         slot.classList.remove('filled', 'gift-active');
@@ -86,7 +87,7 @@ function renderRuler() {
     }
 }
 
-// 3. O NOVO TICKET DE VENDA (A2P PROTOCOL - Otimizado)
+// 3. O TICKET DE VENDA E INTERFACE DE PAGAMENTO PIX
 async function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
@@ -133,17 +134,71 @@ ${msgItens}
 _Origem: ${agent}_
 _Maria, já estou fazendo o Pix para garantir meu mimo!_`;
 
+    // Ação 1: Abre o WhatsApp
     window.open(`https://wa.me/5561996659880?text=${encodeURIComponent(textoZap)}`, '_blank');
     
+    // Ação 2: Salva status de membro
     localStorage.setItem('gp_member', 'true');
     localStorage.setItem('gp_name', name);
     localStorage.setItem('gp_fancode', fanCode);
 
-    if (typeof closeCheckoutModal === "function") closeCheckoutModal();
+    // Ação 3: Substitui formulário pelo QR Code do PIX na tela
+    showPixScreen();
 }
 
-function openCheckoutModal() { document.getElementById('checkout-modal').style.display = 'flex'; }
-function closeCheckoutModal() { document.getElementById('checkout-modal').style.display = 'none'; }
+function showPixScreen() {
+    const modalBox = document.querySelector('.modal-box');
+    if (modalBox) {
+        modalBox.innerHTML = `
+            <div style="text-align: center; padding: 10px;">
+                <h3 style="color: #014039; margin-bottom: 10px;">Pedido Enviado! ✅</h3>
+                <p style="font-size: 0.9rem; color: #555; line-height: 1.4;">
+                    Maria já recebeu seu pedido no WhatsApp.<br>
+                    <strong>Pague agora para agilizar sua entrega:</strong>
+                </p>
+                
+                <div style="background: #fdfbf7; padding: 20px; border-radius: 16px; margin: 20px 0; border: 2px solid #F2811D; display: inline-block;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126360014br.gov.bcb.pix0114360148330001595204000053039865406132.005802BR5910ChefBrico6008Brasilia62070503***6304E64A" 
+                         alt="QR Code Pix R$ 132,00" style="width: 180px; height: 180px; display: block; margin: 0 auto;">
+                    <p style="font-weight: 800; color: #F2811D; margin: 10px 0 0 0; font-size: 1.2rem;">R$ 132,00</p>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <button onclick="copyPixKey()" id="btn-copy-pix" 
+                            style="background: #014039; color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-size: 0.85rem; font-weight: bold;">
+                        📋 COPIAR CHAVE CNPJ
+                    </button>
+                </div>
+                
+                <p onclick="location.reload()" style="color: #999; cursor: pointer; font-size: 0.8rem; text-decoration: underline;">
+                    Concluir e voltar ao site
+                </p>
+            </div>
+        `;
+    }
+}
+
+function copyPixKey() {
+    navigator.clipboard.writeText(CNPJ_PIX).then(() => {
+        const btn = document.getElementById('btn-copy-pix');
+        btn.innerText = "✅ COPIADO!";
+        btn.style.background = "#25D366";
+        setTimeout(() => {
+            btn.innerText = "📋 COPIAR CHAVE CNPJ";
+            btn.style.background = "#014039";
+        }, 2000);
+    });
+}
+
+function openCheckoutModal() { 
+    const modal = document.getElementById('checkout-modal');
+    if(modal) modal.style.display = 'flex'; 
+}
+
+function closeCheckoutModal() { 
+    const modal = document.getElementById('checkout-modal');
+    if(modal) modal.style.display = 'none'; 
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
