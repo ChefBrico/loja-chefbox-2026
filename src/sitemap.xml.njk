@@ -50,9 +50,9 @@ eleventyExcludeFromCollections: true
             {% if page.data.image %}
             <image:image>
                 <image:loc>{{ meta.url }}{{ page.data.image }}</image:loc>
-                <image:title>{{ page.data.title | xml_escape }}</image:title>
+                <image:title>{{ page.data.title | escape }}</image:title>
                 {% if page.data.description %}
-                <image:caption>{{ page.data.description | xml_escape | truncate(140) }}</image:caption>
+                <image:caption>{{ page.data.description | escape | truncate(140) }}</image:caption>
                 {% endif %}
             </image:image>
             {% endif %}
