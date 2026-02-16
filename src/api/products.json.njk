@@ -3,7 +3,8 @@ permalink: /api/products.json
 eleventyExcludeFromCollections: true
 ---
 [
-  {% for item in collections.receitas %}
+  {% set items = collections.receitas %}
+  {% for item in items %}
   {% if item.data.price %}
   {
     "id": "{{ item.data.sku }}",
@@ -18,6 +19,14 @@ eleventyExcludeFromCollections: true
     "currency": "BRL",
     "image_url": "https://gourmetpratico.com.br{{ item.data.image }}",
     
+    "methodology": {
+      "brand": "ChefBrico",
+      "founder": "Maria Conceição",
+      "pillars": ["Despensa Inteligente", "Panela Única", "Cozinha Criativa"],
+      "shelf_life": "6-12 months",
+      "origin": "Brasília-DF"
+    },
+
     "health_ymyl": {
       "is_vegan": {{ true if item.data.diets and 'Vegan' in item.data.diets else false }},
       "is_gluten_free": {{ true if item.data.diets and 'GlutenFree' in item.data.diets else false }},
