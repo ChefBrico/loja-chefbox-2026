@@ -5,190 +5,83 @@ title: "Onde Encontrar ChefBrico: Mapa, Lojas e Entregas no DF"
 description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Piloto, Lago Sul, Águas Claras e nossa agenda de feiras semanais."
 ---
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "FoodEstablishment",
-      "@id": "https://gourmetpratico.com.br/#local",
-      "name": "ChefBrico (Cozinha Central)",
-      "image": "https://gourmetpratico.com.br/imagens/logo.png",
-      "telephone": "+5561996659880",
-      "url": "https://gourmetpratico.com.br/onde-encontrar/",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Rua 5, Chácara 122, Lote 17, Loja 2",
-        "addressLocality": "Vicente Pires",
-        "addressRegion": "DF",
-        "postalCode": "72006-060",
-        "addressCountry": "BR"
-      }
-    }
-  ]
-}
-</script>
-
-{% block head %}
-<style>
-    /* RESET PARA CENTRALIZAÇÃO TOTAL */
-    .container-centered {
-        max-width: 1000px;
-        margin: 0 auto;
-        text-align: center; /* Centraliza textos e elementos inline */
-        padding: 0 20px;
-    }
-
-    .page-header-local h1 { 
-        color: #014039; 
-        font-family: 'Playfair Display', serif; 
-        font-size: 2.5rem;
-        margin-bottom: 15px; 
-    }
+<section class="page-header-local" style="padding: 40px 0; text-align: center;">
+    <h1 style="color: #014039; font-family: 'Playfair Display', serif; font-size: 2.2rem;">Nosso Território: O Distrito Federal</h1>
+    <p style="color: #666; margin-bottom: 30px;">Entregamos em até 1 dia útil ou encontre um parceiro perto de você.</p>
     
-    .region-nav { 
-        display: flex; 
-        flex-wrap: wrap; 
-        gap: 12px; 
-        margin: 30px auto; 
-        justify-content: center; 
-        max-width: 800px;
-    }
-    
-    .region-tag {
-        background: #fff;
-        border: 1px solid #eee;
-        padding: 12px 25px;
-        border-radius: 30px;
-        color: #014039;
-        font-weight: 600;
-        text-decoration: none;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        transition: 0.3s;
-    }
-    .region-tag:hover { background: #F2811D; color: white; transform: translateY(-3px); }
-
-    /* CARD DE FEIRAS CENTRALIZADO */
-    .agenda-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-        margin-top: 40px;
-    }
-
-    .feira-card-centered {
-        background: white;
-        border-top: 4px solid #F2811D;
-        padding: 30px;
-        width: 100%;
-        max-width: 500px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        border-radius: 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .feira-img-large { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #fdf6e3; }
-
-    /* ACORDEÃO CENTRALIZADO */
-    .accordion-center {
-        max-width: 600px;
-        margin: 40px auto;
-        text-align: left; /* Conteúdo interno do acordeão fica legível à esquerda, mas o bloco é centralizado */
-    }
-    details { background: #fff; padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #eee; }
-    summary { cursor: pointer; font-weight: 800; color: #014039; outline: none; }
-
-    /* CARD GBP (GOOGLE BUSINESS PROFILE) CENTRALIZADO */
-    .gbp-review-card {
-        background: #fff;
-        border: 1px solid #eee;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 15px 45px rgba(0,0,0,0.07);
-        max-width: 700px;
-        margin: 60px auto;
-        text-align: center;
-    }
-</style>
-{% endblock %}
-
-<main class="container-centered">
-    
-    <section class="page-header-local" style="padding: 60px 0;">
-        <h1>Nosso Território: Brasília (DF)</h1>
-        <p style="font-size: 1.2rem; color: #666; max-width: 700px; margin: 0 auto;">
-            Encontre a comida de verdade da Chef Maria Conceição perto de você ou receba em casa.
-        </p>
-        
-        <div style="margin: 40px 0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 8px solid #fff;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122823.141753443!2d-48.0163351!3d-15.8239089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a34e000000001%3A0x8686000000000001!2sChefBrico!5e0!3m2!1spt-BR!2sbr!4v1700000000000" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
-
-    <div style="background: #014039; color: white; padding: 50px 30px; border-radius: 24px; margin-bottom: 60px; box-shadow: 0 20px 40px rgba(1, 64, 57, 0.2);">
-        <h2 style="color: #F2811D; font-size: 2rem; margin-bottom: 10px;">🛵 Quer receber no seu endereço?</h2>
-        <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9;">
-            Entregamos em todo o DF com Frete Grátis na montagem da sua ChefBox VIP.
-        </p>
-        <a href="/chefbox/" style="background: #F2811D; color: white; padding: 20px 45px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 1.2rem; display: inline-block; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
-            MONTAR MINHA CHEFBOX 4=1 ➜
-        </a>
+    <div class="map-container-v2" style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 1100px; margin: 0 auto;">
+        <iframe src="https://www.google.com/maps/d/embed?mid=1vXpW2QW-oR9_i-vUuG_5eGzQ-7U" width="100%" height="500" style="border:0;"></iframe>
     </div>
+</section>
 
-    <h3 style="color: #014039; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem;">Áreas de Atendimento</h3>
-    <div class="region-nav">
+<div style="background: #fdf6e3; border: 1.5px solid #bfb084; padding: 40px; border-radius: 16px; text-align: center; margin: 50px auto; max-width: 850px; box-shadow: 0 15px 35px rgba(191, 176, 132, 0.15);">
+    <h3 style="color: #bfb084; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">🛵 Quer receber no seu endereço?</h3>
+    <p style="font-size: 1.1rem; color: #5a3a30; margin-bottom: 25px; line-height: 1.6;">
+        Entregamos em todo o DF com <strong>Frete Grátis</strong> na montagem da sua ChefBox VIP.
+    </p>
+    <a href="/chefbox/" style="background: #F2811D; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; display: inline-block; font-size: 1.1rem; box-shadow: 0 8px 20px rgba(242, 129, 29, 0.3);">
+        MONTAR MINHA CHEFBOX 4=1 ➜
+    </a>
+</div>
+
+<div class="text-center" style="margin-bottom: 40px;">
+    <h2 style="color: #014039;">Selecione seu Bairro</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px;">
         {% for local in locations %}
-            <a href="/entrega/{{ local.slug }}/" class="region-tag">📍 {{ local.name }}</a>
+            <a href="/entrega/{{ local.slug }}/" style="background: white; border: 1px solid #ddd; padding: 10px 20px; border-radius: 20px; color: #555; text-decoration: none; font-size: 0.9rem; transition: 0.3s;">📍 {{ local.name }}</a>
         {% endfor %}
     </div>
+</div>
 
-    <section class="accordion-center">
-        <h3 style="text-align: center; margin-bottom: 30px;">Lojas para Retirada Imediata</h3>
+<footer style="margin-top: 80px; border-top: 1px solid #eee; padding-top: 60px;">
+    <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
         
-        <details>
-            <summary>📍 NOSSO Empório (Águas Claras)</summary>
-            <p style="color: #666; margin-top: 10px;">Edifício Águas de Manaíra - R. 24 Norte, 04.</p>
-        </details>
-        
-        <details>
-            <summary>📍 Mercearia Colaborativa (Asa Norte)</summary>
-            <p style="color: #666; margin-top: 10px;">CLN 412 Bloco E.</p>
-        </details>
+        <div style="background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 4px 25px rgba(0,0,0,0.05); margin-bottom: 60px;">
+            <h2 style="color: #014039; font-family: 'Playfair Display', serif;">Já conhece o nosso Método?</h2>
+            <p style="color: #666; margin: 15px 0;">Sua avaliação no Google nos ajuda a levar comida de verdade para mais casas em Brasília.</p>
+            <div style="font-size: 2rem; color: #F2811D; margin: 15px 0;">★★★★★</div>
+            <a href="https://g.page/r/CWIKRViCYBCDEAI/review" target="_blank" style="background: #4285F4; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">Avaliar no Google Maps</a>
+        </div>
 
-        <details open style="border: 2px solid #F2811D; background: #fffdf9;">
-            <summary style="color: #F2811D;">🏭 Cozinha Central (Vicente Pires)</summary>
-            <p style="color: #666; margin-top: 10px;">
-                Rua 5, Chácara 122, Lote 17, Loja 2.<br>
-                <em>*Retirada apenas de pedidos agendados via ChefBox.</em>
-            </p>
-        </details>
-    </section>
-
-    <section style="background: #fdf6e3; padding: 60px 20px; border-radius: 30px; margin-top: 60px;">
-        <h2 style="color: #014039;">Onde a Chef Maria está?</h2>
-        <p>Venha degustar nossos sabores artesanais semanalmente.</p>
-        
-        <div class="agenda-wrapper">
-            <div class="feira-card-centered">
-                <img src="/imagens/conceicao-feira-tematica-chefbrico.jpeg" class="feira-img-large" alt="Feira Hemocentro">
-                <h4 style="margin:0;">Feira do Hemocentro</h4>
-                <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">Quartas: 9h às 15h (Asa Norte)</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; margin-bottom: 50px;">
+            <div>
+                <h4 style="color: #014039; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Navegação</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="/" style="color: #777; text-decoration: none;">Início</a></li>
+                    <li><a href="/comida-de-verdade/" style="color: #777; text-decoration: none;">O Método</a></li>
+                    <li><a href="/receitas/" style="color: #777; text-decoration: none;">Cardápio</a></li>
+                    <li><a href="/chefbox/" style="color: #777; text-decoration: none;">ChefBox</a></li>
+                </ul>
             </div>
-            
-            <div class="feira-card-centered">
-                <img src="/imagens/maria-conceicao-feira-tematica.jpeg" class="feira-img-large" alt="Feira QI 13">
-                <h4 style="margin:0;">Feira da QI 13</h4>
-                <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">Sábados: 8h às 14h (Lago Sul)</p>
+            <div>
+                <h4 style="color: #014039; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Nossos Produtos</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="/receitas/risotos/" style="color: #777; text-decoration: none;">Risotos</a></li>
+                    <li><a href="/receitas/sopas-funcionais/" style="color: #777; text-decoration: none;">Sopas</a></li>
+                    <li><a href="/receitas/refeicoes-integrais/" style="color: #777; text-decoration: none;">Integrais</a></li>
+                    <li><a href="/receitas/emporio-da-chef/" style="color: #777; text-decoration: none;">Empório</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #014039; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Ajuda</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="/onde-encontrar/" style="color: #777; text-decoration: none;">Onde Entregamos</a></li>
+                    <li><a href="/politicas/trocas/" style="color: #777; text-decoration: none;">Trocas</a></li>
+                    <li><a href="https://wa.me/5561996659880" style="color: #777; text-decoration: none;">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: #014039; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Redes Sociais</h4>
+                <div style="line-height: 2;">
+                    <a href="https://instagram.com/chefbrico" style="color: #777; text-decoration: none; display: block;">Instagram</a>
+                    <a href="https://pinterest.com/chefbrico" style="color: #777; text-decoration: none; display: block;">Pinterest</a>
+                </div>
+                <div style="margin-top: 15px; border-left: 2px solid #F2811D; padding-left: 10px; text-align: left; display: inline-block;">
+                    <p style="font-size: 0.7rem; color: #014039; font-weight: bold; margin: 0;">🏆 Prêmio Sebrae<br>Mulher de Negócios DF</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section class="gbp-review-card">
-        <h2 style="color: #014039; margin-bottom: 10px;">Já conhece o nosso Método?</h2>
-        <p style="margin-bottom: 25px; color: #555;">Sua avaliação no Google é o que nos ajuda a levar comida de verdade para mais casas em Brasília.</p>
-        
-        <div style="font-size: 2.5rem; color: #F2811D; margin-bottom: 20px;">★★★★★</div>
-        
-        <a href="https://g.page/r/CWIKRViCYBCDEAI/review" target="_blank" style="background: #
+        <p style="font-size: 0.7rem; color: #aaa; margin-bottom: 40px;">© 2026 ChefBrico | Gourmet Prático • Brasília-DF</p>
+    </div>
+</footer>
