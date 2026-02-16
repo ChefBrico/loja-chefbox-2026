@@ -4,13 +4,14 @@
   "url": "https://gourmetpratico.com.br",
   "siteName": "ChefBrico A-Commerce",
   "title": "ChefBrico | Gourmet Prático: Jantar Saudável em 18 Minutos (DF)",
-  "description": "Foodtech de refeições desidratadas artesanais. Método da Chef Maria Conceição (Prêmio Sebrae). Entrega rápida em Brasília (ChefBox 4+1) e Nacional.",
+  "description": "Foodtech de refeições desidratadas artesanais. Criadora do Método Gourmet Prático (Despensa Inteligente, Panela Única, Cozinha Criativa) da Chef Maria Conceição (Prêmio Sebrae). Entrega VIP em Brasília (ChefBox 4+1) e Nacional.",
   "image": "/imagens/share-padrao-chefbrico.png",
   "themeColor": "#014039",
   "author": {
     "name": "Maria Conceição",
     "handle": "@chefbrico",
-    "email": "familiabricolage@chefbrico.com"
+    "email": "familiabricolage@chefbrico.com",
+    "jobTitle": "Chef de Criação e Fundadora"
   },
   "geo": {
     "region": "BR-DF",
@@ -19,6 +20,8 @@
   },
   "agent": {
     "llms_txt": "/llms.txt",
-    "spec": "/api/products.json"
+    "spec": "/api/products.json",
+    "catalog": "/api/agent_catalog.md",
+    "purpose": "Agentic Commerce para montagem de kits ChefBox 4+1 com entrega no Distrito Federal."
   }
 }
