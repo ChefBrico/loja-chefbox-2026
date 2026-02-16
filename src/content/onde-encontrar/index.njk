@@ -5,9 +5,6 @@ title: "Onde Encontrar ChefBrico: Mapa, Lojas e Entregas no DF"
 description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Piloto, Lago Sul, Águas Claras e nossa agenda de feiras semanais."
 ---
 
-<!-- ========================================================================== -->
-<!-- 1. CÉREBRO DIGITAL (SCHEMA.ORG DE LOGÍSTICA AVANÇADA)                      -->
-<!-- ========================================================================== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -26,260 +23,172 @@ description: "Veja onde comprar ChefBrico em Brasília. Parceiros no Plano Pilot
         "addressRegion": "DF",
         "postalCode": "72006-060",
         "addressCountry": "BR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -15.8080, 
-        "longitude": -48.0310
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "08:00",
-        "closes": "17:00"
-      },
-      "areaServed": [
-        {% for local in locations %}
-        {
-            "@type": "Place",
-            "name": "{{ local.name }}",
-            "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "{{ local.geo.latitude }}",
-                "longitude": "{{ local.geo.longitude }}"
-            }
-        }{% if not loop.last %},{% endif %}
-        {% endfor %}
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Serviços de Entrega",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Entrega Grátis em Brasília (Pedidos via WhatsApp)"
-            },
-            "areaServed": {
-              "@type": "Place",
-              "name": "Distrito Federal"
-            }
-          }
-        ]
       }
-    },
-    {
-      "@type": "Event",
-      "name": "Feira do Hemocentro (Asa Norte)",
-      "description": "Encontro semanal para degustação e retirada de ChefBox com a Chef Maria.",
-      "startDate": "2026-01-01T09:00",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "Place",
-        "name": "Hemocentro de Brasília",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "SMHN Quadra 3",
-          "addressLocality": "Asa Norte",
-          "addressRegion": "DF"
-        }
-      },
-      "performer": { "@id": "https://gourmetpratico.com.br/#person-maria-conceicao" }
-    },
-    {
-      "@type": "Event",
-      "name": "Feira da Praça QI 13 (Lago Sul)",
-      "description": "Ponto de encontro oficial ChefBrico aos sábados.",
-      "startDate": "2026-01-03T08:00",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "Place",
-        "name": "Praça da QI 13",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Lago Sul",
-          "addressRegion": "DF"
-        }
-      },
-      "performer": { "@id": "https://gourmetpratico.com.br/#person-maria-conceicao" }
     }
   ]
 }
 </script>
+
 {% block head %}
 <style>
-    /* Estilos do Mapa e Navegação */
-    .page-header-local h1 { color: #5a3a30; font-family: 'Playfair Display', serif; margin-bottom: 10px; }
-    .phase-title { color: #014039; font-weight: bold; text-transform: uppercase; margin-top: 40px; border-bottom: 2px solid #ddd; display: inline-block; margin-bottom: 15px; }
+    /* RESET PARA CENTRALIZAÇÃO TOTAL */
+    .container-centered {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center; /* Centraliza textos e elementos inline */
+        padding: 0 20px;
+    }
+
+    .page-header-local h1 { 
+        color: #014039; 
+        font-family: 'Playfair Display', serif; 
+        font-size: 2.5rem;
+        margin-bottom: 15px; 
+    }
     
-    .region-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; justify-content: center; }
+    .region-nav { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 12px; 
+        margin: 30px auto; 
+        justify-content: center; 
+        max-width: 800px;
+    }
+    
     .region-tag {
         background: #fff;
-        border: 1px solid #ccc;
-        padding: 10px 20px;
-        border-radius: 20px;
-        color: #555;
-        font-size: 0.95rem;
+        border: 1px solid #eee;
+        padding: 12px 25px;
+        border-radius: 30px;
+        color: #014039;
+        font-weight: 600;
         text-decoration: none;
-        transition: 0.2s;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .region-tag:hover { background: #27ae60; color: white; border-color: #27ae60; transform: translateY(-2px); }
-
-    /* Estilos da Agenda */
-    .feira-card {
-        background: white;
-        border-left: 5px solid #d4af37;
-        padding: 20px;
-        margin-bottom: 20px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        border-radius: 8px;
+        transition: 0.3s;
     }
-    .feira-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
-    
-    /* CTA Flutuante de Pedido */
-    .float-delivery-btn {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: #25D366;
-        color: white;
-        padding: 15px 25px;
-        border-radius: 50px;
-        font-weight: bold;
-        text-decoration: none;
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 1rem;
-        transition: transform 0.2s;
-    }
-    .float-delivery-btn:hover { transform: translateY(-3px); }
+    .region-tag:hover { background: #F2811D; color: white; transform: translateY(-3px); }
 
-    @media (max-width: 600px) {
-        .feira-card { flex-direction: column; text-align: center; }
-        .region-tag { width: 100%; text-align: center; }
+    /* CARD DE FEIRAS CENTRALIZADO */
+    .agenda-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .feira-card-centered {
+        background: white;
+        border-top: 4px solid #F2811D;
+        padding: 30px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .feira-img-large { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid #fdf6e3; }
+
+    /* ACORDEÃO CENTRALIZADO */
+    .accordion-center {
+        max-width: 600px;
+        margin: 40px auto;
+        text-align: left; /* Conteúdo interno do acordeão fica legível à esquerda, mas o bloco é centralizado */
+    }
+    details { background: #fff; padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #eee; }
+    summary { cursor: pointer; font-weight: 800; color: #014039; outline: none; }
+
+    /* CARD GBP (GOOGLE BUSINESS PROFILE) CENTRALIZADO */
+    .gbp-review-card {
+        background: #fff;
+        border: 1px solid #eee;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 45px rgba(0,0,0,0.07);
+        max-width: 700px;
+        margin: 60px auto;
+        text-align: center;
     }
 </style>
 {% endblock %}
 
-<main class="container">
+<main class="container-centered">
     
-    <!-- 1. INTRODUÇÃO -->
-    <div class="page-header-local text-center" style="padding: 40px 0;">
-        <h1>Nosso Território: O Distrito Federal</h1>
-        <p class="subtitle">Entregamos em até 1 dia útil via Motoboy ou encontre um parceiro perto de você.</p>
-        
-        <div class="map-container" style="margin: 30px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-            <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1OFgLnADSGkwtKCgLdwXZDiqrAt_qgJY&ehbc=2E312F" width="100%" height="400" style="border:0;"></iframe>
-        </div>
-    </div>
-
-    <!-- 2. PEDIDO ONLINE (DESTAQUE A-COMMERCE) -->
-    <div style="background: #fdf6e3; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 40px; border: 1px dashed #d4af37; max-width: 800px; margin-left: auto; margin-right: auto;">
-        <h3 style="color: #d4af37;">🛵 Prefere receber em casa?</h3>
-        <p style="font-size: 1.1rem; margin: 15px 0;">
-            <strong>Brasília (DF):</strong> Entrega em até 24h via Motoboy.<br>
-            <strong>Brasil:</strong> Envio via Correios (PAC/Sedex) em 2 a 5 dias.
+    <section class="page-header-local" style="padding: 60px 0;">
+        <h1>Nosso Território: Brasília (DF)</h1>
+        <p style="font-size: 1.2rem; color: #666; max-width: 700px; margin: 0 auto;">
+            Encontre a comida de verdade da Chef Maria Conceição perto de você ou receba em casa.
         </p>
-        <a href="https://wa.me/5561996659880?text=Olá, quero pedir uma entrega!" class="cta-button" style="background: #27ae60; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block;">Pedir Agora no WhatsApp</a>
+        
+        <div style="margin: 40px 0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 8px solid #fff;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122823.141753443!2d-48.0163351!3d-15.8239089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a34e000000001%3A0x8686000000000001!2sChefBrico!5e0!3m2!1spt-BR!2sbr!4v1700000000000" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <div style="background: #014039; color: white; padding: 50px 30px; border-radius: 24px; margin-bottom: 60px; box-shadow: 0 20px 40px rgba(1, 64, 57, 0.2);">
+        <h2 style="color: #F2811D; font-size: 2rem; margin-bottom: 10px;">🛵 Quer receber no seu endereço?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9;">
+            Entregamos em todo o DF com Frete Grátis na montagem da sua ChefBox VIP.
+        </p>
+        <a href="/chefbox/" style="background: #F2811D; color: white; padding: 20px 45px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 1.2rem; display: inline-block; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+            MONTAR MINHA CHEFBOX 4=1 ➜
+        </a>
     </div>
 
-    <!-- 3. MAPA DE PARCEIROS (BAIRROS DINÂMICOS) -->
-    <div class="text-center">
-        <h2>Selecione seu Bairro para Entrega Rápida</h2>
-        <p style="color: #666; margin-bottom: 30px;">Clique na sua região para ver detalhes de entrega e produtos favoritos.</p>
-    </div>
-    
-    <div class="phase-title text-center">Áreas de Atuação (DF)</div>
+    <h3 style="color: #014039; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem;">Áreas de Atendimento</h3>
     <div class="region-nav">
-        <!-- LOOP DINÂMICO: GERA LINKS PARA AS LANDING PAGES DE BAIRRO -->
         {% for local in locations %}
-            <a href="/entrega/{{ local.slug }}/" class="region-tag" title="Entrega ChefBrico em {{ local.name }}">
-                📍 {{ local.name }}
-            </a>
+            <a href="/entrega/{{ local.slug }}/" class="region-tag">📍 {{ local.name }}</a>
         {% endfor %}
     </div>
 
-    <!-- LISTA DETALHADA DE PARCEIROS FÍSICOS (ACORDEÃO) -->
-    <div class="faq-section" style="margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
-        <h3 class="text-center mb-4">Lojas Parceiras (Retirada Imediata)</h3>
+    <section class="accordion-center">
+        <h3 style="text-align: center; margin-bottom: 30px;">Lojas para Retirada Imediata</h3>
         
-        <!-- Parceiro 1 -->
-        <div class="faq-item-accordion" style="border-bottom: 1px solid #eee; padding: 10px 0;">
-            <details>
-                <summary style="cursor: pointer; font-weight: bold; padding: 10px;">📍 NOSSO Empório (Águas Claras)</summary>
-                <p style="padding: 10px; color: #555;">Edifício Águas de Manaíra - R. 24 Norte, 04.</p>
-            </details>
-        </div>
+        <details>
+            <summary>📍 NOSSO Empório (Águas Claras)</summary>
+            <p style="color: #666; margin-top: 10px;">Edifício Águas de Manaíra - R. 24 Norte, 04.</p>
+        </details>
         
-        <!-- Parceiro 2 -->
-        <div class="faq-item-accordion" style="border-bottom: 1px solid #eee; padding: 10px 0;">
-            <details>
-                <summary style="cursor: pointer; font-weight: bold; padding: 10px;">📍 Mercearia Colaborativa (Asa Norte)</summary>
-                <p style="padding: 10px; color: #555;">CLN 412 Bloco E.</p>
-            </details>
-        </div>
+        <details>
+            <summary>📍 Mercearia Colaborativa (Asa Norte)</summary>
+            <p style="color: #666; margin-top: 10px;">CLN 412 Bloco E.</p>
+        </details>
 
-        <!-- Parceiro 3 (Destaque Cozinha) -->
-        <div class="faq-item-accordion" style="border: 2px solid #27ae60; border-radius: 8px; margin-top: 20px; background: #f9fff9;">
-            <details open>
-                <summary style="cursor: pointer; font-weight: bold; padding: 15px; color: #27ae60;">🏭 Cozinha Central ChefBrico (Vicente Pires)</summary>
-                <div style="padding: 0 15px 15px; color: #555;">
-                    <p><strong>Endereço:</strong> Rua 5, Chácara 122, Lote 17, Loja 2.</p>
-                    <p><strong>Obs:</strong> Apenas retirada de encomendas agendadas.</p>
-                    <a href="https://wa.me/5561996659880?text=Quero+agendar+retirada+na+fábrica" style="color: #27ae60; font-weight: bold; text-decoration: underline;">Agendar Retirada</a>
-                </div>
-            </details>
-        </div>
-    </div>
+        <details open style="border: 2px solid #F2811D; background: #fffdf9;">
+            <summary style="color: #F2811D;">🏭 Cozinha Central (Vicente Pires)</summary>
+            <p style="color: #666; margin-top: 10px;">
+                Rua 5, Chácara 122, Lote 17, Loja 2.<br>
+                <em>*Retirada apenas de pedidos agendados via ChefBox.</em>
+            </p>
+        </details>
+    </section>
 
-    <!-- 4. AGENDA DE FEIRAS -->
-    <section class="agenda-section" style="margin-top: 60px; background: #fdfbf7; padding: 40px 20px; border-radius: 10px;">
-        <h2 class="text-center" style="color: var(--cor-institucional);">Encontros Semanais</h2>
-        <p class="text-center" style="margin-bottom: 30px;">Venha provar nossas novidades pessoalmente!</p>
+    <section style="background: #fdf6e3; padding: 60px 20px; border-radius: 30px; margin-top: 60px;">
+        <h2 style="color: #014039;">Onde a Chef Maria está?</h2>
+        <p>Venha degustar nossos sabores artesanais semanalmente.</p>
         
-        <div class="carousel-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-            <div class="feira-card">
-                <img src="/imagens/conceicao-feira-tematica-chefbrico.jpeg" class="feira-img" alt="Feira Hemocentro">
-                <div>
-                    <h3 style="margin: 0 0 5px;">Feira do Hemocentro</h3>
-                    <p style="margin: 0; font-size: 0.9rem;"><strong>Quando:</strong> Toda Quarta, 9h às 15h</p>
-                    <p style="margin: 0; font-size: 0.9rem;"><strong>Onde:</strong> SMHN Quadra 3 (Asa Norte)</p>
-                </div>
+        <div class="agenda-wrapper">
+            <div class="feira-card-centered">
+                <img src="/imagens/conceicao-feira-tematica-chefbrico.jpeg" class="feira-img-large" alt="Feira Hemocentro">
+                <h4 style="margin:0;">Feira do Hemocentro</h4>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">Quartas: 9h às 15h (Asa Norte)</p>
             </div>
-
-            <div class="feira-card">
-                <img src="/imagens/maria-conceicao-feira-tematica.jpeg" class="feira-img" alt="Feira QI 13">
-                <div>
-                    <h3 style="margin: 0 0 5px;">Feira da Praça QI 13</h3>
-                    <p style="margin: 0; font-size: 0.9rem;"><strong>Quando:</strong> Todo Sábado, 8h às 14h</p>
-                    <p style="margin: 0; font-size: 0.9rem;"><strong>Onde:</strong> Lago Sul</p>
-                </div>
+            
+            <div class="feira-card-centered">
+                <img src="/imagens/maria-conceicao-feira-tematica.jpeg" class="feira-img-large" alt="Feira QI 13">
+                <h4 style="margin:0;">Feira da QI 13</h4>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">Sábados: 8h às 14h (Lago Sul)</p>
             </div>
         </div>
     </section>
 
-    <!-- 5. GOOGLE REVIEW (PROVA SOCIAL) -->
-    <section class="review-cta-section-v2 text-center" style="margin-top:60px; padding:40px; background:white; border:1px solid #eee; border-radius: 10px;">
-        <h2>Já comprou com a gente?</h2>
-        <p>Sua opinião ajuda outras pessoas a descobrirem a comida de verdade.</p>
-        <div style="font-size:2rem; color:#f1c40f; margin:10px;">★★★★★</div>
-        <a href="https://g.page/r/CWIKRViCYBCDEAI/review" target="_blank" class="cta-button" style="background: #4285F4; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Avaliar no Google</a>
-    </section>
-
-    <!-- BOTÃO FLUTUANTE ZAP -->
-    <a href="https://wa.me/5561996659880?text=Olá, quero pedir uma entrega!" class="float-delivery-btn">
-        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="margin-right: 5px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></path></svg>
-        <span>Pedir Entrega</span>
-    </a>
-
-</main>
+    <section class="gbp-review-card">
+        <h2 style="color: #014039; margin-bottom: 10px;">Já conhece o nosso Método?</h2>
+        <p style="margin-bottom: 25px; color: #555;">Sua avaliação no Google é o que nos ajuda a levar comida de verdade para mais casas em Brasília.</p>
+        
+        <div style="font-size: 2.5rem; color: #F2811D; margin-bottom: 20px;">★★★★★</div>
+        
+        <a href="https://g.page/r/CWIKRViCYBCDEAI/review" target="_blank" style="background: #
