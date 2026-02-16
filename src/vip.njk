@@ -1,108 +1,98 @@
 ---
 layout: base.njk
 title: "Convite VIP | ChefBrico Gourmet Prático"
-description: "Sua ChefBox exclusiva em Brasília. Pague 4, leve 5 sabores da ChefBrico."
+description: "Sua ChefBox em Brasília. Pague 4, leve 5 sabores da ChefBrico."
 permalink: /vip/
 eleventyExcludeFromCollections: true
 ---
 
 <style>
-    /* Estética Premium & Mobile-First */
+    /* Estética Premium & AI-First Centralizada */
     header, footer { display: none !important; } 
     body { background: linear-gradient(180deg, #fdfbf7 0%, #ffffff 100%); margin: 0; padding: 0; color: #333; }
 
-    .vip-container { max-width: 480px; margin: 0 auto; padding: 30px 20px; text-align: center; }
+    .vip-container { max-width: 480px; margin: 0 auto; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
     
-    /* Cabeçalho com Autoridade */
+    /* Círculo da Maria Conceição (Centro) */
     .profile-img { 
-        width: 110px; height: 110px; border-radius: 50%; 
+        width: 120px; height: 120px; border-radius: 50%; 
         border: 4px solid #fff; object-fit: cover; 
-        box-shadow: 0 10px 25px rgba(1, 64, 57, 0.15);
-        margin-bottom: 20px;
+        box-shadow: 0 12px 30px rgba(1, 64, 57, 0.15);
+        margin-bottom: 25px;
     }
+    
     .badge-premium {
-        background: #014039; color: #fff; font-size: 0.65rem;
-        padding: 4px 12px; border-radius: 50px; text-transform: uppercase;
-        letter-spacing: 1.5px; font-weight: 700; margin-bottom: 10px; display: inline-block;
+        background: #014039; color: #fff; font-size: 0.7rem;
+        padding: 5px 15px; border-radius: 50px; text-transform: uppercase;
+        letter-spacing: 1.5px; font-weight: 700; margin-bottom: 15px;
     }
-    .profile-name { font-family: 'Merriweather', serif; color: #014039; font-size: 1.6rem; margin: 0; }
-    .profile-bio { font-size: 1rem; color: #555; line-height: 1.5; margin: 15px 0 30px; }
 
-    /* O Botão de Ouro (A ChefBox) */
+    .profile-name { font-family: 'Merriweather', serif; color: #014039; font-size: 1.8rem; margin: 0; }
+    .profile-bio { font-size: 1.05rem; color: #555; line-height: 1.6; margin: 15px 0 35px; max-width: 90%; }
+
+    /* Botão Mestre ChefBox */
     .cta-master {
-        display: block; background: #F2811D; color: white; text-decoration: none;
+        width: 100%; display: block; background: #F2811D; color: white; text-decoration: none;
         padding: 24px; border-radius: 20px; font-weight: 800; 
         box-shadow: 0 15px 35px rgba(242, 129, 29, 0.35);
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: 2px solid rgba(255,255,255,0.2); position: relative; overflow: hidden;
+        transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.2);
+        box-sizing: border-box;
     }
-    .cta-master:active { transform: scale(0.95); }
-    .cta-master::after {
-        content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-        background: rgba(255,255,255,0.1); transform: rotate(45deg);
-        animation: shine 3s infinite;
-    }
-    @keyframes shine { 0% { left: -150%; } 100% { left: 150%; } }
+    .cta-master:active { transform: scale(0.96); }
 
-    /* Links Elegantes */
-    .secondary-links { margin-top: 35px; }
+    /* Links Secundários Centralizados */
+    .secondary-links { width: 100%; margin-top: 35px; }
     .link-item {
-        display: flex; align-items: center; background: #fff; color: #014039;
-        text-decoration: none; padding: 18px; border-radius: 15px;
-        margin-bottom: 15px; border: 1px solid #f0f0f0;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: all 0.2s;
+        display: flex; align-items: center; justify-content: center;
+        background: #fff; color: #014039; text-decoration: none; 
+        padding: 18px; border-radius: 15px; margin-bottom: 15px; 
+        border: 1px solid #f0f0f0; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     }
-    .link-item:active { background: #fdfbf7; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.05); }
-    .link-icon { font-size: 1.4rem; margin-right: 18px; }
+    .link-icon { font-size: 1.4rem; margin-right: 12px; }
     .link-text { font-weight: 600; font-size: 0.95rem; }
 
-    /* Selo de Garantia Brasília */
     .loc-badge {
         margin-top: 40px; font-size: 0.75rem; color: #2e7d32;
-        background: #e8f5e9; padding: 8px 16px; border-radius: 50px;
-        display: inline-flex; align-items: center; gap: 6px; font-weight: 600;
+        background: #e8f5e9; padding: 10px 20px; border-radius: 50px;
+        font-weight: 600;
     }
 </style>
 
 <div class="vip-container">
-    <div class="profile-section">
-        <span class="badge-premium">Método Gourmet Prático</span>
-        <img src="/imagens/maria-conceicao-chefbrico-laranja.png" alt="Chef Maria Conceição" class="profile-img">
-        <h1 class="profile-name">ChefBrico</h1>
-        <p class="profile-bio">
-            Muito Sabor e Praticidade em sua casa. <br>
-            <strong>Refeição Saudável em minutos.</strong>
-        </p>
-    </div>
+    <span class="badge-premium">Método Gourmet Prático</span>
+    
+    <img src="/imagens/maria-conceicao-chefbrico-laranja.png" alt="Chef Maria Conceição" class="profile-img">
+    
+    <h1 class="profile-name">ChefBrico</h1>
+    
+    <p class="profile-bio">
+        Sabor artesanal, praticidade em sua casa. <br>
+        <strong>Refeição Saudável em minutos pra Você.</strong>
+    </p>
 
     <a href="/chefbox/" class="cta-master">
-        <span style="font-size: 1.2rem; letter-spacing: 0.5px;">MONTAR MINHA CHEFBOX 🛵</span>
+        <span style="font-size: 1.2rem;">MONTAR MINHA CHEFBOX 🛵</span>
         <br>
-        <span style="font-size: 0.85rem; font-weight: 400; opacity: 0.9;">Escolha 4 sabores e o 5º é meu presente!</span>
+        <span style="font-size: 0.85rem; font-weight: 400;">4 Sabores + 1 Presente de Boas-vindas!</span>
     </a>
 
     <div class="secondary-links">
-        <a href="https://wa.me/5561996659880?text=Oi+Maria+Conceição,+vi+o+link+VIP+e+queria+tirar+uma+duvida" class="link-item">
+        <a href="https://wa.me/5561996659880?text=Oi+Maria+Conceição,+vim+pelo+Link+VIP+do+Instagram+e+queria+conhecer+o+ChefBox!" class="link-item">
             <span class="link-icon">👩‍🍳</span>
-            <div class="link-text">Falar direto com a Maria Conceição</div>
+            <span class="link-text">Falar direto com a Chef Maria</span>
         </a>
 
         <a href="/sabores/" class="link-item">
             <span class="link-icon">🍲</span>
-            <div class="link-text">Cardápio de Hoje (24 Receitas)</div>
-        </a>
-
-        <a href="/comida-de-verdade/" class="link-item">
-            <span class="link-icon">✨</span>
-            <div class="link-text">Qual a diferença? (Minha História)</div>
+            <span class="link-text">Explorar os 24 Sabores</span>
         </a>
     </div>
 
     <div class="loc-badge">
-        📍 Entrega em todo o Distrito Federal
+        📍 Entrega Pra Você em todo o Distrito Federal
     </div>
 
-    <p style="font-size: 0.65rem; color: #aaa; margin-top: 30px; text-transform: uppercase; letter-spacing: 2px;">
-        © 2026 Gourmet Prático uma Culinária Saudável, sem desperdicio de Tempo e Ingredientes na sua Cozinha!
+    <p style="font-size: 0.7rem; color: #aaa; margin-top: 35px; letter-spacing: 1px;">
+        BRASÍLIA • 2026
     </p>
 </div>
