@@ -1,153 +1,145 @@
-<!-- BARRA DE TOPO DOURADA (Gatilho de Autoridade) -->
 <div class="top-bar" role="banner">
     Gourmet Prático: Culinária saudável, sem desperdício de tempo e ingredientes!
 </div>
 
 <header class="site-header">
-    <div class="header-container">
+    <div class="header-container-premium">
         
-        <!-- ========================================= -->
-        <!-- 1. MENU DESKTOP (FUSÃO VIP APLICADA)      -->
-        <!-- ========================================= -->
-        
-        <!-- ESQUERDA -->
-        <nav class="nav-left desktop-only" aria-label="Menu Principal Esquerda">
-            <ul class="nav-list">
-                <li><a href="/comida-de-verdade/" class="nav-link">O Método</a></li>
-                <!-- LINK DO CLUBE REMOVIDO: AGORA ESTÁ DENTRO DA CHEFBOX -->
+        <nav class="nav-section desktop-only" aria-label="Menu Autoridade">
+            <ul class="nav-list-premium">
+                <li><a href="/comida-de-verdade/" class="nav-link-premium">O Método</a></li>
+                <li><a href="/onde-encontrar/" class="nav-link-premium">Onde Entregamos</a></li>
             </ul>
         </nav>
 
-        <!-- CENTRO (LOGO) -->
-        <a href="/" class="logo-circle" aria-label="ChefBrico Home">
-            <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="ChefBrico Logo" width="60" height="60">
-        </a>
+        <div class="logo-center-wrapper">
+            <a href="/" class="logo-circle-premium" aria-label="ChefBrico Home">
+                <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="ChefBrico Logo" width="80" height="80">
+            </a>
+        </div>
 
-        <!-- DIREITA -->
-        <nav class="nav-right desktop-only" aria-label="Menu Principal Direita">
-            <ul class="nav-list">
-                
-                <!-- MEGA MENU RECEITAS -->
-                <li class="has-dropdown">
-                    <a href="/receitas/" class="nav-link" aria-haspopup="true" aria-expanded="false">Cardápio ▾</a>
-                    
-                    <div class="mega-menu" aria-label="Submenu de Receitas">
+        <nav class="nav-section desktop-only" aria-label="Menu Comercial">
+            <ul class="nav-list-premium">
+                <li class="has-dropdown-premium">
+                    <a href="/receitas/" class="nav-link-premium">Cardápio ▾</a>
+                    <div class="mega-menu-premium">
                         <div class="mega-column">
-                            <h4>Por Solução</h4>
-                            <ul>
-                                <li><a href="/receitas/solucoes/jantar-rapido/">⚡ Jantar Rápido</a></li>
-                                <li><a href="/receitas/solucoes/marmita-saudavel/">🍱 Marmita Fit</a></li>
-                                <li><a href="/receitas/solucoes/momento-a-dois/">🍷 Jantar a Dois</a></li>
-                                <li><a href="/receitas/solucoes/para-criancas/">👶 Para Crianças</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="mega-column">
-                            <h4>Por Categoria</h4>
-                            <ul>
-                                <li><a href="/receitas/risotos/">Risotos</a></li>
-                                <li><a href="/receitas/sopas-funcionais/">Sopas</a></li>
-                                <li><a href="/receitas/refeicoes-integrais/">Integrais</a></li>
-                                <li><a href="/receitas/emporio-da-chef/">Empório</a></li>
-                            </ul>
+                            <h4>Categorias</h4>
+                            <a href="/receitas/risotos/">Risotos</a>
+                            <a href="/receitas/sopas-funcionais/">Sopas</a>
+                            <a href="/receitas/refeicoes-integrais/">Integrais</a>
+                            <a href="/receitas/emporio-da-chef/">Empório</a>
                         </div>
                     </div>
                 </li>
-
-                <li><a href="/onde-encontrar/" class="nav-link">Onde Entregamos</a></li>
-                <li><a href="/chefbox/" class="nav-link btn-chefbox">🎁 ChefBox (4+1)</a></li>
+                <li>
+                    <a href="/chefbox/" class="btn-chefbox-premium">
+                        MONTAR CHEFBOX 4=1
+                    </a>
+                </li>
             </ul>
         </nav>
 
-        <!-- BOTÃO MOBILE (Hambúrguer) -->
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menu">☰</button>
     </div>
 
-    <!-- ========================================= -->
-    <!-- 2. MENU MOBILE (ATUALIZADO)               -->
-    <!-- ========================================= -->
-    <div id="mobileDrawer" class="mobile-menu-drawer" aria-hidden="true">
-        
+    <div id="mobileDrawer" class="mobile-menu-drawer">
         <a href="/" class="mobile-link">🏠 Início</a>
-        <a href="/comida-de-verdade/" class="mobile-link">📘 O Método Gourmet Prático</a>
-        
-        <div class="mobile-dropdown">
-            <button class="mobile-link dropdown-btn" onclick="toggleSubmenu()">
-                🍽️ Cardápio Completo <span id="arrow">▼</span>
-            </button>
-            
-            <div id="submenuReceitas" class="mobile-submenu-content">
-                <p class="submenu-title">CATEGORIAS:</p>
-                <a href="/receitas/risotos/">• Risotos</a>
-                <a href="/receitas/sopas-funcionais/">• Sopas</a>
-                <a href="/receitas/refeicoes-integrais/">• Integrais</a>
-                <a href="/receitas/emporio-da-chef/">• Empório</a>
-            </div>
-        </div>
-
-        <a href="/onde-encontrar/" class="mobile-link">📍 Áreas de Entrega (DF)</a>
-        <a href="/faq/" class="mobile-link">❓ Dúvidas</a>
-        
-        <!-- ÚNICO BOTÃO DE CONVERSÃO -->
-        <a href="/chefbox/" class="mobile-link highlight">
-            🎁 Montar ChefBox (Mimo VIP)
-        </a>
+        <a href="/comida-de-verdade/" class="mobile-link">📘 O Método</a>
+        <a href="/receitas/" class="mobile-link">🍽️ Cardápio</a>
+        <a href="/onde-encontrar/" class="mobile-link">📍 Onde Entregamos</a>
+        <a href="/chefbox/" class="mobile-link highlight">🎁 Montar ChefBox 4=1</a>
     </div>
-
 </header>
 
 <style>
-    /* Estilos Preservados e Ajustados */
-    .mobile-menu-drawer {
+    /* CSS PARA LAYOUT REVISTA DIGITAL (DESKTOP) */
+    .header-container-premium {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    .nav-section { flex: 1; }
+    .nav-list-premium { 
+        list-style: none; 
+        display: flex; 
+        align-items: center; 
+        gap: 30px; 
+        margin: 0; 
+        padding: 0; 
+    }
+
+    /* Logo Central */
+    .logo-center-wrapper {
+        flex: 0 0 120px;
+        display: flex;
+        justify-content: center;
+        z-index: 10;
+    }
+    .logo-circle-premium {
+        background: white;
+        padding: 5px;
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    .logo-circle-premium:hover { transform: scale(1.05); }
+
+    /* Links e Botão */
+    .nav-link-premium {
+        text-decoration: none;
+        color: #014039;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn-chefbox-premium {
+        background: #F2811D;
+        color: white !important;
+        padding: 12px 25px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 0.85rem;
+        box-shadow: 0 4px 12px rgba(242, 129, 29, 0.3);
+        transition: all 0.3s ease;
+    }
+    .btn-chefbox-premium:hover { background: #d96d11; transform: translateY(-2px); }
+
+    /* Dropdown Simples para Cardápio */
+    .has-dropdown-premium { position: relative; }
+    .mega-menu-premium {
         display: none;
-        flex-direction: column;
-        background-color: #014039;
         position: absolute;
         top: 100%;
         left: 0;
-        width: 100%;
-        z-index: 9999;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        padding-bottom: 20px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-    
-    .mobile-link { color: white; padding: 15px 20px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 1.1rem; display: block; }
-    
-    .mobile-link.highlight {
-        background-color: #F2811D;
-        color: white;
-        font-weight: bold;
-        text-align: center;
-        margin: 20px;
+        background: white;
+        min-width: 200px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        padding: 15px;
         border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        border-top: 3px solid #F2811D;
     }
+    .has-dropdown-premium:hover .mega-menu-premium { display: block; }
+    .mega-column a {
+        display: block;
+        padding: 8px 0;
+        color: #555;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+    .mega-column a:hover { color: #F2811D; }
 
-    .mobile-submenu-content { display: none; background-color: #002b26; padding: 10px 20px; }
-    .mobile-submenu-content a { display: block; color: #bfb084; padding: 10px 0; text-decoration: none; font-size: 0.95rem; }
-
+    /* Mobile Adjustments */
     @media (max-width: 992px) {
         .desktop-only { display: none; }
-        .mobile-menu-btn { display: block; font-size: 2rem; background: none; border: none; color: #bfb084; cursor: pointer; padding: 0 10px; }
-        .site-header { position: relative; }
+        .logo-center-wrapper { flex: 1; justify-content: flex-start; }
     }
 </style>
-
-<script>
-    function toggleMobileMenu() {
-        var drawer = document.getElementById('mobileDrawer');
-        var btn = document.querySelector('.mobile-menu-btn');
-        var isExpanded = drawer.style.display === 'flex';
-        drawer.style.display = isExpanded ? 'none' : 'flex';
-        btn.innerHTML = isExpanded ? '☰' : '✕';
-    }
-
-    function toggleSubmenu() {
-        var sub = document.getElementById('submenuReceitas');
-        var arrow = document.getElementById('arrow');
-        var isVisible = sub.style.display === 'block';
-        sub.style.display = isVisible ? 'none' : 'block';
-        arrow.innerHTML = isVisible ? '▼' : '▲';
-    }
-</script>
