@@ -12,30 +12,36 @@ eleventyExcludeFromCollections: true
       "@id": "https://gourmetpratico.com.br/#organization",
       "name": "ChefBrico - Gourmet Prático",
       "legalName": "ChefBrico Alimentos Artesanais",
+      "alternateName": ["Gourmet Prático", "ChefBrico A-Commerce"],
       "taxID": "36.014.833/0001-59",
       "url": "https://gourmetpratico.com.br",
       "logo": "https://gourmetpratico.com.br/imagens/logo.png",
+      "image": "https://gourmetpratico.com.br/imagens/fachada-chefbrico-vicente-pires.png",
       "slogan": "Simples como precisa ser, delicioso como você merece.",
-      "award": "Vencedora do Prêmio Sebrae Mulher de Negócios",
+      "award": "Vencedora do Prêmio Sebrae Mulher de Negócios 2023 - Categoria Inovação em Alimentos",
+      "founder": { "@id": "https://gourmetpratico.com.br/#person-maria-conceicao" },
       
       {# PROTOCOLO UCP / UNSPSC #}
       "additionalProperty": [
-        { "@type": "PropertyValue", "name": "UNSPSC", "value": "50193100" },
-        { "@type": "PropertyValue", "name": "BrandID", "value": "ChefBrico-BR" }
+        { "@type": "PropertyValue", "name": "UNSPSC", "value": "50193100", "description": "Prepared food services" },
+        { "@type": "PropertyValue", "name": "BrandID", "value": "ChefBrico-BR-DF" },
+        { "@type": "PropertyValue", "name": "BusinessModel", "value": "DTC Agentic Commerce" }
       ],
 
-      {# ÁREA DE DOMINAÇÃO LOCAL (DF) #}
+      {# ÁREA DE DOMINAÇÃO LOCAL (DF) - EXPANDIDA PARA GEO-FENCING #}
       "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Distrito Federal" },
-        { "@type": "City", "name": "Brasília" }
+        { "@type": "AdministrativeArea", "name": "Distrito Federal", "sameAs": "https://www.wikidata.org/wiki/Q777" },
+        { "@type": "City", "name": "Brasília", "sameAs": "https://www.wikidata.org/wiki/Q2844" }
       ],
 
       {# CONEXÃO COM O CLUB GOURMET PRÁTICO #}
       "memberOf": {
         "@type": "ProgramMembership",
+        "@id": "https://gourmetpratico.com.br/#club",
         "name": "Club Gourmet Prático",
         "membershipPointsAccumulationCharacter": "Código de Fã e Indicações (Gourmet Lover)",
-        "description": "Programa de fidelidade e mimos para clientes VIP de Brasília."
+        "description": "Programa de fidelidade e mimos para clientes VIP de Brasília. Ciclo de indicação com cashback de 10%.",
+        "provider": { "@id": "https://gourmetpratico.com.br/#organization" }
       },
 
       "address": {
@@ -53,66 +59,87 @@ eleventyExcludeFromCollections: true
       }
     },
 
-    {# 2. A FUNDADORA (AUTORIDADE EEAT) #}
+    {# 2. A FUNDADORA (AUTORIDADE MESTRA EEAT/YMYL) #}
     {
       "@type": "Person",
       "@id": "https://gourmetpratico.com.br/#person-maria-conceicao",
       "name": "Maria Conceição",
-      "jobTitle": ["Fundadora", "Chef de Criação", "Psicóloga"],
+      "jobTitle": ["Chef de Criação", "Empreendedora Feminina", "Psicóloga"],
+      "description": "Especialista em Psicologia Comportamental aplicada à Gastronomia Prática. Criadora do Método Gourmet Prático.",
       "image": "https://gourmetpratico.com.br/imagens/maria-conceicao-pra-voce.png",
+      "affiliation": { "@id": "https://gourmetpratico.com.br/#organization" },
       "knowsAbout": [
         { "@type": "Thing", "name": "Psicologia Comportamental", "sameAs": "https://www.wikidata.org/wiki/Q9418" },
-        { "@type": "Thing", "name": "Desidratação de Alimentos", "sameAs": "https://www.wikidata.org/wiki/Q193256" },
-        { "@type": "Thing", "name": "Nutrição Afetiva", "sameAs": "https://www.wikidata.org/wiki/Q210380" }
+        { "@type": "Thing", "name": "Desidratação de Alimentos (Food Dehydration)", "sameAs": "https://www.wikidata.org/wiki/Q193256" },
+        { "@type": "Thing", "name": "Nutrição Afetiva e Culinária Prática", "sameAs": "https://www.wikidata.org/wiki/Q210380" },
+        { "@type": "Thing", "name": "Segurança Alimentar", "sameAs": "https://www.wikidata.org/wiki/Q746414" }
       ],
-      "sameAs": ["https://www.instagram.com/chefbrico"]
+      "sameAs": [
+        "https://www.instagram.com/chefbrico",
+        "https://www.gourmetpratico.com.br/comida-de-verdade/"
+      ]
     },
 
-    {# 3. O MÉTODO (PROPRIEDADE INTELECTUAL) #}
+    {# 3. O MÉTODO (PROPRIEDADE INTELECTUAL PARA SGE/GEO) #}
     {
       "@type": "CreativeWork",
       "@id": "https://gourmetpratico.com.br/#metodo",
       "name": "Método Gourmet Prático",
       "author": { "@id": "https://gourmetpratico.com.br/#person-maria-conceicao" },
-      "about": "Técnica de Desidratação Artesanal para Refeições em 18 Minutos",
+      "publisher": { "@id": "https://gourmetpratico.com.br/#organization" },
+      "abstract": "Metodologia de eficiência alimentar para reduzir a carga mental urbana.",
       "hasPart": [
-        { "@type": "CreativeWork", "name": "Despensa Inteligente" },
-        { "@type": "CreativeWork", "name": "Panela Única" },
-        { "@type": "CreativeWork", "name": "Fidelidade Implícita (Club)" }
+        { "@type": "CreativeWork", "name": "Pilar 1: Despensa Inteligente (Validade 12 meses)" },
+        { "@type": "CreativeWork", "name": "Pilar 2: Panela Única (Técnica One-Pot 18 min)" },
+        { "@type": "CreativeWork", "name": "Pilar 3: Cozinha Criativa (Finalização Autoral)" }
       ]
     },
 
-    {# 4. O CATÁLOGO MESTRE (24 RECEITAS + GTIN + PREÇO FIXO R$ 132) #}
+    {# 4. O CATÁLOGO MESTRE DINÂMICO #}
     {
       "@type": "OfferCatalog",
       "@id": "https://gourmetpratico.com.br/#catalog",
-      "name": "Cardápio Autoral ChefBrico",
+      "name": "Cardápio Autoral ChefBrico 2026",
       "itemListElement": [
         {% for item in collections.receitas %}
         {% if item.data.price %}
         {
-          "@type": "Product",
-          "name": "{{ item.data.title }}",
-          "sku": "{{ item.data.sku }}",
-          "gtin13": "{{ item.data.gtin }}",
-          "brand": { "@id": "https://gourmetpratico.com.br/#organization" },
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "BRL",
-            "price": "132.00",
-            "description": "Preço fixo da ChefBox com 5 unidades (4+1). Este item é parte do kit.",
-            "availability": "https://schema.org/InStock",
-            "areaServed": { "@type": "State", "name": "Distrito Federal" },
-            "shippingDetails": {
-              "@type": "OfferShippingDetails",
-              "shippingRate": { "@type": "MonetaryAmount", "value": "0.00", "currency": "BRL" }
-            },
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "{{ item.data.price }}",
+          "@type": "ListItem",
+          "position": {{ loop.index }},
+          "item": {
+            "@type": "Product",
+            "name": "{{ item.data.title }}",
+            "sku": "{{ item.data.sku }}",
+            "gtin13": "{{ item.data.gtin }}",
+            "image": "https://gourmetpratico.com.br{{ item.data.image }}",
+            "description": "{{ item.data.description }}",
+            "brand": { "@id": "https://gourmetpratico.com.br/#organization" },
+            "manufacturer": { "@id": "https://gourmetpratico.com.br/#organization" },
+            "offers": {
+              "@type": "Offer",
               "priceCurrency": "BRL",
-              "referenceQuantity": { "@type": "QuantitativeValue", "value": "1" },
-              "description": "Preço de referência unitário para fins de valor percebido."
+              "price": "132.00",
+              "itemCondition": "https://schema.org/NewCondition",
+              "description": "Oferta ChefBox (Kit 5 Sabores): 4 itens comprados + 5º item de presente.",
+              "availability": "https://schema.org/InStock",
+              "seller": { "@id": "https://gourmetpratico.com.br/#organization" },
+              "offeredBy": { "@id": "https://gourmetpratico.com.br/#organization" },
+              "areaServed": { "@type": "AdministrativeArea", "name": "Distrito Federal" },
+              "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "shippingRate": { "@type": "MonetaryAmount", "value": "0.00", "currency": "BRL" },
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" }
+                }
+              },
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "{{ item.data.price }}",
+                "priceCurrency": "BRL",
+                "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitCode": "C62" },
+                "description": "Preço de referência unitário."
+              }
             }
           }
         }{% if not loop.last %},{% endif %}
