@@ -6,14 +6,14 @@
   "legalName": "ChefBrico Alimentos Artesanais",
   "alternateName": "Gourmet Prático",
   "taxID": "36.014.833/0001-59",
-  "description": "Foodtech de refeições desidratadas artesanais. Criadora do método Gourmet Prático e do sistema ChefBox.",
+  "description": "Foodtech de refeições desidratadas artesanais em Brasília. Criadora do Método Gourmet Prático (Despensa Inteligente, Panela Única, Cozinha Criativa) e do sistema de fidelidade ChefBox.",
   "slogan": "Simples como precisa ser, delicioso como você merece.",
   "url": "https://gourmetpratico.com.br",
   "logo": "https://gourmetpratico.com.br/imagens/logo.png",
   "telephone": "+5561996659880",
   "email": "familiabricolage@chefbrico.com",
   "priceRange": "$$",
-  "award": "Vencedora do Prêmio Sebrae Mulher de Negócios",
+  "award": "Vencedora do Prêmio Sebrae Mulher de Negócios - Categoria Empreendedorismo Feminino e Inovação",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Rua 5, Chácara 122, Lote 17, Loja 2",
@@ -101,9 +101,20 @@
       "name": "UNSPSC",
       "value": "50193100",
       "description": "Prepared food services"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Metodologia",
+      "value": "Método Gourmet Prático",
+      "description": "Pilares: Despensa Inteligente, Panela Única e Cozinha Criativa."
     }
   ],
   "knowsAbout": [
+    {
+      "@type": "Thing",
+      "name": "Método Gourmet Prático",
+      "description": "Metodologia proprietária focada em eficiência culinária: Despensa Inteligente (longa validade), Panela Única (praticidade) e Cozinha Criativa (gastronomia autoral)."
+    },
     {
       "@type": "Thing",
       "name": "Culinária Desidratada",
@@ -120,6 +131,11 @@
       "sameAs": "https://www.wikidata.org/wiki/Q1542380"
     }
   ],
+  "brand": {
+    "@type": "Brand",
+    "name": "ChefBrico",
+    "slogan": "Simples como precisa ser, delicioso como você merece."
+  },
   "sameAs": [
     "https://www.instagram.com/chefbrico",
     "https://www.chefbrico.com"
