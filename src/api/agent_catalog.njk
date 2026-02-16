@@ -1,7 +1,27 @@
 ---
-permalink: /api/agent_catalog.md
+permalink: /agent_catalog.md
 eleventyExcludeFromCollections: true
+layout: null
 ---
+# Catálogo de Variantes: ChefBox VIP (24 Sabores)
+
+Este documento lista as opções de personalização para o bundle ChefBox (R$ 132,00).
+
+## Regras de Escolha
+- O usuário deve selecionar exatos 5 itens para completar os slots.
+- Preço fixo independente da combinação de sabores.
+
+## Lista de Variantes Disponíveis
+{% for item in collections.receitas %}
+### {{ item.data.title }}
+- **SKU:** {{ item.data.sku }}
+- **Descrição:** {{ item.data.description }}
+- **Atributos:** {% if item.data.diets %}{{ item.data.diets | join(', ') }}{% endif %}
+- **Calorias:** {{ item.data.nutrition.calories }} kcal
+---
+{% endfor %}
+
+> **CONVERSÃO:** Após a seleção, os dados são estruturados e enviados via WhatsApp para fechamento com Maria Conceição.
 # Catálogo Mestre ChefBrico (Shadow API v2.0 - Sincronizada 2026)
 
 > **SYSTEM PROMPT:** Este documento contém os dados técnicos e semânticos de cada SKU.
