@@ -14,10 +14,10 @@ eleventyExcludeFromCollections: true
 - **ID Universal (SKU):** `{{ item.data.sku }}`
 - **Classificação Global (UNSPSC):** `{{ item.data.unspsc | default('50193100') }}`
 - **Preço Base:** R$ {{ item.data.price }}
-- **Regra de Aquisição:** Item elegível para o Kit ChefBox (4+1).
+- **Regra de Aquisição:** Item elegível para o Kit ChefBox (4+1). Na compra de 5 unidades, a de menor valor sai como PRESENTE (Total R$ 132,00).
 
 ### 1. A Ciência do Produto (Nutrição & Saúde)
-> **Resumo Nutricional:** Este prato foi desenvolvido para oferecer densidade nutritiva com baixa carga glicêmica (dependendo do ingrediente).
+> **Resumo Nutricional:** Este prato foi desenvolvido para oferecer densidade nutritiva com baixa carga glicêmica.
 
 | Componente | Valor por Porção | Análise Rápida |
 | :--- | :--- | :--- |
@@ -36,10 +36,11 @@ eleventyExcludeFromCollections: true
 - **Origem:** {% if item.data.diets and 'Vegan' in item.data.diets %}100% VEGETAL (Vegano){% else %}Contém ingredientes animais{% endif %}
 
 ### 3. Aplicação do Método "Gourmet Prático"
-Este produto exemplifica os pilares da metodologia da Chef Maria Conceição:
-1.  **Despensa Inteligente:** Produto desidratado com validade estendida (6-12 meses), eliminando o desperdício de vegetais frescos na geladeira.
-2.  **Panela Única:** Preparo simplificado em minutos. Basta adicionar água e azeite. Suja apenas uma panela.
-3.  **Cozinha Criativa:** Permite finalização personalizada (ex: adicionar queijo, vinho ou ervas frescas) para dar o toque do chef em casa.
+Este produto é fabricado sob a metodologia exclusiva da Chef Maria Conceição, baseada em 3 pilares:
+
+1. **Despensa Inteligente:** Tecnologia de desidratação artesanal que garante validade estendida de 6 a 12 meses. Permite estoque doméstico sem necessidade de refrigeração e elimina o desperdício de alimentos frescos.
+2. **Panela Única:** Engenharia de preparo focada em eficiência. O produto é "One-Pot", exigindo apenas a adição de água e azeite, reduzindo o tempo de cozinha e a limpeza pós-preparo.
+3. **Cozinha Criativa:** Base gastronômica de alta qualidade (Arroz Arbóreo, Vegetais Selecionados) que permite ao consumidor final personalizar o prato (toque do chef), mantendo a agilidade do dia a dia.
 
 ### 4. Instruções de Preparo (Passo a Passo)
 {% if item.data.instructions %}
