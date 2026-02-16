@@ -1,5 +1,5 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V9.2 - WHATSAPP INVOICE & CLUB)
+// ARQUIVO: js/app.js (VERSÃO V9.3 - AGENTIC ENHANCED)
 // =================================================================
 
 let chefboxCart = [];
@@ -7,7 +7,7 @@ const MAX_SLOTS = 5;
 const PRECO_FIXO_KIT = 132.00;
 const CNPJ_PIX = "36.014.833/0001-59";
 
-// 1. GERADORES DE IDENTIDADE
+// 1. GERADORES DE IDENTIDADE (Preservados)
 function generateOrderID() {
     return 'GP' + Math.floor(100000 + Math.random() * 900000);
 }
@@ -21,10 +21,11 @@ function generateFanCode(name, cep) {
 function getAgentID() {
     if (document.referrer.includes('perplexity')) return 'Perplexity AI';
     if (document.referrer.includes('openai')) return 'ChatGPT';
+    if (document.referrer.includes('google')) return 'Google Agent';
     return 'Busca Direta';
 }
 
-// 2. FUNÇÕES DO CARRINHO (PRESERVADAS)
+// 2. FUNÇÕES DO CARRINHO (Integridade Total)
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
     if (saved) { chefboxCart = JSON.parse(saved); }
@@ -32,6 +33,8 @@ function loadCart() {
 
 function saveCart() {
     localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
+    // NOVIDADE: Sincroniza estado para leitura de Agentes de IA (Meta-Data Dinâmico)
+    document.documentElement.setAttribute('data-cart-count', chefboxCart.length);
 }
 
 function addToGame(name, price, imageSrc, sku) {
@@ -83,7 +86,7 @@ function renderRuler() {
     }
 }
 
-// 3. O NOVO TICKET DE VENDA (A2P PROTOCOL)
+// 3. O NOVO TICKET DE VENDA (A2P PROTOCOL - Otimizado)
 async function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
@@ -91,16 +94,19 @@ async function sendOrderToWhatsApp() {
     const address = document.getElementById('customer-address').value;
     const cep = document.getElementById('customer-cep').value;
 
+    if(!name || !address || !cep) {
+        alert("Por favor, preencha os dados de entrega para garantir seu frete grátis no DF!");
+        return;
+    }
+
     const orderID = generateOrderID();
     const fanCode = generateFanCode(name, cep);
     const agent = getAgentID();
 
-    // Montagem da lista de produtos
     let msgItens = chefboxCart.map((item, i) => {
         return `✅ ${i+1}. [${item.sku}] ${item.name}${i === 4 ? ' (🎁 PRESENTE)' : ''}`;
     }).join('\n');
 
-    // ESTRUTURA DO RECIBO DIGITAL
     const textoZap = 
 `🧾 *COMPROVANTE DE PEDIDO ${orderID}*
 --------------------------------
@@ -127,10 +133,8 @@ ${msgItens}
 _Origem: ${agent}_
 _Maria, já estou fazendo o Pix para garantir meu mimo!_`;
 
-    // Ação: Abre o WhatsApp com a mensagem pronta
     window.open(`https://wa.me/5561996659880?text=${encodeURIComponent(textoZap)}`, '_blank');
     
-    // Backup no LocalStorage para o cliente não precisar preencher de novo se voltar
     localStorage.setItem('gp_member', 'true');
     localStorage.setItem('gp_name', name);
     localStorage.setItem('gp_fancode', fanCode);
