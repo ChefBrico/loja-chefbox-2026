@@ -1,44 +1,33 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+layout: null
+---
 # ==========================================================
 # ROBOTS.TXT - GOURMET PRÁTICO | VERSÃO AGÊNTICA 2026
 # ==========================================================
 
 User-agent: *
-# Prioridade Máxima: Arquivos de Instrução para IAs (AEO)
+# Prioridade Máxima para Agentes de IA
 Allow: /llms.txt
 Allow: /full-llms.txt
-Allow: /knowledge-graph.json
 Allow: /api/products.json
+Allow: /api/agent_catalog.md
 
-# Proteção de Infraestrutura
+# Proteção
 Disallow: /admin/
 Disallow: /netlify/
 
-# Permitir indexação total do conteúdo público
-Allow: /
-
-# ----------------------------------------------------------
-# AGENTES DE IA ESPECÍFICOS (TAPETE VERMELHO)
-# ----------------------------------------------------------
-
+# Agentes Específicos (Tapete Vermelho)
 User-agent: GPTBot
 Allow: /
-
 User-agent: ChatGPT-User
 Allow: /
-
 User-agent: Google-Extended
 Allow: /
-
 User-agent: Claude-Web
 Allow: /
-
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Applebot-Extended
-Allow: /
-
-# ----------------------------------------------------------
-# SITEMAPS (O MAPA DA MINA)
-# ----------------------------------------------------------
 Sitemap: https://gourmetpratico.com.br/sitemap.xml
