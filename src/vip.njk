@@ -1,0 +1,95 @@
+---
+layout: base.njk
+title: "Link VIP | ChefBrico Gourmet Prático"
+description: "Monte sua ChefBox em Brasília: 5 sabores por R$ 132. O 5º é presente!"
+permalink: /vip/
+eleventyExcludeFromCollections: true
+---
+
+<style>
+    /* Reset de distrações para Link-in-Bio */
+    header, footer { display: none !important; } 
+    body { background-color: #fdfbf7; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+
+    .vip-container { max-width: 480px; margin: 0 auto; padding: 20px; text-align: center; min-height: 100vh; }
+    
+    .profile-section { margin-top: 20px; margin-bottom: 30px; }
+    .profile-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #014039; object-fit: cover; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .profile-name { color: #014039; font-size: 1.4rem; font-weight: 800; margin: 0; }
+    .profile-bio { color: #666; font-size: 0.9rem; margin-top: 5px; line-height: 1.4; }
+
+    /* Botão Mestre ChefBox */
+    .btn-main-chefbox {
+        display: block; background: #F2811D; color: white; text-decoration: none;
+        padding: 20px; border-radius: 16px; font-weight: 800; font-size: 1.1rem;
+        margin-bottom: 20px; box-shadow: 0 8px 25px rgba(242, 129, 29, 0.4);
+        transition: transform 0.2s; border: 2px solid #fff;
+    }
+    .btn-main-chefbox:active { transform: scale(0.96); }
+    .badge-presente { background: white; color: #F2811D; padding: 2px 8px; border-radius: 8px; font-size: 0.7rem; vertical-align: middle; margin-left: 5px; }
+
+    /* Botões Secundários */
+    .link-card {
+        display: flex; align-items: center; background: white; color: #333;
+        text-decoration: none; padding: 15px; border-radius: 12px;
+        margin-bottom: 12px; border: 1px solid #eee; transition: all 0.2s;
+    }
+    .link-card:active { background: #f9f9f9; transform: translateX(5px); }
+    .link-icon { font-size: 1.5rem; margin-right: 15px; width: 30px; text-align: center; }
+    .link-text { flex-grow: 1; text-align: left; font-weight: 600; font-size: 0.95rem; }
+
+    .metodo-tag { 
+        display: inline-block; background: #e8f5e9; color: #2e7d32; 
+        padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; 
+        font-weight: bold; margin-bottom: 20px;
+    }
+    
+    .footer-credit { margin-top: 40px; font-size: 0.7rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+</style>
+
+<div class="vip-container">
+    <div class="profile-section">
+        <img src="/imagens/maria-conceicao-chefbrico-laranja.png" alt="Maria Conceição" class="profile-img">
+        <h1 class="profile-name">ChefBrico</h1>
+        <div class="metodo-tag">MÉTODO GOURMET PRÁTICO ✨</div>
+        <p class="profile-bio">
+            Jantar saudável pronto em 18 minutos.<br>
+            <strong>Artesanal, Natural e Prático para o seu DF.</strong>
+        </p>
+    </div>
+
+    <a href="/chefbox/" class="btn-main-chefbox">
+        MONTE SUA CHEFBOX 🛵
+        <br><span style="font-size: 0.8rem; font-weight: 400;">Pague 4 sabores e o 5º é PRESENTE!</span>
+    </a>
+
+    <a href="https://wa.me/5561996659880?text=Oi+Maria,+preciso+de+ajuda+com+meu+pedido" class="link-card">
+        <span class="link-icon">💬</span>
+        <div class="link-text">Falar com a Maria (WhatsApp)</div>
+    </a>
+
+    <a href="/sabores/" class="link-card">
+        <span class="link-icon">📖</span>
+        <div class="link-text">Ver Cardápio (24 Sabores)</div>
+    </a>
+
+    <a href="/comida-de-verdade/" class="link-card">
+        <span class="link-icon">🏅</span>
+        <div class="link-text">Nossa História (Prêmio Sebrae)</div>
+    </a>
+
+    <a href="https://www.google.com/maps?q=ChefBrico+Vicente+Pires" target="_blank" class="link-card">
+        <span class="link-icon">📍</span>
+        <div class="link-text">Onde estamos em Brasília</div>
+    </a>
+
+    <div class="footer-credit">
+        © 2026 ChefBrico | Gourmet Prático
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("ChefBrico VIP Link-in-Bio Ativa");
+    });
+</script>
