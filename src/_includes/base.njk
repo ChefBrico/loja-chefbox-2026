@@ -6,90 +6,123 @@
     
     <title>{{ title }} | ChefBrico Gourmet Prático</title>
     <meta name="description" content="{{ description }}">
+    <meta name="author" content="Maria Conceição">
     <meta name="theme-color" content="#014039">
     
+    <link rel="llms-txt" href="/llms.txt">
+    <link rel="full-llms-txt" href="/full-llms.txt">
+    <link rel="author" href="https://gourmetpratico.com.br/comida-de-verdade/">
+    
+    <link rel="canonical" href="https://gourmetpratico.com.br{{ page.url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gourmetpratico.com.br{{ page.url }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    
+    {% if image %}
+    <meta property="og:image" content="https://gourmetpratico.com.br{{ image }}">
+    {% else %}
+    <meta property="og:image" content="https://gourmetpratico.com.br/imagens/share-padrao-chefbrico.png">
+    {% endif %}
+
     <link rel="stylesheet" href="/css/style.css">
     
     <style>
-        /* FAIXA DE GAMIFICAÇÃO - AJUSTE FINO DE ALTURA (SLIM MAS FUNCIONAL) */
         .chefbox-sticky-bar {
             position: fixed; 
             bottom: 0; 
             left: 0; 
             width: 100%;
-            background: rgba(255, 255, 255, 0.98); 
-            border-top: 4px solid #F2811D;
-            /* Aumentamos de 8px para 12px para evitar o corte do botão */
-            padding: 12px 0; 
+            background: #ffffff; /* Fundo sólido para garantir visibilidade */
+            border-top: 5px solid #F2811D;
+            padding: 15px 0; /* Altura segura para botão e seta aparecerem */
             z-index: 9999;
-            box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.2);
             display: flex; 
             flex-direction: row; 
             align-items: center; 
             justify-content: center; 
-            gap: 25px;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
+            gap: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .bar-info-text { 
             text-align: left; 
-            line-height: 1.3;
-            min-width: 150px;
+            line-height: 1.4;
+            min-width: 180px;
         }
-        .bar-info-text b { color: #333; font-size: 0.9rem; display: block; text-transform: uppercase; }
-        .bar-info-text span { color: #F2811D; font-size: 0.85rem; font-weight: 800; }
+        .bar-info-text b { color: #333; font-size: 1rem; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+        .bar-info-text span { color: #F2811D; font-size: 1.1rem; font-weight: 900; }
 
         .slots-wrapper { 
             display: flex; 
-            gap: 12px; 
+            gap: 15px; 
             align-items: center; 
         }
 
+        /* CORREÇÃO DAS IMAGENS PRETAS: background-size e background-image controlados */
         .slot-circle {
-            width: 48px; height: 48px; /* Altura ideal para visualização */
+            width: 55px; height: 55px; /* Tamanho confortável para as fotos */
             border: 2px dashed #ddd; 
             border-radius: 50%;
             display: flex; 
             align-items: center; 
             justify-content: center;
-            font-size: 0.8rem; 
-            color: #bbb; 
-            background: #fff;
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat;
+            font-size: 0.9rem; 
+            color: #999; 
+            background-color: #f9f9f9;
+            background-size: cover !important; 
+            background-position: center !important;
+            background-repeat: no-repeat !important;
             position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        .slot-circle.filled { border: 2px solid #F2811D; color: transparent; }
-        .slot-circle.gift { border: 2px solid #25D366; color: #25D366; font-size: 1.2rem; background: #f0fff0; }
+        .slot-circle.filled { 
+            border: 3px solid #F2811D; 
+            color: transparent !important; /* Esconde o número para mostrar a foto */
+            box-shadow: 0 4px 10px rgba(242, 129, 29, 0.2);
+        }
 
-        /* BOTÃO DE FINALIZAÇÃO - RECUPERAÇÃO DA SETA E VISIBILIDADE */
+        /* Borda verde neon no último slot para indicar o presente */
+        .slot-circle.gift { 
+            border: 3px solid #25D366; 
+            color: #25D366; 
+            font-size: 1.5rem;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+        }
+
+        /* BOTÃO DE FINALIZAÇÃO: Garantia da Seta e Aparência Flex */
         .btn-finish-float {
             background: #25D366; 
-            color: white; 
+            color: white !important; 
             border: none;
-            padding: 14px 30px; 
+            padding: 16px 35px; 
             border-radius: 50px; 
-            font-weight: 800;
+            font-weight: 900;
             cursor: pointer; 
-            animation: pulse 2s infinite;
-            display: none; /* O seu script app.js vai mudar para flex */
+            animation: pulse-war 2s infinite;
+            display: none; /* Ativado pelo app.js */
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            font-size: 1rem;
-            white-space: nowrap; /* Garante que a seta não quebre */
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            gap: 12px;
+            font-size: 1.1rem;
+            white-space: nowrap; 
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            text-transform: uppercase;
         }
 
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pulse-war { 
+            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); } 
+            50% { transform: scale(1.05); box-shadow: 0 12px 25px rgba(37, 211, 102, 0.6); } 
+            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); } 
+        }
 
-        @media (max-width: 850px) {
-            .chefbox-sticky-bar { flex-direction: column; padding: 15px 0; gap: 10px; }
+        @media (max-width: 992px) {
+            .chefbox-sticky-bar { flex-direction: column; padding: 20px 0; gap: 15px; }
             .bar-info-text { text-align: center; min-width: auto; }
-            .btn-finish-float { width: 92%; }
+            .btn-finish-float { width: 90%; font-size: 1rem; }
         }
     </style>
 
@@ -109,7 +142,7 @@
     <div id="chefbox-bar" class="chefbox-sticky-bar">
         
         <div class="bar-info-text">
-            <b>🎁 Combo VIP Ativado!</b>
+            <b>🎁 COMBO VIP ATIVADO!</b>
             <span>Total: R$ 132,00</span>
         </div>
         
@@ -127,29 +160,29 @@
     </div>
     {% endif %}
 
-    <div id="checkout-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
-        <div class="modal-box" style="border-top: 6px solid #F2811D; border-radius: 20px; padding: 30px; background: white; max-width: 450px; width: 95%;">
-            <h3 style="color: #014039; margin: 0 0 10px;">Quase pronto! 🛵</h3>
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Preencha os dados para gerar seu <b>Fã-Code</b> e agendar sua entrega.</p>
+    <div id="checkout-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10001; align-items: center; justify-content: center;">
+        <div class="modal-box" style="border-top: 8px solid #F2811D; border-radius: 24px; padding: 40px; background: white; max-width: 480px; width: 95%; position: relative;">
+            <h3 style="color: #014039; margin: 0 0 10px; font-size: 1.5rem;">Finalizar sua ChefBox 🛵</h3>
+            <p style="font-size: 1rem; color: #666; margin-bottom: 25px;">Garantimos seu <b>Mimo VIP</b> e o Frete Grátis no DF.</p>
             
             <form id="form-checkout-vip" onsubmit="event.preventDefault(); sendOrderToWhatsApp();">
-                <input type="text" id="customer-name" placeholder="Nome Completo" required style="width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem;">
-                <input type="tel" id="customer-phone" placeholder="WhatsApp (DDD + Número)" required style="width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem;">
+                <input type="text" id="customer-name" placeholder="Seu Nome Completo" required style="width: 100%; padding: 16px; margin-bottom: 12px; border: 1.5px solid #eee; border-radius: 12px; font-size: 1.1rem;">
+                <input type="tel" id="customer-phone" placeholder="WhatsApp (61) 99999-9999" required style="width: 100%; padding: 16px; margin-bottom: 12px; border: 1.5px solid #eee; border-radius: 12px; font-size: 1.1rem;">
                 
-                <div style="display:flex; gap:10px; margin-bottom: 12px;">
-                    <input type="text" id="customer-cep" placeholder="CEP (DF)" required style="width: 45%; padding: 14px; border: 1px solid #ddd; border-radius: 10px;">
-                    <div style="width: 55%; background:#e8f5e9; color:#2e7d32; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75rem; text-align:center;">
-                        🚚 FRETE GRÁTIS DF
+                <div style="display:flex; gap:12px; margin-bottom: 12px;">
+                    <input type="text" id="customer-cep" placeholder="CEP (DF)" required style="width: 40%; padding: 16px; border: 1.5px solid #eee; border-radius: 12px;">
+                    <div style="width: 60%; background:#e8f5e9; color:#2e7d32; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem; text-align:center; padding: 10px;">
+                        🚚 FRETE GRÁTIS NO DF
                     </div>
                 </div>
 
-                <textarea id="customer-address" rows="3" placeholder="Endereço de Entrega (Rua, Bloco, Número)" required style="width: 100%; padding: 14px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 10px; resize: none; font-size: 1rem;"></textarea>
+                <textarea id="customer-address" rows="3" placeholder="Endereço de Entrega Completo" required style="width: 100%; padding: 16px; margin-bottom: 25px; border: 1.5px solid #eee; border-radius: 12px; resize: none; font-size: 1.1rem;"></textarea>
                 
-                <button type="submit" style="width: 100%; padding: 20px; background: #25D366; color: white; border: none; border-radius: 50px; font-weight: 900; cursor: pointer; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(37,211,102,0.4);">
-                    GARANTIR MEU PRESENTE ➜
+                <button type="submit" style="width: 100%; padding: 22px; background: #25D366; color: white; border: none; border-radius: 50px; font-weight: 900; cursor: pointer; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(37,211,102,0.3);">
+                    ENVIAR PEDIDO AGORA ➜
                 </button>
                 
-                <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 20px; color: #999; cursor: pointer; text-decoration: underline; font-size: 0.85rem;">Voltar e Alterar Sabores</p>
+                <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 25px; color: #999; cursor: pointer; text-decoration: underline; font-size: 0.9rem; font-weight: bold;">Voltar e Alterar Sabores</p>
             </form>
         </div>
     </div>
