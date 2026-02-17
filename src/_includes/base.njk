@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} | ChefBrico Gourmet Prático</title>
-    <link rel="stylesheet" href="/css/style.css">
     
     <style>
-        /* FAIXA DE GAMIFICAÇÃO - ALTURA RESTAURADA PARA FUNCIONAMENTO DO BOTÃO */
+        /* FAIXA COM ALTURA SEGURA (RESOLVE O BOTÃO SUMIDO) */
         .chefbox-sticky-bar {
             position: fixed; 
             bottom: 0; 
@@ -15,10 +14,9 @@
             width: 100%;
             background: #ffffff; 
             border-top: 5px solid #F2811D;
-            /* AUMENTO DA FAIXA: De 15px para 25px para garantir que o botão apareça */
-            padding: 25px 0; 
+            padding: 20px 0; /* Altura aumentada para o botão aparecer */
             z-index: 9999;
-            box-shadow: 0 -10px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
             display: flex; 
             flex-direction: row; 
             align-items: center; 
@@ -27,15 +25,15 @@
             backdrop-filter: blur(15px);
         }
 
-        .bar-info-text { text-align: left; line-height: 1.5; min-width: 200px; }
-        .bar-info-text b { color: #333; font-size: 1.1rem; display: block; text-transform: uppercase; }
-        .bar-info-text span { color: #F2811D; font-size: 1.2rem; font-weight: 900; }
+        .bar-info-text { text-align: left; line-height: 1.4; min-width: 180px; }
+        .bar-info-text b { color: #333; font-size: 1rem; display: block; text-transform: uppercase; }
+        .bar-info-text span { color: #F2811D; font-size: 1.1rem; font-weight: 900; }
 
-        .slots-wrapper { display: flex; gap: 15px; align-items: center; }
+        .slots-wrapper { display: flex; gap: 12px; align-items: center; }
 
-        /* CORREÇÃO DAS IMAGENS: Garantindo que o prato apareça e não o fundo preto */
+        /* CÍRCULOS COM IMAGENS (CORREÇÃO DO FUNDO PRETO) */
         .slot-circle {
-            width: 60px; height: 60px; 
+            width: 55px; height: 55px; 
             border: 2px dashed #ddd; 
             border-radius: 50%;
             display: flex; 
@@ -50,40 +48,35 @@
             position: relative;
         }
 
-        .slot-circle.filled { 
-            border: 3px solid #F2811D; 
-            color: transparent !important; 
-        }
+        .slot-circle.filled { border: 3px solid #F2811D; color: transparent !important; }
+        .slot-circle.gift { border: 3px solid #25D366; color: #25D366; font-size: 1.5rem; }
 
-        .slot-circle.gift { 
-            border: 3px solid #25D366; 
-            color: #25D366; 
-            font-size: 1.6rem;
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-        }
-
-        /* BOTÃO DE FINALIZAÇÃO: Recuperado com Seta e Espaço Garantido */
+        /* BOTÃO DE FINALIZAÇÃO - ONDE RECUPERAMOS A SETA */
         .btn-finish-float {
-            background: #25D366; 
+            background: #25D366 !important; 
             color: white !important; 
             border: none;
-            padding: 18px 45px; 
+            padding: 16px 40px; 
             border-radius: 50px; 
             font-weight: 900;
             cursor: pointer; 
             animation: pulse-war 2s infinite;
-            display: none; /* Ativado pelo app.js quando completa 5 slots */
+            
+            /* FORÇAMOS A EXIBIÇÃO EM LINHA PARA A SETA NÃO CAIR */
+            display: none; /* Ativado pelo app.js */
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            font-size: 1.2rem;
+            gap: 12px;
+            
+            font-size: 1.1rem;
             white-space: nowrap; 
             box-shadow: 0 10px 25px rgba(37,211,102,0.4);
+            text-transform: uppercase;
         }
 
         @keyframes pulse-war { 
             0% { transform: scale(1); } 
-            50% { transform: scale(1.05); } 
+            50% { transform: scale(1.03); } 
             100% { transform: scale(1); } 
         }
 
@@ -111,6 +104,7 @@
             <div id="slot-4" class="slot-circle">4</div>
             <div id="slot-5" class="slot-circle gift">🎁</div>
         </div>
+        
         <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()">
             Finalizar Pedido R$ 132 ➜
         </button>
@@ -122,8 +116,8 @@
             <h3 style="color: #014039; margin: 0 0 10px;">Finalizar sua ChefBox 🛵</h3>
             <form id="form-checkout-vip" onsubmit="event.preventDefault(); sendOrderToWhatsApp();">
                 <input type="text" id="customer-name" placeholder="Nome Completo" required style="width: 100%; padding: 15px; margin-bottom: 12px; border: 1px solid #eee; border-radius: 12px;">
-                <input type="tel" id="customer-phone" placeholder="WhatsApp (61) 99999-9999" required style="width: 100%; padding: 15px; margin-bottom: 12px; border: 1px solid #eee; border-radius: 12px;">
-                <textarea id="customer-address" rows="3" placeholder="Endereço Completo" required style="width: 100%; padding: 15px; margin-bottom: 25px; border: 1px solid #eee; border-radius: 12px; resize: none;"></textarea>
+                <input type="tel" id="customer-phone" placeholder="WhatsApp (DDD + Número)" required style="width: 100%; padding: 15px; margin-bottom: 12px; border: 1px solid #eee; border-radius: 12px;">
+                <textarea id="customer-address" rows="3" placeholder="Endereço de Entrega Completo" required style="width: 100%; padding: 15px; margin-bottom: 25px; border: 1px solid #eee; border-radius: 12px; resize: none;"></textarea>
                 <button type="submit" style="width: 100%; padding: 22px; background: #25D366; color: white; border: none; border-radius: 50px; font-weight: 900; font-size: 1.2rem;">ENVIAR PEDIDO AGORA ➜</button>
                 <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 25px; color: #999; cursor: pointer; text-decoration: underline;">Voltar</p>
             </form>
