@@ -71,12 +71,21 @@
         .slot-circle.gift { border: 2px solid #25D366; color: #25D366; font-size: 1.1rem; }
 
         .btn-finish-float {
-            background: #25D366; color: white; border: none;
-            padding: 12px 30px; border-radius: 50px; font-weight: 800;
-            cursor: pointer; animation: pulse 2s infinite;
-            display: none; font-size: 0.95rem;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
+    background: #25D366; 
+    color: white; 
+    border: none;
+    padding: 12px 30px; 
+    border-radius: 50px; 
+    font-weight: 800;
+    cursor: pointer; 
+    animation: pulse 2s infinite;
+    display: none; /* Mantido como none, o JS ativará como 'flex' ou 'block' */
+    font-size: 0.95rem;
+    white-space: nowrap; /* Impede que a seta caia para a linha de baixo */
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    align-items: center;
+    justify-content: center;
+}
 
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
@@ -121,9 +130,9 @@
             <div id="slot-5" class="slot-circle gift">🎁</div>
         </div>
 
-        <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()">
-            Finalizar Pedido R$ 132 ➜
-        </button>
+       <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()">
+    Finalizar Pedido R$ 132 ➜
+</button>
     </div>
     {% endif %}
 
