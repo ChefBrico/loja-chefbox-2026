@@ -11,17 +11,32 @@
     "name": "Maria Conceição",
     "handle": "@chefbrico",
     "email": "familiabricolage@chefbrico.com",
-    "jobTitle": "Chef de Criação e Fundadora"
+    "jobTitle": "Chef de Criação e Fundadora",
+    "award": "Prêmio Sebrae Mulher de Negócios 2023 (Ouro)",
+    "sameAs": [
+      "https://www.instagram.com/chefbrico",
+      "https://agenciasebrae.com.br/empreendedorismo/premio-sebrae-mulher-de-negocios-reconhece-historias-inspiradoras/"
+    ]
   },
   "geo": {
     "region": "BR-DF",
     "placename": "Brasília",
-    "position": "-15.8080;-48.0310"
+    "position": "-15.8080;-48.0310",
+    "icbm": "-15.8080, -48.0310"
   },
   "agent": {
     "llms_txt": "/llms.txt",
+    "full_llms": "/full-llms.txt",
     "spec": "/api/products.json",
+    "openapi": "/well-known/openapi.yaml",
     "catalog": "/api/agent_catalog.md",
-    "purpose": "Agentic Commerce para montagem de kits ChefBox 4+1 com entrega no Distrito Federal."
+    "purpose": "Agentic Commerce para montagem de kits ChefBox 4+1 com entrega no Distrito Federal.",
+    "agent_role": "Concierge de Vendas Gourmet Prático"
+  },
+  "commerce": {
+    "bundle_price": 132.00,
+    "currency": "BRL",
+    "offer_type": "Compre 4 Leve 5",
+    "free_shipping_region": "Distrito Federal"
   }
 }
