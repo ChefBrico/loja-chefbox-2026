@@ -1,6 +1,6 @@
 ---
 pagination:
-    data: locations
+    data: locations.items
     size: 1
     alias: local
 permalink: "/entrega/{{ local.slug }}/"
@@ -10,14 +10,22 @@ eleventyComputed:
     description: "Mora na {{ local.name }}? Peça o Kit ChefBox (4+1) com {{ local.hero_product_name }}. Ideal para {{ local.persona }}."
 ---
 
-<!-- SCHEMA.ORG (MANTIDO E OTIMIZADO PARA A-COMMERCE) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "FoodDelivery",
   "name": "Entrega ChefBox - {{ local.name }}",
-  "provider": { "@type": "LocalBusiness", "name": "ChefBrico" },
+  "provider": { 
+    "@type": "LocalBusiness", 
+    "name": "ChefBrico Gourmet Prático",
+    "image": "https://gourmetpratico.com.br/imagens/logo.png",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brasília",
+        "addressRegion": "DF"
+    }
+  },
   "areaServed": {
     "@type": "Place",
     "name": "{{ local.name }}",
@@ -34,16 +42,11 @@ eleventyComputed:
       {
         "@type": "Offer",
         "name": "Kit ChefBox (Compre 4 Leve 5)",
-        "description": "Combo promocional focado em {{ local.hero_product_name }}",
+        "description": "Combo promocional focado em {{ local.hero_product_name }} para o público {{ local.persona }}",
         "priceCurrency": "BRL",
+        "price": "132.00",
         "availability": "https://schema.org/InStock",
-        "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "0.00",
-            "priceCurrency": "BRL",
-            "referenceQuantity": { "@type": "QuantitativeValue", "value": "1" },
-            "description": "O 5º item é gratuito na compra do kit."
-        }
+        "seller": { "@type": "Organization", "name": "ChefBrico" }
       }
     ]
   }
@@ -51,82 +54,143 @@ eleventyComputed:
 </script>
 
 <style>
-    .geo-hero { background-color: #fdfbf7; padding: 60px 20px; text-align: center; border-bottom: 4px solid var(--cor-institucional, #014039); }
-    .geo-tag { background: #e8f5e9; color: #2e7d32; padding: 5px 15px; border-radius: 20px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
-    .geo-title { font-family: 'Merriweather', serif; color: var(--cor-institucional, #014039); font-size: 2.2rem; margin-bottom: 20px; }
-    .geo-pain { font-size: 1.2rem; color: #555; max-width: 700px; margin: 0 auto 30px; font-style: italic; }
+    /* DESIGN DE REVISTA DIGITAL CENTRADO (WAR-GBP) */
+    .geo-hero { 
+        background-color: #fdfbf7; 
+        padding: 80px 20px; 
+        text-align: center; 
+        border-bottom: 5px solid #014039; 
+    }
+    .geo-tag { 
+        background: #e8f5e9; 
+        color: #2e7d32; 
+        padding: 8px 20px; 
+        border-radius: 50px; 
+        font-weight: 800; 
+        text-transform: uppercase; 
+        display: inline-block; 
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+    .geo-title { 
+        font-family: 'Playfair Display', serif; 
+        color: #014039; 
+        font-size: 3rem; 
+        margin-bottom: 25px; 
+        line-height: 1.1;
+    }
+    .geo-pain { 
+        font-size: 1.3rem; 
+        color: #555; 
+        max-width: 750px; 
+        margin: 0 auto 40px; 
+        font-style: italic; 
+        line-height: 1.6;
+    }
     
-    /* CARD DE OFERTA (A-COMMERCE) */
+    /* CARD DE SOLUÇÃO (A-COMMERCE PREMIUM) */
     .geo-solution-box {
-        background: white; border: 2px solid #d4af37; border-radius: 15px; padding: 30px;
-        max-width: 600px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative;
+        background: white; 
+        border: 2px solid #bfb084; 
+        border-radius: 20px; 
+        padding: 40px;
+        max-width: 650px; 
+        margin: 0 auto; 
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08); 
+        position: relative;
     }
     .promo-badge {
-        position: absolute; top: -15px; right: -15px; background: #d35400; color: white;
-        padding: 10px 20px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        position: absolute; 
+        top: -20px; 
+        right: -10px; 
+        background: #d35400; 
+        color: white;
+        padding: 12px 25px; 
+        border-radius: 50px; 
+        font-weight: 900; 
+        box-shadow: 0 6px 15px rgba(211, 84, 0, 0.3);
+        transform: rotate(5deg);
     }
     
     .geo-btn-start-game {
-        background-color: #F2811D; color: white; text-decoration: none; padding: 18px 30px;
-        border-radius: 50px; font-weight: bold; font-size: 1.2rem; display: inline-flex;
-        align-items: center; gap: 10px; transition: transform 0.2s; margin-top: 25px;
-        box-shadow: 0 4px 15px rgba(242, 129, 29, 0.4); width: 100%; justify-content: center;
-        cursor: pointer; border: none;
+        background-color: #F2811D; 
+        color: white; 
+        text-decoration: none; 
+        padding: 22px 40px;
+        border-radius: 60px; 
+        font-weight: 900; 
+        font-size: 1.3rem; 
+        display: inline-flex;
+        align-items: center; 
+        justify-content: center;
+        gap: 15px; 
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        margin-top: 30px;
+        box-shadow: 0 10px 25px rgba(242, 129, 29, 0.4); 
+        width: 100%; 
+        border: none;
+        cursor: pointer;
     }
-    .geo-btn-start-game:hover { transform: scale(1.02); background-color: #d35400; }
+    .geo-btn-start-game:hover { transform: translateY(-5px); background-color: #e67e22; }
     
-    .geo-map-link { margin-top: 30px; display: block; font-size: 0.9rem; color: #777; text-decoration: underline; }
+    .geo-map-link { 
+        margin-top: 40px; 
+        display: block; 
+        font-size: 1rem; 
+        color: #777; 
+        text-decoration: underline; 
+        font-weight: 600;
+    }
 </style>
 
-<main>
+<main class="container">
     <section class="geo-hero">
-        <div class="container">
-            <span class="geo-tag">📍 Entrega Confirmada: {{ local.name }}</span>
+        <span class="geo-tag">📍 Logística VIP Confirmada: {{ local.name }}</span>
+        
+        <h1 class="geo-title">
+            O sabor da alta gastronomia chegou na {{ local.name }}
+        </h1>
+
+        <p class="geo-pain">
+            "{{ local.pain_point }}"
+        </p>
+
+        <div class="geo-solution-box">
+            <div class="promo-badge">🎁 PRESENTE ATIVADO</div>
             
-            <h1 class="geo-title">
-                Mora na {{ local.name }} e quer praticidade?
-            </h1>
-
-            <p class="geo-pain">
-                "{{ local.pain_point }}"
+            <h3 style="color: #014039; margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">
+                SOLUÇÃO PARA {{ local.persona }}
+            </h3>
+            
+            <p style="font-size: 1.1rem; line-height: 1.6; color: #444;">
+                Sabemos que quem mora na <strong>{{ local.name }}</strong> não abre mão de qualidade. 
+                A Chef Maria recomenda iniciar sua experiência com:
             </p>
-
-            <!-- A SOLUÇÃO (REGRA 4+1 INTEGRADA) -->
-            <div class="geo-solution-box">
-                <div class="promo-badge">🔥 OFERTA 4+1</div>
-                
-                <h3 style="color: var(--cor-institucional, #014039); margin-bottom: 10px;">
-                    Recomendação para {{ local.persona }}
-                </h3>
-                
-                <p>
-                    Para resolver sua rotina na <strong>{{ local.name }}</strong>, a Chef Maria sugere começar sua <strong>ChefBox</strong> com o favorito do bairro:
-                </p>
-                
-                <h2 style="font-size: 1.8rem; margin: 15px 0; color: #d35400;">
+            
+            <div style="margin: 25px 0; padding: 20px; background: #fdfcf7; border-radius: 12px; border-left: 5px solid #F2811D;">
+                <h2 style="font-size: 2rem; margin: 0; color: #d35400; font-family: 'Playfair Display', serif;">
                     🍲 {{ local.hero_product_name }}
                 </h2>
-                
-                <ul style="text-align: left; margin: 20px auto; max-width: 300px; color: #555;">
-                    <li>✅ Adicione este + 3 sabores</li>
-                    <li>✅ <strong>Ganhe o 5º item de presente</strong></li>
-                    <li>✅ Frete Grátis para {{ local.name }} (no Kit)</li>
-                </ul>
-
-                <!-- CTA CORRIGIDO: LEVA PARA O JOGO (CHEFBOX) -->
-                <!-- A lógica aqui é levar o usuário para a vitrine onde o JS do jogo roda -->
-                <a href="/chefbox/" class="geo-btn-start-game">
-                    🎁 Montar Minha ChefBox Agora
-                </a>
-                
-                <p style="font-size: 0.8rem; margin-top: 10px; color: #999;">
-                    *Ao clicar, você irá para a vitrine para escolher seus 5 sabores.
-                </p>
             </div>
+            
+            <ul style="text-align: left; margin: 25px auto; max-width: 380px; color: #555; font-weight: 600; line-height: 2;">
+                <li>🚀 Frete Grátis via Motoboy para {{ local.name }}</li>
+                <li>⏱️ Entrega em Brasília: {{ local.eta }}</li>
+                <li>🍱 Adicione este + 3 e o 5º é nosso presente</li>
+            </ul>
 
-            <a href="https://www.google.com/maps/dir/?api=1&origin=-15.8080,-48.0310&destination={{ local.geo.latitude }},{{ local.geo.longitude }}" target="_blank" class="geo-map-link">
-                Ver rota de Vicente Pires até {{ local.name }} no Google Maps
+            <a href="/chefbox/" class="geo-btn-start-game">
+                MONTAR MINHA CHEFBOX VIP ➜
             </a>
+            
+            <p style="font-size: 0.85rem; margin-top: 15px; color: #999; font-weight: bold;">
+                *Área atendida: {{ local.nearby | join(", ") }}
+            </p>
         </div>
+
+        <a href="https://www.google.com/maps/dir/?api=1&destination={{ local.geo.latitude }},{{ local.geo.longitude }}" 
+           target="_blank" class="geo-map-link">
+            📍 Ver cobertura de Vicente Pires até {{ local.name }} no Maps
+        </a>
     </section>
 </main>
