@@ -6,38 +6,22 @@
     
     <title>{{ title }} | ChefBrico Gourmet Prático</title>
     <meta name="description" content="{{ description }}">
-    <meta name="author" content="Maria Conceição">
     <meta name="theme-color" content="#014039">
     
-    <link rel="llms-txt" href="/llms.txt">
-    <link rel="full-llms-txt" href="/full-llms.txt">
-    <link rel="author" href="https://gourmetpratico.com.br/comida-de-verdade/">
-    
-    <link rel="canonical" href="https://gourmetpratico.com.br{{ page.url }}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gourmetpratico.com.br{{ page.url }}">
-    <meta property="og:title" content="{{ title }}">
-    <meta property="og:description" content="{{ description }}">
-    
-    {% if image %}
-    <meta property="og:image" content="https://gourmetpratico.com.br{{ image }}">
-    {% else %}
-    <meta property="og:image" content="https://gourmetpratico.com.br/imagens/share-padrao-chefbrico.png">
-    {% endif %}
-
     <link rel="stylesheet" href="/css/style.css">
     
     <style>
         .chefbox-sticky-bar {
             position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.96); border-top: 3px solid #F2811D;
-            padding: 10px 0; z-index: 999;
+            background: rgba(255, 255, 255, 0.98); border-top: 4px solid #F2811D;
+            /* Altura reduzida com padding vertical mínimo */
+            padding: 12px 0; z-index: 999;
             box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
             display: flex; 
-            flex-direction: row; /* Alterado para linha horizontal */
+            flex-direction: row; /* Força tudo em uma linha horizontal */
             align-items: center; 
-            justify-content: center; /* Centraliza o conteúdo no meio da tela */
-            gap: 20px; /* Espaço entre texto, slots e botão */
+            justify-content: center; /* Centraliza o conjunto na página */
+            gap: 25px; /* Espaço entre texto, slots e botão */
             backdrop-filter: blur(10px);
         }
 
@@ -47,53 +31,61 @@
             font-weight: 800; 
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            text-align: left;
         }
 
         .slots-wrapper { 
             display: flex; 
-            gap: 8px; 
+            gap: 12px; 
             align-items: center;
         }
 
-        /* Estilo das bolinhas dos slots para ficarem menores e harmônicas */
+        /* AJUSTE PARA IMAGENS APARECEREM NOS SLOTS */
         .slot-circle {
-            width: 38px; height: 38px;
-            border: 2px dashed #ccc; border-radius: 50%;
+            width: 45px; height: 45px; /* Tamanho ideal para visibilidade */
+            border: 2px dashed #ddd; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.8rem; color: #999; background: #fff;
+            font-size: 0.75rem; color: #bbb; background: #fff;
+            /* Garante que a imagem preencha o círculo sem fundo preto */
+            background-size: cover !important; 
+            background-position: center !important;
+            background-repeat: no-repeat !important;
             transition: all 0.3s ease;
         }
 
+        .slot-circle.filled { border: 2.5px solid #F2811D; color: transparent; }
+        .slot-circle.gift { border: 2.5px solid #25D366; color: #25D366; font-size: 1.2rem; }
+
+        /* BOTÃO INTEGRADO NA LINHA COM SETA PISCANTE */
         .btn-finish-float {
             background: #25D366; color: white; border: none;
-            padding: 10px 25px; border-radius: 50px; font-weight: 900;
-            cursor: pointer; animation: pulse 2s infinite;
-            display: none; /* Ativado via JS no app.js */
-            font-size: 0.95rem;
+            padding: 12px 30px; border-radius: 50px; font-weight: 900;
+            cursor: pointer; animation: pulse-war 2s infinite;
+            display: none; /* Ativado pelo app.js */
+            font-size: 1rem;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
             white-space: nowrap;
         }
 
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pulse-war { 
+            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); } 
+            50% { transform: scale(1.05); box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5); } 
+            100% { transform: scale(1); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); } 
+        }
 
-        /* Ajuste para telas pequenas (Mobile) */
+        /* Ajuste Mobile para não quebrar a linha horizontal */
         @media (max-width: 768px) {
             .chefbox-sticky-bar { 
-                flex-direction: column; /* Volta para coluna no mobile para não quebrar */
-                padding: 15px 5px;
                 gap: 10px;
+                padding: 10px 5px;
             }
-            .bar-info { font-size: 0.75rem; }
+            .bar-info { display: none; } /* Esconde o texto no mobile para sobrar espaço */
+            .slot-circle { width: 40px; height: 40px; }
+            .btn-finish-float { padding: 10px 15px; font-size: 0.85rem; }
         }
     </style>
 
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-    {% if schema %}
-    <script type="application/ld+json">
-        {{ schema | dump | safe }}
-    </script>
-    {% endif %}
 </head>
 <body>
     
@@ -106,10 +98,11 @@
     {% include "footer.njk" %}
     
     {% if '/receitas/' in page.url or '/chefbox/' in page.url %}
-    <div id="chefbox-bar" class="chefbox-sticky-bar" data-agent-rule="buy_4_get_1_free">
+    <div id="chefbox-bar" class="chefbox-sticky-bar">
         
         <div class="bar-info">
-            <span id="game-status-text">Combo VIP:</span>
+            <b>🎁 COMBO VIP:</b><br>
+            <span>Total R$ 132,00</span>
         </div>
         
         <div class="slots-wrapper">
@@ -117,7 +110,7 @@
             <div id="slot-2" class="slot-circle">2</div>
             <div id="slot-3" class="slot-circle">3</div>
             <div id="slot-4" class="slot-circle">4</div>
-            <div id="slot-5" class="slot-circle gift" title="Seu Presente!">🎁</div>
+            <div id="slot-5" class="slot-circle gift">🎁</div>
         </div>
 
         <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()">
@@ -126,19 +119,6 @@
     </div>
     {% endif %}
 
-    <div id="checkout-modal" class="modal-overlay" style="display: none;">
-        </div>
-    
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
-          }
-        });
-      }
-    </script>
     <script src="/js/app.js"></script>
-
 </body>
 </html>
