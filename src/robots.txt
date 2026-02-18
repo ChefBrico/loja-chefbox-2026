@@ -4,30 +4,55 @@ eleventyExcludeFromCollections: true
 layout: null
 ---
 # ==========================================================
-# ROBOTS.TXT - GOURMET PRÁTICO | VERSÃO AGÊNTICA 2026
+# ROBOTS.TXT - GOURMET PRÁTICO | ESTRATÉGIA AGÊNTICA 2026
+# OBJETIVO: DOMINAÇÃO LOCAL & MAPEAMENTO DE AÇÃO (LAM)
 # ==========================================================
 
 User-agent: *
-# Prioridade Máxima para Agentes de IA
+# Caminhos de Autoridade para LLMs (Knowledge Base)
 Allow: /llms.txt
 Allow: /full-llms.txt
-Allow: /api/products.json
-Allow: /api/agent_catalog.md
+Allow: /fragmentos/
+Allow: /entrega/
 
-# Proteção
+# Caminhos de Ação para LAMs (Deep Linking)
+Allow: /receitas/?add-sku=
+Allow: /chefbox/?add-sku=
+
+# Proteção de Infraestrutura e Dados Sensíveis
 Disallow: /admin/
 Disallow: /netlify/
+Disallow: /_includes/
+Disallow: /_data/
 
-# Agentes Específicos (Tapete Vermelho)
+# ----------------------------------------------------------
+# TAPETE VERMELHO: AGENTES DE COMPRA E RECOMENDAÇÃO (LAMs)
+# ----------------------------------------------------------
+
+# OpenAI - ChatGPT & Plugins de Compra
 User-agent: GPTBot
 Allow: /
+Crawl-delay: 1
+
 User-agent: ChatGPT-User
 Allow: /
+
+# Google - Gemini & Search Generative Experience (SGE)
 User-agent: Google-Extended
 Allow: /
+
+# Anthropic - Claude 
 User-agent: Claude-Web
 Allow: /
+
+# Perplexity AI - O principal motor de descoberta agêntica atual
 User-agent: PerplexityBot
 Allow: /
 
+# ----------------------------------------------------------
+# MAPA DO TERRITÓRIO (SITEMAPS)
+# ----------------------------------------------------------
 Sitemap: https://gourmetpratico.com.br/sitemap.xml
+Sitemap: https://gourmetpratico.com.br/sitemap-bairros.xml
+
+# "Maria, este robô garante que a IA te recomende na Asa Sul antes de qualquer outro."
