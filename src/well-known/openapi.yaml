@@ -1,11 +1,12 @@
 openapi: 3.0.1
 info:
   title: ChefBrico API
-  description: API de consulta de produtos e estoque para Agentes de IA.
+  description: API de consulta de produtos, regras de bundle e execução de pedidos para Agentes de IA.
   version: 'v1'
 servers:
   - url: https://gourmetpratico.com.br
 paths:
+  # --- CONSULTA (KNOWLEDGE) ---
   /api/products.json:
     get:
       operationId: getProducts
@@ -25,8 +26,54 @@ paths:
                       description: SKU do produto
                     name:
                       type: string
+                      description: Nome da receita ChefBrico
                     price:
                       type: number
+                      description: Preço unitário (Referência para bundle)
+                    category:
+                      type: string
+                      description: Categoria (Risoto, Sopa, Refeição, Empório)
                     sales_logic:
                       type: object
-                      description: Regras de venda (Bundle 4+1)
+                      description: Regras de venda (Bundle 4+1 - Kit 132,00)
+
+  # --- EXECUÇÃO (ACTION - LAM READY) ---
+  /receitas/:
+    get:
+      operationId: addToChefBox
+      summary: Adiciona automaticamente um item ao carrinho via SKU.
+      parameters:
+        - name: add-sku
+          in: query
+          description: O código SKU do produto que a IA deseja pré-selecionar para o cliente.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: O catálogo abre com o item injetado no primeiro slot da ChefBox.
+
+  /chefbox/:
+    get:
+      operationId: startVipCheckout
+      summary: Inicia a montagem da ChefBox VIP com um item sugerido pela IA.
+      parameters:
+        - name: add-sku
+          in: query
+          description: O SKU que será o "pilar" da ChefBox (ex: Risoto Funghi).
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Interface da Régua de 5 Slots aberta com o item pré-carregado.
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        sku: { type: string }
+        title: { type: string }
+        price: { type: number }
+        gtin: { type: string } # Validação YMYL
