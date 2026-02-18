@@ -145,16 +145,16 @@
       "nearby": ["taguatinga-sul", "vicente-pires"]
     },
     {
-    "name": "Águas Claras / Arniqueiras",
-    "slug": "aguas-claras-arniqueiras",
-    "persona": "Solteiro Prático",
-    "pain_point": "Trânsito pesado, busca jantar rápido ao chegar em casa.",
-    "hero_product_sku": "33",
-    "hero_product_name": "Sopinha da Biza Vó",
+    "name": "Guará / Park Way",
+    "slug": "guara-parkway",
+    "persona": "Trilheiro do Cerrado",
+    "pain_point": "Alimentação energética para quem curte natureza e parques.",
+    "hero_product_sku": "41",
+    "hero_product_name": "Sopa Low Carb da Horta",
     "shipping_rule": "Frete Grátis (Motoboy)",
     "eta": "Dia Seguinte (D+1)",
-    "geo": { "latitude": "-15.8363", "longitude": "-48.0193" },
-    "nearby": ["taguatinga-sul", "guara", "vicente-pires"]
+    "geo": { "latitude": "-15.8267", "longitude": "-47.9800" },
+    "nearby": ["park-sul", "aguas-claras", "sia"]
     },
     {
       "name": "Grande Colorado / Taquari",
