@@ -50,15 +50,15 @@
     },
     {
       "name": "Sudoeste / Octogonal",
-      "slug": "sudoeste",
-      "persona": "Vida Funcional",
-      "pain_point": "Rotina intensa de trabalho e treinos, precisa de nutrição rápida.",
-      "hero_product_sku": "41",
-      "hero_product_name": "Sopa Low Carb da Horta",
-      "shipping_rule": "Frete Grátis (Motoboy)",
-      "eta": "Dia Seguinte (D+1)",
-      "geo": { "latitude": "-15.7956", "longitude": "-47.9247" },
-      "nearby": ["asa-sul", "noroeste", "park-sul"]
+    "slug": "sudoeste-octogonal",
+    "persona": "Vida Funcional",
+    "pain_point": "Rotina intensa de trabalho e treinos, precisa de nutrição rápida.",
+    "hero_product_sku": "41",
+    "hero_product_name": "Sopa Low Carb da Horta",
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.7956", "longitude": "-47.9247" },
+    "nearby": ["asa-sul", "noroeste", "park-sul"]
     },
     {
       "name": "Noroeste",
@@ -97,28 +97,28 @@
       "nearby": ["asa-sul", "sudoeste", "guara"]
     },
     {
-      "name": "Esplanada dos Ministérios",
-      "slug": "esplanada",
-      "persona": "Vida Funcional",
-      "pain_point": "Almoço de trabalho rápido e leve para não dar sono.",
-      "hero_product_sku": "39",
-      "hero_product_name": "Sopa Detox",
-      "shipping_rule": "Frete Grátis (Motoboy)",
-      "eta": "Dia Seguinte (D+1)",
-      "geo": { "latitude": "-15.7975", "longitude": "-47.8645" },
-      "nearby": ["asa-sul", "asa-norte", "plano-piloto"]
+     "name": "Esplanada dos Ministérios",
+    "slug": "esplanada-dos-ministerios", 
+    "persona": "Vida Funcional",
+    "pain_point": "Almoço de trabalho rápido e leve para não dar sono.",
+    "hero_product_sku": "39",
+    "hero_product_name": "Sopa Detox",
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.7975", "longitude": "-47.8645" },
+    "nearby": ["asa-sul", "asa-norte", "plano-piloto"]
     },
     {
       "name": "Plano Piloto - Governo DF",
-      "slug": "plano-piloto",
-      "persona": "Vida Funcional",
-      "pain_point": "Rotina administrativa corrida, busca praticidade.",
-      "hero_product_sku": "45",
-      "hero_product_name": "Sopa Creme Fit",
-      "shipping_rule": "Frete Grátis (Motoboy)",
-      "eta": "Dia Seguinte (D+1)",
-      "geo": { "latitude": "-15.7801", "longitude": "-47.9292" },
-      "nearby": ["esplanada", "asa-sul", "asa-norte"]
+    "slug": "plano-piloto-governo-df",
+    "persona": "Vida Funcional",
+    "pain_point": "Rotina administrativa corrida, busca praticidade.",
+    "hero_product_sku": "45",
+    "hero_product_name": "Sopa Creme Fit",
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.7801", "longitude": "-47.9292" },
+    "nearby": ["esplanada", "asa-sul", "asa-norte"]
     },
     {
       "name": "Taguatinga Sul",
@@ -145,16 +145,16 @@
       "nearby": ["taguatinga-sul", "vicente-pires"]
     },
     {
-      "name": "Guará / Park Way",
-      "slug": "guara",
-      "persona": "Trilheiro do Cerrado",
-      "pain_point": "Alimentação energética para quem curte natureza e parques.",
-      "hero_product_sku": "41",
-      "hero_product_name": "Sopa Low Carb da Horta",
-      "shipping_rule": "Frete Grátis (Motoboy)",
-      "eta": "Dia Seguinte (D+1)",
-      "geo": { "latitude": "-15.8267", "longitude": "-47.9800" },
-      "nearby": ["park-sul", "aguas-claras", "sia"]
+    "name": "Águas Claras / Arniqueiras",
+    "slug": "aguas-claras-arniqueiras",
+    "persona": "Solteiro Prático",
+    "pain_point": "Trânsito pesado, busca jantar rápido ao chegar em casa.",
+    "hero_product_sku": "33",
+    "hero_product_name": "Sopinha da Biza Vó",
+    "shipping_rule": "Frete Grátis (Motoboy)",
+    "eta": "Dia Seguinte (D+1)",
+    "geo": { "latitude": "-15.8363", "longitude": "-48.0193" },
+    "nearby": ["taguatinga-sul", "guara", "vicente-pires"]
     },
     {
       "name": "Grande Colorado / Taquari",
