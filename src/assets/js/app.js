@@ -155,18 +155,30 @@ function showPixScreen() {
     const modalBox = document.querySelector('.modal-box');
     if (modalBox) {
         modalBox.innerHTML = `
-            <div style="text-align: center; padding: 10px;">
-                <h3 style="color: #014039; margin-bottom: 10px;">Pedido Enviado! ✅</h3>
-                <p style="font-size: 0.9rem; color: #555;">Pague agora para agilizar sua entrega:</p>
-                <div style="background: #fdfbf7; padding: 20px; border-radius: 16px; margin: 20px 0; border: 2px solid #F2811D; display: inline-block;">
+            <div style="text-align: center; padding: 5px;">
+                <h3 style="color: #014039; margin-bottom: 5px; font-size: 1.3rem;">Pedido Enviado! ✅</h3>
+                <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px; line-height: 1.2;">
+                    Maria já recebeu seu pedido.<br>
+                    <strong>Pague agora para agilizar a entrega:</strong>
+                </p>
+                
+                <div style="background: #fdfbf7; padding: 15px; border-radius: 16px; margin: 10px 0; border: 2px solid #F2811D; display: inline-block; width: 100%; max-width: 220px;">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126360014br.gov.bcb.pix0114360148330001595204000053039865406132.005802BR5910ChefBrico6008Brasilia62070503***6304E64A" 
-                         style="width: 180px; height: 180px;">
-                    <p style="font-weight: 800; color: #F2811D; margin-top: 10px; font-size: 1.2rem;">R$ 132,00</p>
+                         alt="QR Code Pix R$ 132,00" 
+                         style="width: 100%; max-width: 150px; height: auto; display: block; margin: 0 auto;">
+                    <p style="font-weight: 800; color: #F2811D; margin: 8px 0 0 0; font-size: 1.1rem;">R$ 132,00</p>
                 </div>
-                <button onclick="copyPixKey()" id="btn-copy-pix" style="background: #014039; color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-weight: bold;">
-                    📋 COPIAR CHAVE CNPJ
-                </button>
-                <p onclick="location.reload()" style="margin-top:20px; color: #999; cursor: pointer; font-size: 0.8rem; text-decoration: underline;">Concluir e voltar ao site</p>
+
+                <div style="margin-top: 10px; margin-bottom: 15px;">
+                    <button onclick="copyPixKey()" id="btn-copy-pix" 
+                            style="background: #014039; color: white; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-weight: bold; width: 90%; max-width: 250px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        📋 COPIAR CHAVE CNPJ
+                    </button>
+                </div>
+                
+                <p onclick="location.reload()" style="color: #999; cursor: pointer; font-size: 0.75rem; text-decoration: underline; margin-top: 10px;">
+                    Concluir e voltar ao site
+                </p>
             </div>
         `;
     }
