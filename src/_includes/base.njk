@@ -98,26 +98,28 @@
     {% include "footer.njk" %}
     
     {% if '/receitas/' in page.url or '/chefbox/' in page.url %}
-    <div id="chefbox-bar" class="chefbox-sticky-bar">
-        
-        <div class="bar-info">
+<div id="chefbox-bar" class="chefbox-sticky-bar">
+    
+    <div class="bar-info">
+        <div id="game-status-text">
             <b>🎁 COMBO VIP:</b><br>
             <span>Total R$ 132,00</span>
         </div>
-        
-        <div class="slots-wrapper">
-            <div id="slot-1" class="slot-circle">1</div>
-            <div id="slot-2" class="slot-circle">2</div>
-            <div id="slot-3" class="slot-circle">3</div>
-            <div id="slot-4" class="slot-circle">4</div>
-            <div id="slot-5" class="slot-circle gift">🎁</div>
-        </div>
-
-        <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()">
-            Finalizar R$ 132 ➜
-        </button>
     </div>
-    {% endif %}
+    
+    <div class="slots-wrapper">
+        <div id="slot-1" class="slot-circle">1</div>
+        <div id="slot-2" class="slot-circle">2</div>
+        <div id="slot-3" class="slot-circle">3</div>
+        <div id="slot-4" class="slot-circle">4</div>
+        <div id="slot-5" class="slot-circle gift">🎁</div>
+    </div>
+
+    <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()">
+        Finalizar R$ 132 ➜
+    </button>
+</div>
+{% endif %}
 
     <script src="/js/app.js"></script>
 </body>
