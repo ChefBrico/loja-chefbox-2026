@@ -1,11 +1,23 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V9.4 - PIX AUTOMÁTICO & AGENTIC)
+// ARQUIVO: js/app.js (VERSÃO V9.5 - PERFORMANCE & TICKET VIP)
 // =================================================================
 
 let chefboxCart = [];
 const MAX_SLOTS = 5;
 const PRECO_FIXO_KIT = 132.00;
 const CNPJ_PIX = "36.014.833/0001-59";
+
+// --- NOVO: FUNÇÃO DE PRELOAD (CARREGAMENTO INSTANTÂNEO) ---
+function preloadRecipeImages() {
+    const allRecipeImages = document.querySelectorAll('.recipe-card img');
+    allRecipeImages.forEach((img) => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = img.src;
+        document.head.appendChild(link);
+    });
+}
 
 // 1. GERADORES DE IDENTIDADE
 function generateOrderID() {
@@ -25,7 +37,7 @@ function getAgentID() {
     return 'Busca Direta';
 }
 
-// 2. FUNÇÕES DO CARRINHO (INTEGRIDADE TOTAL DOS SLOTS)
+// 2. FUNÇÕES DO CARRINHO
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
     if (saved) { chefboxCart = JSON.parse(saved); }
@@ -60,9 +72,10 @@ function renderRuler() {
     if (!slots.length) return;
 
     slots.forEach((slot, i) => {
-        slot.classList.remove('filled', 'gift-active');
+        slot.classList.remove('filled');
         slot.style.backgroundImage = 'none';
         slot.innerHTML = i === 4 ? '🎁' : (i + 1);
+        slot.onclick = null;
     });
 
     chefboxCart.forEach((item, index) => {
@@ -71,23 +84,22 @@ function renderRuler() {
             slots[index].style.backgroundImage = `url('${item.image}')`;
             slots[index].innerHTML = '';
             slots[index].onclick = () => removeFromGame(index);
-            if (index === 4) slots[index].classList.add('gift-active');
         }
     });
 
     let count = chefboxCart.length;
     if (statusText) {
         if (count < 5) {
-            statusText.innerHTML = `Escolha mais <strong>${5-count}</strong> sabores para ganhar o PRESENTE!`;
+            statusText.innerHTML = `Escolha mais <strong>${5-count}</strong> sabores!`;
             if(btnFinish) btnFinish.style.display = 'none';
         } else {
-            statusText.innerHTML = `🎁 <strong>COMBO VIP ATIVADO!</strong><br>Total Fixo: R$ 132,00`;
-            if(btnFinish) btnFinish.style.display = 'block';
+            statusText.innerHTML = `🎁 <b>COMBO VIP ATIVADO!</b>`;
+            if(btnFinish) btnFinish.style.display = 'flex'; // Flex para manter a seta alinhada
         }
     }
 }
 
-// 3. O TICKET DE VENDA E INTERFACE DE PAGAMENTO PIX
+// 3. O TICKET DE VENDA PROFISSIONAL
 async function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
@@ -96,7 +108,7 @@ async function sendOrderToWhatsApp() {
     const cep = document.getElementById('customer-cep').value;
 
     if(!name || !address || !cep) {
-        alert("Por favor, preencha os dados de entrega para garantir seu frete grátis no DF!");
+        alert("Por favor, preencha os dados de entrega.");
         return;
     }
 
@@ -105,7 +117,7 @@ async function sendOrderToWhatsApp() {
     const agent = getAgentID();
 
     let msgItens = chefboxCart.map((item, i) => {
-        return `✅ ${i+1}. [${item.sku}] ${item.name}${i === 4 ? ' (🎁 PRESENTE)' : ''}`;
+        return `${i+1}️⃣ [${item.sku}] ${item.name}${i === 4 ? ' *🎁 PRESENTE*' : ''}`;
     }).join('\n');
 
     const textoZap = 
@@ -114,7 +126,6 @@ async function sendOrderToWhatsApp() {
 🌟 *STATUS:* CLUB GOURMET VIP
 👤 *CLIENTE:* ${name}
 🆔 *FÃ-CODE:* ${fanCode}
-📧 *E-MAIL:* ${email}
 📍 *ENDEREÇO:* ${address}
 🚚 *CEP:* ${cep} (DF)
 --------------------------------
@@ -125,24 +136,18 @@ ${msgItens}
 💰 *TOTAL A PAGAR: R$ 132,00*
 --------------------------------
 💳 *PARA PAGAR (PIX):*
-1. Copie a chave CNPJ abaixo:
-*${CNPJ_PIX}*
-
+1. Copie a chave CNPJ: *${CNPJ_PIX}*
 2. Realize o pagamento de *R$ 132,00*
-3. Envie o comprovante nesta conversa.
+3. Envie o comprovante aqui.
 --------------------------------
-_Origem: ${agent}_
-_Maria, já estou fazendo o Pix para garantir meu mimo!_`;
+_Origem: ${agent}_`;
 
-    // Ação 1: Abre o WhatsApp
     window.open(`https://wa.me/5561996659880?text=${encodeURIComponent(textoZap)}`, '_blank');
     
-    // Ação 2: Salva status de membro
     localStorage.setItem('gp_member', 'true');
     localStorage.setItem('gp_name', name);
     localStorage.setItem('gp_fancode', fanCode);
 
-    // Ação 3: Substitui formulário pelo QR Code do PIX na tela
     showPixScreen();
 }
 
@@ -152,27 +157,16 @@ function showPixScreen() {
         modalBox.innerHTML = `
             <div style="text-align: center; padding: 10px;">
                 <h3 style="color: #014039; margin-bottom: 10px;">Pedido Enviado! ✅</h3>
-                <p style="font-size: 0.9rem; color: #555; line-height: 1.4;">
-                    Maria já recebeu seu pedido no WhatsApp.<br>
-                    <strong>Pague agora para agilizar sua entrega:</strong>
-                </p>
-                
+                <p style="font-size: 0.9rem; color: #555;">Pague agora para agilizar sua entrega:</p>
                 <div style="background: #fdfbf7; padding: 20px; border-radius: 16px; margin: 20px 0; border: 2px solid #F2811D; display: inline-block;">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126360014br.gov.bcb.pix0114360148330001595204000053039865406132.005802BR5910ChefBrico6008Brasilia62070503***6304E64A" 
-                         alt="QR Code Pix R$ 132,00" style="width: 180px; height: 180px; display: block; margin: 0 auto;">
-                    <p style="font-weight: 800; color: #F2811D; margin: 10px 0 0 0; font-size: 1.2rem;">R$ 132,00</p>
+                         style="width: 180px; height: 180px;">
+                    <p style="font-weight: 800; color: #F2811D; margin-top: 10px; font-size: 1.2rem;">R$ 132,00</p>
                 </div>
-
-                <div style="margin-bottom: 20px;">
-                    <button onclick="copyPixKey()" id="btn-copy-pix" 
-                            style="background: #014039; color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-size: 0.85rem; font-weight: bold;">
-                        📋 COPIAR CHAVE CNPJ
-                    </button>
-                </div>
-                
-                <p onclick="location.reload()" style="color: #999; cursor: pointer; font-size: 0.8rem; text-decoration: underline;">
-                    Concluir e voltar ao site
-                </p>
+                <button onclick="copyPixKey()" id="btn-copy-pix" style="background: #014039; color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-weight: bold;">
+                    📋 COPIAR CHAVE CNPJ
+                </button>
+                <p onclick="location.reload()" style="margin-top:20px; color: #999; cursor: pointer; font-size: 0.8rem; text-decoration: underline;">Concluir e voltar ao site</p>
             </div>
         `;
     }
@@ -203,4 +197,5 @@ function closeCheckoutModal() {
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     renderRuler();
+    preloadRecipeImages(); // Inicia o carregamento instantâneo
 });
