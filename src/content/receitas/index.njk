@@ -36,82 +36,24 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
 </script>
 
 <style>
-    /* --- ESTRUTURA CENTRALIZADA REVISTA DIGITAL --- */
-    .war-catalog-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        text-align: center;
-    }
-
-    /* --- GRID RESPONSIVO (A Mágica 2x6) --- */
-    .recipe-grid {
-        display: grid;
-        gap: 15px;
-        width: 100%;
-        margin: 40px auto 100px;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (min-width: 1024px) {
-        .recipe-grid {
-            grid-template-columns: repeat(6, 1fr);
-            gap: 20px;
-        }
-    }
-
-    /* --- CARD DO PRODUTO --- */
-    .recipe-card {
-        background: white; 
-        border: 1px solid #eee; 
-        border-radius: 12px;
-        overflow: hidden; 
-        display: flex; 
-        flex-direction: column;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        height: 100%;
-        transition: transform 0.2s, border-color 0.2s;
-        text-align: center;
-    }
+    .war-catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center; }
+    .recipe-grid { display: grid; gap: 15px; width: 100%; margin: 40px auto 100px; grid-template-columns: repeat(2, 1fr); }
+    @media (min-width: 1024px) { .recipe-grid { grid-template-columns: repeat(6, 1fr); gap: 20px; } }
+    .recipe-card { background: white; border: 1px solid #eee; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(0,0,0,0.06); height: 100%; transition: transform 0.2s, border-color 0.2s; text-align: center; }
     .recipe-card:hover { transform: translateY(-3px); border-color: #F2811D; }
-
     .card-image-wrapper { position: relative; width: 100%; padding-top: 75%; }
     .card-image-wrapper img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-
-    /* BOTÃO DE ADIÇÃO COM SKU (PARA IA FUNCIONAR) */
-    .btn-card-float {
-        position: absolute; bottom: 8px; right: 8px;
-        width: 35px; height: 35px;
-        background-color: #F2811D; color: white;
-        border-radius: 50%; border: none; font-size: 1.4rem;
-        display: flex; align-items: center; justify-content: center;
-        cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;
-    }
-
+    .btn-card-float { position: absolute; bottom: 8px; right: 8px; width: 35px; height: 35px; background-color: #F2811D; color: white; border-radius: 50%; border: none; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; }
     .card-content { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; align-items: center; }
-    
-    .card-title { 
-        font-size: 0.85rem; 
-        color: #014039; margin: 5px 0 10px; 
-        font-weight: 700; text-decoration: none; line-height: 1.3;
-        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    }
-    
+    .card-title { font-size: 0.85rem; color: #014039; margin: 5px 0 10px; font-weight: 700; text-decoration: none; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .card-price { color: #F2811D; font-weight: 800; font-size: 1rem; }
-
     .filter-section { margin-bottom: 40px; }
     .filter-label { font-weight: 800; color: #014039; margin-bottom: 15px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
-
-    .btn-filter-pill {
-        background: white; border: 1px solid #eee; padding: 8px 18px;
-        border-radius: 20px; cursor: pointer; color: #555; font-size: 0.85rem;
-        transition: 0.2s; margin: 4px; text-decoration: none; display: inline-block;
-    }
+    .btn-filter-pill { background: white; border: 1px solid #eee; padding: 8px 18px; border-radius: 20px; cursor: pointer; color: #555; font-size: 0.85rem; transition: 0.2s; margin: 4px; text-decoration: none; display: inline-block; }
     button.btn-filter-pill.active { background: #014039; color: white; border-color: #014039; }
 </style>
 
 <main class="war-catalog-container">
-    
     <header style="margin: 60px 0 40px;">
         <h1 style="font-size: 2.5rem; color: #014039; font-family: 'Playfair Display', serif;">Catálogo Inteligente</h1>
         <p style="color: #666; margin-top: 10px; font-size: 1.1rem;">Comida de verdade pronta em 18 minutos. Sem desperdício.</p>
@@ -141,29 +83,20 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
     
     <div class="recipe-grid">
         {% for item in collections.receitas %}
-        {# O FILTRO QUE RECUPERA OS CARDS: Busca direta por 'price' #}
         {% if item.data.price %}
         <div class="recipe-card" data-category="{{ item.data.category }}">
             <div class="card-image-wrapper">
                 <a href="{{ item.url }}">
                     <img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy">
                 </a>
-                
-                {# O ÚNICO AJUSTE REAL: Adicionado id para o SKU #}
-                <button 
-                    id="prod-{{ item.data.sku }}"
-                    onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')" 
-                    class="btn-card-float">
-                    +
-                </button>
+                <button id="prod-{{ item.data.sku }}" onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')" class="btn-card-float">+</button>
             </div>
-            
             <div class="card-content">
                 <a href="{{ item.url }}" class="card-title">
                     {{ item.data.title | replace(" | ChefBrico", "") | replace(" em 18 Minutos", "") }}
                 </a>
                 <div style="margin-top: auto;">
-                    <span class="card-price">R$ {{ item.data.price }}</span>
+                    <span class="card-price">R$ {{ item.data.price | dinheiro }}</span>
                 </div>
             </div>
         </div>
