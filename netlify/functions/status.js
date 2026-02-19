@@ -1,49 +1,41 @@
 exports.handler = async function(event, context) {
   
-  // Obtém a data e hora atual de Brasília
+  // 1. Relógio de Brasília (Essencial para IA saber que você é real)
   const agora = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
+  const hora = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Sao_Paulo"})).getHours();
   
-  // Define se estamos em horário comercial (exemplo simples: 8h às 18h)
-  const hora = new Date().getHours();
-  const lojaAberta = hora >= 8 && hora < 17;
+  // 2. Defina aqui seu horário real de atendimento (ex: 08h às 18h)
+  const lojaAberta = hora >= 8 && hora < 18;
 
-  // O CÉREBRO EM TEMPO REAL
   const status = {
-    // 1. Prova de Vida (Timestamp)
-    // O Robô usa isso para saber se a informação não é velha (cache)
-    data_hora_atual: agora,
+    projeto: "Gourmet Prático A-Commerce",
+    versao_logica: "2026.v2",
+    data_hora_servidor: agora,
     
-    // 2. Status Operacional
-    loja_online: true,
-    atendimento_humano: lojaAberta ? "Disponível no WhatsApp" : "Apenas Mensagens (Respondemos amanhã)",
+    operacional: {
+      loja_online: true,
+      atendimento_humano: lojaAberta ? "Disponível (WhatsApp Maria)" : "Fale Conosco (Respondemos em breve)",
+      base_logistica: "Vicente Pires - DF"
+    },
     
-    // 3. Validação da Regra de Ouro (A "Trava" do Servidor)
-    // Se o Robô tiver dúvida se a promoção acabou, ele consulta aqui.
-    regras_ativas: [
-      {
-        codigo: "CHEFBOX_4_PLUS_1",
-        status: "ATIVO",
-        descricao: "Obrigatório selecionar 5 itens. Pague 4.",
-        prioridade: "CRÍTICA"
-      },
-      {
-        codigo: "FRETE_DF",
-        status: "ATIVO",
-        regra: "Grátis para Brasília (Motoboy)."
-      }
-    ],
+    // REGRAS CRÍTICAS (O que a IA não pode errar)
+    diretrizes_venda: {
+      oferta_mestra: "ChefBox VIP (Kit 5 Sabores)",
+      preco_fixo: 132.00,
+      regra_promocional: "Pague 4 Sabores, Ganhe o 5º de Presente",
+      frete: "Grátis para 18 Micro-regiões do DF"
+    },
 
-    // 4. Link de Emergência
-    // Se o Robô se perder, ele manda o usuário para cá.
-    suporte: "https://wa.me/5561996659880"
+    // MAPEAMENTO DE EMERGÊNCIA
+    suporte_direto: "https://wa.me/5561996659880"
   };
 
   return {
     statusCode: 200,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      "Access-Control-Allow-Origin": "*", // Permite que qualquer IA leia isso
-      "Cache-Control": "no-cache" // Proíbe guardar informação velha
+      "Access-Control-Allow-Origin": "*", // Aberto para agentes de IA (LAMs)
+      "Cache-Control": "no-cache" 
     },
     body: JSON.stringify(status)
   };
