@@ -27,7 +27,22 @@ layout: base.njk
   .hero-image-container img { width: 100%; height: auto; display: block; }
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
   
-  /* --- VITRINE PERSUASIVA (TAMANHO AJUSTADO +10%) --- */
+  /* --- DEPOIMENTO COM FUNDO SIMPLES (REVISADO) --- */
+  blockquote {
+    background: #fdfbf7; /* Bege seda bem suave */
+    border: none;
+    padding: 30px;
+    margin: 40px 0;
+    border-radius: 12px;
+    font-style: italic;
+    color: #444;
+    position: relative;
+    text-align: center;
+  }
+  blockquote p { margin-bottom: 10px; }
+  blockquote cite { font-weight: bold; color: #014039; font-style: normal; font-size: 0.9rem; }
+
+  /* --- VITRINE PERSUASIVA --- */
   .vitrine-persuasao { display: flex; gap: 15px; margin: 25px auto; justify-content: center; max-width: 530px; }
   .mini-card { flex: 1; max-width: 220px; text-align: center; }
   .mini-card img { width: 100%; height: auto; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
@@ -35,24 +50,23 @@ layout: base.njk
 
   /* --- TABELA NUTRICIONAL --- */
   .nutri-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0; }
-  .nutri-item { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px; min-width: 85px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .nutri-item { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px; min-width: 85px; text-align: center; }
   .nutri-label { font-size: 0.65rem; text-transform: uppercase; color: #999; display: block; }
   .nutri-value { font-size: 1.1rem; font-weight: 800; color: #014039; }
 
   /* --- EEAT: MARIA E FAQ --- */
-  .author-box { display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 15px; margin: 60px 0 40px; border-left: 5px solid #014039; }
+  .author-box { display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 15px; margin: 60px 0 20px; border-left: 5px solid #014039; }
   .author-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
   .faq-section { margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; }
   details { background: #fff; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px; padding: 15px; cursor: pointer; }
   summary { font-weight: bold; color: #014039; list-style: none; }
 
-  /* --- ELEMENTOS VISUAIS --- */
+  /* --- ELEMENTOS DE CONVERSÃO --- */
   .pilar-box { background: #fdfbf7; border: 1px dashed #014039; border-radius: 15px; padding: 25px; margin-bottom: 40px; }
   .cta-box { background: #fdfbf7; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; display: flex; align-items: center; gap: 20px; justify-content: space-between; }
-  .btn-comprar-agora { background: #F2811D; color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; transition: transform 0.2s; }
-  .btn-comprar-agora:hover { transform: scale(1.05); }
+  .btn-comprar-agora { background: #F2811D; color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; }
 
-  @media (max-width: 600px) { .cta-box { flex-direction: column; text-align: center; padding: 20px; } }
+  @media (max-width: 600px) { .cta-box { flex-direction: column; text-align: center; } }
 </style>
 
 <article>
@@ -79,11 +93,11 @@ layout: base.njk
         <div id="vitrine-dinamica" style="display: none;">
             <div class="vitrine-persuasao">
                 <div class="mini-card">
-                    <img src="{{ image_package }}" alt="Embalagem artesanal {{ title }}">
+                    <img src="{{ image_package }}" alt="Pacote">
                     <span>📦 O Pacote</span>
                 </div>
                 <div class="mini-card">
-                    <img src="{{ image_detail }}" alt="Ingredientes desidratados {{ title }}">
+                    <img src="{{ image_detail }}" alt="Detalhe">
                     <span>🔍 Detalhe</span>
                 </div>
             </div>
@@ -102,7 +116,6 @@ layout: base.njk
                 <div class="nutri-item"><span class="nutri-label">Gorduras</span><span class="nutri-value">{{ nutrition.fats_g }}g</span></div>
                 <div class="nutri-item"><span class="nutri-label">Sódio</span><span class="nutri-value">{{ nutrition.sodium_mg }}mg</span></div>
             </div>
-            <p style="font-size: 0.75rem; color: #999;">Base: porção de {{ nutrition.portion }}</p>
         </div>
         {% endif %}
 
@@ -112,7 +125,7 @@ layout: base.njk
             {% for item in faq %}
             <details>
                 <summary>{{ item.question }}</summary>
-                <p style="padding-top: 10px; color: #666; font-size: 0.95rem;">{{ item.answer }}</p>
+                <p style="padding-top: 10px; color: #666;">{{ item.answer }}</p>
             </details>
             {% endfor %}
         </div>
