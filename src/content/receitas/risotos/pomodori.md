@@ -22,11 +22,20 @@ rendimento: "2 pessoas"
 tempo_preparo: "18 min"
 tempo_iso: "PT18M"
 
+
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "370 kcal"
+
+# 1. Imagem Principal (Food Porn - Prato Pronto)
 image: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
 image_alt: "Prato de Risoto Pomodori cremoso com manjericão fresco e tomates secos da ChefBrico"
+
+# 2. Imagem do Pacote (Persuasão de Produto Real)
+image_package: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
+
+# 3. Imagem de Detalhe (Zoom nos Ingredientes/Textura)
+image_detail: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE & API) ---
 nutrition:
