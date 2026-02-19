@@ -14,7 +14,7 @@ availability: "https://schema.org/InStock"
 category: "Risoto"
 main_ingredient: "Arroz Arbóreo e Tomate Seco"
 keywords: "jantar rápido Brasília, risoto vegano DF, comida saudável prática, ChefBrico"
-solucoes: ["marmita fit", "Para Crianças", "Trilha & Viagem", "Jantar Rápido", "Jantar a Dois"]
+solucoes: ["Marmita Fit", "Para Crianças", "Trilha & Viagem", "Jantar Rápido", "Jantar a Dois"]
 # --- DADOS LOGÍSTICOS & ATIVAÇÃO DOS 3 PILARES (VISUAL) ---
 # Importante: Estes nomes ativam os ícones do Método Gourmet Prático no Front-End.
 peso_liquido_g: 180
