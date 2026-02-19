@@ -4,32 +4,85 @@ permalink: /receitas/solucoes/momento-a-dois/
 title: "Jantar Romântico em Casa | ChefBrico"
 description: "Receitas gourmet sofisticadas para impressionar. Risotos com frutas e antepastos finos."
 ---
+
 <script type="application/ld+json">
-{ "@context": "https://schema.org", "@type": "CollectionPage", "name": "Jantar Romântico", "url": "https://gourmetpratico.com.br/receitas/solucoes/momento-a-dois/" }
+{ 
+  "@context": "https://schema.org", 
+  "@type": "CollectionPage", 
+  "name": "Momento a Dois - Jantar Romântico", 
+  "url": "https://gourmetpratico.com.br/receitas/solucoes/momento-a-dois/" 
+}
 </script>
 
-<main class="container">
-    <div class="page-header-local" style="text-align:center; margin:40px 0;">
-        <h1>Momento a Dois</h1>
-        <p style="color:#777;">Impressione quem você ama. Pratos sofisticados que harmonizam com vinhos e criam memórias.</p>
+<style>
+    /* Reaproveitando a estrutura vencedora do seu Cardápio */
+    .solucao-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center; }
+    
+    .solucao-header { margin: 60px 0 40px; }
+    .solucao-header h1 { font-size: 2.8rem; color: #014039; font-family: 'Playfair Display', serif; }
+    .solucao-header p { color: #666; font-size: 1.1rem; max-width: 700px; margin: 15px auto; line-height: 1.6; }
+
+    .recipe-grid { 
+        display: grid; gap: 15px; width: 100%; margin: 40px auto 100px; 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    @media (min-width: 1024px) { 
+        .recipe-grid { grid-template-columns: repeat(6, 1fr); gap: 20px; } 
+    }
+
+    .recipe-card { 
+        background: white; border: 1px solid #eee; border-radius: 12px; overflow: hidden; 
+        display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
+        height: 100%; transition: transform 0.2s; text-align: center; 
+    }
+    .recipe-card:hover { transform: translateY(-3px); border-color: #F2811D; }
+
+    .card-image-wrapper { position: relative; width: 100%; padding-top: 75%; }
+    .card-image-wrapper img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+
+    .btn-card-float { 
+        position: absolute; bottom: 8px; right: 8px; width: 35px; height: 35px; 
+        background-color: #F2811D; color: white; border-radius: 50%; border: none; 
+        font-size: 1.4rem; display: flex; align-items: center; justify-content: center; 
+        cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    }
+
+    .card-content { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; align-items: center; }
+    .card-title { font-size: 0.85rem; color: #014039; margin: 5px 0 10px; font-weight: 700; text-decoration: none; line-height: 1.3; }
+    .card-price { color: #F2811D; font-weight: 800; font-size: 1rem; }
+</style>
+
+<main class="solucao-container">
+    <header class="solucao-header">
+        <h1>🍷 Momento a Dois</h1>
+        <p>Impressione quem você ama com pratos sofisticados que harmonizam com vinhos e criam memórias inesquecíveis.</p>
+    </header>
+
+    <div class="recipe-grid">
+        {# Buscamos as receitas específicas desta solução no banco de dados #}
+        {% for item in collections.receitas %}
+            {% if item.data.solucoes and "Jantar a Dois" in item.data.solucoes %}
+            <div class="recipe-card">
+                <div class="card-image-wrapper">
+                    <a href="{{ item.url }}">
+                        <img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy">
+                    </a>
+                    <button id="prod-{{ item.data.sku }}" onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')" class="btn-card-float">+</button>
+                </div>
+                <div class="card-content">
+                    <a href="{{ item.url }}" class="card-title">
+                        {{ item.data.title | replace(" | ChefBrico", "") }}
+                    </a>
+                    <div style="margin-top: auto;">
+                        <span class="card-price">R$ {{ item.data.price | dinheiro }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
     </div>
 
-    <div class="product-grid">
-        <a href="/receitas/risotos/pera-gorgonzola/" class="product-card">
-            <img src="/imagens/risoto-agridoce-pera-gorgonzola-veg-chefbrico.png" class="product-card-image">
-            <div class="product-card-content"><h3>Risoto Pêra & Gorgonzola</h3><p>Elegância agridoce.</p><span class="cta-link">Ver Receita</span></div>
-        </a>
-        <a href="/receitas/risotos/morango/" class="product-card">
-            <img src="/imagens/risoto-agridoce-morango-raspas-limao-siciliano-chefbrico.png" class="product-card-image">
-            <div class="product-card-content"><h3>Risoto de Morango</h3><p>Surpreendente e romântico.</p><span class="cta-link">Ver Receita</span></div>
-        </a>
-        <a href="/receitas/risotos/shiimeji/" class="product-card">
-            <img src="/imagens/risoto-shiimeji-alho-poro-chefbrico.png" class="product-card-image">
-            <div class="product-card-content"><h3>Risoto Shiimeji</h3><p>Sofisticação clássica.</p><span class="cta-link">Ver Receita</span></div>
-        </a>
-        <a href="/receitas/emporio-da-chef/funghi-confit/" class="product-card">
-            <img src="/imagens/icone-confit-funghi-chefbrico.png" class="product-card-image">
-            <div class="product-card-content"><h3>Funghi Confit</h3><p>Para a entrada perfeita.</p><span class="cta-link">Ver Detalhes</span></div>
-        </a>
+    <div style="margin-bottom: 100px;">
+        <a href="/receitas/" style="color: #014039; font-weight: bold; text-decoration: underline;">← Voltar para todo o Cardápio</a>
     </div>
 </main>
