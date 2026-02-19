@@ -5,58 +5,33 @@ title: "Catálogo Inteligente | ChefBrico A-Commerce"
 description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre por solução ou categoria."
 ---
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Catálogo Inteligente ChefBrico",
-  "url": "https://gourmetpratico.com.br/receitas/",
-  "isPartOf": {
-    "@type": "Store",
-    "@id": "https://gourmetpratico.com.br/#website", 
-    "name": "ChefBrico Gourmet Prático",
-    "image": "https://gourmetpratico.com.br/imagens/logo.png"
-  },
-  "mainEntity": {
-    "@type": "ItemList",
-    "itemListElement": [
-      {% for item in collections.receitas %}
-      {% if item.data.price %}
-      {
-        "@type": "ListItem",
-        "position": {{ loop.index }},
-        "url": "https://gourmetpratico.com.br{{ item.url }}",
-        "name": "{{ item.data.title }}"
-      }{% if not loop.last %},{% endif %}
-      {% endif %}
-      {% endfor %}
-    ]
-  }
-}
-</script>
-
 <style>
     .war-catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center; }
     .recipe-grid { display: grid; gap: 15px; width: 100%; margin: 40px auto 100px; grid-template-columns: repeat(2, 1fr); }
     @media (min-width: 1024px) { .recipe-grid { grid-template-columns: repeat(6, 1fr); gap: 20px; } }
-    .recipe-card { background: white; border: 1px solid #eee; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(0,0,0,0.06); height: 100%; transition: transform 0.2s, border-color 0.2s; text-align: center; }
+    
+    .recipe-card { background: white; border: 1px solid #eee; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(0,0,0,0.06); height: 100%; transition: transform 0.2s; text-align: center; }
     .recipe-card:hover { transform: translateY(-3px); border-color: #F2811D; }
     .card-image-wrapper { position: relative; width: 100%; padding-top: 75%; }
     .card-image-wrapper img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-    .btn-card-float { position: absolute; bottom: 8px; right: 8px; width: 35px; height: 35px; background-color: #F2811D; color: white; border-radius: 50%; border: none; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; }
+    .btn-card-float { position: absolute; bottom: 8px; right: 8px; width: 35px; height: 35px; background-color: #F2811D; color: white; border-radius: 50%; border: none; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    
     .card-content { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; align-items: center; }
     .card-title { font-size: 0.85rem; color: #014039; margin: 5px 0 10px; font-weight: 700; text-decoration: none; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .card-price { color: #F2811D; font-weight: 800; font-size: 1rem; }
+
     .filter-section { margin-bottom: 40px; }
     .filter-label { font-weight: 800; color: #014039; margin-bottom: 15px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
-    .btn-filter-pill { background: white; border: 1px solid #eee; padding: 8px 18px; border-radius: 20px; cursor: pointer; color: #555; font-size: 0.85rem; transition: 0.2s; margin: 4px; text-decoration: none; display: inline-block; }
-    button.btn-filter-pill.active { background: #014039; color: white; border-color: #014039; }
+    .btn-filter-pill { background: white; border: 1px solid #eee; padding: 8px 18px; border-radius: 20px; cursor: pointer; color: #555; font-size: 0.85rem; transition: 0.2s; margin: 4px; display: inline-block; }
+    
+    /* ESTADO ATIVO: O botão "acende" aqui */
+    .btn-filter-pill.active { background: #014039 !important; color: white !important; border-color: #014039 !important; }
 </style>
 
 <main class="war-catalog-container">
     <header style="margin: 60px 0 40px;">
         <h1 style="font-size: 2.5rem; color: #014039; font-family: 'Playfair Display', serif;">Catálogo Inteligente</h1>
-        <p style="color: #666; margin-top: 10px; font-size: 1.1rem;">Comida de verdade pronta em 18 minutos. Sem desperdício.</p>
+        <p style="color: #666; margin-top: 10px;">Comida de verdade pronta em 18 minutos. Sem desperdício.</p>
     </header>
 
     <div class="filter-section">
@@ -73,28 +48,24 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
     <div class="filter-section">
         <div class="filter-label">🍲 Categorias</div>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
-             <button class="btn-filter-pill active" onclick="filter('all')">Todos</button>
-             <button class="btn-filter-pill" onclick="filter('Risoto')">Risotos</button>
-             <button class="btn-filter-pill" onclick="filter('Sopa')">Sopas</button>
-             <button class="btn-filter-pill" onclick="filter('Refeição')">Refeições</button>
-             <button class="btn-filter-pill" onclick="filter('Empório')">Empório</button>
+             <button id="cat-all" class="btn-filter-pill active" onclick="filter('all')">Todos</button>
+             <button id="cat-Risoto" class="btn-filter-pill" onclick="filter('Risoto')">Risotos</button>
+             <button id="cat-Sopa" class="btn-filter-pill" onclick="filter('Sopa')">Sopas</button>
+             <button id="cat-Refeição" class="btn-filter-pill" onclick="filter('Refeição')">Refeições</button>
+             <button id="cat-Empório" class="btn-filter-pill" onclick="filter('Empório')">Empório</button>
         </div>
     </div>
     
-    <div class="recipe-grid">
+    <div class="recipe-grid" id="main-grid">
         {% for item in collections.receitas %}
         {% if item.data.price %}
         <div class="recipe-card" data-category="{{ item.data.category }}">
             <div class="card-image-wrapper">
-                <a href="{{ item.url }}">
-                    <img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy">
-                </a>
+                <a href="{{ item.url }}"><img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy"></a>
                 <button id="prod-{{ item.data.sku }}" onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')" class="btn-card-float">+</button>
             </div>
             <div class="card-content">
-                <a href="{{ item.url }}" class="card-title">
-                    {{ item.data.title | replace(" | ChefBrico", "") | replace(" em 18 Minutos", "") }}
-                </a>
+                <a href="{{ item.url }}" class="card-title">{{ item.data.title | replace(" | ChefBrico", "") }}</a>
                 <div style="margin-top: auto;">
                     <span class="card-price">R$ {{ item.data.price | dinheiro }}</span>
                 </div>
@@ -108,17 +79,23 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
 <script>
 function filter(category) {
     const cards = document.querySelectorAll('.recipe-card');
-    const buttons = document.querySelectorAll('button.btn-filter-pill');
-    buttons.forEach(btn => {
-        if (btn.innerText.includes(category) || (category === 'all' && btn.innerText === 'Todos')) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
+    const buttons = document.querySelectorAll('.filter-section:nth-child(2) .btn-filter-pill');
+    
+    // 1. Remove classe ativa de todos os botões de categoria
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // 2. Adiciona classe ativa apenas ao botão clicado
+    const selectedBtn = document.getElementById('cat-' + category);
+    if (selectedBtn) { selectedBtn.classList.add('active'); }
+
+    // 3. Filtra os cards
     cards.forEach(card => {
         const cardCat = card.getAttribute('data-category');
-        card.style.display = (category === 'all' || cardCat === category) ? 'flex' : 'none';
+        if (category === 'all' || cardCat === category) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
     });
 }
 </script>
