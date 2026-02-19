@@ -29,15 +29,17 @@ layout: base.njk
   .hero-image-container img { width: 100%; height: auto; display: block; }
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
   
-  /* --- NOVA JANELA: MINI CARDS PERSUASIVOS (MOBILE FIRST) --- */
+  /* --- AJUSTE: MINI CARDS PERSUASIVOS (TAMANHO REDUZIDO EM 50%) --- */
   .vitrine-persuasao {
     display: flex;
-    gap: 12px;
-    margin: 40px 0;
-    justify-content: space-between;
+    gap: 15px;
+    margin: 30px auto;
+    justify-content: center;
+    max-width: 480px; /* Trava o tamanho total da vitrine */
   }
   .mini-card {
     flex: 1;
+    max-width: 180px; /* Reduz cada card individualmente */
     text-align: center;
   }
   .mini-card img {
@@ -46,20 +48,18 @@ layout: base.njk
     border-radius: 12px;
     border: 1px solid #eee;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
   }
-  .mini-card img:hover { transform: scale(1.05); }
   .mini-card span {
     display: block;
     margin-top: 8px;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 800;
     color: #666;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
 
-  /* --- DEMAIS ELEMENTOS DA ESTRUTURA --- */
+  /* --- DEMAIS ELEMENTOS --- */
   .pilar-box { background: #fdfbf7; border: 1px dashed #014039; border-radius: 15px; padding: 25px; margin-bottom: 40px; }
   .cta-box { background: #fdfbf7; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; display: flex; align-items: center; gap: 20px; }
   .btn-comprar-agora { background: #F2811D; color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; }
@@ -86,8 +86,6 @@ layout: base.njk
             </div>
         </section>
 
-        {{ content | safe }}
-
         {% if image_package and image_detail %}
         <div class="vitrine-persuasao">
             <div class="mini-card">
@@ -96,10 +94,12 @@ layout: base.njk
             </div>
             <div class="mini-card">
                 <img src="{{ image_detail }}" alt="Ingredientes desidratados {{ title }}">
-                <span>🔍 Ingredientes</span>
+                <span>🔍 Detalhe</span>
             </div>
         </div>
         {% endif %}
+
+        {{ content | safe }}
 
         <div class="cta-box">
             <div class="cta-content">
@@ -115,7 +115,7 @@ layout: base.njk
         <div style="text-align: center; margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
             <h3 style="color: #014039;">Informação Nutricional</h3>
             <p style="font-size: 0.8rem; color: #999;">Porção de {{ nutrition.portion }}</p>
-            </div>
+        </div>
         {% endif %}
     </div>
 </article>
