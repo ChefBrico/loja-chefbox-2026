@@ -20,26 +20,24 @@ layout: base.njk
 </script>
 
 <style>
-  /* --- ESTILOS PRESERVADOS --- */
+  /* --- ESTILOS DE ESTRUTURA --- */
   .receita-header { text-align: center; max-width: 800px; margin: 40px auto; }
   .receita-title { color: #014039; font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; }
-  .meta-bar { display: flex; justify-content: center; gap: 20px; margin: 25px 0; font-size: 0.85rem; color: #444; font-weight: 600; flex-wrap: wrap; text-transform: uppercase; }
-  .meta-item { display: flex; align-items: center; gap: 6px; background: #fff; padding: 8px 15px; border-radius: 20px; border: 1px solid #eee; }
   .hero-image-container { max-width: 900px; margin: 0 auto 40px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .hero-image-container img { width: 100%; height: auto; display: block; }
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
   
-  /* --- AJUSTE: MINI CARDS PERSUASIVOS (TAMANHO REDUZIDO EM 50%) --- */
+  /* --- VITRINE PERSUASIVA: POSICIONAMENTO E TAMANHO (+10%) --- */
   .vitrine-persuasao {
     display: flex;
     gap: 15px;
-    margin: 30px auto;
+    margin: 25px auto; /* Respiro equilibrado */
     justify-content: center;
-    max-width: 480px; /* Trava o tamanho total da vitrine */
+    max-width: 530px; /* Ampliado em 10% para melhor visualização */
   }
   .mini-card {
     flex: 1;
-    max-width: 180px; /* Reduz cada card individualmente */
+    max-width: 220px; /* Tamanho ajustado para Food Porn ideal */
     text-align: center;
   }
   .mini-card img {
@@ -52,14 +50,13 @@ layout: base.njk
   .mini-card span {
     display: block;
     margin-top: 8px;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 800;
     color: #666;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
 
-  /* --- DEMAIS ELEMENTOS --- */
   .pilar-box { background: #fdfbf7; border: 1px dashed #014039; border-radius: 15px; padding: 25px; margin-bottom: 40px; }
   .cta-box { background: #fdfbf7; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; display: flex; align-items: center; gap: 20px; }
   .btn-comprar-agora { background: #F2811D; color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; }
@@ -75,10 +72,9 @@ layout: base.njk
         <img src="{{ image }}" alt="Prato Pronto: {{ title }}">
     </div>
 
-    <div class="conteudo-leitura">
+    <div class="conteudo-leitura" id="area-leitura">
         <section class="pilar-box">
             <h3 style="color: #014039; margin-top: 0; font-family: 'Merriweather', serif;">✨ Método Gourmet Prático</h3>
-            <p style="font-size: 0.9rem; margin-bottom: 15px;">Os 3 pilares da Chef Maria Conceição:</p>
             <div style="font-size: 0.95rem; line-height: 1.6;">
                 <p><strong>1. Despensa Inteligente:</strong> Validade de 1 ano sem refrigeração.</p>
                 <p><strong>2. Panela Única:</strong> Jantar saudável pronto em 18 minutos.</p>
@@ -87,14 +83,16 @@ layout: base.njk
         </section>
 
         {% if image_package and image_detail %}
-        <div class="vitrine-persuasao">
-            <div class="mini-card">
-                <img src="{{ image_package }}" alt="Embalagem artesanal {{ title }}">
-                <span>📦 O Pacote</span>
-            </div>
-            <div class="mini-card">
-                <img src="{{ image_detail }}" alt="Ingredientes desidratados {{ title }}">
-                <span>🔍 Detalhe</span>
+        <div id="vitrine-dinamica" style="display: none;">
+            <div class="vitrine-persuasao">
+                <div class="mini-card">
+                    <img src="{{ image_package }}" alt="Embalagem artesanal {{ title }}">
+                    <span>📦 O Pacote</span>
+                </div>
+                <div class="mini-card">
+                    <img src="{{ image_detail }}" alt="Ingredientes desidratados {{ title }}">
+                    <span>🔍 Detalhe</span>
+                </div>
             </div>
         </div>
         {% endif %}
@@ -110,12 +108,34 @@ layout: base.njk
                 + ADICIONAR (R$ {{ price }})
             </button>
         </div>
-
-        {% if nutrition %}
-        <div style="text-align: center; margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
-            <h3 style="color: #014039;">Informação Nutricional</h3>
-            <p style="font-size: 0.8rem; color: #999;">Porção de {{ nutrition.portion }}</p>
-        </div>
-        {% endif %}
     </div>
 </article>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const vitrine = document.getElementById('vitrine-dinamica');
+        const areaLeitura = document.getElementById('area-leitura');
+        
+        if (vitrine && areaLeitura) {
+            // Busca todos os títulos H2 da página
+            const titulos = areaLeitura.querySelectorAll('h2');
+            let alvo = null;
+
+            titulos.forEach(h2 => {
+                // Se encontrar o texto "O que vem no Pacote", define como alvo
+                if (h2.innerText.includes("O que vem no Pacote")) {
+                    alvo = h2;
+                }
+            });
+
+            if (alvo) {
+                // Move a vitrine para exatamente ANTES do título encontrado
+                vitrine.style.display = 'block';
+                alvo.parentNode.insertBefore(vitrine, alvo);
+            } else {
+                // Caso não encontre o título, mostra no local padrão
+                vitrine.style.display = 'block';
+            }
+        }
+    });
+</script>
