@@ -2,74 +2,44 @@
 layout: base.njk
 ---
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": ["Product", "Recipe"],
-  "name": "{{ title }}",
-  "description": "{{ description }}",
-  "sku": "{{ sku }}",
-  "image": "https://gourmetpratico.com.br{{ image }}",
-  "offers": {
-    "@type": "Offer",
-    "price": "{{ price }}",
-    "priceCurrency": "BRL",
-    "availability": "https://schema.org/InStock"
-  }
-}
-</script>
-
 <style>
-  /* --- ESTILOS DE ESTRUTURA --- */
   .receita-header { text-align: center; max-width: 800px; margin: 40px auto; }
   .receita-title { color: #014039; font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; }
   .hero-image-container { max-width: 900px; margin: 0 auto 40px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .hero-image-container img { width: 100%; height: auto; display: block; }
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
   
-  /* --- VITRINE PERSUASIVA: POSICIONAMENTO E TAMANHO (+10%) --- */
-  .vitrine-persuasao {
-    display: flex;
-    gap: 15px;
-    margin: 25px auto; /* Respiro equilibrado */
-    justify-content: center;
-    max-width: 530px; /* Ampliado em 10% para melhor visualização */
-  }
-  .mini-card {
-    flex: 1;
-    max-width: 220px; /* Tamanho ajustado para Food Porn ideal */
-    text-align: center;
-  }
-  .mini-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    border: 1px solid #eee;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-  .mini-card span {
-    display: block;
-    margin-top: 8px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+  /* VITRINE PERSUASIVA AJUSTADA */
+  .vitrine-persuasao { display: flex; gap: 15px; margin: 25px auto; justify-content: center; max-width: 530px; }
+  .mini-card { flex: 1; max-width: 220px; text-align: center; }
+  .mini-card img { width: 100%; height: auto; border-radius: 12px; border: 1px solid #eee; }
+  .mini-card span { display: block; margin-top: 8px; font-size: 0.7rem; font-weight: 800; color: #666; text-transform: uppercase; }
+
+  /* TABELA NUTRICIONAL DIAGRAMA */
+  .nutri-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0; }
+  .nutri-item { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px; min-width: 80px; text-align: center; }
+  .nutri-label { font-size: 0.65rem; text-transform: uppercase; color: #999; display: block; }
+  .nutri-value { font-size: 1.1rem; font-weight: 800; color: #014039; }
+
+  /* ESTILOS EEAT (MARIA E FAQ) */
+  .author-box { display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 15px; margin: 40px 0; border-left: 5px solid #014039; }
+  .author-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
+  .faq-section { margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; }
+  details { background: #fff; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px; padding: 15px; cursor: pointer; }
+  summary { font-weight: bold; color: #014039; }
 
   .pilar-box { background: #fdfbf7; border: 1px dashed #014039; border-radius: 15px; padding: 25px; margin-bottom: 40px; }
-  .cta-box { background: #fdfbf7; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; display: flex; align-items: center; gap: 20px; }
+  .cta-box { background: #fdfbf7; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; display: flex; align-items: center; gap: 20px; justify-content: space-between; }
   .btn-comprar-agora { background: #F2811D; color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; }
 </style>
 
 <article>
     <header class="receita-header">
         <h1 class="receita-title">{{ title }}</h1>
-        <p style="font-size: 0.85rem; color: #999;">Por <strong>{{ author_name or meta.author.name }}</strong></p>
     </header>
 
     <div class="hero-image-container">
-        <img src="{{ image }}" alt="Prato Pronto: {{ title }}">
+        <img src="{{ image }}" alt="{{ title }}">
     </div>
 
     <div class="conteudo-leitura" id="area-leitura">
@@ -86,11 +56,11 @@ layout: base.njk
         <div id="vitrine-dinamica" style="display: none;">
             <div class="vitrine-persuasao">
                 <div class="mini-card">
-                    <img src="{{ image_package }}" alt="Embalagem artesanal {{ title }}">
+                    <img src="{{ image_package }}" alt="Pacote">
                     <span>📦 O Pacote</span>
                 </div>
                 <div class="mini-card">
-                    <img src="{{ image_detail }}" alt="Ingredientes desidratados {{ title }}">
+                    <img src="{{ image_detail }}" alt="Ingredientes">
                     <span>🔍 Detalhe</span>
                 </div>
             </div>
@@ -99,15 +69,49 @@ layout: base.njk
 
         {{ content | safe }}
 
+        {% if nutrition %}
+        <div style="text-align: center; margin-top: 40px; background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #eee;">
+            <h3 style="color: #014039; margin-bottom: 15px;">Tabela Nutricional</h3>
+            <div class="nutri-grid">
+                <div class="nutri-item"><span class="nutri-label">Kcal</span><span class="nutri-value">{{ nutrition.calories }}</span></div>
+                <div class="nutri-item"><span class="nutri-label">Proteínas</span><span class="nutri-value">{{ nutrition.protein_g }}g</span></div>
+                <div class="nutri-item"><span class="nutri-label">Carbos</span><span class="nutri-value">{{ nutrition.carbs_g }}g</span></div>
+                <div class="nutri-item"><span class="nutri-label">Gorduras</span><span class="nutri-value">{{ nutrition.fats_g }}g</span></div>
+                <div class="nutri-item"><span class="nutri-label">Sódio</span><span class="nutri-value">{{ nutrition.sodium_mg }}mg</span></div>
+            </div>
+            <p style="font-size: 0.75rem; color: #999;">Valores baseados em porção de {{ nutrition.portion }}</p>
+        </div>
+        {% endif %}
+
+        <div class="author-box">
+            <img src="/imagens/maria-conceicao-chefbrico.webp" class="author-img" alt="Maria Conceição">
+            <div>
+                <h4 style="margin:0; color:#014039;">Dica da Chef Maria</h4>
+                <p style="font-size: 0.95rem; font-style: italic; margin-top: 10px;">"{{ citable_fact }}"</p>
+            </div>
+        </div>
+
         <div class="cta-box">
-            <div class="cta-content">
+            <div>
                 <h3 style="margin:0; color: #014039;">Desejou?</h3>
                 <p style="margin:5px 0; font-size: 0.9rem;">Adicione à sua <strong>ChefBox</strong> agora.</p>
             </div>
             <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}', '{{ page.url }}')" class="btn-comprar-agora">
-                + ADICIONAR (R$ {{ price }})
+                + ADICIONAR (R$ {{ price | dinheiro }})
             </button>
         </div>
+
+        {% if faq %}
+        <div class="faq-section">
+            <h3 style="color: #014039; margin-bottom: 20px;">Dúvidas Frequentes</h3>
+            {% for item in faq %}
+            <details>
+                <summary>{{ item.question }}</summary>
+                <p style="padding-top: 10px; color: #666; font-size: 0.95rem;">{{ item.answer }}</p>
+            </details>
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
 </article>
 
@@ -115,27 +119,16 @@ layout: base.njk
     document.addEventListener("DOMContentLoaded", function() {
         const vitrine = document.getElementById('vitrine-dinamica');
         const areaLeitura = document.getElementById('area-leitura');
-        
         if (vitrine && areaLeitura) {
-            // Busca todos os títulos H2 da página
             const titulos = areaLeitura.querySelectorAll('h2');
             let alvo = null;
-
             titulos.forEach(h2 => {
-                // Se encontrar o texto "O que vem no Pacote", define como alvo
-                if (h2.innerText.includes("O que vem no Pacote")) {
-                    alvo = h2;
-                }
+                if (h2.innerText.includes("O que vem no Pacote")) { alvo = h2; }
             });
-
             if (alvo) {
-                // Move a vitrine para exatamente ANTES do título encontrado
                 vitrine.style.display = 'block';
                 alvo.parentNode.insertBefore(vitrine, alvo);
-            } else {
-                // Caso não encontre o título, mostra no local padrão
-                vitrine.style.display = 'block';
-            }
+            } else { vitrine.style.display = 'block'; }
         }
     });
 </script>
