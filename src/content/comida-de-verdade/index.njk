@@ -7,41 +7,34 @@ description: "Conheça os pilares do método Gourmet Prático e a história de M
 
 <main class="container">
     
-   <!-- HERO: MARIA -->
-    <div class="author-box" style="align-items: center; margin: 40px 0; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+    <div class="eeat-card-hero">
         
-        <!-- AQUI ESTÁ A MUDANÇA: Usando a classe do CSS Global -->
-        <div class="avatar-hero-circle" style="width: 220px; height: 220px;"> <!-- Override leve se quiser um pouco menor que a home -->
+        <div class="avatar-hero-circle"> 
             <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição">
         </div>
 
         <div class="author-info">
-            <span style="font-size: 0.8em; text-transform: uppercase; color: #999; font-weight: bold;">Inspirar & Cuidar</span>
-            <h1 style="color: var(--cor-institucional); font-family: 'Merriweather', serif;">A Trilha empreendedora da Maria Conceição </h1>
-            <p style="color: #555;">Meu nome é Maria Conceição. Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
+            <span class="eyebrow-text">Inspirar & Cuidar</span>
+            <h1 class="hero-title">A Trilha empreendedora da Maria Conceição</h1>
+            <p class="hero-p">Meu nome é Maria Conceição. Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
         </div>
     </div>
 
-   <!-- CARROSSEL DINÂMICO: O MÉTODO -->
     <h2 class="text-center" style="color: var(--cor-institucional); margin-top: 50px;">Os Pilares do Método Gourmet Prático</h2>
-    <div class="carousel-container">
+    
+    <div class="carousel-container" style="gap: 15px;">
         
-        <!-- 1. LOOP AUTOMÁTICO (Itens 1 a 7) -->
-        <!-- O comando 'sort' garante que o 1 venha antes do 2, etc. -->
         {% for post in collections.metodo | sort(attribute='data.order') %}
         <a href="{{ post.url }}" class="card">
             <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
             <div class="card-content">
                 <span class="card-category" style="color: var(--cor-cta);">{{ post.data.category }}</span>
                 <h3 style="font-size: 1.1rem; margin: 10px 0;">{{ post.data.title }}</h3>
-                <!-- Truncate limita o texto para o card não ficar gigante -->
                 <p style="font-size: 0.9rem; color: #666;">{{ post.data.description | truncate(80) }}</p>
             </div>
         </a>
         {% endfor %}
 
-        <!-- 2. CARD FIXO (Item 8 - O Gran Finale) -->
-        <!-- Este card fica fora do loop, sempre na última posição -->
         <a href="/chefbox/" class="card" style="border: 2px solid var(--cor-cta);">
             <img src="/imagens/maria-conceicao-chefbrico-laranja.png" class="card-image" alt="ChefBox">
             <div class="card-content">
@@ -50,12 +43,76 @@ description: "Conheça os pilares do método Gourmet Prático e a história de M
                 <p>A materialização da filosofia. Escolha 4 sabores e ganhe o 5º de presente!</p>
             </div>
         </a>
-
     </div>
 
-    <div class="conteudo-leitura" style="margin-top: 60px;">
+    <div class="conteudo-leitura" style="margin-top: 40px; padding: 0 15px;">
         <h2>Uma Conquista de Todas Nós</h2>
         <p>A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong>Sebrae, Emater e Senar</strong>.</p>
     </div>
 
 </main>
+
+<style>
+    /* 1. ESTILO DO CARD HERO (DESKTOP) */
+    .eeat-card-hero {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin: 40px 0;
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .avatar-hero-circle {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        border: 5px solid #fff;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .avatar-hero-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .author-info { flex-grow: 1; }
+    .eyebrow-text { font-size: 0.8em; text-transform: uppercase; color: #999; font-weight: bold; display: block; }
+    .hero-title { color: #014039; font-family: 'Merriweather', serif; font-size: 2rem; margin: 10px 0; }
+    .hero-p { color: #555; line-height: 1.6; }
+
+    /* 2. MICRO-CIRURGIA MOBILE FIRST (IMPEDE O VAZAMENTO DO TEXTO) */
+    @media (max-width: 768px) {
+        .eeat-card-hero {
+            flex-direction: column !important; /* Texto vai para baixo da imagem */
+            padding: 30px 20px !important;
+            text-align: center !important;
+            gap: 20px !important;
+            margin: 20px 10px !important;
+        }
+
+        .avatar-hero-circle {
+            width: 160px !important; /* Reduz o círculo para caber no celular */
+            height: 160px !important;
+        }
+
+        .hero-title {
+            font-size: 1.5rem !important; /* Título menor para não quebrar linha bruscamente */
+        }
+
+        .hero-p {
+            font-size: 0.95rem !important;
+            padding: 0 5px !important;
+        }
+
+        /* Redução de Gaps entre as seções no Mobile */
+        .conteudo-leitura {
+            margin-top: 30px !important;
+        }
+    }
+</style>
