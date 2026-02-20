@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Sopa"
 main_ingredient: "Lentilha Vermelha e Arroz Basmati"
 keywords: "canja vegana Brasília, sopa proteica, lentilha vermelha, pós treino DF, imunidade, jantar leve, sem glúten, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 140
 rendimento: "3 porções (1 litro)"
