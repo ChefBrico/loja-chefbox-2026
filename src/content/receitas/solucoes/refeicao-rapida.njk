@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-permalink: /receitas/solucoes/jantar-rapido/
+permalink: /receitas/solucoes/refeicao-rapida/
 title: "Jantar Rápido em 18 Minutos | ChefBrico"
-description: "Soluções de jantar saudável prontas em menos de 20 minutos. Risotos e sopas de panela única."
+description: "Soluções para refeição saudável prontas em menos de 20 minutos. Risotos e Sopas de panela única."
 ---
 
 <style>
@@ -44,14 +44,14 @@ description: "Soluções de jantar saudável prontas em menos de 20 minutos. Ris
 
 <main class="solucao-container">
     <header class="solucao-header">
-        <h1>⚡ Jantar Rápido (18 Minutos)</h1>
+        <h1>⚡ Refeição Rápida (18 Minutos)</h1>
         <p>Chegou cansada do trabalho? Estas receitas sujam apenas uma panela e ficam prontas enquanto você toma um banho.</p>
     </header>
 
     <div class="recipe-grid">
         {# O MOTOR DE BUSCA AUTOMÁTICO: Ele varre as 24 receitas procurando a etiqueta certa #}
         {% for item in collections.receitas %}
-            {% if item.data.solucoes and "Jantar Rápido" in item.data.solucoes %}
+            {% if item.data.solucoes and "Refeição Rápida" in item.data.solucoes %}
             <div class="recipe-card">
                 <div class="card-image-wrapper">
                     <a href="{{ item.url }}">
