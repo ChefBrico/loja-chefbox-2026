@@ -27,6 +27,9 @@ layout: base.njk
   .hero-image-container img { width: 100%; height: auto; display: block; }
   .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; padding-bottom: 220px; padding-left: 15px; padding-right: 15px; }
   
+  /* --- PILARES E VITRINE --- */
+  .pilar-box { background: #fdfbf7; border: 1px dashed #014039; border-radius: 15px; padding: 25px; margin-bottom: 40px; }
+  .pilar-box h3 { color: #014039; margin-top: 0; font-size: 1.3rem; }
   .vitrine-persuasao { display: flex; gap: 15px; margin: 25px auto; justify-content: center; max-width: 530px; }
   .mini-card { flex: 1; max-width: 220px; text-align: center; }
   .mini-card img { width: 100%; height: auto; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
@@ -42,9 +45,9 @@ layout: base.njk
   }
   .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; font-size: 0.95rem; }
   .faq-answer p { padding-bottom: 20px; margin: 0; }
-  .faq-item.active .faq-answer { max-height: 200px; }
-  .faq-item.active .faq-icon { transform: rotate(180deg); }
+  .faq-item.active .faq-answer { max-height: 250px; }
   .faq-icon { transition: transform 0.3s; font-size: 0.8rem; }
+  .faq-item.active .faq-icon { transform: rotate(180deg); }
 
   /* --- BOTÕES COMPACTOS (30% MENORES) --- */
   .pilula-acao-container {
@@ -63,11 +66,6 @@ layout: base.njk
 
   .author-box { display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 15px; margin: 60px 0; border-left: 5px solid #014039; }
   .author-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
-  
-  @media (max-width: 768px) {
-    .receita-title { font-size: 1.6rem; }
-    .author-box { flex-direction: column; text-align: center; }
-  }
 </style>
 
 <article>
@@ -81,21 +79,34 @@ layout: base.njk
     </div>
 
     <div class="conteudo-leitura">
+        <section class="pilar-box">
+            <h3>✨ Método Gourmet Prático</h3>
+            <p><strong>1. Despensa Inteligente:</strong> Validade de 1 ano para sua liberdade.</p>
+            <p><strong>2. Panela Única:</strong> Jantar saudável e gourmet em apenas 18 min.</p>
+            <p><strong>3. Cozinha Criativa:</strong> A base perfeita para suas criações culinárias.</p>
+        </section>
+
         <div class="vitrine-persuasao">
-            <div class="mini-card"><img src="{{ image_package }}" alt="Pacote"><span>📦 O Pacote</span></div>
-            <div class="mini-card"><img src="{{ image_detail }}" alt="Detalhe"><span>🔍 Detalhe</span></div>
+            <div class="mini-card">
+                <img src="{{ image_package }}" alt="Pacote">
+                <span>📦 O Pacote</span>
+            </div>
+            <div class="mini-card">
+                <img src="{{ image_detail }}" alt="Detalhe">
+                <span>🔍 Detalhe</span>
+            </div>
         </div>
 
-        {{ content | safe }}
+        <div class="receita-body">
+            {{ content | safe }}
+        </div>
 
         <section class="faq-section">
             <h2 style="color: #014039; margin-bottom: 20px;">Dúvidas Frequentes</h2>
-            
             <div class="faq-item">
                 <button class="faq-question">O prato é apimentado? <span class="faq-icon">▼</span></button>
                 <div class="faq-answer"><p>Nossas receitas são equilibradas para toda a família. O tempero é marcante mas suave, sem ardência excessiva.</p></div>
             </div>
-
             <div class="faq-item">
                 <button class="faq-question">Como garantir a cremosidade? <span class="faq-icon">▼</span></button>
                 <div class="faq-answer"><p>O segredo está em mexer ocasionalmente durante os 18 minutos. Isso libera o amido natural do grão e cria o veludo gourmet.</p></div>
@@ -120,7 +131,7 @@ layout: base.njk
 </article>
 
 <script>
-    // Lógica para o FAQ Acordeão
+    // Ativador do FAQ Acordeão
     document.querySelectorAll('.faq-question').forEach(button => {
         button.addEventListener('click', () => {
             const faqItem = button.parentElement;
