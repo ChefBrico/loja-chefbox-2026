@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Risoto"
 main_ingredient: "Tomate e Manjericão"
 keywords: "risoto tomate Brasília, manjericão, comida afetiva DF, vegano, sem glúten, clássico italiano, prato para crianças, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
 rendimento: "2 pessoas"
