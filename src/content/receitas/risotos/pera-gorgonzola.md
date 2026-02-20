@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Risoto"
 main_ingredient: "Pêra e Queijo Vegano de Castanha"
 keywords: "risoto pera gorgonzola Brasília, jantar sofisticado DF, queijo vegano, agridoce, sem lactose, sem glúten, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
 rendimento: "2 pessoas"
