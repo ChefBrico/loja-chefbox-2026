@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Sopa"
 main_ingredient: "Macarrão de Banana Verde e Quinoa"
 keywords: "sopa infantil Brasília, macarrão sem glúten DF, banana verde amido resistente, prebiótico natural, jantar leve saudável, sopa vegana kids, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 105
 rendimento: "3 porções (Leve)"
