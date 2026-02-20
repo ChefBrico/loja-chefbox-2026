@@ -131,15 +131,101 @@ layout: base.njk
         </div>
         {% endif %}
 
-        <div class="cta-box">
-            <div>
-                <h3 style="margin:0; color: #014039;">Desejou?</h3>
-                <p style="margin:5px 0; font-size: 0.9rem;">Adicione à sua <strong>ChefBox</strong> agora.</p>
-            </div>
-            <button onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}', '{{ page.url }}')" class="btn-comprar-agora">
-                + ADICIONAR (R$ {{ price | dinheiro }})
-            </button>
+       <div id="crystal-calculator" class="crystal-blur">
+    <div class="calc-content">
+        <div class="calc-info">
+            <span class="calc-label">SEU LUCRO ATUAL</span>
+            <span id="lucro-valor" class="calc-number">R$ 0,00</span>
         </div>
+        <div class="calc-actions">
+            <button id="add-to-box" class="btn-gamer-add" onclick="adicionarComDopamina()">
+                <span class="plus-icon">+</span> ADICIONAR SABOR
+            </button>
+            <a href="/receitas/" class="link-explorar">ou Explorar Catálogo</a>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Efeito Cristal (Glassmorphism) */
+.crystal-blur {
+    position: fixed;
+    bottom: 85px; /* Acima dos slots da ChefBox */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 15px 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.calc-content { display: flex; justify-content: space-between; align-items: center; }
+.calc-info { display: flex; flex-direction: column; }
+.calc-label { font-size: 0.6rem; letter-spacing: 1px; color: #014039; font-weight: 800; }
+.calc-number { font-size: 1.4rem; font-weight: 800; color: #F2811D; transition: transform 0.2s ease; }
+
+.btn-gamer-add {
+    background: #F2811D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(242, 129, 29, 0.3);
+}
+
+.calc-actions { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.link-explorar { font-size: 0.75rem; color: #014039; text-decoration: underline; font-weight: 600; }
+
+/* Animação de Dopamina */
+.lucro-boost { transform: scale(1.2); color: #014039 !important; }
+.presente-desbloqueado { background: gold !important; color: #014039 !important; border: 2px solid #014039; }
+</style>
+
+<script>
+function adicionarComDopamina() {
+    // 1. Chama a função original de adicionar ao carrinho (que você já tem)
+    // Passamos os dados do Nunjucks para o JS
+    addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}');
+
+    // 2. CICLO DE DOPAMINA: Animação do Visor
+    const visor = document.getElementById('lucro-valor');
+    const container = document.getElementById('crystal-calculator');
+    
+    // Simula o cálculo da economia (20% por item até o 5º)
+    let itensNaBox = 0; 
+    if(localStorage.getItem('chefbox')) {
+        itensNaBox = JSON.parse(localStorage.getItem('chefbox')).length;
+    }
+
+    let economia = (itensNaBox * 6.96).toFixed(2).replace('.', ',');
+    
+    visor.innerHTML = `R$ ${economia}`;
+    visor.classList.add('lucro-boost');
+    
+    // 3. Feedback Tátil (Mobile)
+    if (navigator.vibrate) { navigator.vibrate(50); }
+
+    // 4. MENSAGEM MESTRE: O 5º Sabor
+    if (itensNaBox >= 4) {
+        visor.innerHTML = "PRESENTE! (R$ 34,80)";
+        container.classList.add('presente-desbloqueado');
+    }
+
+    setTimeout(() => { visor.classList.remove('lucro-boost'); }, 300);
+}
+</script>
 
         <div class="author-box">
             <img src="/imagens/maria-conceicao-chefbrico.webp" class="author-img" alt="Maria Conceição">
