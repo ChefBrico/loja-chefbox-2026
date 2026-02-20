@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Refeição"
 main_ingredient: "Arroz Negro e Funghi Secchi"
 keywords: "arroz negro Brasília, funghi secchi, superalimento, arroz integral nobre, antioxidante, vegano, sem glúten, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 210
 rendimento: "2 pessoas"
