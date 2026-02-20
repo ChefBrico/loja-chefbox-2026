@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Refeição"
 main_ingredient: "Grão de Bico e Arroz Vermelho"
 keywords: "dieta mediterrânea Brasília, grão de bico, arroz vermelho, longevidade, vegano, sem glúten, proteína completa DF, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 150
 rendimento: "3 porções (Nutritiva)"
