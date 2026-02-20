@@ -38,7 +38,7 @@ layout: base.njk
 
   .conteudo-leitura { max-width: 700px; margin: 0 auto; line-height: 1.7; color: #333; padding-bottom: 200px; padding-left: 15px; padding-right: 15px; }
 
-  /* ✨ BLOCO O QUE VEM NO PACOTE (IMAGENS ACIMA DO TEXTO) */
+  /* ✨ BLOCO O QUE VEM NO PACOTE (IMAGENS CORRETAS ACIMA DO TEXTO) */
   .pacote-card-eeat {
     background: #fdfbf7;
     border: 1px dashed #014039;
@@ -49,7 +49,7 @@ layout: base.njk
   .vitrine-pacote-eeat { 
     display: flex; 
     gap: 15px; 
-    margin-bottom: 20px; /* Garante que fiquem ACIMA do texto */
+    margin-bottom: 20px; 
     justify-content: center; 
   }
   .mini-img-eeat { flex: 1; max-width: 180px; text-align: center; }
@@ -65,7 +65,7 @@ layout: base.njk
     padding: 30px; 
     border-radius: 15px; 
     margin: 40px 0; 
-    border-left: 5px solid #F2811D; /* Laranja da marca para destaque */
+    border-left: 5px solid #25D366; 
     font-style: italic;
   }
   .review-content { font-size: 1.05rem; color: #014039; display: block; margin-bottom: 10px; line-height: 1.5; }
@@ -76,7 +76,7 @@ layout: base.njk
   .faq-item { border-bottom: 1px solid #eee; }
   .faq-question { width: 100%; text-align: left; padding: 15px 0; background: none; border: none; display: flex; justify-content: space-between; color: #014039; font-weight: 700; cursor: pointer; font-size: 1rem; }
   .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.95rem; color: #666; }
-  .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 15px; }
+  .faq-item.active .faq-answer { max-height: 250px; padding-bottom: 15px; }
 
   /* 💊 BOTÕES HUD (COMPACTOS) */
   .pilula-acao-container { position: fixed; bottom: 160px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 9999; width: 100%; pointer-events: none; }
@@ -84,8 +84,7 @@ layout: base.njk
   .link-retorno-clean { pointer-events: auto; font-size: 0.7rem; padding: 5px 12px; color: #014039; font-weight: 800; text-decoration: none; background: rgba(255, 255, 255, 0.95); border-radius: 15px; border: 1px solid #ddd; text-transform: uppercase; }
 
   @media (max-width: 768px) {
-    .hero-image-container { max-width: 90%; }
-    .vitrine-pacote-eeat { gap: 10px; }
+    .hero-image-container { max-width: 90% !important; }
   }
 </style>
 
@@ -112,8 +111,8 @@ layout: base.njk
             <h3 style="color: #014039; margin-bottom: 20px; text-align: center; font-size: 1.3rem;">O que vem no Pacote</h3>
             
             <div class="vitrine-pacote-eeat">
-                <div class="mini-img-eeat"><img src="{{ image_package }}" alt="Imagem do Pacote ChefBrico"></div>
-                <div class="mini-img-eeat"><img src="{{ image_detail }}" alt="Detalhe do produto"></div>
+                <div class="mini-img-eeat"><img src="{{ image_package }}" alt="Pacote ChefBrico"></div>
+                <div class="mini-img-eeat"><img src="{{ image_detail }}" alt="Detalhe do Pacote"></div>
             </div>
 
             <div class="lista-pacote-texto">
