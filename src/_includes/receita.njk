@@ -131,20 +131,48 @@ layout: base.njk
         </div>
         {% endif %}
 
-       <div id="crystal-calculator" class="crystal-blur">
-    <div class="calc-content">
-        <div class="calc-info">
-            <span class="calc-label">SEU LUCRO ATUAL</span>
-            <span id="lucro-valor" class="calc-number">R$ 0,00</span>
-        </div>
-        <div class="calc-actions">
-            <button id="add-to-box" class="btn-gamer-add" onclick="adicionarComDopamina()">
-                <span class="plus-icon">+</span> ADICIONAR SABOR
-            </button>
-            <a href="/receitas/" class="link-explorar">ou Explorar Catálogo</a>
-        </div>
-    </div>
+     <div class="pilula-acao-container">
+    <button id="add-to-box" class="btn-gamer-compact" onclick="adicionarComDopamina()">
+        <span class="plus-icon">+</span> ADICIONAR SABOR
+    </button>
+    <a href="/receitas/" class="link-retorno-clean">ou Explorar Catálogo</a>
 </div>
+
+<style>
+.pilula-acao-container {
+    position: fixed;
+    bottom: 100px; /* Acima da régua de slots */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    z-index: 999;
+}
+
+.btn-gamer-compact {
+    background: #F2811D;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 40px;
+    font-weight: 900;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 20px rgba(242, 129, 29, 0.4);
+    cursor: pointer;
+}
+
+.link-retorno-clean {
+    font-size: 0.75rem;
+    color: #014039;
+    font-weight: 700;
+    text-decoration: underline;
+    background: rgba(255,255,255,0.8);
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+</style>
 
 <style>
 /* Efeito Cristal (Glassmorphism) */
