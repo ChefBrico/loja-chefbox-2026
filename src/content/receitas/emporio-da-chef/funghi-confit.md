@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Empório"
 main_ingredient: "Shiitake e Azeite Extra Virgem"
 keywords: "funghi confit Brasília, shiitake em azeite, antepasto keto DF, low carb gourmet, umami natural, presente gastronômico Brasília, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 90
 rendimento: "Pote 90g (Concentrado de Sabor)"
