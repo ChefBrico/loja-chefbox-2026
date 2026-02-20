@@ -20,148 +20,33 @@ layout: base.njk
 </script>
 
 <style>
+  /* --- ESTRUTURA BASE DA RECEITA --- */
   .receita-header { text-align: center; max-width: 800px; margin: 40px auto; }
   .receita-title { color: #014039; font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; line-height: 1.2; }
   .hero-image-container { max-width: 900px; margin: 0 auto 40px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .hero-image-container img { width: 100%; height: auto; display: block; }
-  .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; padding-bottom: 180px; }
+  .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; padding-bottom: 220px; } /* Aumentado para não cobrir o texto final */
   
   .vitrine-persuasao { display: flex; gap: 15px; margin: 25px auto; justify-content: center; max-width: 530px; }
   .mini-card { flex: 1; max-width: 220px; text-align: center; }
   .mini-card img { width: 100%; height: auto; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
   .mini-card span { display: block; margin-top: 8px; font-size: 0.7rem; font-weight: 800; color: #666; text-transform: uppercase; }
 
-  /* ✨ BOTÃO VITRIFICADO (CHARME CRISTAL) */
-  .pilula-acao-container {
-    position: fixed; bottom: 100px; left: 50%;
-    transform: translateX(-50%); display: flex;
-    flex-direction: column; align-items: center; gap: 8px; z-index: 999;
-  }
-  .btn-gamer-compact {
-    background: rgba(242, 129, 29, 0.85); /* Laranja com transparência */
-    backdrop-filter: blur(10px); /* O efeito de desfoque/vidro */
-    -webkit-backdrop-filter: blur(10px);
-    color: white; border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 14px 30px; border-radius: 50px;
-    font-weight: 900; font-size: 0.95rem;
-    box-shadow: 0 8px 32px rgba(242, 129, 29, 0.3); cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .link-retorno-clean {
-    font-size: 0.75rem; color: #014039; font-weight: 700;
-    text-decoration: underline; background: rgba(255,255,255,0.7);
-    padding: 4px 12px; border-radius: 12px; backdrop-filter: blur(5px);
-  }
-
   .author-box { display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 15px; margin: 60px 0; border-left: 5px solid #014039; }
   .author-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
   .pilar-box { background: #fdfbf7; border: 1px dashed #014039; border-radius: 15px; padding: 25px; margin-bottom: 40px; }
-</style>
 
-<article>
-    <header class="receita-header">
-        <h1 class="receita-title">{{ title }}</h1>
-        <p style="font-size: 0.85rem; color: #999;">Gourmet Prático por ChefBrico</p>
-    </header>
-
-    <div class="hero-image-container">
-        <img src="{{ image }}" alt="{{ title }}">
-    </div>
-
-    <div class="conteudo-leitura" id="area-leitura">
-        <section class="pilar-box">
-            <h3 style="color: #014039; margin-top: 0;">✨ Método Gourmet Prático</h3>
-            <p><strong>1. Despensa Inteligente:</strong> Validade de 1 ano.</p>
-            <p><strong>2. Panela Única:</strong> Jantar saudável em 18 min.</p>
-            <p><strong>3. Cozinha Criativa:</strong> Sua base gourmet.</p>
-        </section>
-
-        <div class="vitrine-persuasao">
-            <div class="mini-card">
-                <img src="{{ image_package }}" alt="Pacote">
-                <span>📦 O Pacote</span>
-            </div>
-            <div class="mini-card">
-                <img src="{{ image_detail }}" alt="Detalhe">
-                <span>🔍 Detalhe</span>
-            </div>
-        </div>
-
-        {{ content | safe }}
-
-        <div class="author-box">
-            <img src="/imagens/maria-conceicao-chefbrico.webp" class="author-img">
-            <div>
-                <h4 style="margin:0; color:#014039;">Dica da Chef Maria</h4>
-                <p style="font-size: 0.95rem; font-style: italic;">"{{ citable_fact }}"</p>
-            </div>
-        </div>
-    </div>
-
-    <style>
-  /* 🚀 POSICIONAMENTO PROFISSIONAL MOBILE-FIRST */
+  /* 🚀 POSICIONAMENTO HUD (FLUTUANTE) MOBILE-FIRST */
   .pilula-acao-container {
     position: fixed;
-    /* O SEGREDO: Calculamos a distância para ficar sempre acima da régua de slots */
-    bottom: 100px; 
+    /* RESOLUÇÃO: 160px garante o vão livre sobre a régua de slots no mobile */
+    bottom: 160px; 
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px; /* Respiro entre o botão e o link */
+    gap: 12px;
     z-index: 9999;
     width: 100%;
-    pointer-events: none; /* Garante que a área invisível não bloqueie o scroller */
-  }
-
-  .btn-gamer-compact {
-    pointer-events: auto; /* Reativa o clique apenas no botão */
-    background: rgba(242, 129, 29, 0.9); /* Laranja Vitrificado */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 14px 30px;
-    border-radius: 50px;
-    font-weight: 900;
-    font-size: 0.95rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .link-retorno-clean {
-    pointer-events: auto;
-    font-size: 0.8rem;
-    color: #014039;
-    font-weight: 800;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 6px 15px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #eee;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  /* AJUSTE PARA TELAS MUITO PEQUENAS */
-  @media (max-width: 380px) {
-    .pilula-acao-container {
-        bottom: 90px;
-    }
-    .btn-gamer-compact {
-        padding: 10px 20px;
-        font-size: 0.85rem;
-    }
-  }
-</style>
-
-<div class="pilula-acao-container">
-    <button class="btn-gamer-compact" onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}')">
-        + ADICIONAR SABOR
-    </button>
-    <a href="/receitas/" class="link-retorno-clean">🔍 Explorar Catálogo</a>
-</div>
-</article>
+    pointer-events: none;
