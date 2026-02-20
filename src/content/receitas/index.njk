@@ -22,9 +22,9 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
 
     .filter-section { margin-bottom: 40px; }
     .filter-label { font-weight: 800; color: #014039; margin-bottom: 15px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
-    .btn-filter-pill { background: white; border: 1px solid #eee; padding: 8px 18px; border-radius: 20px; cursor: pointer; color: #555; font-size: 0.85rem; transition: 0.2s; margin: 4px; display: inline-block; }
+    .btn-filter-pill { background: white; border: 1px solid #eee; padding: 8px 18px; border-radius: 20px; cursor: pointer; color: #555; font-size: 0.85rem; transition: 0.2s; margin: 4px; display: inline-block; text-decoration: none; }
     
-    /* ESTADO ATIVO: O botão "acende" aqui */
+    /* ESTADO ATIVO CORRIGIDO: Fundo escuro para destaque real */
     .btn-filter-pill.active { background: #014039 !important; color: white !important; border-color: #014039 !important; }
 </style>
 
@@ -45,14 +45,14 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
         </div>
     </div>
 
-    <div class="filter-section">
+    <div class="filter-section" id="area-categorias">
         <div class="filter-label">🍲 Categorias</div>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
-             <button id="cat-all" class="btn-filter-pill active" onclick="filter('all')">Todos</button>
-             <button id="cat-Risoto" class="btn-filter-pill" onclick="filter('Risoto')">Risotos</button>
-             <button id="cat-Sopa" class="btn-filter-pill" onclick="filter('Sopa')">Sopas</button>
-             <button id="cat-Refeição" class="btn-filter-pill" onclick="filter('Refeição')">Refeições</button>
-             <button id="cat-Empório" class="btn-filter-pill" onclick="filter('Empório')">Empório</button>
+             <button id="cat-all" class="btn-filter-pill active" onclick="executarFiltro('all')">Todos</button>
+             <button id="cat-Risoto" class="btn-filter-pill" onclick="executarFiltro('Risoto')">Risotos</button>
+             <button id="cat-Sopa" class="btn-filter-pill" onclick="executarFiltro('Sopa')">Sopas</button>
+             <button id="cat-Refeição" class="btn-filter-pill" onclick="executarFiltro('Refeição')">Refeições</button>
+             <button id="cat-Empório" class="btn-filter-pill" onclick="executarFiltro('Empório')">Empório</button>
         </div>
     </div>
     
@@ -77,21 +77,21 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
 </main>
 
 <script>
-function filter(category) {
+function executarFiltro(escolha) {
     const cards = document.querySelectorAll('.recipe-card');
-    const buttons = document.querySelectorAll('.filter-section:nth-child(2) .btn-filter-pill');
+    const botoes = document.getElementById('area-categorias').querySelectorAll('.btn-filter-pill');
     
-    // 1. Remove classe ativa de todos os botões de categoria
-    buttons.forEach(btn => btn.classList.remove('active'));
+    // 1. Limpa o visual de todos os botões da seção de categorias
+    botoes.forEach(btn => btn.classList.remove('active'));
     
-    // 2. Adiciona classe ativa apenas ao botão clicado
-    const selectedBtn = document.getElementById('cat-' + category);
-    if (selectedBtn) { selectedBtn.classList.add('active'); }
+    // 2. Acende apenas o botão correspondente à escolha
+    const alvo = document.getElementById('cat-' + escolha);
+    if (alvo) { alvo.classList.add('active'); }
 
-    // 3. Filtra os cards
+    // 3. Mecanismo de exibição das receitas
     cards.forEach(card => {
-        const cardCat = card.getAttribute('data-category');
-        if (category === 'all' || cardCat === category) {
+        const categoriaCard = card.getAttribute('data-category');
+        if (escolha === 'all' || categoriaCard === escolha) {
             card.style.display = 'flex';
         } else {
             card.style.display = 'none';
