@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Risoto"
 main_ingredient: "Funghi Secchi (Boletus luteris)"
 keywords: "risoto funghi Brasília, cogumelos chilenos, jantar romântico DF, comida italiana saudável, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
 rendimento: "2 pessoas"
