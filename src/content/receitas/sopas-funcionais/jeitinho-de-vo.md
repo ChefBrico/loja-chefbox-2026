@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Sopa"
 main_ingredient: "Lentilha Rosa e Macarrão de Arroz"
 keywords: "sopa de lentilha rosa Brasília, comida afetiva DF, macarrão sem glúten, cardamomo benefícios, sopa para crianças, jantar leve vegano, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 140
 rendimento: "3 porções (Cremosa)"
