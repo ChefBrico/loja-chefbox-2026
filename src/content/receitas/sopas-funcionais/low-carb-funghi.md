@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Sopa"
 main_ingredient: "Lentilha Beluga e Funghi Secchi"
 keywords: "sopa low carb Brasília, lentilha beluga DF, funghi secchi, baixo índice glicêmico, jantar fit vegano, sem glúten, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 150
 rendimento: "3 porções (Sacia muito)"
