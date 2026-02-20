@@ -2,9 +2,11 @@
     GOURMET PRÁTICO: CULINÁRIA SAUDÁVEL, SEM DESPERDÍCIO DE TEMPO E INGREDIENTES!
 </div>
 
-<header class="site-header" style="background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000;">
+<header class="site-header" style="background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10000;">
     <div class="header-contain-centered">
         
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menu">☰</button>
+
         <nav class="nav-inner-side left desktop-only">
             <ul class="nav-list-tight">
                 <li><a href="/comida-de-verdade/" class="nav-link-tight">O Método</a></li>
@@ -13,16 +15,14 @@
 
         <div class="logo-axis">
             <a href="/" class="logo-link">
-                <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="Gourmet Prático" width="80" height="80">
+                <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="Gourmet Prático" class="logo-img-responsive">
             </a>
         </div>
 
         <nav class="nav-inner-side right desktop-only">
             <ul class="nav-list-tight">
-                
                 <li class="has-mega-menu">
                     <a href="/receitas/" class="nav-link-tight">Cardápio ▾</a>
-                    
                     <div class="mega-menu-content">
                         <div class="mega-grid">
                             <div class="mega-column">
@@ -43,21 +43,21 @@
                         </div>
                     </div>
                 </li>
-
                 <li><a href="/onde-encontrar/" class="nav-link-tight">Onde Entregamos</a></li>
-                
                 <li>
-                    <a href="/chefbox/" class="btn-chefbox-war">
-                        🎁 CHEFBOX (4+1)
-                    </a>
+                    <a href="/chefbox/" class="btn-chefbox-war">🎁 CHEFBOX (4+1)</a>
                 </li>
             </ul>
         </nav>
 
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        <div class="mobile-spacer-right mobile-only"></div>
     </div>
 
-    <div id="mobileDrawer" class="mobile-menu-drawer" style="display: none;">
+    <div id="mobileDrawer" class="mobile-menu-drawer">
+        <div class="drawer-header">
+            <span>Navegação</span>
+            <button onclick="toggleMobileMenu()" style="background:none; border:none; color:white; font-size:1.5rem;">✕</button>
+        </div>
         <a href="/comida-de-verdade/">O Método</a>
         <a href="/receitas/">Cardápio Completo</a>
         <a href="/onde-encontrar/">Onde Entregamos</a>
@@ -66,7 +66,7 @@
 </header>
 
 <style>
-    /* LAYOUT CENTRALIZADO AI-FIRST */
+    /* 1. ESTRUTURA BASE (Desktop) */
     .header-contain-centered {
         max-width: 1200px;
         margin: 0 auto;
@@ -75,99 +75,92 @@
         align-items: center;
         padding: 5px 20px;
         gap: 30px;
+        position: relative;
     }
 
-    .nav-list-tight {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        gap: 25px;
-        align-items: center;
-    }
-
-    .nav-link-tight {
-        text-decoration: none;
-        color: #014039;
-        font-weight: 700;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        white-space: nowrap;
-    }
-
-    /* ESTILO DO BOTÃO LARANJA */
-    .btn-chefbox-war {
-        background: #F2811D;
-        color: #fff !important;
-        padding: 10px 20px;
-        border-radius: 8px; /* Conforme imagem */
-        font-weight: 800;
-        font-size: 0.8rem;
-        text-decoration: none;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    /* SISTEMA DO MEGA MENU (ACORDEÃO DESKTOP) */
-    .has-mega-menu { position: relative; }
-    
-    .mega-menu-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: -100px; /* Ajuste para centralizar sob o menu */
-        background: #fff;
-        width: 450px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        border-radius: 8px;
-        padding: 25px;
-        z-index: 1000;
-        border-top: 4px solid #014039;
-    }
-
-    .has-mega-menu:hover .mega-menu-content { display: block; }
-
-    .mega-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    .mega-title {
-        font-size: 0.75rem;
-        color: #999;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 5px;
-    }
-
-    .mega-column a {
+    .logo-img-responsive {
+        width: 80px;
+        height: 80px;
         display: block;
-        color: #333;
-        text-decoration: none;
-        font-size: 0.9rem;
-        padding: 8px 0;
-        transition: 0.2s;
+        transition: 0.3s;
     }
 
+    .nav-list-tight { display: flex; list-style: none; margin: 0; padding: 0; gap: 25px; align-items: center; }
+    .nav-link-tight { text-decoration: none; color: #014039; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; white-space: nowrap; }
+
+    .btn-chefbox-war {
+        background: #F2811D; color: #fff !important; padding: 10px 20px; border-radius: 8px;
+        font-weight: 800; font-size: 0.8rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* MEGA MENU */
+    .has-mega-menu { position: relative; }
+    .mega-menu-content {
+        display: none; position: absolute; top: 100%; right: -100px; background: #fff;
+        width: 450px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border-radius: 8px;
+        padding: 25px; z-index: 1000; border-top: 4px solid #014039;
+    }
+    .has-mega-menu:hover .mega-menu-content { display: block; }
+    .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .mega-title { font-size: 0.75rem; color: #999; letter-spacing: 1px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+    .mega-column a { display: block; color: #333; text-decoration: none; font-size: 0.9rem; padding: 8px 0; transition: 0.2s; }
     .mega-column a:hover { color: #F2811D; padding-left: 5px; }
 
-    /* RESPONSIVIDADE */
+    /* 2. AJUSTES MOBILE (AQUI ESTÁ A SOLUÇÃO) */
+    .mobile-menu-btn { display: none; color: #014039; }
+    .mobile-only { display: none; }
+
     @media (max-width: 992px) {
         .desktop-only { display: none; }
-        .header-contain-centered { justify-content: space-between; }
-        .mobile-menu-btn { display: block; background: none; border: none; font-size: 1.8rem; cursor: pointer; }
-        .mobile-menu-drawer { 
-            position: absolute; top: 100%; left: 0; width: 100%; 
-            background: #014039; flex-direction: column; 
+        .mobile-only { display: block; }
+        
+        .header-contain-centered {
+            justify-content: space-between; /* Resolve a sobreposição da logo */
+            gap: 0;
+            padding: 10px 15px;
         }
-        .mobile-menu-drawer a { color: #fff; padding: 15px 20px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+        .logo-img-responsive {
+            width: 65px; /* Reduz levemente para dar espaço ao botão */
+            height: 65px;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 40px;
+        }
+
+        .mobile-spacer-right { width: 40px; } /* Mantém a logo centralizada */
+
+        /* DRAWER MOBILE */
+        .mobile-menu-drawer { 
+            position: fixed; top: 0; left: -100%; width: 80%; height: 100%;
+            background: #014039; display: flex; flex-direction: column;
+            transition: 0.3s ease; z-index: 20000; box-shadow: 10px 0 20px rgba(0,0,0,0.2);
+        }
+        .mobile-menu-drawer.active { left: 0; }
+        
+        .drawer-header {
+            padding: 20px; background: rgba(0,0,0,0.1); 
+            display: flex; justify-content: space-between; align-items: center; color: #fff;
+            font-weight: bold; text-transform: uppercase; font-size: 0.8rem;
+        }
+
+        .mobile-menu-drawer a {
+            color: #fff; padding: 18px 25px; text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.05); font-weight: 700;
+        }
+        .mobile-highlight { background: #F2811D; margin: 10px; border-radius: 8px; text-align: center; border-bottom: none !important; }
     }
 </style>
 
 <script>
     function toggleMobileMenu() {
         var drawer = document.getElementById('mobileDrawer');
-        drawer.style.display = (drawer.style.display === 'flex') ? 'none' : 'flex';
+        drawer.classList.toggle('active');
     }
 </script>
