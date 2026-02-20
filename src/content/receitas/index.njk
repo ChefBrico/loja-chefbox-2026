@@ -78,23 +78,26 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
 
 <script>
 function executarFiltro(escolha) {
+    // 1. Localiza os elementos necessários
     const cards = document.querySelectorAll('.recipe-card');
     const botoes = document.getElementById('area-categorias').querySelectorAll('.btn-filter-pill');
     
-    // 1. Limpa o visual de todos os botões da seção de categorias
+    // 2. Limpa e Atualiza o estado visual do botão (O que já está funcionando)
     botoes.forEach(btn => btn.classList.remove('active'));
-    
-    // 2. Acende apenas o botão correspondente à escolha
     const alvo = document.getElementById('cat-' + escolha);
     if (alvo) { alvo.classList.add('active'); }
 
-    // 3. Mecanismo de exibição das receitas
+    // 3. SELEÇÃO CIRÚRGICA: Mostra ou Esconde as receitas
     cards.forEach(card => {
-        const categoriaCard = card.getAttribute('data-category');
+        // Captura o valor exato que você colocou no category: "" de cada .md
+        const categoriaCard = card.getAttribute('data-category').trim();
+        
+        // Se a escolha for 'all', mostra tudo. 
+        // Se não, compara se a categoria do card é IGUAL à escolha do botão.
         if (escolha === 'all' || categoriaCard === escolha) {
-            card.style.display = 'flex';
+            card.style.setProperty('display', 'flex', 'important');
         } else {
-            card.style.display = 'none';
+            card.style.setProperty('display', 'none', 'important');
         }
     });
 }
