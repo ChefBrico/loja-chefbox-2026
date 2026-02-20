@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Sopa"
 main_ingredient: "Ora-pro-nóbis e Gengibre"
 keywords: "sopa detox Brasília, ora-pro-nobis DF, emagrecimento saudável, jantar leve, sopa verde vegana, sem glúten, panc, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 105
 rendimento: "3 porções (Leve)"
