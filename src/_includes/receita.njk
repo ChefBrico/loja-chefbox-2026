@@ -20,78 +20,53 @@ layout: base.njk
 </script>
 
 <style>
-  /* --- ESTRUTURA BASE DA RECEITA --- */
+  /* --- ESTRUTURA BASE --- */
   .receita-header { text-align: center; max-width: 800px; margin: 40px auto; }
   .receita-title { color: #014039; font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; line-height: 1.2; }
   .hero-image-container { max-width: 900px; margin: 0 auto 40px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .hero-image-container img { width: 100%; height: auto; display: block; }
-  .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; padding-bottom: 220px; }
+  .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; padding-bottom: 220px; padding-left: 15px; padding-right: 15px; }
   
   .vitrine-persuasao { display: flex; gap: 15px; margin: 25px auto; justify-content: center; max-width: 530px; }
   .mini-card { flex: 1; max-width: 220px; text-align: center; }
   .mini-card img { width: 100%; height: auto; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
   .mini-card span { display: block; margin-top: 8px; font-size: 0.7rem; font-weight: 800; color: #666; text-transform: uppercase; }
 
+  /* --- SISTEMA DE FAQ ACORDEÃO --- */
+  .faq-section { margin: 50px 0; border-top: 1px solid #eee; padding-top: 30px; }
+  .faq-item { border-bottom: 1px solid #eee; margin-bottom: 10px; }
+  .faq-question { 
+    width: 100%; text-align: left; padding: 15px 0; background: none; border: none;
+    display: flex; justify-content: space-between; align-items: center;
+    color: #014039; font-weight: 700; font-size: 1.05rem; cursor: pointer;
+  }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #666; font-size: 0.95rem; }
+  .faq-answer p { padding-bottom: 20px; margin: 0; }
+  .faq-item.active .faq-answer { max-height: 200px; }
+  .faq-item.active .faq-icon { transform: rotate(180deg); }
+  .faq-icon { transition: transform 0.3s; font-size: 0.8rem; }
+
+  /* --- BOTÕES COMPACTOS (30% MENORES) --- */
+  .pilula-acao-container {
+    position: fixed; bottom: 160px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 9999; width: 100%; pointer-events: none;
+  }
+  .btn-gamer-compact {
+    pointer-events: auto; background: rgba(242, 129, 29, 0.95); backdrop-filter: blur(10px);
+    color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 10px 22px; font-size: 0.8rem;
+    border-radius: 50px; font-weight: 900; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); cursor: pointer; text-transform: uppercase;
+  }
+  .link-retorno-clean {
+    pointer-events: auto; font-size: 0.7rem; padding: 5px 12px; color: #014039; font-weight: 800;
+    text-decoration: none; background: rgba(255, 255, 255, 0.95); border-radius: 15px; border: 1px solid #ddd; text-transform: uppercase;
+  }
+
   .author-box { display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 15px; margin: 60px 0; border-left: 5px solid #014039; }
   .author-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
-  .pilar-box { background: #fdfbf7; border: 1px dashed #014039; border-radius: 15px; padding: 25px; margin-bottom: 40px; }
-
-  /* 🚀 POSICIONAMENTO HUD COM REDUÇÃO DE 30% NO MOBILE */
-  .pilula-acao-container {
-    position: fixed;
-    /* Respiro de 160px para não encostar na régua de slots */
-    bottom: 160px; 
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px; 
-    z-index: 9999;
-    width: 100%;
-    pointer-events: none;
-  }
-
-  .btn-gamer-compact {
-    pointer-events: auto;
-    background: rgba(242, 129, 29, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    
-    /* REDUÇÃO DE 30% (Ajustado para Mobile First) */
-    padding: 10px 22px; 
-    font-size: 0.8rem; 
-    
-    border-radius: 50px;
-    font-weight: 900;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    white-space: nowrap;
-    text-transform: uppercase;
-  }
-
-  .link-retorno-clean {
-    pointer-events: auto;
-    
-    /* REDUÇÃO DE 30% NO LINK */
-    font-size: 0.7rem; 
-    padding: 5px 12px;
-    
-    color: #014039;
-    font-weight: 800;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
-    text-transform: uppercase;
-  }
-
-  @media (max-width: 380px) {
-    .pilula-acao-container { bottom: 145px; }
-    .btn-gamer-compact { padding: 8px 18px; font-size: 0.75rem; }
+  
+  @media (max-width: 768px) {
+    .receita-title { font-size: 1.6rem; }
+    .author-box { flex-direction: column; text-align: center; }
   }
 </style>
 
@@ -105,26 +80,27 @@ layout: base.njk
         <img src="{{ image }}" alt="{{ title }}">
     </div>
 
-    <div class="conteudo-leitura" id="area-leitura">
-        <section class="pilar-box">
-            <h3 style="color: #014039; margin-top: 0;">✨ Método Gourmet Prático</h3>
-            <p><strong>1. Despensa Inteligente:</strong> Validade de 1 ano.</p>
-            <p><strong>2. Panela Única:</strong> Jantar saudável em 18 min.</p>
-            <p><strong>3. Cozinha Criativa:</strong> Sua base gourmet.</p>
-        </section>
-
+    <div class="conteudo-leitura">
         <div class="vitrine-persuasao">
-            <div class="mini-card">
-                <img src="{{ image_package }}" alt="Pacote">
-                <span>📦 O Pacote</span>
-            </div>
-            <div class="mini-card">
-                <img src="{{ image_detail }}" alt="Detalhe">
-                <span>🔍 Detalhe</span>
-            </div>
+            <div class="mini-card"><img src="{{ image_package }}" alt="Pacote"><span>📦 O Pacote</span></div>
+            <div class="mini-card"><img src="{{ image_detail }}" alt="Detalhe"><span>🔍 Detalhe</span></div>
         </div>
 
         {{ content | safe }}
+
+        <section class="faq-section">
+            <h2 style="color: #014039; margin-bottom: 20px;">Dúvidas Frequentes</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question">O prato é apimentado? <span class="faq-icon">▼</span></button>
+                <div class="faq-answer"><p>Nossas receitas são equilibradas para toda a família. O tempero é marcante mas suave, sem ardência excessiva.</p></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Como garantir a cremosidade? <span class="faq-icon">▼</span></button>
+                <div class="faq-answer"><p>O segredo está em mexer ocasionalmente durante os 18 minutos. Isso libera o amido natural do grão e cria o veludo gourmet.</p></div>
+            </div>
+        </section>
 
         <div class="author-box">
             <img src="/imagens/maria-conceicao-chefbrico.webp" class="author-img">
@@ -142,3 +118,13 @@ layout: base.njk
         <a href="/receitas/" class="link-retorno-clean">🔍 Explorar Catálogo</a>
     </div>
 </article>
+
+<script>
+    // Lógica para o FAQ Acordeão
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentElement;
+            faqItem.classList.toggle('active');
+        });
+    });
+</script>
