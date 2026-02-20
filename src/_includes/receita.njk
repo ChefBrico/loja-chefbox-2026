@@ -24,61 +24,68 @@ layout: base.njk
   .receita-header { text-align: center; max-width: 800px; margin: 30px auto; }
   .receita-title { color: #014039; font-size: 2rem; font-family: 'Merriweather', serif; margin-bottom: 5px; }
   
-  /* 🖼️ IMAGEM PRINCIPAL (REDUZIDA EM 30% E COM MOLDURA) */
+  /* 🖼️ IMAGEM PRINCIPAL (REDUZIDA E COM MOLDURA) */
   .hero-image-container { 
-    max-width: 600px; /* Redução para tamanho persuasivo */
+    max-width: 600px; 
     margin: 0 auto 30px; 
     border-radius: 20px; 
     overflow: hidden; 
     box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
-    border: 8px solid #fff; /* Moldura suave */
+    border: 8px solid #fff; 
     background: #fdfbf7;
   }
   .hero-image-container img { width: 100%; height: auto; display: block; }
 
   .conteudo-leitura { max-width: 700px; margin: 0 auto; line-height: 1.7; color: #333; padding-bottom: 200px; padding-left: 15px; padding-right: 15px; }
 
-  /* 📦 BLOCO: O QUE VEM NO PACOTE (ALINHADO COM AS IMAGENS) */
-  .pacote-container { 
-    background: #fdfbf7; 
-    border: 1px dashed #014039; 
-    border-radius: 15px; 
-    padding: 25px; 
-    margin: 30px 0; 
+  /* ✨ BLOCO O QUE VEM NO PACOTE (IMAGENS ACIMA DO TEXTO) */
+  .pacote-card-eeat {
+    background: #fdfbf7;
+    border: 1px dashed #014039;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 35px 0;
   }
-  .vitrine-pacote { display: flex; gap: 15px; margin-bottom: 20px; justify-content: center; }
-  .mini-card-pacote { flex: 1; max-width: 180px; text-align: center; }
-  .mini-card-pacote img { width: 100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-  .pacote-lista { font-size: 0.95rem; color: #444; }
-  .pacote-lista strong { color: #014039; }
+  .vitrine-pacote-eeat { 
+    display: flex; 
+    gap: 15px; 
+    margin-bottom: 20px; /* Garante que fiquem ACIMA do texto */
+    justify-content: center; 
+  }
+  .mini-img-eeat { flex: 1; max-width: 180px; text-align: center; }
+  .mini-img-eeat img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee; }
+  
+  .lista-pacote-texto { font-size: 0.95rem; color: #444; }
+  .lista-pacote-texto p { margin-bottom: 10px; }
+  .lista-pacote-texto strong { color: #014039; }
 
-  /* ⭐ REVIEW / AVALIAÇÃO (FUNDO SUAVE RESTAURADO) */
-  .review-box { 
+  /* ⭐ REVIEW ÚNICO (FUNDO SUAVE RESTAURADO) */
+  .review-suave { 
     background: #f4f7f6; 
     padding: 30px; 
     border-radius: 15px; 
     margin: 40px 0; 
-    border-left: 5px solid #25D366;
+    border-left: 5px solid #F2811D; /* Laranja da marca para destaque */
     font-style: italic;
   }
-  .review-text { font-size: 1.05rem; color: #014039; margin-bottom: 10px; display: block; }
+  .review-content { font-size: 1.05rem; color: #014039; display: block; margin-bottom: 10px; line-height: 1.5; }
   .review-author { font-size: 0.9rem; font-weight: bold; color: #666; font-style: normal; }
 
   /* ❓ FAQ ACORDEÃO */
-  .faq-section { margin: 40px 0; }
+  .faq-section { margin: 40px 0; border-top: 1px solid #eee; padding-top: 20px; }
   .faq-item { border-bottom: 1px solid #eee; }
-  .faq-question { width: 100%; text-align: left; padding: 15px 0; background: none; border: none; display: flex; justify-content: space-between; color: #014039; font-weight: 700; cursor: pointer; }
+  .faq-question { width: 100%; text-align: left; padding: 15px 0; background: none; border: none; display: flex; justify-content: space-between; color: #014039; font-weight: 700; cursor: pointer; font-size: 1rem; }
   .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.95rem; color: #666; }
   .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 15px; }
 
-  /* 💊 BOTÕES HUD (REDUZIDOS 30%) */
+  /* 💊 BOTÕES HUD (COMPACTOS) */
   .pilula-acao-container { position: fixed; bottom: 160px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 9999; width: 100%; pointer-events: none; }
   .btn-gamer-compact { pointer-events: auto; background: rgba(242, 129, 29, 0.95); backdrop-filter: blur(10px); color: white; border: 1px solid rgba(255, 255, 255, 0.4); padding: 10px 22px; font-size: 0.8rem; border-radius: 50px; font-weight: 900; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); cursor: pointer; text-transform: uppercase; }
   .link-retorno-clean { pointer-events: auto; font-size: 0.7rem; padding: 5px 12px; color: #014039; font-weight: 800; text-decoration: none; background: rgba(255, 255, 255, 0.95); border-radius: 15px; border: 1px solid #ddd; text-transform: uppercase; }
 
   @media (max-width: 768px) {
     .hero-image-container { max-width: 90%; }
-    .pacote-container { padding: 15px; }
+    .vitrine-pacote-eeat { gap: 10px; }
   }
 </style>
 
@@ -94,13 +101,22 @@ layout: base.njk
 
     <div class="conteudo-leitura">
         
-        <section class="pacote-container">
-            <h3 style="color: #014039; margin-bottom: 20px; text-align: center;">O que vem no Pacote</h3>
-            <div class="vitrine-pacote">
-                <div class="mini-card-pacote"><img src="{{ image_package }}" alt="Pacote"></div>
-                <div class="mini-card-pacote"><img src="{{ image_detail }}" alt="Detalhe"></div>
+        <section style="background: #fdfbf7; border-radius: 15px; padding: 20px; margin-bottom: 30px; border: 1px solid #eee;">
+            <h3 style="color: #014039; margin-top: 0; font-size: 1.2rem;">✨ Método Gourmet Prático</h3>
+            <p style="font-size: 0.95rem; margin: 5px 0;"><strong>1. Despensa Inteligente:</strong> Validade de 1 ano.</p>
+            <p style="font-size: 0.95rem; margin: 5px 0;"><strong>2. Panela Única:</strong> Jantar saudável em 18 min.</p>
+            <p style="font-size: 0.95rem; margin: 5px 0;"><strong>3. Cozinha Criativa:</strong> Sua base gourmet.</p>
+        </section>
+
+        <section class="pacote-card-eeat">
+            <h3 style="color: #014039; margin-bottom: 20px; text-align: center; font-size: 1.3rem;">O que vem no Pacote</h3>
+            
+            <div class="vitrine-pacote-eeat">
+                <div class="mini-img-eeat"><img src="{{ image_package }}" alt="Imagem do Pacote ChefBrico"></div>
+                <div class="mini-img-eeat"><img src="{{ image_detail }}" alt="Detalhe do produto"></div>
             </div>
-            <div class="pacote-lista">
+
+            <div class="lista-pacote-texto">
                 <p><strong>Arroz arbóreo tipo exportação:</strong> Rico em amido para garantir cremosidade natural.</p>
                 <p><strong>Tomate e Pesto desidratados:</strong> Manjericão, castanha de caju e levedura nutricional.</p>
                 <p><strong>Caldo de vegetais artesanal:</strong> Cenoura, cebola, alho-poró e salsão desidratados.</p>
@@ -112,13 +128,13 @@ layout: base.njk
             {{ content | safe }}
         </div>
 
-        <div class="review-box">
-            <span class="review-text">"Esse é o risoto que peço em restaurante, mas feito em casa em menos de 20 minutos. O sabor do tomate seco é incrível e é super cremoso. Já comprei 3 vezes!"</span>
+        <div class="review-suave">
+            <span class="review-content">"Esse é o risoto que peço em restaurante, mas feito em casa em menos de 20 minutos. O sabor do tomate seco é incrível e é super cremoso. Já comprei 3 vezes!"</span>
             <span class="review-author">— Roberta G., Cliente ChefBrico</span>
         </div>
 
         <section class="faq-section">
-            <h2 style="color: #014039; margin-bottom: 20px;">Dúvidas Frequentes</h2>
+            <h2 style="color: #014039; margin-bottom: 15px; font-size: 1.4rem;">Dúvidas Frequentes</h2>
             <div class="faq-item">
                 <button class="faq-question">O prato é apimentado? <span>▼</span></button>
                 <div class="faq-answer"><p>Nossas receitas são equilibradas para toda a família. O tempero é marcante mas suave, sem ardência excessiva.</p></div>
@@ -128,6 +144,14 @@ layout: base.njk
                 <div class="faq-answer"><p>O segredo está em mexer ocasionalmente durante os 18 minutos para liberar o amido do grão.</p></div>
             </div>
         </section>
+
+        <div class="author-box" style="display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 15px; margin-top: 40px; border-left: 5px solid #014039;">
+            <img src="/imagens/maria-conceicao-chefbrico.webp" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+            <div>
+                <h4 style="margin:0; color:#014039;">Dica da Chef Maria</h4>
+                <p style="font-size: 0.95rem; font-style: italic;">"{{ citable_fact }}"</p>
+            </div>
+        </div>
     </div>
 
     <div class="pilula-acao-container">
