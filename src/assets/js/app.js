@@ -1,5 +1,5 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V9.5 - PERFORMANCE & TICKET VIP)
+// ARQUIVO: js/app.js (VERSÃO V9.6 - COM CALCULADORA DE CRISTAL)
 // =================================================================
 
 let chefboxCart = [];
@@ -7,7 +7,7 @@ const MAX_SLOTS = 5;
 const PRECO_FIXO_KIT = 132.00;
 const CNPJ_PIX = "36.014.833/0001-59";
 
-// --- NOVO: FUNÇÃO DE PRELOAD (CARREGAMENTO INSTANTÂNEO) ---
+// --- FUNÇÃO DE PRELOAD (CARREGAMENTO INSTANTÂNEO) ---
 function preloadRecipeImages() {
     const allRecipeImages = document.querySelectorAll('.recipe-card img');
     allRecipeImages.forEach((img) => {
@@ -64,13 +64,19 @@ function removeFromGame(index) {
     renderRuler();
 }
 
+// 🧠 AQUI ESTÁ A INTELIGÊNCIA UNIFICADA (NÃO ALTERA A BOMBA RELÓGIO)
 function renderRuler() {
     const statusText = document.getElementById('game-status-text');
     const btnFinish = document.getElementById('btn-finish-game');
     const slots = document.querySelectorAll('.slot-circle');
+    
+    // Elementos da Calculadora de Cristal
+    const visorTexto = document.getElementById('texto-lucro');
+    const visorGlobal = document.getElementById('visor-economia-global');
 
     if (!slots.length) return;
 
+    // Reseta os slots visualmente
     slots.forEach((slot, i) => {
         slot.classList.remove('filled');
         slot.style.backgroundImage = 'none';
@@ -78,6 +84,7 @@ function renderRuler() {
         slot.onclick = null;
     });
 
+    // Preenche os slots com as fotos
     chefboxCart.forEach((item, index) => {
         if (slots[index]) {
             slots[index].classList.add('filled');
@@ -88,18 +95,41 @@ function renderRuler() {
     });
 
     let count = chefboxCart.length;
+
+    // --- LÓGICA DA CALCULADORA DE ECONOMIA ---
+    if (visorTexto) {
+        if (count === 0) {
+            visorTexto.innerHTML = "ECONOMIA: R$ 0,00";
+            if(visorGlobal) visorGlobal.classList.remove('presente-maximo', 'lucro-ativo');
+        } else if (count >= 4) {
+            visorTexto.innerHTML = "GANHOU R$ 34,80 (5º É PRESENTE!)";
+            if(visorGlobal) {
+                visorGlobal.classList.add('presente-maximo');
+                visorGlobal.classList.remove('lucro-ativo');
+            }
+        } else {
+            let ganho = (count * 6.96).toFixed(2).replace('.', ',');
+            visorTexto.innerHTML = `GANHOU + R$ ${ganho}`;
+            if(visorGlobal) {
+                visorGlobal.classList.add('lucro-ativo');
+                visorGlobal.classList.remove('presente-maximo');
+            }
+        }
+    }
+
+    // Controle do Botão Finalizar
     if (statusText) {
         if (count < 5) {
             statusText.innerHTML = `Escolha mais <strong>${5-count}</strong> sabores!`;
             if(btnFinish) btnFinish.style.display = 'none';
         } else {
             statusText.innerHTML = `🎁 <b>COMBO VIP ATIVADO!</b>`;
-            if(btnFinish) btnFinish.style.display = 'flex'; // Flex para manter a seta alinhada
+            if(btnFinish) btnFinish.style.display = 'flex';
         }
     }
 }
 
-// 3. O TICKET DE VENDA PROFISSIONAL
+// 3. O TICKET DE VENDA PROFISSIONAL (A BOMBA RELÓGIO PROTEGIDA)
 async function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
@@ -161,21 +191,18 @@ function showPixScreen() {
                     Maria já recebeu seu pedido.<br>
                     <strong>Pague agora para agilizar a entrega:</strong>
                 </p>
-                
                 <div style="background: #fdfbf7; padding: 15px; border-radius: 16px; margin: 10px 0; border: 2px solid #F2811D; display: inline-block; width: 100%; max-width: 220px;">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126360014br.gov.bcb.pix0114360148330001595204000053039865406132.005802BR5910ChefBrico6008Brasilia62070503***6304E64A" 
                          alt="QR Code Pix R$ 132,00" 
                          style="width: 100%; max-width: 150px; height: auto; display: block; margin: 0 auto;">
                     <p style="font-weight: 800; color: #F2811D; margin: 8px 0 0 0; font-size: 1.1rem;">R$ 132,00</p>
                 </div>
-
                 <div style="margin-top: 10px; margin-bottom: 15px;">
                     <button onclick="copyPixKey()" id="btn-copy-pix" 
                             style="background: #014039; color: white; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-weight: bold; width: 90%; max-width: 250px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
                         📋 COPIAR CHAVE CNPJ
                     </button>
                 </div>
-                
                 <p onclick="location.reload()" style="color: #999; cursor: pointer; font-size: 0.75rem; text-decoration: underline; margin-top: 10px;">
                     Concluir e voltar ao site
                 </p>
@@ -209,5 +236,5 @@ function closeCheckoutModal() {
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     renderRuler();
-    preloadRecipeImages(); // Inicia o carregamento instantâneo
+    preloadRecipeImages();
 });
