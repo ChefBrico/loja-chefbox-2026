@@ -1,10 +1,27 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V10.0 - ECONOMIA NO BOTÃO VERDE)
+// ARQUIVO: js/app.js (VERSÃO V10.1 - BOTÃO VERDE REDUZIDO 30%)
 // =================================================================
 
 let chefboxCart = [];
 const MAX_SLOTS = 5;
 const CNPJ_PIX = "36.014.833/0001-59";
+
+// 1. INJETOR DE ESTILO (Reduz o botão verde em 30% no Mobile automaticamente)
+const style = document.createElement('style');
+style.innerHTML = `
+    @media (max-width: 768px) {
+        #btn-finish-game {
+            padding: 8px 15px !important; 
+            font-size: 0.75rem !important; 
+            border-radius: 40px !important;
+            height: auto !important;
+            min-height: 35px !important;
+            width: auto !important;
+            white-space: nowrap !important;
+        }
+    }
+`;
+document.head.appendChild(style);
 
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
@@ -38,7 +55,7 @@ function renderRuler() {
 
     if (!slots.length) return;
 
-    // 1. Reseta os Slots (Mantendo sua mecânica original)
+    // 1. Reseta os Slots
     slots.forEach((slot, i) => {
         slot.classList.remove('filled');
         slot.style.backgroundImage = 'none';
@@ -56,22 +73,20 @@ function renderRuler() {
         }
     });
 
-    // 3. A MÁGICA DA ECONOMIA DENTRO DO BOTÃO
+    // 3. LÓGICA DO BOTÃO COM ECONOMIA INTEGRADA
     let count = chefboxCart.length;
     
     if (btnFinish) {
         if (count >= 5) {
-            // ESTADO FINAL: Combo Ativado
             btnFinish.style.display = 'flex';
             btnFinish.innerHTML = "FINALIZAR (GANHOU R$ 34,80) ➜";
-            btnFinish.style.background = "#25D366"; // Verde
+            btnFinish.style.background = "#25D366";
             if(statusText) statusText.innerHTML = "<b>🎁 COMBO VIP ATIVADO!</b>";
         } else if (count > 0) {
-            // ESTADO PROGRESSIVO: Mostra a economia crescendo mesmo antes de acabar
             btnFinish.style.display = 'flex';
             let economia = (count * 6.96).toFixed(2).replace('.', ',');
             btnFinish.innerHTML = `ECONOMIZOU R$ ${economia} ➜`;
-            btnFinish.style.background = "#014039"; // Azul ChefBrico (mais discreto enquanto não acaba)
+            btnFinish.style.background = "#014039";
             if(statusText) statusText.innerHTML = `Faltam ${5-count} para o Presente!`;
         } else {
             btnFinish.style.display = 'none';
@@ -80,7 +95,6 @@ function renderRuler() {
     }
 }
 
-// MANTENDO SUAS FUNÇÕES DE WHATSAPP E PIX INTACTAS (A BOMBA RELÓGIO)
 async function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const address = document.getElementById('customer-address').value;
