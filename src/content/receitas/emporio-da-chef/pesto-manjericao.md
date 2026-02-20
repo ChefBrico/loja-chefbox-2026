@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Empório"
 main_ingredient: "Manjericão Fresco e Castanha-do-Brasil"
 keywords: "pesto genovês Brasília, molho pesto artesanal, castanha do Brasil, parmesão curado, vegetariano, keto DF, sem glúten, molho para massa, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 90
 rendimento: "Pote 90g (Concentrado - Rende muito)"
