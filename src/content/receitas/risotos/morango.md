@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Risoto"
 main_ingredient: "Morango e Cranberry"
 keywords: "risoto morango Brasília, jantar romântico DF, risoto agridoce, vegano, sem glúten, culinária criativa, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
 rendimento: "2 pessoas"
