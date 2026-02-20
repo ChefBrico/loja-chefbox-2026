@@ -33,7 +33,6 @@ schema: {
 }
 ---
 
-<!-- ESTILOS LOCAIS (Para garantir o Carrossel Perfeito) -->
 <style>
     .hero-buttons-grid { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
     .btn-pill {
@@ -55,10 +54,7 @@ schema: {
 
 <main>
     
-    <!-- HERO SECTION: A CAPA QUE CONVERSA -->
-    <!-- HERO SECTION -->
     <section class="hero-section-with-image-and-text">
-         <!-- AQUI ESTÁ A MUDANÇA: Usando a classe do CSS Global -->
          <div class="avatar-hero-circle">
              <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" 
                   alt="Maria Conceição e familia, na propriedade rural fundadora da ChefBrico,">
@@ -67,24 +63,19 @@ schema: {
              <h1 class="hero-title">Comida de Verdade;<br>Sem confusão na cozinha!</h1>
              <p class="hero-subtitle">Uma revolução no sabor e na sua rotina. Refeições práticas, 100% naturais e com o afeto da nossa cozinha.</p>
              
-             <!-- BOTÕES DE AÇÃO RÁPIDA (ZERO-CLICK) -->
              <div class="hero-buttons-grid">
-                 <a href="/chefbox/" class="btn-pill highlight">🎁 Montar ChefBox (4+1)</a>
-             </div>
+                 </div>
          </div>
     </section>
 
     <div class="container">
         
-        <!-- SEÇÃO 1: O MÉTODO (Dinâmico - Puxa da pasta src/content/metodo/) -->
         <div style="display:flex; justify-content:space-between; align-items:end; margin-top:60px;">
             <h2 style="color:var(--cor-institucional); margin:0;">Comece por Aqui: O Método</h2>
             <span style="font-size:0.8rem; color:#999; display:none;" class="mobile-hint">Arraste ➝</span>
         </div>
 
         <div class="carousel-container">
-            
-            <!-- Loop Automático: Lê os arquivos .md que criamos -->
             {% for post in collections.metodo %}
             <a href="{{ post.url }}" class="card">
                 <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
@@ -95,22 +86,14 @@ schema: {
                 </div>
             </a>
             {% endfor %}
-
         </div>
 
-        <!-- SEÇÃO 2: NOVIDADES (Dinâmico - Puxa da pasta src/content/blog/) -->
-       <!-- ============================================================ -->
-        <!-- LINHA 2: TENDÊNCIAS & PESQUISAS (JetSkis)                    -->
-        <!-- Conteúdo rápido, científico e atualizado semanalmente        -->
-        <!-- ============================================================ -->
         <div style="display:flex; justify-content:space-between; align-items:end; margin-top:60px;">
             <h2 style="color:var(--cor-institucional); margin:0;">Tendências & Bem-Estar</h2>
             <span style="font-size:0.8rem; color:#999;">Atualizações Semanais</span>
         </div>
 
         <div class="carousel-container">
-            
-            <!-- Loop dos Fragmentos (JetSkis) -->
             {% for post in collections.fragmentos | sort(attribute='data.order') %}
             <a href="{{ post.url }}" class="card" style="border-top: 4px solid var(--cor-cta);">
                 <div class="card-content">
@@ -130,7 +113,6 @@ schema: {
             </a>
             {% endfor %}
 
-            <!-- Mantém os Artigos de Blog Profundos depois dos Fragmentos -->
             {% for post in collections.blog | sort(attribute='data.order') %}
             <a href="{{ post.url }}" class="card">
                 <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
@@ -140,58 +122,7 @@ schema: {
                 </div>
             </a>
             {% endfor %}
-
         </div>
 
-        <!-- SEÇÃO 3: VITRINE DE CATEGORIAS (Estático - Links Fixos para os Universos) -->
         <h2 style="margin-top: 50px; color: var(--cor-institucional);">Quatro Universos de Sabor</h2>
-        <div class="carousel-container">
-            
-            <!-- Card 1: Risotos -->
-            <a href="/receitas/risotos/" class="card">
-                <img src="/imagens/risoto-pomodori-pesto-chefbrico-580px.png" alt="Risoto Pomodori" class="card-image">
-                <div class="card-content">
-                    <span class="card-category">Jantar Italiano</span>
-                    <h3>Risotos e Arrozes</h3>
-                    <p>O sabor autêntico da Itália, cremoso e pronto em 18 minutos.</p>
-                </div>
-            </a>
-
-            <!-- Card 2: Sopas -->
-            <a href="/receitas/sopas-funcionais/" class="card">
-                <img src="/imagens/chefbrico-creme-fit-sopinha-chefbrico-580%20px.png" alt="Creme Fit" class="card-image">
-                <div class="card-content">
-                    <span class="card-category">Detox & Leveza</span>
-                    <h3>Sopas Funcionais</h3>
-                    <p>Nutrição densa e conforto para dias leves.</p>
-                </div>
-            </a>
-
-            <!-- Card 3: Integrais -->
-            <a href="/receitas/refeicoes-integrais/" class="card">
-                <img src="/imagens/refeicao-nutritiva-integral-arroz-negro-chefbrico-80%20px.png" alt="Arroz Negro" class="card-image">
-                <div class="card-content">
-                    <span class="card-category">Grãos Nobres</span>
-                    <h3>Refeições Integrais</h3>
-                    <p>Arroz negro, vermelho e grãos ancestrais.</p>
-                </div>
-            </a>
-
-            <!-- Card 4: Empório -->
-            <a href="/receitas/emporio-da-chef/" class="card">
-                <img src="/imagens/confitado-shiitake-chefbrico.png" alt="Confit Shiitake" class="card-image">
-                <div class="card-content">
-                    <span class="card-category">Para Finalizar</span>
-                    <h3>Empório da Chef</h3>
-                    <p>Pestos, antepastos e confits para elevar seu prato.</p>
-                </div>
-            </a>
-        </div>
-</main>
-
-<!-- SCRIPT UX: Mostra dica de arrastar no mobile -->
-<script>
-    if (window.innerWidth < 768) {
-        document.querySelectorAll('.mobile-hint').forEach(el => el.style.display = 'block');
-    }
-</script>
+        <div
