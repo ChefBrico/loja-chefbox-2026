@@ -98,10 +98,70 @@ layout: base.njk
         </div>
     </div>
 
-    <div class="pilula-acao-container">
-        <button class="btn-gamer-compact" onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}')">
-            + ADICIONAR SABOR
-        </button>
-        <a href="/receitas/" class="link-retorno-clean">Explorar Catálogo</a>
-    </div>
+    <style>
+  /* 🚀 POSICIONAMENTO PROFISSIONAL MOBILE-FIRST */
+  .pilula-acao-container {
+    position: fixed;
+    /* O SEGREDO: Calculamos a distância para ficar sempre acima da régua de slots */
+    bottom: 100px; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* Respiro entre o botão e o link */
+    z-index: 9999;
+    width: 100%;
+    pointer-events: none; /* Garante que a área invisível não bloqueie o scroller */
+  }
+
+  .btn-gamer-compact {
+    pointer-events: auto; /* Reativa o clique apenas no botão */
+    background: rgba(242, 129, 29, 0.9); /* Laranja Vitrificado */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .link-retorno-clean {
+    pointer-events: auto;
+    font-size: 0.8rem;
+    color: #014039;
+    font-weight: 800;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* AJUSTE PARA TELAS MUITO PEQUENAS */
+  @media (max-width: 380px) {
+    .pilula-acao-container {
+        bottom: 90px;
+    }
+    .btn-gamer-compact {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+  }
+</style>
+
+<div class="pilula-acao-container">
+    <button class="btn-gamer-compact" onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}')">
+        + ADICIONAR SABOR
+    </button>
+    <a href="/receitas/" class="link-retorno-clean">🔍 Explorar Catálogo</a>
+</div>
 </article>
