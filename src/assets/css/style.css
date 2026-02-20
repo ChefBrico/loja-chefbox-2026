@@ -662,3 +662,16 @@ main {
         border-width: 5px;
     }
 }
+@media (max-width: 768px) {
+    /* Reduz o espaço entre o carrossel e a próxima seção */
+    section, .container-section {
+        margin-top: 15px !important;
+        margin-bottom: 15px !important;
+        padding-top: 10px !important;
+    }
+    
+    /* Ajusta o espaçamento do título das categorias */
+    .categorias-titulo {
+        margin-bottom: 5px !important;
+    }
+}
