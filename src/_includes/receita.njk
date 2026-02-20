@@ -25,48 +25,36 @@ layout: base.njk
   .receita-title { color: #014039; font-size: 2.2rem; font-family: 'Merriweather', serif; margin-bottom: 10px; line-height: 1.2; }
   .hero-image-container { max-width: 900px; margin: 0 auto 40px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .hero-image-container img { width: 100%; height: auto; display: block; }
-  .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; }
+  .conteudo-leitura { max-width: 740px; margin: 0 auto; line-height: 1.7; color: #333; font-size: 1.05rem; padding-bottom: 150px; }
   
-  /* --- DEPOIMENTO COM FUNDO SIMPLES (REVISADO) --- */
-  blockquote {
-    background: #fdfbf7; /* Bege seda bem suave */
-    border: none;
-    padding: 30px;
-    margin: 40px 0;
-    border-radius: 12px;
-    font-style: italic;
-    color: #444;
-    position: relative;
-    text-align: center;
-  }
-  blockquote p { margin-bottom: 10px; }
-  blockquote cite { font-weight: bold; color: #014039; font-style: normal; font-size: 0.9rem; }
-
   /* --- VITRINE PERSUASIVA --- */
   .vitrine-persuasao { display: flex; gap: 15px; margin: 25px auto; justify-content: center; max-width: 530px; }
   .mini-card { flex: 1; max-width: 220px; text-align: center; }
   .mini-card img { width: 100%; height: auto; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-  .mini-card span { display: block; margin-top: 8px; font-size: 0.7rem; font-weight: 800; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+  .mini-card span { display: block; margin-top: 8px; font-size: 0.7rem; font-weight: 800; color: #666; text-transform: uppercase; }
 
-  /* --- TABELA NUTRICIONAL --- */
-  .nutri-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0; }
-  .nutri-item { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px; min-width: 85px; text-align: center; }
-  .nutri-label { font-size: 0.65rem; text-transform: uppercase; color: #999; display: block; }
-  .nutri-value { font-size: 1.1rem; font-weight: 800; color: #014039; }
+  /* --- PÍLULA DE AÇÃO COMPACTA (MOBILE-FIRST) --- */
+  .pilula-acao-container {
+    position: fixed; bottom: 100px; left: 50%;
+    transform: translateX(-50%); display: flex;
+    flex-direction: column; align-items: center; gap: 5px; z-index: 999;
+  }
+  .btn-gamer-compact {
+    background: #F2811D; color: white; border: none;
+    padding: 12px 25px; border-radius: 40px;
+    font-weight: 900; font-size: 0.9rem;
+    box-shadow: 0 6px 20px rgba(242, 129, 29, 0.4); cursor: pointer;
+  }
+  .link-retorno-clean {
+    font-size: 0.75rem; color: #014039; font-weight: 700;
+    text-decoration: underline; background: rgba(255,255,255,0.8);
+    padding: 2px 10px; border-radius: 10px;
+  }
 
-  /* --- EEAT: MARIA E FAQ --- */
-  .author-box { display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 15px; margin: 60px 0 20px; border-left: 5px solid #014039; }
+  /* --- ESTILOS ADICIONAIS --- */
+  .author-box { display: flex; align-items: center; gap: 20px; background: #f9f9f9; padding: 25px; border-radius: 15px; margin: 60px 0; border-left: 5px solid #014039; }
   .author-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
-  .faq-section { margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; }
-  details { background: #fff; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px; padding: 15px; cursor: pointer; }
-  summary { font-weight: bold; color: #014039; list-style: none; }
-
-  /* --- ELEMENTOS DE CONVERSÃO --- */
   .pilar-box { background: #fdfbf7; border: 1px dashed #014039; border-radius: 15px; padding: 25px; margin-bottom: 40px; }
-  .cta-box { background: #fdfbf7; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px 30px; margin: 60px auto; display: flex; align-items: center; gap: 20px; justify-content: space-between; }
-  .btn-comprar-agora { background: #F2811D; color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; }
-
-  @media (max-width: 600px) { .cta-box { flex-direction: column; text-align: center; } }
 </style>
 
 <article>
@@ -76,209 +64,43 @@ layout: base.njk
     </header>
 
     <div class="hero-image-container">
-        <img src="{{ image }}" alt="Prato Pronto: {{ title }}">
+        <img src="{{ image }}" alt="{{ title }}">
     </div>
 
     <div class="conteudo-leitura" id="area-leitura">
         <section class="pilar-box">
-            <h3 style="color: #014039; margin-top: 0; font-family: 'Merriweather', serif;">✨ Método Gourmet Prático</h3>
-            <div style="font-size: 0.95rem; line-height: 1.6;">
-                <p><strong>1. Despensa Inteligente:</strong> Validade de 1 ano sem refrigeração.</p>
-                <p><strong>2. Panela Única:</strong> Jantar saudável pronto em 18 minutos.</p>
-                <p><strong>3. Cozinha Criativa:</strong> Sua base gourmet para o toque final.</p>
-            </div>
+            <h3 style="color: #014039; margin-top: 0;">✨ Método Gourmet Prático</h3>
+            <p><strong>1. Despensa Inteligente:</strong> Validade de 1 ano.</p>
+            <p><strong>2. Panela Única:</strong> Jantar saudável em 18 min.</p>
+            <p><strong>3. Cozinha Criativa:</strong> Sua base gourmet.</p>
         </section>
 
-        {% if image_package and image_detail %}
-        <div id="vitrine-dinamica" style="display: none;">
-            <div class="vitrine-persuasao">
-                <div class="mini-card">
-                    <img src="{{ image_package }}" alt="Pacote">
-                    <span>📦 O Pacote</span>
-                </div>
-                <div class="mini-card">
-                    <img src="{{ image_detail }}" alt="Detalhe">
-                    <span>🔍 Detalhe</span>
-                </div>
+        <div class="vitrine-persuasao">
+            <div class="mini-card">
+                <img src="{{ image_package }}" alt="Pacote">
+                <span>📦 O Pacote</span>
+            </div>
+            <div class="mini-card">
+                <img src="{{ image_detail }}" alt="Detalhe">
+                <span>🔍 Detalhe</span>
             </div>
         </div>
-        {% endif %}
 
         {{ content | safe }}
 
-        {% if nutrition %}
-        <div style="text-align: center; margin-top: 40px; background: #fff; padding: 20px; border-radius: 12px; border: 1px solid #eee;">
-            <h3 style="color: #014039; margin-bottom: 15px;">Tabela Nutricional</h3>
-            <div class="nutri-grid">
-                <div class="nutri-item"><span class="nutri-label">Kcal</span><span class="nutri-value">{{ nutrition.calories }}</span></div>
-                <div class="nutri-item"><span class="nutri-label">Proteínas</span><span class="nutri-value">{{ nutrition.protein_g }}g</span></div>
-                <div class="nutri-item"><span class="nutri-label">Carbos</span><span class="nutri-value">{{ nutrition.carbs_g }}g</span></div>
-                <div class="nutri-item"><span class="nutri-label">Gorduras</span><span class="nutri-value">{{ nutrition.fats_g }}g</span></div>
-                <div class="nutri-item"><span class="nutri-label">Sódio</span><span class="nutri-value">{{ nutrition.sodium_mg }}mg</span></div>
-            </div>
-        </div>
-        {% endif %}
-
-        {% if faq %}
-        <div class="faq-section">
-            <h3 style="color: #014039; margin-bottom: 20px;">Dúvidas Frequentes</h3>
-            {% for item in faq %}
-            <details>
-                <summary>{{ item.question }}</summary>
-                <p style="padding-top: 10px; color: #666;">{{ item.answer }}</p>
-            </details>
-            {% endfor %}
-        </div>
-        {% endif %}
-
-     <div class="pilula-acao-container">
-    <button id="add-to-box" class="btn-gamer-compact" onclick="adicionarComDopamina()">
-        <span class="plus-icon">+</span> ADICIONAR SABOR
-    </button>
-    <a href="/receitas/" class="link-retorno-clean">ou Explorar Catálogo</a>
-</div>
-
-<style>
-.pilula-acao-container {
-    position: fixed;
-    bottom: 100px; /* Acima da régua de slots */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    z-index: 999;
-}
-
-.btn-gamer-compact {
-    background: #F2811D;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 40px;
-    font-weight: 900;
-    font-size: 0.9rem;
-    box-shadow: 0 6px 20px rgba(242, 129, 29, 0.4);
-    cursor: pointer;
-}
-
-.link-retorno-clean {
-    font-size: 0.75rem;
-    color: #014039;
-    font-weight: 700;
-    text-decoration: underline;
-    background: rgba(255,255,255,0.8);
-    padding: 2px 10px;
-    border-radius: 10px;
-}
-</style>
-
-<style>
-/* Efeito Cristal (Glassmorphism) */
-.crystal-blur {
-    position: fixed;
-    bottom: 85px; /* Acima dos slots da ChefBox */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 500px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    padding: 15px 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    transition: all 0.3s ease;
-}
-
-.calc-content { display: flex; justify-content: space-between; align-items: center; }
-.calc-info { display: flex; flex-direction: column; }
-.calc-label { font-size: 0.6rem; letter-spacing: 1px; color: #014039; font-weight: 800; }
-.calc-number { font-size: 1.4rem; font-weight: 800; color: #F2811D; transition: transform 0.2s ease; }
-
-.btn-gamer-add {
-    background: #F2811D;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(242, 129, 29, 0.3);
-}
-
-.calc-actions { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-.link-explorar { font-size: 0.75rem; color: #014039; text-decoration: underline; font-weight: 600; }
-
-/* Animação de Dopamina */
-.lucro-boost { transform: scale(1.2); color: #014039 !important; }
-.presente-desbloqueado { background: gold !important; color: #014039 !important; border: 2px solid #014039; }
-</style>
-
-<script>
-function adicionarComDopamina() {
-    // 1. Chama a função original de adicionar ao carrinho (que você já tem)
-    // Passamos os dados do Nunjucks para o JS
-    addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}');
-
-    // 2. CICLO DE DOPAMINA: Animação do Visor
-    const visor = document.getElementById('lucro-valor');
-    const container = document.getElementById('crystal-calculator');
-    
-    // Simula o cálculo da economia (20% por item até o 5º)
-    let itensNaBox = 0; 
-    if(localStorage.getItem('chefbox')) {
-        itensNaBox = JSON.parse(localStorage.getItem('chefbox')).length;
-    }
-
-    let economia = (itensNaBox * 6.96).toFixed(2).replace('.', ',');
-    
-    visor.innerHTML = `R$ ${economia}`;
-    visor.classList.add('lucro-boost');
-    
-    // 3. Feedback Tátil (Mobile)
-    if (navigator.vibrate) { navigator.vibrate(50); }
-
-    // 4. MENSAGEM MESTRE: O 5º Sabor
-    if (itensNaBox >= 4) {
-        visor.innerHTML = "PRESENTE! (R$ 34,80)";
-        container.classList.add('presente-desbloqueado');
-    }
-
-    setTimeout(() => { visor.classList.remove('lucro-boost'); }, 300);
-}
-</script>
-
         <div class="author-box">
-            <img src="/imagens/maria-conceicao-chefbrico.webp" class="author-img" alt="Maria Conceição">
+            <img src="/imagens/maria-conceicao-chefbrico.webp" class="author-img">
             <div>
                 <h4 style="margin:0; color:#014039;">Dica da Chef Maria</h4>
-                <p style="font-size: 0.95rem; font-style: italic; margin-top: 10px;">"{{ citable_fact }}"</p>
+                <p style="font-size: 0.95rem; font-style: italic;">"{{ citable_fact }}"</p>
             </div>
         </div>
     </div>
-</article>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const vitrine = document.getElementById('vitrine-dinamica');
-        const areaLeitura = document.getElementById('area-leitura');
-        if (vitrine && areaLeitura) {
-            const titulos = areaLeitura.querySelectorAll('h2');
-            let alvo = null;
-            titulos.forEach(h2 => {
-                if (h2.innerText.includes("O que vem no Pacote")) { alvo = h2; }
-            });
-            if (alvo) {
-                vitrine.style.display = 'block';
-                alvo.parentNode.insertBefore(vitrine, alvo);
-            } else { vitrine.style.display = 'block'; }
-        }
-    });
-</script>
+    <div class="pilula-acao-container">
+        <button class="btn-gamer-compact" onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}')">
+            + ADICIONAR SABOR
+        </button>
+        <a href="/receitas/" class="link-retorno-clean">Explorar Catálogo</a>
+    </div>
+</article>
