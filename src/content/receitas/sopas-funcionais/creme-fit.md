@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Sopa"
 main_ingredient: "Ervilha Partida e Gengibre"
 keywords: "sopa de ervilha Brasília, proteína vegetal DF, pós treino, termogênico, gengibre, cúrcuma, jantar fit, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 150
 rendimento: "3 porções (Creme denso)"
