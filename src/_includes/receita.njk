@@ -49,4 +49,92 @@ layout: base.njk
     gap: 12px;
     z-index: 9999;
     width: 100%;
-    pointer-events: none;
+    pointer-events: none; /* Área em volta não bloqueia o toque na receita */
+  }
+
+  .btn-gamer-compact {
+    pointer-events: auto;
+    background: rgba(242, 129, 29, 0.95); /* Laranja Vitrificado Sólido */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  .link-retorno-clean {
+    pointer-events: auto;
+    font-size: 0.8rem;
+    color: #014039;
+    font-weight: 800;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 6px 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eee;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* AJUSTE PARA TELAS MENORES (IPHONE SE/ANTIGOS) */
+  @media (max-width: 380px) {
+    .pilula-acao-container { bottom: 145px; }
+    .btn-gamer-compact { padding: 10px 22px; font-size: 0.85rem; }
+  }
+</style>
+
+<article>
+    <header class="receita-header">
+        <h1 class="receita-title">{{ title }}</h1>
+        <p style="font-size: 0.85rem; color: #999;">Gourmet Prático por ChefBrico</p>
+    </header>
+
+    <div class="hero-image-container">
+        <img src="{{ image }}" alt="{{ title }}">
+    </div>
+
+    <div class="conteudo-leitura" id="area-leitura">
+        <section class="pilar-box">
+            <h3 style="color: #014039; margin-top: 0;">✨ Método Gourmet Prático</h3>
+            <p><strong>1. Despensa Inteligente:</strong> Validade de 1 ano.</p>
+            <p><strong>2. Panela Única:</strong> Jantar saudável em 18 min.</p>
+            <p><strong>3. Cozinha Criativa:</strong> Sua base gourmet.</p>
+        </section>
+
+        <div class="vitrine-persuasao">
+            <div class="mini-card">
+                <img src="{{ image_package }}" alt="Pacote">
+                <span>📦 O Pacote</span>
+            </div>
+            <div class="mini-card">
+                <img src="{{ image_detail }}" alt="Detalhe">
+                <span>🔍 Detalhe</span>
+            </div>
+        </div>
+
+        {{ content | safe }}
+
+        <div class="author-box">
+            <img src="/imagens/maria-conceicao-chefbrico.webp" class="author-img">
+            <div>
+                <h4 style="margin:0; color:#014039;">Dica da Chef Maria</h4>
+                <p style="font-size: 0.95rem; font-style: italic;">"{{ citable_fact }}"</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pilula-acao-container">
+        <button class="btn-gamer-compact" onclick="addToGame('{{ title }}', {{ price }}, '{{ image }}', '{{ sku }}')">
+            + ADICIONAR SABOR
+        </button>
+        <a href="/receitas/" class="link-retorno-clean">🔍 Explorar Catálogo</a>
+    </div>
+</article>
