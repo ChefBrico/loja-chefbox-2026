@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Sopa"
 main_ingredient: "Lentilha Vermelha e Mix de Vegetais"
 keywords: "sopa de legumes Brasília, low carb DF, lentilha vermelha, jantar leve saudável, sopa de vegetais vegana, sem glúten, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 140
 rendimento: "3 porções (Nutritiva)"
