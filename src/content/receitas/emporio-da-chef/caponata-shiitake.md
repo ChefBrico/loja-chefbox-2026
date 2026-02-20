@@ -14,7 +14,8 @@ availability: "https://schema.org/InStock"
 category: "Empório"
 main_ingredient: "Berinjela e Shiitake Grelhado"
 keywords: "caponata Brasília, shiitake, antepasto artesanal DF, entrada gourmet vegana, presente corporativo Brasília, comida pronta saudável, ChefBrico"
-
+# --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
+solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
 peso_liquido_g: 180
 rendimento: "Pote 180g (Serve 4 a 6 pessoas como entrada)"
