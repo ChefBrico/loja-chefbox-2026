@@ -1,5 +1,5 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V9.7 - CALCULADORA ATIVADA)
+// ARQUIVO: js/app.js (VERSÃO V9.8 - CALIBRAGEM TOTAL)
 // =================================================================
 
 let chefboxCart = [];
@@ -7,6 +7,7 @@ const MAX_SLOTS = 5;
 const PRECO_FIXO_KIT = 132.00;
 const CNPJ_PIX = "36.014.833/0001-59";
 
+// 1. CARREGAMENTO E IDENTIDADE
 function preloadRecipeImages() {
     const allRecipeImages = document.querySelectorAll('.recipe-card img');
     allRecipeImages.forEach((img) => {
@@ -35,6 +36,7 @@ function getAgentID() {
     return 'Busca Direta';
 }
 
+// 2. GESTÃO DO CARRINHO (LOCAL STORAGE)
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
     if (saved) { chefboxCart = JSON.parse(saved); }
@@ -42,6 +44,7 @@ function loadCart() {
 
 function saveCart() {
     localStorage.setItem('chefbox_cart', JSON.stringify(chefboxCart));
+    // Atualiza o contador de dados globalmente
     document.documentElement.setAttribute('data-cart-count', chefboxCart.length);
 }
 
@@ -61,18 +64,21 @@ function removeFromGame(index) {
     renderRuler();
 }
 
-// 🧠 A CENTRAL DE COMANDO DA RÉGUA E CALCULADORA
+// 🧠 3. A CENTRAL DE COMANDO DA RÉGUA E CALCULADORA DE ECONOMIA
+// Esta função sincroniza as 3 trilhas: Index, Receita e Monte sua ChefBox
 function renderRuler() {
     const statusText = document.getElementById('game-status-text');
     const btnFinish = document.getElementById('btn-finish-game');
     const slots = document.querySelectorAll('.slot-circle');
     
-    // Elementos da Calculadora
+    // Alvos da Calculadora de Economia (Pílula e Régua)
     const visorTexto = document.getElementById('texto-lucro');
+    const visorDinamico = document.getElementById('visor-dinamico-lucro');
     const visorGlobal = document.getElementById('visor-economia-global');
 
     if (!slots.length) return;
 
+    // Reseta Visual dos Slots
     slots.forEach((slot, i) => {
         slot.classList.remove('filled');
         slot.style.backgroundImage = 'none';
@@ -80,6 +86,7 @@ function renderRuler() {
         slot.onclick = null;
     });
 
+    // Renderiza Itens nos Slots
     chefboxCart.forEach((item, index) => {
         if (slots[index]) {
             slots[index].classList.add('filled');
@@ -91,20 +98,28 @@ function renderRuler() {
 
     let count = chefboxCart.length;
 
-    // --- ATUALIZAÇÃO DA CALCULADORA DE ECONOMIA ---
-    if (visorTexto) {
-        if (count === 0) {
-            visorTexto.innerHTML = "ECONOMIA: R$ 0,00";
-        } else if (count >= 4) {
-            visorTexto.innerHTML = "GANHOU R$ 34,80 (5º É PRESENTE!)";
-            if(visorGlobal) visorGlobal.style.background = "gold";
-        } else {
-            let ganho = (count * 6.96).toFixed(2).replace('.', ',');
-            visorTexto.innerHTML = `GANHOU + R$ ${ganho}`;
-            if(visorGlobal) visorGlobal.style.background = "rgba(255, 255, 255, 0.6)";
-        }
+    // --- LÓGICA DA CALCULADORA DE ECONOMIA (20% ACUMULADO) ---
+    // Atende tanto o visor flutuante quanto o visor acoplado na régua
+    const atualizarVisores = (texto) => {
+        if (visorTexto) visorTexto.innerHTML = texto;
+        if (visorDinamico) visorDinamico.innerHTML = texto;
+    };
+
+    if (count === 0) {
+        atualizarVisores("ECONOMIA R$ 0,00");
+        if(visorGlobal) visorGlobal.style.background = "rgba(255, 255, 255, 0.6)";
+    } else if (count >= 4) {
+        // Gatilho do 5º Sabor Presente (Economia de 1 prato cheio)
+        atualizarVisores("GANHOU R$ 34,80 (5º É PRESENTE!)");
+        if(visorGlobal) visorGlobal.style.background = "gold";
+    } else {
+        // Cálculo de economia progressiva (R$ 6,96 por slot preenchido)
+        let ganho = (count * 6.96).toFixed(2).replace('.', ',');
+        atualizarVisores(`GANHOU + R$ ${ganho}`);
+        if(visorGlobal) visorGlobal.style.background = "rgba(255, 255, 255, 0.8)";
     }
 
+    // Controle do Botão de Finalização
     if (statusText) {
         if (count < 5) {
             statusText.innerHTML = `Escolha mais <strong>${5-count}</strong> sabores!`;
@@ -116,6 +131,7 @@ function renderRuler() {
     }
 }
 
+// 4. O TICKET DE VENDA E CHECKOUT (PROTEGIDO)
 async function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
@@ -219,6 +235,7 @@ function closeCheckoutModal() {
     if(modal) modal.style.display = 'none'; 
 }
 
+// 5. INICIALIZAÇÃO ÚNICA
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     renderRuler();
