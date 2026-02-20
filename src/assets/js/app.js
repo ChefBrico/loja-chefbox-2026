@@ -1,5 +1,5 @@
 // =================================================================
-// ARQUIVO: js/app.js (VERSÃO V9.6 - COM CALCULADORA DE CRISTAL)
+// ARQUIVO: js/app.js (VERSÃO V9.7 - CALCULADORA ATIVADA)
 // =================================================================
 
 let chefboxCart = [];
@@ -7,7 +7,6 @@ const MAX_SLOTS = 5;
 const PRECO_FIXO_KIT = 132.00;
 const CNPJ_PIX = "36.014.833/0001-59";
 
-// --- FUNÇÃO DE PRELOAD (CARREGAMENTO INSTANTÂNEO) ---
 function preloadRecipeImages() {
     const allRecipeImages = document.querySelectorAll('.recipe-card img');
     allRecipeImages.forEach((img) => {
@@ -19,7 +18,6 @@ function preloadRecipeImages() {
     });
 }
 
-// 1. GERADORES DE IDENTIDADE
 function generateOrderID() {
     return 'GP' + Math.floor(100000 + Math.random() * 900000);
 }
@@ -37,7 +35,6 @@ function getAgentID() {
     return 'Busca Direta';
 }
 
-// 2. FUNÇÕES DO CARRINHO
 function loadCart() {
     const saved = localStorage.getItem('chefbox_cart');
     if (saved) { chefboxCart = JSON.parse(saved); }
@@ -64,19 +61,18 @@ function removeFromGame(index) {
     renderRuler();
 }
 
-// 🧠 AQUI ESTÁ A INTELIGÊNCIA UNIFICADA (NÃO ALTERA A BOMBA RELÓGIO)
+// 🧠 A CENTRAL DE COMANDO DA RÉGUA E CALCULADORA
 function renderRuler() {
     const statusText = document.getElementById('game-status-text');
     const btnFinish = document.getElementById('btn-finish-game');
     const slots = document.querySelectorAll('.slot-circle');
     
-    // Elementos da Calculadora de Cristal
+    // Elementos da Calculadora
     const visorTexto = document.getElementById('texto-lucro');
     const visorGlobal = document.getElementById('visor-economia-global');
 
     if (!slots.length) return;
 
-    // Reseta os slots visualmente
     slots.forEach((slot, i) => {
         slot.classList.remove('filled');
         slot.style.backgroundImage = 'none';
@@ -84,7 +80,6 @@ function renderRuler() {
         slot.onclick = null;
     });
 
-    // Preenche os slots com as fotos
     chefboxCart.forEach((item, index) => {
         if (slots[index]) {
             slots[index].classList.add('filled');
@@ -96,28 +91,20 @@ function renderRuler() {
 
     let count = chefboxCart.length;
 
-    // --- LÓGICA DA CALCULADORA DE ECONOMIA ---
+    // --- ATUALIZAÇÃO DA CALCULADORA DE ECONOMIA ---
     if (visorTexto) {
         if (count === 0) {
             visorTexto.innerHTML = "ECONOMIA: R$ 0,00";
-            if(visorGlobal) visorGlobal.classList.remove('presente-maximo', 'lucro-ativo');
         } else if (count >= 4) {
             visorTexto.innerHTML = "GANHOU R$ 34,80 (5º É PRESENTE!)";
-            if(visorGlobal) {
-                visorGlobal.classList.add('presente-maximo');
-                visorGlobal.classList.remove('lucro-ativo');
-            }
+            if(visorGlobal) visorGlobal.style.background = "gold";
         } else {
             let ganho = (count * 6.96).toFixed(2).replace('.', ',');
             visorTexto.innerHTML = `GANHOU + R$ ${ganho}`;
-            if(visorGlobal) {
-                visorGlobal.classList.add('lucro-ativo');
-                visorGlobal.classList.remove('presente-maximo');
-            }
+            if(visorGlobal) visorGlobal.style.background = "rgba(255, 255, 255, 0.6)";
         }
     }
 
-    // Controle do Botão Finalizar
     if (statusText) {
         if (count < 5) {
             statusText.innerHTML = `Escolha mais <strong>${5-count}</strong> sabores!`;
@@ -129,7 +116,6 @@ function renderRuler() {
     }
 }
 
-// 3. O TICKET DE VENDA PROFISSIONAL (A BOMBA RELÓGIO PROTEGIDA)
 async function sendOrderToWhatsApp() {
     const name = document.getElementById('customer-name').value;
     const email = document.getElementById('customer-email').value;
