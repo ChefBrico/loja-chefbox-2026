@@ -675,3 +675,48 @@ main {
         margin-bottom: 5px !important;
     }
 }
+/* --- FUNDAÇÃO APPLE CHEFBRICO --- */
+:root {
+    --white: #FFFFFF;
+    --cream: #FDFBF7;
+    --dark-green: #014039;
+    --orange: #F2811D;
+    --gray-text: #555555;
+    --shadow-apple: 0 10px 30px rgba(0,0,0,0.04);
+    --radius-apple: 20px;
+}
+
+body { background-color: var(--white); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+/* --- REGRAS DOS CÍRCULOS DO ARQUITETO --- */
+.circle-img-large {
+    width: 220px; height: 220px; border-radius: 50%;
+    object-fit: cover; border: 6px solid var(--white);
+    box-shadow: var(--shadow-apple);
+}
+
+.circle-img-small {
+    width: 80px; height: 80px; border-radius: 50%;
+    object-fit: cover; border: 3px solid var(--white);
+    box-shadow: var(--shadow-apple);
+}
+
+/* --- CARDS DE DESTAQUE (CREAM) --- */
+.highlight-box {
+    background-color: var(--cream);
+    border-radius: var(--radius-apple);
+    padding: 30px;
+    border: 1px solid rgba(1, 64, 57, 0.05);
+}
+
+/* --- GRID MOBILE FIRST (2 COLUNAS) --- */
+.vitrine-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 10px;
+}
+
+@media (min-width: 1024px) {
+    .vitrine-grid { grid-template-columns: repeat(6, 1fr); gap: 20px; }
+}
