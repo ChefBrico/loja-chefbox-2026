@@ -971,3 +971,83 @@ body {
 @media (max-width: 768px) {
     .magazine-card-unit { flex: 0 0 270px; }
 }
+/* --- FUNDAÇÃO APPLE GOLD (CHEFBRICO 2026) --- */
+:root {
+    --white: #FFFFFF;
+    --apple-cream: #FDFBF7;
+    --chef-green: #014039;
+    --chef-orange: #F2811D;
+    --shadow-apple: 0 10px 30px rgba(0,0,0,0.04);
+    --shadow-float: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; }
+body { 
+    background-color: var(--white) !important; 
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+}
+
+/* 1. HEADER INTEGRAL (RECUPERAÇÃO DE ESTRUTURA) */
+.site-header-apple {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: sticky; top: 0; z-index: 10000;
+}
+
+.header-contain-centered {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 24px; /* Respiro lateral do Header */
+}
+
+.logo-axis img { width: 75px; height: 75px; object-fit: contain; }
+
+.nav-list-tight { display: flex; list-style: none; margin: 0; padding: 0; gap: 30px; align-items: center; }
+.nav-link-apple { text-decoration: none; color: var(--chef-green); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+/* MEGA MENU (O ACORDEÃO DE 2 COLUNAS) */
+.has-mega-menu { position: relative; }
+.mega-menu-apple {
+    display: none; position: absolute; top: 100%; right: -150px;
+    background: #FFFFFF; width: 500px; padding: 35px; border-radius: 28px;
+    box-shadow: var(--shadow-float); border: 1px solid rgba(0,0,0,0.05);
+}
+.has-mega-menu:hover .mega-menu-apple { display: block; }
+
+.mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; }
+.mega-title { color: #999; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+.mega-column a { display: block; color: var(--chef-green); text-decoration: none; font-size: 0.9rem; padding: 8px 0; font-weight: 600; }
+.mega-column a:hover { color: var(--chef-orange); }
+
+/* 2. ENGENHARIA DO CARROSSEL (FIM DOS CARDS GRUDADOS) */
+.magazine-row { margin: 60px 0; }
+.magazine-row h2 { padding: 0 24px; color: var(--chef-green); font-size: 1.7rem; margin-bottom: 25px; }
+
+.magazine-carousel-container {
+    display: flex; overflow-x: auto; gap: 20px;
+    padding: 20px 24px 60px 24px !important; /* RESPIRO DE 24PX NAS LATERAIS */
+    scroll-snap-type: x mandatory; scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+.magazine-carousel-container::-webkit-scrollbar { display: none; }
+
+/* 3. CARD OURO (CREAM + 16:10) */
+.magazine-card-unit {
+    flex: 0 0 300px; background-color: var(--apple-cream);
+    border-radius: 24px; overflow: hidden; text-decoration: none;
+    scroll-snap-align: start; border: 1px solid rgba(1, 64, 57, 0.05);
+    box-shadow: var(--shadow-apple); transition: transform 0.4s ease;
+}
+.magazine-card-unit:hover { transform: translateY(-10px); box-shadow: var(--shadow-float); }
+
+.card-img-rect-wrapper { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
+.card-img-rect-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+/* MOBILE ADJUSTS */
+@media (max-width: 992px) {
+    .desktop-only { display: none !important; }
+    .header-contain-centered { padding: 10px 20px; }
+    .magazine-card-unit { flex: 0 0 270px; }
+}
