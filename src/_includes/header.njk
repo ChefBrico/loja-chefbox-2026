@@ -1,29 +1,29 @@
-<div class="top-bar" role="banner" style="background: #bfb084; color: #fff; text-align: center; padding: 8px; font-size: 0.85rem; font-weight: bold; letter-spacing: 1px;">
+<div class="top-bar-magazine" role="banner">
     GOURMET PRÁTICO: CULINÁRIA SAUDÁVEL, SEM DESPERDÍCIO DE TEMPO E INGREDIENTES!
 </div>
 
-<header class="site-header" style="background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10000;">
+<header class="site-header-apple">
     <div class="header-contain-centered">
         
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menu">☰</button>
 
         <nav class="nav-inner-side left desktop-only">
             <ul class="nav-list-tight">
-                <li><a href="/comida-de-verdade/" class="nav-link-tight">O Método</a></li>
+                <li><a href="/comida-de-verdade/" class="nav-link-apple">O Método</a></li>
             </ul>
         </nav>
 
         <div class="logo-axis">
             <a href="/" class="logo-link">
-                <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="Gourmet Prático" class="logo-img-responsive">
+                <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="Gourmet Prático" class="logo-img-apple">
             </a>
         </div>
 
         <nav class="nav-inner-side right desktop-only">
             <ul class="nav-list-tight">
                 <li class="has-mega-menu">
-                    <a href="/receitas/" class="nav-link-tight">Cardápio ▾</a>
-                    <div class="mega-menu-content">
+                    <a href="/receitas/" class="nav-link-apple">Cardápio ▾</a>
+                    <div class="mega-menu-apple">
                         <div class="mega-grid">
                             <div class="mega-column">
                                 <h4 class="mega-title">POR SOLUÇÃO</h4>
@@ -43,9 +43,9 @@
                         </div>
                     </div>
                 </li>
-                <li><a href="/onde-encontrar/" class="nav-link-tight">Onde Entregamos</a></li>
+                <li><a href="/onde-encontrar/" class="nav-link-apple">Onde Entregamos</a></li>
                 <li>
-                    <a href="/chefbox/" class="btn-chefbox-war">🎁 CHEFBOX (4+1)</a>
+                    <a href="/chefbox/" class="btn-chefbox-capsule">🎁 CHEFBOX (4+1)</a>
                 </li>
             </ul>
         </nav>
@@ -53,130 +53,119 @@
         <div class="mobile-spacer-right mobile-only"></div>
     </div>
 
-    <div id="mobileDrawer" class="mobile-menu-drawer">
-        <div class="drawer-header">
+    <div id="mobileDrawer" class="mobile-menu-drawer-apple">
+        <div class="drawer-header-apple">
             <span>Navegação</span>
             <button onclick="toggleMobileMenu()" style="background:none; border:none; color:white; font-size:1.5rem;">✕</button>
         </div>
         <a href="/comida-de-verdade/">O Método</a>
         <a href="/receitas/">Cardápio Completo</a>
         <a href="/onde-encontrar/">Onde Entregamos</a>
-        <a href="/chefbox/" class="mobile-highlight">🎁 Montar ChefBox (4+1)</a>
+        <a href="/chefbox/" class="mobile-highlight-apple">🎁 Montar ChefBox (4+1)</a>
     </div>
 </header>
 
 <style>
-    /* 1. ESTRUTURA BASE (Desktop) */
+    /* --- ENGENHARIA HEADER APPLE (PADRÃO OURO) --- */
+    
+    .top-bar-magazine {
+        background: #FDFBF7; /* Creme para combinar com os cards */
+        color: #014039;
+        text-align: center;
+        padding: 10px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .site-header-apple {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        position: sticky;
+        top: 0;
+        z-index: 10000;
+        transition: all 0.3s ease;
+    }
+
     .header-contain-centered {
         max-width: 1200px;
         margin: 0 auto;
         display: flex;
-        justify-content: center; 
+        justify-content: center;
         align-items: center;
-        padding: 5px 20px;
-        gap: 30px;
-        position: relative;
+        padding: 8px 20px;
+        gap: 40px;
     }
 
-    .logo-img-responsive {
-        width: 80px;
-        height: 80px;
-        display: block;
-        transition: 0.3s;
+    .logo-img-apple {
+        width: 75px;
+        height: 75px;
+        transition: transform 0.3s ease;
     }
+    .logo-img-apple:hover { transform: scale(1.05); }
 
-    .nav-list-tight { display: flex; list-style: none; margin: 0; padding: 0; gap: 25px; align-items: center; }
-    .nav-link-tight { text-decoration: none; color: #014039; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; white-space: nowrap; }
-
-    .btn-chefbox-war {
-        background: #F2811D; color: #fff !important; padding: 10px 20px; border-radius: 8px;
-        font-weight: 800; font-size: 0.8rem; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .nav-list-tight { display: flex; list-style: none; margin: 0; padding: 0; gap: 30px; align-items: center; }
+    
+    .nav-link-apple {
+        text-decoration: none;
+        color: #014039;
+        font-weight: 700;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: opacity 0.2s;
     }
+    .nav-link-apple:hover { opacity: 0.6; }
 
-    /* MEGA MENU */
-    .has-mega-menu { position: relative; }
-    .mega-menu-content {
-        display: none; position: absolute; top: 100%; right: -100px; background: #fff;
-        width: 450px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); border-radius: 8px;
-        padding: 25px; z-index: 1000; border-top: 4px solid #014039;
+    /* BOTÃO CÁPSULA (ESTILO APPLE) */
+    .btn-chefbox-capsule {
+        background: #F2811D;
+        color: #fff !important;
+        padding: 12px 24px;
+        border-radius: 50px; /* Cápsula Perfeita */
+        font-weight: 800;
+        font-size: 0.75rem;
+        text-decoration: none;
+        box-shadow: 0 8px 20px rgba(242, 129, 29, 0.2);
+        transition: transform 0.2s;
     }
-    .has-mega-menu:hover .mega-menu-content { display: block; }
-    .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .mega-title { font-size: 0.75rem; color: #999; letter-spacing: 1px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-    .mega-column a { display: block; color: #333; text-decoration: none; font-size: 0.9rem; padding: 8px 0; transition: 0.2s; }
-    .mega-column a:hover { color: #F2811D; padding-left: 5px; }
+    .btn-chefbox-capsule:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(242, 129, 29, 0.3); }
 
-    /* 2. AJUSTES MOBILE FIRST (CENTRALIZAÇÃO DA LOGO) */
-    .mobile-menu-btn { display: none; color: #014039; }
-    .mobile-only { display: none; }
+    /* MEGA MENU REFINADO */
+    .mega-menu-apple {
+        display: none; position: absolute; top: 100%; right: -50px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        width: 480px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        border-radius: 24px;
+        padding: 30px;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    .has-mega-menu:hover .mega-menu-apple { display: block; animation: apple-fade 0.3s ease; }
 
+    @keyframes apple-fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* MOBILE ADJUSTS */
     @media (max-width: 992px) {
-        .desktop-only { display: none !important; }
-        .mobile-only { display: block; }
-        
-        .header-contain-centered {
-            justify-content: space-between; /* Distribui: Menu | Logo | Espaçador */
-            padding: 10px 15px;
-            gap: 0;
-        }
+        .header-contain-centered { justify-content: space-between; gap: 0; }
+        .logo-axis { flex-grow: 1; display: flex; justify-content: center; order: 2; }
+        .logo-img-apple { width: 60px; height: 60px; }
+        .mobile-menu-btn { display: block; background: none; border: none; font-size: 1.8rem; cursor: pointer; order: 1; color: #014039; }
+        .mobile-spacer-right { width: 45px; order: 3; }
 
-        /* Força a Logo a ocupar o centro */
-        .logo-axis {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            order: 2;
+        .mobile-menu-drawer-apple {
+            position: fixed; top: 0; left: -100%; width: 85%; height: 100%;
+            background: rgba(1, 64, 57, 0.9);
+            backdrop-filter: blur(15px);
+            display: flex; flex-direction: column;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); z-index: 20000;
         }
-
-        .logo-img-responsive {
-            width: 65px;
-            height: 65px;
-        }
-
-        .mobile-menu-btn {
-            display: block;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            width: 45px; /* Largura fixa para compensar com o espaçador */
-            order: 1;
-            text-align: left;
-            z-index: 10;
-        }
-
-        .mobile-spacer-right {
-            width: 45px; /* Mesma largura do botão de menu */
-            order: 3;
-        }
-
-        /* DRAWER MOBILE */
-        .mobile-menu-drawer { 
-            position: fixed; top: 0; left: -100%; width: 80%; height: 100%;
-            background: #014039; display: flex; flex-direction: column;
-            transition: 0.3s ease; z-index: 20000; box-shadow: 10px 0 20px rgba(0,0,0,0.2);
-        }
-        .mobile-menu-drawer.active { left: 0; }
-        
-        .drawer-header {
-            padding: 20px; background: rgba(0,0,0,0.1); 
-            display: flex; justify-content: space-between; align-items: center; color: #fff;
-            font-weight: bold; text-transform: uppercase; font-size: 0.8rem;
-        }
-
-        .mobile-menu-drawer a {
-            color: #fff; padding: 18px 25px; text-decoration: none;
-            border-bottom: 1px solid rgba(255,255,255,0.05); font-weight: 700;
-        }
-        .mobile-highlight { background: #F2811D; margin: 10px; border-radius: 8px; text-align: center; border-bottom: none !important; }
+        .mobile-menu-drawer-apple.active { left: 0; }
+        .mobile-menu-drawer-apple a { color: white; padding: 20px 30px; text-decoration: none; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .mobile-highlight-apple { background: #F2811D; margin: 20px; border-radius: 50px; text-align: center; border: none !important; }
     }
 </style>
-
-<script>
-    function toggleMobileMenu() {
-        var drawer = document.getElementById('mobileDrawer');
-        if (drawer) {
-            drawer.classList.toggle('active');
-        }
-    }
-</script>
