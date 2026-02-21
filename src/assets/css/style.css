@@ -778,3 +778,52 @@ body {
     transform: translateY(-5px);
     box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
 }
+/* --- FUNDAÇÃO APPLE MAGAZINE CHEFBRICO (2026) --- */
+:root {
+    --apple-white: #FFFFFF;
+    --apple-cream: #FDFBF7;
+    --chef-green: #014039;
+    --chef-orange: #F2811D;
+    --apple-shadow-soft: 0 4px 12px rgba(0,0,0,0.03);
+    --apple-shadow-float: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+body { background-color: var(--apple-white) !important; font-family: -apple-system, system-ui, sans-serif; margin: 0; }
+
+/* 1. MENSAGEM EDITORIAL PREMIUM */
+.editorial-wrapper {
+    max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; padding: 80px 20px;
+}
+.circle-avatar-maria {
+    width: 240px; height: 240px; border-radius: 50% !important; overflow: hidden;
+    flex-shrink: 0; border: 8px solid var(--apple-cream); box-shadow: var(--apple-shadow-float);
+}
+.circle-avatar-maria img { width: 100%; height: 100%; object-fit: cover; }
+
+.editorial-title { color: var(--chef-green); font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 0; }
+.editorial-quote { margin: 25px 0; font-size: 1.2rem; color: #444; line-height: 1.6; font-style: italic; border-left: 3px solid var(--apple-cream); padding-left: 20px; }
+
+/* 2. ENGENHARIA DOS CARROSSEIS HORIZONTAIS */
+.magazine-row { margin: 60px 0; padding-left: 20px; }
+.carousel-horizontal {
+    display: flex; overflow-x: auto; gap: 20px; padding: 20px 5px 40px;
+    scroll-snap-type: x mandatory; scrollbar-width: none;
+}
+.carousel-horizontal::-webkit-scrollbar { display: none; }
+
+/* 3. CARDS FLUTUANTES (RETANGULARES 16:10) */
+.card-magazine {
+    flex: 0 0 300px; background: var(--apple-cream); border-radius: 24px; overflow: hidden;
+    text-decoration: none; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    scroll-snap-align: start; box-shadow: var(--apple-shadow-soft); border: 1px solid rgba(0,0,0,0.02);
+}
+.card-magazine:hover { transform: translateY(-10px); box-shadow: var(--apple-shadow-float); }
+
+.card-img-rect { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+
+@media (max-width: 768px) {
+    .editorial-wrapper { flex-direction: column; text-align: center; gap: 30px; padding: 40px 15px; }
+    .editorial-title { font-size: 2rem; }
+    .circle-avatar-maria { width: 190px; height: 190px; }
+    .card-magazine { flex: 0 0 260px; }
+}
