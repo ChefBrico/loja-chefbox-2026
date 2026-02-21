@@ -2,50 +2,73 @@
 layout: base.njk
 permalink: /comida-de-verdade/
 title: "A Trilha da ChefBrico | Filosofia e Método"
+description: "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
 ---
 
-<main class="magazine-container" style="background: #FFFFFF;">
+<main class="magazine-container">
     
-    <section class="hero-premium-editorial">
-        <div class="avatar-circle-protector">
-            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição">
-        </div>
-        <div class="editorial-content">
-            <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">A Trilha da Maria</span>
-            <h1 class="editorial-title">Meu nome é Maria Conceição.</h1>
-            <p class="editorial-subtitle">Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
+    <section class="hero-editorial-premium">
+        <div class="editorial-wrapper">
+            <div class="circle-container">
+                <div class="circle-avatar-maria">
+                    <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição">
+                </div>
+                <div class="authority-badge">Método Autoral</div>
+            </div>
+
+            <div class="editorial-content">
+                <header>
+                    <span class="editorial-tag">A Trilha da Maria</span>
+                    <h1 class="editorial-title">Meu nome é <br><span class="highlight-text">Maria Conceição.</span></h1>
+                </header>
+                <blockquote class="editorial-quote">
+                    "Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração."
+                </blockquote>
+                <p class="editorial-signature">— Criadora do Método Gourmet Prático</p>
+            </div>
         </div>
     </section>
 
-    <section class="carousel-magazine-row">
-        <h2 style="text-align: center; margin-right: 20px;">Os Pilares do Método Gourmet Prático</h2>
-        <div class="magazine-carousel">
+    <section class="magazine-row" style="margin-top: 40px;">
+        <div class="row-header" style="padding: 0 20px; text-align: center; display: block;">
+            <h2 style="color: var(--chef-green); font-size: 1.8rem; margin-bottom: 10px;">Os Pilares do Método</h2>
+            <p style="color: #666; font-size: 0.95rem;">A base científica e artesanal da nossa produção.</p>
+        </div>
+
+        <div class="carousel-horizontal">
             {% for post in collections.metodo | sort(attribute='data.order') %}
-            <a href="{{ post.url }}" class="magazine-card">
-                <img src="{{ post.data.image }}" class="card-img-rect">
-                <div style="padding: 22px;">
-                    <span style="color: #F2811D; font-size: 0.75rem; font-weight: 800;">{{ post.data.category }}</span>
-                    <h3 style="color: #014039; margin: 10px 0;">{{ post.data.title }}</h3>
-                    <p style="color: #666; font-size: 0.9rem;">{{ post.data.description | truncate(80) }}</p>
+            <a href="{{ post.url }}" class="card-magazine">
+                <div class="rect-image-wrapper">
+                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-img-rect">
+                </div>
+                <div class="card-body">
+                    <span class="card-category">{{ post.data.category }}</span>
+                    <h3>{{ post.data.title }}</h3>
+                    <p>{{ post.data.description | truncate(85) }}</p>
                 </div>
             </a>
             {% endfor %}
 
-            <a href="/chefbox/" class="magazine-card" style="background: #014039; border: none;">
-                <img src="/imagens/maria-conceicao-chefbrico-laranja.png" class="card-img-rect" style="opacity: 0.8;">
-                <div style="padding: 22px; color: #FFFFFF;">
-                    <span style="color: #F2811D; font-weight: 800;">A EXPERIÊNCIA</span>
-                    <h3 style="color: #FFFFFF;">Monte sua ChefBox</h3>
-                    <p style="color: rgba(255,255,255,0.8);">Escolha 4 sabores e o 5º é presente.</p>
+            <a href="/chefbox/" class="card-magazine" style="background: var(--chef-green); border: none;">
+                <div class="rect-image-wrapper">
+                    <img src="/imagens/maria-conceicao-chefbrico-laranja.png" class="card-img-rect" style="opacity: 0.8;">
+                </div>
+                <div class="card-body" style="color: white;">
+                    <span style="color: var(--chef-orange); font-weight: 800; font-size: 0.7rem;">A EXPERIÊNCIA</span>
+                    <h3 style="color: white;">Monte sua ChefBox</h3>
+                    <p style="color: rgba(255,255,255,0.8);">A materialização da nossa filosofia: escolha 4 e o 5º é presente.</p>
                 </div>
             </a>
         </div>
     </section>
 
-    <section style="background: #FDFBF7; padding: 60px 20px; text-align: center; border-radius: 40px; margin: 40px 20px;">
-        <h2 style="color: #014039;">Uma Conquista de Todas Nós</h2>
-        <p style="max-width: 800px; margin: 0 auto; color: #555; line-height: 1.8; font-size: 1.1rem;">
-            A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong>Sebrae, Emater e Senar</strong>.
+    <section style="background: var(--apple-cream); padding: 60px 20px; text-align: center; border-radius: 40px; margin: 40px 20px; border: 1px solid rgba(0,0,0,0.02);">
+        <h2 style="color: var(--chef-green); font-family: 'Merriweather', serif;">Uma Conquista de Todas Nós</h2>
+        <p style="max-width: 800px; margin: 20px auto; color: #555; line-height: 1.8; font-size: 1.1rem;">
+            A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong>Sebrae, Emater e Senar</strong>. Uma jornada de produção local e afeto.
         </p>
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+             </div>
     </section>
+
 </main>
