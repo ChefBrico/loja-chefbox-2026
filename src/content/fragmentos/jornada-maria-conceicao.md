@@ -1,5 +1,6 @@
 ---
 layout: fragmento.njk
+permalink: /fragmentos/jornada-maria-conceicao/
 title: "A Mente por Trás do Gourmet Prático: Maria Conceição"
 description: "De psicóloga a chef premiada pelo Sebrae. Conheça a história de resiliência que criou a ChefBrico em Brasília."
 date: 2026-02-18
