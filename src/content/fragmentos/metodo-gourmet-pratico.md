@@ -1,5 +1,6 @@
 ---
 layout: fragmento.njk
+permalink: /fragmentos/metodo-gourmet-pratico/
 title: "O que é o Método Gourmet Prático? Sabor e Tempo em Equilíbrio"
 description: "A abordagem tripla criada pela Chef Maria Conceição para eliminar o desperdício de ingredientes, tempo e criatividade na cozinha moderna."
 date: 2026-02-18
