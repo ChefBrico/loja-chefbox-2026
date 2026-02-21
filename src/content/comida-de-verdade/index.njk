@@ -2,117 +2,50 @@
 layout: base.njk
 permalink: /comida-de-verdade/
 title: "A Trilha da ChefBrico | Filosofia e Método"
-description: "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
 ---
 
-<main class="container">
+<main class="magazine-container" style="background: #FFFFFF;">
     
-    <div class="eeat-card-hero">
-        
-        <div class="avatar-hero-circle"> 
+    <section class="hero-premium-editorial">
+        <div class="avatar-circle-protector">
             <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição">
         </div>
-
-        <div class="author-info">
-            <span class="eyebrow-text">Inspirar & Cuidar</span>
-            <h1 class="hero-title">A Trilha empreendedora da Maria Conceição</h1>
-            <p class="hero-p">Meu nome é Maria Conceição. Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
+        <div class="editorial-content">
+            <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">A Trilha da Maria</span>
+            <h1 class="editorial-title">Meu nome é Maria Conceição.</h1>
+            <p class="editorial-subtitle">Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
         </div>
-    </div>
+    </section>
 
-    <h2 class="text-center" style="color: var(--cor-institucional); margin-top: 50px;">Os Pilares do Método Gourmet Prático</h2>
-    
-    <div class="carousel-container" style="gap: 15px;">
-        
-        {% for post in collections.metodo | sort(attribute='data.order') %}
-        <a href="{{ post.url }}" class="card">
-            <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
-            <div class="card-content">
-                <span class="card-category" style="color: var(--cor-cta);">{{ post.data.category }}</span>
-                <h3 style="font-size: 1.1rem; margin: 10px 0;">{{ post.data.title }}</h3>
-                <p style="font-size: 0.9rem; color: #666;">{{ post.data.description | truncate(80) }}</p>
-            </div>
-        </a>
-        {% endfor %}
+    <section class="carousel-magazine-row">
+        <h2 style="text-align: center; margin-right: 20px;">Os Pilares do Método Gourmet Prático</h2>
+        <div class="magazine-carousel">
+            {% for post in collections.metodo | sort(attribute='data.order') %}
+            <a href="{{ post.url }}" class="magazine-card">
+                <img src="{{ post.data.image }}" class="card-img-rect">
+                <div style="padding: 22px;">
+                    <span style="color: #F2811D; font-size: 0.75rem; font-weight: 800;">{{ post.data.category }}</span>
+                    <h3 style="color: #014039; margin: 10px 0;">{{ post.data.title }}</h3>
+                    <p style="color: #666; font-size: 0.9rem;">{{ post.data.description | truncate(80) }}</p>
+                </div>
+            </a>
+            {% endfor %}
 
-        <a href="/chefbox/" class="card" style="border: 2px solid var(--cor-cta);">
-            <img src="/imagens/maria-conceicao-chefbrico-laranja.png" class="card-image" alt="ChefBox">
-            <div class="card-content">
-                <span class="card-category" style="color: var(--cor-cta); font-weight: bold;">A Experiência</span>
-                <h3>Monte sua ChefBox</h3>
-                <p>A materialização da filosofia. Escolha 4 sabores e ganhe o 5º de presente!</p>
-            </div>
-        </a>
-    </div>
+            <a href="/chefbox/" class="magazine-card" style="background: #014039; border: none;">
+                <img src="/imagens/maria-conceicao-chefbrico-laranja.png" class="card-img-rect" style="opacity: 0.8;">
+                <div style="padding: 22px; color: #FFFFFF;">
+                    <span style="color: #F2811D; font-weight: 800;">A EXPERIÊNCIA</span>
+                    <h3 style="color: #FFFFFF;">Monte sua ChefBox</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Escolha 4 sabores e o 5º é presente.</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
-    <div class="conteudo-leitura" style="margin-top: 40px; padding: 0 15px;">
-        <h2>Uma Conquista de Todas Nós</h2>
-        <p>A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong>Sebrae, Emater e Senar</strong>.</p>
-    </div>
-
+    <section style="background: #FDFBF7; padding: 60px 20px; text-align: center; border-radius: 40px; margin: 40px 20px;">
+        <h2 style="color: #014039;">Uma Conquista de Todas Nós</h2>
+        <p style="max-width: 800px; margin: 0 auto; color: #555; line-height: 1.8; font-size: 1.1rem;">
+            A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong>Sebrae, Emater e Senar</strong>.
+        </p>
+    </section>
 </main>
-
-<style>
-    /* 1. ESTILO DO CARD HERO (DESKTOP) */
-    .eeat-card-hero {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        margin: 40px 0;
-        background: white;
-        padding: 40px;
-        border-radius: 12px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    }
-
-    .avatar-hero-circle {
-        width: 220px;
-        height: 220px;
-        border-radius: 50%;
-        overflow: hidden;
-        flex-shrink: 0;
-        border: 5px solid #fff;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-
-    .avatar-hero-circle img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .author-info { flex-grow: 1; }
-    .eyebrow-text { font-size: 0.8em; text-transform: uppercase; color: #999; font-weight: bold; display: block; }
-    .hero-title { color: #014039; font-family: 'Merriweather', serif; font-size: 2rem; margin: 10px 0; }
-    .hero-p { color: #555; line-height: 1.6; }
-
-    /* 2. MICRO-CIRURGIA MOBILE FIRST (IMPEDE O VAZAMENTO DO TEXTO) */
-    @media (max-width: 768px) {
-        .eeat-card-hero {
-            flex-direction: column !important; /* Texto vai para baixo da imagem */
-            padding: 30px 20px !important;
-            text-align: center !important;
-            gap: 20px !important;
-            margin: 20px 10px !important;
-        }
-
-        .avatar-hero-circle {
-            width: 160px !important; /* Reduz o círculo para caber no celular */
-            height: 160px !important;
-        }
-
-        .hero-title {
-            font-size: 1.5rem !important; /* Título menor para não quebrar linha bruscamente */
-        }
-
-        .hero-p {
-            font-size: 0.95rem !important;
-            padding: 0 5px !important;
-        }
-
-        /* Redução de Gaps entre as seções no Mobile */
-        .conteudo-leitura {
-            margin-top: 30px !important;
-        }
-    }
-</style>
