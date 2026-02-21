@@ -21,92 +21,94 @@
     <link rel="stylesheet" href="/css/style.css">
     
     <style>
-        /* --- ESTILOS DE INTERFACE PREMIUM (APPLE STYLE) --- */
+        /* --- INTERFACE GOLD STANDARD (APPLE STYLE) --- */
         :root {
             --chef-orange: #F2811D;
             --chef-green: #014039;
             --whatsapp-green: #25D366;
             --apple-cream: #FDFBF7;
-            --glass-bg: rgba(255, 255, 255, 0.85);
+            --apple-white: #FFFFFF;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
-            background-color: #FFFFFF;
+            background-color: var(--apple-white);
+            color: #1d1d1f;
         }
 
-        /* 1. RÉGUA CHEFBOX (FLOATING SYSTEM) */
+        /* 1. RÉGUA CHEFBOX (FLOATING CAPSULE) */
         .chefbox-sticky-bar {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 92%; max-width: 600px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px) saturate(180%);
-            -webkit-backdrop-filter: blur(15px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid var(--chef-orange);
-            border-radius: 30px;
-            padding: 15px 25px; z-index: 1000;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 580px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-top: 3px solid var(--chef-orange);
+            border-radius: 40px;
+            padding: 12px 20px; z-index: 10000;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
             display: flex; align-items: center; justify-content: space-between;
             gap: 15px;
         }
 
-        .bar-info b { color: var(--chef-green); font-size: 0.75rem; letter-spacing: 1px; }
-        #visor-dinamico-lucro { font-size: 0.85rem; font-weight: 900; color: var(--chef-orange); display: block; }
+        .bar-info { display: flex; flex-direction: column; line-height: 1.2; }
+        .bar-info b { color: var(--chef-green); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; }
+        #visor-dinamico-lucro { font-size: 0.8rem; font-weight: 900; color: var(--chef-orange); }
 
         .slots-wrapper { display: flex; gap: 8px; align-items: center; }
 
         .slot-circle {
-            width: 42px; height: 42px; border: 2px dashed #ddd; border-radius: 50%;
+            width: 44px; height: 44px; border: 1.5px solid #eee; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.7rem; color: #bbb; background: #fff;
+            font-size: 0.75rem; color: #aaa; background: var(--apple-white);
             background-size: cover !important; background-position: center !important;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        .slot-circle.filled { border: 2.5px solid var(--chef-orange); box-shadow: 0 5px 15px rgba(242, 129, 29, 0.2); }
-        .slot-circle.gift { border: 2.5px solid var(--whatsapp-green); color: var(--whatsapp-green); font-size: 1.1rem; }
+        .slot-circle.filled { border: 2px solid var(--chef-orange); box-shadow: 0 8px 20px rgba(242, 129, 29, 0.2); transform: scale(1.05); }
+        .slot-circle.gift { border: 2px solid var(--whatsapp-green); color: var(--whatsapp-green); font-size: 1.2rem; background: var(--apple-cream); }
 
         .btn-finish-float {
             background: var(--whatsapp-green); color: white; border: none;
-            padding: 12px 22px; border-radius: 50px; font-weight: 900;
-            cursor: pointer; font-size: 0.85rem; text-transform: uppercase;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-            white-space: nowrap; animation: pulse-apple 2s infinite;
+            padding: 12px 24px; border-radius: 50px; font-weight: 900;
+            cursor: pointer; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            white-space: nowrap; animation: pulse-apple 3s infinite;
         }
 
         @keyframes pulse-apple { 
-            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); } 
-            50% { transform: scale(1.03); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4); } 
-            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3); } 
+            0% { transform: scale(1); } 
+            50% { transform: scale(1.04); } 
+            100% { transform: scale(1); } 
         }
 
-        /* 2. MODAL DE CHECKOUT (PREMIUM LOOK) */
+        /* 2. MODAL DE CHECKOUT (iOS STYLE) */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(1, 64, 57, 0.6); backdrop-filter: blur(8px); z-index: 2000;
+            background: rgba(1, 64, 57, 0.75); backdrop-filter: blur(10px); z-index: 20000;
             align-items: center; justify-content: center;
         }
         .modal-box {
-            background: white; border-radius: 32px; padding: 40px;
-            max-width: 460px; width: 90%; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--apple-white); border-radius: 32px; padding: 45px;
+            max-width: 480px; width: 92%; 
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.3);
             text-align: center;
         }
         .input-field { 
-            width: 100%; padding: 14px; margin-bottom: 12px; 
-            border: 1px solid #eee; border-radius: 14px; 
-            font-size: 1rem; background: #F9F9F9;
-            box-sizing: border-box; transition: border 0.3s;
+            width: 100%; padding: 16px; margin-bottom: 15px; 
+            border: 1px solid #f2f2f2; border-radius: 18px; 
+            font-size: 1rem; background: #F5F5F7;
+            box-sizing: border-box; transition: all 0.3s ease;
         }
-        .input-field:focus { border-color: var(--chef-orange); outline: none; background: #fff; }
+        .input-field:focus { border-color: var(--chef-orange); outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(242, 129, 29, 0.1); }
 
         @media (max-width: 768px) {
-            .chefbox-sticky-bar { width: 95%; padding: 10px 15px; bottom: 10px; }
+            .chefbox-sticky-bar { width: 95%; padding: 10px 15px; bottom: 15px; }
             .bar-info { display: none; }
-            .slot-circle { width: 38px; height: 38px; }
-            .btn-finish-float { padding: 10px 16px; font-size: 0.75rem; }
+            .slot-circle { width: 40px; height: 40px; }
+            .btn-finish-float { padding: 12px 18px; font-size: 0.75rem; }
         }
     </style>
 
@@ -147,9 +149,9 @@
 
     <div id="checkout-modal" class="modal-overlay">
         <div class="modal-box">
-            <h3 style="color: var(--chef-green); margin-bottom: 10px; font-family: 'Merriweather', serif; font-size: 1.8rem;">Quase lá! 🛵</h3>
-            <p style="font-size: 0.95rem; color: #666; margin-bottom: 25px;">
-                Preencha os dados para a Maria preparar seu <b>Mimo VIP</b> e agendar sua entrega (D+1).
+            <h3 style="color: var(--chef-green); margin-bottom: 12px; font-family: 'Merriweather', serif; font-size: 2rem;">Quase lá! 🛵</h3>
+            <p style="font-size: 1rem; color: #515154; margin-bottom: 30px; line-height: 1.5;">
+                Preencha os dados para a Maria preparar seu <b>Mimo VIP</b> e agendar sua entrega (D+1) em Brasília.
             </p>
             
             <form id="form-checkout-vip" onsubmit="event.preventDefault(); sendOrderToWhatsApp();">
@@ -157,20 +159,20 @@
                 <input type="tel" id="customer-phone" placeholder="WhatsApp (DDD + Número)" required class="input-field">
                 <input type="email" id="customer-email" placeholder="E-mail para confirmação" required class="input-field">
                 
-                <div style="display:flex; gap:10px; margin-bottom: 12px;">
-                    <input type="text" id="customer-cep" placeholder="CEP (DF)" required style="width: 45%; padding: 14px; border: 1px solid #eee; border-radius: 14px; background: #F9F9F9;">
-                    <div style="width: 55%; background:#e8f5e9; color:#2e7d32; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.65rem; text-align:center; text-transform: uppercase;">
+                <div style="display:flex; gap:12px; margin-bottom: 15px;">
+                    <input type="text" id="customer-cep" placeholder="CEP (DF)" required style="width: 42%; padding: 16px; border: 1px solid #f2f2f2; border-radius: 18px; background: #F5F5F7;">
+                    <div style="width: 58%; background:#e8f5e9; color:#1b5e20; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.6rem; text-align:center; text-transform: uppercase; letter-spacing: 1px;">
                         ✅ FRETE GRÁTIS NO DF
                     </div>
                 </div>
 
                 <textarea id="customer-address" rows="3" placeholder="Endereço Completo (Rua, Bloco, Número, Bairro)" required class="input-field" style="resize: none;"></textarea>
                 
-                <button type="submit" style="width: 100%; padding: 20px; background: var(--whatsapp-green); color: white; border: none; border-radius: 50px; font-weight: 900; cursor: pointer; font-size: 1.1rem; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); margin-top: 10px;">
+                <button type="submit" style="width: 100%; padding: 22px; background: var(--whatsapp-green); color: white; border: none; border-radius: 60px; font-weight: 900; cursor: pointer; font-size: 1.1rem; box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4); margin-top: 15px; text-transform: uppercase; letter-spacing: 1px;">
                     GARANTIR MEU PRESENTE ➜
                 </button>
                 
-                <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 20px; color: #999; cursor: pointer; text-decoration: underline; font-size: 0.8rem;">Revisar Sabores</p>
+                <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 25px; color: #86868b; cursor: pointer; text-decoration: underline; font-size: 0.85rem; font-weight: 500;">Voltar ao Catálogo</p>
             </form>
         </div>
     </div>
