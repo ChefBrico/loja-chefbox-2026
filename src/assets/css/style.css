@@ -720,3 +720,61 @@ body { background-color: var(--white); font-family: -apple-system, BlinkMacSyste
 @media (min-width: 1024px) {
     .vitrine-grid { grid-template-columns: repeat(6, 1fr); gap: 20px; }
 }
+/* --- PADRÃO APPLE CHEFBRICO (ARQUITETO) --- */
+
+/* 1. FUNDO E RESPIRO GLOBAL */
+body {
+    background-color: #FFFFFF !important; /* Total White */
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 2. CARDS DE DESTAQUE E EEAT (CREAM) */
+.highlight-box, .pacote-card-eeat, .author-box, .review-suave {
+    background-color: #FDFBF7 !important; /* Off-White/Cream */
+    border: 1px solid rgba(1, 64, 57, 0.05) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.03) !important;
+    padding: 30px !important;
+}
+
+/* 3. A REGRA DOS CÍRCULOS (PROTEÇÃO DE LAYOUT) */
+/* Círculo Grande: Início de página / Destaque */
+.avatar-hero-circle, .circle-img-large {
+    width: 220px;
+    height: 220px;
+    border-radius: 50% !important;
+    overflow: hidden;
+    border: 6px solid #FFFFFF;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    margin: 0 auto;
+}
+
+/* Círculo Pequeno: Rodapé / Dica da Chef / EEAT */
+.circle-img-small, .author-box img {
+    width: 85px !important;
+    height: 85px !important;
+    border-radius: 50% !important;
+    object-fit: cover;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* 4. REFINAMENTO DO GRID (MOBILE FIRST) */
+/* Mantendo suas 2 colunas mobile / 6 colunas PC com espaçamento Apple */
+.vitrine-grid {
+    gap: 15px !important;
+    padding: 0 15px !important;
+}
+
+.card-produto {
+    border: none !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.card-produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
+}
