@@ -1,56 +1,59 @@
-<footer class="site-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter" style="background: #fdfbf7; border-top: 1px solid #eee; padding: 60px 0 20px 0;">
-    <div class="footer-contain-centered">
+<footer class="site-footer-apple" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+    <div class="footer-magazine-grid">
         
-        <div class="footer-col-premium">
-            <h4>Navegação</h4>
-            <ul>
+        <div class="footer-column">
+            <h4 class="footer-title-apple">Revista Digital</h4>
+            <ul class="footer-links-apple">
                 <li><a href="/">Início</a></li>
                 <li><a href="/comida-de-verdade/">O Método</a></li>
                 <li><a href="/receitas/">Cardápio</a></li>
-                <li><a href="/chefbox/">ChefBox</a></li>
+                <li><a href="/chefbox/">ChefBox 4+1</a></li>
                 <li><a href="/faq/">FAQ</a></li>
             </ul>
         </div>
 
-        <div class="footer-col-premium">
-            <h4>Nossos Produtos</h4>
-            <ul>
-                <li><a href="/receitas/risotos/">Risotos</a></li>
+        <div class="footer-column">
+            <h4 class="footer-title-apple">Universos</h4>
+            <ul class="footer-links-apple">
+                <li><a href="/receitas/risotos/">Risotos Artesanais</a></li>
                 <li><a href="/receitas/sopas-funcionais/">Sopas Funcionais</a></li>
                 <li><a href="/receitas/refeicoes-integrais/">Refeições Integrais</a></li>
                 <li><a href="/receitas/emporio-da-chef/">Empório da Chef</a></li>
             </ul>
         </div>
 
-        <div class="footer-col-premium">
-            <h4>Ajuda & Suporte</h4>
-            <ul>
-                <li><a href="/onde-encontrar/">Onde Entregamos</a></li>
-                <li><a href="/faq/#como-comprar">Como Comprar na Loja</a></li>
+        <div class="footer-column">
+            <h4 class="footer-title-apple">Atendimento</h4>
+            <ul class="footer-links-apple">
+                <li><a href="/onde-encontrar/">Onde Entregamos (DF)</a></li>
+                <li><a href="/faq/#como-comprar">Como Comprar</a></li>
                 <li><a href="/politicas/trocas/">Trocas e Devoluções</a></li>
-                <li><a href="https://wa.me/5561996659880" target="_blank">Contato</a></li>
+                <li><a href="https://wa.me/5561996659880" target="_blank" style="color: #25D366; font-weight: 800;">WhatsApp Oficial ➜</a></li>
             </ul>
         </div>
 
-        <div class="footer-col-premium">
-            <h4>Redes Sociais</h4>
-            <div class="social-links-footer">
+        <div class="footer-column">
+            <h4 class="footer-title-apple">Conecte-se</h4>
+            <div class="social-wrapper-apple">
                 <a href="https://instagram.com/chefbrico" target="_blank">Instagram</a>
                 <a href="https://pinterest.com/chefbrico" target="_blank">Pinterest</a>
             </div>
             
-            <div class="award-badge-footer" style="margin-top: 25px;">
-                <p style="font-size: 0.75rem; color: #014039; font-weight: 800; line-height: 1.2; border-left: 3px solid #F2811D; padding-left: 10px;">
-                    🏆 Vencedora Prêmio Sebrae<br>Mulher de Negócios DF
-                </p>
+            <div class="award-seal-apple">
+                <div class="seal-icon">🏆</div>
+                <div class="seal-text">
+                    <strong>Vencedora Prêmio Sebrae</strong><br>
+                    Mulher de Negócios DF
+                </div>
             </div>
         </div>
 
     </div>
 
-    <div class="footer-bottom-premium">
-        <div class="footer-legal-info">
+    <div class="footer-bottom-legal">
+        <div class="legal-content">
             <p>&copy; 2026 ChefBrico | Gourmet Prático • CNPJ: 36.014.833/0001-59 • Brasília - DF</p>
+            <p style="font-size: 0.65rem; margin-top: 5px; opacity: 0.6;">D+1: Entrega em todo o Distrito Federal e Regiões Administrativas.</p>
         </div>
         
         <div class="sr-only-ai">
@@ -62,108 +65,79 @@
 </footer>
 
 <style>
-    /* LAYOUT RODAPÉ PREMIUM CENTRALIZADO */
-    .footer-contain-centered {
+    /* --- ENGENHARIA DO RODAPÉ (PADRÃO OURO) --- */
+    .site-footer-apple {
+        background-color: #FDFBF7 !important; /* Creme Apple */
+        border-top: 1px solid rgba(0,0,0,0.05);
+        padding: 80px 0 40px;
+        margin-top: 100px;
+    }
+
+    .footer-magazine-grid {
         max-width: 1100px;
         margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
+        gap: 60px;
         padding: 0 20px;
     }
 
-    .footer-col-premium h4 {
+    .footer-title-apple {
         color: #014039;
-        font-size: 0.9rem;
+        font-size: 0.7rem;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 25px;
+        letter-spacing: 2px;
         font-weight: 800;
+        margin-bottom: 30px;
     }
 
-    .footer-col-premium ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .footer-col-premium ul li {
-        margin-bottom: 12px;
-    }
-
-    .footer-col-premium ul li a {
+    .footer-links-apple { list-style: none; padding: 0; margin: 0; }
+    .footer-links-apple li { margin-bottom: 15px; }
+    
+    .footer-links-apple li a {
         text-decoration: none;
         color: #666;
         font-size: 0.9rem;
-        transition: color 0.3s;
+        transition: color 0.2s ease;
     }
+    .footer-links-apple li a:hover { color: #F2811D; }
 
-    .footer-col-premium ul li a:hover {
-        color: #F2811D;
-    }
-
-    .social-links-footer a {
-        display: block;
+    .social-wrapper-apple a {
+        display: inline-block;
+        margin-right: 15px;
         color: #666;
         text-decoration: none;
-        font-size: 0.9rem;
-        margin-bottom: 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
     }
+    .social-wrapper-apple a:hover { color: #F2811D; }
 
-    .social-links-footer a:hover {
-        color: #F2811D;
+    /* SELO DE PREMIAÇÃO (EEAT REFINADO) */
+    .award-seal-apple {
+        margin-top: 35px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        background: #FFFFFF;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.03);
     }
+    .seal-icon { font-size: 1.5rem; }
+    .seal-text { font-size: 0.7rem; color: #014039; line-height: 1.3; }
 
-    .footer-bottom-premium {
-        margin-top: 50px;
-        padding: 20px;
-        border-top: 1px solid #eee;
+    .footer-bottom-legal {
+        margin-top: 80px;
+        padding: 30px 20px;
+        border-top: 1px solid rgba(0,0,0,0.05);
         text-align: center;
     }
+    .legal-content p { font-size: 0.7rem; color: #aaa; letter-spacing: 0.5px; }
 
-    .footer-legal-info p {
-        font-size: 0.75rem;
-        color: #aaa;
-        letter-spacing: 0.5px;
-    }
-
-    /* ESCONDER LINKS DE IA PARA HUMANOS */
-    .sr-only-ai {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-    }
-
-    /* RESPONSIVIDADE */
+    /* MOBILE: AJUSTE PARA 1 COLUNA COM ALINHAMENTO EDITORIAL */
     @media (max-width: 768px) {
-        .footer-contain-centered {
-            grid-template-columns: repeat(2, 1fr); /* 2 colunas no tablet */
-        }
+        .footer-magazine-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+        .award-seal-apple { justify-content: center; }
+        .site-footer-apple { padding: 60px 0 30px; }
     }
-
-    @media (max-width: 480px) {
-        .footer-contain-centered {
-            grid-template-columns: 1fr; /* 1 coluna no celular */
-            text-align: center;
-        }
-        .award-badge-footer p {
-            border-left: none;
-            border-top: 3px solid #F2811D;
-            padding-top: 10px;
-            padding-left: 0;
-        }
-   @media (max-width: 768px) {
-    .footer-menu li {
-        margin-bottom: 5px !important; /* Aproxima as linhas */
-    }
-    .footer-menu a {
-        font-size: 0.9rem; /* Diminui levemente a fonte para ganhar espaço */
-        line-height: 1.2;
-    }
-}
 </style>
