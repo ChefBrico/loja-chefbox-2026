@@ -1,5 +1,6 @@
 ---
 layout: fragmento.njk
+permalink: /fragmentos/tendencia-psicobioticos/
 title: "Psicobióticos: A Conexão Intestino-Cérebro"
 description: "Novas pesquisas indicam que alimentos fermentados e ricos em fibras podem reduzir a ansiedade. Entenda o papel da biomassa de banana verde."
 date: 2025-11-10
