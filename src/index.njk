@@ -5,7 +5,7 @@ title: "Revista Digital ChefBrico | Comida de Verdade"
 description: "Receitas 100% naturais, prontas em 18 minutos. O método da Chef Maria Conceição para uma rotina saudável e sem desperdício."
 image: "/imagens/maria-conceicao-empreendedora-feira-tematica.png"
 
-# --- SCHEMA DA HOME ---
+# --- SCHEMA INTEGRAL PRESERVADO ---
 schema: {
   "@context": "https://schema.org",
   "@graph": [
@@ -24,153 +24,159 @@ schema: {
 ---
 
 <style>
-    /* 1. CARD FLUTUANTE PERSUASIVO (EEAT) */
-    .hero-eeat-card {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        margin: 20px auto 40px;
-        background: #ffffff;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.06); /* Card flutuante suave */
-        max-width: 1100px;
-        border: 1px solid #f0f0f0;
-    }
+/* --- ENGENHARIA VISUAL APPLE (ARQUITETO) --- */
+:root {
+    --apple-white: #FFFFFF;
+    --apple-cream: #FDFBF7;
+    --chef-green: #014039;
+    --chef-orange: #F2811D;
+    --apple-shadow: 0 10px 40px rgba(0,0,0,0.04);
+}
 
-    .avatar-hero-circle {
-        width: 220px;
-        height: 220px;
-        border-radius: 50%;
-        overflow: hidden;
-        flex-shrink: 0;
-        border: 6px solid #fff;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
+/* Fundo da Página Total White */
+body, main { background-color: var(--apple-white) !important; margin: 0; padding: 0; }
 
-    .avatar-hero-circle img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.magazine-container { max-width: 1200px; margin: 0 auto; padding-bottom: 100px; }
 
-    .hero-content-text { flex: 1; }
-    .hero-title { color: #014039; font-family: 'Merriweather', serif; font-size: 2.2rem; margin-bottom: 15px; line-height: 1.2; }
-    .hero-subtitle { color: #555; font-size: 1.1rem; line-height: 1.6; margin: 0; }
+/* 1. TOPO: MENSAGEM DA MARIA (EEAT/YMYL) */
+.hero-editorial {
+    display: flex; align-items: center; gap: 40px;
+    padding: 60px 20px; border-bottom: 1px solid #f2f2f2;
+}
 
-    /* 2. CARROSSEL PREMIUM */
-    .carousel-container {
-        display: flex; overflow-x: auto; gap: 20px; padding: 10px 5px 30px 5px;
-        scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-    }
-    .carousel-container::-webkit-scrollbar { display: none; }
-    .card { flex: 0 0 280px; scroll-snap-align: start; }
+.circle-avatar-maria {
+    width: 220px; height: 220px; border-radius: 50% !important;
+    overflow: hidden; flex-shrink: 0;
+    border: 6px solid var(--apple-cream); box-shadow: var(--apple-shadow);
+}
+.circle-avatar-maria img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* 📱 AJUSTES MOBILE-FIRST (CIRURGIA DE PRECISÃO) */
-    @media (max-width: 768px) {
-        .hero-eeat-card {
-            flex-direction: column !important;
-            padding: 30px 20px !important;
-            text-align: center !important;
-            gap: 20px !important;
-            margin: 10px !important;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
+.editorial-text h1 { color: var(--chef-green); font-family: 'Merriweather', serif; font-size: 2.3rem; margin-bottom: 15px; }
+.editorial-text p { color: #555; font-size: 1.1rem; line-height: 1.6; max-width: 600px; }
 
-        .avatar-hero-circle {
-            width: 180px !important;
-            height: 180px !important;
-        }
+/* 2. ENGENHARIA DOS CARROSSEIS (HORIZONTAL) */
+.magazine-row { margin: 60px 20px 20px; }
+.row-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
+.row-header h2 { color: var(--chef-green); font-size: 1.6rem; margin: 0; }
+.hint-swipe { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
 
-        .hero-title { font-size: 1.6rem !important; }
-        .hero-subtitle { font-size: 0.95rem !important; }
-    }
+.carousel-horizontal {
+    display: flex; overflow-x: auto; gap: 20px;
+    padding: 10px 5px 30px; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.carousel-horizontal::-webkit-scrollbar { display: none; }
+
+/* 3. OS CARDS (RETANGULAR + CREAM) */
+.card-magazine {
+    flex: 0 0 290px; background: var(--apple-cream);
+    border-radius: 24px; overflow: hidden;
+    text-decoration: none; transition: all 0.3s ease;
+    scroll-snap-align: start; box-shadow: var(--apple-shadow);
+    border: 1px solid rgba(1, 64, 57, 0.03);
+}
+.card-magazine:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+
+.card-img-rect { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.card-body { padding: 22px; }
+.card-category { color: var(--chef-orange); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+.card-body h3 { color: var(--chef-green); margin: 10px 0; font-size: 1.15rem; line-height: 1.3; }
+.card-body p { color: #666; font-size: 0.9rem; line-height: 1.5; margin: 0; }
+
+/* MOBILE AJUSTES */
+@media (max-width: 768px) {
+    .hero-editorial { flex-direction: column; text-align: center; padding: 40px 15px; }
+    .circle-avatar-maria { width: 180px; height: 180px; }
+    .card-magazine { flex: 0 0 260px; }
+}
 </style>
 
-<main>
-    
-    <section class="container">
-        <div class="hero-eeat-card">
-             <div class="avatar-hero-circle">
-                 <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" 
-                      alt="Maria Conceição e família">
-             </div>
-             <div class="hero-content-text">
-                 <span style="font-size: 0.8rem; text-transform: uppercase; color: #999; font-weight: 800; letter-spacing: 1px;">Inspirar & Cuidar</span>
-                 <h1 class="hero-title">Comida de Verdade;<br>Sem confusão na cozinha!</h1>
-                 <p class="hero-subtitle">Uma revolução no sabor e na sua rotina. Refeições práticas, 100% naturais e com o afeto da nossa cozinha.</p>
-                 
-                 </div>
+<main class="magazine-container">
+
+    <section class="hero-editorial">
+        <div class="circle-avatar-maria">
+            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição">
+        </div>
+        <div class="editorial-text">
+            <span style="text-transform: uppercase; font-size: 0.8rem; font-weight: 800; color: #999;">Trilha de Autoridade</span>
+            <h1>Comida de Verdade;<br>Sem confusão na cozinha!</h1>
+            <p>Refeições 100% naturais, preparadas com o afeto da nossa cozinha artesanal em Brasília e prontas em 18 minutos.</p>
         </div>
     </section>
 
-    <div class="container">
-        
-        <div style="display:flex; justify-content:space-between; align-items:end; margin-top:40px;">
-            <h2 style="color:var(--cor-institucional); margin:0;">Comece por Aqui: O Método</h2>
-            <span style="font-size:0.8rem; color:#999;" class="mobile-hint">Arraste ➝</span>
+    <section class="magazine-row">
+        <div class="row-header">
+            <h2>Comece por Aqui: O Método</h2>
+            <span class="hint-swipe">Arraste ➝</span>
         </div>
-
-        <div class="carousel-container">
+        <div class="carousel-horizontal">
             {% for post in collections.metodo %}
-            <a href="{{ post.url }}" class="card">
-                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-image">
-                <div class="card-content">
-                    <span class="card-category" style="color:var(--cor-cta);">{{ post.data.category }}</span>
+            <a href="{{ post.url }}" class="card-magazine">
+                <img src="{{ post.data.image }}" class="card-img-rect" alt="{{ post.data.title }}">
+                <div class="card-body">
+                    <span class="card-category">{{ post.data.category }}</span>
                     <h3>{{ post.data.title }}</h3>
-                    <p>{{ post.data.description | truncate(60) }}</p>
+                    <p>{{ post.data.description | truncate(75) }}</p>
                 </div>
             </a>
             {% endfor %}
         </div>
+    </section>
 
-        <div style="display:flex; justify-content:space-between; align-items:end; margin-top:40px;">
-            <h2 style="color:var(--cor-institucional); margin:0;">Tendências & Bem-Estar</h2>
-            <span style="font-size:0.8rem; color:#999;">Semanal</span>
+    <section class="magazine-row">
+        <div class="row-header">
+            <h2>Tendências & Bem-Estar</h2>
+            <span class="hint-swipe">Semanal ➝</span>
         </div>
-
-        <div class="carousel-container">
+        <div class="carousel-horizontal">
             {% for post in collections.fragmentos | sort(attribute='data.order') %}
-            <a href="{{ post.url }}" class="card" style="border-top: 4px solid var(--cor-cta);">
-                <div class="card-content">
-                    <h3 style="font-size: 1rem; margin: 10px 0;">{{ post.data.title }}</h3>
-                    <p style="font-size: 0.85rem; color: #555;">{{ post.data.description | truncate(90) }}</p>
-                    <span style="font-size: 0.8rem; color: var(--cor-institucional); font-weight: bold;">Ler ➝</span>
+            <a href="{{ post.url }}" class="card-magazine" style="border-top: 4px solid var(--chef-orange);">
+                <div class="card-body">
+                    <span class="card-category">Dica da Chef</span>
+                    <h3 style="font-size: 1rem;">{{ post.data.title }}</h3>
+                    <p>{{ post.data.description | truncate(100) }}</p>
+                    <span style="display: block; margin-top: 15px; font-weight: bold; font-size: 0.8rem; color: var(--chef-green);">Ler Completo ➝</span>
                 </div>
             </a>
             {% endfor %}
         </div>
+    </section>
 
-        <h2 style="margin-top: 40px; color: var(--cor-institucional);">Quatro Universos de Sabor</h2>
-        <div class="carousel-container">
-            <a href="/receitas/risotos/" class="card">
-                <img src="/imagens/risoto-pomodori-pesto-chefbrico-580px.png" class="card-image">
-                <div class="card-content">
+    <section class="magazine-row">
+        <div class="row-header">
+            <h2>Quatro Universos de Sabor</h2>
+            <span class="hint-swipe">Explorar ➝</span>
+        </div>
+        <div class="carousel-horizontal">
+            <a href="/receitas/risotos/" class="card-magazine">
+                <img src="/imagens/risoto-pomodori-pesto-chefbrico-580px.png" class="card-img-rect">
+                <div class="card-body">
                     <h3>Risotos e Arrozes</h3>
-                    <p>Pronto em 18 minutos.</p>
+                    <p>O clássico italiano em 18 minutos.</p>
                 </div>
             </a>
-            <a href="/receitas/sopas-funcionais/" class="card">
-                <img src="/imagens/chefbrico-creme-fit-sopinha-chefbrico-580%20px.png" class="card-image">
-                <div class="card-content">
+            <a href="/receitas/sopas-funcionais/" class="card-magazine">
+                <img src="/imagens/chefbrico-creme-fit-sopinha-chefbrico-580 px.png" class="card-img-rect">
+                <div class="card-body">
                     <h3>Sopas Funcionais</h3>
-                    <p>Nutrição e leveza.</p>
+                    <p>Nutrição e leveza para suas noites.</p>
                 </div>
             </a>
-            <a href="/receitas/refeicoes-integrais/" class="card">
-                <img src="/imagens/refeicao-nutritiva-integral-arroz-negro-chefbrico-80%20px.png" class="card-image">
-                <div class="card-content">
+            <a href="/receitas/refeicoes-integrais/" class="card-magazine">
+                <img src="/imagens/refeicao-nutritiva-integral-arroz-negro-chefbrico-80 px.png" class="card-img-rect">
+                <div class="card-body">
                     <h3>Refeições Integrais</h3>
-                    <p>Grãos nobres.</p>
+                    <p>Grãos nobres e saciedade saudável.</p>
                 </div>
             </a>
-            <a href="/receitas/emporio-da-chef/" class="card">
-                <img src="/imagens/confitado-shiitake-chefbrico.png" class="card-image">
-                <div class="card-content">
+            <a href="/receitas/emporio-da-chef/" class="card-magazine">
+                <img src="/imagens/confitado-shiitake-chefbrico.png" class="card-img-rect">
+                <div class="card-body">
                     <h3>Empório da Chef</h3>
-                    <p>Toque final.</p>
+                    <p>Acessórios gourmet para sua despensa.</p>
                 </div>
             </a>
         </div>
-    </div>
+    </section>
+
 </main>
