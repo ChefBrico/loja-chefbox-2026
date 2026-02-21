@@ -827,3 +827,84 @@ body { background-color: var(--apple-white) !important; font-family: -apple-syst
     .circle-avatar-maria { width: 190px; height: 190px; }
     .card-magazine { flex: 0 0 260px; }
 }
+/* --- ENGENHARIA DO CARD REVISTA (PADRÃO APPLE) --- */
+.magazine-carousel-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    padding: 20px 5px 60px 5px; /* Respiro para a sombra flutuante */
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Esconde scroll no Firefox */
+    -webkit-overflow-scrolling: touch;
+}
+
+.magazine-carousel-container::-webkit-scrollbar { display: none; } /* Esconde scroll no Chrome */
+
+/* O CARD FLUTUANTE */
+.magazine-card-unit {
+    flex: 0 0 300px; /* Largura fixa para manter o padrão no carrossel */
+    background-color: #FDFBF7; /* Fundo Creme */
+    border-radius: 24px;
+    overflow: hidden;
+    text-decoration: none;
+    scroll-snap-align: start;
+    border: 1px solid rgba(1, 64, 57, 0.04);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 15px 35px rgba(0,0,0,0.05); /* Sombra flutuante Apple */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.magazine-card-unit:hover {
+    transform: translateY(-10px); /* Efeito de levitação ao mouse over */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+}
+
+/* A MOLDURA DA IMAGEM */
+.magazine-card-img-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 10; /* Proporção Gourmet Magazine */
+    overflow: hidden;
+}
+
+.magazine-card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* O CONTEÚDO DO CARD */
+.magazine-card-content {
+    padding: 24px;
+    flex-grow: 1;
+}
+
+.magazine-card-category {
+    color: #F2811D; /* Laranja ChefBrico */
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.magazine-card-title {
+    color: #014039; /* Verde ChefBrico */
+    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin: 0 0 12px 0;
+}
+
+.magazine-card-description {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Ajuste Mobile */
+@media (max-width: 768px) {
+    .magazine-card-unit { flex: 0 0 260px; }
+}
