@@ -908,68 +908,66 @@ body { background-color: var(--apple-white) !important; font-family: -apple-syst
 @media (max-width: 768px) {
     .magazine-card-unit { flex: 0 0 260px; }
 }
-/* --- RESPIRO E MARGENS (APPLE MAGAZINE) --- */
+/* --- FUNDAÇÃO APPLE MAGAZINE CHEFBRICO (OURO) --- */
+:root {
+    --apple-white: #FFFFFF;
+    --apple-cream: #FDFBF7;
+    --chef-green: #014039;
+    --chef-orange: #F2811D;
+    --shadow-apple: 0 10px 30px rgba(0,0,0,0.04);
+    --shadow-float: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+body { 
+    background-color: var(--apple-white) !important; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; 
+    margin: 0; 
+    -webkit-font-smoothing: antialiased; 
+}
+
+/* 1. REGRA DOS CÍRCULOS (ARQUITETO) */
+.circle-img-large {
+    width: 220px; height: 220px; border-radius: 50% !important;
+    object-fit: cover; border: 6px solid var(--apple-white);
+    box-shadow: var(--shadow-apple); margin: 0 auto;
+}
+
+.circle-img-small {
+    width: 85px; height: 85px; border-radius: 50% !important;
+    object-fit: cover; border: 3px solid var(--apple-white);
+    box-shadow: var(--shadow-apple);
+}
+
+/* 2. ENGENHARIA DOS CARROSSEIS (FIM DOS CARDS GRUDADOS) */
 .magazine-carousel-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 20px 20px 60px 20px; /* ADICIONADO: 20px nas laterais para respiro visual */
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    display: flex; overflow-x: auto; gap: 20px;
+    padding: 20px 24px 60px 24px !important; /* RESPIRO LATERAL DE 24PX */
+    scroll-snap-type: x mandatory; scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    margin-left: -20px; /* Permite que o scroll vá até o fim da tela */
-    margin-right: -20px;
+    margin-left: -24px; margin-right: -24px; /* PERMITE FLUXO TOTAL COM MARGEM */
 }
+.magazine-carousel-container::-webkit-scrollbar { display: none; }
 
-/* --- HEADER RESTAURADO E REFINADO --- */
+/* 3. CARD REVISTA (RETANGULAR 16:10 + CREAM) */
+.magazine-card-unit {
+    flex: 0 0 300px; background-color: var(--apple-cream);
+    border-radius: 24px; overflow: hidden; text-decoration: none;
+    scroll-snap-align: start; border: 1px solid rgba(1, 64, 57, 0.05);
+    box-shadow: var(--shadow-apple);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.magazine-card-unit:hover { transform: translateY(-10px); box-shadow: var(--shadow-float); }
+
+.card-img-rect-wrapper { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
+.card-img-rect-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 4. HEADER TRANSVERSAL (FROSTED GLASS) */
 .site-header-apple {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 10000;
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: sticky; top: 0; z-index: 10000;
 }
-
-.header-contain-centered {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-/* Ajuste da Logo para não quebrar o layout */
-.logo-img-apple {
-    width: 70px; /* Tamanho controlado */
-    height: 70px;
-    object-fit: contain;
-}
-
-/* MEGA MENU (ACORDEÃO RESTAURADO) */
-.mega-menu-apple {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #FFFFFF;
-    width: 500px;
-    padding: 30px;
-    border-radius: 24px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-    border: 1px solid rgba(0,0,0,0.05);
-}
-.has-mega-menu:hover .mega-menu-apple { display: block; }
-
-.mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-.mega-title { color: #999; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; border-bottom: 1px solid #f2f2f2; padding-bottom: 10px; margin-bottom: 15px; }
-.mega-column a { display: block; color: #014039; text-decoration: none; font-size: 0.9rem; padding: 6px 0; font-weight: 600; }
-.mega-column a:hover { color: #F2811D; }
 
 @media (max-width: 768px) {
-    .header-contain-centered { padding: 8px 15px; }
-    .logo-img-apple { width: 55px; height: 55px; }
+    .magazine-card-unit { flex: 0 0 270px; }
 }
