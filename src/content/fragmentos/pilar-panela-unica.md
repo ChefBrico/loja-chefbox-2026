@@ -1,5 +1,6 @@
 ---
 layout: fragmento.njk
+permalink: /fragmentos/pilar-panela-unica/
 title: "Panela Única: O Alívio do Tempo na Cozinha"
 description: "Descubra como cozinhar refeições completas em apenas uma panela, preservando o sabor e eliminando a pilha de louça."
 date: 2026-02-18
