@@ -5,7 +5,7 @@ title: "Revista Digital ChefBrico | Comida de Verdade"
 description: "Receitas 100% naturais, prontas em 18 minutos. O método da Chef Maria Conceição para uma rotina saudável e sem desperdício."
 image: "/imagens/maria-conceicao-empreendedora-feira-tematica.png"
 
-# --- SCHEMA INTEGRAL PRESERVADO ---
+# --- SCHEMA INTEGRAL PRESERVADO (NÃO MEXER) ---
 schema: {
   "@context": "https://schema.org",
   "@graph": [
@@ -24,159 +24,114 @@ schema: {
 ---
 
 <style>
-/* --- ENGENHARIA VISUAL APPLE (ARQUITETO) --- */
-:root {
-    --apple-white: #FFFFFF;
-    --apple-cream: #FDFBF7;
-    --chef-green: #014039;
-    --chef-orange: #F2811D;
-    --apple-shadow: 0 10px 40px rgba(0,0,0,0.04);
+/* --- ESTILO APPLE MAGAZINE (ARQUITETO) --- */
+.magazine-container { background-color: #FFFFFF; }
+
+.hero-premium-editorial {
+    display: flex; align-items: center; gap: 60px;
+    padding: 80px 20px; max-width: 1100px; margin: 0 auto;
 }
 
-/* Fundo da Página Total White */
-body, main { background-color: var(--apple-white) !important; margin: 0; padding: 0; }
-
-.magazine-container { max-width: 1200px; margin: 0 auto; padding-bottom: 100px; }
-
-/* 1. TOPO: MENSAGEM DA MARIA (EEAT/YMYL) */
-.hero-editorial {
-    display: flex; align-items: center; gap: 40px;
-    padding: 60px 20px; border-bottom: 1px solid #f2f2f2;
-}
-
-.circle-avatar-maria {
-    width: 220px; height: 220px; border-radius: 50% !important;
+.avatar-circle-protector {
+    width: 240px; height: 240px; border-radius: 50% !important;
     overflow: hidden; flex-shrink: 0;
-    border: 6px solid var(--apple-cream); box-shadow: var(--apple-shadow);
+    border: 8px solid #FDFBF7; box-shadow: 0 20px 40px rgba(0,0,0,0.06);
 }
-.circle-avatar-maria img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-circle-protector img { width: 100%; height: 100%; object-fit: cover; }
 
-.editorial-text h1 { color: var(--chef-green); font-family: 'Merriweather', serif; font-size: 2.3rem; margin-bottom: 15px; }
-.editorial-text p { color: #555; font-size: 1.1rem; line-height: 1.6; max-width: 600px; }
+.editorial-title { color: #014039; font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 0; }
+.editorial-subtitle { color: #555; font-size: 1.2rem; line-height: 1.6; margin-top: 20px; }
 
-/* 2. ENGENHARIA DOS CARROSSEIS (HORIZONTAL) */
-.magazine-row { margin: 60px 20px 20px; }
-.row-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
-.row-header h2 { color: var(--chef-green); font-size: 1.6rem; margin: 0; }
-.hint-swipe { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+/* REGRAS DO CARROSSEL FLUTUANTE */
+.carousel-magazine-row { margin: 60px 0; padding-left: 20px; }
+.carousel-magazine-row h2 { color: #014039; font-size: 1.6rem; margin-bottom: 25px; }
 
-.carousel-horizontal {
+.magazine-carousel {
     display: flex; overflow-x: auto; gap: 20px;
-    padding: 10px 5px 30px; scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    padding-bottom: 40px; scroll-snap-type: x mandatory;
+    scrollbar-width: none;
 }
-.carousel-horizontal::-webkit-scrollbar { display: none; }
+.magazine-carousel::-webkit-scrollbar { display: none; }
 
-/* 3. OS CARDS (RETANGULAR + CREAM) */
-.card-magazine {
-    flex: 0 0 290px; background: var(--apple-cream);
-    border-radius: 24px; overflow: hidden;
-    text-decoration: none; transition: all 0.3s ease;
-    scroll-snap-align: start; box-shadow: var(--apple-shadow);
-    border: 1px solid rgba(1, 64, 57, 0.03);
+.magazine-card {
+    flex: 0 0 300px; background: #FDFBF7; border-radius: 24px;
+    overflow: hidden; text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: transform 0.4s ease; scroll-snap-align: start;
+    border: 1px solid rgba(0,0,0,0.02);
 }
-.card-magazine:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+.magazine-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
 
 .card-img-rect { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
-.card-body { padding: 22px; }
-.card-category { color: var(--chef-orange); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
-.card-body h3 { color: var(--chef-green); margin: 10px 0; font-size: 1.15rem; line-height: 1.3; }
-.card-body p { color: #666; font-size: 0.9rem; line-height: 1.5; margin: 0; }
 
-/* MOBILE AJUSTES */
 @media (max-width: 768px) {
-    .hero-editorial { flex-direction: column; text-align: center; padding: 40px 15px; }
-    .circle-avatar-maria { width: 180px; height: 180px; }
-    .card-magazine { flex: 0 0 260px; }
+    .hero-premium-editorial { flex-direction: column; text-align: center; gap: 30px; }
+    .magazine-card { flex: 0 0 260px; }
 }
 </style>
 
 <main class="magazine-container">
-
-    <section class="hero-editorial">
-        <div class="circle-avatar-maria">
+    <section class="hero-premium-editorial">
+        <div class="avatar-circle-protector">
             <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição">
         </div>
-        <div class="editorial-text">
-            <span style="text-transform: uppercase; font-size: 0.8rem; font-weight: 800; color: #999;">Trilha de Autoridade</span>
-            <h1>Comida de Verdade;<br>Sem confusão na cozinha!</h1>
-            <p>Refeições 100% naturais, preparadas com o afeto da nossa cozinha artesanal em Brasília e prontas em 18 minutos.</p>
+        <div class="editorial-content">
+            <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Inspirar & Cuidar</span>
+            <h1 class="editorial-title">Comida de Verdade;<br><span style="font-weight: 300; color: #999;">Sem confusão na cozinha!</span></h1>
+            <p class="editorial-subtitle">Uma revolução no sabor e na sua rotina. Refeições práticas, 100% naturais e com o afeto da nossa cozinha.</p>
         </div>
     </section>
 
-    <section class="magazine-row">
-        <div class="row-header">
-            <h2>Comece por Aqui: O Método</h2>
-            <span class="hint-swipe">Arraste ➝</span>
-        </div>
-        <div class="carousel-horizontal">
+    <section class="carousel-magazine-row">
+        <h2>Comece por Aqui: O Método</h2>
+        <div class="magazine-carousel">
             {% for post in collections.metodo %}
-            <a href="{{ post.url }}" class="card-magazine">
+            <a href="{{ post.url }}" class="magazine-card">
                 <img src="{{ post.data.image }}" class="card-img-rect" alt="{{ post.data.title }}">
-                <div class="card-body">
-                    <span class="card-category">{{ post.data.category }}</span>
-                    <h3>{{ post.data.title }}</h3>
-                    <p>{{ post.data.description | truncate(75) }}</p>
+                <div style="padding: 22px;">
+                    <span style="color: #F2811D; font-size: 0.75rem; font-weight: 800;">{{ post.data.category }}</span>
+                    <h3 style="color: #014039; margin: 10px 0; font-size: 1.1rem;">{{ post.data.title }}</h3>
+                    <p style="color: #666; font-size: 0.9rem;">{{ post.data.description | truncate(80) }}</p>
                 </div>
             </a>
             {% endfor %}
         </div>
     </section>
 
-    <section class="magazine-row">
-        <div class="row-header">
-            <h2>Tendências & Bem-Estar</h2>
-            <span class="hint-swipe">Semanal ➝</span>
-        </div>
-        <div class="carousel-horizontal">
+    <section class="carousel-magazine-row">
+        <h2>Tendências & Bem-Estar</h2>
+        <div class="magazine-carousel">
             {% for post in collections.fragmentos | sort(attribute='data.order') %}
-            <a href="{{ post.url }}" class="card-magazine" style="border-top: 4px solid var(--chef-orange);">
-                <div class="card-body">
-                    <span class="card-category">Dica da Chef</span>
-                    <h3 style="font-size: 1rem;">{{ post.data.title }}</h3>
-                    <p>{{ post.data.description | truncate(100) }}</p>
-                    <span style="display: block; margin-top: 15px; font-weight: bold; font-size: 0.8rem; color: var(--chef-green);">Ler Completo ➝</span>
+            <a href="{{ post.url }}" class="magazine-card" style="border-top: 4px solid #F2811D;">
+                <div style="padding: 25px;">
+                    <h3 style="color: #014039; font-size: 1rem;">{{ post.data.title }}</h3>
+                    <p style="color: #666; font-size: 0.85rem;">{{ post.data.description | truncate(100) }}</p>
+                    <span style="display: block; margin-top: 15px; font-weight: bold; color: #014039; font-size: 0.8rem;">Ler na Revista ➝</span>
                 </div>
             </a>
             {% endfor %}
         </div>
     </section>
 
-    <section class="magazine-row">
-        <div class="row-header">
-            <h2>Quatro Universos de Sabor</h2>
-            <span class="hint-swipe">Explorar ➝</span>
-        </div>
-        <div class="carousel-horizontal">
-            <a href="/receitas/risotos/" class="card-magazine">
+    <section class="carousel-magazine-row">
+        <h2>Quatro Universos de Sabor</h2>
+        <div class="magazine-carousel">
+            <a href="/receitas/risotos/" class="magazine-card">
                 <img src="/imagens/risoto-pomodori-pesto-chefbrico-580px.png" class="card-img-rect">
-                <div class="card-body">
-                    <h3>Risotos e Arrozes</h3>
-                    <p>O clássico italiano em 18 minutos.</p>
-                </div>
+                <div style="padding: 20px;"><h3>Risotos e Arrozes</h3><p>Pronto em 18 minutos.</p></div>
             </a>
-            <a href="/receitas/sopas-funcionais/" class="card-magazine">
+            <a href="/receitas/sopas-funcionais/" class="magazine-card">
                 <img src="/imagens/chefbrico-creme-fit-sopinha-chefbrico-580 px.png" class="card-img-rect">
-                <div class="card-body">
-                    <h3>Sopas Funcionais</h3>
-                    <p>Nutrição e leveza para suas noites.</p>
-                </div>
+                <div style="padding: 20px;"><h3>Sopas Funcionais</h3><p>Nutrição e leveza.</p></div>
             </a>
-            <a href="/receitas/refeicoes-integrais/" class="card-magazine">
+            <a href="/receitas/refeicoes-integrais/" class="magazine-card">
                 <img src="/imagens/refeicao-nutritiva-integral-arroz-negro-chefbrico-80 px.png" class="card-img-rect">
-                <div class="card-body">
-                    <h3>Refeições Integrais</h3>
-                    <p>Grãos nobres e saciedade saudável.</p>
-                </div>
+                <div style="padding: 20px;"><h3>Refeições Integrais</h3><p>Grãos nobres.</p></div>
             </a>
-            <a href="/receitas/emporio-da-chef/" class="card-magazine">
+            <a href="/receitas/emporio-da-chef/" class="magazine-card">
                 <img src="/imagens/confitado-shiitake-chefbrico.png" class="card-img-rect">
-                <div class="card-body">
-                    <h3>Empório da Chef</h3>
-                    <p>Acessórios gourmet para sua despensa.</p>
-                </div>
+                <div style="padding: 20px;"><h3>Empório da Chef</h3><p>Toque gourmet final.</p></div>
             </a>
         </div>
     </section>
-
 </main>
