@@ -5,109 +5,57 @@ title: "A Trilha da ChefBrico | Filosofia e Método"
 description: "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
 ---
 
-<style>
-/* --- ENGENHARIA VISUAL APPLE (MÉTODO & TRILHA) --- */
-:root {
-    --apple-white: #FFFFFF;
-    --apple-cream: #FDFBF7;
-    --chef-green: #014039;
-    --chef-orange: #F2811D;
-    --respiro-lateral: 24px; /* Margem de segurança alinhada */
-}
-
-.magazine-container { 
-    background-color: var(--apple-white); 
-    padding-bottom: 100px;
-}
-
-/* 1. HEADER EDITORIAL: A MARIA NO CÍRCULO DE PROTEÇÃO */
-.hero-premium-editorial {
-    display: flex; align-items: center; gap: 60px;
-    padding: 80px var(--respiro-lateral); 
-    max-width: 1100px; margin: 0 auto;
-}
-
-.avatar-circle-protector {
-    width: 240px; height: 240px; border-radius: 50% !important;
-    overflow: hidden; flex-shrink: 0;
-    border: 8px solid var(--apple-cream); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-}
-.avatar-circle-protector img { width: 100%; height: 100%; object-fit: cover; }
-
-.editorial-title { color: var(--chef-green); font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 0; }
-.editorial-subtitle { color: #555; font-size: 1.25rem; line-height: 1.6; margin-top: 20px; max-width: 700px; }
-
-/* 2. CARROSSEL DE PILARES (FLUIDEZ SEM GRUDAR) */
-.carousel-magazine-row { margin: 60px 0; }
-.carousel-magazine-row h2 { 
-    color: var(--chef-green); 
-    font-size: 1.7rem; 
-    margin-bottom: 25px; 
-    padding: 0 var(--respiro-lateral); /* Título respeita a margem */
-}
-
-.magazine-carousel {
-    display: flex; 
-    overflow-x: auto; 
-    gap: 20px;
-    padding: 20px var(--respiro-lateral) 60px var(--respiro-lateral); /* Respiro para o deslizamento */
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-}
-.magazine-carousel::-webkit-scrollbar { display: none; }
-
-/* 3. CARDS PADRONIZADOS (16:10 + CREAM) */
-.magazine-card {
-    flex: 0 0 300px; 
-    background: var(--apple-cream); 
-    border-radius: 24px;
-    overflow: hidden; 
-    text-decoration: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-    scroll-snap-align: start;
-    border: 1px solid rgba(1, 64, 57, 0.04);
-}
-.magazine-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
-
-.card-img-rect-wrapper { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
-.card-img-rect { width: 100%; height: 100%; object-fit: cover; }
-
-/* AJUSTES MOBILE FIRST */
-@media (max-width: 768px) {
-    :root { --respiro-lateral: 20px; }
-    .hero-premium-editorial { 
-        flex-direction: column; 
-        text-align: center; 
-        padding: 40px var(--respiro-lateral); 
-        gap: 30px;
-    }
-    .avatar-circle-protector { width: 200px; height: 200px; }
-    .editorial-title { font-size: 2.2rem; }
-    .magazine-card { flex: 0 0 270px; }
-}
-</style>
-
-<main class="magazine-container">
-
-    <section class="hero-premium-editorial">
-        <div class="avatar-circle-protector">
-            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição">
+<main class="magazine-container" style="background-color: #FFFFFF;">
+    <section class="hero-premium-editorial" style="display: flex; align-items: center; gap: 60px; padding: 80px 24px; max-width: 1100px; margin: 0 auto;">
+        <div class="avatar-circle-protector" style="width: 240px; height: 240px; border-radius: 50% !important; overflow: hidden; flex-shrink: 0; border: 8px solid #FDFBF7; box-shadow: 0 20px 40px rgba(0,0,0,0.06);">
+            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="editorial-content">
-            <span style="color: var(--chef-orange); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Inspirar & Cuidar</span>
-            <h1 class="editorial-title">Meu nome é <br><span style="font-weight: 300; color: #999;">Maria Conceição.</span></h1>
-            <p class="editorial-subtitle">Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
+            <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Inspirar & Cuidar</span>
+            <h1 class="editorial-title" style="color: #014039; font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 0;">Meu nome é <br><span style="font-weight: 300; color: #999;">Maria Conceição.</span></h1>
+            <p class="editorial-subtitle" style="color: #555; font-size: 1.25rem; line-height: 1.6; margin-top: 20px;">Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
         </div>
     </section>
 
-    <section class="carousel-magazine-row">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; padding: 0 var(--respiro-lateral) 10px var(--respiro-lateral);">
-            <h2 style="margin: 0; color: var(--chef-green);">Os Pilares do Método Gourmet Prático</h2>
+    <section class="carousel-magazine-row" style="margin: 60px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; padding: 0 24px 10px 24px;">
+            <h2 style="margin: 0; color: #014039; font-size: 1.7rem;">Os Pilares do Método Gourmet Prático</h2>
             <span style="font-size: 0.7rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px;">Arraste ➝</span>
         </div>
         
-        <div class="magazine-carousel">
-            {% for post in collections.metodo | sort
+        <div class="magazine-carousel" style="display: flex; overflow-x: auto; gap: 20px; padding: 20px 24px 60px 24px; scroll-snap-type: x mandatory; scrollbar-width: none;">
+            {# SEGURANÇA: Só tenta ordenar se a coleção 'metodo' existir #}
+            {% set metodo_list = collections.metodo or [] %}
+            {% for post in metodo_list | sort(attribute='data.order') %}
+            <a href="{{ post.url }}" class="magazine-card" style="flex: 0 0 300px; background: #FDFBF7; border-radius: 24px; overflow: hidden; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid rgba(1, 64, 57, 0.04);">
+                <div class="card-img-rect-wrapper" style="width: 100%; aspect-ratio: 16 / 10; overflow: hidden;">
+                    <img src="{{ post.data.image }}" class="card-img-rect" alt="{{ post.data.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 24px;">
+                    <span style="color: #F2811D; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">{{ post.data.category }}</span>
+                    <h3 style="color: #014039; margin: 10px 0; font-size: 1.15rem;">{{ post.data.title }}</h3>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">{{ post.data.description | truncate(80) }}</p>
+                </div>
+            </a>
+            {% endfor %}
+
+            <a href="/chefbox/" class="magazine-card" style="flex: 0 0 300px; background: #014039; border: none; border-radius: 24px; overflow: hidden; text-decoration: none;">
+                <div class="card-img-rect-wrapper" style="width: 100%; aspect-ratio: 16 / 10; overflow: hidden;">
+                    <img src="/imagens/maria-conceicao-chefbrico-laranja.png" class="card-img-rect" style="opacity: 0.85; width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 24px; color: #FFFFFF;">
+                    <span style="color: #F2811D; font-weight: 800; font-size: 0.7rem;">A EXPERIÊNCIA</span>
+                    <h3 style="color: #FFFFFF; font-size: 1.15rem;">Monte sua ChefBox</h3>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Escolha 4 sabores e o 5º é nosso presente.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section style="background: #FDFBF7; padding: 80px 24px; text-align: center; border-radius: 40px; margin: 40px 24px; border: 1px solid rgba(1, 64, 57, 0.05);">
+        <h2 style="color: #014039; font-family: 'Merriweather', serif; font-size: 2rem;">Uma Conquista de Todas Nós</h2>
+        <p style="max-width: 850px; margin: 25px auto; color: #555; line-height: 1.9; font-size: 1.15rem;">
+            A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong>Sebrae, Emater e Senar</strong>. Uma jornada de produção local e afeto.
+        </p>
+    </section>
+</main>
