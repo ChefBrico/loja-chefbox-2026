@@ -1,217 +1,55 @@
 ---
 layout: base.njk
+permalink: /fragmentos/
+title: "Pílulas de Saúde & Método Gourmet | ChefBrico"
+description: "Dicas rápidas da Chef Maria Conceição sobre nutrição funcional, praticidade e o Método Gourmet Prático."
 ---
 
-<!-- ========================================================================== -->
-<!-- 1. CÉREBRO DIGITAL (SCHEMA.ORG: NEWS ARTICLE + CONEXÃO GLOBAL)             -->
-<!-- ========================================================================== -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://gourmetpratico.com.br{{ page.url }}"
-  },
-  "headline": "{{ title }}",
-  "image": [
-    "https://gourmetpratico.com.br{{ image }}"
-  ],
-  "datePublished": "{{ date | postDate }}",
-  "dateModified": "{{ date | postDate }}",
-  "author": {
-    "@type": "Person",
-    "name": "Maria Conceição",
-    /* CONEXÃO COM O GRAFO GLOBAL */
-    "@id": "https://gourmetpratico.com.br/#person-maria-conceicao"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "ChefBrico",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://gourmetpratico.com.br/imagens/logo.png"
-    },
-    /* CONEXÃO COM A MARCA */
-    "@id": "https://gourmetpratico.com.br/#organization"
-  },
-  "description": "{{ description }}",
-  
-  /* DADOS PARA AGENTES DE VOZ E IA */
-  "dateline": "Brasília, DF",
-  "about": { 
-    "@type": "Thing", 
-    "name": "Nutrição Funcional",
-    "sameAs": "https://www.wikidata.org/wiki/Q210380"
-  },
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [".fragmento-summary"]
-  }
-}
-</script>
+<main class="magazine-container" style="background-color: #FFFFFF !important;">
+
+    <section class="hero-premium-editorial" style="display: flex; align-items: center; gap: 60px; padding: 80px 20px; max-width: 1100px; margin: 0 auto;">
+        <div class="avatar-circle-protector" style="width: 240px; height: 240px; border-radius: 50% !important; overflow: hidden; flex-shrink: 0; border: 8px solid #FDFBF7; box-shadow: 0 20px 40px rgba(0,0,0,0.06);">
+            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="editorial-content">
+            <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Dicas da Chef Maria</span>
+            <h1 style="color: #014039; font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 15px 0;">Pílulas de Saúde &<br><span style="font-weight: 300; color: #999;">Método Gourmet</span></h1>
+            <p style="color: #555; font-size: 1.2rem; line-height: 1.6;">Ciência, nutrição e o Método Gourmet Prático para sua rotina no DF.</p>
+        </div>
+    </section>
+
+    <section style="max-width: 1100px; margin: 0 auto; padding: 40px 20px;">
+        <div class="fragmento-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            {% for fragmento in collections.fragmentos | reverse %}
+            <a href="{{ fragmento.url }}" class="magazine-card-unit" style="background: #FDFBF7; border-radius: 24px; padding: 30px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); transition: all 0.4s ease; display: flex; flex-direction: column;">
+                <span style="color: #F2811D; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">✨ Fragmento Citável</span>
+                <h3 style="color: #014039; font-family: 'Merriweather', serif; font-size: 1.3rem; margin: 0 0 15px 0; line-height: 1.3;">{{ fragmento.data.title }}</h3>
+                <p style="color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">{{ fragmento.data.description | truncate(120) }}</p>
+                <span style="color: #014039; font-weight: bold; font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 15px;">Ler resposta completa ➜</span>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section style="background: #FDFBF7; padding: 60px 20px; text-align: center; border-radius: 40px; margin: 60px 20px; border: 1px solid rgba(0,0,0,0.02);">
+        <h2 style="color: #014039; font-family: 'Merriweather', serif; font-size: 2rem; margin-bottom: 15px;">Pronto para aplicar na prática?</h2>
+        <p style="color: #555; font-size: 1.1rem; margin-bottom: 35px;">Escolha seus 5 sabores favoritos e receba amanhã com Frete Grátis no DF.</p>
+        <a href="/chefbox/" style="background: #F2811D; color: white; padding: 18px 45px; border-radius: 50px; font-weight: 900; text-decoration: none; font-size: 1rem; box-shadow: 0 10px 25px rgba(242, 129, 29, 0.3); display: inline-block; text-transform: uppercase; letter-spacing: 1px;">
+            MONTAR MINHA CHEFBOX VIP ➜
+        </a>
+    </section>
+
+</main>
 
 <style>
-    /* Design de "Flash News" (Tendência) */
-    .fragmento-container {
-        max-width: 700px;
-        margin: 40px auto 80px;
-        padding: 0 20px;
-    }
-    
-    /* Cabeçalho Jornalístico */
-    .fragmento-header {
-        border-bottom: 1px solid #eee;
-        padding-bottom: 20px;
-        margin-bottom: 30px;
-    }
+/* CSS DE REFORÇO PARA O SISTEMA FLUTUANTE */
+.magazine-card-unit:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06) !important;
+}
 
-    .trend-badge {
-        background: #e0f2f1;
-        color: var(--cor-institucional, #014039);
-        padding: 5px 12px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: inline-block;
-        margin-bottom: 15px;
-    }
-
-    .fragmento-title {
-        font-family: 'Merriweather', serif;
-        color: #2c3e50;
-        font-size: 2.2rem;
-        margin-top: 0;
-        line-height: 1.2;
-    }
-
-    .fragmento-meta {
-        color: #999;
-        font-size: 0.9rem;
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    /* Corpo do Texto */
-    .fragmento-body {
-        font-size: 1.1rem;
-        color: #444;
-        line-height: 1.8;
-    }
-
-    /* O Resumo para Voz (Speakable) */
-    .fragmento-summary {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: var(--cor-institucional, #014039);
-        margin-bottom: 30px;
-        line-height: 1.5;
-        border-left: 4px solid var(--cor-cta, #F2811D);
-        padding-left: 20px;
-    }
-
-    /* Imagem */
-    .fragmento-img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 30px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    /* Box de Fonte Científica (EEAT) */
-    .source-box {
-        margin-top: 40px;
-        padding: 20px;
-        background: #f9f9f9;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        border: 1px solid #eee;
-    }
-
-    /* CTA Final */
-    .cta-box {
-        margin-top: 50px;
-        text-align: center;
-        padding: 30px;
-        background: #fdfbf7;
-        border-radius: 12px;
-        border: 1px dashed var(--cor-dourado, #bfb084);
-    }
-    
-    .btn-pill {
-        display: inline-block;
-        background: var(--cor-institucional, #014039);
-        color: white;
-        padding: 12px 30px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.2s;
-    }
-    .btn-pill:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+@media (max-width: 768px) {
+    .hero-premium-editorial { flex-direction: column; text-align: center; gap: 30px; padding: 40px 15px; }
+    .avatar-circle-protector { width: 180px; height: 180px; }
+}
 </style>
-
-<article class="fragmento-container">
-    
-    <!-- 1. CABEÇALHO -->
-    <header class="fragmento-header">
-        <span class="trend-badge">Tendência da Semana</span>
-        <h1 class="fragmento-title">{{ title }}</h1>
-        <div class="fragmento-meta">
-            <span>📅 {{ date | postDate }}</span>
-            <span>•</span>
-            <span>⏱️ Leitura de 2 min</span>
-        </div>
-    </header>
-
-    <!-- 2. CONTEÚDO -->
-    <div class="fragmento-body">
-        
-        <!-- Resumo para IA/Voz (O que a Alexa vai ler) -->
-        <div class="fragmento-summary">
-            {{ description }}
-        </div>
-
-        <!-- Imagem Ilustrativa -->
-        {% if image %}
-        <img src="{{ image }}" alt="{{ title }}" class="fragmento-img">
-        {% endif %}
-
-        <!-- Texto Markdown -->
-        {{ content | safe }}
-
-        <!-- 3. FONTE CIENTÍFICA (EEAT) -->
-        {% if source_url %}
-        <div class="source-box">
-            <strong>🔬 Fonte da Pesquisa:</strong> 
-            <a href="{{ source_url }}" target="_blank" rel="nofollow" style="color: var(--cor-cta, #F2811D); text-decoration: underline;">
-                Ler estudo original / Referência
-            </a>
-        </div>
-        {% endif %}
-
-    </div>
-
-    <!-- 4. ASSINATURA SIMPLIFICADA -->
-    <div style="margin-top: 40px; display: flex; align-items: center; gap: 15px;">
-        <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
-        <div style="font-size: 0.9rem; color: #666;">
-            Curadoria por <strong>Maria Conceição</strong><br>
-            ChefBrico Research Team
-        </div>
-    </div>
-
-    <!-- 5. CTA (CONVERSÃO) -->
-    <div class="cta-box">
-        <h3 style="margin-top:0; color: var(--cor-institucional, #014039);">Gostou da dica?</h3>
-        <p style="margin-bottom: 20px;">Veja como aplicamos essa ciência em nossos produtos.</p>
-        <!-- CTA OTIMIZADO: Leva para a ChefBox -->
-        <a href="/chefbox/" class="btn-pill">🎁 Ver na ChefBox (4+1) ➜</a>
-    </div>
-
-</article>
