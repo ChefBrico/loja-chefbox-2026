@@ -1,5 +1,6 @@
 ---
 layout: fragmento.njk
+permalink: /fragmentos/pilar-cozinha-criativa/
 title: "Cozinha Criativa: O Protagonismo de ser Chef em Casa"
 description: "A ChefBrico cuida de 80% do trabalho para você brilhar nos 20% finais. Adicione seu toque autoral às nossas bases."
 date: 2026-02-18
