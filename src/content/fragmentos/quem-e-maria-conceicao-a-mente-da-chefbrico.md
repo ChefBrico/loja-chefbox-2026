@@ -1,6 +1,7 @@
 ---
 # 1. INFRAESTRUTURA (Não mexer)
 layout: fragmento.njk
+permalink: /fragmentos/quem-e-maria-conceicao/
 
 # 2. O GANCHO (Para o Humano e Google Discover)
 title: "Quem é Maria Conceição? A Mente por trás da ChefBrico"
