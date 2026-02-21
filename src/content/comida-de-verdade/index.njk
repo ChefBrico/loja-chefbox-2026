@@ -6,69 +6,100 @@ description: "Conheça os pilares do método Gourmet Prático e a história de M
 ---
 
 <main class="magazine-container">
-    
-    <section class="hero-editorial-premium">
-        <div class="editorial-wrapper">
-            <div class="circle-container">
-                <div class="circle-avatar-maria">
-                    <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição">
-                </div>
-                <div class="authority-badge">Método Autoral</div>
-            </div>
 
-            <div class="editorial-content">
-                <header>
-                    <span class="editorial-tag">A Trilha da Maria</span>
-                    <h1 class="editorial-title">Meu nome é <br><span class="highlight-text">Maria Conceição.</span></h1>
-                </header>
-                <blockquote class="editorial-quote">
-                    "Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração."
-                </blockquote>
-                <p class="editorial-signature">— Criadora do Método Gourmet Prático</p>
-            </div>
+    <section class="hero-premium-editorial">
+        <div class="avatar-circle-protector">
+            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição">
+        </div>
+        <div class="editorial-content">
+            <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Inspirar & Cuidar</span>
+            <h1 class="editorial-title">Meu nome é <br><span style="font-weight: 300; color: #999;">Maria Conceição.</span></h1>
+            <p class="editorial-subtitle">Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
         </div>
     </section>
 
-    <section class="magazine-row" style="margin-top: 40px;">
-        <div class="row-header" style="padding: 0 20px; text-align: center; display: block;">
-            <h2 style="color: var(--chef-green); font-size: 1.8rem; margin-bottom: 10px;">Os Pilares do Método</h2>
-            <p style="color: #666; font-size: 0.95rem;">A base científica e artesanal da nossa produção.</p>
+    <section class="carousel-magazine-row">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-right: 20px;">
+            <h2 style="color: #014039; font-size: 1.6rem; margin:0;">Os Pilares do Método Gourmet Prático</h2>
+            <span style="font-size: 0.7rem; color: #bbb; text-transform: uppercase;">Deslize para conhecer ➝</span>
         </div>
-
-        <div class="carousel-horizontal">
+        
+        <div class="magazine-carousel">
             {% for post in collections.metodo | sort(attribute='data.order') %}
-            <a href="{{ post.url }}" class="card-magazine">
-                <div class="rect-image-wrapper">
-                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="card-img-rect">
+            <a href="{{ post.url }}" class="magazine-card">
+                <div class="card-img-rect-wrapper">
+                    <img src="{{ post.data.image }}" class="card-img-rect" alt="{{ post.data.title }}">
                 </div>
-                <div class="card-body">
-                    <span class="card-category">{{ post.data.category }}</span>
-                    <h3>{{ post.data.title }}</h3>
-                    <p>{{ post.data.description | truncate(85) }}</p>
+                <div style="padding: 22px;">
+                    <span style="color: #F2811D; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">{{ post.data.category }}</span>
+                    <h3 style="color: #014039; margin: 10px 0; font-size: 1.1rem;">{{ post.data.title }}</h3>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">{{ post.data.description | truncate(80) }}</p>
                 </div>
             </a>
             {% endfor %}
 
-            <a href="/chefbox/" class="card-magazine" style="background: var(--chef-green); border: none;">
-                <div class="rect-image-wrapper">
-                    <img src="/imagens/maria-conceicao-chefbrico-laranja.png" class="card-img-rect" style="opacity: 0.8;">
+            <a href="/chefbox/" class="magazine-card" style="background: #014039; border: none;">
+                <div class="card-img-rect-wrapper">
+                    <img src="/imagens/maria-conceicao-chefbrico-laranja.png" class="card-img-rect" style="opacity: 0.85;">
                 </div>
-                <div class="card-body" style="color: white;">
-                    <span style="color: var(--chef-orange); font-weight: 800; font-size: 0.7rem;">A EXPERIÊNCIA</span>
-                    <h3 style="color: white;">Monte sua ChefBox</h3>
-                    <p style="color: rgba(255,255,255,0.8);">A materialização da nossa filosofia: escolha 4 e o 5º é presente.</p>
+                <div style="padding: 22px; color: #FFFFFF;">
+                    <span style="color: #F2811D; font-weight: 800; font-size: 0.7rem;">A EXPERIÊNCIA</span>
+                    <h3 style="color: #FFFFFF; font-size: 1.1rem;">Monte sua ChefBox</h3>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem;">Escolha 4 sabores e o 5º é nosso presente.</p>
                 </div>
             </a>
         </div>
     </section>
 
-    <section style="background: var(--apple-cream); padding: 60px 20px; text-align: center; border-radius: 40px; margin: 40px 20px; border: 1px solid rgba(0,0,0,0.02);">
-        <h2 style="color: var(--chef-green); font-family: 'Merriweather', serif;">Uma Conquista de Todas Nós</h2>
+    <section style="background: #FDFBF7; padding: 60px 20px; text-align: center; border-radius: 40px; margin: 40px 20px; border: 1px solid rgba(0,0,0,0.02);">
+        <h2 style="color: #014039; font-family: 'Merriweather', serif;">Uma Conquista de Todas Nós</h2>
         <p style="max-width: 800px; margin: 20px auto; color: #555; line-height: 1.8; font-size: 1.1rem;">
             A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong>Sebrae, Emater e Senar</strong>. Uma jornada de produção local e afeto.
         </p>
-        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
-             </div>
     </section>
-
 </main>
+
+<style>
+/* REFORÇO DA PADRONIZAÇÃO (IGUAL À INDEX) */
+.magazine-container { background-color: #FFFFFF; }
+
+.hero-premium-editorial {
+    display: flex; align-items: center; gap: 60px;
+    padding: 80px 20px; max-width: 1100px; margin: 0 auto;
+}
+
+.avatar-circle-protector {
+    width: 240px; height: 240px; border-radius: 50% !important;
+    overflow: hidden; flex-shrink: 0;
+    border: 8px solid #FDFBF7; box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+.avatar-circle-protector img { width: 100%; height: 100%; object-fit: cover; }
+
+.editorial-title { color: #014039; font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 0; }
+.editorial-subtitle { color: #555; font-size: 1.2rem; line-height: 1.6; margin-top: 20px; }
+
+.carousel-magazine-row { margin: 60px 0; }
+.magazine-carousel {
+    display: flex; overflow-x: auto; gap: 20px;
+    padding: 20px 5px 40px; scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+.magazine-carousel::-webkit-scrollbar { display: none; }
+
+.magazine-card {
+    flex: 0 0 300px; background: #FDFBF7; border-radius: 24px;
+    overflow: hidden; text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: transform 0.4s ease; scroll-snap-align: start;
+}
+.magazine-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+
+.card-img-rect-wrapper { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
+.card-img-rect { width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 768px) {
+    .hero-premium-editorial { flex-direction: column; text-align: center; gap: 30px; padding: 40px 15px; }
+    .magazine-card { flex: 0 0 260px; }
+    .editorial-title { font-size: 2rem; }
+}
+</style>
