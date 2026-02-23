@@ -1,5 +1,5 @@
 {
   "layout": "receita.njk",
   "tags": "receitas",
-  "permalink": "/receitas/{{ category | slug }}/{{ title | slug }}/"
+  "permalink": "/receitas/{{ category | slugify }}/{{ title | slugify }}/"
 }
