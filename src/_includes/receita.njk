@@ -109,28 +109,24 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
 <div class="catalog-grid-3cols" id="main-grid">
     {% for item in collections.receitas %}
     {% if item.data.price %}
-    <article class="catalog-card-micro" data-category="{{ item.data.category }}" style="position: relative; height: 100%;">
+    <article class="catalog-card-micro" 
+             data-category="{{ item.data.category }}" 
+             style="position: relative; cursor: pointer;"
+             onclick="window.location.href='{{ item.url }}'"> <div class="catalog-image-box" style="pointer-events: none;">
+            <img src="{{ item.data.image }}" alt="{{ item.data.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
         
-        <a href="{{ item.url }}" style="display: block; text-decoration: none; height: 100%; color: inherit;">
-            
-            <div class="catalog-image-box" style="position: relative; width: 100%; aspect-ratio: 1/1; overflow: hidden;">
-                <img src="{{ item.data.image }}" 
-                     alt="{{ item.data.title }}" 
-                     style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-            </div>
-            
-            <div class="catalog-content-box" style="padding: 8px 6px; text-align: center;">
-                <h3 style="font-size: 0.65rem; color: #014039; font-weight: 700; margin-bottom: 5px; line-height: 1.2;">
-                    {{ item.data.title | replace(" | ChefBrico", "") }}
-                </h3>
-                <span style="color: #25D366; font-weight: 900; font-size: 0.8rem;">
-                    R$ {{ item.data.price | dinheiro }}
-                </span>
-            </div>
-        </a>
+        <div class="catalog-content-box" style="pointer-events: none; padding: 8px 6px; text-align: center;">
+            <h3 style="font-size: 0.65rem; color: #014039; font-weight: 700; margin-bottom: 5px; line-height: 1.2;">
+                {{ item.data.title | replace(" | ChefBrico", "") }}
+            </h3>
+            <span style="color: #25D366; font-weight: 900; font-size: 0.8rem;">
+                R$ {{ item.data.price | dinheiro }}
+            </span>
+        </div>
 
         <button id="prod-{{ item.data.sku }}" 
-                onclick="event.preventDefault(); event.stopPropagation(); addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')" 
+                onclick="event.stopPropagation(); addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')" 
                 style="position: absolute; bottom: 6px; right: 6px; width: 28px; height: 28px; background-color: #F2811D; color: white; border-radius: 50%; border: none; font-size: 1.2rem; font-weight: bold; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;">
             +
         </button>
