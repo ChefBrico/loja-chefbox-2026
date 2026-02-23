@@ -93,27 +93,29 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
 <div class="recipe-grid" id="main-grid">
     {% for item in collections.receitas %}
     {% if item.data.price %}
-    <article class="recipe-card" style="position: relative;">
+    <div class="recipe-card" data-category="{{ item.data.category }}" data-agent-sku="{{ item.data.sku }}">
         
-        <button class="btn-card-float" 
-                style="z-index: 99; position: absolute; bottom: 8px; right: 8px;"
-                onclick="event.preventDefault(); event.stopPropagation(); addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}', '{{ item.url }}')">
-            +
-        </button>
+        <div class="card-image-wrapper">
+            <a href="{{ item.url }}">
+                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy">
+            </a>
+            
+            <button class="btn-card-float" 
+                    onclick="event.preventDefault(); event.stopPropagation(); addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}', '{{ item.url }}')">
+                +
+            </button>
+        </div>
 
-        <a href="{{ item.url }}" style="display: block; text-decoration: none; z-index: 10;">
-            <div class="card-image-wrapper">
-                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy" style="pointer-events: none;">
+        <div class="card-content">
+            <a href="{{ item.url }}" class="card-title">
+                {{ item.data.title | replace(" | ChefBrico", "") | replace(" em 18 Minutos", "") }}
+            </a>
+            
+            <div style="margin-top: auto;">
+                <span class="card-price">R$ {{ item.data.price | dinheiro }}</span>
             </div>
-            <div class="card-content">
-                <h3 class="card-title">{{ item.data.title | replace(" | ChefBrico", "") }}</h3>
-                <div style="margin-top: auto;">
-                    <span class="card-price">R$ {{ item.data.price | dinheiro }}</span>
-                </div>
-            </div>
-        </a>
-
-    </article>
+        </div>
+    </div>
     {% endif %}
     {% endfor %}
 </div>
