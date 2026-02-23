@@ -3,32 +3,6 @@ layout: base.njk
 permalink: /comida-de-verdade/
 title: "A Trilha da ChefBrico | Filosofia e Método"
 description: "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
-image: "/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png"
-
-# --- A CORREÇÃO: O símbolo "|" salva o build do Netlify ---
-schema: |
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "name": "A Trilha da ChefBrico | Filosofia e Método",
-        "url": "https://gourmetpratico.com.br/comida-de-verdade/",
-        "description": "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
-      },
-      {
-        "@type": "Person",
-        "name": "Maria Conceição",
-        "jobTitle": "Chef e Psicóloga",
-        "image": "https://gourmetpratico.com.br/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png"
-      },
-      {
-        "@type": "Organization",
-        "name": "ChefBrico",
-        "logo": "https://gourmetpratico.com.br/imagens/logo.png"
-      }
-    ]
-  }
 ---
 
 <main class="magazine-container">
@@ -44,7 +18,7 @@ schema: |
         </div>
     </section>
 
-    <section class="magazine-row">
+    <section class="carousel-magazine-row magazine-row">
         
         <div class="carousel-header-wrapper">
             <h2>Os Pilares do Método Gourmet Prático</h2>
@@ -52,6 +26,9 @@ schema: |
         </div>
         
         <div class="carousel-apple-container">
+            
+            {# A SUA ESTRUTURA NETLIFY ORIGINAL E INTOCADA #}
+            {# SEGURANÇA: Só tenta ordenar se a coleção 'metodo' existir #}
             {% set metodo_list = collections.metodo or [] %}
             {% for post in metodo_list | sort(attribute='data.order') %}
             
@@ -79,6 +56,7 @@ schema: |
                     <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.5; margin: 0;">Escolha 4 sabores e o 5º é nosso presente.</p>
                 </div>
             </a>
+            
         </div>
     </section>
 
