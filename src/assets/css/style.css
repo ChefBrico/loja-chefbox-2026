@@ -769,4 +769,167 @@ main > article img {
 .btn-add-micro {
     pointer-events: auto !important;
     z-index: 10 !important;
+
+
+
+   /* ==========================================================================
+   CHEFBRICO 2026 - BLINDAGEM OURO (CONSOLIDADO)
+   Visual: Apple Glassmorphism | Layout: 3 Colunas Mobile / 6 Desktop
+   Foco: Food Porn, Persuasão Feminina e Conversão A-Commerce
+   ========================================================================== */
+
+/* 1. ESTRUTURA MESTRE DO GRID (TRAVA 3 COLUNAS) */
+.recipe-grid-master, 
+.catalog-grid-3cols, 
+#main-grid,
+.recipe-grid,
+.vitrine-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Mobile: 3 cards cravados */
+    gap: 8px !important;
+    padding: 0 10px 120px 10px !important; /* Respiro inferior para a Régua 4+1 */
+    max-width: 1200px !important;
+    margin: 20px auto !important;
 }
+
+@media (min-width: 1024px) {
+    .recipe-grid-master, .catalog-grid-3cols, #main-grid, .recipe-grid, .vitrine-grid {
+        grid-template-columns: repeat(6, 1fr) !important; /* Desktop: 6 cards */
+        gap: 15px !important;
+        padding: 0 20px 60px 20px !important;
+    }
+}
+
+/* 2. O CARD VITRIFICADO (APPLE GLASSMORPHISM) */
+.card-apple-standard, 
+.catalog-card-micro, 
+.recipe-card,
+.item-card {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(15px) !important; 
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-decoration: none !important;
+}
+
+.card-apple-standard:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08) !important;
+    border-color: var(--chef-orange, #F2811D) !important;
+}
+
+/* 3. MOLDURA FOOD PORN (FOTO 1:1 QUADRADA) */
+.moldura-mestre-16-10, 
+.catalog-image-box, 
+.card-image-wrapper,
+.item-img-link {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important; /* Mantém simetria em 3 colunas */
+    position: relative !important;
+    overflow: hidden !important;
+    background: #fdfbf7 !important;
+    display: block !important;
+    z-index: 1 !important;
+}
+
+.moldura-mestre-16-10 img, 
+.catalog-image-box img, 
+.card-image-wrapper img,
+.item-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.6s ease !important;
+}
+
+/* 4. CONTEÚDO MICRO-OTIMIZADO (PERSUASÃO 35-55 ANOS) */
+.recipe-content-micro, 
+.catalog-content-box, 
+.card-content,
+.item-info {
+    padding: 6px 4px !important;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    text-align: center !important;
+}
+
+.catalog-title, 
+.card-title, 
+.item-title {
+    font-size: 0.6rem !important; /* Fonte SF Pro / Apple Style */
+    font-weight: 700 !important;
+    color: #014039 !important;
+    line-height: 1.1 !important;
+    margin: 4px 0 !important;
+    height: 2.2em !important; 
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important; /* Máximo 2 linhas para manter grid reto */
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+}
+
+.price, 
+.catalog-price, 
+.card-price,
+.item-price {
+    color: #25D366 !important; /* Verde WhatsApp / Saúde */
+    font-weight: 900 !important;
+    font-size: 0.75rem !important;
+    margin-top: 2px !important;
+}
+
+/* 5. BOTÃO (+) GAMIFICAÇÃO (Z-INDEX SUPERIOR) */
+.btn-add-micro, 
+.btn-card-float, 
+.btn-plus-add {
+    position: absolute !important;
+    bottom: 6px !important;
+    right: 6px !important;
+    width: 28px !important;
+    height: 28px !important;
+    background: #F2811D !important; /* Laranja CTA */
+    color: #FFFFFF !important;
+    border: 2px solid #FFFFFF !important;
+    border-radius: 50% !important;
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 99 !important; /* ACIMA DE TUDO */
+    box-shadow: 0 4px 10px rgba(242, 129, 29, 0.4) !important;
+}
+
+/* 6. MELHORIA UX: DESBLOQUEIO DE CLIQUES */
+/* Garante que o link <a> da receita funcione em toda a área do card, exceto no botão (+) */
+.card-apple-standard a, 
+.catalog-card-micro a {
+    position: static !important;
+    pointer-events: auto !important;
+}
+
+/* Ajuste para Iphones muito pequenos (SE) */
+@media (max-width: 360px) {
+    .catalog-title, .card-title { font-size: 0.55rem !important; }
+    .price { font-size: 0.7rem !important; }
+}
+
+
+
+
+
+
+
+
+   
+
