@@ -36,7 +36,7 @@ body {
 /* ESPAÇAMENTO FANTASMA CORRIGIDO: Reduzido de 160px para 60px */
 main { 
     flex: 1; 
-    padding-bottom: 60px !important; 
+    padding-bottom: 20px !important; 
     overflow-x: hidden; 
 }
 
