@@ -185,3 +185,75 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
     /* Ilha Dinâmica Mobile */
     .dynamic-island-4plus1 { flex-direction: column; padding: 15px; border-radius: 28px; }
 }
+/* ==========================================================================
+   ENGENHARIA DOS CARROSSEIS (O FIM DOS CARDS GRUDADOS NAS BORDAS)
+   ========================================================================== */
+
+/* 1. O Título do Carrossel (Alinhamento de Segurança) */
+.carousel-magazine-row h2, 
+.magazine-row h2 { 
+    padding: 0 24px; /* Empurra o título para alinhar com o card */
+    max-width: 1200px; 
+    margin: 0 auto 25px auto; 
+}
+
+/* 2. O Container do Carrossel (O Scroll Fluido) */
+.magazine-carousel-container, 
+.magazine-carousel, 
+.carousel-container,
+.post-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    
+    /* O RESPIRO INICIAL E SUPERIOR/INFERIOR */
+    padding: 20px 24px 60px 24px !important;
+    
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Esconde scroll no Firefox */
+    -webkit-overflow-scrolling: touch; /* Deslizamento amanteigado no iOS */
+    
+    /* Limita o crescimento no PC, mas permite o scroll sangrar */
+    max-width: 1248px; 
+    margin: 0 auto;
+}
+
+/* Esconde a barra de rolagem no Chrome/Safari/Edge */
+.magazine-carousel-container::-webkit-scrollbar, 
+.magazine-carousel::-webkit-scrollbar, 
+.carousel-container::-webkit-scrollbar,
+.post-carousel::-webkit-scrollbar { 
+    display: none; 
+}
+
+/* 3. A MÁGICA: O ELEMENTO FANTASMA PARA O FINAL DO SCROLL 
+   Isso força o navegador a respeitar os 24px do lado direito no último card. */
+.magazine-carousel-container::after, 
+.magazine-carousel::after, 
+.carousel-container::after,
+.post-carousel::after {
+    content: '';
+    flex: 0 0 1px;
+    padding-right: 24px; /* O ar vital após o último card */
+}
+
+/* 4. O Card Flutuante (Tamanho Fixo e Ponto de Parada) */
+.magazine-card-unit, 
+.magazine-card, 
+.card,
+.carousel-card {
+    scroll-snap-align: start; /* Para o card exatamente na margem */
+    flex: 0 0 300px; /* Largura cravada no PC */
+    /* Mantenha suas regras de cor e borda que já estão no CSS... */
+}
+
+/* 5. AJUSTE MOBILE (FIRST MOBILE) */
+@media (max-width: 768px) {
+    /* Garante que no celular o tamanho do card diminua, mas o respiro de 24px continue intacto */
+    .magazine-card-unit, 
+    .magazine-card, 
+    .card,
+    .carousel-card {
+        flex: 0 0 270px !important;
+    }
+}
