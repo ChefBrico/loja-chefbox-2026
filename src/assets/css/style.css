@@ -616,3 +616,56 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
     position: absolute !important;
     pointer-events: auto !important;
 }
+/* ==========================================================================
+   O ACORDO DAS 3 COLUNAS: CARDÁPIO A-COMMERCE NO MOBILE
+   Força bruta para exibir 3 cards horizontais por linha no Celular
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    /* 1. Trava Absoluta: 3 Colunas no Grid Principal do Cardápio */
+    .recipe-grid, 
+    .catalog-grid-3cols,
+    #main-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important; /* A MÁGICA DAS 3 COLUNAS AQUI */
+        gap: 8px !important; /* Gap reduzido para as colunas caberem na tela */
+        padding: 0 10px !important;
+    }
+
+    /* 2. Micro-Otimização: Reduz as fontes para o texto não explodir o card estreito */
+    .recipe-grid .card-title,
+    .catalog-grid-3cols .catalog-title,
+    .recipe-card .card-title {
+        font-size: 0.65rem !important;
+        line-height: 1.15 !important;
+        margin: 5px 0 !important;
+        /* Trava o texto em 3 linhas com reticências (...) */
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    /* 3. Preço e Botão: Proporção Apple para a coluna estreita */
+    .recipe-grid .card-price,
+    .catalog-grid-3cols .catalog-price,
+    .recipe-card .card-price {
+        font-size: 0.75rem !important;
+    }
+
+    .recipe-grid .btn-card-float,
+    .catalog-grid-3cols .btn-add-micro,
+    .recipe-card .btn-card-float {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 1.2rem !important;
+        bottom: 5px !important;
+        right: 5px !important;
+    }
+    
+    /* 4. Altura da Foto: Mais compacta para render o visual de prateleira */
+    .card-image-wrapper, 
+    .catalog-image-box {
+        padding-top: 100% !important; /* Deixa a foto perfeitamente quadrada (1:1) */
+    }
+}
