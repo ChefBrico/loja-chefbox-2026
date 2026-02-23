@@ -1,79 +1,152 @@
-<div class="top-bar-editorial">
+<style>
+    /* 1. ESTRUTURA DO CLUSTER CENTRAL */
+    .site-header-apple {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        position: sticky; top: 0; z-index: 10000;
+    }
+
+    .header-cluster {
+        display: flex;
+        justify-content: center; /* O SEGREDO: Tudo puxado para o centro */
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px 20px;
+    }
+
+    /* 2. ALINHAMENTO LADO A LADO COM A LOGO */
+    .nav-side { display: flex; align-items: center; list-style: none; padding: 0; margin: 0; }
+    .nav-left { margin-right: 40px; justify-content: flex-end; }
+    .nav-right { margin-left: 40px; justify-content: flex-start; gap: 30px; }
+
+    .logo-axis img { width: 80px; height: 80px; object-fit: contain; transition: transform 0.3s ease; }
+    .logo-axis:hover img { transform: scale(1.05); }
+
+    .nav-link-apple {
+        color: #014039; font-weight: 800; font-size: 0.85rem;
+        text-transform: uppercase; letter-spacing: 1px; text-decoration: none;
+    }
+    .nav-link-apple:hover { color: #F2811D; }
+
+    /* 3. O BOTÃO PREMIUM DUPLO (A SOLUÇÃO DO AMONTOADO) */
+    .btn-premium-duplo {
+        background: #F2811D;
+        color: #FFFFFF !important;
+        padding: 10px 24px;
+        border-radius: 50px;
+        display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+        text-decoration: none; line-height: 1.2;
+        box-shadow: 0 10px 25px rgba(242, 129, 29, 0.3);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .btn-premium-duplo:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 15px 35px rgba(242, 129, 29, 0.4); }
+    
+    .btn-title { font-weight: 900; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .btn-subtitle { font-weight: 600; font-size: 0.65rem; text-transform: lowercase; opacity: 0.95; margin-top: 3px; }
+
+    /* 4. MEGA MENU PRESERVADO */
+    .has-mega-menu { position: relative; padding: 10px 0; cursor: pointer; }
+    .mega-menu-apple {
+        display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+        background: #FFFFFF; width: 500px; padding: 35px; border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.05); z-index: 11000;
+        cursor: default;
+    }
+    .has-mega-menu:hover .mega-menu-apple { display: block; }
+    .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; }
+    .mega-title { color: #999; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+
+    /* 5. MOBILE FIRST (APROXIMANDO O MENU) */
+    .mobile-only { display: none; }
+    .desktop-only { display: flex; }
+
+    @media (max-width: 992px) {
+        .desktop-only { display: none !important; }
+        .mobile-only { display: block; }
+        
+        /* Aproxima o menu da logo mantendo a centralização */
+        .header-cluster { gap: 25px; padding: 10px 15px; } 
+        
+        .mobile-menu-btn { background: none; border: none; font-size: 2.2rem; color: #014039; cursor: pointer; padding: 0; }
+        /* O espaçador espelha o tamanho do botão para a logo não sair do eixo central */
+        .mobile-spacer { width: 35px; height: 1px; } 
+        .logo-axis img { width: 65px; height: 65px; }
+    }
+</style>
+
+<div style="background: #FDFBF7; color: #014039; text-align: center; padding: 10px; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; border-bottom: 1px solid rgba(0,0,0,0.05);">
     GOURMET PRÁTICO: CULINÁRIA SAUDÁVEL, SEM DESPERDÍCIO DE TEMPO E INGREDIENTES!
 </div>
 
 <header class="site-header-apple">
-    <div class="header-contain-centered">
+    <div class="header-cluster">
         
-        <button class="mobile-menu-btn mobile-only" onclick="toggleMobileMenu()" aria-label="Abrir Menu">
-            ☰
-        </button>
+        <button class="mobile-menu-btn mobile-only" onclick="toggleMobileMenu()">☰</button>
 
-        <nav class="desktop-only" style="flex: 1;">
-            <ul class="nav-list-tight">
-                <li><a href="/comida-de-verdade/" class="nav-link-apple">O Método</a></li>
-            </ul>
-        </nav>
+        <ul class="nav-side nav-left desktop-only">
+            <li><a href="/comida-de-verdade/" class="nav-link-apple">O Método</a></li>
+        </ul>
 
         <div class="logo-axis">
-            <a href="/">
-                <img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="ChefBrico - Gourmet Prático">
-            </a>
+            <a href="/"><img src="/imagens/logomarca-chefbrico-metodo-gourmet-pratico.png" alt="ChefBrico"></a>
         </div>
 
-        <nav class="desktop-only" style="flex: 1; display: flex; justify-content: flex-end;">
-            <ul class="nav-list-tight">
-                <li class="has-mega-menu">
-                    <a href="/receitas/" class="nav-link-apple">Cardápio ▾</a>
-                    
-                    <div class="mega-menu-apple">
-                        <div class="mega-grid">
-                            <div class="mega-column">
-                                <h4 class="mega-title">POR SOLUÇÃO</h4>
-                                <a href="/receitas/solucoes/refeicao-rapida/">⚡ Refeição Rápida</a>
-                                <a href="/receitas/solucoes/marmita-fit/">🍱 Marmita Fit</a>
-                                <a href="/receitas/solucoes/jantar-a-dois/">🍷 Jantar a Dois</a>
-                                <a href="/receitas/solucoes/para-criancas/">👶 Para Crianças</a>
-                                <a href="/receitas/solucoes/trilha-viagem/">🎒 Trilha & Viagem</a>
-                            </div>
-                            <div class="mega-column">
-                                <h4 class="mega-title">POR CATEGORIA</h4>
-                                <a href="/receitas/risotos/">Risotos</a>
-                                <a href="/receitas/sopas-funcionais/">Sopas Funcionais</a>
-                                <a href="/receitas/refeicoes-integrais/">Refeições Integrais</a>
-                                <a href="/receitas/emporio-da-chef/">Empório da Chef</a>
-                            </div>
+        <ul class="nav-side nav-right desktop-only">
+            
+            <li class="has-mega-menu">
+                <span class="nav-link-apple">Cardápio ▾</span>
+                <div class="mega-menu-apple">
+                    <div class="mega-grid">
+                        <div>
+                            <h4 class="mega-title">POR SOLUÇÃO</h4>
+                            <a href="/receitas/solucoes/refeicao-rapida/" style="display:block; padding:8px 0; color:#014039; text-decoration:none; font-size:0.9rem; font-weight:600;">⚡ Refeição Rápida</a>
+                            <a href="/receitas/solucoes/marmita-fit/" style="display:block; padding:8px 0; color:#014039; text-decoration:none; font-size:0.9rem; font-weight:600;">🍱 Marmita Fit</a>
+                            <a href="/receitas/solucoes/jantar-a-dois/" style="display:block; padding:8px 0; color:#014039; text-decoration:none; font-size:0.9rem; font-weight:600;">🍷 Jantar a Dois</a>
+                            <a href="/receitas/solucoes/para-criancas/" style="display:block; padding:8px 0; color:#014039; text-decoration:none; font-size:0.9rem; font-weight:600;">👶 Para Crianças</a>
+                            <a href="/receitas/solucoes/trilha-viagem/" style="display:block; padding:8px 0; color:#014039; text-decoration:none; font-size:0.9rem; font-weight:600;">🎒 Trilha & Viagem</a>
+                        </div>
+                        <div>
+                            <h4 class="mega-title">POR CATEGORIA</h4>
+                            <a href="/receitas/risotos/" style="display:block; padding:8px 0; color:#014039; text-decoration:none; font-size:0.9rem; font-weight:600;">Risotos</a>
+                            <a href="/receitas/sopas-funcionais/" style="display:block; padding:8px 0; color:#014039; text-decoration:none; font-size:0.9rem; font-weight:600;">Sopas Funcionais</a>
+                            <a href="/receitas/refeicoes-integrais/" style="display:block; padding:8px 0; color:#014039; text-decoration:none; font-size:0.9rem; font-weight:600;">Refeições Integrais</a>
+                            <a href="/receitas/emporio-da-chef/" style="display:block; padding:8px 0; color:#014039; text-decoration:none; font-size:0.9rem; font-weight:600;">Empório da Chef</a>
                         </div>
                     </div>
-                </li>
-                <li><a href="/onde-encontrar/" class="nav-link-apple">Onde Entregamos</a></li>
-                <li>
-                    <a href="/chefbox/" style="background: var(--chef-orange); color: var(--apple-white); padding: 10px 22px; border-radius: 50px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 8px 20px rgba(242, 129, 29, 0.3);">
-                        🎁 Monte sua ChefBox (escolha 4 sabores e ganhe + 1 de sua escolha)
-                    </a>
-                </li>
-            </ul>
-        </nav>
+                </div>
+            </li>
+            
+            <li><a href="/onde-encontrar/" class="nav-link-apple">Onde Entregamos</a></li>
+            
+            <li>
+                <a href="/chefbox/" class="btn-premium-duplo">
+                    <span class="btn-title">Monte sua ChefBox</span>
+                    <span class="btn-subtitle">(escolha 4 sabores e ganhe + 1 de sua escolha)</span>
+                </a>
+            </li>
+        </ul>
 
         <div class="mobile-spacer mobile-only"></div>
 
     </div>
 </header>
 
-<div id="mobileDrawer" style="display: none; position: fixed; top: 0; left: 0; width: 85%; height: 100%; background: rgba(1, 64, 57, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 999999; flex-direction: column; box-shadow: 20px 0 50px rgba(0,0,0,0.5);">
-    
+<div id="mobileDrawer" style="display: none; position: fixed; top: 0; left: 0; width: 85%; height: 100%; background: rgba(1, 64, 57, 0.98); backdrop-filter: blur(15px); z-index: 999999; flex-direction: column; box-shadow: 20px 0 50px rgba(0,0,0,0.5);">
     <div style="padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
-        <span style="color: var(--chef-orange); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Navegação</span>
-        <button onclick="toggleMobileMenu()" style="background: none; border: none; color: var(--apple-white); font-size: 1.8rem; cursor: pointer; padding: 0;">✕</button>
+        <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Navegação</span>
+        <button onclick="toggleMobileMenu()" style="background: none; border: none; color: #FFFFFF; font-size: 2rem; cursor: pointer; padding: 0;">✕</button>
     </div>
     
     <div style="display: flex; flex-direction: column; padding: 20px 0;">
-        <a href="/comida-de-verdade/" style="color: var(--apple-white); padding: 18px 25px; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05);">O Método</a>
-        <a href="/receitas/" style="color: var(--apple-white); padding: 18px 25px; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05);">Cardápio Completo</a>
-        <a href="/onde-encontrar/" style="color: var(--apple-white); padding: 18px 25px; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05);">Onde Entregamos</a>
+        <a href="/comida-de-verdade/" style="color: #FFFFFF; padding: 18px 25px; font-size: 1.1rem; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05);">O Método</a>
+        <a href="/receitas/" style="color: #FFFFFF; padding: 18px 25px; font-size: 1.1rem; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05);">Cardápio Completo</a>
+        <a href="/onde-encontrar/" style="color: #FFFFFF; padding: 18px 25px; font-size: 1.1rem; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05);">Onde Entregamos</a>
         
-        <a href="/chefbox/" style="background: var(--chef-orange); color: var(--apple-white); margin: 30px 25px; padding: 18px; text-align: center; border-radius: 16px; font-weight: 800; font-size: 1rem; box-shadow: 0 10px 30px rgba(242, 129, 29, 0.4);">
-            🎁 Montar ChefBox (4+1)
+        <a href="/chefbox/" style="background: #F2811D; color: #FFFFFF; margin: 30px 25px; padding: 15px; text-align: center; border-radius: 16px; text-decoration: none; display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-weight: 900; font-size: 1rem; text-transform: uppercase;">Monte sua ChefBox</span>
+            <span style="font-weight: 500; font-size: 0.75rem; text-transform: lowercase;">(escolha 4 e ganhe + 1)</span>
         </a>
     </div>
 </div>
