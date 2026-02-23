@@ -1,29 +1,37 @@
 /* ==========================================================================
-   CHEFBRICO 2026 - REAJUSTE DE FLUXO (NOMES ORIGINAIS PRESERVADOS)
-   Foco: Migração 3 Colunas Mobile e Restauração de Molduras
+   CHEFBRICO 2026 - DESIGN SYSTEM "APPLE GOLD" (VERSÃO CONSOLIDADA)
+   Arquitetura: 3 Colunas Mobile | 6 Colunas Desktop | Glassmorphism
+   Foco: E-E-A-T Maria Conceição e Navegação A-Commerce
    ========================================================================== */
 
-/* --- 1. SEÇÃO MARIA CONCEIÇÃO (HERO E-E-A-T) --- */
-/* Restaurando a moldura circular e o alinhamento lado a lado */
-
-.avatar-hero-circle {
-    width: 240px !important;
-    height: 240px !important;
-    border-radius: 50% !important; 
-    overflow: hidden !important;
-    flex-shrink: 0 !important;
-    border: 8px solid var(--apple-cream) !important;
-    box-shadow: var(--shadow-float) !important;
-    margin: 0 !important; /* Mantém ao lado no desktop */
+:root {
+    --apple-white:     #FFFFFF;
+    --apple-cream:     #FDFBF7;
+    --chef-green:      #014039;
+    --chef-orange:     #F2811D;
+    --whatsapp-green:  #25D366;
+    --text-dark:       #333333;
+    --radius-master:   24px;
+    --respiro-lateral: 24px;
+    --shadow-float:    0 20px 50px rgba(0,0,0,0.08);
 }
 
-.avatar-hero-circle img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+/* --- 1. RESET E FUNDAÇÃO GLOBAL --- */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background-color: var(--apple-white) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    color: var(--text-dark);
+    margin: 0; padding: 0;
+    -webkit-font-smoothing: antialiased;
+    display: flex; flex-direction: column; min-height: 100vh;
 }
 
-/* Container do topo (Index e Método) para Maria Conceição */
+main { flex: 1; padding-bottom: 140px !important; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+
+/* --- 2. SEÇÃO MARIA CONCEIÇÃO (E-E-A-T / YMYL) --- */
 .hero-premium-editorial {
     display: flex !important;
     align-items: center !important;
@@ -34,79 +42,137 @@
     margin: 0 auto !important;
 }
 
+.avatar-hero-circle {
+    width: 240px !important;
+    height: 240px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    border: 8px solid var(--apple-cream) !important;
+    box-shadow: var(--shadow-float) !important;
+    position: relative !important;
+}
+
+.avatar-hero-circle img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
 @media (max-width: 992px) {
     .hero-premium-editorial {
         flex-direction: column !important;
         text-align: center !important;
         padding: 40px 24px !important;
+        gap: 30px !important;
     }
     .avatar-hero-circle {
         width: 190px !important;
         height: 190px !important;
-        margin: 0 auto !important; /* Centraliza no mobile */
+        margin: 0 auto !important;
     }
 }
 
-/* --- 2. GRID DE RECEITAS (A MIGRAÇÃO PARA 3 COLUNAS) --- */
-
-.recipe-grid-master {
+/* --- 3. GRID MESTRE: A TRAVA DAS 3 COLUNAS (MOBILE) --- */
+.recipe-grid-master, .catalog-grid-3cols, .vitrine-grid, #main-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* MUDANÇA: 2 -> 3 Colunas */
+    grid-template-columns: repeat(3, 1fr) !important; /* FORÇA 3 CARDS POR LINHA NO CELULAR */
     gap: 8px !important;
-    width: 100% !important; 
+    padding: 0 10px !important;
     max-width: 1400px !important;
-    margin: 30px auto 100px !important; 
-    padding: 0 15px !important;
+    margin: 30px auto 100px !important;
 }
 
-@media (min-width: 1024px) { 
-    .recipe-grid-master { 
-        grid-template-columns: repeat(6, 1fr) !important; 
-        gap: 20px !important; 
-    } 
+@media (min-width: 1024px) {
+    .recipe-grid-master, .catalog-grid-3cols, .vitrine-grid, #main-grid {
+        grid-template-columns: repeat(6, 1fr) !important; /* 6 CARDS NO PC */
+        gap: 20px !important;
+        padding: 0 24px !important;
+    }
 }
 
-/* --- 3. MOLDURAS MESTRE (CARROSSEIS E CARDS) --- */
-
-.moldura-mestre-16-10 {
-    width: 100% !important;
-    aspect-ratio: 16 / 10 !important; /* Trava a proporção Apple */
-    overflow: hidden !important;
+/* --- 4. O CARD E MOLDURAS (APPLE GOLD STANDARD) --- */
+.card-apple-standard, .catalog-card-micro, .item-card {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
     position: relative !important;
-    background-color: #eee !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: visible !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.moldura-mestre-16-10 img {
+.moldura-mestre-16-10, .catalog-image-box {
     width: 100% !important;
-    height: 100% !important; 
+    aspect-ratio: 1 / 1 !important; /* QUADRADO PERFEITO PARA 3 COLUNAS */
+    border-radius: 18px 18px 0 0 !important;
+    overflow: hidden !important;
+    background: #fdfbf7 !important;
+    position: relative !important;
+    display: block !important;
+}
+
+.moldura-mestre-16-10 img, .catalog-image-box img {
+    width: 100% !important;
+    height: 100% !important;
     object-fit: cover !important;
     display: block !important;
 }
 
-/* --- 4. CONTEÚDO E BOTÕES (MICRO-OTIMIZAÇÃO) --- */
-
-.recipe-content-micro {
-    padding: 8px 6px !important;
-    display: flex !important;
-    flex-direction: column !important;
+/* --- 5. TEXTOS E BOTÕES (MICRO-OTIMIZADOS) --- */
+.recipe-content-micro, .catalog-content-box, .item-info {
+    padding: 6px 4px !important;
     text-align: center !important;
+    flex-grow: 1 !important;
 }
 
-.recipe-content-micro h3 { 
-    font-size: 0.65rem !important;
-    line-height: 1.15 !important;
-    height: 3.4em !important; /* Altura para 3 linhas de texto */
-    overflow: hidden !important;
+.recipe-content-micro h3, .catalog-title, .item-title {
+    font-size: 0.62rem !important;
+    font-weight: 700 !important;
+    color: var(--chef-green) !important;
+    line-height: 1.1 !important;
+    margin: 4px 0 !important;
+    height: 2.2em !important;
     display: -webkit-box !important;
-    -webkit-line-clamp: 3 !important;
-    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.btn-add-micro {
+.price, .catalog-price, .item-price {
+    color: var(--whatsapp-green) !important;
+    font-weight: 900 !important;
+    font-size: 0.75rem !important;
+}
+
+.btn-add-micro, .btn-plus-add {
     position: absolute !important;
     bottom: 6px !important;
     right: 6px !important;
-    width: 26px !important;
-    height: 26px !important;
+    width: 28px !important;
+    height: 28px !important;
+    background: var(--chef-orange) !important;
+    color: #FFF !important;
+    border: 2px solid #FFF !important;
+    border-radius: 50% !important;
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    display: flex !important; align-items: center; justify-content: center;
     z-index: 99 !important;
+    box-shadow: 0 4px 10px rgba(242, 129, 29, 0.4);
+    cursor: pointer;
+}
+
+/* --- 6. ILHA DINÂMICA (RÉGUA 4+1) --- */
+.dynamic-island-4plus1 {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    width: 95%; max-width: 780px;
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px);
+    border-radius: 40px; padding: 15px 25px; z-index: 9999;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: var(--shadow-float);
+    border-top: 4px solid var(--chef-orange);
 }
