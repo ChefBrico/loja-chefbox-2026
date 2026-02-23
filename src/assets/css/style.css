@@ -257,3 +257,30 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
         flex: 0 0 270px !important;
     }
 }
+/* ==========================================================================
+   TRAVA DE ALINHAMENTO: CABEÇALHO DOS CARROSSEIS (Pilar, Tendências, etc)
+   ========================================================================== */
+.carousel-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    max-width: 1248px; /* MATEMÁTICA: O mesmo tamanho do Carrossel */
+    margin: 0 auto 20px auto;
+    padding: 0 24px; /* MATEMÁTICA: O mesmo respiro lateral dos cards */
+}
+
+.carousel-header-wrapper h2 {
+    margin: 0;
+    padding: 0;
+    color: var(--chef-green, #014039);
+    font-size: 1.7rem;
+    font-family: 'Merriweather', serif;
+}
+
+.carousel-drag-hint {
+    font-size: 0.7rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
