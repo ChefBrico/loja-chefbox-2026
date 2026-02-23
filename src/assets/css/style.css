@@ -445,3 +445,80 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
     position: relative !important; /* A logo não pode ser absoluta senão quebra o menu */
     object-fit: contain !important; /* A logo não pode ser cortada (cover) */
 }
+/* ==========================================================================
+   RESTAURAÇÃO DO PADRÃO OURO (TRAVAS ABSOLUTAS)
+   Corrige a Logo Gigante e devolve o Respiro dos Carrosséis
+   ========================================================================== */
+
+/* 1. A CURA DA LOGO GIGANTE (EIXO CENTRAL) */
+.logo-axis { 
+    display: flex !important; 
+    justify-content: center !important; 
+    align-items: center !important; 
+}
+.logo-axis img {
+    width: 75px !important; /* Trava matemática no Desktop */
+    height: 75px !important;
+    position: relative !important; /* Desliga o efeito colateral da blindagem anterior */
+    object-fit: contain !important;
+}
+
+/* 2. A CURA DOS CARDS GRUDADOS (O RESPIRO DE 24PX) */
+.carousel-apple-container {
+    display: flex !important;
+    overflow-x: auto !important;
+    gap: 20px !important;
+    padding: 10px 24px 50px 24px !important; /* AQUI ESTÁ A MÁGICA: 24px nas laterais */
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-width: 1248px !important;
+    margin: 0 auto !important;
+}
+.carousel-apple-container::-webkit-scrollbar { 
+    display: none !important; 
+}
+
+/* Elemento Fantasma: Garante que o último card não cole na tela ao rolar */
+.carousel-apple-container::after {
+    content: '' !important;
+    flex: 0 0 1px !important;
+    padding-right: 24px !important; 
+}
+
+/* Trava do tamanho do Card na Revista */
+.carousel-apple-container > .card-apple-standard {
+    flex: 0 0 300px !important;
+    scroll-snap-align: start !important;
+}
+
+/* 3. A PROTEÇÃO DA FOTO DA MARIA CONCEIÇÃO (HERO) */
+.avatar-circle-protector {
+    width: 240px !important;
+    height: 240px !important;
+    border-radius: 50% !important;
+    position: relative !important;
+    margin: 0 auto !important;
+}
+.avatar-circle-protector img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: relative !important; /* Protege a foto de sumir ou estourar */
+    border-radius: 50% !important;
+}
+
+/* 4. ADAPTAÇÃO PARA O SMARTPHONE (MOBILE) */
+@media (max-width: 992px) {
+    .logo-axis img { 
+        width: 65px !important; 
+        height: 65px !important; 
+    }
+    .carousel-apple-container > .card-apple-standard { 
+        flex: 0 0 270px !important; /* Reduz o card no celular, mas mantém o respiro */
+    }
+    .avatar-circle-protector { 
+        width: 190px !important; 
+        height: 190px !important; 
+    }
+}
