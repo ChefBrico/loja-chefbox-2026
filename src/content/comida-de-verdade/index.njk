@@ -5,29 +5,30 @@ title: "A Trilha da ChefBrico | Filosofia e Método"
 description: "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
 image: "/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png"
 
-# --- SCHEMA INTEGRAL PRESERVADO (NÃO MEXER) ---
-schema: {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "name": "A Trilha da ChefBrico | Filosofia e Método",
-      "url": "https://gourmetpratico.com.br/comida-de-verdade/",
-      "description": "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
-    },
-    {
-      "@type": "Person",
-      "name": "Maria Conceição",
-      "jobTitle": "Chef e Psicóloga",
-      "image": "https://gourmetpratico.com.br/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png"
-    },
-    {
-      "@type": "Organization",
-      "name": "ChefBrico",
-      "logo": "https://gourmetpratico.com.br/imagens/logo.png"
-    }
-  ]
-}
+# --- A CORREÇÃO: O símbolo "|" salva o build do Netlify ---
+schema: |
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": "A Trilha da ChefBrico | Filosofia e Método",
+        "url": "https://gourmetpratico.com.br/comida-de-verdade/",
+        "description": "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
+      },
+      {
+        "@type": "Person",
+        "name": "Maria Conceição",
+        "jobTitle": "Chef e Psicóloga",
+        "image": "https://gourmetpratico.com.br/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png"
+      },
+      {
+        "@type": "Organization",
+        "name": "ChefBrico",
+        "logo": "https://gourmetpratico.com.br/imagens/logo.png"
+      }
+    ]
+  }
 ---
 
 <main class="magazine-container">
@@ -51,7 +52,6 @@ schema: {
         </div>
         
         <div class="carousel-apple-container">
-            {# SEGURANÇA: Só tenta ordenar se a coleção 'metodo' existir #}
             {% set metodo_list = collections.metodo or [] %}
             {% for post in metodo_list | sort(attribute='data.order') %}
             
@@ -82,4 +82,11 @@ schema: {
         </div>
     </section>
 
-    <section style="background: var(--apple-cream, #FDFBF7); padding: 80px 24px; text-align: center; border-radius: var(--radius-master, 24px); margin: 40px var(--respiro-lateral) 80px var
+    <section style="background: var(--apple-cream, #FDFBF7); padding: 80px 24px; text-align: center; border-radius: var(--radius-master, 24px); margin: 40px var(--respiro-lateral) 80px var(--respiro-lateral); border: 1px solid rgba(1, 64, 57, 0.03); box-shadow: var(--shadow-soft);">
+        <h2 style="color: var(--chef-green, #014039); font-family: 'Merriweather', serif; font-size: 2rem; margin-top: 0;">Uma Conquista de Todas Nós</h2>
+        <p style="max-width: 850px; margin: 25px auto 0 auto; color: var(--text-muted, #555); line-height: 1.9; font-size: 1.15rem;">
+            A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong style="color: var(--chef-green, #014039);">Sebrae, Emater e Senar</strong>. Uma jornada de produção local e afeto.
+        </p>
+    </section>
+    
+</main>
