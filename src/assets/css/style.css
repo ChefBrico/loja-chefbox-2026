@@ -33,9 +33,10 @@ body {
 }
 
 /* ESPAÇAMENTO FANTASMA: Garante que a régua 4+1 não esconda o mapa ou o rodapé */
+/* ESPAÇAMENTO FANTASMA CORRIGIDO: Reduzido de 160px para 60px */
 main { 
     flex: 1; 
-    padding-bottom: 160px !important; 
+    padding-bottom: 60px !important; 
     overflow-x: hidden; 
 }
 
@@ -153,9 +154,10 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
 /* --- 7. A ILHA DINÂMICA (RÉGUA 4+1) --- */
 .dynamic-island-4plus1 {
     position: fixed; 
-    bottom: 20px; /* Flutuante, não grudada no chão */
+    bottom: 20px;
     left: 50%; transform: translateX(-50%);
-    width: 90%; max-width: 600px;
+    width: 95%; 
+    max-width: 780px; /* MATEMÁTICA: Aumentado de 600px para 780px para caber o texto gigante */
     background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.5); border-top: 4px solid var(--chef-orange);
     border-radius: 40px; padding: 15px 25px; z-index: 99999;
