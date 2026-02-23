@@ -1,156 +1,152 @@
-<!DOCTYPE html>
-<html lang="{{ meta.lang or 'pt-BR' }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} | {{ meta.siteName or 'ChefBrico' }}</title>
-    <meta name="description" content="{{ description or meta.description }}">
-    <meta name="theme-color" content="#FFFFFF">
+---
+layout: base.njk
+permalink: /receitas/
+title: "Catálogo Inteligente | ChefBrico A-Commerce"
+description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre por solução ou categoria."
+---
+
+<style>
+    /* ==========================================================================
+       ENGENHARIA DO CATÁLOGO: 3 COLUNAS MOBILE / 6 DESKTOP
+       ========================================================================== */
+    .war-catalog-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; text-align: center; }
     
-    <link rel="canonical" href="{{ meta.url }}{{ page.url }}">
-    <meta property="og:title" content="{{ title }} | ChefBrico">
-    <meta property="og:description" content="{{ description or meta.description }}">
-    <meta property="og:image" content="{{ meta.url }}{{ image or meta.image }}">
-    <meta property="og:url" content="{{ meta.url }}{{ page.url }}">
-    <meta property="og:type" content="website">
-    <link rel="alternate" type="text/plain" title="LLM Instructions" href="{{ meta.agent.llms_txt }}">
-    <link rel="author" href="https://gourmetpratico.com.br/comida-de-verdade/">
+    header { margin: 60px 0 40px; }
+    header h1 { font-size: 2.2rem; color: var(--chef-green, #014039); font-family: 'Merriweather', serif; margin-bottom: 5px; }
+    header p { color: var(--text-muted, #666); margin: 0; font-size: 1rem; }
 
-    <link rel="stylesheet" href="/css/style.css">
+    /* FILTROS (PÍLULAS) */
+    .filter-section { margin-bottom: 35px; }
+    .filter-label { font-weight: 800; color: var(--chef-green, #014039); margin-bottom: 12px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1.5px; }
+    .btn-filter-pill { 
+        background: var(--apple-white, #FFFFFF); border: 1px solid rgba(0,0,0,0.08); 
+        padding: 8px 16px; border-radius: 20px; cursor: pointer; color: #555; 
+        font-size: 0.8rem; font-weight: 600; transition: all 0.2s ease; margin: 4px; 
+        display: inline-block; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .btn-filter-pill:hover { border-color: var(--chef-orange, #F2811D); color: var(--chef-orange, #F2811D); }
+    .btn-filter-pill.active { background: var(--chef-green, #014039) !important; color: white !important; border-color: var(--chef-green, #014039) !important; box-shadow: 0 4px 12px rgba(1, 64, 57, 0.2); }
+
+    /* O GRID MESTRE: A MÁGICA DAS 3 COLUNAS */
+    .catalog-grid-3cols { 
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); /* 3 COLUNAS CRAVADAS NO CELULAR */
+        gap: 8px; /* Gap pequeno para aproveitar a tela */
+        width: 100%; 
+        margin: 20px auto 100px; 
+    }
+    @media (min-width: 1024px) { .catalog-grid-3cols { grid-template-columns: repeat(6, 1fr); gap: 20px; } }
     
-    <style>
-        /* ==========================================================================
-           CSS EXCLUSIVO DA ILHA DINÂMICA (RÉGUA 4+1) E DO JAVASCRIPT
-           ========================================================================== */
-        
-        /* O Círculo Vazio */
-        .slot-circle {
-            position: relative; /* Fundamental para o X aparecer em cima */
-            width: 46px; height: 46px; border: 1.5px solid #ddd; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #aaa;
-            background-color: var(--apple-white); 
-            background-size: cover !important; 
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            transition: all 0.3s ease;
-            overflow: hidden; /* Garante que a foto do prato não vaze do círculo */
-            cursor: pointer;
-        }
+    /* O CARD MICRO-OTIMIZADO */
+    .catalog-card-micro { 
+        background: var(--apple-cream, #FDFBF7); border: 1px solid rgba(0,0,0,0.05); 
+        border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative; transition: transform 0.2s ease;
+    }
+    .catalog-card-micro:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
 
-        /* O Círculo Cheio (Quando o JS joga a foto da comida) */
-        .slot-circle.filled { 
-            border: 2.5px solid var(--chef-orange); 
-            box-shadow: 0 5px 15px rgba(242, 129, 29, 0.3); 
-            color: transparent !important; /* Esconde o número 1,2,3 para a foto brilhar */
-        }
-
-        /* O Efeito "X" para remover o prato (Hover) */
-        .slot-circle.filled:hover::after {
-            content: '✕';
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(242, 129, 29, 0.85); /* Vidro laranja */
-            color: white; font-size: 1.2rem; font-weight: 900;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-            z-index: 2;
-        }
-
-        .slot-circle.gift { border: 2.5px solid var(--whatsapp-green); color: var(--whatsapp-green); font-size: 1.2rem; background: var(--apple-cream); }
-
-        /* O BOTÃO VERDE (PADRÃO OURO APPLE GLASSMORPHISM) */
-        .btn-finish-float {
-            background: rgba(37, 211, 102, 0.85); /* Verde translúcido */
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            color: white; 
-            border: 1px solid rgba(255, 255, 255, 0.5); /* Brilho na borda */
-            padding: 12px 24px; border-radius: 50px; font-weight: 900; 
-            cursor: pointer; font-size: 0.85rem; text-transform: uppercase; 
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4); /* Sombra fora e brilho dentro */
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            white-space: nowrap;
-        }
-        .btn-finish-float:hover {
-            transform: scale(1.03);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5), inset 0 2px 2px rgba(255, 255, 255, 0.6);
-        }
-        
-        /* Animação de pulso quando o 5º item é ganho */
-        .btn-finish-float.pulsing { animation: pulse-apple 2s infinite; }
-        @keyframes pulse-apple { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
-    </style>
+    /* A MOLDURA DA IMAGEM PARA 3 COLUNAS */
+    .catalog-image-box { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; position: relative; } /* Foto quadrada economiza espaço vertical */
+    .catalog-image-box img { width: 100%; height: 100%; object-fit: cover; }
     
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</head>
-<body>
-    
-    {% include "header.njk" %}
-    
-    <main role="main">
-        {{ content | safe }}
-    </main>
-    
-    {% include "footer.njk" %}
-    
-    {% if '/receitas/' in page.url or '/chefbox/' in page.url %}
-    <div id="chefbox-bar" class="dynamic-island-4plus1">
-        
-        <div class="bar-info" style="line-height: 1.2;">
-            <div id="game-status-text">
-                <b style="color: var(--chef-green); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">🎁 CHEFBOX VIP</b>
-                <span id="visor-dinamico-lucro" style="font-size: 0.85rem; font-weight: 900; color: var(--chef-orange); display: block;">ECONOMIA R$ 0,00</span>
-            </div>
-        </div>
-        
-        <div class="slots-wrapper" style="display: flex; gap: 8px;">
-            <div id="slot-1" class="slot-circle">1</div>
-            <div id="slot-2" class="slot-circle">2</div>
-            <div id="slot-3" class="slot-circle">3</div>
-            <div id="slot-4" class="slot-circle">4</div>
-            <div id="slot-5" class="slot-circle gift">🎁</div>
-        </div>
-        
-        <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()">
-            Finalizar R$ 132 ➜
-        </button>
-    </div>
-    {% endif %}
+    /* CONTEÚDO DENSO E LEGÍVEL */
+    .catalog-content-box { 
+        padding: 8px 6px; display: flex; flex-direction: column; 
+        align-items: center; flex-grow: 1; text-align: center;
+    }
+    .catalog-title { 
+        font-size: 0.65rem; color: var(--chef-green, #014039); font-weight: 700; 
+        text-decoration: none; line-height: 1.2; margin-bottom: 5px;
+        display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; 
+    }
+    .catalog-price { color: var(--whatsapp-green, #25D366); font-weight: 900; font-size: 0.8rem; margin-top: auto; }
 
-    <div id="checkout-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(1, 64, 57, 0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100000; align-items: center; justify-content: center;">
-        
-        <div class="modal-box" style="background: var(--apple-white); padding: 45px 35px; border-radius: 35px; max-width: 460px; width: 92%; border-top: 5px solid var(--chef-orange); box-shadow: 0 40px 120px rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.2);">
-            
-            <div style="text-align: center; margin-bottom: 25px;">
-                <h3 style="color: var(--chef-green); margin: 0; font-size: 1.8rem; font-family: 'Merriweather', serif;">Quase lá! 🛵</h3>
-                <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">Preencha os dados para a Maria preparar seu <b>Mimo VIP</b> e agendar sua entrega (D+1) em Brasília.</p>
-            </div>
-            
-            <form id="form-checkout-vip" name="Pedido-ChefBox" data-netlify="true" onsubmit="event.preventDefault(); sendOrderToWhatsApp();" style="display: flex; flex-direction: column; gap: 14px;">
-                <input type="text" id="customer-name" placeholder="Nome Completo" required style="width: 100%; padding: 18px; border: 1px solid #eee; border-radius: 18px; font-size: 1rem; box-sizing: border-box; background: #F5F5F7; outline: none;">
-                <input type="tel" id="customer-phone" placeholder="WhatsApp (DDD + Número)" required style="width: 100%; padding: 18px; border: 1px solid #eee; border-radius: 18px; font-size: 1rem; box-sizing: border-box; background: #F5F5F7; outline: none;">
-                
-                <div style="display:flex; gap:12px;">
-                    <input type="text" id="customer-cep" placeholder="CEP (DF)" required style="width: 40%; padding: 18px; border: 1px solid #eee; border-radius: 18px; font-size: 1rem; box-sizing: border-box; background: #F5F5F7; outline: none;">
-                    <div style="width: 60%; background: #e8f5e9; color: #1b5e20; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.65rem; text-align: center; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(27, 94, 32, 0.08);">
-                        ✅ FRETE GRÁTIS
-                    </div>
-                </div>
+    /* BOTÃO (+) DE ADICIONAR (AJUSTADO PARA O DEDO) */
+    .btn-add-micro { 
+        position: absolute; bottom: 6px; right: 6px; 
+        width: 28px; height: 28px; background-color: var(--chef-orange, #F2811D); 
+        color: white; border-radius: 50%; border: none; font-size: 1.2rem; font-weight: bold;
+        display: flex; align-items: center; justify-content: center; cursor: pointer; 
+        box-shadow: 0 4px 10px rgba(242, 129, 29, 0.4); z-index: 2;
+    }
+    .btn-add-micro:active { transform: scale(0.9); }
 
-                <textarea id="customer-address" placeholder="Endereço (Rua, Bloco, Apto, Bairro)" required style="width: 100%; padding: 18px; border: 1px solid #eee; border-radius: 18px; font-size: 1rem; box-sizing: border-box; resize: none; font-family: inherit; background: #F5F5F7; outline: none;" rows="3"></textarea>
-                
-                <button type="submit" style="width: 100%; padding: 22px; background: var(--whatsapp-green); color: white; border: none; border-radius: 60px; font-weight: 900; cursor: pointer; font-size: 1.15rem; box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35); margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; transition: transform 0.2s ease;">
-                    GARANTIR PRESENTE ➜
-                </button>
-            </form>
+    /* AJUSTE PARA IPHONES MUITO PEQUENOS (SE/MINI) */
+    @media (max-width: 380px) {
+        .catalog-grid-3cols { grid-template-columns: repeat(2, 1fr); gap: 10px; } /* Recua para 2 se a tela for menor que 380px */
+        .catalog-title { font-size: 0.75rem; }
+    }
+</style>
 
-            <p onclick="closeCheckoutModal()" style="text-align: center; margin-top: 25px; color: #86868b; cursor: pointer; text-decoration: underline; font-size: 0.85rem; font-weight: 600;">← Voltar</p>
+<main class="war-catalog-container">
+    <header>
+        <h1>Catálogo Inteligente</h1>
+        <p>Comida de verdade pronta em 18 minutos. Sem desperdício.</p>
+    </header>
+
+    <div class="filter-section">
+        <div class="filter-label">🎯 Navegue por Solução</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+            <a href="/receitas/solucoes/refeicao-rapida/" class="btn-filter-pill">⚡ Refeição Rápida</a>
+            <a href="/receitas/solucoes/marmita-fit/" class="btn-filter-pill">🍱 Marmita Fit</a>
+            <a href="/receitas/solucoes/jantar-a-dois/" class="btn-filter-pill">🍷 Jantar a Dois</a>
+            <a href="/receitas/solucoes/para-criancas/" class="btn-filter-pill">👶 Para Crianças</a>
+            <a href="/receitas/solucoes/trilha-viagem/" class="btn-filter-pill">🎒 Trilha & Viagem</a>
         </div>
     </div>
 
-    <script>
-        function openCheckoutModal() { document.getElementById('checkout-modal').style.display = 'flex'; }
-        function closeCheckoutModal() { document.getElementById('checkout-modal').style.display = 'none'; }
-    </script>
-    <script src="/js/app.js"></script>
-</body>
-</html>
+    <div class="filter-section" id="area-categorias">
+        <div class="filter-label">🍲 Categorias</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+             <button id="cat-all" class="btn-filter-pill active" onclick="executarFiltro('all')">Todos</button>
+             <button id="cat-Risoto" class="btn-filter-pill" onclick="executarFiltro('Risoto')">Risotos</button>
+             <button id="cat-Sopa" class="btn-filter-pill" onclick="executarFiltro('Sopa')">Sopas</button>
+             <button id="cat-Refeição" class="btn-filter-pill" onclick="executarFiltro('Refeição')">Refeições</button>
+             <button id="cat-Empório" class="btn-filter-pill" onclick="executarFiltro('Empório')">Empório</button>
+        </div>
+    </div>
+    
+    <div class="catalog-grid-3cols" id="main-grid">
+        {% for item in collections.receitas %}
+        {% if item.data.price %}
+        <article class="catalog-card-micro" data-category="{{ item.data.category }}">
+            
+            <a href="{{ item.url }}" class="catalog-image-box">
+                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy">
+            </a>
+            
+            <div class="catalog-content-box">
+                <a href="{{ item.url }}" class="catalog-title">{{ item.data.title | replace(" | ChefBrico", "") }}</a>
+                <span class="catalog-price">R$ {{ item.data.price | dinheiro }}</span>
+            </div>
+
+            <button id="prod-{{ item.data.sku }}" onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')" class="btn-add-micro" aria-label="Adicionar">
+                +
+            </button>
+            
+        </article>
+        {% endif %}
+        {% endfor %}
+    </div>
+</main>
+
+<script>
+// O Motor do Filtro Inteligente (Intocado)
+function executarFiltro(escolha) {
+    const cards = document.querySelectorAll('.catalog-card-micro');
+    const botoes = document.getElementById('area-categorias').querySelectorAll('.btn-filter-pill');
+    
+    botoes.forEach(btn => btn.classList.remove('active'));
+    const alvo = document.getElementById('cat-' + escolha);
+    if (alvo) { alvo.classList.add('active'); }
+
+    cards.forEach(card => {
+        const categoriaCard = card.getAttribute('data-category').trim();
+        if (escolha === 'all' || categoriaCard === escolha) {
+            card.style.setProperty('display', 'flex', 'important');
+        } else {
+            card.style.setProperty('display', 'none', 'important');
+        }
+    });
+}
+</script>
