@@ -748,3 +748,25 @@ main > article img {
     position: relative !important;
     z-index: 15 !important;
 }
+/* ==========================================================================
+   DESBLOQUEIO DO CLIQUE: 3 TRILHAS DE ACESSO
+   ========================================================================== */
+
+/* 1. Faz a div da imagem ignorar o toque para o link <a> logo abaixo dela agir */
+.catalog-image-box {
+    pointer-events: none !important;
+}
+
+/* 2. Garante que o Card, como um todo, receba o evento de clique */
+.catalog-card-micro a {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* 3. PROTEÇÃO DA GAMIFICAÇÃO: O botão (+) PRECISA do clique */
+/* Sem isso, o botão de adicionar pararia de funcionar */
+.btn-add-micro {
+    pointer-events: auto !important;
+    z-index: 10 !important;
+}
