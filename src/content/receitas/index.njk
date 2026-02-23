@@ -90,7 +90,7 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
              <button id="cat-Empório" class="btn-filter-pill" onclick="executarFiltro('Empório')">Empório</button>
         </div>
     </div>
-  <div class="recipe-grid" id="main-grid">
+ <div class="recipe-grid" id="main-grid">
     {% for item in collections.receitas %}
     {% if item.data.price %}
     <article class="recipe-card" data-category="{{ item.data.category }}" style="position: relative; cursor: pointer;">
