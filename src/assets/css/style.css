@@ -1,6 +1,6 @@
 /* ==========================================================================
-   CHEFBRICO 2026 - ARQUIVO MESTRE CONSOLIDADO (NÃO ALTERAR NOMES)
-   Arquitetura: Apple Gold Standard | Trava de Segurança Contra Colapso
+   CHEFBRICO 2026 - BLINDAGEM MESTRE FINAL
+   Foco: 3 Colunas Mobile | Respiro 24px Apple | Carrossel 16:10
    ========================================================================== */
 
 :root {
@@ -9,11 +9,11 @@
     --chef-green: #014039;
     --chef-orange: #F2811D;
     --whatsapp-green: #25D366;
-    --respiro-apple: 24px; /* A Regra de Ouro do Espaçamento Lateral */
+    --respiro-apple: 24px;
     --radius-master: 18px;
 }
 
-/* 1. FUNDAÇÃO E RESPIRO (CORRIGE O "GRUDADO NAS LATERAIS") */
+/* 1. FUNDAÇÃO E RESPIRO DE BORDA */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 body {
@@ -22,15 +22,15 @@ body {
     margin: 0; padding: 0; -webkit-font-smoothing: antialiased;
 }
 
-/* Garante o respiro de 24px em todas as páginas */
+/* O Segredo do Padrão Apple: Nada encosta nas laterais da tela */
 main { 
     flex: 1; 
-    padding: 0 var(--respiro-apple) 140px var(--respiro-apple) !important; 
+    padding: 0 var(--respiro-apple) 160px var(--respiro-apple) !important; 
     max-width: 1400px; 
     margin: 0 auto;
 }
 
-/* 2. MARIA CONCEIÇÃO (HERO E-E-A-T) - LADO A LADO DESKTOP / EMPILHADO MOBILE */
+/* 2. MARIA CONCEIÇÃO (E-E-A-T) - REGRAS ORIGINAIS */
 .hero-premium-editorial {
     display: flex !important;
     align-items: center !important;
@@ -47,74 +47,67 @@ main {
     box-shadow: 0 15px 45px rgba(0,0,0,0.08) !important;
     overflow: hidden !important;
     flex-shrink: 0 !important;
-    position: relative !important;
 }
 
-.avatar-hero-circle img {
-    width: 100% !important; height: 100% !important; object-fit: cover !important;
-}
+.avatar-hero-circle img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
 
 @media (max-width: 992px) {
     .hero-premium-editorial { flex-direction: column !important; text-align: center !important; gap: 30px !important; }
-    .avatar-hero-circle { width: 170px !important; height: 170px !important; }
+    .avatar-hero-circle { width: 160px !important; height: 160px !important; }
 }
 
-/* 3. MOLDURA MESTRE CARROSSEIS (PAGINA INDEX E MÉTODO) - TRAVA 16:10 */
+/* 3. CARROSSEIS HORIZONTAIS (INDEX E MÉTODO) */
 .carousel-apple-container, .magazine-carousel-container {
     display: flex !important;
     overflow-x: auto !important;
-    gap: 20px !important;
-    padding: 20px 0 60px 0 !important; /* Respiro interno */
+    gap: 16px !important;
+    padding: 20px 0 60px 0 !important;
     scroll-snap-type: x mandatory !important;
     scrollbar-width: none !important;
 }
-
 .carousel-apple-container::-webkit-scrollbar { display: none !important; }
 
-/* O Card Horizontal do Carrossel (Reduzido 50%) */
+/* Tamanho do Card no Carrossel (Ajustado para suavidade) */
 .card-apple-standard {
-    flex: 0 0 280px !important; /* Tamanho proporcional para não ficar gigante */
+    flex: 0 0 280px !important;
     background: rgba(255, 255, 255, 0.72) !important;
     backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.5) !important;
     border-radius: var(--radius-master) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    scroll-snap-align: start !important;
     overflow: hidden !important;
+    scroll-snap-align: start !important;
 }
 
-/* A Moldura que controla a imagem do carrossel */
+@media (max-width: 768px) {
+    .card-apple-standard { flex: 0 0 240px !important; } /* Card menor no Mobile */
+}
+
+/* Trava da Foto no Carrossel (16:10) */
 .moldura-mestre-16-10 {
     width: 100% !important;
     aspect-ratio: 16 / 10 !important;
-    position: relative !important;
     overflow: hidden !important;
     display: block !important;
     background: #f0f0f0 !important;
 }
+.moldura-mestre-16-10 img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
 
-.moldura-mestre-16-10 img {
-    width: 100% !important; height: 100% !important; object-fit: cover !important;
-}
-
-/* 4. CARDÁPIO INDEX (RECEITAS) - 3 COLUNAS MOBILE / 6 COLUNAS DESKTOP */
+/* 4. CATÁLOGO DE SABORES (3 COLUNAS MOBILE / 6 DESKTOP) */
 .recipe-grid-master, .catalog-grid-3cols, #main-grid, .vitrine-grid {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important; /* TRAVA 3 COLUNAS */
-    gap: 12px !important;
+    gap: 8px !important;
     margin: 40px 0 !important;
-    width: 100% !important;
 }
 
 @media (min-width: 1024px) {
-    .recipe-grid-master, .catalog-grid-3cols, #main-grid, .vitrine-grid {
-        grid-template-columns: repeat(6, 1fr) !important; /* 6 COLUNAS DESKTOP */
+    .recipe-grid-master, .catalog-grid-3cols {
+        grid-template-columns: repeat(6, 1fr) !important;
         gap: 20px !important;
     }
 }
 
-/* Moldura Quadrada para o Catálogo */
+/* Moldura Quadrada (1:1) para os Sabores no Catálogo */
 .catalog-image-box {
     width: 100% !important;
     aspect-ratio: 1 / 1 !important;
@@ -122,16 +115,14 @@ main {
     overflow: hidden !important;
     display: block !important;
 }
-
 .catalog-image-box img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
 
-/* 5. MICRO-OTIMIZAÇÃO DE TEXTOS E BOTÕES */
-.recipe-content-micro { padding: 8px 6px !important; text-align: center !important; }
-
+/* 5. TEXTOS E BOTÃO (+) */
+.recipe-content-micro { padding: 6px 4px !important; text-align: center !important; }
 .recipe-content-micro h3 {
-    font-size: 0.62rem !important; font-weight: 700 !important; color: var(--chef-green) !important;
-    line-height: 1.1 !important; height: 2.3em !important; overflow: hidden;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin: 4px 0 !important;
+    font-size: 0.6rem !important; font-weight: 700 !important; color: var(--chef-green) !important;
+    line-height: 1.1 !important; height: 2.2em !important; overflow: hidden;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
 }
 
 .btn-add-micro {
