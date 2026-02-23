@@ -1,19 +1,20 @@
 /* ==========================================================================
-   CHEFBRICO 2026 - BLINDAGEM MESTRE FINAL
-   Foco: 3 Colunas Mobile | Respiro 24px Apple | Carrossel 16:10
+   CHEFBRICO 2026 - PADRÃO OURO APPLE (BLINDAGEM FINAL)
+   Arquitetura: 3 Colunas Mobile | 6 Colunas Desktop | Respiro 24px
+   Visual: Glassmorphism Persuasivo e Molduras Travadas
    ========================================================================== */
 
 :root {
-    --apple-white: #FFFFFF;
-    --apple-cream: #FDFBF7;
-    --chef-green: #014039;
-    --chef-orange: #F2811D;
-    --whatsapp-green: #25D366;
-    --respiro-apple: 24px;
-    --radius-master: 18px;
+    --apple-white:     #FFFFFF;
+    --apple-cream:     #FDFBF7;
+    --chef-green:      #014039;
+    --chef-orange:     #F2811D;
+    --whatsapp-green:  #25D366;
+    --respiro-apple:   24px; /* A Regra de Ouro */
+    --radius-master:   18px;
 }
 
-/* 1. FUNDAÇÃO E RESPIRO DE BORDA */
+/* --- 1. FUNDAÇÃO E RESPIRO --- */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 body {
@@ -22,7 +23,7 @@ body {
     margin: 0; padding: 0; -webkit-font-smoothing: antialiased;
 }
 
-/* O Segredo do Padrão Apple: Nada encosta nas laterais da tela */
+/* Garante o respiro de 24px e centralização do conteúdo */
 main { 
     flex: 1; 
     padding: 0 var(--respiro-apple) 160px var(--respiro-apple) !important; 
@@ -30,7 +31,7 @@ main {
     margin: 0 auto;
 }
 
-/* 2. MARIA CONCEIÇÃO (E-E-A-T) - REGRAS ORIGINAIS */
+/* --- 2. SEÇÃO MARIA CONCEIÇÃO (E-E-A-T / YMYL) --- */
 .hero-premium-editorial {
     display: flex !important;
     align-items: center !important;
@@ -40,23 +41,25 @@ main {
 }
 
 .avatar-hero-circle {
-    width: 220px !important;
-    height: 220px !important;
+    width: 240px !important;
+    height: 240px !important;
     border-radius: 50% !important;
-    border: 6px solid var(--apple-cream) !important;
+    border: 8px solid var(--apple-cream) !important;
     box-shadow: 0 15px 45px rgba(0,0,0,0.08) !important;
     overflow: hidden !important;
     flex-shrink: 0 !important;
 }
 
-.avatar-hero-circle img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+.avatar-hero-circle img {
+    width: 100% !important; height: 100% !important; object-fit: cover !important;
+}
 
 @media (max-width: 992px) {
     .hero-premium-editorial { flex-direction: column !important; text-align: center !important; gap: 30px !important; }
-    .avatar-hero-circle { width: 160px !important; height: 160px !important; }
+    .avatar-hero-circle { width: 180px !important; height: 180px !important; margin: 0 auto !important; }
 }
 
-/* 3. CARROSSEIS HORIZONTAIS (INDEX E MÉTODO) */
+/* --- 3. CARROSSEIS HORIZONTAIS (INDEX E MÉTODO) --- */
 .carousel-apple-container, .magazine-carousel-container {
     display: flex !important;
     overflow-x: auto !important;
@@ -67,47 +70,44 @@ main {
 }
 .carousel-apple-container::-webkit-scrollbar { display: none !important; }
 
-/* Tamanho do Card no Carrossel (Ajustado para suavidade) */
-.card-apple-standard {
-    flex: 0 0 280px !important;
-    background: rgba(255, 255, 255, 0.72) !important;
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
-    border-radius: var(--radius-master) !important;
-    overflow: hidden !important;
-    scroll-snap-align: start !important;
-}
-
-@media (max-width: 768px) {
-    .card-apple-standard { flex: 0 0 240px !important; } /* Card menor no Mobile */
-}
-
-/* Trava da Foto no Carrossel (16:10) */
+/* Moldura Travada 16:10 para Carrosséis */
 .moldura-mestre-16-10 {
     width: 100% !important;
     aspect-ratio: 16 / 10 !important;
     overflow: hidden !important;
     display: block !important;
     background: #f0f0f0 !important;
+    border-radius: var(--radius-master) var(--radius-master) 0 0 !important;
 }
-.moldura-mestre-16-10 img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
 
-/* 4. CATÁLOGO DE SABORES (3 COLUNAS MOBILE / 6 DESKTOP) */
+.card-apple-standard {
+    flex: 0 0 280px !important;
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(15px);
+    border-radius: var(--radius-master) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    scroll-snap-align: start !important;
+}
+
+@media (max-width: 768px) { .card-apple-standard { flex: 0 0 240px !important; } }
+
+/* --- 4. GRID MESTRE: 3 COLUNAS MOBILE / 6 COLUNAS DESKTOP --- */
 .recipe-grid-master, .catalog-grid-3cols, #main-grid, .vitrine-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* TRAVA 3 COLUNAS */
-    gap: 8px !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* TRAVA 3 COLUNAS MOBILE */
+    gap: 10px !important;
     margin: 40px 0 !important;
+    width: 100% !important;
 }
 
 @media (min-width: 1024px) {
-    .recipe-grid-master, .catalog-grid-3cols {
-        grid-template-columns: repeat(6, 1fr) !important;
+    .recipe-grid-master, .catalog-grid-3cols, #main-grid, .vitrine-grid {
+        grid-template-columns: repeat(6, 1fr) !important; /* TRAVA 6 COLUNAS DESKTOP */
         gap: 20px !important;
     }
 }
 
-/* Moldura Quadrada (1:1) para os Sabores no Catálogo */
+/* Moldura Quadrada (1:1) para o Catálogo de Sabores */
 .catalog-image-box {
     width: 100% !important;
     aspect-ratio: 1 / 1 !important;
@@ -115,18 +115,19 @@ main {
     overflow: hidden !important;
     display: block !important;
 }
+
 .catalog-image-box img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
 
-/* 5. TEXTOS E BOTÃO (+) */
-.recipe-content-micro { padding: 6px 4px !important; text-align: center !important; }
+/* --- 5. MICRO-TEXTOS E BOTÃO (+) --- */
+.recipe-content-micro { padding: 8px 6px !important; text-align: center !important; }
 .recipe-content-micro h3 {
     font-size: 0.6rem !important; font-weight: 700 !important; color: var(--chef-green) !important;
-    line-height: 1.1 !important; height: 2.2em !important; overflow: hidden;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    line-height: 1.15 !important; height: 2.3em !important; overflow: hidden;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin: 4px 0 !important;
 }
 
 .btn-add-micro {
-    position: absolute !important; bottom: 6px !important; right: 6px !important;
+    position: absolute !important; bottom: 8px !important; right: 8px !important;
     width: 26px !important; height: 26px !important; background: var(--chef-orange) !important;
     color: #FFF !important; border: 2px solid #FFF !important; border-radius: 50% !important;
     z-index: 10 !important; display: flex; align-items: center; justify-content: center;
