@@ -669,3 +669,41 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
         padding-top: 100% !important; /* Deixa a foto perfeitamente quadrada (1:1) */
     }
 }
+/* ==========================================================================
+   BLINDAGEM INTELIGENTE DE IMAGENS (VITRINE VS PÁGINA INTERNA)
+   ========================================================================== */
+
+/* REGRA A: Só aplica a força bruta nos cards da vitrine (3 colunas) */
+.recipe-grid img, 
+.catalog-grid-3cols img, 
+.card-apple-standard img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+/* REGRA B: Libera as imagens nas páginas individuais para o Food Porn brilhar */
+/* Isso impede que a foto grande desapareça */
+.recipe-detail-page img, 
+.editorial-content img,
+main > article img {
+    position: relative !important; /* Devolve a posição natural */
+    height: auto !important;       /* Devolve a altura real */
+    max-height: 600px !important;  /* Limite de elegância Apple */
+    width: 100% !important;
+    object-fit: cover !important;
+    border-radius: 24px !important;
+    display: block !important;
+}
+
+/* 3. Garante que o container da foto interna não tenha altura zero */
+.hero-recipe-image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 250px !important;
+    margin-bottom: 30px !important;
+}
