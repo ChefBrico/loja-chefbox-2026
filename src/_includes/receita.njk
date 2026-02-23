@@ -106,29 +106,34 @@ description: "Explore o cardápio completo: Risotos, Sopas e Refeições. Filtre
         </div>
     </div>
     
-    <div class="catalog-grid-3cols" id="main-grid">
-        {% for item in collections.receitas %}
-        {% if item.data.price %}
-        <article class="catalog-card-micro" data-category="{{ item.data.category }}">
+ <div class="catalog-grid-3cols" id="main-grid">
+    {% for item in collections.receitas %}
+    {% if item.data.price %}
+    <article class="catalog-card-micro" data-category="{{ item.data.category }}" style="position: relative;">
+        
+        <a href="{{ item.url }}" class="card-main-link" style="text-decoration: none; display: flex; flex-direction: column; height: 100%; width: 100%;">
             
-            <a href="{{ item.url }}" class="catalog-image-box">
+            <div class="catalog-image-box">
                 <img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy">
-            </a>
+            </div>
             
             <div class="catalog-content-box">
-                <a href="{{ item.url }}" class="catalog-title">{{ item.data.title | replace(" | ChefBrico", "") }}</a>
+                <span class="catalog-title">{{ item.data.title | replace(" | ChefBrico", "") }}</span>
                 <span class="catalog-price">R$ {{ item.data.price | dinheiro }}</span>
             </div>
+        </a>
 
-            <button id="prod-{{ item.data.sku }}" onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')" class="btn-add-micro" aria-label="Adicionar">
-                +
-            </button>
-            
-        </article>
-        {% endif %}
-        {% endfor %}
-    </div>
-</main>
+        <button id="prod-{{ item.data.sku }}" 
+                onclick="event.stopPropagation(); addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}')" 
+                class="btn-add-micro" 
+                aria-label="Adicionar">
+            +
+        </button>
+        
+    </article>
+    {% endif %}
+    {% endfor %}
+</div>
 
 <script>
 // O Motor do Filtro Inteligente (Intocado)
