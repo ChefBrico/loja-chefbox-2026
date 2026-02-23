@@ -6,101 +6,131 @@ permalink: /chefbox/
 ---
 
 <style>
-/* Estilo Local para a Vitrine ChefBox */
-.chefbox-header { text-align: center; padding: 40px 20px; background: #fdfcf7; border-bottom: 1px solid #eee; }
-.chefbox-header h1 { color: #014039; font-family: 'Merriweather', serif; font-size: 2rem; margin-bottom: 10px; }
-.chefbox-header .club-badge { background: #F2811D; color: white; padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 15px; }
-.chefbox-header p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.4; }
-
-/* Grid de Produtos - Inteligência 2x6 */
+/* 1. ESTRUTURA MESTRE (TRAVA 3 COLUNAS MOBILE / 6 DESKTOP) */
 .vitrine-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Mobile: 2 colunas */
-    gap: 15px;
-    padding: 30px 15px 180px; /* Espaço generoso para a régua v7.0 */
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Mobile: 3 cards cravados */
+    gap: 8px !important;
+    padding: 30px 10px 180px !important; /* Respiro para a régua inferior */
     max-width: 1200px;
     margin: 0 auto;
 }
 
 @media (min-width: 1024px) {
     .vitrine-grid {
-        grid-template-columns: repeat(6, 1fr); /* Desktop: 6 colunas */
+        grid-template-columns: repeat(6, 1fr) !important; /* Desktop: 6 cards */
+        gap: 15px !important;
     }
 }
 
+/* 2. O CARD VITRIFICADO (APPLE GOLD STANDARD) */
 .item-card {
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    overflow: hidden;
+    background: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 16px !important;
+    overflow: visible !important; /* Permite o botão flutuar */
     position: relative;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease;
 }
-.item-card:hover { transform: translateY(-3px); border-color: #F2811D; }
 
-.item-img-link { display: block; width: 100%; height: 140px; }
+/* 3. CAMADA DO CORREDOR (LINK DA RECEITA) */
+.card-navigation-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    z-index: 1; /* Camada base */
+}
+
+.item-img-container { 
+    width: 100%; 
+    aspect-ratio: 1 / 1; 
+    overflow: hidden; 
+    border-radius: 16px 16px 0 0;
+}
+
 .item-img { width: 100%; height: 100%; object-fit: cover; }
 
-.item-info { padding: 12px; flex-grow: 1; display: flex; flex-direction: column; }
-.item-title { font-size: 0.85rem; font-weight: bold; color: #333; margin: 0 0 8px; line-height: 1.3; height: 2.6em; overflow: hidden; }
-.item-price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-.item-price { color: #27ae60; font-weight: 800; font-size: 0.95rem; }
+.item-info { padding: 6px 4px; text-align: center; flex-grow: 1; }
 
-/* O BOTÃO DE ADICIONAR (+) - ESTÉTICA V7.0 */
-.btn-plus-add {
-    position: absolute;
-    top: 100px; right: 8px;
-    width: 36px; height: 36px;
-    background-color: #F2811D;
-    color: white;
-    border-radius: 50%;
-    border: 2px solid white;
-    font-size: 1.6rem;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-    z-index: 10;
+.item-title { 
+    font-size: 0.62rem !important; 
+    font-weight: 700; 
+    color: #014039; 
+    line-height: 1.1; 
+    height: 2.2em; 
+    overflow: hidden; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 4px 0;
 }
-.btn-plus-add:active { transform: scale(0.9); background-color: #d35400; }
+
+.item-price { color: #25D366; font-weight: 900; font-size: 0.75rem; }
+
+/* 4. CAMADA DA PORTA (BOTÃO + ISOLADO) */
+.btn-plus-add {
+    position: absolute !important;
+    top: 6px; 
+    right: 6px;
+    width: 28px; 
+    height: 28px;
+    background-color: #F2811D !important; /* Laranja Persuasão */
+    color: white !important;
+    border: 2px solid white !important;
+    border-radius: 50% !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50 !important; /* ACIMA DO LINK */
+    box-shadow: 0 4px 10px rgba(242, 129, 29, 0.4);
+}
+
+.btn-plus-add:active { transform: scale(0.9); }
+
+/* HEADER EDITORIAL */
+.chefbox-header { text-align: center; padding: 40px 10px; background: #fdfcf7; }
+.chefbox-header h1 { color: #014039; font-family: 'Merriweather', serif; font-size: 1.8rem; }
+.club-badge { background: #F2811D; color: white; padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 0.7rem; text-transform: uppercase; }
 </style>
 
 <div class="chefbox-header">
     <span class="club-badge">✨ Club Gourmet Prático</span>
     <h1>Monte sua ChefBox</h1>
-    <p>Escolha 5 sabores favoritos. <br>Pague 4 sabores e o <strong>5º sabor é um PRESENTE</strong> da Chef! 🎁</p>
-    <p style="font-size: 0.9rem; margin-top: 10px; color: #27ae60; font-weight: bold;">Valor Final do Kit: R$ 132,00</p>
+    <p>Escolha 5 sabores favoritos e o <strong>5º é um PRESENTE</strong>! 🎁</p>
 </div>
 
-<!-- A VITRINE DE ESCOLHA (CONEXÃO COM 24 RECEITAS) -->
 <div class="vitrine-grid">
-   {% for item in collections.receitas %}
-    {# Só exibe itens que possuem preço cadastrado no markdown #}
+    {% for item in collections.receitas %}
     {% if item.data.price %}
-    <div class="item-card" data-agent-sku="{{ item.data.sku }}">
+    <article class="item-card" data-agent-sku="{{ item.data.sku }}">
         
-        <a href="{{ item.url }}" class="item-img-link">
-            <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="item-img" loading="lazy">
-        </a>
-        
-        <!-- BOTÃO DO JOGO V7.0 (Sincronizado com app.js) -->
         <button class="btn-plus-add" 
                 aria-label="Adicionar {{ item.data.title }} à caixa"
-                onclick="addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}', '{{ item.url }}')">
+                onclick="event.preventDefault(); event.stopPropagation(); addToGame('{{ item.data.title }}', {{ item.data.price }}, '{{ item.data.image }}', '{{ item.data.sku }}', '{{ item.url }}')">
             +
         </button>
 
-        <div class="item-info">
-            <a href="{{ item.url }}" style="text-decoration: none; color: inherit;">
+        <a href="{{ item.url }}" class="card-navigation-link">
+            <div class="item-img-container">
+                <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="item-img" loading="lazy">
+            </div>
+
+            <div class="item-info">
                 <h3 class="item-title">{{ item.data.title | replace(" | ChefBrico", "") }}</h3>
-            </a>
-            <div class="item-price-row">
                 <span class="item-price">R$ {{ item.data.price | dinheiro }}</span>
             </div>
-        </div>
-    </div>
+        </a>
+
+    </article>
     {% endif %}
     {% endfor %}
 </div>
