@@ -132,3 +132,16 @@ main {
     color: #FFF !important; border: 2px solid #FFF !important; border-radius: 50% !important;
     z-index: 10 !important; display: flex; align-items: center; justify-content: center;
 }
+/* TRAVA MESTRE: 3 COLUNAS MOBILE / 6 COLUNAS DESKTOP */
+.recipe-grid, .vitrine-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Mobile */
+    gap: 8px !important;
+}
+
+@media (min-width: 1024px) {
+    .recipe-grid, .vitrine-grid {
+        grid-template-columns: repeat(6, 1fr) !important; /* Desktop */
+        gap: 20px !important;
+    }
+}
