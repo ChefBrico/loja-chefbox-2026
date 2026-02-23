@@ -5,22 +5,23 @@ title: "Revista Digital ChefBrico | Comida de Verdade"
 description: "Receitas 100% naturais, prontas em 18 minutos. O método da Chef Maria Conceição para uma rotina saudável e sem desperdício."
 image: "/imagens/maria-conceicao-empreendedora-feira-tematica.png"
 
-# --- SCHEMA INTEGRAL PRESERVADO (NÃO MEXER) ---
-schema: {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "name": "ChefBrico Gourmet Prático",
-      "url": "https://gourmetpratico.com.br"
-    },
-    {
-      "@type": "Organization",
-      "name": "ChefBrico",
-      "logo": "https://gourmetpratico.com.br/imagens/logo.png"
-    }
-  ]
-}
+# --- A CORREÇÃO: O SÍMBOLO "|" SALVA O SERVIDOR ---
+schema: |
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "ChefBrico Gourmet Prático",
+        "url": "https://gourmetpratico.com.br"
+      },
+      {
+        "@type": "Organization",
+        "name": "ChefBrico",
+        "logo": "https://gourmetpratico.com.br/imagens/logo.png"
+      }
+    ]
+  }
 ---
 
 <main class="magazine-container" style="background-color: var(--apple-white, #FFFFFF); padding-bottom: 40px; overflow-x: hidden;">
@@ -42,7 +43,7 @@ schema: {
             <span class="carousel-drag-hint">Arraste ➝</span>
         </div>
         <div class="carousel-apple-container">
-            {% for post in collections.metodo | sort(attribute='data.order') %}
+            {% for post in collections.metodo %}
             <a href="{{ post.url }}" class="card-apple-standard">
                 <div class="moldura-mestre-16-10">
                     <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
@@ -63,7 +64,7 @@ schema: {
             <span class="carousel-drag-hint">Arraste ➝</span>
         </div>
         <div class="carousel-apple-container">
-            {% for post in collections.fragmentos | sort(attribute='data.order') %}
+            {% for post in collections.fragmentos %}
             <a href="{{ post.url }}" class="card-apple-standard" style="border-top: 4px solid var(--chef-orange, #F2811D);">
                 <div class="card-content" style="padding: 30px 24px;">
                     <span style="color: var(--chef-orange, #F2811D); font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Dica da Chef</span>
@@ -91,7 +92,6 @@ schema: {
                     <p style="color: var(--text-muted, #666); font-size: 0.9rem; margin: 0;">O clássico cremoso em 18 minutos.</p>
                 </div>
             </a>
-            
             <a href="/receitas/sopas-funcionais/" class="card-apple-standard">
                 <div class="moldura-mestre-16-10">
                     <img src="/imagens/chefbrico-creme-fit-sopinha-chefbrico-580 px.png" alt="Sopas Funcionais" loading="lazy">
@@ -101,7 +101,6 @@ schema: {
                     <p style="color: var(--text-muted, #666); font-size: 0.9rem; margin: 0;">Leveza e nutrição para suas noites.</p>
                 </div>
             </a>
-            
             <a href="/receitas/refeicoes-integrais/" class="card-apple-standard">
                 <div class="moldura-mestre-16-10">
                     <img src="/imagens/refeicao-nutritiva-integral-arroz-negro-chefbrico-80 px.png" alt="Refeições Integrais" loading="lazy">
@@ -111,7 +110,6 @@ schema: {
                     <p style="color: var(--text-muted, #666); font-size: 0.9rem; margin: 0;">Grãos nobres com saciedade prolongada.</p>
                 </div>
             </a>
-
             <a href="/receitas/emporio-da-chef/" class="card-apple-standard">
                 <div class="moldura-mestre-16-10">
                     <img src="/imagens/confitado-shiitake-chefbrico.png" alt="Empório da Chef" loading="lazy">
@@ -123,5 +121,4 @@ schema: {
             </a>
         </div>
     </section>
-
 </main>
