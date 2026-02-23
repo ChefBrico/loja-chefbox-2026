@@ -580,3 +580,39 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
         font-size: 2.1rem !important; 
     }
 }
+/* ==========================================================================
+   RESTAURAÇÃO DOS LINKS DO CARDÁPIO (A-COMMERCE)
+   Garante que a foto leve para a página de Food Porn sem bloquear o Botão +
+   ========================================================================== */
+
+/* 1. Traz a caixa do link para a frente */
+.catalog-image-box {
+    display: block !important;
+    position: relative !important;
+    z-index: 10 !important; 
+}
+
+/* 2. O Escudo Invisível: Cobre a foto e absorve o clique para o link */
+.catalog-image-box::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important; 
+    left: 0 !important; 
+    width: 100% !important; 
+    height: 100% !important;
+    z-index: 15 !important;
+}
+
+/* 3. Traz o Título para a frente também */
+.catalog-title {
+    position: relative !important;
+    z-index: 10 !important;
+    pointer-events: auto !important;
+}
+
+/* 4. O Botão Laranja (+) precisa estar ACIMA de todos os links */
+.btn-add-micro {
+    z-index: 99 !important; 
+    position: absolute !important;
+    pointer-events: auto !important;
+}
