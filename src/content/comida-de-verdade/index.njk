@@ -3,61 +3,83 @@ layout: base.njk
 permalink: /comida-de-verdade/
 title: "A Trilha da ChefBrico | Filosofia e Método"
 description: "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
+image: "/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png"
+
+# --- SCHEMA INTEGRAL PRESERVADO (NÃO MEXER) ---
+schema: {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "A Trilha da ChefBrico | Filosofia e Método",
+      "url": "https://gourmetpratico.com.br/comida-de-verdade/",
+      "description": "Conheça os pilares do método Gourmet Prático e a história de Maria Conceição."
+    },
+    {
+      "@type": "Person",
+      "name": "Maria Conceição",
+      "jobTitle": "Chef e Psicóloga",
+      "image": "https://gourmetpratico.com.br/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png"
+    },
+    {
+      "@type": "Organization",
+      "name": "ChefBrico",
+      "logo": "https://gourmetpratico.com.br/imagens/logo.png"
+    }
+  ]
+}
 ---
 
-<main class="magazine-container" style="background-color: #FFFFFF;">
-    <section class="hero-premium-editorial" style="display: flex; align-items: center; gap: 60px; padding: 80px 24px; max-width: 1100px; margin: 0 auto;">
-        <div class="avatar-circle-protector" style="width: 240px; height: 240px; border-radius: 50% !important; overflow: hidden; flex-shrink: 0; border: 8px solid #FDFBF7; box-shadow: 0 20px 40px rgba(0,0,0,0.06);">
-            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 100%; height: 100%; object-fit: cover;">
+<main class="magazine-container">
+    
+    <section class="hero-premium-editorial">
+        <div class="avatar-circle-protector">
+            <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" loading="eager">
         </div>
         <div class="editorial-content">
-            <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Inspirar & Cuidar</span>
-            <h1 class="editorial-title" style="color: #014039; font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 0;">Meu nome é <br><span style="font-weight: 300; color: #999;">Maria Conceição.</span></h1>
-            <p class="editorial-subtitle" style="color: #555; font-size: 1.25rem; line-height: 1.6; margin-top: 20px;">Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
+            <span style="color: var(--chef-orange, #F2811D); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Inspirar & Cuidar</span>
+            <h1 class="editorial-title">Meu nome é <br><span style="font-weight: 300; color: #999;">Maria Conceição.</span></h1>
+            <p class="editorial-subtitle">Esta é a crônica de uma mãe e psicóloga que transformou o caos da rotina em celebração.</p>
         </div>
     </section>
 
-   <section class="carousel-magazine-row" style="margin: 60px 0;">
+    <section class="magazine-row">
         
         <div class="carousel-header-wrapper">
             <h2>Os Pilares do Método Gourmet Prático</h2>
             <span class="carousel-drag-hint">Arraste ➝</span>
         </div>
         
-        
-        <div class="magazine-carousel" style="display: flex; overflow-x: auto; gap: 20px; padding: 20px 24px 60px 24px; scroll-snap-type: x mandatory; scrollbar-width: none;">
+        <div class="carousel-apple-container">
             {# SEGURANÇA: Só tenta ordenar se a coleção 'metodo' existir #}
             {% set metodo_list = collections.metodo or [] %}
             {% for post in metodo_list | sort(attribute='data.order') %}
-            <a href="{{ post.url }}" class="magazine-card" style="flex: 0 0 300px; background: #FDFBF7; border-radius: 24px; overflow: hidden; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid rgba(1, 64, 57, 0.04);">
-                <div class="card-img-rect-wrapper" style="width: 100%; aspect-ratio: 16 / 10; overflow: hidden;">
-                    <img src="{{ post.data.image }}" class="card-img-rect" alt="{{ post.data.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+            
+            <a href="{{ post.url }}" class="card-apple-standard">
+                <div class="moldura-mestre-16-10">
+                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
                 </div>
-                <div style="padding: 24px;">
-                    <span style="color: #F2811D; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">{{ post.data.category }}</span>
-                    <h3 style="color: #014039; margin: 10px 0; font-size: 1.15rem;">{{ post.data.title }}</h3>
-                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">{{ post.data.description | truncate(80) }}</p>
+                
+                <div class="card-content" style="padding: 24px;">
+                    <span style="color: var(--chef-orange, #F2811D); font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">{{ post.data.category }}</span>
+                    <h3 style="color: var(--chef-green, #014039); margin: 10px 0; font-size: 1.15rem; font-family: 'Merriweather', serif; line-height: 1.3;">{{ post.data.title }}</h3>
+                    <p style="color: var(--text-muted, #666); font-size: 0.9rem; line-height: 1.5; margin: 0;">{{ post.data.description | truncate(80) }}</p>
                 </div>
             </a>
+            
             {% endfor %}
 
-            <a href="/chefbox/" class="magazine-card" style="flex: 0 0 300px; background: #014039; border: none; border-radius: 24px; overflow: hidden; text-decoration: none;">
-                <div class="card-img-rect-wrapper" style="width: 100%; aspect-ratio: 16 / 10; overflow: hidden;">
-                    <img src="/imagens/maria-conceicao-chefbrico-laranja.png" class="card-img-rect" style="opacity: 0.85; width: 100%; height: 100%; object-fit: cover;">
+            <a href="/chefbox/" class="card-apple-standard" style="background: var(--chef-green, #014039); border: none;">
+                <div class="moldura-mestre-16-10">
+                    <img src="/imagens/maria-conceicao-chefbrico-laranja.png" alt="Monte sua ChefBox" style="opacity: 0.85;" loading="lazy">
                 </div>
-                <div style="padding: 24px; color: #FFFFFF;">
-                    <span style="color: #F2811D; font-weight: 800; font-size: 0.7rem;">A EXPERIÊNCIA</span>
-                    <h3 style="color: #FFFFFF; font-size: 1.15rem;">Monte sua ChefBox</h3>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">Escolha 4 sabores e o 5º é nosso presente.</p>
+                <div class="card-content" style="padding: 24px; color: #FFFFFF;">
+                    <span style="color: var(--chef-orange, #F2811D); font-weight: 800; font-size: 0.7rem; text-transform: uppercase;">A EXPERIÊNCIA</span>
+                    <h3 style="color: #FFFFFF; font-size: 1.15rem; margin: 10px 0; font-family: 'Merriweather', serif;">Monte sua ChefBox</h3>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.5; margin: 0;">Escolha 4 sabores e o 5º é nosso presente.</p>
                 </div>
             </a>
         </div>
     </section>
 
-    <section style="background: #FDFBF7; padding: 80px 24px; text-align: center; border-radius: 40px; margin: 40px 24px; border: 1px solid rgba(1, 64, 57, 0.05);">
-        <h2 style="color: #014039; font-family: 'Merriweather', serif; font-size: 2rem;">Uma Conquista de Todas Nós</h2>
-        <p style="max-width: 850px; margin: 25px auto; color: #555; line-height: 1.9; font-size: 1.15rem;">
-            A ChefBrico jamais foi uma jornada solitária. Ela é o resultado do sorriso de cada cliente e da confiança de parceiros como <strong>Sebrae, Emater e Senar</strong>. Uma jornada de produção local e afeto.
-        </p>
-    </section>
-</main>
+    <section style="background: var(--apple-cream, #FDFBF7); padding: 80px 24px; text-align: center; border-radius: var(--radius-master, 24px); margin: 40px var(--respiro-lateral) 80px var
