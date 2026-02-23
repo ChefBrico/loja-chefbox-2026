@@ -17,6 +17,69 @@
     <link rel="author" href="https://gourmetpratico.com.br/comida-de-verdade/">
 
     <link rel="stylesheet" href="/css/style.css">
+    
+    <style>
+        /* ==========================================================================
+           CSS EXCLUSIVO DA ILHA DINÂMICA (RÉGUA 4+1) E DO JAVASCRIPT
+           ========================================================================== */
+        
+        /* O Círculo Vazio */
+        .slot-circle {
+            position: relative; /* Fundamental para o X aparecer em cima */
+            width: 46px; height: 46px; border: 1.5px solid #ddd; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #aaa;
+            background-color: var(--apple-white); 
+            background-size: cover !important; 
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            transition: all 0.3s ease;
+            overflow: hidden; /* Garante que a foto do prato não vaze do círculo */
+            cursor: pointer;
+        }
+
+        /* O Círculo Cheio (Quando o JS joga a foto da comida) */
+        .slot-circle.filled { 
+            border: 2.5px solid var(--chef-orange); 
+            box-shadow: 0 5px 15px rgba(242, 129, 29, 0.3); 
+            color: transparent !important; /* Esconde o número 1,2,3 para a foto brilhar */
+        }
+
+        /* O Efeito "X" para remover o prato (Hover) */
+        .slot-circle.filled:hover::after {
+            content: '✕';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(242, 129, 29, 0.85); /* Vidro laranja */
+            color: white; font-size: 1.2rem; font-weight: 900;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .slot-circle.gift { border: 2.5px solid var(--whatsapp-green); color: var(--whatsapp-green); font-size: 1.2rem; background: var(--apple-cream); }
+
+        /* O BOTÃO VERDE (PADRÃO OURO APPLE GLASSMORPHISM) */
+        .btn-finish-float {
+            background: rgba(37, 211, 102, 0.85); /* Verde translúcido */
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            color: white; 
+            border: 1px solid rgba(255, 255, 255, 0.5); /* Brilho na borda */
+            padding: 12px 24px; border-radius: 50px; font-weight: 900; 
+            cursor: pointer; font-size: 0.85rem; text-transform: uppercase; 
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.4); /* Sombra fora e brilho dentro */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-finish-float:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5), inset 0 2px 2px rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Animação de pulso quando o 5º item é ganho */
+        .btn-finish-float.pulsing { animation: pulse-apple 2s infinite; }
+        @keyframes pulse-apple { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
+    </style>
+    
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
@@ -29,22 +92,25 @@
     
     {% include "footer.njk" %}
     
-    {% if '/receitas/' in page.url or '/chefbox/' in page.url or '/onde-encontrar/' in page.url %}
+    {% if '/receitas/' in page.url or '/chefbox/' in page.url %}
     <div id="chefbox-bar" class="dynamic-island-4plus1">
+        
         <div class="bar-info" style="line-height: 1.2;">
-            <b style="color: var(--chef-green); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">🎁 CHEFBOX VIP</b>
-            <span id="visor-dinamico-lucro" style="font-size: 0.85rem; font-weight: 900; color: var(--chef-orange); display: block;">ECONOMIA R$ 0,00</span>
+            <div id="game-status-text">
+                <b style="color: var(--chef-green); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">🎁 CHEFBOX VIP</b>
+                <span id="visor-dinamico-lucro" style="font-size: 0.85rem; font-weight: 900; color: var(--chef-orange); display: block;">ECONOMIA R$ 0,00</span>
+            </div>
         </div>
         
         <div class="slots-wrapper" style="display: flex; gap: 8px;">
-            <div id="slot-1" style="width: 44px; height: 44px; border: 1.5px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #aaa; background: var(--apple-white); background-size: cover; background-position: center;">1</div>
-            <div id="slot-2" style="width: 44px; height: 44px; border: 1.5px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #aaa; background: var(--apple-white); background-size: cover; background-position: center;">2</div>
-            <div id="slot-3" style="width: 44px; height: 44px; border: 1.5px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #aaa; background: var(--apple-white); background-size: cover; background-position: center;">3</div>
-            <div id="slot-4" style="width: 44px; height: 44px; border: 1.5px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #aaa; background: var(--apple-white); background-size: cover; background-position: center;">4</div>
-            <div id="slot-5" style="width: 44px; height: 44px; border: 2.5px solid var(--whatsapp-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--whatsapp-green); background: var(--apple-cream);">🎁</div>
+            <div id="slot-1" class="slot-circle">1</div>
+            <div id="slot-2" class="slot-circle">2</div>
+            <div id="slot-3" class="slot-circle">3</div>
+            <div id="slot-4" class="slot-circle">4</div>
+            <div id="slot-5" class="slot-circle gift">🎁</div>
         </div>
         
-        <button id="btn-finish-game" onclick="openCheckoutModal()" style="background: var(--whatsapp-green); color: var(--apple-white); border: none; padding: 12px 24px; border-radius: 50px; font-weight: 900; cursor: pointer; font-size: 0.85rem; text-transform: uppercase; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);">
+        <button id="btn-finish-game" class="btn-finish-float" onclick="openCheckoutModal()">
             Finalizar R$ 132 ➜
         </button>
     </div>
@@ -60,19 +126,17 @@
             </div>
             
             <form id="form-checkout-vip" name="Pedido-ChefBox" data-netlify="true" onsubmit="event.preventDefault(); sendOrderToWhatsApp();" style="display: flex; flex-direction: column; gap: 14px;">
-                
                 <input type="text" id="customer-name" placeholder="Nome Completo" required style="width: 100%; padding: 18px; border: 1px solid #eee; border-radius: 18px; font-size: 1rem; box-sizing: border-box; background: #F5F5F7; outline: none;">
-                
                 <input type="tel" id="customer-phone" placeholder="WhatsApp (DDD + Número)" required style="width: 100%; padding: 18px; border: 1px solid #eee; border-radius: 18px; font-size: 1rem; box-sizing: border-box; background: #F5F5F7; outline: none;">
                 
                 <div style="display:flex; gap:12px;">
                     <input type="text" id="customer-cep" placeholder="CEP (DF)" required style="width: 40%; padding: 18px; border: 1px solid #eee; border-radius: 18px; font-size: 1rem; box-sizing: border-box; background: #F5F5F7; outline: none;">
                     <div style="width: 60%; background: #e8f5e9; color: #1b5e20; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.65rem; text-align: center; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(27, 94, 32, 0.08);">
-                        ✅ FRETE GRÁTIS NO DF
+                        ✅ FRETE GRÁTIS
                     </div>
                 </div>
 
-                <textarea id="customer-address" placeholder="Endereço (Rua, Bloco, Apto/Casa, Bairro)" required style="width: 100%; padding: 18px; border: 1px solid #eee; border-radius: 18px; font-size: 1rem; box-sizing: border-box; resize: none; font-family: inherit; background: #F5F5F7; outline: none;" rows="3"></textarea>
+                <textarea id="customer-address" placeholder="Endereço (Rua, Bloco, Apto, Bairro)" required style="width: 100%; padding: 18px; border: 1px solid #eee; border-radius: 18px; font-size: 1rem; box-sizing: border-box; resize: none; font-family: inherit; background: #F5F5F7; outline: none;" rows="3"></textarea>
                 
                 <button type="submit" style="width: 100%; padding: 22px; background: var(--whatsapp-green); color: white; border: none; border-radius: 60px; font-weight: 900; cursor: pointer; font-size: 1.15rem; box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35); margin-top: 10px; text-transform: uppercase; letter-spacing: 1.5px; transition: transform 0.2s ease;">
                     GARANTIR PRESENTE ➜
