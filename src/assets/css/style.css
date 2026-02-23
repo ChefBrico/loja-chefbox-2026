@@ -1,6 +1,6 @@
 /* ==========================================================================
-   CHEFBRICO 2026 - BLINDAGEM OURO (PADRÃO APPLE CONSOLIDADO)
-   Arquitetura: 3 Colunas Mobile | 6 Colunas Desktop | Respiro 24px
+   CHEFBRICO 2026 - ARQUIVO MESTRE CONSOLIDADO (NÃO ALTERAR NOMES)
+   Arquitetura: Apple Gold Standard | Trava de Segurança Contra Colapso
    ========================================================================== */
 
 :root {
@@ -9,19 +9,20 @@
     --chef-green: #014039;
     --chef-orange: #F2811D;
     --whatsapp-green: #25D366;
+    --respiro-apple: 24px; /* A Regra de Ouro do Espaçamento Lateral */
     --radius-master: 18px;
-    --respiro-apple: 24px; /* A REGRA DE OURO DO RESPIRO */
 }
 
-/* --- 1. RESET E FUNDAÇÃO --- */
+/* 1. FUNDAÇÃO E RESPIRO (CORRIGE O "GRUDADO NAS LATERAIS") */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
 body {
     background-color: var(--apple-white) !important;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
     margin: 0; padding: 0; -webkit-font-smoothing: antialiased;
 }
 
-/* Garante que o conteúdo não grude nas bordas da janela */
+/* Garante o respiro de 24px em todas as páginas */
 main { 
     flex: 1; 
     padding: 0 var(--respiro-apple) 140px var(--respiro-apple) !important; 
@@ -29,13 +30,12 @@ main {
     margin: 0 auto;
 }
 
-/* --- 2. SEÇÃO MARIA CONCEIÇÃO (HERO E-E-A-T) --- */
+/* 2. MARIA CONCEIÇÃO (HERO E-E-A-T) - LADO A LADO DESKTOP / EMPILHADO MOBILE */
 .hero-premium-editorial {
     display: flex !important;
-    flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 40px !important;
+    gap: 50px !important;
     padding: 60px 0 !important;
 }
 
@@ -44,22 +44,64 @@ main {
     height: 220px !important;
     border-radius: 50% !important;
     border: 6px solid var(--apple-cream) !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.08) !important;
     overflow: hidden !important;
     flex-shrink: 0 !important;
+    position: relative !important;
 }
 
-.avatar-hero-circle img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+.avatar-hero-circle img {
+    width: 100% !important; height: 100% !important; object-fit: cover !important;
+}
 
 @media (max-width: 992px) {
-    .hero-premium-editorial { flex-direction: column !important; text-align: center !important; }
-    .avatar-hero-circle { width: 160px !important; height: 160px !important; }
+    .hero-premium-editorial { flex-direction: column !important; text-align: center !important; gap: 30px !important; }
+    .avatar-hero-circle { width: 170px !important; height: 170px !important; }
 }
 
-/* --- 3. O GRID MESTRE: 3 COLUNAS MOBILE / 6 DESKTOP --- */
+/* 3. MOLDURA MESTRE CARROSSEIS (PAGINA INDEX E MÉTODO) - TRAVA 16:10 */
+.carousel-apple-container, .magazine-carousel-container {
+    display: flex !important;
+    overflow-x: auto !important;
+    gap: 20px !important;
+    padding: 20px 0 60px 0 !important; /* Respiro interno */
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+}
+
+.carousel-apple-container::-webkit-scrollbar { display: none !important; }
+
+/* O Card Horizontal do Carrossel (Reduzido 50%) */
+.card-apple-standard {
+    flex: 0 0 280px !important; /* Tamanho proporcional para não ficar gigante */
+    background: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: var(--radius-master) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    scroll-snap-align: start !important;
+    overflow: hidden !important;
+}
+
+/* A Moldura que controla a imagem do carrossel */
+.moldura-mestre-16-10 {
+    width: 100% !important;
+    aspect-ratio: 16 / 10 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    display: block !important;
+    background: #f0f0f0 !important;
+}
+
+.moldura-mestre-16-10 img {
+    width: 100% !important; height: 100% !important; object-fit: cover !important;
+}
+
+/* 4. CARDÁPIO INDEX (RECEITAS) - 3 COLUNAS MOBILE / 6 COLUNAS DESKTOP */
 .recipe-grid-master, .catalog-grid-3cols, #main-grid, .vitrine-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* TRAVA 3 COLUNAS MOBILE */
+    grid-template-columns: repeat(3, 1fr) !important; /* TRAVA 3 COLUNAS */
     gap: 12px !important;
     margin: 40px 0 !important;
     width: 100% !important;
@@ -72,54 +114,26 @@ main {
     }
 }
 
-/* --- 4. MOLDURAS MESTRE (CONTROLE DE IMAGEM) --- */
-/* Moldura para Carrosséis (Horizontais) */
-.moldura-mestre-16-10 {
-    width: 100% !important;
-    aspect-ratio: 16 / 10 !important;
-    border-radius: 12px !important;
-    overflow: hidden !important;
-    position: relative !important;
-    display: block !important;
-    background: #f0f0f0 !important;
-}
-
-/* Moldura para Catálogo (Quadrada) */
+/* Moldura Quadrada para o Catálogo */
 .catalog-image-box {
     width: 100% !important;
     aspect-ratio: 1 / 1 !important;
     border-radius: 12px 12px 0 0 !important;
     overflow: hidden !important;
-    position: relative !important;
     display: block !important;
 }
 
-.moldura-mestre-16-10 img, .catalog-image-box img {
-    width: 100% !important; height: 100% !important; object-fit: cover !important;
-}
+.catalog-image-box img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
 
-/* --- 5. OS CARDS (VITRIFICADOS E PROPORCIONAIS) --- */
-.card-apple-standard, .catalog-card-micro {
-    background: rgba(255, 255, 255, 0.7) !important;
-    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    border-radius: 16px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden !important;
-    transition: transform 0.3s ease;
-}
-
-/* --- 6. TEXTOS (MICRO-OTIMIZADOS) --- */
+/* 5. MICRO-OTIMIZAÇÃO DE TEXTOS E BOTÕES */
 .recipe-content-micro { padding: 8px 6px !important; text-align: center !important; }
+
 .recipe-content-micro h3 {
-    font-size: 0.6rem !important; font-weight: 700 !important; color: var(--chef-green) !important;
-    line-height: 1.1 !important; height: 2.2em !important; overflow: hidden;
+    font-size: 0.62rem !important; font-weight: 700 !important; color: var(--chef-green) !important;
+    line-height: 1.1 !important; height: 2.3em !important; overflow: hidden;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin: 4px 0 !important;
 }
-.catalog-price { color: var(--whatsapp-green) !important; font-weight: 900 !important; font-size: 0.75rem !important; }
 
-/* Botão (+) Independente */
 .btn-add-micro {
     position: absolute !important; bottom: 6px !important; right: 6px !important;
     width: 26px !important; height: 26px !important; background: var(--chef-orange) !important;
