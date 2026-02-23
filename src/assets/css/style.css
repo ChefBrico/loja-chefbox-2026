@@ -145,3 +145,40 @@ main {
         gap: 20px !important;
     }
 }
+/* --- FUNDAÇÃO --- */
+:root { --respiro: 24px; --chef-green: #014039; --chef-orange: #F2811D; }
+main { padding: 0 var(--respiro) 120px var(--respiro) !important; max-width: 1400px; margin: 0 auto; }
+
+/* --- A. MOLDURA MARIA CONCEIÇÃO (E-E-A-T) --- */
+.avatar-hero-circle {
+    width: 220px; height: 220px; border-radius: 50% !important;
+    overflow: hidden; border: 6px solid #FDFBF7; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+.avatar-hero-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- B. OS PILARES (APENAS NA PAGINA MÉTODO) --- */
+.pilares-container {
+    display: flex; justify-content: space-around; gap: 20px; margin: 40px 0;
+}
+.pilar-item { text-align: center; flex: 1; }
+.pilar-img-frame { 
+    width: 100%; aspect-ratio: 16/10; border-radius: 18px; overflow: hidden; margin-bottom: 15px; 
+}
+.pilar-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- C. GRID CARDÁPIO (INDEX RECEITAS) - 6 DESKTOP / 3 MOBILE --- */
+.recipe-grid-master {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* MOBILE */
+    gap: 12px; margin-top: 40px;
+}
+@media (min-width: 1024px) {
+    .recipe-grid-master { grid-template-columns: repeat(6, 1fr) !important; } /* DESKTOP */
+}
+
+/* BOTÃO (+) SEMPRE ACIMA DO LINK */
+.btn-add-micro {
+    position: absolute; top: 6px; right: 6px; z-index: 100 !important;
+    width: 28px; height: 28px; background: var(--chef-orange); border-radius: 50%;
+    border: 2px solid white; cursor: pointer; color: white;
+}
