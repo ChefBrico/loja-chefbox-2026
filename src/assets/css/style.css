@@ -1,122 +1,187 @@
 /* ==========================================================================
-   CHEFBRICO | RESTAURAÇÃO TOTAL DE FUNDAÇÃO
+   CHEFBRICO | DESIGN SYSTEM v2026 (APPLE GOLD STANDARD)
+   Arquitetura: Respiro, Molduras Mestre (16:10), Soft Touch e YMYL
    ========================================================================== */
 
-/* --- 1. TRAVAS DE SEGURANÇA (CORREÇÃO DO MENU HAMBÚRGUER) --- */
+/* --- 1. VARIÁVEIS ABSOLUTAS (A PALETA OURO) --- */
+:root {
+    --apple-white:       #FFFFFF; /* Fundo puro da página */
+    --apple-cream:       #FDFBF7; /* Fundo dos cards e destaques */
+    --chef-green:        #014039; /* Autoridade e Títulos */
+    --chef-orange:       #F2811D; /* Persuasão e CTA */
+    --whatsapp-green:    #25D366; /* Conversão Base */
+    --text-dark:         #333333;
+    --text-muted:        #666666;
+    
+    /* A Matemática Apple */
+    --respiro-lateral:   24px; /* A REGRA DE OURO DO MOBILE FIRST */
+    --radius-master:     24px; /* Arredondamento perfeito */
+    --shadow-soft:       0 4px 15px rgba(0,0,0,0.03); /* Sombra de repouso */
+    --shadow-float:      0 20px 50px rgba(0,0,0,0.08); /* Sombra de interação */
+}
+
+/* --- 2. RESET E FUNDAÇÃO GLOBAL --- */
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--apple-white) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    color: var(--text-dark);
+    margin: 0; padding: 0;
+    -webkit-font-smoothing: antialiased;
+    display: flex; flex-direction: column; min-height: 100vh;
+}
+
+/* ESPAÇAMENTO FANTASMA: Garante que a régua 4+1 não esconda o mapa ou o rodapé */
+main { 
+    flex: 1; 
+    padding-bottom: 160px !important; 
+    overflow-x: hidden; 
+}
+
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; margin-top: 0; line-height: 1.2; }
+
+/* --- 3. CABEÇALHO (O VIDRO TRANSLÚCIDO E A SIMETRIA) --- */
+.top-bar-editorial {
+    background-color: var(--apple-cream); color: var(--chef-green);
+    text-align: center; padding: 10px var(--respiro-lateral); 
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+.site-header-apple {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: sticky; top: 0; z-index: 10000;
+}
+
+.header-contain-centered {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px var(--respiro-lateral);
+}
+
+.logo-axis img { width: 75px; height: 75px; object-fit: contain; }
+
+/* Mega Menu Acordeão */
+.nav-list-tight { display: flex; gap: 30px; list-style: none; padding: 0; margin: 0; align-items: center; }
+.nav-link-apple { color: var(--chef-green); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
+.has-mega-menu { position: relative; }
+.mega-menu-apple {
+    display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    background: var(--apple-white); width: 500px; padding: 35px; border-radius: var(--radius-master);
+    box-shadow: var(--shadow-float); border: 1px solid rgba(0,0,0,0.05); z-index: 11000;
+}
+.has-mega-menu:hover .mega-menu-apple { display: block; }
+.mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; }
+.mega-title { color: #999; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+.mega-column a { display: block; color: var(--chef-green); font-size: 0.9rem; padding: 8px 0; font-weight: 600; }
+.mega-column a:hover { color: var(--chef-orange); }
+
+/* --- 4. A LEI DAS MOLDURAS (O FIM DA BAGUNÇA DE IMAGENS) --- */
+
+/* REGRA 1: O Círculo Mestre (Apenas para a Maria Conceição Hero) */
+.avatar-hero-circle {
+    width: 240px; height: 240px; border-radius: 50% !important; 
+    overflow: hidden; flex-shrink: 0;
+    border: 8px solid var(--apple-cream); box-shadow: var(--shadow-float);
+    margin: 0 auto;
+}
+.avatar-hero-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+/* REGRA 2: A Moldura Mestre (Proporção 16:10 para TODOS os cards) */
+.moldura-mestre-16-10 {
+    width: 100%;
+    aspect-ratio: 16 / 10 !important; /* Trava matemática da proporção */
+    overflow: hidden; /* Nada escapa da moldura */
+    background-color: #eee; /* Fundo de carregamento */
+    position: relative;
+}
+.moldura-mestre-16-10 img {
+    width: 100%; height: 100%; 
+    object-fit: cover !important; /* Preenche sem distorcer, estilo Food Porn */
+    display: block;
+    transition: transform 0.6s ease; /* Prepara para efeito zoom no hover */
+}
+
+/* --- 5. O SISTEMA DE CARDS (O TOQUE SUAVE APPLE) --- */
+.card-apple-standard {
+    background-color: var(--apple-cream);
+    border-radius: var(--radius-master);
+    border: 1px solid rgba(1, 64, 57, 0.03); /* Borda quase invisível */
+    box-shadow: var(--shadow-soft);
+    display: flex; flex-direction: column;
+    overflow: hidden; /* Respeita as bordas arredondadas da moldura */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+.card-apple-standard:hover {
+    transform: translateY(-8px); /* Levitação */
+    box-shadow: var(--shadow-float);
+}
+.card-apple-standard:hover .moldura-mestre-16-10 img {
+    transform: scale(1.05); /* Micro-interação Food Porn */
+}
+
+/* --- 6. CARROSSÉIS E GRIDS (O RESPIRO DE 24PX) --- */
+.magazine-row-title {
+    padding: 0 var(--respiro-lateral); color: var(--chef-green); font-size: 1.7rem; margin-bottom: 20px;
+}
+
+/* O Carrossel com Bleed Scroll (Sangria) */
+.carousel-apple-container {
+    display: flex; overflow-x: auto; gap: 20px;
+    padding: 10px var(--respiro-lateral) 50px var(--respiro-lateral) !important; /* Começa alinhado, rola livre */
+    scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.carousel-apple-container::-webkit-scrollbar { display: none; }
+.carousel-apple-container > .card-apple-standard { flex: 0 0 300px; scroll-snap-align: start; }
+
+/* O Grid do Cardápio Completo (Mantendo suas 6 colunas) */
+.recipe-grid-master {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* Mobile: 2 cravadas */
+    gap: 15px !important; width: 100% !important; max-width: 1400px !important;
+    margin: 30px auto 80px !important; padding: 0 var(--respiro-lateral) !important;
+}
+@media (min-width: 1024px) { .recipe-grid-master { grid-template-columns: repeat(6, 1fr) !important; gap: 20px !important; } }
+
+.recipe-grid-master .card-apple-standard { flex: none; height: 100%; } /* Ocupa altura total do grid */
+
+/* --- 7. A ILHA DINÂMICA (RÉGUA 4+1) --- */
+.dynamic-island-4plus1 {
+    position: fixed; 
+    bottom: 20px; /* Flutuante, não grudada no chão */
+    left: 50%; transform: translateX(-50%);
+    width: 90%; max-width: 600px;
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.5); border-top: 4px solid var(--chef-orange);
+    border-radius: 40px; padding: 15px 25px; z-index: 99999;
+    box-shadow: var(--shadow-float);
+    display: flex; align-items: center; justify-content: space-between; gap: 15px;
+}
+
+/* --- 8. MOBILE FIRST (A SIMETRIA MATEMÁTICA) --- */
 .mobile-only { display: none !important; }
 .desktop-only { display: flex !important; }
 
 @media (max-width: 992px) {
     .mobile-only { display: block !important; }
     .desktop-only { display: none !important; }
-}
-
-/* --- 2. AS SUAS VARIÁVEIS ORIGINAIS --- */
-:root {
-    --cor-dourado:       #bfb084; 
-    --cor-institucional: #014039; 
-    --cor-cta:           #F2811D; 
-    --cor-vinho:         #73022c; 
-    --cor-cinza-forte:   #333333; 
-    --cor-cinza-leve:    #666666; 
-    --cor-creme:         #fdfcf7; 
-    --cor-branco:        #ffffff; 
     
-    --fonte-titulo: 'Playfair Display', 'Merriweather', serif;
-    --fonte-corpo:  'Lato', -apple-system, sans-serif;
-    --container-width: 1200px;
-    --border-radius: 24px; /* Arredondamento Apple */
-    --respiro-lateral: 24px; /* O RESPIRO QUE VOCÊ PEDIU */
-}
+    /* Cabeçalho Perfeito */
+    .header-contain-centered { justify-content: space-between; padding: 10px var(--respiro-lateral); }
+    .mobile-menu-btn { background: none; border: none; font-size: 2rem; color: var(--chef-green); padding: 0; order: 1; cursor: pointer;}
+    .logo-axis { order: 2; flex-grow: 1; display: flex; justify-content: center; }
+    .logo-axis img { width: 65px; height: 65px; }
+    .mobile-spacer { width: 35px; order: 3; display: block !important; } /* Balança a logo pro centro */
 
-* { box-sizing: border-box; }
-
-body {
-    font-family: var(--fonte-corpo);
-    color: var(--cor-cinza-forte);
-    background-color: var(--cor-branco) !important;
-    margin: 0; padding: 0;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-}
-
-main { width: 100%; padding-bottom: 120px; display: block; }
-
-/* --- 3. O RESPIRO LATERAL NOS CARROSSÉIS (A ÚNICA MUDANÇA VISUAL) --- */
-.carousel-container, .post-carousel, .magazine-carousel-container, .magazine-carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 20px;
-    /* AQUI ESTÁ O RESPIRO LATERAL APPLE DE 24PX: */
-    padding: 20px var(--respiro-lateral) 60px var(--respiro-lateral) !important;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-}
-.carousel-container::-webkit-scrollbar, .magazine-carousel-container::-webkit-scrollbar { display: none; }
-
-/* --- 4. OS SEUS CARDS ORIGINAIS (RESTAURADOS) --- */
-.card, .product-card, .magazine-card-unit, .magazine-card {
-    background-color: var(--cor-creme);
-    border: 1px solid rgba(1, 64, 57, 0.05);
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-    display: flex; flex-direction: column;
-    flex: 0 0 300px; /* Largura fixa para não quebrar */
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-}
-.card:hover, .magazine-card-unit:hover, .magazine-card:hover { 
-    transform: translateY(-10px); 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
-}
-
-.card-image, .card-img-rect, .magazine-card-img-wrapper img { 
-    width: 100%; aspect-ratio: 16 / 10; object-fit: cover; 
-}
-
-/* --- 5. A REGRA DOS CÍRCULOS (MARIA CONCEIÇÃO) --- */
-.avatar-circle-protector, .circle-img-large, .avatar-hero-circle {
-    width: 240px; height: 240px; border-radius: 50% !important;
-    overflow: hidden; border: 8px solid var(--cor-creme);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.06); margin: 0 auto; flex-shrink: 0;
-}
-.avatar-circle-protector img, .circle-img-large img { width: 100%; height: 100%; object-fit: cover; }
-
-/* --- 6. SEU GRID MESTRE DE RECEITAS (INTOCADO) --- */
-.recipe-grid, .vitrine-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 15px !important; width: 100% !important; max-width: 1400px !important;
-    margin: 0 auto 100px !important; padding: 0 var(--respiro-lateral) !important;
-}
-@media (min-width: 1024px) {
-    .recipe-grid, .vitrine-grid { grid-template-columns: repeat(6, 1fr) !important; }
-}
-
-/* --- 7. HEADER E MEGA MENU --- */
-.site-header-apple {
-    background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 10000;
-}
-.header-contain-centered {
-    max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
-    padding: 10px var(--respiro-lateral);
-}
-.nav-list-tight { display: flex; list-style: none; margin: 0; padding: 0; gap: 30px; align-items: center; }
-.nav-link-apple { color: var(--cor-institucional); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; text-decoration: none; }
-
-.mega-menu-apple {
-    display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-    background: #FFFFFF; width: 500px; padding: 30px; border-radius: 24px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.12); border: 1px solid rgba(0,0,0,0.05); z-index: 11000;
-}
-.has-mega-menu:hover .mega-menu-apple { display: block; }
-.mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-
-/* --- AJUSTES MOBILE EXTRAS --- */
-@media (max-width: 992px) {
-    .avatar-circle-protector, .circle-img-large, .avatar-hero-circle { width: 190px; height: 190px; }
-    .card, .magazine-card-unit, .magazine-card { flex: 0 0 270px; }
+    /* Avatares e Cards no Mobile */
+    .avatar-hero-circle { width: 200px; height: 200px; border-width: 6px; }
+    .carousel-apple-container > .card-apple-standard { flex: 0 0 270px; }
+    
+    /* Ilha Dinâmica Mobile */
+    .dynamic-island-4plus1 { flex-direction: column; padding: 15px; border-radius: 28px; }
 }
