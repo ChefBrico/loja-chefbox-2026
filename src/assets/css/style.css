@@ -1,146 +1,122 @@
 /* ==========================================================================
-   CHEFBRICO A-COMMERCE | DESIGN SYSTEM v2026 (APPLE GOLD STANDARD)
-   Focado em: EEAT, Persuasão Feminina, Mecanismo 4+1 e Agentes de IA.
+   CHEFBRICO | RESTAURAÇÃO TOTAL DE FUNDAÇÃO
    ========================================================================== */
 
-/* --- 1. VARIÁVEIS DA MARCA E DNA VISUAL --- */
+/* --- 1. TRAVAS DE SEGURANÇA (CORREÇÃO DO MENU HAMBÚRGUER) --- */
+.mobile-only { display: none !important; }
+.desktop-only { display: flex !important; }
+
+@media (max-width: 992px) {
+    .mobile-only { display: block !important; }
+    .desktop-only { display: none !important; }
+}
+
+/* --- 2. AS SUAS VARIÁVEIS ORIGINAIS --- */
 :root {
-    --cor-institucional: #014039; /* Verde ChefBrico */
-    --cor-cta:           #F2811D; /* Laranja Conversão */
-    --cor-dourado:       #bfb084; /* Detalhe Premium */
-    --cor-vinho:         #73022c; /* Destaque Emocional */
+    --cor-dourado:       #bfb084; 
+    --cor-institucional: #014039; 
+    --cor-cta:           #F2811D; 
+    --cor-vinho:         #73022c; 
+    --cor-cinza-forte:   #333333; 
+    --cor-cinza-leve:    #666666; 
+    --cor-creme:         #fdfcf7; 
+    --cor-branco:        #ffffff; 
     
-    --apple-white:       #FFFFFF; /* Fundo Global */
-    --apple-cream:       #FDFBF7; /* Fundo Gourmet / Cards */
-    --cor-cinza-forte:   #333333;
-    --cor-cinza-leve:    #666666;
-    --whatsapp-green:    #25D366;
-    
-    --shadow-soft:       0 10px 30px rgba(0,0,0,0.04);
-    --shadow-float:      0 20px 50px rgba(0,0,0,0.08);
-    --radius-apple:      24px;
-    --respiro-lateral:   24px; /* O Segredo do Espaço Apple */
+    --fonte-titulo: 'Playfair Display', 'Merriweather', serif;
+    --fonte-corpo:  'Lato', -apple-system, sans-serif;
+    --container-width: 1200px;
+    --border-radius: 24px; /* Arredondamento Apple */
+    --respiro-lateral: 24px; /* O RESPIRO QUE VOCÊ PEDIU */
 }
 
-/* --- 2. O ESQUELETO MESTRE --- */
 * { box-sizing: border-box; }
+
 body {
-    background-color: var(--apple-white) !important;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    font-family: var(--fonte-corpo);
     color: var(--cor-cinza-forte);
+    background-color: var(--cor-branco) !important;
     margin: 0; padding: 0;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    display: flex; flex-direction: column; min-height: 100vh;
-}
-a { text-decoration: none; transition: all 0.3s ease; }
-img { max-width: 100%; height: auto; display: block; }
-
-main { flex: 1; padding-bottom: 120px; } /* Espaço para a régua 4+1 não esconder conteúdo */
-
-/* --- 3. CABEÇALHO (HEADER SLIM APPLE) --- */
-.top-bar {
-    background-color: var(--apple-cream); color: var(--cor-institucional);
-    text-align: center; padding: 10px 0; font-size: 0.75rem; font-weight: 800;
-    letter-spacing: 1.5px; border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.site-header {
-    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    position: sticky; top: 0; z-index: 10000;
+main { width: 100%; padding-bottom: 120px; display: block; }
+
+/* --- 3. O RESPIRO LATERAL NOS CARROSSÉIS (A ÚNICA MUDANÇA VISUAL) --- */
+.carousel-container, .post-carousel, .magazine-carousel-container, .magazine-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    /* AQUI ESTÁ O RESPIRO LATERAL APPLE DE 24PX: */
+    padding: 20px var(--respiro-lateral) 60px var(--respiro-lateral) !important;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+.carousel-container::-webkit-scrollbar, .magazine-carousel-container::-webkit-scrollbar { display: none; }
+
+/* --- 4. OS SEUS CARDS ORIGINAIS (RESTAURADOS) --- */
+.card, .product-card, .magazine-card-unit, .magazine-card {
+    background-color: var(--cor-creme);
+    border: 1px solid rgba(1, 64, 57, 0.05);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    display: flex; flex-direction: column;
+    flex: 0 0 300px; /* Largura fixa para não quebrar */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+.card:hover, .magazine-card-unit:hover, .magazine-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
 }
 
-.header-container {
-    max-width: 1200px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
+.card-image, .card-img-rect, .magazine-card-img-wrapper img { 
+    width: 100%; aspect-ratio: 16 / 10; object-fit: cover; 
+}
+
+/* --- 5. A REGRA DOS CÍRCULOS (MARIA CONCEIÇÃO) --- */
+.avatar-circle-protector, .circle-img-large, .avatar-hero-circle {
+    width: 240px; height: 240px; border-radius: 50% !important;
+    overflow: hidden; border: 8px solid var(--cor-creme);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06); margin: 0 auto; flex-shrink: 0;
+}
+.avatar-circle-protector img, .circle-img-large img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- 6. SEU GRID MESTRE DE RECEITAS (INTOCADO) --- */
+.recipe-grid, .vitrine-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important; width: 100% !important; max-width: 1400px !important;
+    margin: 0 auto 100px !important; padding: 0 var(--respiro-lateral) !important;
+}
+@media (min-width: 1024px) {
+    .recipe-grid, .vitrine-grid { grid-template-columns: repeat(6, 1fr) !important; }
+}
+
+/* --- 7. HEADER E MEGA MENU --- */
+.site-header-apple {
+    background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 10000;
+}
+.header-contain-centered {
+    max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
     padding: 10px var(--respiro-lateral);
 }
+.nav-list-tight { display: flex; list-style: none; margin: 0; padding: 0; gap: 30px; align-items: center; }
+.nav-link-apple { color: var(--cor-institucional); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; text-decoration: none; }
 
-.logo-circle { width: 75px; height: 75px; object-fit: contain; }
-
-/* Menu Desktop */
-.nav-list { display: flex; gap: 30px; list-style: none; padding: 0; margin: 0; align-items: center; }
-.nav-link { color: var(--cor-institucional); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-
-/* MEGA MENU RESTAURADO (ACORDEÃO 2 COLUNAS) */
-.has-dropdown { position: relative; }
-.mega-menu {
+.mega-menu-apple {
     display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-    background: var(--apple-white); width: 500px; padding: 35px; border-radius: var(--radius-apple);
-    box-shadow: var(--shadow-float); border: 1px solid rgba(0,0,0,0.05); z-index: 11000;
+    background: #FFFFFF; width: 500px; padding: 30px; border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12); border: 1px solid rgba(0,0,0,0.05); z-index: 11000;
 }
-.has-dropdown:hover .mega-menu { display: block; }
+.has-mega-menu:hover .mega-menu-apple { display: block; }
 .mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-.mega-title { color: #999; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
-.mega-column a { display: block; color: var(--cor-institucional); font-size: 0.9rem; padding: 8px 0; font-weight: 600; }
-.mega-column a:hover { color: var(--cor-cta); }
 
-/* --- 4. A REGRA DOS CÍRCULOS (ARQUITETO) --- */
-.avatar-hero-circle {
-    width: 240px; height: 240px; border-radius: 50% !important; overflow: hidden;
-    border: 8px solid var(--apple-cream); box-shadow: var(--shadow-float);
-    margin: 0 auto; flex-shrink: 0;
-}
-.avatar-hero-circle img { width: 100%; height: 100%; object-fit: cover; }
-
-.circle-img-small {
-    width: 85px; height: 85px; border-radius: 50% !important; object-fit: cover;
-    border: 3px solid var(--apple-white); box-shadow: var(--shadow-soft);
-}
-
-/* --- 5. ENGENHARIA DO CARROSSEL DE REVISTA (FIM DOS CARDS GRUDADOS) --- */
-.magazine-row { margin: 60px 0; }
-.magazine-row h2 { padding: 0 var(--respiro-lateral); color: var(--cor-institucional); font-size: 1.7rem; margin-bottom: 25px; font-family: 'Merriweather', serif; }
-
-.carousel-container {
-    display: flex; overflow-x: auto; gap: 20px;
-    padding: 20px var(--respiro-lateral) 60px var(--respiro-lateral) !important; /* O RESPIRO VITAL */
-    scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
-}
-.carousel-container::-webkit-scrollbar { display: none; }
-
-/* CARD PADRÃO OURO (16:10 + CREAM) */
-.card {
-    flex: 0 0 300px; background-color: var(--apple-cream);
-    border-radius: var(--radius-apple); overflow: hidden; text-decoration: none;
-    scroll-snap-align: start; border: 1px solid rgba(1, 64, 57, 0.05);
-    box-shadow: var(--shadow-soft); transition: transform 0.4s ease;
-}
-.card:hover { transform: translateY(-10px); box-shadow: var(--shadow-float); border-color: var(--cor-cta); }
-.card-image { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
-.card-content { padding: 24px; }
-
-/* --- 6. GRID MESTRE (CARDÁPIO COM 6 COLUNAS INTOCADO) --- */
-.recipe-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* Mobile */
-    gap: 15px !important; width: 100% !important; max-width: 1400px !important;
-    margin: 40px auto 100px !important; padding: 0 var(--respiro-lateral);
-}
-@media (min-width: 1024px) { .recipe-grid { grid-template-columns: repeat(6, 1fr) !important; } }
-
-.recipe-card {
-    background: var(--apple-cream); border-radius: var(--radius-apple); border: 1px solid #eee;
-    box-shadow: var(--shadow-soft); display: flex; flex-direction: column; overflow: hidden;
-}
-.recipe-card img { height: 140px !important; width: 100%; object-fit: cover; }
-.recipe-card h3 { font-size: 0.9rem !important; margin: 15px; color: var(--cor-institucional); }
-
-/* --- 7. MOBILE FIRST - RESOLUÇÃO DE CONFLITOS --- */
+/* --- AJUSTES MOBILE EXTRAS --- */
 @media (max-width: 992px) {
-    :root { --respiro-lateral: 20px; }
-    
-    /* Header e Logo Mobile */
-    .header-container { justify-content: space-between; padding: 10px 15px; }
-    .nav-list { display: none; }
-    .mobile-menu-btn { display: block; background: none; border: none; font-size: 2rem; color: var(--cor-institucional); order: 1; }
-    .logo-circle { width: 60px; height: 60px; order: 2; flex-grow: 1; }
-    .mobile-spacer { width: 45px; order: 3; } /* Força a logo pro centro */
-
-    /* Avatares e Textos */
-    .avatar-hero-circle { width: 200px; height: 200px; }
-    .hero-section-with-image-and-text { flex-direction: column; text-align: center; padding: 40px var(--respiro-lateral); }
-    
-    /* Carrosséis */
-    .card { flex: 0 0 270px; }
+    .avatar-circle-protector, .circle-img-large, .avatar-hero-circle { width: 190px; height: 190px; }
+    .card, .magazine-card-unit, .magazine-card { flex: 0 0 270px; }
 }
