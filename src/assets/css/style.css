@@ -403,3 +403,45 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
         margin: 15px auto 0 auto !important;
     }
 }
+/* ==========================================================================
+   BLINDAGEM ABSOLUTA DE IMAGENS (FORÇA A RENDERIZAÇÃO)
+   ========================================================================== */
+
+/* 1. Garante que a Moldura Mestre exista e tenha volume */
+.moldura-mestre-16-10, 
+.catalog-image-box, 
+.card-img-rect-wrapper {
+    width: 100% !important;
+    position: relative !important;
+    display: block !important;
+    overflow: hidden !important;
+    background-color: #F5F5F7 !important; /* Fundo cinza claro para provar que a caixa está lá */
+}
+
+/* 2. Força a Imagem a preencher 100% do espaço da moldura (Anti-Colapso) */
+.moldura-mestre-16-10 img, 
+.catalog-image-box img, 
+.card-img-rect-wrapper img,
+.avatar-circle-protector img,
+.logo-axis img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 3. Exceções: A Logo e a Foto da Maria precisam de regras ligeiramente diferentes */
+.avatar-circle-protector {
+    position: relative !important;
+    display: block !important;
+}
+
+.logo-axis img {
+    position: relative !important; /* A logo não pode ser absoluta senão quebra o menu */
+    object-fit: contain !important; /* A logo não pode ser cortada (cover) */
+}
