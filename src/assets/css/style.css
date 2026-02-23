@@ -140,17 +140,102 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
 .carousel-apple-container::-webkit-scrollbar { display: none; }
 .carousel-apple-container > .card-apple-standard { flex: 0 0 300px; scroll-snap-align: start; }
 
-/* O Grid do Cardápio Completo (Mantendo suas 6 colunas) */
+/* ==========================================================================
+   GRID A-COMMERCE: 3 COLUNAS (MOBILE) / 6 COLUNAS (DESKTOP)
+   ========================================================================== */
+
+/* 1. A Estrutura do Grid */
 .recipe-grid-master {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* Mobile: 2 cravadas */
-    gap: 15px !important; width: 100% !important; max-width: 1400px !important;
-    margin: 30px auto 80px !important; padding: 0 var(--respiro-lateral) !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* O NOVO PADRÃO: 3 colunas cravadas no celular */
+    gap: 8px !important; /* Gap reduzido para as colunas respirarem sem espremer */
+    width: 100% !important; 
+    max-width: 1400px !important;
+    margin: 30px auto 80px !important; 
+    padding: 0 15px !important; /* Respiro lateral ligeiramente menor para o catálogo */
 }
-@media (min-width: 1024px) { .recipe-grid-master { grid-template-columns: repeat(6, 1fr) !important; gap: 20px !important; } }
 
-.recipe-grid-master .card-apple-standard { flex: none; height: 100%; } /* Ocupa altura total do grid */
+@media (min-width: 1024px) { 
+    .recipe-grid-master { 
+        grid-template-columns: repeat(6, 1fr) !important; 
+        gap: 20px !important; 
+        padding: 0 24px !important;
+    } 
+}
 
+/* 2. O Card Compacto (Apple Soft Touch) */
+.recipe-grid-master .card-apple-standard { 
+    flex: none; 
+    height: 100%; 
+    border-radius: 12px; /* Arredondamento mais contido para economizar espaço */
+    padding: 0; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+} 
+
+/* 3. A Moldura Mestre no Card Compacto */
+.recipe-grid-master .moldura-mestre-16-10 {
+    border-radius: 12px 12px 0 0;
+}
+.recipe-grid-master .moldura-mestre-16-10 img { 
+    height: 85px !important; /* Altura calculada matemática para 3 colunas */
+    width: 100%;
+    object-fit: cover;
+}
+
+/* 4. Tipografia de Alta Densidade (Micro-otimização Apple) */
+.recipe-content-micro {
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-grow: 1; 
+}
+
+.recipe-content-micro h3 { 
+    font-size: 0.65rem !important; /* Fonte minúscula, mas de altíssima legibilidade */
+    color: var(--chef-green, #014039); 
+    line-height: 1.15;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+    margin: 0;
+    /* Trava o título em no máximo 3 linhas. O que passar vira reticências (...) */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.recipe-content-micro p.price {
+    color: var(--whatsapp-green, #25D366);
+    font-weight: 900;
+    font-size: 0.75rem;
+    margin: auto 0 0 0; /* Força o preço a colar no fundo do card */
+}
+
+/* 5. O Botão "+" Inteligente (Alvo de Toque Seguro) */
+.btn-add-micro {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    background-color: var(--chef-orange, #F2811D);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(242, 129, 29, 0.35);
+    z-index: 2;
+    transition: transform 0.2s ease;
+}
+.btn-add-micro:active { transform: scale(0.9); }
 /* --- 7. A ILHA DINÂMICA (RÉGUA 4+1) --- */
 .dynamic-island-4plus1 {
     position: fixed; 
