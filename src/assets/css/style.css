@@ -204,3 +204,17 @@ main {
     overflow: hidden;
 }
 .moldura-mestre-1-1 img { width: 100%; height: 100%; object-fit: cover; }
+
+/* TRAVA DE NAVEGAÇÃO CHIEFBRICO */
+.recipe-card a {
+    pointer-events: auto !important; /* Força o link a aceitar o clique */
+    display: block !important;
+}
+
+.card-image-wrapper img {
+    pointer-events: none !important; /* Faz a imagem ser "transparente" para o clique atingir o link atrás dela */
+}
+
+.btn-card-float {
+    pointer-events: auto !important; /* Mantém o botão clicável individualmente */
+}
