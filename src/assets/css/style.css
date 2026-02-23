@@ -522,3 +522,61 @@ h1, h2, h3, h4 { color: var(--chef-green); font-family: 'Merriweather', serif; m
         height: 190px !important; 
     }
 }
+/* ==========================================================================
+   RESTAURAÇÃO HERO EDITORIAL (MARIA CONCEIÇÃO LADO A LADO)
+   ========================================================================== */
+
+/* 1. O Alinhamento Desktop (Lado a Lado) */
+.hero-premium-editorial {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 60px !important;
+    padding: 80px 24px !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+}
+
+/* 2. Formatação do Texto Padrão Ouro */
+.editorial-content {
+    text-align: left !important;
+}
+.editorial-title {
+    color: var(--chef-green, #014039) !important;
+    font-family: 'Merriweather', serif !important;
+    font-size: 2.8rem !important;
+    line-height: 1.1 !important;
+    margin: 5px 0 15px 0 !important;
+}
+.editorial-subtitle {
+    color: #555 !important;
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    max-width: 600px !important;
+}
+
+/* 3. A Foto no Desktop (Protege contra esmagamento) */
+.avatar-circle-protector {
+    flex-shrink: 0 !important; 
+    margin: 0 !important; 
+}
+
+/* 4. A Regra do Celular (Empilha foto em cima e centraliza) */
+@media (max-width: 992px) {
+    .hero-premium-editorial {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 30px !important;
+        padding: 40px 24px !important;
+    }
+    .editorial-content {
+        text-align: center !important;
+    }
+    .avatar-circle-protector {
+        margin: 0 auto !important; /* Força o centro no Mobile */
+    }
+    .editorial-title { 
+        font-size: 2.1rem !important; 
+    }
+}
