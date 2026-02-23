@@ -1,1053 +1,146 @@
 /* ==========================================================================
-   CHEFBRICO A-COMMERCE | DESIGN SYSTEM v5.0 (CLEAN & ELEGANT)
+   CHEFBRICO A-COMMERCE | DESIGN SYSTEM v2026 (APPLE GOLD STANDARD)
    Focado em: EEAT, Persuasão Feminina, Mecanismo 4+1 e Agentes de IA.
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   1. A FUNDAÇÃO (VARIÁVEIS & DNA DA MARCA)
-   -------------------------------------------------------------------------- */
+/* --- 1. VARIÁVEIS DA MARCA E DNA VISUAL --- */
 :root {
-    /* Paleta de Cores */
-    --cor-dourado:       #bfb084; /* 1. Detalhes Premium */
-    --cor-institucional: #014039; /* 2. Verde Padrão */
-    --cor-cta:           #F2811D; /* 3. Laranja Ação */
+    --cor-institucional: #014039; /* Verde ChefBrico */
+    --cor-cta:           #F2811D; /* Laranja Conversão */
+    --cor-dourado:       #bfb084; /* Detalhe Premium */
+    --cor-vinho:         #73022c; /* Destaque Emocional */
     
-    /* Cores de Apoio */
-    --cor-vinho:         #73022c; /* Destaques Emocionais */
-    --cor-cinza-forte:   #333333; /* Texto Principal */
-    --cor-cinza-leve:    #666666; /* Texto Secundário */
-    --cor-creme:         #fdfcf7; /* Fundo "Gourmet" */
-    --cor-branco:        #ffffff; /* Fundo Limpo */
+    --apple-white:       #FFFFFF; /* Fundo Global */
+    --apple-cream:       #FDFBF7; /* Fundo Gourmet / Cards */
+    --cor-cinza-forte:   #333333;
+    --cor-cinza-leve:    #666666;
+    --whatsapp-green:    #25D366;
     
-    /* Tipografia */
-    --fonte-titulo: 'Playfair Display', serif;
-    --fonte-corpo:  'Lato', sans-serif;
-    --fonte-cursiva: 'Dancing Script', cursive;
-    
-    /* Layout */
-    --container-width: 1200px;
-    --border-radius: 12px;
+    --shadow-soft:       0 10px 30px rgba(0,0,0,0.04);
+    --shadow-float:      0 20px 50px rgba(0,0,0,0.08);
+    --radius-apple:      24px;
+    --respiro-lateral:   24px; /* O Segredo do Espaço Apple */
 }
 
-/* --------------------------------------------------------------------------
-   2. O ESQUELETO (RESET & ESTRUTURA)
-   -------------------------------------------------------------------------- */
+/* --- 2. O ESQUELETO MESTRE --- */
 * { box-sizing: border-box; }
-
 body {
-    font-family: var(--fonte-corpo);
+    background-color: var(--apple-white) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
     color: var(--cor-cinza-forte);
-    background-color: var(--cor-creme);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
+    margin: 0; padding: 0;
+    -webkit-font-smoothing: antialiased;
+    display: flex; flex-direction: column; min-height: 100vh;
 }
-
-h1, h2, h3, h4 {
-    font-family: var(--fonte-titulo);
-    color: var(--cor-institucional);
-    margin-top: 0;
-    line-height: 1.2;
-}
-
-a { text-decoration: none; color: inherit; transition: 0.2s; }
+a { text-decoration: none; transition: all 0.3s ease; }
 img { max-width: 100%; height: auto; display: block; }
 
-/* O Palco Principal */
-main {
-    flex: 1;
-    width: 100%;
-    padding-bottom: 40px;
-}
+main { flex: 1; padding-bottom: 120px; } /* Espaço para a régua 4+1 não esconder conteúdo */
 
-/* Container Centralizado */
-.container, .header-container, .footer-grid {
-    width: 100%;
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --------------------------------------------------------------------------
-   3. CABEÇALHO (HEADER SLIM & ELEGANTE)
-   -------------------------------------------------------------------------- */
+/* --- 3. CABEÇALHO (HEADER SLIM APPLE) --- */
 .top-bar {
-    background-color: var(--cor-dourado);
-    color: white;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    background-color: var(--apple-cream); color: var(--cor-institucional);
+    text-align: center; padding: 10px 0; font-size: 0.75rem; font-weight: 800;
+    letter-spacing: 1.5px; border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .site-header {
-    background-color: var(--cor-institucional);
-    padding: 10px 0; /* Altura Slim */
-    position: relative;
-    z-index: 500;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Logo Delicada */
-.logo-circle {
-    width: 70px; height: 70px;
-    background: var(--cor-dourado);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--cor-institucional);
-    margin-top: 5px;
-}
-.logo-circle img { max-width: 65%; }
-
-/* Menu Desktop */
-.nav-list { display: flex; gap: 25px; list-style: none; padding: 0; margin: 0; }
-.nav-link { 
-    color: white; 
-    font-weight: 600; 
-    font-size: 0.85rem; 
-    text-transform: uppercase; 
-    letter-spacing: 1px;
-}
-.nav-link:hover { color: var(--cor-dourado); }
-
-/* Botão ChefBox */
-.btn-chefbox {
-    background-color: var(--cor-cta);
-    color: white !important;
-    padding: 8px 20px;
-    border-radius: 4px;
-    font-weight: bold;
-    box-shadow: 0 3px 0 #c0600c;
-    font-size: 0.9rem;
-}
-.btn-chefbox:hover { transform: translateY(-2px); background-color: #ff9f43; }
-
-/* MEGA MENU (Soluções Restauradas) */
-.has-dropdown { position: relative; }
-.mega-menu {
-    display: none;
-    position: absolute;
-    top: 100%; left: -20px;
-    background: var(--cor-branco);
-    border-top: 3px solid var(--cor-dourado);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    padding: 20px;
-    z-index: 1000;
-    min-width: 600px;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    border-radius: 0 0 8px 8px;
-}
-.has-dropdown:hover .mega-menu { display: grid; }
-
-.mega-column h4 {
-    color: var(--cor-institucional);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-.mega-column ul { list-style: none; padding: 0; }
-.mega-column a { display: block; padding: 5px 0; color: #555; font-size: 0.9rem; }
-.mega-column a:hover { color: var(--cor-cta); transform: translateX(5px); }
-
-/* Mobile Menu Button */
-.mobile-menu-btn { display: none; background: none; border: none; font-size: 2rem; color: var(--cor-dourado); cursor: pointer; }
-.mobile-menu-drawer { display: none; flex-direction: column; background-color: var(--cor-institucional); border-top: 1px solid rgba(255,255,255,0.1); }
-.mobile-link { padding: 15px 20px; color: white; border-bottom: 1px solid rgba(255,255,255,0.05); display: block; }
-
-/* --------------------------------------------------------------------------
-   4. COMPONENTES VISUAIS (CARROSSÉIS & CARDS)
-   -------------------------------------------------------------------------- */
-/* Carrossel Horizontal */
-.carousel-container, .post-carousel, .post-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 20px;
-    padding: 15px 5px 25px 5px;
-    scrollbar-width: none;
-}
-.carousel-container::-webkit-scrollbar { display: none; }
-
-/* Cards Genéricos */
-.card, .product-card, .carousel-card {
-    background-color: var(--cor-branco);
-    border: 1px solid #eee;
-    border-radius: var(--border-radius);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    display: flex; flex-direction: column;
-    flex: 0 0 280px;
-    overflow: hidden;
-    transition: transform 0.3s;
-}
-.card:hover { transform: translateY(-5px); }
-.card-image { width: 100%; height: 180px; object-fit: cover; }
-.card-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-
-/* Hero Section (Topo Home) */
-.hero-section-with-image-and-text {
-    display: flex; align-items: center; gap: 40px;
-    padding: 60px 0; max-width: var(--container-width); margin: 0 auto;
-}
-.hero-image-container-circular {
-    width: 300px; height: 300px;
-    border-radius: 50%; overflow: hidden;
-    border: 5px solid white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    flex-shrink: 0;
-}
-.hero-image-container-circular img { width: 100%; height: 100%; object-fit: cover; }
-.hero-content-text h1 { font-size: 3rem; margin-bottom: 20px; }
-
-/* --------------------------------------------------------------------------
-   5. PÁGINA DE RECEITA (EEAT & PERSUASÃO)
-   -------------------------------------------------------------------------- */
-.receita-container, article {
-    background-color: var(--cor-branco);
-    max-width: 800px;
-    margin: 40px auto 80px;
-    padding: 40px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-}
-
-/* Moldura da Foto */
-.hero-card {
-    padding: 10px; background: white;
-    border: 1px solid #eee; border-radius: var(--border-radius);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
-}
-.hero-card img { width: 100%; border-radius: 8px; }
-
-/* Box de Resposta Direta */
-.direct-answer-box {
-    background: #f9f7f3; border-left: 4px solid var(--cor-institucional);
-    padding: 20px; margin-bottom: 30px; font-size: 1.1rem; color: var(--cor-cinza-forte);
-}
-
-/* Pilares do Método */
-.metodo-pilares {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px; margin-top: 30px; padding-top: 30px; border-top: 1px solid #eee;
-}
-.pilar { display: flex; gap: 15px; align-items: flex-start; }
-.pilar h3 { color: var(--cor-vinho); font-size: 1.1rem; margin: 0 0 5px; }
-
-/* Bio da Autora */
-.author-box {
-    display: flex; align-items: center; gap: 20px;
-    background: var(--cor-creme); padding: 25px;
-    border-radius: var(--border-radius); border-left: 5px solid var(--cor-vinho);
-    margin-top: 50px;
-}
-.author-image { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid white; }
-
-/* --------------------------------------------------------------------------
-   6. A-COMMERCE (MECANISMO 4+1)
-   -------------------------------------------------------------------------- */
-.chefbox-offer-card {
-    background: var(--cor-creme);
-    border: 2px dashed var(--cor-dourado);
-    padding: 30px; text-align: center;
-    border-radius: var(--border-radius); margin: 40px 0;
-}
-
-/* ================================================================= */
-/* === RÉGUA GAMIFICADA V8.0 - FIX TOTAL CÍRCULO NEGRO           === */
-/* ================================================================= */
-
-.chefbox-sticky-bar {
-    position: fixed; bottom: 0; left: 0; width: 100%;
-    background: rgba(255, 255, 255, 0.98);
-    border-top: 4px solid var(--cor-cta);
-    padding: 12px 15px;
-    z-index: 99999;
-    display: flex; flex-direction: row;
-    justify-content: center; align-items: center;
-    gap: 12px;
-    box-shadow: 0 -8px 25px rgba(0,0,0,0.1);
-    backdrop-filter: blur(10px);
-}
-
-.slot-circle {
-    width: 54px; height: 54px; /* Aumentado para melhor toque no mobile */
-    border-radius: 50%; 
-    background-color: #f0f0f0; /* Fundo neutro */
-    border: 2px dashed #ccc;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: bold; color: #aaa;
-    cursor: pointer;
-    background-size: cover; 
-    background-position: center;
-    position: relative; 
-    flex-shrink: 0;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* ESTADO: SLOT PREENCHIDO (RESTAURAÇÃO DA FOTO) */
-.slot-circle.filled {
-    border: 2px solid var(--cor-cta);
-    background-color: white !important; /* Remove o cinza que escurecia a foto */
-    color: transparent;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* ESTADO: 5º SLOT (O PRESENTE) */
-.slot-circle.gift {
-    background-color: #fff8e1;
-    border-color: #F2811D;
-    color: #F2811D;
-    font-size: 1.4rem;
-}
-
-/* O "WOW FACTOR": BRILHO NO PRESENTE ATIVADO */
-.slot-circle.gift-active {
-    border: 3px solid #27ae60 !important; /* Verde Sucesso */
-    box-shadow: 0 0 20px rgba(39, 174, 96, 0.5);
-    transform: scale(1.15);
-}
-
-/* REMOVER ITEM (O 'X' NO DESKTOP) */
-.slot-circle.filled:hover::after {
-    content: '✕';
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(242, 129, 29, 0.8); /* Laranja transparente no hover */
-    color: white; font-size: 1.2rem; font-weight: 900;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-}
-
-@media (max-width: 600px) {
-    .chefbox-sticky-bar { gap: 8px; padding: 10px 5px; }
-    .slot-circle { width: 48px; height: 48px; }
-}
-
-/* Modal */
-.modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8); z-index: 100000;
-    display: none; justify-content: center; align-items: center;
-}
-.modal-box {
-    background: white; padding: 30px; width: 90%; max-width: 500px;
-    border-radius: var(--border-radius);
-}
-
-/* --------------------------------------------------------------------------
-   7. RODAPÉ (BRANCO INFINITO & 5 COLUNAS)
-   -------------------------------------------------------------------------- */
-.site-footer {
-    background-color: var(--cor-branco); /* Branco Puro */
-    color: var(--cor-cinza-forte);
-    padding-top: 60px;
-    margin-top: auto;
-    border-top: 1px solid var(--cor-dourado);
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 30px;
-    padding-bottom: 40px;
-}
-
-.footer-col h4 {
-    color: var(--cor-institucional); /* Títulos Verdes */
-    font-size: 0.95rem; text-transform: uppercase;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--cor-dourado); /* Linha Dourada */
-    padding-bottom: 5px; display: inline-block;
-}
-
-.footer-col ul { list-style: none; padding: 0; }
-.footer-col li { margin-bottom: 10px; }
-.footer-col a { color: var(--cor-cinza-leve); font-size: 0.9rem; }
-.footer-col a:hover { color: var(--cor-cta); }
-
-/* Área de Copyright */
-.footer-bottom {
-    background-color: var(--cor-branco);
-    color: #999;
-    text-align: center;
-    padding: 30px 20px 140px; /* Espaço para régua */
-    border-top: 1px solid #eee;
-    font-size: 0.85rem;
-}
-
-/* --------------------------------------------------------------------------
-   8. RESPONSIVIDADE (MOBILE - AJUSTES FINAIS DE ELITE)
-   -------------------------------------------------------------------------- */
-@media (max-width: 992px) {
-    
-    /* --- 1. HEADER: LOGO CENTRALIZADA (ELEGÂNCIA) --- */
-    .header-container {
-        justify-content: center; /* Centraliza tudo */
-        position: relative;      /* Para posicionar o menu absoluto */
-        height: 60px;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-        position: absolute;
-        left: 0; /* Botão na Esquerda */
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.8rem;
-        color: var(--cor-dourado);
-    }
-
-    .logo-circle {
-        width: 65px; height: 65px;
-        margin: 0 auto; /* Garante centro absoluto */
-        border-width: 2px;
-        position: relative;
-        z-index: 2;
-    }
-
-    .nav-list { display: none; } /* Esconde menu PC */
-
-    /* --- 2. HERO SECTION (TEXTO ALINHADO) --- */
-    .hero-section-with-image-and-text {
-        flex-direction: column;
-        text-align: center;
-        padding: 30px 20px;
-    }
-    
-    .hero-content-text h1 {
-        font-size: 2.2rem; /* Título grande mas legível */
-        line-height: 1.2;
-        margin-bottom: 15px;
-    }
-    
-    .hero-content-text p {
-        font-size: 1.1rem;
-        padding: 0 10px; /* Margem para não bater na borda */
-    }
-
-    /* --- 3. LAYOUT GERAL (SEM BATER NA LATERAL) --- */
-    .receita-container, article, .container {
-        width: 94% !important; /* Margem de segurança */
-        margin: 10px auto 100px;
-        padding: 25px 20px;
-    }
-
-    /* --- 4. RÉGUA 4+1 (TURBINADA) --- */
-    .chefbox-sticky-bar {
-        flex-direction: column !important;
-        padding: 15px 10px !important;
-        gap: 10px !important;
-        background: rgba(255, 255, 255, 0.98) !important; /* Quase sólido */
-        backdrop-filter: blur(5px); /* Efeito vidro elegante */
-        border-top: 4px solid var(--cor-cta) !important;
-    }
-
-    /* Texto "Faltam X" */
-    .bar-info {
-        font-size: 0.85rem !important;
-        margin-bottom: 5px !important;
-        font-weight: 800;
-        letter-spacing: 0.5px;
-    }
-
-    /* Container das Bolinhas */
-    .slots-wrapper {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        gap: 8px !important; /* Espaço menor para caber bolas maiores */
-        width: 100% !important;
-    }
-
-    /* AS BOLINHAS (30% MAIORES) */
-    .slot-circle {
-        width: 52px !important;  /* Aumentado de 40 para 52 */
-        height: 52px !important;
-        font-size: 1.2rem !important; /* Número maior */
-        flex-shrink: 0 !important;
-        border-width: 2px !important;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    /* BOTÃO FINALIZAR (GIGANTE E PULSANTE) */
-    .btn-finish-float {
-        width: 90% !important; /* Ocupa quase toda a largura */
-        padding: 15px !important; /* Altura boa para o dedo */
-        font-size: 1.1rem !important;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-top: 5px !important;
-        display: block; /* Garante que apareça em bloco */
-        animation: pulse-btn 2s infinite;
-    }
-
-    /* Animação para chamar atenção */
-    @keyframes pulse-btn {
-        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(242, 129, 29, 0.7); }
-        70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(242, 129, 29, 0); }
-        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(242, 129, 29, 0); }
-    }
-
-    /* --- 5. RODAPÉ --- */
-    .footer-grid { grid-template-columns: 1fr; text-align: center; }
-    .footer-bottom { padding-bottom: 200px; } /* Mais espaço para a régua maior */
-}
-/* ================================================================= */
-/* === GRID MESTRE A-COMMERCE: 6 COLUNAS (VERSÃO 10/10)          === */
-/* ================================================================= */
-
-/* VERSÃO AUDITADA PELO CTO: 6 COLUNAS ABSOLUTAS */
-.recipe-grid, .vitrine-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important; /* Mobile */
-    gap: 15px !important;
-    width: 100% !important;
-    max-width: 1400px !important;
-    margin: 0 auto 100px !important;
-}
-
-@media (min-width: 1024px) {
-    .recipe-grid, .vitrine-grid {
-        grid-template-columns: repeat(6, 1fr) !important; /* PC */
-    }
-}
-
-.recipe-card, .item-card {
-    min-height: 320px !important;
-    display: flex !important;
-    flex-direction: column !important;
-}
-
-/* PADRONIZAÇÃO DOS CARDS (PARA NÃO QUEBRAR O LAYOUT) */
-.recipe-card, .item-card {
-    background-color: var(--cor-branco);
-    border: 1px solid #eee;
-    border-radius: var(--border-radius);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    height: auto;
-    min-height: 300px; /* Altura mínima para alinhamento */
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s;
-    overflow: hidden;
-}
-
-.recipe-card:hover, .item-card:hover { 
-    transform: translateY(-5px); 
-    border-color: var(--cor-cta); 
-}
-
-/* AJUSTE DA IMAGEM DENTRO DAS 6 COLUNAS */
-.recipe-card .card-image-wrapper, 
-.item-card .item-img-link,
-.recipe-card img, 
-.item-card .item-img {
-    height: 130px !important; /* Altura reduzida para as 6 colunas não ficarem 'espichadas' */
-    width: 100%;
-    object-fit: cover;
-}
-
-/* AJUSTE DO TÍTULO */
-.recipe-card h3, .item-card h3 {
-    font-size: 0.85rem !important; /* Fonte menor para caber em 6 colunas */
-    line-height: 1.2;
-    margin: 10px 5px;
-    font-weight: bold;
-    color: var(--cor-institucional);
-}
-/* ================================================================= */
-/* === ULTIMATO: CENTRALIZAÇÃO TOTAL NO MOBILE (RODAPÉ E HERO) === */
-/* ================================================================= */
-
-@media (max-width: 992px) {
-    
-    /* 1. RODAPÉ: Centralizar Logo, Prêmio e Textos */
-    .footer-col {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important; /* Centraliza os blocos (img, div) */
-        text-align: center !important;  /* Centraliza os textos */
-        width: 100% !important;
-    }
-
-    /* Força a Logo do rodapé a ir para o meio */
-    .footer-col img {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        display: block !important;
-    }
-
-    /* 2. REDES SOCIAIS: Centralizar Links */
-    .footer-col ul {
-        padding: 0 !important;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
-    /* 3. PÁGINA COMIDA DE VERDADE: Centralizar o Círculo */
-    .hero-image-container-circular {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        display: block !important;
-        /* Garante que não flutue para a esquerda */
-        float: none !important; 
-    }
-    
-    /* Centraliza o texto da Hero também */
-    .hero-content-text {
-        text-align: center !important;
-        align-items: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-}
-/* ==========================================================================
-   PADRONIZAÇÃO VISUAL: AVATAR DA CHEF (MARIA CONCEIÇÃO)
-   ========================================================================== */
-
-/* 1. Versão GIGANTE (Para Hero da Home e Comida de Verdade) */
-.avatar-hero-circle {
-    width: 280px; /* Aumentado para dar destaque */
-    height: 280px;
-    border-radius: 50%;
-    border: 8px solid #fff; /* Moldura branca grossa */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Sombra elegante */
-    overflow: hidden; /* Garante que a foto não vaze */
-    margin: 0 auto;
-    flex-shrink: 0; /* Impede que o círculo amasse no mobile */
-    position: relative;
-    z-index: 10;
-}
-
-.avatar-hero-circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* A foto preenche o círculo sem distorcer */
-    object-position: center top; /* Foca no rosto */
-}
-
-/* 2. Versão MÉDIA (Para Assinatura no final das Receitas) */
-.avatar-signature-circle {
-    width: 100px; /* Tamanho bom para rodapé */
-    height: 100px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
-    flex-shrink: 0;
-    object-fit: cover;
-}
-
-/* --- AJUSTE MOBILE (Responsividade Automática) --- */
-@media (max-width: 768px) {
-    .avatar-hero-circle {
-        width: 200px; /* Um pouco menor no celular para caber na tela */
-        height: 200px;
-        border-width: 5px;
-    }
-}
-@media (max-width: 768px) {
-    /* Reduz o espaço entre o carrossel e a próxima seção */
-    section, .container-section {
-        margin-top: 15px !important;
-        margin-bottom: 15px !important;
-        padding-top: 10px !important;
-    }
-    
-    /* Ajusta o espaçamento do título das categorias */
-    .categorias-titulo {
-        margin-bottom: 5px !important;
-    }
-}
-/* --- FUNDAÇÃO APPLE CHEFBRICO --- */
-:root {
-    --white: #FFFFFF;
-    --cream: #FDFBF7;
-    --dark-green: #014039;
-    --orange: #F2811D;
-    --gray-text: #555555;
-    --shadow-apple: 0 10px 30px rgba(0,0,0,0.04);
-    --radius-apple: 20px;
-}
-
-body { background-color: var(--white); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-
-/* --- REGRAS DOS CÍRCULOS DO ARQUITETO --- */
-.circle-img-large {
-    width: 220px; height: 220px; border-radius: 50%;
-    object-fit: cover; border: 6px solid var(--white);
-    box-shadow: var(--shadow-apple);
-}
-
-.circle-img-small {
-    width: 80px; height: 80px; border-radius: 50%;
-    object-fit: cover; border: 3px solid var(--white);
-    box-shadow: var(--shadow-apple);
-}
-
-/* --- CARDS DE DESTAQUE (CREAM) --- */
-.highlight-box {
-    background-color: var(--cream);
-    border-radius: var(--radius-apple);
-    padding: 30px;
-    border: 1px solid rgba(1, 64, 57, 0.05);
-}
-
-/* --- GRID MOBILE FIRST (2 COLUNAS) --- */
-.vitrine-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding: 10px;
-}
-
-@media (min-width: 1024px) {
-    .vitrine-grid { grid-template-columns: repeat(6, 1fr); gap: 20px; }
-}
-/* --- PADRÃO APPLE CHEFBRICO (ARQUITETO) --- */
-
-/* 1. FUNDO E RESPIRO GLOBAL */
-body {
-    background-color: #FFFFFF !important; /* Total White */
-    color: #333;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* 2. CARDS DE DESTAQUE E EEAT (CREAM) */
-.highlight-box, .pacote-card-eeat, .author-box, .review-suave {
-    background-color: #FDFBF7 !important; /* Off-White/Cream */
-    border: 1px solid rgba(1, 64, 57, 0.05) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.03) !important;
-    padding: 30px !important;
-}
-
-/* 3. A REGRA DOS CÍRCULOS (PROTEÇÃO DE LAYOUT) */
-/* Círculo Grande: Início de página / Destaque */
-.avatar-hero-circle, .circle-img-large {
-    width: 220px;
-    height: 220px;
-    border-radius: 50% !important;
-    overflow: hidden;
-    border: 6px solid #FFFFFF;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    margin: 0 auto;
-}
-
-/* Círculo Pequeno: Rodapé / Dica da Chef / EEAT */
-.circle-img-small, .author-box img {
-    width: 85px !important;
-    height: 85px !important;
-    border-radius: 50% !important;
-    object-fit: cover;
-    border: 3px solid #FFFFFF;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-/* 4. REFINAMENTO DO GRID (MOBILE FIRST) */
-/* Mantendo suas 2 colunas mobile / 6 colunas PC com espaçamento Apple */
-.vitrine-grid {
-    gap: 15px !important;
-    padding: 0 15px !important;
-}
-
-.card-produto {
-    border: none !important;
-    background: #FFFFFF !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04) !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-.card-produto:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
-}
-/* --- FUNDAÇÃO APPLE MAGAZINE CHEFBRICO (2026) --- */
-:root {
-    --apple-white: #FFFFFF;
-    --apple-cream: #FDFBF7;
-    --chef-green: #014039;
-    --chef-orange: #F2811D;
-    --apple-shadow-soft: 0 4px 12px rgba(0,0,0,0.03);
-    --apple-shadow-float: 0 20px 40px rgba(0,0,0,0.06);
-}
-
-body { background-color: var(--apple-white) !important; font-family: -apple-system, system-ui, sans-serif; margin: 0; }
-
-/* 1. MENSAGEM EDITORIAL PREMIUM */
-.editorial-wrapper {
-    max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; padding: 80px 20px;
-}
-.circle-avatar-maria {
-    width: 240px; height: 240px; border-radius: 50% !important; overflow: hidden;
-    flex-shrink: 0; border: 8px solid var(--apple-cream); box-shadow: var(--apple-shadow-float);
-}
-.circle-avatar-maria img { width: 100%; height: 100%; object-fit: cover; }
-
-.editorial-title { color: var(--chef-green); font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 0; }
-.editorial-quote { margin: 25px 0; font-size: 1.2rem; color: #444; line-height: 1.6; font-style: italic; border-left: 3px solid var(--apple-cream); padding-left: 20px; }
-
-/* 2. ENGENHARIA DOS CARROSSEIS HORIZONTAIS */
-.magazine-row { margin: 60px 0; padding-left: 20px; }
-.carousel-horizontal {
-    display: flex; overflow-x: auto; gap: 20px; padding: 20px 5px 40px;
-    scroll-snap-type: x mandatory; scrollbar-width: none;
-}
-.carousel-horizontal::-webkit-scrollbar { display: none; }
-
-/* 3. CARDS FLUTUANTES (RETANGULARES 16:10) */
-.card-magazine {
-    flex: 0 0 300px; background: var(--apple-cream); border-radius: 24px; overflow: hidden;
-    text-decoration: none; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    scroll-snap-align: start; box-shadow: var(--apple-shadow-soft); border: 1px solid rgba(0,0,0,0.02);
-}
-.card-magazine:hover { transform: translateY(-10px); box-shadow: var(--apple-shadow-float); }
-
-.card-img-rect { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
-
-@media (max-width: 768px) {
-    .editorial-wrapper { flex-direction: column; text-align: center; gap: 30px; padding: 40px 15px; }
-    .editorial-title { font-size: 2rem; }
-    .circle-avatar-maria { width: 190px; height: 190px; }
-    .card-magazine { flex: 0 0 260px; }
-}
-/* --- ENGENHARIA DO CARD REVISTA (PADRÃO APPLE) --- */
-.magazine-carousel-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 24px;
-    padding: 20px 5px 60px 5px; /* Respiro para a sombra flutuante */
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Esconde scroll no Firefox */
-    -webkit-overflow-scrolling: touch;
-}
-
-.magazine-carousel-container::-webkit-scrollbar { display: none; } /* Esconde scroll no Chrome */
-
-/* O CARD FLUTUANTE */
-.magazine-card-unit {
-    flex: 0 0 300px; /* Largura fixa para manter o padrão no carrossel */
-    background-color: #FDFBF7; /* Fundo Creme */
-    border-radius: 24px;
-    overflow: hidden;
-    text-decoration: none;
-    scroll-snap-align: start;
-    border: 1px solid rgba(1, 64, 57, 0.04);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 15px 35px rgba(0,0,0,0.05); /* Sombra flutuante Apple */
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    display: flex;
-    flex-direction: column;
-}
-
-.magazine-card-unit:hover {
-    transform: translateY(-10px); /* Efeito de levitação ao mouse over */
-    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-}
-
-/* A MOLDURA DA IMAGEM */
-.magazine-card-img-wrapper {
-    width: 100%;
-    aspect-ratio: 16 / 10; /* Proporção Gourmet Magazine */
-    overflow: hidden;
-}
-
-.magazine-card-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* O CONTEÚDO DO CARD */
-.magazine-card-content {
-    padding: 24px;
-    flex-grow: 1;
-}
-
-.magazine-card-category {
-    color: #F2811D; /* Laranja ChefBrico */
-    font-size: 0.75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    display: block;
-    margin-bottom: 12px;
-}
-
-.magazine-card-title {
-    color: #014039; /* Verde ChefBrico */
-    font-family: 'Merriweather', serif;
-    font-size: 1.2rem;
-    line-height: 1.3;
-    margin: 0 0 12px 0;
-}
-
-.magazine-card-description {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin: 0;
-}
-
-/* Ajuste Mobile */
-@media (max-width: 768px) {
-    .magazine-card-unit { flex: 0 0 260px; }
-}
-/* --- FUNDAÇÃO APPLE MAGAZINE CHEFBRICO (OURO) --- */
-:root {
-    --apple-white: #FFFFFF;
-    --apple-cream: #FDFBF7;
-    --chef-green: #014039;
-    --chef-orange: #F2811D;
-    --shadow-apple: 0 10px 30px rgba(0,0,0,0.04);
-    --shadow-float: 0 20px 40px rgba(0,0,0,0.06);
-}
-
-body { 
-    background-color: var(--apple-white) !important; 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; 
-    margin: 0; 
-    -webkit-font-smoothing: antialiased; 
-}
-
-/* 1. REGRA DOS CÍRCULOS (ARQUITETO) */
-.circle-img-large {
-    width: 220px; height: 220px; border-radius: 50% !important;
-    object-fit: cover; border: 6px solid var(--apple-white);
-    box-shadow: var(--shadow-apple); margin: 0 auto;
-}
-
-.circle-img-small {
-    width: 85px; height: 85px; border-radius: 50% !important;
-    object-fit: cover; border: 3px solid var(--apple-white);
-    box-shadow: var(--shadow-apple);
-}
-
-/* 2. ENGENHARIA DOS CARROSSEIS (FIM DOS CARDS GRUDADOS) */
-.magazine-carousel-container {
-    display: flex; overflow-x: auto; gap: 20px;
-    padding: 20px 24px 60px 24px !important; /* RESPIRO LATERAL DE 24PX */
-    scroll-snap-type: x mandatory; scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    margin-left: -24px; margin-right: -24px; /* PERMITE FLUXO TOTAL COM MARGEM */
-}
-.magazine-carousel-container::-webkit-scrollbar { display: none; }
-
-/* 3. CARD REVISTA (RETANGULAR 16:10 + CREAM) */
-.magazine-card-unit {
-    flex: 0 0 300px; background-color: var(--apple-cream);
-    border-radius: 24px; overflow: hidden; text-decoration: none;
-    scroll-snap-align: start; border: 1px solid rgba(1, 64, 57, 0.05);
-    box-shadow: var(--shadow-apple);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-.magazine-card-unit:hover { transform: translateY(-10px); box-shadow: var(--shadow-float); }
-
-.card-img-rect-wrapper { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
-.card-img-rect-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
-/* 4. HEADER TRANSVERSAL (FROSTED GLASS) */
-.site-header-apple {
-    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05);
-    position: sticky; top: 0; z-index: 10000;
-}
-
-@media (max-width: 768px) {
-    .magazine-card-unit { flex: 0 0 270px; }
-}
-/* --- FUNDAÇÃO APPLE GOLD (CHEFBRICO 2026) --- */
-:root {
-    --white: #FFFFFF;
-    --apple-cream: #FDFBF7;
-    --chef-green: #014039;
-    --chef-orange: #F2811D;
-    --shadow-apple: 0 10px 30px rgba(0,0,0,0.04);
-    --shadow-float: 0 20px 50px rgba(0,0,0,0.08);
-}
-
-* { box-sizing: border-box; }
-body { 
-    background-color: var(--white) !important; 
-    margin: 0; padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-}
-
-/* 1. HEADER INTEGRAL (RECUPERAÇÃO DE ESTRUTURA) */
-.site-header-apple {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0,0,0,0.05);
     position: sticky; top: 0; z-index: 10000;
 }
 
-.header-contain-centered {
+.header-container {
     max-width: 1200px; margin: 0 auto;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 24px; /* Respiro lateral do Header */
+    padding: 10px var(--respiro-lateral);
 }
 
-.logo-axis img { width: 75px; height: 75px; object-fit: contain; }
+.logo-circle { width: 75px; height: 75px; object-fit: contain; }
 
-.nav-list-tight { display: flex; list-style: none; margin: 0; padding: 0; gap: 30px; align-items: center; }
-.nav-link-apple { text-decoration: none; color: var(--chef-green); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+/* Menu Desktop */
+.nav-list { display: flex; gap: 30px; list-style: none; padding: 0; margin: 0; align-items: center; }
+.nav-link { color: var(--cor-institucional); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
 
-/* MEGA MENU (O ACORDEÃO DE 2 COLUNAS) */
-.has-mega-menu { position: relative; }
-.mega-menu-apple {
-    display: none; position: absolute; top: 100%; right: -150px;
-    background: #FFFFFF; width: 500px; padding: 35px; border-radius: 28px;
-    box-shadow: var(--shadow-float); border: 1px solid rgba(0,0,0,0.05);
+/* MEGA MENU RESTAURADO (ACORDEÃO 2 COLUNAS) */
+.has-dropdown { position: relative; }
+.mega-menu {
+    display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    background: var(--apple-white); width: 500px; padding: 35px; border-radius: var(--radius-apple);
+    box-shadow: var(--shadow-float); border: 1px solid rgba(0,0,0,0.05); z-index: 11000;
 }
-.has-mega-menu:hover .mega-menu-apple { display: block; }
+.has-dropdown:hover .mega-menu { display: block; }
+.mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.mega-title { color: #999; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+.mega-column a { display: block; color: var(--cor-institucional); font-size: 0.9rem; padding: 8px 0; font-weight: 600; }
+.mega-column a:hover { color: var(--cor-cta); }
 
-.mega-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; }
-.mega-title { color: #999; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
-.mega-column a { display: block; color: var(--chef-green); text-decoration: none; font-size: 0.9rem; padding: 8px 0; font-weight: 600; }
-.mega-column a:hover { color: var(--chef-orange); }
+/* --- 4. A REGRA DOS CÍRCULOS (ARQUITETO) --- */
+.avatar-hero-circle {
+    width: 240px; height: 240px; border-radius: 50% !important; overflow: hidden;
+    border: 8px solid var(--apple-cream); box-shadow: var(--shadow-float);
+    margin: 0 auto; flex-shrink: 0;
+}
+.avatar-hero-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-/* 2. ENGENHARIA DO CARROSSEL (FIM DOS CARDS GRUDADOS) */
+.circle-img-small {
+    width: 85px; height: 85px; border-radius: 50% !important; object-fit: cover;
+    border: 3px solid var(--apple-white); box-shadow: var(--shadow-soft);
+}
+
+/* --- 5. ENGENHARIA DO CARROSSEL DE REVISTA (FIM DOS CARDS GRUDADOS) --- */
 .magazine-row { margin: 60px 0; }
-.magazine-row h2 { padding: 0 24px; color: var(--chef-green); font-size: 1.7rem; margin-bottom: 25px; }
+.magazine-row h2 { padding: 0 var(--respiro-lateral); color: var(--cor-institucional); font-size: 1.7rem; margin-bottom: 25px; font-family: 'Merriweather', serif; }
 
-.magazine-carousel-container {
+.carousel-container {
     display: flex; overflow-x: auto; gap: 20px;
-    padding: 20px 24px 60px 24px !important; /* RESPIRO DE 24PX NAS LATERAIS */
-    scroll-snap-type: x mandatory; scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+    padding: 20px var(--respiro-lateral) 60px var(--respiro-lateral) !important; /* O RESPIRO VITAL */
+    scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
 }
-.magazine-carousel-container::-webkit-scrollbar { display: none; }
+.carousel-container::-webkit-scrollbar { display: none; }
 
-/* 3. CARD OURO (CREAM + 16:10) */
-.magazine-card-unit {
+/* CARD PADRÃO OURO (16:10 + CREAM) */
+.card {
     flex: 0 0 300px; background-color: var(--apple-cream);
-    border-radius: 24px; overflow: hidden; text-decoration: none;
+    border-radius: var(--radius-apple); overflow: hidden; text-decoration: none;
     scroll-snap-align: start; border: 1px solid rgba(1, 64, 57, 0.05);
-    box-shadow: var(--shadow-apple); transition: transform 0.4s ease;
+    box-shadow: var(--shadow-soft); transition: transform 0.4s ease;
 }
-.magazine-card-unit:hover { transform: translateY(-10px); box-shadow: var(--shadow-float); }
+.card:hover { transform: translateY(-10px); box-shadow: var(--shadow-float); border-color: var(--cor-cta); }
+.card-image { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.card-content { padding: 24px; }
 
-.card-img-rect-wrapper { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
-.card-img-rect-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+/* --- 6. GRID MESTRE (CARDÁPIO COM 6 COLUNAS INTOCADO) --- */
+.recipe-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* Mobile */
+    gap: 15px !important; width: 100% !important; max-width: 1400px !important;
+    margin: 40px auto 100px !important; padding: 0 var(--respiro-lateral);
+}
+@media (min-width: 1024px) { .recipe-grid { grid-template-columns: repeat(6, 1fr) !important; } }
 
-/* MOBILE ADJUSTS */
+.recipe-card {
+    background: var(--apple-cream); border-radius: var(--radius-apple); border: 1px solid #eee;
+    box-shadow: var(--shadow-soft); display: flex; flex-direction: column; overflow: hidden;
+}
+.recipe-card img { height: 140px !important; width: 100%; object-fit: cover; }
+.recipe-card h3 { font-size: 0.9rem !important; margin: 15px; color: var(--cor-institucional); }
+
+/* --- 7. MOBILE FIRST - RESOLUÇÃO DE CONFLITOS --- */
 @media (max-width: 992px) {
-    .desktop-only { display: none !important; }
-    .header-contain-centered { padding: 10px 20px; }
-    .magazine-card-unit { flex: 0 0 270px; }
+    :root { --respiro-lateral: 20px; }
+    
+    /* Header e Logo Mobile */
+    .header-container { justify-content: space-between; padding: 10px 15px; }
+    .nav-list { display: none; }
+    .mobile-menu-btn { display: block; background: none; border: none; font-size: 2rem; color: var(--cor-institucional); order: 1; }
+    .logo-circle { width: 60px; height: 60px; order: 2; flex-grow: 1; }
+    .mobile-spacer { width: 45px; order: 3; } /* Força a logo pro centro */
+
+    /* Avatares e Textos */
+    .avatar-hero-circle { width: 200px; height: 200px; }
+    .hero-section-with-image-and-text { flex-direction: column; text-align: center; padding: 40px var(--respiro-lateral); }
+    
+    /* Carrosséis */
+    .card { flex: 0 0 270px; }
 }
