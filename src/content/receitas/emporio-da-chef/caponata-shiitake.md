@@ -25,7 +25,7 @@ tempo_iso: "PT0M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Nenhuma (Pronto)"
 calorias: "45 kcal (colher)"
-image: "/imagens/caponata-shiitake-vegetais-chefbrico.png"
+image: "/imagens/categoria-emporio-caponata-shiitake-chefbrico.webp"
 image_alt: "Pote de vidro com Caponata de Shiitake brilhante e apetitosa da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
