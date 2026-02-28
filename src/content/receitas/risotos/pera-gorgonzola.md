@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "390 kcal"
-image: "/imagens/risoto-agridoce-pera-gorgonzola-veg-chefbrico.png"
+image: "/imagens/cardapio-chefbrico-risoto-pera-e-limao-siciliano.webp"
 image_alt: "Risoto de Pêra e Gorgonzola Vegano finalizado com nozes da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
