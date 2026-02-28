@@ -25,7 +25,7 @@ tempo_iso: "PT16M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "150 kcal"
-image: "/imagens/sopinha-detox-chefbrico.png"
+image: "/imagens/cardapio-chefbrico-sopa-detox-ora-pro-nobis.webp"
 image_alt: "Sopa Detox Verde com Ora-pro-nóbis da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
