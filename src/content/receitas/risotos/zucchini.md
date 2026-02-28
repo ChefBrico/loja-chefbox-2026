@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "340 kcal"
-image: "/imagens/chefbrico-risoto-zucchini-arboreo(1080x566px).png"
+image: "/imagens/cardapio-chefbrico-risoto-cremoso-zucchini-tijela.webp"
 image_alt: "Risoto de Zucchini dourado com cúrcuma e pedaços de abobrinha da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
