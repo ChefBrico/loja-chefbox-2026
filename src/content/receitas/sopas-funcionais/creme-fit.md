@@ -25,7 +25,8 @@ tempo_iso: "PT21M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "210 kcal"
-image: "/imagens/creme-fit-sopinha-chefbrico.png"
+image: "/imagens/cardapio-chefbrico-sopa-creme-fit.webp
+"
 image_alt: "Prato de Sopa Creme Fit Vegana de ervilha bem cremoso da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
