@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "340 kcal"
-image: "/imagens/risoto-mediterraneo-chefbrico.png"
+image: "/imagens/cardapio-chefbrico-risoto-mediterraneo-tijela.webp"
 image_alt: "Risoto Mediterrâneo com raspas de limão siciliano e vegetais da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
