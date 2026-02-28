@@ -29,7 +29,7 @@ dificuldade: "Muito Fácil"
 calorias: "370 kcal"
 
 # 1. Imagem Principal (Food Porn - Prato Pronto)
-image: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
+image: "/imagens/cardapio-chefbrico-risoto-cremoso-pomodori-pesto.webp"
 image_alt: "Prato de Risoto Pomodori cremoso com manjericão fresco e tomates secos da ChefBrico"
 
 # 2. Imagem do Pacote (Persuasão de Produto Real)
