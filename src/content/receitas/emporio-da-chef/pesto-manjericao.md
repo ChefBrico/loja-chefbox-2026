@@ -25,7 +25,7 @@ tempo_iso: "PT0M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Nenhuma (Pronto)"
 calorias: "130 kcal (colher)"
-image: "/imagens/emporio/pesto-manjericao-chefbrico.png"
+image: "/imagens/categoria-emporio-pesto-manjericao-chefbrico.webp"
 image_alt: "Pote de vidro com Pesto de Manjericão verde vibrante da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
