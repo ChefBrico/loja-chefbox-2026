@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "380 kcal"
-image: "/imagens/chefbrico-risoto-morango-agridoce-fruta (1080 x 566 px).png"
+image: "/imagens/cardapio-chefbrico-risoto-morango-agridoce.webp.png"
 image_alt: "Risoto Agridoce de Morango com lâminas de amêndoas da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
