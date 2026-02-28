@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "360 kcal"
-image: "/imagens/risoto-funghi-chefbrico.png"
+image: "/imagens/cardapio-chefbrico-risoto-cremoso-funghi-tijela.webp"
 image_alt: "Risoto Funghi Secchi cremoso com cogumelos nobres da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
