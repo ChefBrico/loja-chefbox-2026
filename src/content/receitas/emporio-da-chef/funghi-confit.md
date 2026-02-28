@@ -25,7 +25,7 @@ tempo_iso: "PT0M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Nenhuma (Pronto)"
 calorias: "110 kcal (colher)"
-image: "/imagens/confitado-shiitake-chefbrico.png"
+image: "/imagens/categoria-emporio-confit-chefbrico.webp"
 image_alt: "Pote de vidro com Shiitake Confitado mergulhado em azeite dourado da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
