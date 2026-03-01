@@ -25,7 +25,7 @@ tempo_iso: "PT35M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "390 kcal"
-image: "/imagens/cardapio-chefbrico-refeicao-arroz-negro-integral.webp"
+image: "/imagens/refeicao-integrale-nero-gourmet-chefbrico.webp"
 image_alt: "Prato de Arroz Negro com Funghi rústico e sofisticado da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
