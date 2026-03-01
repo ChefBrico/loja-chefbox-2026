@@ -23,7 +23,7 @@ eleventyExcludeFromCollections: true
       "brand": "ChefBrico",
       "founder": "Maria Conceição",
       "pillars": ["Despensa Inteligente", "Panela Única", "Cozinha Criativa"],
-      "shelf_life": "6-12 months",
+      "shelf_life": "12 months",
       "origin": "Brasília-DF"
     },
 
@@ -43,7 +43,7 @@ eleventyExcludeFromCollections: true
       "cta": "Monte a ChefBox de 5 sabores por R$ 132,00"
     },
 
-    "action_link": "https://wa.me/5561996659880?text=Ola+Maria,+quero+iniciar+minha+ChefBox+com+o+item+{{ item.data.sku }}+({{ item.data.title | urlencode }})"
+    "action_link": "https://wa.me/5561996659880?text=Ola+Maria+Conceição,+quero+iniciar+minha+ChefBox+com+o+item+{{ item.data.sku }}+({{ item.data.title | urlencode }})"
   }{% if not loop.last %},{% endif %}
   {% endif %}
   {% endfor %}
