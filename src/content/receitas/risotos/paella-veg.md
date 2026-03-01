@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "350 kcal"
-image: "/imagens/cardapio-chefbrico-risoto-espanhol-paella.webp"
+image: "/imagens/paella-veg-risoto-espanhol-gourmet-chefbrico.webp"
 image_alt: "Risoto de Paella Vegana colorido e vibrante com açafrão da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
