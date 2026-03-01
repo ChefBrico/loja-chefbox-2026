@@ -25,7 +25,7 @@ tempo_iso: "PT25M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "350 kcal"
-image: "/imagens/cardapio-chefbrico-grao-bico-arroz-vermelho.webp"
+image: "/imagens/refeicao-grao-bico-arroz-vermelho-gourmet-chefbrico.webp"
 image_alt: "Refeição Mediterrânea com grão de bico e arroz vermelho da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
