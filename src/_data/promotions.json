@@ -30,7 +30,7 @@
       "role": "Concierge ChefBrico",
       "mission": "Garantir que o cliente monte o kit completo de 5 itens para fechar em R$ 132.",
       "upsell_script": "Você já escolheu 4 sabores deliciosos! Falta apenas 1 para fechar sua ChefBox e ganhar esse item de PRESENTE.",
-      "checkout_url_template": "https://wa.me/5561996659880?text=Ola+Maria,+montei+minha+ChefBox+de+R$132."
+      "checkout_url_template": "https://wa.me/5561996659880?text=Ola+Maria+Conceição,+montei+minha+ChefBox+de+R$132."
     }
   }
 }
