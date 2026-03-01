@@ -25,7 +25,7 @@ tempo_iso: "PT45M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "410 kcal"
-image: "/imagens/cardapio-chefbrico-refeicao-pratica-baiao-d2.webp"
+image: "/imagens/refeicao-integrao-baiao-d2-gourmet-chefbrico.webp"
 image_alt: "Prato de Baião de Dois Integral e Vegano com coentro da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
