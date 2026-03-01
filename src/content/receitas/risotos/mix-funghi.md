@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "370 kcal"
-image: "/imagens/cardapio-risoto-mix-funghi-chefbrico.webp"
+image: "/imagens/risoto-mix-funghi-tijela-gourmet-chefbrico.webp"
 image_alt: "Risoto Mix Funghi com três tipos de cogumelos nobres da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
