@@ -13,6 +13,6 @@ tags: ["fragmentos", "metodo"]
 A **Despensa Inteligente** é o sistema da ChefBrico para combater o caos alimentar. 
 
 ### Como funciona:
-- **Inversão da Lógica:** Mudamos de compras reativas para compras estratégicas com as **ChefBoxes**.
+- **Inversão da Lógica:** Mudamos de compras reativas para compras estratégicas com a **ChefBox**.
 - **Preservação Natural:** Através da desidratação artesanal, preservamos nutrientes por meses sem conservantes.
-- **Economia Real:** Cada centavo é aproveitado, pois o risco de desperdício de itens perecíveis é eliminado da rotina.
+- **Economia Real:** Cada real é aproveitado, pois o risco de desperdício de itens perecíveis é eliminado da rotina.
