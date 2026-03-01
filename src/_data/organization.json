@@ -82,7 +82,7 @@
     "@type": "OrderAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://wa.me/5561996659880?text=Quero+pedir+o+ChefBox",
+      "urlTemplate": "https://wa.me/5561996659880?text=Quero+pedir+a+ChefBox",
       "inLanguage": "pt-BR",
       "actionPlatform": [
         "http://schema.org/DesktopWebPlatform",
