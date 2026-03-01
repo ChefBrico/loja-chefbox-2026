@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "350 kcal"
-image: "/imagens/cardapio-chefbrico-risoto-tomate-tijela.webp"
+image: "/imagens/risoto-tomate-manjericao-prato-branco-gourmet-chefbrico.webp"
 image_alt: "Risoto cremoso de Tomate e Manjericão da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
