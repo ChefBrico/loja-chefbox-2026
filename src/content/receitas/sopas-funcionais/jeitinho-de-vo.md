@@ -25,7 +25,7 @@ tempo_iso: "PT16M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "180 kcal"
-image: "/imagens/cardapio-jeitinho-vo-lentilha-macarrao-chefbrico.webp"
+image: "/imagens/sopinha-jeitinho-dvo-lentilha-tijela-gourmet-chefbrico.webp"
 image_alt: "Sopa de Lentilha Rosa e Macarrão sem glúten da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
