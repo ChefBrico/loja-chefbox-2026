@@ -25,7 +25,7 @@ tempo_iso: "PT25M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "195 kcal"
-image: "/imagens/cardapio-chefbrico-low-carb-funghi.webp"
+image: "/imagens/sopa-lentilha-negra-tijela-palha-gourmet-chefbrico.webpp"
 image_alt: "Sopa escura e sofisticada de Lentilha Beluga com Funghi da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
