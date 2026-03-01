@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "380 kcal"
-image: "/imagens/cardapio-risoto-alho-poro-chefbrico.webp"
+image: "/imagens/risoto-alho-poro-tijela-gourmet-chefbrico.webp"
 image_alt: "Risoto Verde de Pesto e Alho-Poró cremoso da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
