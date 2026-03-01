@@ -25,7 +25,7 @@ tempo_iso: "PT16M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "170 kcal"
-image: "/imagens/cardapio-chefbrico-sopa-leve-sopinha-da-biza-vo.webp"
+image: "/imagens/sopinha-biza-vegetais-macarrao-gourmet-chefbrico.webp"
 image_alt: "Sopinha da Biza com macarrão de banana verde e legumes coloridos da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
