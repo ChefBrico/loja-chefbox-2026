@@ -25,7 +25,7 @@ tempo_iso: "PT16M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "160 kcal"
-image: "/imagens/cardapio-low-carb-lentilha-vermelha-chefbrico.webp"
+image: "/imagens/sopa-low-carb-horta-tijela-branca-gourmet-chefbrico.web"
 image_alt: "Sopa Low Carb colorida com pedaços visíveis de vegetais da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
