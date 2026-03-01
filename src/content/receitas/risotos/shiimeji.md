@@ -25,7 +25,7 @@ tempo_iso: "PT18M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "360 kcal"
-image: "/imagens/cardapio-chefbrico-risoto-shiimeji-tijela.webp"
+image: "/imagens/chefbrico-risoto-shiimeji-alho-poro-gourmet-chefbrico.webp"
 image_alt: "Risoto de Shiimeji e Alho-Poró cremoso da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
