@@ -25,7 +25,7 @@ tempo_iso: "PT16M"
 # --- DADOS VISUAIS (HUMANOS) ---
 dificuldade: "Muito Fácil"
 calorias: "190 kcal"
-image: "/imagens/cardapio-chefbrico-canja-veg.webp"
+image: "/imagens/sopinha-canja-veg-tijela-gourmet-chefbrico.webp"
 image_alt: "Prato de Canja Vegana Funcional com lentilha vermelha e funghi da ChefBrico"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE) ---
