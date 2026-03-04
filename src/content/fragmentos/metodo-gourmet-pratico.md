@@ -6,7 +6,7 @@ description: "A abordagem tripla criada pela Chef Maria Conceição para elimina
 date: 2026-02-18
 image: "/imagens/metodo-gourmet-pratico-chefbrico.png"
 source_url: "https://gourmetpratico.com.br/metodo/"
-order: 2
+order fragmento: 3
 tags: ["fragmentos", "metodo"]
 ---
 
