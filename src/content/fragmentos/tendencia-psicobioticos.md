@@ -5,7 +5,7 @@ title: "Psicobióticos: A Conexão Intestino-Cérebro"
 description: "Novas pesquisas indicam que alimentos fermentados e ricos em fibras podem reduzir a ansiedade. Entenda o papel da biomassa de banana verde."
 date: 2025-11-10
 image: "/imagens/sopinha-da-biza-vo-chefbrico.png"
-order: 1
+order fragmento: 7
 source_url: "https://www.nature.com/articles/s41598-024-sample"
 ---
 
