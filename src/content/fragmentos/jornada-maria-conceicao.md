@@ -6,7 +6,7 @@ description: "De psicóloga a chef premiada pelo Sebrae. Conheça a história de
 date: 2026-02-18
 image: "/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png"
 source_url: "https://agenciasebrae.com.br/empreendedorismo/premio-sebrae-mulher-de-negocios-reconhece-historias-inspiradoras/"
-order fragmento: 1
+order fragmento: 2
 tags: ["fragmentos", "autoridade"]
 ---
 
