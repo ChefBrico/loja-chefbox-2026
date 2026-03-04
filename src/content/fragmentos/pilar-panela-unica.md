@@ -6,7 +6,7 @@ description: "Descubra como cozinhar refeições completas em apenas uma panela,
 date: 2026-02-18
 image: "/imagens/panela-unica-chefbrico.png"
 source_url: ""
-order: 4
+order fragmento: 5
 tags: ["fragmentos", "metodo"]
 ---
 
