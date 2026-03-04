@@ -33,10 +33,10 @@ image: "/imagens/risoto-pomodori-pesto-tijela-gourmet-chefbrico.webp"
 image_alt: "Prato de Risoto Pomodori cremoso com manjericão fresco e tomates secos da ChefBrico"
 
 # 2. Imagem do Pacote (Persuasão de Produto Real)
-image_package: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
+image_package: "/imagens/pomodori-frente-rotulo-2025-2.jpg"
 
 # 3. Imagem de Detalhe (Zoom nos Ingredientes/Textura)
-image_detail: "/imagens/risoto-pomodori-pesto-chefbrico-580px.png"
+image_detail: "/imagens/pomodori-verso-rotulo-2025.jpg"
 
 # --- DADOS NUTRICIONAIS COMPLETOS (IA DE SAÚDE & API) ---
 nutrition:
