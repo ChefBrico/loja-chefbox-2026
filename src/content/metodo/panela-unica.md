@@ -1,7 +1,7 @@
 ---
 layout: artigo.njk
 title: "Panela Única, Sabor Máximo"
-order metodo: 4
+order: 5
 description: "A técnica para economizar seu tempo. Menos louça, mais sabor e mais tempo para o que importa."
 date: 2025-10-02
 image: "/imagens/maria-conceicao-feiras-chefbrico-dourado.png"
