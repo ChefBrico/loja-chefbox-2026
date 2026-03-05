@@ -1,7 +1,7 @@
 ---
 layout: artigo.njk
 title: "A Despensa Inteligente"
-order metodo: 3
+order: 4
 description: "O método para ter paz de espírito na cozinha. Compras inteligentes, zero desperdício e refeições sempre à mão."
 date: 2025-10-01
 image: "/imagens/maria-conceicao-chefbrico-verdepadrao.png"
