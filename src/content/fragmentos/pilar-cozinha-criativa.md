@@ -6,7 +6,6 @@ description: "A ChefBrico cuida de 80% do trabalho para você brilhar nos 20% fi
 date: 2026-02-18
 image: "/imagens/cozinha-criativa-chefbrico.png"
 source_url: ""
-order fragmento: 6
 tags: ["fragmentos", "metodo"]
 ---
 
