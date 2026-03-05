@@ -5,7 +5,6 @@ title: "Revista Digital ChefBrico | Comida de Verdade"
 description: "Receitas 100% naturais, prontas em minutos. O Método Gourmet Prático para uma rotina saudável e sem desperdício."
 image: "/imagens/maria-conceicao-agrovillage-caminho-chefbrico.webp.png"
 
-# --- A CORREÇÃO: O SÍMBOLO "|" SALVA O SERVIDOR ---
 schema: |
   {
     "@context": "https://schema.org",
@@ -37,13 +36,15 @@ schema: |
         </div>
     </section>
 
+    {# LINHA 1: COMECE POR AQUI (MÉTODO) - ORDEM POR DATA MAIS RECENTE #}
     <section class="magazine-row">
         <div class="carousel-header-wrapper">
             <h2>Comece por Aqui: O Método</h2>
             <span class="carousel-drag-hint">Arraste ➝</span>
         </div>
         <div class="carousel-apple-container">
-            {% for post in collections.metodo %}
+            {# A correção: usamos 'blog' ou 'metodo' e ordenamos por data decrescente (mais novo primeiro) #}
+            {% for post in collections.blog | reverse %}
             <a href="{{ post.url }}" class="card-apple-standard">
                 <div class="moldura-mestre-16-10">
                     <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
@@ -58,13 +59,14 @@ schema: |
         </div>
     </section>
 
+    {# LINHA 2: TENDÊNCIAS & BEM-ESTAR (FRAGMENTOS) - ORDEM POR DATA MAIS RECENTE #}
     <section class="magazine-row">
         <div class="carousel-header-wrapper">
             <h2>Tendências & Bem-Estar</h2>
             <span class="carousel-drag-hint">Arraste ➝</span>
         </div>
         <div class="carousel-apple-container">
-            {% for post in collections.fragmentos %}
+            {% for post in collections.fragmentos | reverse %}
             <a href="{{ post.url }}" class="card-apple-standard" style="border-top: 4px solid var(--chef-orange, #F2811D);">
                 <div class="card-content" style="padding: 30px 24px;">
                     <span style="color: var(--chef-orange, #F2811D); font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Dica da Chef</span>
@@ -77,6 +79,7 @@ schema: |
         </div>
     </section>
 
+    {# LINHA 3: UNIVERSO DE SABOR - CATEGORIAS ORIGINAIS #}
     <section class="magazine-row">
         <div class="carousel-header-wrapper">
             <h2>Universo de Sabor</h2>
