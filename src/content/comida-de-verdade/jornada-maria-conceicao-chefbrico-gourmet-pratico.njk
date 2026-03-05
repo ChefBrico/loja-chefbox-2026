@@ -3,9 +3,13 @@ layout: base.njk
 permalink: /comida-de-verdade/jornada-maria-conceicao-chefbrico-gourmet-pratico/
 title: "A Jornada de Maria Conceição: Do Cerrado ao Prêmio Sebrae | ChefBrico"
 description: "Conheça a história da fundadora da ChefBrico. Vencedora do Prêmio Sebrae Mulher de Negócios, Maria Conceição transformou a trilha de agricultura familiar em um método gourmet prático."
+date: 2024-01-15
+image: "/imagens/maria-conceicao-sebrae-premio-mulher-negocio.png"
+category: "Minha História"
+tags: ["metodo"]
+order: 1
 ---
 
-<!-- 1. O SCHEMA DA AUTORIDADE (O QUE A IA LÊ) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,21 +38,12 @@ description: "Conheça a história da fundadora da ChefBrico. Vencedora do Prêm
         "https://www.linkedin.com/in/mariaconceicao",
         "https://www.instagram.com/chefbrico"
       ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://gourmetpratico.com.br/" },
-        { "@type": "ListItem", "position": 2, "name": "Comida de Verdade", "item": "https://gourmetpratico.com.br/comida-de-verdade/" },
-        { "@type": "ListItem", "position": 3, "name": "A Jornada de Maria Conceição" }
-      ]
     }
   ]
 }
 </script>
 
 <style>
-    /* Estilos Específicos para Artigo de Biografia */
     .bio-hero {
         text-align: center;
         background: radial-gradient(circle, #fdfbf7 0%, #f4f1ea 100%);
@@ -56,121 +51,65 @@ description: "Conheça a história da fundadora da ChefBrico. Vencedora do Prêm
         border-bottom: 4px solid #d4af37;
         margin-bottom: 40px;
     }
-    
-    .bio-img-container {
-        position: relative;
-        display: inline-block;
-    }
-    
-    .bio-img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-    
+    .bio-img-container { position: relative; display: inline-block; }
+    .bio-img { max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
     .award-badge {
-        position: absolute;
-        bottom: -20px;
-        right: -20px;
-        background: #014039;
-        color: #d4af37;
-        padding: 15px 25px;
-        border-radius: 50px;
-        font-weight: bold;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        position: absolute; bottom: -20px; right: -20px;
+        background: #014039; color: #d4af37; padding: 15px 25px;
+        border-radius: 50px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        display: flex; align-items: center; gap: 10px;
     }
-
-    .media-list {
-        list-style: none;
-        padding: 0;
-    }
-    
+    .media-list { list-style: none; padding: 0; }
     .media-item {
-        background: #fdf6e3;
-        margin-bottom: 15px;
-        padding: 20px;
-        border-radius: 8px;
-        border-left: 4px solid #27ae60;
-        transition: 0.2s;
+        background: #fdf6e3; margin-bottom: 15px; padding: 20px;
+        border-radius: 8px; border-left: 4px solid #27ae60; transition: 0.2s;
     }
-    
     .media-item:hover { transform: translateX(5px); }
-    
-    .media-item a {
-        text-decoration: none;
-        color: #333;
-        font-weight: bold;
-        display: block;
-    }
-    
-    .media-source {
-        font-size: 0.85rem;
-        color: #666;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-        display: block;
-    }
+    .media-item a { text-decoration: none; color: #333; font-weight: bold; display: block; }
+    .media-source { font-size: 0.85rem; color: #666; text-transform: uppercase; margin-bottom: 5px; display: block; }
 </style>
 
 <main class="container">
-    
-    <!-- HERO SECTION -->
     <div class="bio-hero">
         <span class="article-category" style="color:#666; text-transform:uppercase; letter-spacing:1px; font-size:0.9rem;">Minha História</span>
         <h1 style="font-family:'Playfair Display', serif; color:#2c3e50; font-size:2.5rem; margin:15px 0;">Da Agricultura Familiar ao<br>Prêmio Sebrae</h1>
         <p class="recipe-subtitle">Como transformei a necessidade de uma vida saudável em um negócio premiado.</p>
-        
         <div class="bio-img-container" style="margin-top:30px;">
-            <img src="/imagens/maria-conceicao-sebrae-premio-mulher-negocio.png" alt="Maria Conceição recebendo o Prêmio Sebrae" class="bio-img">
+            <img src="/imagens/maria-conceicao-sebrae-premio-mulher-negocio.png" alt="Maria Conceição" class="bio-img">
             <div class="award-badge">🏆 Mulher de Negócios</div>
         </div>
     </div>
 
     <div class="post-content">
-        <p class="author-byline" style="text-align:center; font-style:italic;">Por <strong>Maria Conceição</strong></p>
-        
+        <p style="text-align:center; font-style:italic;">Por <strong>Maria Conceição</strong></p>
         <p>Em um mundo onde IAs respondem tudo, a pergunta mais importante é: <strong>quem está por trás da receita?</strong> Meu nome é Maria Conceição, e a ChefBrico nasceu não em uma planilha de Excel, mas na terra do Cerrado.</p>
 
         <h2>O Início: Uma Decisão de Família</h2>
-        <p>Trocamos a cidade grande por uma chácara perto do Parque Nacional de Brasília. Queríamos que nosso filho de 8 anos soubesse que cenoura não nasce no supermercado. Começamos plantando cogumelos.</p>
+        <p>Trocamos a cidade grande por uma chácara perto do Parque Nacional de Brasília. Começamos plantando cogumelos.</p>
         
         <figure style="text-align: center; margin: 40px 0;">
-             <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Família ChefBrico no início" style="width:200px; border-radius:50%; border:3px solid #eee;">
+             <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Família ChefBrico" style="width:200px; border-radius:50%; border:3px solid #eee;">
             <figcaption>O começo de tudo: eu, Edison e nosso filho.</figcaption>
         </figure>
 
-        <h2>A Aliança com Gigantes (Emater, Senar e Sebrae)</h2>
-        <p>Ninguém cresce sozinho. As feiras de Brasília foram minha escola. O apoio da <strong>Emater-DF</strong> e do <strong>Sebrae</strong> transformou minha paixão amadora em gestão profissional. Foi ali que entendi que meu produto não era apenas "comida", mas "tempo e saúde" para as pessoas.</p>
-
-        <h2>O Reconhecimento Nacional</h2>
-        <p>A validação veio em 2023, com o <strong>Prêmio Sebrae Mulher de Negócios</strong>. Não foi apenas um troféu na estante; foi a confirmação de que o empreendedorismo feminino tem força para mudar o mercado de alimentação.</p>
+        <h2>A Aliança com Gigantes</h2>
+        <p>O apoio da <strong>Emater-DF</strong> e do <strong>Sebrae</strong> transformou minha paixão amadora em gestão profissional.</p>
 
         <div style="background:#fff; padding:30px; border:1px solid #eee; border-radius:12px; margin-top:40px;">
             <h3 style="text-align:center; margin-bottom:30px;">📌 ChefBrico na Mídia</h3>
             <ul class="media-list">
                 <li class="media-item">
                     <span class="media-source">TV Globo (PEGN)</span>
-                    <a href="https://globoplay.globo.com/v/11914784/" target="_blank">📺 Assista: Reportagem sobre a ChefBrico no Pequenas Empresas & Grandes Negócios</a>
+                    <a href="https://globoplay.globo.com/v/11914784/" target="_blank">📺 Assista: Reportagem PEGN</a>
                 </li>
                 <li class="media-item">
                     <span class="media-source">Agência Sebrae</span>
-                    <a href="https://df.agenciasebrae.com.br/cultura-empreendedora/cerimonia-homenageia-vencedores-da-etapa-estadual-do-premio-sebrae-mulher-de-negocios/" target="_blank">📰 Matéria: Cerimônia de Premiação Mulher de Negócios</a>
-                </li>
-                <li class="media-item">
-                    <span class="media-source">Rádio NovaBrasil FM</span>
-                    <a href="https://youtu.be/EQ95Veq36No?si=4rmdS9E3XN1dw5aC/" target="_blank">🎙️ Ouça: Entrevista no programa "Mesa pra Dois"</a>
+                    <a href="https://df.agenciasebrae.com.br/cultura-empreendedora/cerimonia-homenageia-vencedores-da-etapa-estadual-do-premio-sebrae-mulher-de-negocios/" target="_blank">📰 Matéria: Cerimônia de Premiação</a>
                 </li>
             </ul>
         </div>
 
         <h2 style="margin-top:40px;">A Descoberta da Desidratação</h2>
-        <p>O maior inimigo da comida de verdade é o tempo. Produtos frescos estragam rápido. Foi aí que redescobri a desidratação artesanal. Ao retirar a água lentamente, concentramos o sabor (o tal do Umami) e preservamos os nutrientes por meses, sem usar uma gota de conservante químico.</p>
-        
-        <p><strong>Esse é o coração do Método Gourmet Prático.</strong></p>
-
+        <p>Ao retirar a água lentamente, concentramos o sabor e preservamos os nutrientes. <strong>Esse é o coração do Método Gourmet Prático.</strong></p>
     </div>
 </main>
