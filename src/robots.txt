@@ -16,10 +16,10 @@ Allow: /fragmentos/
 Allow: /entrega/
 
 # Caminhos de Ação para LAMs (Deep Linking)
-Allow: /receitas/?add-sku=
-Allow: /chefbox/?add-sku=
+Allow: /receitas/
+Allow: /chefbox/
 
-# Proteção de Infraestrutura e Dados Sensíveis
+# Proteção de Infraestrutura
 Disallow: /admin/
 Disallow: /netlify/
 Disallow: /_includes/
@@ -29,7 +29,6 @@ Disallow: /_data/
 # TAPETE VERMELHO: AGENTES DE COMPRA E RECOMENDAÇÃO (LAMs)
 # ----------------------------------------------------------
 
-# OpenAI - ChatGPT & Plugins de Compra
 User-agent: GPTBot
 Allow: /
 Crawl-delay: 1
@@ -37,22 +36,11 @@ Crawl-delay: 1
 User-agent: ChatGPT-User
 Allow: /
 
-# Google - Gemini & Search Generative Experience (SGE)
 User-agent: Google-Extended
 Allow: /
 
-# Anthropic - Claude 
-User-agent: Claude-Web
-Allow: /
-
-# Perplexity AI - O principal motor de descoberta agêntica atual
 User-agent: PerplexityBot
 Allow: /
 
-# ----------------------------------------------------------
-# MAPA DO TERRITÓRIO (SITEMAPS)
-# ----------------------------------------------------------
+# Mapa do Território
 Sitemap: https://gourmetpratico.com.br/sitemap.xml
-Sitemap: https://gourmetpratico.com.br/sitemap-bairros.xml
-
-# "Maria, este robô garante que a IA te recomende na Asa Sul antes de qualquer outro."
