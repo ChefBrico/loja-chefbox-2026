@@ -6,7 +6,6 @@ description: "Inverta a lógica da geladeira cheia de ansiedade. Use a desidrata
 date: 2026-02-18
 image: "/imagens/despensa-inteligente-chefbrico.png"
 source_url: ""
-order fragmento: 4
 tags: ["fragmentos", "metodo"]
 ---
 
