@@ -17,28 +17,26 @@ description: "Conheça os pilares do método Gourmet Prático e a história de M
             <p class="editorial-subtitle">Esta é a crônica de uma mãe e psicóloga de formação  que transformou o caos da rotina em celebração.</p>
         </div>
     </section>
-
-    <section class="carousel-magazine-row magazine-row">
+<section class="carousel-magazine-row magazine-row">
     <div class="carousel-header-wrapper">
         <h2>Os Pilares do Método Gourmet Prático</h2>
-        <span class="carousel-drag-hint">Arraste para conhecer a trilha ➝</span>
+        <span class="carousel-drag-hint">Arraste ➝</span>
     </div>
     
     <div class="carousel-apple-container">
-        {# FILTRO DE SEGURANÇA: Busca apenas arquivos dentro da pasta 'metodo' e ordena pelo número #}
-        {% set lista_metodo = collections.all | eleventyNavigation("metodo") if collections.all else collections.metodo %}
+        {# Usamos apenas a coleção 'metodo' que já funciona no seu site #}
+        {% set metodo_list = collections.metodo | sort(attribute='data.order') %}
         
-        {# Se o acima for complexo, usamos esta forma direta e robusta: #}
-        {% for post in collections.metodo | sort(attribute="data.order") %}
+        {% for post in metodo_list %}
         <a href="{{ post.url }}" class="card-apple-standard">
             <div class="moldura-mestre-16-10">
-                {# Verifique se o link da imagem no seu .md começa com /imagens/ #}
-                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy" onerror="this.src='/imagens/placeholder.png';">
+                {# O código abaixo tenta carregar a imagem; se falhar, não quebra o site #}
+                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
             </div>
             
             <div class="card-content" style="padding: 24px;">
                 <span style="color: var(--chef-orange, #F2811D); font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">
-                    {{ post.data.category or "Método" }}
+                    {{ post.data.category }}
                 </span>
                 <h3 style="color: var(--chef-green, #014039); margin: 10px 0; font-size: 1.15rem; font-family: 'Merriweather', serif; line-height: 1.3;">
                     {{ post.data.title }}
@@ -50,23 +48,19 @@ description: "Conheça os pilares do método Gourmet Prático e a história de M
         </a>
         {% endfor %}
 
-        {# Card fixo final da ChefBox permanece igual #}
+        {# Card fixo da ChefBox #}
+        <a href="/chefbox/" class="card-apple-standard" style="background: var(--chef-green, #014039); border: none;">
+            <div class="moldura-mestre-16-10">
+                <img src="/imagens/maria-conceicao-gratidao-2025-chefbrico.webp" alt="Monte sua ChefBox" style="opacity: 0.85;" loading="lazy">
+            </div>
+            <div class="card-content" style="padding: 24px; color: #FFFFFF;">
+                <span style="color: var(--chef-orange, #F2811D); font-weight: 800; font-size: 0.7rem; text-transform: uppercase;">A EXPERIÊNCIA</span>
+                <h3 style="color: #FFFFFF; font-size: 1.15rem; margin: 10px 0; font-family: 'Merriweather', serif;">Monte sua ChefBox</h3>
+                <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.5; margin: 0;">Escolha 4 sabores e o 5º é nosso presente.</p>
+            </div>
+        </a>
     </div>
 </section>
-
-            <a href="/chefbox/" class="card-apple-standard" style="background: var(--chef-green, #014039); border: none;">
-                <div class="moldura-mestre-16-10">
-                    <img src="/imagens/maria-conceicao-gratidao-2025-chefbrico.webp" alt="Monte sua ChefBox" style="opacity: 0.85;" loading="lazy">
-                </div>
-                <div class="card-content" style="padding: 24px; color: #FFFFFF;">
-                    <span style="color: var(--chef-orange, #F2811D); font-weight: 800; font-size: 0.7rem; text-transform: uppercase;">A EXPERIÊNCIA</span>
-                    <h3 style="color: #FFFFFF; font-size: 1.15rem; margin: 10px 0; font-family: 'Merriweather', serif;">Monte sua ChefBox</h3>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.5; margin: 0;">Escolha 4 sabores e o 5º é nosso presente.</p>
-                </div>
-            </a>
-            
-        </div>
-    </section>
 
     <section style="background: var(--apple-cream, #FDFBF7); padding: 80px 24px; text-align: center; border-radius: var(--radius-master, 24px); margin: 40px var(--respiro-lateral) 80px var(--respiro-lateral); border: 1px solid rgba(1, 64, 57, 0.03); box-shadow: var(--shadow-soft);">
         <h2 style="color: var(--chef-green, #014039); font-family: 'Merriweather', serif; font-size: 2rem; margin-top: 0;">Uma Conquista de Todas Nós</h2>
