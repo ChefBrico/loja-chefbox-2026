@@ -1,55 +1,64 @@
 ---
 layout: base.njk
-permalink: /fragmentos/
-title: "Pílulas de Saúde & Método Gourmet | ChefBrico"
-description: "Dicas rápidas da Chef Maria Conceição sobre nutrição funcional, praticidade e o Método Gourmet Prático."
 ---
+{# Removido o permalink e a lista automática para permitir a leitura individual #}
 
-<main class="magazine-container" style="background-color: #FFFFFF !important;">
+<main class="magazine-container" style="background-color: #FFFFFF !important; padding-bottom: 80px;">
 
+    {# HERO DO ARTIGO - Exibe o título e descrição do arquivo .md atual #}
     <section class="hero-premium-editorial" style="display: flex; align-items: center; gap: 60px; padding: 80px 20px; max-width: 1100px; margin: 0 auto;">
         <div class="avatar-circle-protector" style="width: 240px; height: 240px; border-radius: 50% !important; overflow: hidden; flex-shrink: 0; border: 8px solid #FDFBF7; box-shadow: 0 20px 40px rgba(0,0,0,0.06);">
             <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Maria Conceição" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="editorial-content">
-            <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Dicas da Chef Maria</span>
-            <h1 style="color: #014039; font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 15px 0;">Pílulas de Saúde &<br><span style="font-weight: 300; color: #999;">Método Gourmet</span></h1>
-            <p style="color: #555; font-size: 1.2rem; line-height: 1.6;">Ciência, nutrição e o Método Gourmet Prático para sua rotina no DF.</p>
+            <span style="color: #F2811D; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Dica da Chef Maria</span>
+            <h1 style="color: #014039; font-family: 'Merriweather', serif; font-size: 2.8rem; line-height: 1.1; margin: 15px 0;">{{ title }}</h1>
+            <p style="color: #555; font-size: 1.2rem; line-height: 1.6;">{{ description }}</p>
         </div>
     </section>
 
-    <section style="max-width: 1100px; margin: 0 auto; padding: 40px 20px;">
-        <div class="fragmento-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            {% for fragmento in collections.fragmentos | reverse %}
-            <a href="{{ fragmento.url }}" class="magazine-card-unit" style="background: #FDFBF7; border-radius: 24px; padding: 30px; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); transition: all 0.4s ease; display: flex; flex-direction: column;">
-                <span style="color: #F2811D; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">✨ Fragmento Citável</span>
-                <h3 style="color: #014039; font-family: 'Merriweather', serif; font-size: 1.3rem; margin: 0 0 15px 0; line-height: 1.3;">{{ fragmento.data.title }}</h3>
-                <p style="color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">{{ fragmento.data.description | truncate(120) }}</p>
-                <span style="color: #014039; font-weight: bold; font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 15px;">Ler resposta completa ➜</span>
-            </a>
-            {% endfor %}
+    {# CONTEÚDO DO FRAGMENTO (A MICRO PÁGINA) #}
+    <article style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+        
+        {% if image %}
+        <div style="margin-bottom: 40px; border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.08);">
+            <img src="{{ image }}" alt="{{ title }}" style="width: 100%; height: auto; display: block;">
         </div>
-    </section>
+        {% endif %}
 
-    <section style="background: #FDFBF7; padding: 60px 20px; text-align: center; border-radius: 40px; margin: 60px 20px; border: 1px solid rgba(0,0,0,0.02);">
-        <h2 style="color: #014039; font-family: 'Merriweather', serif; font-size: 2rem; margin-bottom: 15px;">Pronto para aplicar na prática?</h2>
-        <p style="color: #555; font-size: 1.1rem; margin-bottom: 35px;">Escolha seus 5 sabores favoritos e receba amanhã com Frete Grátis no DF.</p>
-        <a href="/chefbox/" style="background: #F2811D; color: white; padding: 18px 45px; border-radius: 50px; font-weight: 900; text-decoration: none; font-size: 1rem; box-shadow: 0 10px 25px rgba(242, 129, 29, 0.3); display: inline-block; text-transform: uppercase; letter-spacing: 1px;">
-            MONTAR MINHA CHEFBOX ➜
+        <div class="editorial-body" style="color: #333; font-size: 1.15rem; line-height: 1.9; font-family: 'Georgia', serif;">
+            {# Este é o comando mestre que traz o texto do seu .md #}
+            {{ content | safe }}
+        </div>
+
+        {% if source_url %}
+        <div style="margin-top: 50px; padding: 25px; background: #F9F9F9; border-radius: 16px; border-left: 6px solid #014039;">
+            <p style="margin: 0; font-size: 0.95rem; color: #555;">
+                <strong>Fonte de Autoridade:</strong> 
+                <a href="{{ source_url }}" target="_blank" style="color: #014039; font-weight: bold; text-decoration: underline;">Verificar Referência ↗</a>
+            </p>
+        </div>
+        {% endif %}
+    </article>
+
+    {# BOTÃO DE RETORNO PARA EVITAR FRICÇÃO #}
+    <div style="text-align: center; margin-top: 60px;">
+        <a href="/" style="color: #014039; font-weight: bold; text-decoration: none; border: 2px solid #014039; padding: 12px 30px; border-radius: 50px; transition: all 0.3s;">
+            ← Voltar para a Revista
         </a>
-    </section>
+    </div>
 
 </main>
 
 <style>
-/* CSS DE REFORÇO PARA O SISTEMA FLUTUANTE */
-.magazine-card-unit:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.06) !important;
-}
-
 @media (max-width: 768px) {
     .hero-premium-editorial { flex-direction: column; text-align: center; gap: 30px; padding: 40px 15px; }
-    .avatar-circle-protector { width: 180px; height: 180px; }
+    .avatar-circle-protector { width: 160px; height: 160px; }
+    .editorial-content h1 { font-size: 2rem !important; }
+}
+.editorial-body h2, .editorial-body h3 {
+    color: #014039;
+    font-family: 'Merriweather', serif;
+    margin-top: 40px;
 }
 </style>
