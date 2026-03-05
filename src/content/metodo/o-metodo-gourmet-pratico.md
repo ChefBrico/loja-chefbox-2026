@@ -1,7 +1,7 @@
 ---
 layout: artigo.njk
 title: "O Método Gourmet Prático: Equilíbrio, Sabor e Tempo"
-order metodo: 2
+order: 3
 description: "O fim do desperdício na cozinha. Como a filosofia da ChefBrico devolve seu tempo e garante comida de verdade na mesa."
 date: 2025-10-01
 image: "/imagens/maria-conceicao-sebrae-premio-mulher-negocio.png"
