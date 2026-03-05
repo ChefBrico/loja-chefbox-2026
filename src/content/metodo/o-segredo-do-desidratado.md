@@ -1,7 +1,7 @@
 ---
 layout: artigo.njk
 title: "O Segredo do Desidratado"
-order: 6
+order: 7
 description: "Uma técnica ancestral reinventada. Como capturamos a essência dos ingredientes sem usar conservantes."
 date: 2025-10-02
 image: "/imagens/maria-conceicao-movimente-chefbrico-vinho.png"
