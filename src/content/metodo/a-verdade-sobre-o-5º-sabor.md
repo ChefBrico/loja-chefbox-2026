@@ -1,7 +1,7 @@
 ---
 layout: artigo.njk
 title: "A Verdade Sobre o 5º Sabor"
-order: 7
+order: 8
 description: "Por que damos o 5º item de presente? A filosofia e a matemática por trás da nossa oferta principal."
 date: 2025-10-03
 image: "/imagens/maria-conceicao-gratidao-2025-chefbrico.png"
