@@ -19,32 +19,40 @@ description: "Conheça os pilares do método Gourmet Prático e a história de M
     </section>
 
     <section class="carousel-magazine-row magazine-row">
+    <div class="carousel-header-wrapper">
+        <h2>Os Pilares do Método Gourmet Prático</h2>
+        <span class="carousel-drag-hint">Arraste para conhecer a trilha ➝</span>
+    </div>
+    
+    <div class="carousel-apple-container">
+        {# FILTRO DE SEGURANÇA: Busca apenas arquivos dentro da pasta 'metodo' e ordena pelo número #}
+        {% set lista_metodo = collections.all | eleventyNavigation("metodo") if collections.all else collections.metodo %}
         
-        <div class="carousel-header-wrapper">
-            <h2>Os Pilares do Método Gourmet Prático</h2>
-            <span class="carousel-drag-hint">Arraste ➝</span>
-        </div>
-        
-        <div class="carousel-apple-container">
+        {# Se o acima for complexo, usamos esta forma direta e robusta: #}
+        {% for post in collections.metodo | sort(attribute="data.order") %}
+        <a href="{{ post.url }}" class="card-apple-standard">
+            <div class="moldura-mestre-16-10">
+                {# Verifique se o link da imagem no seu .md começa com /imagens/ #}
+                <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy" onerror="this.src='/imagens/placeholder.png';">
+            </div>
             
-            {# A SUA ESTRUTURA NETLIFY ORIGINAL E INTOCADA #}
-            {# SEGURANÇA: Só tenta ordenar se a coleção 'metodo' existir #}
-            {% set metodo_list = collections.metodo or [] %}
-            {% for post in metodo_list | sort(attribute='data.order') %}
-            
-            <a href="{{ post.url }}" class="card-apple-standard">
-                <div class="moldura-mestre-16-10">
-                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
-                </div>
-                
-                <div class="card-content" style="padding: 24px;">
-                    <span style="color: var(--chef-orange, #F2811D); font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">{{ post.data.category }}</span>
-                    <h3 style="color: var(--chef-green, #014039); margin: 10px 0; font-size: 1.15rem; font-family: 'Merriweather', serif; line-height: 1.3;">{{ post.data.title }}</h3>
-                    <p style="color: var(--text-muted, #666); font-size: 0.9rem; line-height: 1.5; margin: 0;">{{ post.data.description | truncate(80) }}</p>
-                </div>
-            </a>
-            
-            {% endfor %}
+            <div class="card-content" style="padding: 24px;">
+                <span style="color: var(--chef-orange, #F2811D); font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">
+                    {{ post.data.category or "Método" }}
+                </span>
+                <h3 style="color: var(--chef-green, #014039); margin: 10px 0; font-size: 1.15rem; font-family: 'Merriweather', serif; line-height: 1.3;">
+                    {{ post.data.title }}
+                </h3>
+                <p style="color: var(--text-muted, #666); font-size: 0.9rem; line-height: 1.5; margin: 0;">
+                    {{ post.data.description | truncate(80) }}
+                </p>
+            </div>
+        </a>
+        {% endfor %}
+
+        {# Card fixo final da ChefBox permanece igual #}
+    </div>
+</section>
 
             <a href="/chefbox/" class="card-apple-standard" style="background: var(--chef-green, #014039); border: none;">
                 <div class="moldura-mestre-16-10">
