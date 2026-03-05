@@ -9,51 +9,43 @@ eleventyExcludeFromCollections: true
 
     {# 1. LOOP MESTRE DE INTEGRIDADE (WAR-GBP 2026) #}
     {% for page in collections.all %}
-        {# Filtra páginas técnicas, rascunhos ou caminhos nulos #}
+        {# Filtra páginas técnicas ou marcadas para exclusão #}
         {% if not page.data.eleventyExcludeFromCollections and page.url %}
         <url>
             <loc>{{ meta.url }}{{ page.url | url }}</loc>
             <lastmod>{{ page.date.toISOString() }}</lastmod>
 
-            {# 2. LÓGICA DE PRIORIDADE AGÊNTICA, UCP E HIPERLOCAL #}
+            {# 2. LÓGICA DE PRIORIDADE AGÊNTICA E HIPERLOCAL #}
             {% if page.url == '/' %}
-                {# HOME: Centro de autoridade da marca e Maria Conceição no DF #}
                 <changefreq>daily</changefreq>
                 <priority>1.0</priority>
             
             {% elseif '/chefbox/' in page.url %}
-                {# UCP (Unidade de Conversão): Onde o bundle R$ 132,00 é montado #}
+                {# Unidade de Conversão Principal #}
                 <changefreq>daily</changefreq>
                 <priority>1.0</priority>
 
-            {% elseif '/onde-encontrar/' in page.url or '/entrega/' in page.url %}
-                {# GEO SEO: Dominação das 18 micro-regiões e War Strategy Brasília #}
-                <changefreq>daily</changefreq>
+            {% elseif '/comida-de-verdade/' in page.url %}
+                {# Pilar de Autoridade e História Maria Conceição #}
+                <changefreq>weekly</changefreq>
                 <priority>0.9</priority>
 
-            {% elseif '/fragmentos/' in page.url and page.url != '/fragmentos/' %}
-                {# ACP (Autoridade de Conhecimento): Fragmentos Citáveis AEO #}
-                {# Prioridade alta para garantir que IAs leiam as pílulas de saúde #}
+            {% elseif '/fragmentos/' in page.url %}
+                {# Micro Páginas de Saúde e Dicas da Chef #}
                 <changefreq>weekly</changefreq>
                 <priority>0.9</priority>
 
             {% elseif '/receitas/' in page.url %}
-                {# CATÁLOGO INTELIGENTE: SKUs e GTINs para Agentes de IA #}
+                {# Catálogo de SKUs para Agentes de IA #}
                 <changefreq>weekly</changefreq>
                 <priority>0.8</priority>
 
-            {% elseif '/blog/' in page.url or '/artigos/' in page.url %}
-                {# CONTEÚDO AUXILIAR: Educação e Nutrição #}
-                <changefreq>weekly</changefreq>
-                <priority>0.7</priority>
-            
             {% else %}
-                {# DEMAIS PÁGINAS (Sobre, Termos, Contato) #}
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
             {% endif %}
 
-            {# 3. O SEGREDO DO LMM (IA DE IMAGEM & PINTEREST READY) #}
+            {# 3. INDEXAÇÃO DE IMAGENS (FOOD PORN & EEAT) #}
             {% if page.data.image %}
             <image:image>
                 <image:loc>{{ meta.url }}{{ page.data.image }}</image:loc>
@@ -64,7 +56,7 @@ eleventyExcludeFromCollections: true
             </image:image>
             {% endif %}
 
-            {# 4. EXTENSÃO PARA VÍDEO (DOMINAÇÃO YOUTUBE/GLOBOPLAY) #}
+            {# 4. CONEXÃO COM VÍDEOS (PROVA SOCIAL) #}
             {% if page.data.video_url %}
             <video:video>
                 <video:thumbnail_loc>{{ meta.url }}{{ page.data.image }}</video:thumbnail_loc>
