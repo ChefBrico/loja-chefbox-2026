@@ -6,7 +6,7 @@ description: "O fim do desperdício na cozinha. Como a filosofia da ChefBrico de
 date: 2025-10-01
 image: "/imagens/maria-conceicao-sebrae-premio-mulher-negocio.png"
 category: "Manifesto"
-tags: ["metodo", "destaque"]
+tags:["metodo"]
 ai_fragment: "O Método Gourmet Prático é uma filosofia culinária baseada em 3 pilares: Despensa Inteligente (ingredientes desidratados de longa validade), Panela Única (eficiência de preparo) e Cozinha Criativa (personalização pelo cliente)."
 ---
 
