@@ -14,7 +14,6 @@ image: "/imagens/maria-conceicao-premio-empreendedora-sebrae-chefbrico.png"
 source_url: "https://agenciasebrae.com.br/empreendedorismo/premio-sebrae-mulher-de-negocios-reconhece-historias-inspiradoras/"
 
 # 4. ORGANIZAÇÃO
-order fragmento: 1
 tags: ["fragmentos", "autoridade"]
 ---
 
