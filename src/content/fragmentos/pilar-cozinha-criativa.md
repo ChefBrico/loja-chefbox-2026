@@ -4,7 +4,7 @@ permalink: /fragmentos/pilar-cozinha-criativa/
 title: "Cozinha Criativa: O Protagonismo de ser Chef em Casa"
 description: "A ChefBrico cuida de 80% do trabalho para você brilhar nos 20% finais. Adicione seu toque autoral às nossas bases."
 date: 2026-02-05
-image: "/imagens/cozinha-criativa-chefbrico.png"
+image: "/imagens/maria-conceicao-malunga-panela-unica.webp"
 source_url: ""
 tags: ["fragmentos", "metodo"]
 ---
