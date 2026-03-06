@@ -4,7 +4,7 @@ permalink: /fragmentos/pilar-despensa-inteligente/
 title: "Despensa Inteligente: O Fim do Desperdício de Ingredientes"
 description: "Inverta a lógica da geladeira cheia de ansiedade. Use a desidratação artesanal para ter uma base saudável sempre pronta."
 date: 2026-02-03
-image: "/imagens/despensa-inteligente-chefbrico.png"
+image: "/imagens/maria-conceicao-verdade-chefbrico.webp"
 source_url: ""
 tags: ["fragmentos", "metodo"]
 ---
