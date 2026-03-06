@@ -5,7 +5,7 @@
   "title": "A Mente por Trás do Gourmet Prático: A Jornada de Maria Conceição",
   "description": "Conheça a história completa de Maria Conceição. Uma jornada de empreendedorismo feminino, da agricultura familiar ao reconhecimento nacional com prêmios do Sebrae e matérias na TV Globo.",
   "date": "2024-01-15",
-  "image": "/imagens/sebrae-premio-mulher-negocio-maria-conceicao.png",
+  "image": "/imagens/maria-conceicao-trajetoria-7-anos-cogumelos-frescos.webp",
   "category": "Minha História",
   "tags": ["metodo"],
   "order": 1,
