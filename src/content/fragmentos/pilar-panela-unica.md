@@ -4,7 +4,7 @@ permalink: /fragmentos/pilar-panela-unica/
 title: "Panela Única: O Alívio do Tempo na Cozinha"
 description: "Descubra como cozinhar refeições completas em apenas uma panela, preservando o sabor e eliminando a pilha de louça."
 date: 2026-02-04
-image: "/imagens/panela-unica-chefbrico.png"
+image: "/imagens/maria-conceicao-vila-veg-chefbrico.webp"
 source_url: ""
 tags: ["fragmentos", "metodo"]
 ---
