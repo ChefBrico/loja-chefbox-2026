@@ -4,7 +4,7 @@ title: "Da Psicologia ao Prato"
 order: 2 
 description: "Como a psicologia me ensinou que nutrir a alma é tão importante quanto nutrir o corpo."
 date: 2025-10-04
-image: "/imagens/maria-conceicao-cogumelos-chefbrico-verde.png"
+image: "/imagens/maria-conceicao-premio-sebrae-chefbrico.webp"
 category: "Minha História"
 tags: ["metodo"]
 ai_fragment: "Maria Conceição, psicóloga e fundadora da ChefBrico, uniu o comportamento humano à tecnologia de alimentos para criar refeições que resolvem a culpa materna e a falta de tempo."
