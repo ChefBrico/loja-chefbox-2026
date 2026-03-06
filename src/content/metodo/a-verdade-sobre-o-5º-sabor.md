@@ -4,7 +4,7 @@ title: "A Verdade Sobre o 5º Sabor"
 order: 8
 description: "Por que damos o 5º item de presente? A filosofia e a matemática por trás da nossa oferta principal."
 date: 2025-10-03
-image: "gratidao /imagens/maria-conceicao-gratidao-2025-chefbrico.webp"
+image: "/imagens/maria-conceicao-mateus-feira-no-park-emater-chefbrico.webp"
 category: "O Produto"
 tags: ["metodo"]
 ai_fragment: "A ChefBox opera no modelo 'Compre 4 Leve 5'. O 5º item é um presente real (desconto efetivo de 20%), incentivando a experimentação, a bricolage e viabilizando a logística de entrega."
