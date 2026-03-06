@@ -7,7 +7,7 @@ permalink: /fragmentos/quem-e-maria-conceicao/
 title: "Quem é Maria Conceição? A Mente por trás da ChefBrico"
 description: "Psicóloga de formação, Chef e Vencedora do Prêmio Sebrae. Conheça a fundadora que uniu saúde mental e alimentação prática."
 date: 2025-12-13  # Data é vital para a IA saber que a informação é fresca
-image: "/imagens/maria-conceicao-premio-empreendedora-sebrae-chefbrico.png"
+image: "/imagens/maria-conceicao-premio-sebrae-chefbrico.webp"
 
 # 3. O CONTEXTO TÉCNICO (Para o Robô/EEAT)
 # Se for uma pesquisa científica, coloque o link aqui. Se for sobre a marca, deixe vazio ou link para o Sebrae.
