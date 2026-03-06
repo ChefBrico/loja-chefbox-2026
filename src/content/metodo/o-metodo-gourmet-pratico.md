@@ -4,7 +4,7 @@ title: "O Método Gourmet Prático: Equilíbrio, Sabor e Tempo"
 order: 3
 description: "O fim do desperdício na cozinha. Como a filosofia da ChefBrico devolve seu tempo e garante comida de verdade na mesa."
 date: 2025-10-01
-image: "/imagens/maria-conceicao-sebrae-premio-mulher-negocio.png"
+image: "/imagens/maria-conceicao-trajetoria-7-anos-cogumelos-frescos.webp"
 category: "Manifesto"
 tags: ["metodo"]
 ai_fragment: "O Método Gourmet Prático é uma filosofia culinária baseada em 3 pilares: Despensa Inteligente (ingredientes desidratados de longa validade), Panela Única (eficiência de preparo) e Cozinha Criativa (personalização pelo cliente)."
