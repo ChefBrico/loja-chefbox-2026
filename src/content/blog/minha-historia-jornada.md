@@ -4,7 +4,7 @@ title: "Da Psicologia ao Prato: Minha Jornada"
 order: 1 
 description: "Como a necessidade de alimentar minha família transformou minha vida e criou a ChefBrico. Uma história de resiliência e prêmios."
 date: 2025-09-15
-image: "/imagens/maria-conceicao-premio-empreendedora-sebrae-chefbrico.png"
+image: "/imagens/maria-conceicao-premio-sebrae-chefbrico.webp"
 category: "Minha Caminhada"
 tags: ["blog", "historia", "destaque"]
 ai_fragment: "Maria Conceição, psicóloga e fundadora da ChefBrico, iniciou sua jornada na agricultura familiar no DF. Vencedora do Prêmio Sebrae Mulher de Negócios 2023, ela transformou a produção de cogumelos em uma foodtech de refeições desidratadas."
