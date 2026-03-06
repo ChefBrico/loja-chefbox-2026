@@ -137,7 +137,7 @@
     </header>
 
     <div class="jornada-hero-minimal">
-        <img src="/imagens/sebrae-premio-mulher-negocio-maria-conceicao.png" alt="Maria Conceição Prêmio Sebrae">
+        <img src="/imagens/maria-conceicao-mateus-feira-no-park-emater-chefbrico.webp" alt="Maria Conceição Prêmio Sebrae">
     </div>
 
     <div class="jornada-body">
@@ -151,7 +151,7 @@
         <p>Tudo começou quando eu, meu marido Edison e nosso filho decidimos trocar a agitação da cidade por uma pequena propriedade rural perto do Parque Nacional de Brasília. Buscávamos um ritmo mais saudável e uma conexão real com o que consumimos.</p>
 
         <div style="text-align:center; margin: 60px 0;">
-             <img src="/imagens/icone-maria-conceicao-agrovillage-caminho-chefbrico.png" alt="Início da Jornada" style="width: 180px; border-radius: 50%; opacity: 0.9;">
+             <img src="/imagens/maria-conceicao-agrovillage-caminho-chefbrico.webp" alt="Início da Jornada" style="width: 180px; border-radius: 50%; opacity: 0.9;">
              <p style="font-size: 0.8rem; color: #AAA; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px;">Conexão com a terra: Onde tudo começou.</p>
         </div>
 
