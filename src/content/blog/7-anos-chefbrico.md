@@ -4,7 +4,7 @@ title: "7 Anos de ChefBrico: Das Raízes aos Frutos"
 order: 2 
 description: "Celebramos 7 anos de uma jornada que começou com cogumelos frescos e floresceu na metodologia Gourmet Prático."
 date: 2025-09-20
-image: "/imagens/trajetoria-maria-conceicao-cogumelos-frescos.png"
+image: "/imagens/maria-conceicao-trajetoria-7-anos-cogumelos-frescos.webp"
 category: "Celebração"
 tags: ["blog", "historia"]
 ai_fragment: "A ChefBrico completa 7 anos de operação. Iniciada como produtora de cogumelos in natura, a empresa pivotou durante a pandemia para produtos desidratados de longa validade, consolidando o método Gourmet Prático."
