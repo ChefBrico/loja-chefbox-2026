@@ -45,6 +45,7 @@ ingredientes_texto: "Arroz negro integral selecionado, funghi secchi (Boletus lu
 diets:
   - "Vegan"
   - "GlutenFree"
+  - "LactoseFree"
   - "WholeGrain"
 
 # --- SOCIAL PROOF ---
@@ -111,4 +112,4 @@ Experimente servir acompanhado de vegetais grelhados ou uma salada de folhas esc
 * **Peso Líquido:** 210g (Serve 2 porções generosas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Rico em Antioxidantes.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
