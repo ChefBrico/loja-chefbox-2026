@@ -32,8 +32,12 @@ eleventyExcludeFromCollections: true
       "is_gluten_free": {{ true if item.data.diets and 'GlutenFree' in item.data.diets else false }},
       "nutrition": {
         "calories": {{ item.data.nutrition.calories | default(0) }},
-        "protein": {{ item.data.nutrition.protein_g | default(0) }}
-      }
+        "protein": {{ item.data.nutrition.protein_g | default(0) }},
+        "carbs": {{ item.data.nutrition.carbs_g | default('0') }},
+        "fats": {{ item.data.nutrition.fats_g | default('0') }},
+        "fiber": {{ item.data.nutrition.fiber_g | default('0') }},
+        "sodium": {{ item.data.nutrition.sodium_mg | default('0') }}
+     }
     },
 
     "agent_instructions": {
