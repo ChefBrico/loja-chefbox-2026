@@ -13,7 +13,7 @@ stock: 85
 availability: "https://schema.org/InStock"
 category: "Risoto"
 main_ingredient: "Shiimeji e Alho-Poró"
-keywords: "risoto shiimeji Brasília, alho poró, cogumelos funcionais, vegano, sem glúten, jantar leve DF, ChefBrico"
+keywords: "risoto shiimeji Brasília, alho poró, cogumelos funcionais, vegano, sem glúten, almoço leve DF, jantar leve DF, ChefBrico"
 # --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
 solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
@@ -45,8 +45,7 @@ ingredientes_texto: "Arroz arbóreo tipo exportação, cogumelo shiimeji desidra
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowFat"
-
+  - "LactoseFree"
 # --- SOCIAL PROOF ---
 rating:
   value: "4.9"
@@ -85,7 +84,7 @@ Neste risoto artesanal, a textura macia do cogumelo Shiimeji se encontra com a s
 > "Delicado e saboroso na medida certa. O shiimeji fica com uma textura incrível, parece que foi colhido na hora. A cremosidade de restaurante feita em casa é surpreendente!" — Mariana C., Cliente ChefBrico
 
 ## O que vem no Pacote
-* **Arroz arbóreo tipo exportação:** Selecionado para garantir a absorção perfeita e a textura aveludada.
+* **Arroz cateto:** Selecionado para garantir a absorção perfeita e a textura aveludada.
 * **Cogumelos Shiimeji:** Desidratados para preservar as propriedades nutricionais e o sabor original.
 * **Alho-Poró em anéis:** Doçura e elegância em cada garfada.
 * **Caldo de Vegetais Artesanal:** Base equilibrada de cenoura, cebola e salsão desenvolvida pela ChefBrico.
@@ -111,4 +110,4 @@ Para uma experiência de sabor ainda mais profunda, experimente finalizar o prat
 * **Peso Líquido:** 180g (Serve 2 porções generosas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Low Fat.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
