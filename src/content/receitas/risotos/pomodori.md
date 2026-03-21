@@ -55,7 +55,7 @@ ingredientes_texto: "Arroz arbóreo tipo exportação, tomate desidratado, casta
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowLactose"
+  - "LactoseFree"
 
 # --- SOCIAL PROOF ---
 rating:
