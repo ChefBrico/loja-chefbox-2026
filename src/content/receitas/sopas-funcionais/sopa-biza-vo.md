@@ -45,6 +45,8 @@ ingredientes_texto: "Macarrão funcional de banana verde (sem glúten), quinoa e
 diets:
   - "Vegan"
   - "GlutenFree"
+  - "HighProtein"
+  - "LactoseFree"
   - "KidsFriendly"
 
 # --- SOCIAL PROOF ---
@@ -112,4 +114,4 @@ Harmoniza maravilhosamente bem com um suco de uva integral ou um chá morno de e
 * **Peso Líquido:** 105g (Rende 3 porções leves).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Prebiótica. Kids Friendly.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
