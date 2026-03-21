@@ -45,6 +45,8 @@ ingredientes_texto: "Lentilha vermelha, cenoura em cubos, abobrinha, vagem, toma
 diets:
   - "Vegan"
   - "GlutenFree"
+  - "HighProtein"
+  - "LactoseFree"
   - "LowCarb"
 
 # --- SOCIAL PROOF ---
@@ -111,4 +113,4 @@ Intercale o consumo desta sopa com a nossa **[Sopa Low Carb de Funghi](/receitas
 * **Peso Líquido:** 140g (Rende 3 porções nutritivas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Low Carb (baixo índice glicêmico).
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
