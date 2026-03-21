@@ -45,7 +45,7 @@ ingredientes_texto: "Arroz cateto selecionado, tomate desidratado em flocos, man
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowFat"
+  - "LactoseFree"
 
 # --- SOCIAL PROOF ---
 rating:
@@ -85,7 +85,7 @@ Criado para ser uma solução rápida sem abrir mão da alma da cozinha afetiva,
 > "Incrível como o sabor é de comida feita na hora. É o risoto favorito do meu filho aqui em Brasília! Prático, limpo e delicioso." — Paula R., Cliente ChefBrico
 
 ## O que vem no Pacote
-* **Arroz cateto selecionado:** Uma base nutritiva que garante cremosidade e saciedade.
+* **Arroz cateto:** Uma base nutritiva que garante cremosidade e saciedade.
 * **Tomate e Manjericão:** Tomates desidratados em flocos para doçura e manjericão aromático.
 * **Base Vegetal:** Cebola, alho e alho-poró para uma profundidade de sabor natural.
 * **Umami Vegano:** Levedura nutricional para um toque queijado sem lácteos.
@@ -111,4 +111,4 @@ Para uma experiência completa, sirva de entrada torradas com o nosso **[Pesto d
 * **Peso Líquido:** 180g (Serve 2 porções reconfortantes).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Low Fat.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
