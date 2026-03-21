@@ -105,4 +105,4 @@ Use esta caponata para finalizar ou acompanhar o nosso **[Risoto Mediterrâneo](
 * **Peso Líquido:** 180g (Serve de 4 a 6 pessoas como entrada).
 * **Validade:** 3 meses (fechado em local fresco). Após aberto, manter refrigerado e consumir em até 7 dias.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Low Carb.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
