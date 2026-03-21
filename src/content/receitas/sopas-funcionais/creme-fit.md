@@ -46,6 +46,7 @@ diets:
   - "Vegan"
   - "GlutenFree"
   - "HighProtein"
+  - "LactoseFree"
 
 # --- SOCIAL PROOF ---
 rating:
@@ -110,4 +111,4 @@ Harmoniza perfeitamente com torradas integrais de alecrim ou chips de batata doc
 * **Peso Líquido:** 150g (Rende 3 porções densas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. High Protein.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
