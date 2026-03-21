@@ -45,7 +45,8 @@ ingredientes_texto: "Arroz arbóreo tipo exportação, abobrinha italiana (zucch
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowFat"
+  - "LactoseFree"
+
 
 # --- SOCIAL PROOF ---
 rating:
