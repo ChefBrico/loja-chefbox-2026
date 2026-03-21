@@ -107,4 +107,4 @@ Eleve o nível do nosso **[Risoto de Shiimeji](/receitas/risotos/shiimeji/)** ou
 * **Peso Líquido:** 90g (Produto concentrado de alto rendimento).
 * **Validade:** 3 meses (fechado em local fresco). Após aberto, manter refrigerado (o azeite pode turvar no frio, basta retirar minutos antes de servir) e consumir em 10 dias.
 * **Dieta:** 100% Plant-Based. Keto. Low Carb. Sem Glúten.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
