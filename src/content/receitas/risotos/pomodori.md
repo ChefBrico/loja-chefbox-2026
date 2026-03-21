@@ -122,4 +122,4 @@ Sirva com um pão de fermentação natural para absorver o molho cremoso. Para u
 * **Peso Líquido:** 180g (Serve 2 porções generosas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose. Contém castanha de caju.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
