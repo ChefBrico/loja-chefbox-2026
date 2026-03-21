@@ -45,6 +45,8 @@ ingredientes_texto: "Lentilha Beluga (negra), funghi secchi chileno (Boletus lut
 diets:
   - "Vegan"
   - "GlutenFree"
+  - "HighProtein"
+  - "LactoseFree"
   - "LowCarb"
 
 # --- SOCIAL PROOF ---
@@ -111,4 +113,4 @@ Para elevar a experiência ao nível máximo, adicione uma colher do nosso **[Co
 * **Peso Líquido:** 150g (Rende 3 porções nutritivas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Low Carb (Slow Carb).
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
