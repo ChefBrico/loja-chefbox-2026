@@ -13,7 +13,7 @@ stock: 80
 availability: "https://schema.org/InStock"
 category: "Risoto"
 main_ingredient: "Limão-siciliano e Vegetais Mediterrâneos"
-keywords: "risoto limão siciliano Brasília, mediterrâneo, vegano, sem glúten, jantar leve DF, ChefBrico"
+keywords: "risoto limão siciliano Brasília, mediterrâneo, vegano, sem glúten, almoço leve DF, jantar leve DF, ChefBrico"
 # --- O ÍMÃ DAS SOLUÇÕES (CONCORDÂNCIA REVISADA) ---
 solucoes: ["Refeição Rápida", "Trilha & Viagem", "Para Crianças", "Jantar a Dois", "Marmita Fit"]
 # --- DADOS LOGÍSTICOS (GMC & FRETE) ---
@@ -45,7 +45,7 @@ ingredientes_texto: "Arroz arbóreo tipo exportação, raspas de limão sicilian
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowFat"
+  - "LactoseFree"
 
 # --- SOCIAL PROOF ---
 rating:
@@ -68,7 +68,7 @@ citable_fact: "Nossa técnica de desidratação preserva os óleos essenciais da
 # --- FAQ ---
 faq:
   - question: "O risoto fica com sabor ácido por causa do limão?"
-    answer: "Não. Utilizamos apenas as raspas (zest) da casca, que conferem perfume e frescor aromático, mantendo o paladar equilibrado e suave."
+    answer: "Não. Utilizamos apenas as raspas  da casca, que conferem perfume e frescor aromático, mantendo o paladar equilibrado e suave."
   - question: "Este risoto é indicado para quem busca perda de peso?"
     answer: "Sim. Com apenas 340 kcal por porção e baixo teor de gordura, é uma excelente opção de refeição limpa e leve para o jantar em Brasília."
 ---
@@ -85,9 +85,9 @@ Um prato que abraça a saúde sem abrir mão da elegância, perfeito para quem b
 > "Surpreendente! Eu tinha medo de ser azedo, mas é super equilibrado. Tão leve, aromático e refrescante. Parece prato de restaurante chique." — Camila R., Cliente ChefBrico
 
 ## O que vem no Pacote
-* **Arroz arbóreo tipo exportação:** Grãos selecionados para a textura italiana autêntica.
+* **Arroz cateto:** Grãos selecionados para a textura italiana autêntica.
 * **Mix de Vegetais Mediterrâneos:** Abobrinha, cenoura, tomate seco e alho-poró desidratados.
-* **Zest de Limão Siciliano:** Raspas naturais que preservam o perfume cítrico.
+* **Raspas de Limão Siciliano:** Raspas naturais que preservam o perfume cítrico.
 * **Cúrcuma e Ervas Finas:** Para um toque dourado e antioxidante.
 
 ## Você Vai Precisar de
@@ -111,4 +111,4 @@ Combina maravilhosamente bem com um vinho branco seco e leve. Para uma experiên
 * **Peso Líquido:** 180g (Serve 2 porções).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Low Fat.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
