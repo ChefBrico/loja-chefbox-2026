@@ -45,8 +45,7 @@ ingredientes_texto: "Arroz arbóreo tipo exportação, pêra desidratada em cubo
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowLactose"
-
+  - "LactoseFree"
 # --- SOCIAL PROOF ---
 rating:
   value: "4.9"
@@ -111,4 +110,4 @@ Este prato rico pede um vinho branco encorpado, como um Chardonnay com passagem 
 * **Peso Líquido:** 180g (Serve 2 porções sofisticadas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose. Contém Castanhas.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
