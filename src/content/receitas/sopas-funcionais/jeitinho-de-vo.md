@@ -45,6 +45,8 @@ ingredientes_texto: "Lentilha rosa (vermelha), macarrão de arroz (sem glúten),
 diets:
   - "Vegan"
   - "GlutenFree"
+  - "HighProtein"
+  - "LactoseFree"
   - "ComfortFood"
 
 # --- SOCIAL PROOF ---
