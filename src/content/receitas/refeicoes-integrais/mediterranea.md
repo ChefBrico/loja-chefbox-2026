@@ -45,6 +45,8 @@ ingredientes_texto: "Grão de bico, arroz vermelho integral, tomate seco, raspas
 diets:
   - "Vegan"
   - "GlutenFree"
+  - "HighProtein"
+  - "LactoseFree"
   - "WholeGrain"
 
 # --- SOCIAL PROOF ---
@@ -111,4 +113,4 @@ Para uma refeição completa, sirva de entrada bruschettas com nossa **[Caponata
 * **Peso Líquido:** 150g (Serve até 3 porções nutritivas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Rico em Proteína Vegetal.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
