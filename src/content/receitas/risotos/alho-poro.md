@@ -39,14 +39,13 @@ nutrition:
   sodium_mg: 125
 
 # --- INGREDIENTES (CLEAN LABEL PARA IA LER) ---
-ingredientes_texto: "Arroz arbóreo tipo exportação, alho-poró desidratado, castanha de caju, manjericão, levedura nutricional, caldo de vegetais natural (cenoura, cebola, salsão), cebola e alho."
+ingredientes_texto: "Arroz cateto, alho-poró desidratado, manjericão, levedura nutricional, caldo de vegetais natural (tomate, cenoura, cebola, salsão), cebola e alho."
 
 # --- CLASSIFICAÇÃO ---
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowLactose"
-
+  - "LactoseFree"
 # --- SOCIAL PROOF ---
 rating:
   value: "4.9"
@@ -68,9 +67,9 @@ citable_fact: "A cremosidade vegana deste prato vem da combinação inteligente 
 # --- FAQ ---
 faq:
   - question: "Este risoto contém queijo ou leite?"
-    answer: "Não. O sabor intenso e a textura aveludada vêm da levedura nutricional e das castanhas de caju selecionadas."
+    answer: "Não. O sabor intenso e a textura aveludada vêm da levedura nutricional."
   - question: "Onde encontro os produtos ChefBrico no DF?"
-    answer: "Nossa cozinha central fica em Vicente Pires e entregamos em todas as RAs de Brasília com rapidez e conveniência."
+    answer: "Nossa cozinha central fica em Vicente Pires e entregamos em todas as regiões de Brasília com rapidez e conveniência."
 ---
 
 Celebre a combinação perfeita entre o leve e o sofisticado. Neste risoto, o aroma vibrante do nosso pesto de manjericão se une à suavidade elegante do alho-poró, criando um prato que abraça e conforta.
@@ -78,7 +77,7 @@ Celebre a combinação perfeita entre o leve e o sofisticado. Neste risoto, o ar
 É a prova de que a culinária plant-based pode ser incrivelmente saborosa e prática para o seu dia a dia, com a qualidade gourmet que sua mesa merece.
 
 ## Por que Você Vai Amar este Risoto
-* **Cremosidade Intensa:** O pesto vegano de castanha de caju cria uma textura aveludada única durante o cozimento.
+* **Cremosidade Intensa:** O pesto vegano cria uma textura aveludada única durante o cozimento.
 * **Equilíbrio de Sabores:** A doçura sutil do alho-poró harmoniza perfeitamente com o perfume fresco do manjericão.
 * **Nutrição Limpa:** Ingredientes 100% naturais, sem aditivos, ricos em fibras e nutrientes essenciais.
 
@@ -87,7 +86,7 @@ Celebre a combinação perfeita entre o leve e o sofisticado. Neste risoto, o ar
 ## O que vem no Pacote
 * **Arroz arbóreo tipo exportação:** Grão selecionado para garantir o ponto *al dente* perfeito.
 * **Alho-poró em anéis:** Desidratado para preservar sua suavidade e fibras.
-* **Pesto Vegano exclusivo:** Manjericão, castanha de caju e levedura nutricional.
+* **Pesto Vegano exclusivo:** Manjericão e levedura nutricional.
 * **Toque da Chef:** Raspas de limão siciliano e base de vegetais naturais.
 
 ## Você Vai Precisar de
@@ -110,5 +109,5 @@ Este prato combina muito bem com um pão de crosta crocante. Para uma entrada te
 ## Informações Adicionais
 * **Peso Líquido:** 180g (Serve 2 porções generosas).
 * **Validade:** 12 meses.
-* **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose. Contém castanha de caju.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose.
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
