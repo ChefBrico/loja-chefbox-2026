@@ -24,8 +24,10 @@ eleventyExcludeFromCollections: true
 | **Calorias** | {{ item.data.nutrition.calories | default('0') }} kcal | {% if item.data.nutrition.calories < 300 %}Baixa Caloria (Fit){% else %}Energético{% endif %} |
 | **Proteínas** | {{ item.data.nutrition.protein_g | default('0') }}g | Fonte de aminoácidos |
 | **Carboidratos** | {{ item.data.nutrition.carbs_g | default('0') }}g | Energia |
+| **Gorduras** | {{ item.data.nutrition.fats_g | default('0') }}g | Saúde integral |
 | **Fibras** | {{ item.data.nutrition.fiber_g | default('0') }}g | Saúde intestinal |
 | **Sódio** | {{ item.data.nutrition.sodium_mg | default('0') }}mg | Tempero natural |
+
 
 ### 2. Ingredientes & Alergênicos (Clean Label)
 **Lista Completa:** {{ item.data.ingredientes_texto }}
