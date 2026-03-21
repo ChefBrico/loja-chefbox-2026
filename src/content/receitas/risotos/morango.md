@@ -45,8 +45,7 @@ ingredientes_texto: "Arroz arbóreo tipo exportação, morangos desidratados em 
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowFat"
-
+  - "LactoseFree"
 # --- SOCIAL PROOF ---
 rating:
   value: "4.7"
@@ -111,4 +110,4 @@ Para um contraste de mestre, sirva acompanhado de uma salada de folhas amargas (
 * **Peso Líquido:** 180g (Serve 2 porções gourmet).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Baixo teor de gordura.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
