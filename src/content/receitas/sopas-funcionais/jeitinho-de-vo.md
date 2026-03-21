@@ -113,4 +113,4 @@ Sirva com um fio de azeite cru e queijo ralado (vegano ou tradicional). Para beb
 * **Peso Líquido:** 140g (Rende 3 porções generosas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Comfort Food.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
