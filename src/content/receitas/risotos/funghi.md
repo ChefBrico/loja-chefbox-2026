@@ -45,7 +45,7 @@ ingredientes_texto: "Arroz arbóreo tipo exportação, funghi secchi (Boletus lu
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowLactose"
+  - "LactoseFree"
 
 # --- SOCIAL PROOF ---
 rating:
@@ -111,4 +111,4 @@ Fica divino acompanhado de uma polenta cremosa ou apenas um pão artesanal de fe
 * **Peso Líquido:** 180g (Serve 2 porções generosas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
