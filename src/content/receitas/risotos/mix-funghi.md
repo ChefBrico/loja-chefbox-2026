@@ -45,8 +45,7 @@ ingredientes_texto: "Arroz arbóreo tipo exportação, funghi secchi (Boletus), 
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowFat"
-
+  - "LactoseFree"
 # --- SOCIAL PROOF ---
 rating:
   value: "5.0"
@@ -85,7 +84,7 @@ Uma verdadeira celebração da culinária fina plant-based, pronta para ser serv
 > "É o meu favorito absoluto. O sabor é muito intenso, dá para sentir a nota de cada cogumelo. Parece que fiquei horas cozinhando cogumelos frescos, mas ficou pronto rapidinho." — André L., Cliente ChefBrico
 
 ## O que vem no Pacote
-* **Arroz arbóreo tipo exportação:** A base clássica para a cremosidade perfeita.
+* **Arroz cateto:** A base clássica para a cremosidade perfeita.
 * **Mix Premium de Cogumelos:** Funghi Secchi (Boletus), Shiitake e Shimeji desidratados.
 * **Caldo de Vegetais Artesanal:** Desenvolvido na cozinha ChefBrico para equilíbrio nutricional.
 * **Base Aromática:** Cebola, alho e salsa desidratados.
@@ -111,4 +110,4 @@ Para elevar a experiência ao nível máximo, experimente intensificar o prato c
 * **Peso Líquido:** 180g (Serve 2 porções generosas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Rico em Umami Natural.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
