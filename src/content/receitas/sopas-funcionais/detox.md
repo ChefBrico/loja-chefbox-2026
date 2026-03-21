@@ -45,7 +45,8 @@ ingredientes_texto: "Macarrão funcional sem glúten (base de biomassa de banana
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowCalorie"
+  - "HighProtein"
+  - "LactoseFree"
 
 # --- SOCIAL PROOF ---
 rating:
@@ -111,4 +112,4 @@ Harmoniza perfeitamente com um suco verde de maçã e couve ou um chá de hibisc
 * **Peso Líquido:** 105g (Rende 3 porções leves).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Low Calorie. Termogênica.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
