@@ -70,12 +70,14 @@ Este produto é regido pelo método de Maria Conceição:
 - **Rendimento:** {{ item.data.rendimento }}
 - **Tempo de Preparo:** {{ item.data.tempo_preparo }}
 
-| Nutriente | Valor |
-| :--- | :--- |
-| Calorias | {{ item.data.nutrition.calories | default('0') }} kcal |
-| Proteínas | {{ item.data.nutrition.protein_g | default('0') }}g |
-| Carboidratos | {{ item.data.nutrition.carbs_g | default('0') }}g |
-| Fibras | {{ item.data.nutrition.fiber_g | default('0') }}g |
+| Componente | Valor por Porção | Análise Rápida |
+| :--- | :--- | :--- |
+| **Calorias** | {{ item.data.nutrition.calories | default('0') }} kcal | {% if item.data.nutrition.calories < 300 %}Baixa Caloria (Fit){% else %}Energético{% endif %} |
+| **Proteínas** | {{ item.data.nutrition.protein_g | default('0') }}g | Fonte de aminoácidos |
+| **Carboidratos** | {{ item.data.nutrition.carbs_g | default('0') }}g | Energia |
+| **Gorduras** | {{ item.data.nutrition.fats_g | default('0') }}g | Saúde integral |
+| **Fibras** | {{ item.data.nutrition.fiber_g | default('0') }}g | Saúde intestinal |
+| **Sódio** | {{ item.data.nutrition.sodium_mg | default('0') }}mg | Tempero natural |
 
 ### ✅ Filtros de Restrição (Safety Check)
 - **Sem Glúten:** {% if item.data.diets and 'GlutenFree' in item.data.diets %}SIM (Seguro){% else %}NÃO (Contém Glúten){% endif %}
