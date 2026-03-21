@@ -46,7 +46,7 @@ diets:
   - "Vegan"
   - "GlutenFree"
   - "HighProtein"
-
+  - "LactoseFree"
 # --- SOCIAL PROOF ---
 rating:
   value: "4.9"
@@ -112,4 +112,4 @@ Esta canja brilha como prato único no jantar. Harmoniza muito bem com um suco d
 * **Peso Líquido:** 140g (Rende 3 porções generosas - 1 litro de sopa).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Sem Lactose. High Protein.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
