@@ -45,6 +45,8 @@ ingredientes_texto: "Arroz integral agulhinha, feijão fradinho, shiitake desidr
 diets:
   - "Vegan"
   - "GlutenFree"
+  - "HighProtein"
+  - "LactoseFree"
   - "WholeGrain"
 
 # --- SOCIAL PROOF ---
@@ -111,4 +113,4 @@ Dê um toque especial e gourmet finalizando seu prato com uma colher da nossa **
 * **Peso Líquido:** 150g (Serve 2 porções generosas).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Fonte de Proteína Vegetal.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
