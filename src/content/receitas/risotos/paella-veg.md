@@ -45,7 +45,8 @@ ingredientes_texto: "Arroz arbóreo tipo exportação, cúrcuma (açafrão), pá
 diets:
   - "Vegan"
   - "GlutenFree"
-  - "LowFat"
+  - "LactoseFree"
+
 
 # --- SOCIAL PROOF ---
 rating:
@@ -85,7 +86,7 @@ Criamos uma sinergia rica de especiarias e vegetais que trazem o espírito de *f
 > "O sabor realmente lembra uma paella tradicional, mas com a cremosidade deliciosa do risoto. Fiz para amigos aqui em Brasília e foi um sucesso total. Ninguém acreditou que era de pacotinho!" — Carlos E., Cliente ChefBrico
 
 ## O que vem no Pacote
-* **Arroz arbóreo tipo exportação:** Selecionado para absorver todo o tempero espanhol.
+* **Arroz paella tipo exportação:** Selecionado para absorver todo o tempero espanhol.
 * **Mix de Vegetais:** Tomate, cenoura e abobrinha desidratados para textura e doçura.
 * **Especiarias Nobres:** Açafrão (cúrcuma) e páprica defumada premium.
 * **Segredo da Chef:** Algas marinhas e levedura nutricional para um perfil Umami completo.
@@ -111,4 +112,4 @@ Este risoto brilha sozinho, mas fica incrível acompanhado de aspargos salteados
 * **Peso Líquido:** 180g (Serve 2 porções vibrantes).
 * **Validade:** 12 meses.
 * **Dieta:** 100% Plant-Based. Sem Glúten. Low Fat.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
