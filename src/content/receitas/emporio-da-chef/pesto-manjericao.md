@@ -107,4 +107,4 @@ Quer a experiência italiana completa? Use este pesto para finalizar nosso **[Ri
 * **Peso Líquido:** 90g (Concentrado - Rende muito em diversas preparações).
 * **Validade:** 3 meses (fechado em local fresco). Após aberto, manter refrigerado e consumir em até 7 dias.
 * **Dieta:** Vegetariana. Sem Glúten. Contém Leite e Castanhas.
-* **Origem:** Produzido Artesanalmente em Brasília-DF (Vicente Pires).
+* **Origem:** Produzido Artesanalmente em Brasília-DF.
